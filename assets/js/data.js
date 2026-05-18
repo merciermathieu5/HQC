@@ -177,13 +177,14 @@ const DOCS = {
   ],
 
   // ===== P3 — Dégager des différences et des similitudes — Convergence d'historiens =====
+  // Chaque point de vue d'historien est dans un document distinct (un acteur = un document).
   'conquete-differences-1': [
-    { id: "cq-d1-d1", title: "Document 1", layout: "text-only",
-      text: "« On calcule qu'au moins deux mille Canadiens quittèrent leur pays natal durant les dix années qui suivirent la capitulation de Montréal. [...] Pour la masse de la population canadienne, il n'était pas question d'émigrer. »\nMichel Brunet, 1966\n\n« [...] environ 4000 Canadiens ont émigré en France entre 1755 et 1770, soit environ 5 % de la population de la vallée du Saint-Laurent [...] »\nRobert Larin, 2009",
-      sources: [
-        "Source : Michel BRUNET, Les Canadiens et les débuts de la domination britannique, 1760-1791, Ottawa, Société historique du Canada, 1966, p. 6. (Coll. Brochures historiques; no 13).",
-        "Source : Robert LARIN, « L'exode de la Conquête », Cap-aux-Diamants : la revue d'histoire du Québec, no 99, septembre 2009, p. 41."
-      ] }
+    { id: "cq-d1-d1", title: "Document 1 : Michel Brunet (1966)", layout: "text-only",
+      text: "« On calcule qu'au moins deux mille Canadiens quittèrent leur pays natal durant les dix années qui suivirent la capitulation de Montréal. [...] Pour la masse de la population canadienne, il n'était pas question d'émigrer. »",
+      sources: ["Source : Michel BRUNET, Les Canadiens et les débuts de la domination britannique, 1760-1791, Ottawa, Société historique du Canada, 1966, p. 6. (Coll. Brochures historiques; no 13)."] },
+    { id: "cq-d1-d2", title: "Document 2 : Robert Larin (2009)", layout: "text-only",
+      text: "« [...] environ 4000 Canadiens ont émigré en France entre 1755 et 1770, soit environ 5 % de la population de la vallée du Saint-Laurent [...] »",
+      sources: ["Source : Robert LARIN, « L'exode de la Conquête », Cap-aux-Diamants : la revue d'histoire du Québec, no 99, septembre 2009, p. 41."] }
   ],
 
   // ===== P3 — Causes et conséquences — Acte de Québec =====
@@ -235,7 +236,7 @@ window.DATA = {
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique si les documents 1 à 4 correspondent à la famille linguistique algonquienne ou à la famille linguistique iroquoienne.",
-        responseSpace: { type: "category-buckets", categories: ["Famille algonquienne", "Famille iroquoienne"] }
+        responseSpace: { type: "category-buckets", categories: ["Famille algonquienne", "Famille iroquoienne"], slots: [2, 2] }
       },
       reglettes: [{ id: "r-ea-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_4_PART }],
       documents: pickDocs('experience-autochtones-relation-1', 1, 2, 3, 4),
@@ -246,7 +247,7 @@ window.DATA = {
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique si les documents 1 à 4 sont antérieurs ou postérieurs à 1541 (Fondation de Charlesbourg-Royal par Jacques Cartier).",
-        responseSpace: { type: "before-after-axis", beforeLabel: "Antériorité", afterLabel: "Postériorité", pivot: "Fondation de Charlesbourg-Royal (1541)" }
+        responseSpace: { type: "before-after-axis", beforeLabel: "Antériorité", afterLabel: "Postériorité", pivot: "Fondation de Charlesbourg-Royal (1541)", slots: { before: 2, after: 2 } }
       },
       reglettes: [{ id: "r-ea-s1", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
       documents: pickDocs('experience-autochtones-situer-1', 1, 2, 3, 4),
@@ -285,7 +286,7 @@ window.DATA = {
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 et 2 illustrent des faits relatifs à la Conquête. Inscris le numéro des documents à l'endroit approprié, selon qu'ils présentent des faits survenus avant ou après la bataille des Plaines d'Abraham.",
-        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "Bataille des Plaines d'Abraham" }
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "Bataille des Plaines d'Abraham", slots: { before: 1, after: 1 } }
       },
       reglettes: [{ id: "r-ec-s1", label: "Réglette (1 point)", ...R_SITUER_1PT_T2 }],
       documents: pickDocs('evolution-coloniale-situer-1', 1, 2),
@@ -295,11 +296,11 @@ window.DATA = {
     { id: "q-conquete-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
-        prompt: "Le document 1 présente le point de vue de deux historiens. Sur quel point précis sont-ils d'accord ?",
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux historiens. Sur quel point précis sont-ils d'accord ?",
         responseSpace: { type: "lines", count: 3 }
       },
       reglettes: [{ id: "r-cq-d1", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_CONVERGENCE }],
-      documents: pickDocs('conquete-differences-1', 1),
+      documents: pickDocs('conquete-differences-1', 1, 2),
       corrige: "Les deux historiens s'entendent pour dire que plusieurs milliers de Canadiens français sont partis de la colonie à la suite de la Conquête." },
 
     // ===== Q7 — P3 · Déterminer des causes et des conséquences =====

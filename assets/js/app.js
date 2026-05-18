@@ -810,6 +810,42 @@
     const NO_BORDER = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
     const ANSWER_CELL_MARGINS = { top: 120, bottom: 120, left: 160, right: 160 };
 
+    // === Helpers d'affichage des réponses numériques ===
+    // Quand les items à afficher sont tous de la forme "Document N" (N ∈ [1, 20]),
+    // on les rend en chiffres entourés ①②③… en gros (60pt). Sinon, texte plat avec
+    // séparateur " · ". Utilisé par chrono-ordering, before-after-axis et category-buckets.
+    const docNum = (s) => {
+      const m = /^Document (\d+)$/.exec(s || '');
+      if (!m) return null;
+      const n = parseInt(m[1], 10);
+      return (n >= 1 && n <= 20) ? n : null;
+    };
+    const circledDigit = (n) => String.fromCodePoint(0x2460 + n - 1);  // ① = U+2460
+    function buildAnswerLine(items, opts) {
+      const arr = items || [];
+      const nums = arr.map(docNum);
+      const allNumeric = arr.length > 0 && nums.every(n => n !== null);
+      const o = opts || {};
+      if (allNumeric) {
+        return new Paragraph({
+          alignment: AlignmentType.CENTER,
+          spacing: o.spacing || undefined,
+          children: [new TextRun({
+            text: nums.map(circledDigit).join('   '),
+            size: 60, bold: true, color: "8B3A2E"
+          })]
+        });
+      }
+      return new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: o.spacing || undefined,
+        children: [new TextRun({
+          text: arr.length ? arr.join(' · ') : '—',
+          bold: true, size: 22, color: "8B3A2E"
+        })]
+      });
+    }
+
     // 1) Texte simple (réponse type "lines")
     if (typeof q.corrige === 'string') {
       out.push(new Paragraph({
@@ -876,10 +912,7 @@
           borders: ANSWER_BORDERS, shading: SHADING,
           verticalAlign: VerticalAlign.CENTER,
           margins: { top: 120, bottom: 120, left: 80, right: 80 },
-          children: [new Paragraph({
-            alignment: AlignmentType.CENTER,
-            children: [new TextRun({ text: q.corrige[i] || '—', bold: true, size: 22, color: "8B3A2E" })]
-          })]
+          children: [buildAnswerLine([q.corrige[i]])]
         }));
         if (i < n - 1) {
           widths.push(arrowW);
@@ -918,8 +951,8 @@
       const beforeLabel = rs.beforeLabel || 'Antériorité (Avant)';
       const afterLabel  = rs.afterLabel  || 'Postériorité (Après)';
       const pivot       = rs.pivot       || '';
-      const beforeAns   = (q.corrige.before || []).join(' · ');
-      const afterAns    = (q.corrige.after  || []).join(' · ');
+      const beforeItems = q.corrige.before || [];
+      const afterItems  = q.corrige.after  || [];
       const totalW = 9000;
       const arrowW = 400;
       const sideW = Math.floor((totalW - 2 * arrowW) * 0.32);
@@ -937,10 +970,7 @@
               spacing: { after: 80 },
               children: [new TextRun({ text: beforeLabel, bold: true, size: 16, color: "6E685C" })]
             }),
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [new TextRun({ text: beforeAns || '—', bold: true, size: 22, color: "8B3A2E" })]
-            })
+            buildAnswerLine(beforeItems)
           ]
         }),
         new TableCell({
@@ -977,10 +1007,7 @@
               spacing: { after: 80 },
               children: [new TextRun({ text: afterLabel, bold: true, size: 16, color: "6E685C" })]
             }),
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [new TextRun({ text: afterAns || '—', bold: true, size: 22, color: "8B3A2E" })]
-            })
+            buildAnswerLine(afterItems)
           ]
         })
       ];
@@ -996,32 +1023,27 @@
     // 2d) Réponse "category-buckets" : N boîtes côte à côte, l'élève range des items dans chaque catégorie.
     //     q.corrige attendu : array d'arrays de strings — un sous-tableau par catégorie, dans le même ordre
     //     que rs.categories. Ex. pour 2 catégories : [["Document 1", "Document 2"], ["Document 3"]].
+    //     Affichage géré par buildAnswerLine (cercles entourés si tous "Document N", sinon texte plat).
     if (rs && rs.type === 'category-buckets' && Array.isArray(q.corrige) && Array.isArray(q.corrige[0])) {
       const categories = rs.categories || [];
       const totalW = 9000;
       const cellW = Math.floor(totalW / Math.max(categories.length, 1));
       const widths = categories.map(() => cellW);
-      const bucketCells = categories.map((cat, i) => {
-        const items = q.corrige[i] || [];
-        const ansText = items.length ? items.join(' · ') : '—';
-        return new TableCell({
-          width: { size: cellW, type: WidthType.DXA },
-          borders: ANSWER_BORDERS, shading: SHADING,
-          verticalAlign: VerticalAlign.TOP,
-          margins: { top: 100, bottom: 100, left: 80, right: 80 },
-          children: [
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              spacing: { after: 80 },
-              children: [new TextRun({ text: cat, bold: true, size: 16, color: "6E685C" })]
-            }),
-            new Paragraph({
-              alignment: AlignmentType.CENTER,
-              children: [new TextRun({ text: ansText, bold: true, size: 22, color: "8B3A2E" })]
-            })
-          ]
-        });
-      });
+
+      const bucketCells = categories.map((cat, i) => new TableCell({
+        width: { size: cellW, type: WidthType.DXA },
+        borders: ANSWER_BORDERS, shading: SHADING,
+        verticalAlign: VerticalAlign.TOP,
+        margins: { top: 100, bottom: 100, left: 80, right: 80 },
+        children: [
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            spacing: { after: 80 },
+            children: [new TextRun({ text: cat, bold: true, size: 16, color: "6E685C" })]
+          }),
+          buildAnswerLine(q.corrige[i])
+        ]
+      }));
       out.push(new Paragraph({ spacing: { before: 80, after: 40 }, children: [new TextRun({ text: "✓ Corrigé", bold: true, size: 18, color: "8B3A2E" })] }));
       out.push(new Table({
         width: { size: totalW, type: WidthType.DXA },
@@ -1648,42 +1670,58 @@
           }));
         } else if (body.responseSpace.type === 'before-after-axis') {
           // Axe chronologique à 3 boîtes : Antériorité | événement pivot | Postériorité.
-          // Les boîtes latérales sont vides dans le cahier (l'élève y inscrit les documents
-          // qui surviennent avant/après l'événement). La boîte centrale affiche le pivot.
+          // Les boîtes latérales reçoivent des cercles vides si `slots: { before: N, after: M }`
+          // est fourni, sinon de l'espace vide pour écriture libre.
           const rs = body.responseSpace;
           const beforeLabel = rs.beforeLabel || 'Antériorité (Avant)';
           const afterLabel  = rs.afterLabel  || 'Postériorité (Après)';
           const pivot       = rs.pivot       || '';
+          const slotsObj    = (rs.slots && typeof rs.slots === 'object') ? rs.slots : {};
+          const nBefore     = slotsObj.before || 0;
+          const nAfter      = slotsObj.after  || 0;
           const totalW = 10500;
           const arrowW = 450;
           const sideW = Math.floor((totalW - 2 * arrowW) * 0.32);
           const centerW = totalW - 2 * sideW - 2 * arrowW;
           const widths = [sideW, arrowW, centerW, arrowW, sideW];
+
+          // Helper local : construit le contenu d'une boîte latérale (label + cercles vides OU espaces)
+          const buildSideCellChildren = (label, n) => {
+            const out = [new Paragraph({
+              alignment: AlignmentType.CENTER,
+              spacing: { after: 80 },
+              children: [new TextRun({ text: label, bold: true, size: 20, color: "6E685C" })]
+            })];
+            if (n > 0) {
+              out.push(new Paragraph({
+                alignment: AlignmentType.CENTER,
+                spacing: { before: 100, after: 100 },
+                children: [new TextRun({
+                  text: Array.from({ length: n }, () => '○').join('   '),
+                  size: 60
+                })]
+              }));
+            } else {
+              out.push(new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }));
+              out.push(new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }));
+            }
+            return out;
+          };
+
           const baCells = [
-            // Boîte 1 : Antériorité (avec libellé en haut, espace vide en dessous)
             new TableCell({
               width: { size: sideW, type: WidthType.DXA },
               borders: ALL_BORDERS,
               verticalAlign: VerticalAlign.TOP,
               margins: { top: 100, bottom: 100, left: 80, right: 80 },
-              children: [
-                new Paragraph({
-                  alignment: AlignmentType.CENTER,
-                  spacing: { after: 80 },
-                  children: [new TextRun({ text: beforeLabel, bold: true, size: 20, color: "6E685C" })]
-                }),
-                new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }),
-                new Paragraph({ children: [new TextRun({ text: "", size: 24 })] })
-              ]
+              children: buildSideCellChildren(beforeLabel, nBefore)
             }),
-            // Flèche ← du centre vers la gauche
             new TableCell({
               width: { size: arrowW, type: WidthType.DXA },
               borders: NO_BORDERS,
               verticalAlign: VerticalAlign.CENTER,
               children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "←", size: 36, bold: true })] })]
             }),
-            // Boîte centrale : événement pivot (pré-rempli, lecture seule)
             new TableCell({
               width: { size: centerW, type: WidthType.DXA },
               borders: ALL_BORDERS,
@@ -1695,28 +1733,18 @@
                 children: [new TextRun({ text: pivot, bold: true, size: 20 })]
               })]
             }),
-            // Flèche → du centre vers la droite
             new TableCell({
               width: { size: arrowW, type: WidthType.DXA },
               borders: NO_BORDERS,
               verticalAlign: VerticalAlign.CENTER,
               children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "→", size: 36, bold: true })] })]
             }),
-            // Boîte 3 : Postériorité (avec libellé en haut, espace vide en dessous)
             new TableCell({
               width: { size: sideW, type: WidthType.DXA },
               borders: ALL_BORDERS,
               verticalAlign: VerticalAlign.TOP,
               margins: { top: 100, bottom: 100, left: 80, right: 80 },
-              children: [
-                new Paragraph({
-                  alignment: AlignmentType.CENTER,
-                  spacing: { after: 80 },
-                  children: [new TextRun({ text: afterLabel, bold: true, size: 20, color: "6E685C" })]
-                }),
-                new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }),
-                new Paragraph({ children: [new TextRun({ text: "", size: 24 })] })
-              ]
+              children: buildSideCellChildren(afterLabel, nAfter)
             })
           ];
           elements.push(new Table({
@@ -1726,27 +1754,47 @@
           }));
         } else if (body.responseSpace.type === 'category-buckets') {
           // N boîtes côte à côte, une par catégorie. L'élève écrit les items rangés dans chaque catégorie.
-          // Forme attendue : { type: 'category-buckets', categories: ['Cat A', 'Cat B', ...] }
+          // Forme attendue : { type: 'category-buckets', categories: ['Cat A', 'Cat B', ...], slots: [2, 2, ...] }
+          // `slots` (optionnel) — array d'entiers de même longueur que `categories`, indique combien
+          // de cercles vides afficher par catégorie. Si omis ou 0, aucun cercle (l'élève écrit librement).
           const rs = body.responseSpace;
           const categories = rs.categories || [];
+          const slots = Array.isArray(rs.slots) ? rs.slots : categories.map(() => 0);
           const totalW = 10500;
           const cellW = Math.floor(totalW / Math.max(categories.length, 1));
           const widths = categories.map(() => cellW);
-          const bucketCells = categories.map(cat => new TableCell({
-            width: { size: cellW, type: WidthType.DXA },
-            borders: ALL_BORDERS,
-            verticalAlign: VerticalAlign.TOP,
-            margins: { top: 100, bottom: 100, left: 80, right: 80 },
-            children: [
+          const bucketCells = categories.map((cat, i) => {
+            const n = slots[i] || 0;
+            const cellChildren = [
               new Paragraph({
                 alignment: AlignmentType.CENTER,
                 spacing: { after: 80 },
                 children: [new TextRun({ text: cat, bold: true, size: 20, color: "6E685C" })]
-              }),
-              new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }),
-              new Paragraph({ children: [new TextRun({ text: "", size: 24 })] })
-            ]
-          }));
+              })
+            ];
+            if (n > 0) {
+              // Ligne de cercles vides ○ ○ ○ ... séparés par des espaces
+              cellChildren.push(new Paragraph({
+                alignment: AlignmentType.CENTER,
+                spacing: { before: 100, after: 100 },
+                children: [new TextRun({
+                  text: Array.from({ length: n }, () => '○').join('   '),
+                  size: 60
+                })]
+              }));
+            } else {
+              // Pas de cercles : juste de l'espace vide pour écriture libre
+              cellChildren.push(new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }));
+              cellChildren.push(new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }));
+            }
+            return new TableCell({
+              width: { size: cellW, type: WidthType.DXA },
+              borders: ALL_BORDERS,
+              verticalAlign: VerticalAlign.TOP,
+              margins: { top: 100, bottom: 100, left: 80, right: 80 },
+              children: cellChildren
+            });
+          });
           elements.push(new Table({
             width: { size: totalW, type: WidthType.DXA },
             columnWidths: widths,
