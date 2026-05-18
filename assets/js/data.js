@@ -1,8 +1,10 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.16 (mai 2026)
-   43 questions · 4 périodes · 7 OI
-   Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 7 (4/7 OI), P4 = 1
-   v1.16 — +5 questions P3 (2 RÉCIT thématiques 1760-1791).
+   HQC · 3e secondaire — Données — v1.18.0 (mai 2026)
+   58 questions · 4 périodes · 7 OI
+   Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 15 (7/7 OI), P4 = 8 (7/7 OI) ⭐
+   v1.18.0 — +7 questions P4 (PDF Questions courtes 1791-1840). P4 complétée à 7/7 OI ⭐
+   (toutes les 7 OI ajoutées : faits, situer, différences, causes, changements, relation, causalité).
+   Aucune nouvelle réglette nécessaire — réutilisation des constantes existantes.
    ============================================================ */
 
 (function () {
@@ -61,6 +63,27 @@ const R_SITUER_1PT_SP_DOC = rubric2(
   "L'élève situe correctement le document dans l'espace (1 sur 1)",
   "L'élève ne situe pas le document dans l'espace. (0 sur 1)"
 );
+// Variante 2 pts pour situer UN seul fait dans l'espace (binaire) — Q4 PDF Questions courtes
+// 1760-1791 : identifier la lettre A sur une carte. Source : « L'élève situe le fait dans l'espace. »
+const R_SITUER_2PT_SP_FAIT = {
+  type: "simple", opLabel: "Situer dans le temps et dans l'espace", maxPoints: 2,
+  levels: [
+    { points: "2 points", condition: "L'élève situe le fait dans l'espace." },
+    { points: "0 point",  condition: "L'élève ne situe pas le fait dans l'espace." }
+  ]
+};
+// Variante binaire 4 documents — Q8 PDF Questions courtes 1760-1791 (4 documents 13-16 à situer
+// avant ou après l'Acte de Québec). Réglette source à 2 niveaux uniquement (2 pts ou 0 pt, pas de
+// niveau intermédiaire). Note : libellé corrigé silencieusement de « (3 sur 3) » (PDF source) à
+// « (4 sur 4) » car l'exercice compte 4 documents et non 3 (probable erreur de copier-coller du
+// template par les auteurs du PDF source).
+const R_SITUER_2PT_T4_BINAIRE = {
+  type: "simple", opLabel: "Situer dans le temps et dans l'espace", maxPoints: 2,
+  levels: [
+    { points: "2 points", condition: "L'élève situe tous les faits dans le temps. (4 sur 4)" },
+    { points: "0 point",  condition: "L'élève ne situe pas tous les faits dans le temps. (3, 2, 1 ou 0 sur 4)" }
+  ]
+};
 
 // — Mettre en relation des faits —
 const R_RELATION_2PT_4_PART = rubric3(
@@ -110,6 +133,15 @@ const R_SIMILITUDES_2PT_CONVERGENCE = rubric3(
   "L'élève présente correctement le point de convergence des acteurs.",
   "L'élève présente plus ou moins correctement le point de convergence des acteurs.",
   "L'élève présente incorrectement le point de convergence ou ne le présente pas."
+);
+// Variante "point de divergence entre les points de vue" — Q5 PDF Questions courtes 1760-1791
+// (désaccord Carleton vs marchands de Québec sur l'Assemblée législative). Libellé textuel de
+// la réglette source, distinct de R_DIFFERENCES_2PT_GEN qui dit simplement « la différence ».
+const R_DIFFERENCES_2PT_DIVERGENCE = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève dégage correctement le point de divergence entre les points de vue.",
+  "L'élève dégage plus ou moins correctement le point de divergence entre les points de vue ou ne présente que les deux points de vue.",
+  "L'élève dégage incorrectement le point de divergence entre les points de vue ou ne le dégage pas."
 );
 
 // Dégager une différence (2 points) — Q-A : Français vs Innus à Uepishtikuiau.
@@ -753,6 +785,183 @@ const DOCS = {
       ] }
   ],
 
+  // ============================================================
+  //   P3 — PDF Questions courtes 1760-1791 (Q1-Q8)
+  //   Source : documents.recitus.qc.ca — Questions courtes - Période de 1760 à 1791.
+  //   8 questions qui complètent P3 à 7/7 OI : ajout d'Établir des faits (Q1),
+  //   Changements/continuités (Q2) et Liens de causalité (Q7).
+  // ============================================================
+
+  // ===== P3 — Établir des faits — Q1 : clergé anglican avec Amherst (1759) =====
+  'conquete-faits-1': [
+    { id: "cq-f1-d1", title: "Document 1", layout: "text-only",
+      text: "« Les premiers représentants du clergé de cette confession arrivent au Canada en 1759 avec le général Amherst, à titre d'aumôniers des forces britanniques. »",
+      sources: ["Source du texte : Marie Beauchamp, [...], Les patriotes de 1837-1838, en ligne."] }
+  ],
+
+  // ===== P3 — Changements et continuités — Q2 : changement politique en 1763 (Murray) =====
+  'conquete-changements-1': [
+    { id: "cq-cc1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/conquete-changements-1/doc1.png", imageWidthCm: 6,
+      sources: ["Source de l'image : Artiste inconnu, James Murray (1770), Bibliothèque et Archives Canada, C-002834, MIKAN 2895908. Licence : image du domaine public."] }
+  ],
+
+  // ===== P3 — Causes et conséquences — Q3 : cause politique de la révolte de Pontiac =====
+  'conquete-causes-4': [
+    { id: "cq-c4-d1", title: "Document 1", layout: "text-only",
+      text: "« Les Français ont appris les langues et les coutumes des autochtones et se sont mariés avec eux, une attitude qui contraste fortement avec la condescendance du général Jeffery Amherst, le commandant en chef britannique. Amherst vend les terres autochtones de façon inconsidérée, écrase toute opposition et interdit la présentation de cadeaux, geste qui revêt une importance symbolique pour les Premières Nations. »",
+      sources: ["Source du texte : James H. Marsh, « La guerre [...] », Encyclopédie canadienne, en ligne."] }
+  ],
+
+  // ===== P3 — Situer dans l'espace — Q4 : carte A/B/C/D Proclamation royale =====
+  'conquete-situer-2': [
+    { id: "cq-s2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/conquete-situer-2/doc1.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P3 — Différences et similitudes — Q5 : désaccord Carleton vs marchands de Québec =====
+  // Un acteur = un document. Lettre de Carleton (1768) et pétition des marchands (1764) sont
+  // splittés comme les deux points de vue de la question source.
+  'conquete-differences-3': [
+    { id: "cq-d3-d1", title: "Document 1 : Lettre de Guy Carleton à Shelburne (1768)", layout: "text-only",
+      text: "« [...] la forme de gouvernement britannique implantée sur ce continent ne produira[it] jamais les mêmes résultats qu'en Angleterre [...] la situation du Canada était telle, qu'après avoir étudié ce projet maintes fois, [je n'ai] encore pu élaborer un plan qui ne présentait pas quelque inconvénient et quelque danger. »",
+      sources: ["Source du texte : Guy Carleton, Lettre à Shelburne (1768), cité dans biographie.ca, en ligne."] },
+    { id: "cq-d3-d2", title: "Document 2 : Pétition des commerçants de Québec (octobre 1764)", layout: "text-only",
+      text: "« [...] Nous demandons humblement qu'il plaise à Votre Majesté d'ordonner l'établissement d'une Chambre de représentants dans cette province comme dans toutes les autres colonies de Votre Majesté. Il s'y trouve en effet un nombre plus que suffisant de protestants loyaux et intéressés, à l'exclusion des officiers militaires, pour former une Assemblée législative compétente et respectable [...] »",
+      sources: ["Source du texte : Sam Sills et al., Pétition des commerçants de Québec / Petition of the Quebec traders (octobre 1764), cité dans Adam Shortt et Arthur G. Doughty (éd.), Documents relatifs à l'histoire constitutionnelle du Canada, 1759-1791, vol. 1, 1re partie, Ottawa, T. Mulvey, 1921, p. 204."] }
+  ],
+
+  // ===== P3 — Mettre en relation — Q6 : associer document à période (Régime militaire / Proclamation / Acte Q) =====
+  // Ordre dans la section : doc 1 = Acte de Québec (texte), doc 2 = Régime militaire (image), doc 3 = Proclamation royale (schéma).
+  // Renumérotation depuis le PDF source (qui étiquetait ces docs 8, 9, 10).
+  'conquete-relation-2': [
+    { id: "cq-r2-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Québec redevient la capitale politique d'un territoire presque aussi étendu que celui de l'ancienne Nouvelle-France. Il englobe désormais le bassin des Grands Lacs et s'étend vers le sud jusqu'au Mississippi et la vallée de l'Ohio. Des concessions politiques sont également accordées aux Canadiens. »",
+      sources: ["Source du texte : Assemblée nationale du Québec, Par ici la démocratie, en ligne."] },
+    { id: "cq-r2-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/conquete-relation-2/doc2.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Richard Short, Vue de la maison de l'évêque et des ruines, à partir de la côte à gravir pour passer de la basse-ville à la haute-ville, Bibliothèque et Archives Canada, C-000350, MIKAN 2837627. Licence : image du domaine public."] },
+    { id: "cq-r2-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/conquete-relation-2/doc3.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P3 — Liens de causalité — Q7 : guerre d'indépendance américaine → Loyalistes =====
+  // Renumérotation depuis le PDF source (docs 2, 3, 11) selon l'ordre causal des bullets :
+  // (1) volonté des Treize colonies → (2) guerre 1776-1783 → (3) impact sur Province of Quebec.
+  'conquete-causalite-1': [
+    { id: "cq-ca1-d1", title: "Document 1", layout: "text-only",
+      text: "« En conséquence, nous, les représentants des États-Unis d'Amérique […] publions et déclarons solennellement au nom et par l'autorité du bon peuple de ces Colonies, que ces Colonies unies sont et ont le droit d'être des États libres et indépendants; qu'elles sont dégagées de toute obéissance envers la Couronne de la Grande-Bretagne; que tout lien politique entre elles et l'État de la Grande-Bretagne est et doit être entièrement dissous; […] »",
+      sources: ["Source du texte : Thomas Jefferson, [...], Traduction française, 1776, Université Laval, en ligne."] },
+    { id: "cq-ca1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/conquete-causalite-1/doc2.png", imageWidthCm: 7,
+      sources: ["Source de l'image : A.M. Willard, The spirit of '76, Wikimédia commons, en ligne. Licence : domaine public."] },
+    { id: "cq-ca1-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/conquete-causalite-1/doc3.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P3 — Situer dans le temps — Q8 : avant/après l'Acte de Québec =====
+  // Renumérotation depuis le PDF source (docs 13, 14, 15, 16) — ordre conservé.
+  'conquete-situer-3': [
+    { id: "cq-s3-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/conquete-situer-3/doc1.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Service national du RÉCIT de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "cq-s3-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/conquete-situer-3/doc2.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Nathaniel Currier, Boston Tea Party, Wikimedia Commons. Licence : image du domaine public."] },
+    { id: "cq-s3-d3", title: "Document 3", layout: "text-only",
+      text: "« Définition : ensemble de serments de fidélité à la couronne britannique comportant des déclarations contre le pape et contre la transsubstantiation [transformation du pain et du vin en la substance du corps et du sang de Jésus-Christ pendant la communion] et ayant pour objet d'exclure les catholiques du service civil et militaire. »",
+      sources: ["Source du texte : « Serment du Test », Encyclopédie du parlementarisme québécois (en ligne), Assemblée nationale du Québec, 9 septembre 2014."] },
+    { id: "cq-s3-d4", title: "Document 4", layout: "text-only",
+      text: "Le Congrès des Treize colonies décide d'envahir la Province of Quebec. Sous l'influence de l'Église catholique, les Canadiens ont décliné l'invitation des Américains à se joindre à leur rébellion contre la métropole britannique. Pour les insurgés des Treize colonies, la présence d'une colonie entièrement contrôlée par les Britanniques au nord constitue une menace permanente.",
+      sources: ["Source du texte : Service national du RÉCIT de l'univers social. Licence : Creative Commons."] }
+  ],
+
+  // ============================================================
+  //   P4 — PDF Questions courtes 1791-1840 (Q1-Q7)
+  //   Source : documents.recitus.qc.ca — Questions courtes - Période de 1791 à 1840.
+  //   7 questions qui amènent P4 de 1/7 à 7/7 OI.
+  // ============================================================
+
+  // ===== P4 — Établir des faits — Q1 : apathie des Canadiens à la guerre de 1812 =====
+  'revendications-faits-1': [
+    { id: "rv-f1-d1", title: "Document 1", layout: "text-only",
+      text: "« En juillet 1812, [le commandant de l'armée britannique] Brock écrivait : \u201cMa situation est des plus critiques non pas du fait des agissements possibles de l'ennemi, mais à cause des mauvaises dispositions du peuple. [...]\u201d Brock se rendait compte qu'une guerre défensive ne sauverait pas le Haut-Canada : une victoire immédiate était nécessaire pour secouer l'apathie du peuple. »",
+      sources: ["Source du texte : Ramsay Cook, Le Canada : étude moderne, Toronto/Vancouver, Clarke, Irwin & Company Limited, 1981, p. 25."] }
+  ],
+
+  // ===== P4 — Changements et continuités — Q2 : population anglophone qui s'accroît =====
+  'revendications-changements-1': [
+    { id: "rv-cc1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/revendications-changements-1/doc1.png", imageWidthCm: 13,
+      sources: ["Source des graphiques : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P4 — Causes et conséquences — Q3 : cause de propagation des épidémies =====
+  'revendications-causes-1': [
+    { id: "rv-c1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/revendications-causes-1/doc1.png", imageWidthCm: 11,
+      sources: ["Source de l'image : « Un bateau d'immigrants - L'intérieur des cabines », The Illustrated London News (1851), Bibliothèque et Archives Canada, C-006556, MIKAN 2956054. Licence : image du domaine public."] }
+  ],
+
+  // ===== P4 — Différences et similitudes — Q4 : désaccord Durham vs Le Canadien sur l'Union =====
+  // Un acteur = un document. Durham (1839) et le journal Le Canadien (1838) sont splittés
+  // comme les deux points de vue de la question source.
+  'revendications-differences-1': [
+    { id: "rv-d1-d1", title: "Document 1 : Lord Durham (1839)", layout: "text-only",
+      text: "« Si l'on estime exactement la population du Haut-Canada à 400 000 âmes, les Anglais du Bas-Canada à 150 000 et les Français à 450 000, l'union des deux provinces ne donnerait pas seulement une majorité nettement anglaise, mais une majorité accrue annuellement par une immigration anglaise ; et je ne doute guère que les Français, une fois placés en minorité par suite du cours naturel des événements abandonneraient leurs vaines espérances de nationalité. »",
+      sources: ["Source du texte : Lord Durham, Rapport sur les affaires de l'Amérique du Nord britannique (1839), traduit et reproduit sous le titre Rapport Durham, Montréal, Les Éditions Sainte-Marie, 1969."] },
+    { id: "rv-d1-d2", title: "Document 2 : Le Canadien (8 juin 1838)", layout: "text-only",
+      text: "« Les Anglais et les Français ne pourront jamais s'accorder, disent-ils [...]. En conséquence, disent-ils, prenons le Haut-Canada qui est tout Anglais, et le Bas-Canada, qui est tout Français, \u201cformons une Union\u201d des deux [...]. Mais les Avocats de l'Union ont une arrière-pensée : ils pensent que [les anglophones] des deux noieraient [les francophones]. Les événements récents ne leur ont-ils pas fourni matière à des doutes sur ce point? N'est-il pas aussi clair que l'Union en question pourrait produire l'Union de deux partis mécontents, qui pourraient noyer les Unionistes eux-mêmes? »",
+      sources: ["Source du texte : Journal Le Canadien, 8 juin 1838, p. 2, en ligne sur Bibliothèque et Archives nationales du Québec."] }
+  ],
+
+  // ===== P4 — Mettre en relation — Q5 : associer document à idéologie politique =====
+  // Renumérotation depuis le PDF source : doc 1 = Républicanisme (était doc 7), doc 2 = Nationalisme canadien (était doc 10).
+  'revendications-relation-1': [
+    { id: "rv-r1-d1", title: "Document 1", layout: "text-only",
+      text: "« Pour la première fois, l'Assemblée réclamait que le gouvernement métropolitain donne au peuple du Bas-Canada le droit de choisir lui-même ses institutions \u201cpar le moyen de délégués librement et indistinctement choisis pour cet objet par toutes les classes et dans toutes les classes de la population\u201d. »",
+      sources: ["Source du texte : Journaux de l'Assemblée législative du Bas-Canada (JALBC), 4, vol. 2, 1832-33, p. 307-308, 570-575, cités dans Louis-Georges Harvey, « Les Patriotes …», Bulletin d'histoire politique, vol. 17, no 3, en ligne."] },
+    { id: "rv-r1-d2", title: "Document 2", layout: "text-only",
+      text: "« Il n'y a pas, que nous sachions, de peuple français en cette province, mais bien un peuple canadien, un peuple religieux et moral, un peuple loyal et amoureux de la liberté en même temps, et capable d'en jouir; ce peuple n'est ni Français, ni Anglais, ni Écossais, ni Irlandais, ni Yanké, il est Canadien. »",
+      sources: ["Source du texte : Journal Le Canadien, 21 mai 1831, p. 2, en ligne sur Bibliothèque et Archives nationales du Québec."] }
+  ],
+
+  // ===== P4 — Liens de causalité — Q6 : coût du commerce des fourrures =====
+  // Renumérotation : doc 1 = Vallerand (était doc 6), doc 2 = cartes castors (était doc 8),
+  // doc 3 = Hudson Bay Company (était doc 13).
+  'revendications-causalite-1': [
+    { id: "rv-ca1-d1", title: "Document 1", layout: "text-only",
+      text: "« Alors que les profits baissent, le climat concurrentiel provoque une hausse des frais d'exploitation; de plus, l'épuisement progressif des ressources en castors oblige les exploitants à s'éloigner de plus en plus de leurs centres de ralliement, ce qui augmente sans cesse les coûts de transport. »",
+      sources: ["Source du texte : Noël Vallerand et Robert Lahaise, L'Amérique du Nord britannique, 1760-1867, Montréal, Kébékédit, 1974, p. 73."] },
+    { id: "rv-ca1-d2", title: "Document 2 : Concurrence et réorganisation, de 1760 à 1825", layout: "image-only",
+      imageUrl: "assets/img/revendications-causalite-1/doc2.png", imageWidthCm: 13,
+      sources: ["Source des cartes : Concurrence et réorganisation de 1760 à 1825, L'Atlas canadien en ligne. La zone rouge indique les territoires où les castors sont encore classifiés abondants (1780 à gauche, 1820 à droite)."] },
+    { id: "rv-ca1-d3", title: "Document 3", layout: "text-only",
+      text: "« [Les deux compagnies] mettent tous leurs efforts à se faire concurrence, si bien que ni l'une ni l'autre ne progresse vraiment. [La Compagnie de la Baie d'Hudson] ayant accès à d'importantes ressources financières, elle peut supporter les temps durs, attendre et voir la [Compagnie du Nord Ouest] épuiser ses ressources. Les dirigeants des deux rivales savent qu'il faut trouver une solution et amorcent les discussions en vue d'une fusion. »",
+      sources: ["Source du texte : Hudson Bay Company, « Commerce des fourrures : Compagnie du Nord Ouest », Notre histoire, en ligne."] }
+  ],
+
+  // ===== P4 — Situer dans le temps — Q7 : avant/après les résolutions Russell (1837) =====
+  // Renumérotation : doc 1 = 92 résolutions (était doc 2, Avant), doc 2 = Nelson (était doc 3, Après),
+  // doc 3 = Crise des subsides (était doc 4, Avant), doc 4 = Attaque St-Charles (était doc 5, Après).
+  'revendications-situer-2': [
+    { id: "rv-s2-d1", title: "Document 1 : Les 92 résolutions (1834)", layout: "image-only",
+      imageUrl: "assets/img/revendications-situer-2/doc1.png", imageWidthCm: 13,
+      sources: ["Source du tableau : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "rv-s2-d2", title: "Document 2 : Déclaration d'indépendance du Bas-Canada (1838)", layout: "text-only",
+      text: "Alors qu'il est réfugié aux États-Unis, Robert Nelson rentre au Bas-Canada pour un court moment afin d'en déclarer l'indépendance. Voici un extrait de cette déclaration : « DÉCLARONS SOLENNELLEMENT Qu'à compter de ce jour et à l'avenir, le peuple du Canada est absous de toute allégeance avec la Grande-Bretagne, et que la connexion politique entre cette puissance et le Bas-Canada est maintenant dissoute. Que le gouvernement du Bas-Canada doit prendre la forme d'un gouvernement républicain et se déclare maintenant, de fait, république. »",
+      sources: ["Source du texte : Robert Nelson, Déclaration d'indépendance du Bas-Canada, dans Marc Chevrier, Louis-Georges Harvey et Samuel Trudeau (dir.), De la république en Amérique française, Sillery, Septentrion, 2013, p. 62-65."] },
+    { id: "rv-s2-d3", title: "Document 3 : La crise des subsides au Bas-Canada", layout: "image-only",
+      imageUrl: "assets/img/revendications-situer-2/doc3.png", imageWidthCm: 13,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "rv-s2-d4", title: "Document 4 : L'attaque contre Saint-Charles (novembre 1837)", layout: "image-only",
+      imageUrl: "assets/img/revendications-situer-2/doc4.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Charles Beauclerk, L'attaque contre St-Charles, Bibliothèque et Archives Canada, C-000393, MIKAN 2837361. Licence : image du domaine public."] }
+  ],
+
   // ===== P4 — Situer dans l'espace — Cartes Acte constitutionnel 1791 =====
   'revendications-situer-1': [
     { id: "rv-s1-d1", title: "Document 1", layout: "image-only",
@@ -1326,6 +1535,115 @@ window.DATA = {
         "Conséquence (document 2) : Le renvoi de James Murray et l'arrivée de Guy Carleton en 1774 au poste de gouverneur de la Province de Québec."
       ] },
 
+    // ============================================================
+    //   P3 — PDF Questions courtes 1760-1791 (Q1-Q8)
+    //   8 questions qui complètent P3 à 7/7 OI : Établir des faits (Q1),
+    //   Changements/continuités (Q2) et Liens de causalité (Q7) ajoutés.
+    // ============================================================
+
+    // ===== P3 · Établir des faits — Q1 : religion du clergé arrivé avec Amherst =====
+    { id: "q-conquete-faits-1", operation: "Établir des faits", numero: 1, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "À quelle religion fait référence le document 1?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cq-f1", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('conquete-faits-1', 1),
+      corrige: "À la religion anglicane ou à la religion protestante." },
+
+    // ===== P3 · Changements et continuités — Q2 : changement politique en 1763 =====
+    { id: "q-conquete-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Indique un changement politique important qui survient en 1763.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-cq-cc1", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('conquete-changements-1', 1),
+      corrige: "La colonie est désormais sous l'autorité d'un gouverneur britannique, ou la colonie est désormais sous l'autorité de l'Angleterre (document 1)." },
+
+    // ===== P3 · Causes et conséquences — Q3 : cause politique de la révolte de Pontiac =====
+    // Note : libellé de la réglette source au pluriel (« les conséquences ») incohérent avec
+    // l'énoncé qui demande « une cause politique ». On utilise R_CAUSES_2PT_GEN_1CAUSE
+    // (miroir au singulier « la cause ») pour assurer la cohérence énoncé/réglette.
+    { id: "q-conquete-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Indique une cause politique de la révolte de Pontiac.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-cq-c4", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('conquete-causes-4', 1),
+      corrige: "La conquête de la Nouvelle-France par l'Angleterre, ou le départ des Français de la région des Grands Lacs (document 1)." },
+
+    // ===== P3 · Situer dans l'espace — Q4 : carte A/B/C/D (région de traite perdue) =====
+    { id: "q-conquete-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "À partir du document 1, identifie la lettre qui correspond à la région de traite des fourrures perdue par la Province of Quebec au moment de la Proclamation royale.",
+        responseSpace: { type: "lines", count: 1 }
+      },
+      reglettes: [{ id: "r-cq-s2", label: "Réglette (2 points)", ...R_SITUER_2PT_SP_FAIT }],
+      documents: pickDocs('conquete-situer-2', 1),
+      corrige: "A" },
+
+    // ===== P3 · Différences et similitudes — Q5 : désaccord Carleton vs marchands de Québec =====
+    { id: "q-conquete-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Sur quel point précis les auteurs des documents 1 et 2 sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-cq-d3", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('conquete-differences-3', 1, 2),
+      corrige: "Sur la mise en place d'une Assemblée législative." },
+
+    // ===== P3 · Mettre en relation — Q6 : associer document à période =====
+    // Docs renumérotés depuis la source : doc 1 = Acte de Québec (texte), doc 2 = Régime militaire
+    // (Bishop's House), doc 3 = Proclamation royale (schéma).
+    { id: "q-conquete-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Les documents 1 à 3 font référence à la situation politique de la Province of Quebec entre 1760 et 1791. Inscris à l'endroit approprié le numéro du document correspondant à chacune des périodes ci-dessous.",
+        responseSpace: { type: "category-buckets", categories: ["Régime militaire", "Proclamation royale", "Acte de Québec"], slots: [1, 1, 1] }
+      },
+      reglettes: [{ id: "r-cq-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_3_PART }],
+      documents: pickDocs('conquete-relation-2', 1, 2, 3),
+      corrige: [["Document 2"], ["Document 3"], ["Document 1"]] },
+
+    // ===== P3 · Liens de causalité — Q7 : guerre d'indépendance américaine → Loyalistes =====
+    // Docs renumérotés depuis la source (originaux 2, 3, 11) selon l'ordre causal des bullets.
+    { id: "q-conquete-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Explique comment la situation en Amérique du Nord entre 1776 et 1783, suite à une volonté des Treize colonies, a un impact sur la Province of Quebec. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "La volonté des Treize colonies",
+          "La situation en Amérique du Nord entre 1776 et 1783",
+          "Un impact sur la Province of Quebec"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-cq-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('conquete-causalite-1', 1, 2, 3),
+      corrige: "Les Treize colonies déclarent leur indépendance envers l'Angleterre (document 1). Cela provoque la guerre d'indépendance entre les Treize colonies et l'Angleterre (document 2). Après la victoire des États-Unis et l'acquisition de leur indépendance, des Loyalistes viennent s'établir dans la Province of Quebec (document 3)." },
+
+    // ===== P3 · Situer dans le temps — Q8 : avant/après l'Acte de Québec =====
+    // Docs renumérotés depuis la source (originaux 13, 14, 15, 16) — ordre conservé.
+    // Avant : Doc 2 (Boston Tea Party, 1773) et Doc 3 (serment du Test, en vigueur avant 1774).
+    // Après : Doc 1 (territoire après Acte de Québec, 1774) et Doc 4 (invasion américaine, 1775).
+    { id: "q-conquete-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence à des événements politiques du Régime britannique. Indique si les faits présentés dans ces documents se déroulent avant ou après l'Acte de Québec.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "L'Acte de Québec (1774)", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-cq-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T4_BINAIRE }],
+      documents: pickDocs('conquete-situer-3', 1, 2, 3, 4),
+      corrige: { before: ["Document 2", "Document 3"], after: ["Document 1", "Document 4"] } },
+
     // ===== Q8 — P4 · Situer dans le temps et dans l'espace =====
     { id: "q-revendications-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
@@ -1335,7 +1653,101 @@ window.DATA = {
       },
       reglettes: [{ id: "r-rv-s1", label: "Réglette (1 point)", ...R_SITUER_1PT_SP_DOC }],
       documents: pickDocs('revendications-situer-1', 1, 2),
-      corrige: "Document 2 (carte présentant la division Bas-Canada / Haut-Canada)." }
+      corrige: "Document 2 (carte présentant la division Bas-Canada / Haut-Canada)." },
+
+    // ============================================================
+    //   P4 — PDF Questions courtes 1791-1840 (Q1-Q7)
+    //   7 questions qui amènent P4 de 1/7 à 7/7 OI.
+    // ============================================================
+
+    // ===== P4 · Établir des faits — Q1 : apathie des Canadiens à la guerre de 1812 =====
+    { id: "q-revendications-faits-1", operation: "Établir des faits", numero: 1, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Que nous apprend le document 1 sur la participation des Canadiens à la guerre anglo-américaine de 1812?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-rv-f1", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('revendications-faits-1', 1),
+      corrige: "La population est apathique, c'est-à-dire qu'elle manifeste un manque d'enthousiasme pour la guerre." },
+
+    // ===== P4 · Changements et continuités — Q2 : proportion anglophone qui s'accroît =====
+    { id: "q-revendications-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Indique un changement qui survient dans la population de la Province of Quebec entre 1791 et 1840.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-rv-cc1", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('revendications-changements-1', 1),
+      corrige: "La proportion anglophone de la population s'accroît de manière significative (document 1)." },
+
+    // ===== P4 · Causes et conséquences — Q3 : cause de propagation des épidémies =====
+    // Note : libellé de la réglette source au pluriel (« les conséquences ») incohérent avec
+    // l'énoncé qui demande « une cause ». On utilise R_CAUSES_2PT_GEN_1CAUSE au singulier
+    // pour assurer la cohérence énoncé/réglette (même correction silencieuse que Q3 P3).
+    { id: "q-revendications-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Indique une cause de propagation des épidémies au 19e siècle.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-rv-c1", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('revendications-causes-1', 1),
+      corrige: "La promiscuité (ou le manque d'hygiène) dans les navires qui transportent les immigrants vers le Canada (document 1)." },
+
+    // ===== P4 · Différences et similitudes — Q4 : désaccord Durham vs Le Canadien =====
+    { id: "q-revendications-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Sur quel point précis les auteurs des documents 1 et 2 sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-rv-d1", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('revendications-differences-1', 1, 2),
+      corrige: "Sur le projet d'union du Haut et du Bas-Canada." },
+
+    // ===== P4 · Mettre en relation — Q5 : associer document à idéologie politique =====
+    { id: "q-revendications-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Inscris à l'endroit approprié le numéro du document correspondant à chacune des idéologies politiques ci-dessous.",
+        responseSpace: { type: "category-buckets", categories: ["Républicanisme", "Nationalisme canadien"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-rv-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_2_PART }],
+      documents: pickDocs('revendications-relation-1', 1, 2),
+      corrige: [["Document 1"], ["Document 2"]] },
+
+    // ===== P4 · Liens de causalité — Q6 : coût du commerce des fourrures → fusion des compagnies =====
+    { id: "q-revendications-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Explique comment le coût du commerce des fourrures, suite à un changement dans les territoires de traite, a un impact sur les compagnies de traite au début du 19e siècle. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Un changement dans les territoires de traite",
+          "Le coût du commerce des fourrures",
+          "Un impact sur les compagnies de traite"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-rv-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('revendications-causalite-1', 1, 2, 3),
+      corrige: "La population de castors étant de plus en plus rare, le territoire de traite des fourrures est en expansion (documents 1 et 2). Cela entraîne une hausse importante des coûts pour les compagnies de traite des fourrures concurrentes (document 1). En raison de cette hausse des coûts, les deux principales compagnies de traite fusionnent, car la Compagnie du Nord-Ouest manque de ressources financières et ne peut plus soutenir la concurrence (document 3)." },
+
+    // ===== P4 · Situer dans le temps — Q7 : avant/après les résolutions Russell (1837) =====
+    // Renumérotation depuis le PDF source (docs 2, 3, 4, 5) — ordre conservé.
+    // Avant : Doc 1 (92 résolutions, 1834) et Doc 3 (crise des subsides, conflit antérieur).
+    // Après : Doc 2 (déclaration d'indépendance, 1838) et Doc 4 (attaque St-Charles, novembre 1837).
+    { id: "q-revendications-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence à des événements politiques du Régime britannique. Indique si les faits présentés dans ces documents se déroulent avant ou après l'adoption des résolutions Russell par le parlement de Londres.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "Les résolutions Russell (1837)", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-rv-s2", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('revendications-situer-2', 1, 2, 3, 4),
+      corrige: { before: ["Document 1", "Document 3"], after: ["Document 2", "Document 4"] } }
 
   ]
 };
