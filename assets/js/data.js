@@ -378,6 +378,53 @@ const DOCS = {
       sources: ["Source de l'image : WIKIMEDIA COMMONS. Auteur inconnu, Musée virtuel du Canada, [en ligne]. (23 mars 2015)"] }
   ],
 
+  // ===== P2 — Différences et similitudes — Désaccord d'historiens sur Talon =====
+  'evolution-coloniale-differences-1': [
+    { id: "ec-d1-d1", title: "Document 1 : Marcel Trudel sur les réalisations de Jean Talon", layout: "text-only",
+      text: "« La culture du chanvre et du lin n'a pas donné les draps et les toiles qu'il se vantait de produire [...]. La fabrique de la potasse prend fin en 1674. [...] Le chantier naval n'aura construit que 2 barques et 2 petits bateaux de 600 ou 700 tonneaux et à des coûts plus élevés qu'en France. La brasserie qui devait, selon Talon, produire 12 000 minots de grains et brasser 4 000 barriques de bière, cesse dès 1673, après seulement 4 ans d'activité. Preuve que ces tentatives industrielles dépendaient trop d'un seul individu et, surtout, ne correspondaient pas alors aux possibilités du pays. »",
+      sources: ["Source : Marcel TRUDEL, Mythes et réalités dans l'histoire du Québec, Montréal, Éditions Hurtubise HMH, 2001, p. 121."] },
+    { id: "ec-d1-d2", title: "Document 2 : Thomas Chapais sur les réalisations de Jean Talon", layout: "text-only",
+      text: "« Stimulés par la tactique ingénieuse exposée par Talon [...], les habitants semèrent du chanvre et réussirent parfaitement. [...] »\n\n« Quand on songe à l'immense extension que reçut plus tard la construction navale [...], aux vastes chantiers qui s'y multiplièrent, à l'innombrable quantité de vaisseaux qui en sortirent, on se dit que l'intendant Talon avait le coup d'œil juste. »\n\n« [...] Talon s'appliqua spécialement à établir des fabriques de potasse [...]. On pouvait en fabriquer ici des quantités assez considérables pour permettre à Paris de se passer des [matières premières en provenance] d'Espagne [pour fabriquer des savons]. »",
+      sources: ["Source : Thomas CHAPAIS, Jean Talon, intendant de la Nouvelle-France (1665-1672), 1904, Imprimerie de S.-A. Demers, p. 278-279, 395 et 401-403."] }
+  ],
+
+  // ===== P2 — Mettre en relation — Importance géographique et rôle économique de Montréal =====
+  'evolution-coloniale-relation-1': [
+    { id: "ec-r1-d1", title: "Document 1 : Les pelletiers à Montréal", layout: "text-image",
+      text: "Jusqu'à la fin des années 1670, les Autochtones en provenance de la région des Grands Lacs se déplacent en grand nombre pour échanger leurs fourrures de castors avec les marchands de Montréal. En 1672, ils sont environ 900. Il s'agit alors de la foire annuelle la plus importante de la colonie.",
+      imageUrl: "assets/img/evolution-coloniale-relation-1/doc1.png", imageWidthCm: 6,
+      sources: [
+        "Source du texte : Service national du RÉCIT, domaine de l'univers social.",
+        "Source de l'image : George Agnew REID, Les pelletiers à Montréal (1916), Bibliothèque et Archives Canada, C-011013, MIKAN 2895827. Licence : image du domaine public."
+      ] },
+    { id: "ec-r1-d2", title: "Document 2 : Les marchands-équipeurs", layout: "text-only",
+      text: "Alexis Lemoine est marchand-équipeur, c'est-à-dire qu'il s'occupe d'organiser des expéditions pour la traite des fourrures. Il doit s'assurer de recruter des coureurs des bois et posséder l'argent nécessaire pour obtenir des permis de traite. De plus, il doit préparer les canots afin qu'ils soient équipés de nourriture, de tissus, d'outils de travail et de munitions. Tout cela servira de produits d'échange afin de développer des relations commerciales avec les Autochtones. Alexis Lemoine notait ces informations dans des livres de comptes. Le commerce des fourrures favorise l'essor des marchands-équipeurs ce qui contribue au développement de la bourgeoisie marchande à Montréal.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "ec-r1-d3", title: "Document 3 : L'exploration du territoire", layout: "text-image",
+      text: "« [Dans le dernier tiers du 17e siècle], la Nouvelle-France connaît une formidable expansion territoriale, qui s'explique par le retour de l'économie basée sur l'exploitation des fourrures. En effet, les explorations vers l'intérieur du continent sont principalement motivées par le besoin de nouveaux territoires de traite, puisque les fourrures se raréfient dans la vallée du Saint-Laurent. De plus, les guerres iroquoises, par leurs attaques contre les Hurons et les Outaouais, alliés habituels des Français, interrompent les arrivages de fourrures à Montréal. Pour contourner ce problème, les Montréalais se passent des intermédiaires et se rendent dans la région des Grands Lacs. »",
+      imageUrl: "assets/img/evolution-coloniale-relation-1/doc3.png", imageWidthCm: 8,
+      sources: [
+        "Source du texte : Christine CONCIATORI, « Montréal, plaque tournante des explorations françaises en Amérique », Cap-aux-Diamants, n° 66 (2001), p. 10.",
+        "Source de la carte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."
+      ] }
+  ],
+
+  // ===== P2 — Différences et similitudes — Rôles des administrateurs coloniaux et du clergé =====
+  'evolution-coloniale-differences-2': [
+    { id: "ec-d2-d1", title: "Document 1", layout: "text-only",
+      text: "Le curé s'occupe de la pratique religieuse et de la bonne conduite des habitants dans les paroisses, nouvellement créées par Mgr de Laval. Le clergé catholique charge les curés de réprimander les colons qui consomment trop d'alcool ou les membres de la paroisse qui ne se présentent pas aux rassemblements hebdomadaires. Le curé est un membre influent de la paroisse et il encadre la vie des colons afin que ceux-ci soient de bons chrétiens.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "ec-d2-d2", title: "Document 2", layout: "text-only",
+      text: "« Dans [la colonie], l'autorité du roi se transmet par l'intermédiaire de deux hauts fonctionnaires [le gouverneur général et l'intendant]. Le gouverneur général, d'ordinaire un militaire de la noblesse, représente le pouvoir royal, symboliquement et dans les faits. Il a le commandement des forces armées, dirige [la politique extérieure] qu'on entretient avec les colonies britanniques et les nations [autochtones] et, comme représentant du roi, préside aux cérémonies d'État et aux manifestations. »\n\nL'intendant, quant à lui, est responsable de l'économie, du peuplement et il participe aux décisions judiciaires en siégeant au conseil souverain.",
+      sources: [
+        "Source : Craig BROWN, Histoire générale du Canada, Boréal, Montréal, 1990, p. 140-141.",
+        "Synthèse : Service national du RÉCIT, domaine de l'univers social."
+      ] },
+    { id: "ec-d2-d3", title: "Document 3 : Le Conseil souverain de la Nouvelle-France (1663)", layout: "text-only",
+      text: "Le Conseil souverain, plus haut tribunal de la colonie, est établi en Nouvelle-France par le roi Louis XIV en 1663.\n\n« […] Nous avons cru ne pouvoir prendre une meilleure résolution qu'en établissant une justice réglée et un conseil souverain dans ledit pays, pour y faire fleurir les lois, maintenir et appuyer les bons, châtier les méchants et contenir chacun dans son devoir, y faisant garder autant qu'il se pourra la même forme de justice qui s'exerce dans notre royaume, et de composer ledit conseil souverain d'un nombre d'officiers convenable pour la rendre. »\n\nLe gouverneur, l'intendant et l'évêque font partie du Conseil souverain, ainsi que cinq à douze conseillers nommés.",
+      sources: ["Source : Édits, ordonnances royaux, vol. 1, p. 37-39, cité dans Marcel TRUDEL, La Nouvelle-France par les textes : Les cadres de vie, Hurtubise, Montréal, 2003, p. 50-51."] }
+  ],
+
   // ===== P3 — Dégager des différences et des similitudes — Convergence d'historiens =====
   // Chaque point de vue d'historien est dans un document distinct (un acteur = un document).
   'conquete-differences-1': [
@@ -481,8 +528,8 @@ window.DATA = {
     { id: "q-experience-autochtones-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
-        prompt: "À l'aide des documents 1 à 3, indique des similitudes et des différences dans la prise de décisions chez les nations algonquiennes et iroquoiennes.",
-        responseSpace: { type: "labeled-list", items: ["Similitudes", "Différences"], linesPerItem: 4 }
+        prompt: "À l'aide des documents 1 à 3, indique une similitude et une différence dans la prise de décisions chez les nations algonquiennes et iroquoiennes.",
+        responseSpace: { type: "labeled-list", items: ["Similitude", "Différence"], linesPerItem: 4 }
       },
       reglettes: [{ id: "r-ea-d2", label: "Réglette (4 points)", ...R_DIFFSIM_4PT }],
       documents: pickDocs('experience-autochtones-differences-2', 1, 2, 3),
@@ -627,6 +674,42 @@ window.DATA = {
       reglettes: [{ id: "r-ec-s1", label: "Réglette (1 point)", ...R_SITUER_1PT_T2 }],
       documents: pickDocs('evolution-coloniale-situer-1', 1, 2),
       corrige: { before: ["Document 1"], after: ["Document 2"] } },
+
+    // ===== P2 · Dégager des différences et des similitudes — Désaccord d'historiens sur Talon =====
+    { id: "q-evolution-coloniale-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent les interprétations de deux historiens concernant les réalisations de l'intendant Jean Talon. Indique le point précis sur lequel ils sont en désaccord.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ec-d1", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_GEN }],
+      documents: pickDocs('evolution-coloniale-differences-1', 1, 2),
+      corrige: "Les historiens sont en désaccord sur la réussite des réalisations de Talon en Nouvelle-France." },
+
+    // ===== P2 · Mettre en relation des faits — Importance géographique et rôle économique de Montréal =====
+    { id: "q-evolution-coloniale-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Indique si les faits présentés dans les documents 1 à 3 font référence à l'importance géographique de Montréal et/ou à son rôle économique pour la colonie.",
+        responseSpace: { type: "category-buckets", categories: ["Situation géographique", "Rôle économique"], slots: [2, 2] }
+      },
+      reglettes: [{ id: "r-ec-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_4_PART }],
+      documents: pickDocs('evolution-coloniale-relation-1', 1, 2, 3),
+      corrige: [["Document 1", "Document 3"], ["Document 1", "Document 2"]] },
+
+    // ===== P2 · Dégager des différences et des similitudes — Rôles administrateurs vs clergé =====
+    { id: "q-evolution-coloniale-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 3, indique une similitude et une différence dans le rôle des administrateurs coloniaux et du clergé catholique en Nouvelle-France.",
+        responseSpace: { type: "labeled-list", items: ["Similitude", "Différence"], linesPerItem: 4 }
+      },
+      reglettes: [{ id: "r-ec-d2", label: "Réglette (4 points)", ...R_DIFFSIM_4PT }],
+      documents: pickDocs('evolution-coloniale-differences-2', 1, 2, 3),
+      corrige: [
+        "L'évêque et les administrateurs coloniaux (intendant et gouverneur) s'occupent conjointement des décisions judiciaires en faisant partie intégrante du Conseil souverain. Le clergé et les administrateurs coloniaux rendent donc la justice en Nouvelle-France.",
+        "Le clergé s'occupe des soins de santé, de l'éducation ainsi que de l'encadrement des paroissiens en les incitant à avoir de bonnes mœurs (comportements acceptables). Les administrateurs coloniaux, pour leur part, s'occupent des forces armées, de la politique extérieure, de la question autochtone, de l'économie ainsi que du peuplement de la colonie."
+      ] },
 
     // ===== Q6 — P3 · Dégager des différences et des similitudes =====
     { id: "q-conquete-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 3,

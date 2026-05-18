@@ -832,7 +832,7 @@
           spacing: o.spacing || undefined,
           children: [new TextRun({
             text: nums.map(circledDigit).join('   '),
-            size: 60, bold: true, color: "8B3A2E"
+            size: 84, bold: true, color: "8B3A2E"
           })]
         });
       }
@@ -1731,7 +1731,7 @@
                 spacing: { before: 100, after: 100 },
                 children: [new TextRun({
                   text: Array.from({ length: n }, () => '○').join('   '),
-                  size: 60
+                  size: 84
                 })]
               }));
             } else {
@@ -1812,7 +1812,7 @@
                 spacing: { before: 100, after: 100 },
                 children: [new TextRun({
                   text: Array.from({ length: n }, () => '○').join('   '),
-                  size: 60
+                  size: 84
                 })]
               }));
             } else {
