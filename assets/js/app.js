@@ -993,6 +993,44 @@
       return out;
     }
 
+    // 2d) Réponse "category-buckets" : N boîtes côte à côte, l'élève range des items dans chaque catégorie.
+    //     q.corrige attendu : array d'arrays de strings — un sous-tableau par catégorie, dans le même ordre
+    //     que rs.categories. Ex. pour 2 catégories : [["Document 1", "Document 2"], ["Document 3"]].
+    if (rs && rs.type === 'category-buckets' && Array.isArray(q.corrige) && Array.isArray(q.corrige[0])) {
+      const categories = rs.categories || [];
+      const totalW = 9000;
+      const cellW = Math.floor(totalW / Math.max(categories.length, 1));
+      const widths = categories.map(() => cellW);
+      const bucketCells = categories.map((cat, i) => {
+        const items = q.corrige[i] || [];
+        const ansText = items.length ? items.join(' · ') : '—';
+        return new TableCell({
+          width: { size: cellW, type: WidthType.DXA },
+          borders: ANSWER_BORDERS, shading: SHADING,
+          verticalAlign: VerticalAlign.TOP,
+          margins: { top: 100, bottom: 100, left: 80, right: 80 },
+          children: [
+            new Paragraph({
+              alignment: AlignmentType.CENTER,
+              spacing: { after: 80 },
+              children: [new TextRun({ text: cat, bold: true, size: 16, color: "6E685C" })]
+            }),
+            new Paragraph({
+              alignment: AlignmentType.CENTER,
+              children: [new TextRun({ text: ansText, bold: true, size: 22, color: "8B3A2E" })]
+            })
+          ]
+        });
+      });
+      out.push(new Paragraph({ spacing: { before: 80, after: 40 }, children: [new TextRun({ text: "✓ Corrigé", bold: true, size: 18, color: "8B3A2E" })] }));
+      out.push(new Table({
+        width: { size: totalW, type: WidthType.DXA },
+        columnWidths: widths,
+        rows: [new TableRow({ height: { value: 1000, rule: "atLeast" }, children: bucketCells })]
+      }));
+      return out;
+    }
+
     // 3) Réponse "checkbox-table" : montre le tableau avec cases cochées (☒) / non cochées (☐)
     if (rs && rs.type === 'checkbox-table' && Array.isArray(q.corrige)) {
       const cols = rs.columns || []; const rowItems = rs.rows || [];
@@ -1685,6 +1723,34 @@
             width: { size: totalW, type: WidthType.DXA },
             columnWidths: widths,
             rows: [new TableRow({ height: { value: 1400, rule: "atLeast" }, children: baCells })]
+          }));
+        } else if (body.responseSpace.type === 'category-buckets') {
+          // N boîtes côte à côte, une par catégorie. L'élève écrit les items rangés dans chaque catégorie.
+          // Forme attendue : { type: 'category-buckets', categories: ['Cat A', 'Cat B', ...] }
+          const rs = body.responseSpace;
+          const categories = rs.categories || [];
+          const totalW = 10500;
+          const cellW = Math.floor(totalW / Math.max(categories.length, 1));
+          const widths = categories.map(() => cellW);
+          const bucketCells = categories.map(cat => new TableCell({
+            width: { size: cellW, type: WidthType.DXA },
+            borders: ALL_BORDERS,
+            verticalAlign: VerticalAlign.TOP,
+            margins: { top: 100, bottom: 100, left: 80, right: 80 },
+            children: [
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                spacing: { after: 80 },
+                children: [new TextRun({ text: cat, bold: true, size: 20, color: "6E685C" })]
+              }),
+              new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }),
+              new Paragraph({ children: [new TextRun({ text: "", size: 24 })] })
+            ]
+          }));
+          elements.push(new Table({
+            width: { size: totalW, type: WidthType.DXA },
+            columnWidths: widths,
+            rows: [new TableRow({ height: { value: 1400, rule: "atLeast" }, children: bucketCells })]
           }));
         } else if (body.responseSpace.type === 'cases-causalite') {
           // Conservé pour rétro-compatibilité — cases bleutées avec flèches

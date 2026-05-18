@@ -235,11 +235,11 @@ window.DATA = {
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique si les documents 1 à 4 correspondent à la famille linguistique algonquienne ou à la famille linguistique iroquoienne.",
-        responseSpace: { type: "labeled-list", items: ["Famille algonquienne", "Famille iroquoienne"] }
+        responseSpace: { type: "category-buckets", categories: ["Famille algonquienne", "Famille iroquoienne"] }
       },
       reglettes: [{ id: "r-ea-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_4_PART }],
       documents: pickDocs('experience-autochtones-relation-1', 1, 2, 3, 4),
-      corrige: ["Documents 1 et 2", "Documents 3 et 4"] },
+      corrige: [["Document 1", "Document 2"], ["Document 3", "Document 4"]] },
 
     // ===== Q2 — P1 · Situer dans le temps et dans l'espace =====
     { id: "q-experience-autochtones-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 1,
