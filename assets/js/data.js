@@ -12,6 +12,8 @@
 // Rubrique complexe causalité (3 points) — libellés identiques au 1er cycle
 const RUBRIC_CAUSALITE_3PT = {
   type: "complex",
+  opLabel: "Établir des liens de causalité",
+  maxPoints: 3,
   rows: [
     { precise: "L'élève précise les trois éléments", condition: "et établit correctement deux liens de causalité.", points: "3 points" },
     { precise: null, condition: "et établit correctement un lien de causalité.", points: "2 points" },
@@ -118,6 +120,42 @@ const R_CAUSES_4PT_2CAUSES = { type: "simple", opLabel: "Déterminer des causes 
     { points: "4 points", condition: "L'élève détermine correctement les deux causes." },
     { points: "2 points", condition: "L'élève détermine correctement une seule des deux causes, ou les détermine plus ou moins correctement." },
     { points: "0 point", condition: "L'élève détermine incorrectement les causes ou ne les détermine pas." }
+  ]};
+
+// Une seule cause à déterminer (2 points) — Q-I : échec des tentatives d'établissement français 1534-1603.
+const R_CAUSES_2PT_GEN_1CAUSE = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la cause.",
+  "L'élève détermine plus ou moins correctement la cause.",
+  "L'élève détermine incorrectement la cause."
+);
+
+// — Déterminer des changements et des continuités —
+// Un changement à déterminer (2 points) — Q-H : transformation des réseaux d'échange après l'arrivée des Européens.
+const R_CHANGEMENTS_2PT_GEN = rubric3(
+  "Déterminer des changements et des continuités",
+  "L'élève détermine correctement le changement.",
+  "L'élève détermine plus ou moins correctement le changement.",
+  "L'élève détermine incorrectement le changement ou ne le détermine pas."
+);
+
+// — Mettre en relation des faits —
+// Mettre en relation 2 faits dans 2 catégories — Q-J : partage des tâches Algonquiens vs Iroquoiens.
+const R_RELATION_2PT_2_PART = rubric3(
+  "Mettre en relation des faits",
+  "L'élève met en relation tous les faits. (2 sur 2)",
+  "L'élève met en relation certains faits. (1 sur 2)",
+  "L'élève ne met pas en relation les faits. (0 sur 2)"
+);
+
+// — Dégager des différences et des similitudes (réglette complexe à 4 niveaux) —
+// Nommer le peuple différent ET comparer les modes de vie (3 points) — Q-G : mode de vie de 3 peuples.
+const R_DIFFSIM_3PT_PEUPLE_DIFFERENT = { type: "simple", opLabel: "Dégager des différences et des similitudes", maxPoints: 3,
+  levels: [
+    { points: "3 points", condition: "L'élève nomme correctement le peuple qui possède un mode de vie différent et présente correctement les deux modes de vie." },
+    { points: "2 points", condition: "L'élève nomme correctement le peuple et présente correctement un mode de vie et plus ou moins correctement l'autre." },
+    { points: "1 point", condition: "L'élève nomme correctement le peuple, et présente plus ou moins correctement les deux modes de vie, ou présente correctement un mode et incorrectement l'autre." },
+    { points: "0 point", condition: "L'élève présente tout au plus un seul mode de vie plus ou moins correctement, ou nomme incorrectement le peuple." }
   ]};
 
 // ============ Helpers de sélection de documents ============
@@ -236,6 +274,85 @@ const DOCS = {
     { id: "ea-c1-d1", title: "Document 1 : Ordre reçu par Jacques Cartier pour son premier voyage en Amérique du Nord (1534)", layout: "text-only",
       text: "« Jacques Cartier obtient donc appui et financement royal pour un départ au printemps 1534 avec l'ordre de \"faire le voyage de ce royaume [des Terres Neuves] pour [découvrir] certaines [iles] et pays où l'on dit qu'il [doit se] trouver [grande] quantité d'or et autres riches choses\", avec pour but ultime de découvrir le passage du nord-ouest permettant de rejoindre la Chine. »",
       sources: ["Source : Éva GUILLOREL, « Saint-Malo et le Canada au xvie siècle : la puissance et l'oubli », Annales de Bretagne et des Pays de l'Ouest, vol. 125, no 3, 6 décembre 2018, p. 170, en ligne sur Open Edition."] }
+  ],
+
+  // ===== P1 — Établir des faits — Pouvoir des chefs dans les sociétés autochtones (Q-E) =====
+  'experience-autochtones-faits-2': [
+    { id: "ea-f2-d1", title: "Document 1", layout: "text-only",
+      text: "« Dans ces sociétés, tous avaient droit aux ressources disponibles, et les qualités d'un individu se traduisaient sous forme d'influence plutôt que de pouvoir coercitif [c'est-à-dire le pouvoir de punir]. La liberté de partage garantissait que l'habileté supérieure d'un chasseur par exemple profiterait au groupe plutôt qu'à un individu. Le pouvoir d'un chef reposait sur sa capacité à approvisionner ses partisans, ainsi que sur son pouvoir de persuasion ; et, peut-être plus important encore, on attendait de lui qu'il serve d'exemple à la population. »",
+      sources: ["Source : Patricia Olive DICKASON, Les premières nations du Canada, Sillery, Septentrion, 1996, p. 44-45."] }
+  ],
+
+  // ===== P1 — Situer dans le temps et l'espace — Chronologie des explorations européennes (Q-F) =====
+  // Renumérotation : doc PDF source #3 → mon doc 1 (Chauvin 1600), #4 → 2 (Vikings ~1000), #5 → 3 (Cartier 1534), #6 → 4 (Cabot 1498)
+  'experience-autochtones-situer-3': [
+    { id: "ea-s3-d1", title: "Document 1 : Le premier poste de traite du Canada", layout: "image-only",
+      imageUrl: "assets/img/experience-autochtones-situer-3/doc1.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Poste de traite Chauvin (photo de TCY), Wikimedia commons. Licence Creative Commons (BY-SA)."] },
+    { id: "ea-s3-d2", title: "Document 2", layout: "text-only",
+      text: "« À l'extrémité de la péninsule Great Northern de Terre-Neuve se trouve la plus ancienne preuve de la présence européenne en Amérique. [...] des marins scandinaves, en provenance du Groenland, y ont construit un petit campement de bâtiments en bois recouverts de gazon. »",
+      sources: ["Source du texte : Parcs Canada, Lieu historique national de L'Anse aux Meadows, en ligne."] },
+    { id: "ea-s3-d3", title: "Document 3", layout: "text-image",
+      text: "Le navigateur français Jacques Cartier entreprend son premier voyage d'exploration en Amérique du Nord.",
+      imageUrl: "assets/img/experience-autochtones-situer-3/doc3.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Walter BAKER, Jacques Cartier érigeant une croix à Gaspé en l'honneur du roi de France, Bibliothèque et Archives Canada, C-011050, Mikan 2837262. Licence : image du domaine public."] },
+    { id: "ea-s3-d4", title: "Document 4", layout: "text-only",
+      text: "« Au début de l'année [...], Henry VII autorise une seconde expédition composée de cinq navires et de 300 hommes. Après un débarquement au Groenland, Cabot navigue vers le sud, probablement aussi loin que la baie Chesapeake, mais ne réussit pas à trouver les terres fertiles auxquelles il s'attendait. Comme les approvisionnements commencent à baisser, il retourne en Angleterre. »",
+      sources: ["Source : John PARSONS, « Jean Cabot », L'Encyclopédie canadienne, article publié en 2008, en ligne."] }
+  ],
+
+  // ===== P1 — Différences et similitudes — Mode de vie de trois peuples autochtones (Q-G) =====
+  // Le « document 8 » du PDF source contient 3 sous-documents distincts → splittés selon la convention « un acteur = un document ».
+  'experience-autochtones-differences-3': [
+    { id: "ea-d3-d1", title: "Document 1", layout: "text-only",
+      text: "« [Ils] déplaçaient leurs villages de quelques kilomètres tous les 10 à 15 ans, suivant l'épuisement des sols ou des réserves de bois de chauffage. Les hommes défrichaient les nouveaux champs et préparaient le terrain où serait établi le village, mais c'étaient les femmes qui prenaient la décision de déménager, car c'étaient elles qui cultivaient et qui ramassaient le bois à brûler et les petits fruits, qui préparaient les repas et confectionnaient vêtements, poteries et paniers. »",
+      sources: ["Source du texte : Peter GOSSAGE et J. I. LITTLE, Une histoire du Québec : entre tradition et modernité, Montréal, Hurtubise, 2015, p. 30-31."] },
+    { id: "ea-d3-d2", title: "Document 2", layout: "text-only",
+      text: "« [Ils] érigeaient de petites habitations portatives, ou wigwam, logeant jusqu'à 12 personnes ; on s'y retirait pour dormir, mais la plupart des activités se déroulaient à l'extérieur, sauf durant les jours les plus froids. En hiver, ces peuples se divisaient en petites bandes qui se déplaçaient sur leurs territoires de chasse respectifs, à la poursuite de l'orignal, du caribou, du cerf et de l'ours. »",
+      sources: ["Source du texte : Peter GOSSAGE et J. I. LITTLE, Une histoire du Québec : entre tradition et modernité, Montréal, Hurtubise, 2015, p. 28."] },
+    { id: "ea-d3-d3", title: "Document 3", layout: "text-only",
+      text: "Ce peuple autochtone construit différents types d'habitation selon la saison. En été, il s'agit de tentes de peaux ou de terre et d'os de baleine. Ce type d'habitation leur permet de se déplacer pour suivre le gibier. En hiver, ils vivent en grand groupe et construisent des igloos avec des blocs de neige.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P1 — Changements et continuités — Transformation des réseaux d'échange (Q-H) =====
+  'experience-autochtones-changements-1': [
+    { id: "ea-cc1-d1", title: "Document 1", layout: "text-only",
+      text: "« À la fin de la période préhistorique, une spécialisation dans l'activité économique des tribus s'amorçait et les Hurons étaient résolument engagés dans la voie de l'échange. La traite des fourrures, tout en se greffant à des réseaux préexistants, intensifiera d'une part les déplacements et les échanges et conférera d'autre part un poids stratégique beaucoup plus grand au rôle d'intermédiaire dans ces réseaux d'échange. »",
+      sources: ["Source : Denys DELÂGE, Le pays renversé. Amérindiens et Européens en Amérique du Nord-Est (1600-1664), Montréal, Boréal, 1991, p. 66."] },
+    { id: "ea-cc1-d2", title: "Document 2 : Les routes commerciales amérindiennes vers 1500", layout: "image-only",
+      imageUrl: "assets/img/experience-autochtones-changements-1/doc2.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P1 — Causes et conséquences — Échec des tentatives d'établissement français (Q-I) =====
+  'experience-autochtones-causes-2': [
+    { id: "ea-c2-d1", title: "Document 1", layout: "text-only",
+      text: "« Plusieurs de nos gens tombèrent malades d'une certaine maladie dans les jambes, les reins et l'estomac, de telle sorte qu'ils nous paraissaient avoir perdu l'usage de tous leurs membres, et il en mourut près de cinquante. »",
+      sources: ["Source : Voyages de découverte au Canada entre les années 1534 et 1542 de Jacques Cartier, cité par Jacques LACOURSIÈRE, Histoire populaire du Québec, tome I : Des origines à 1691, Sillery, Septentrion, 1995, p. 30."] }
+  ],
+
+  // ===== P1 — Mettre en relation — Partage des tâches Algonquiens vs Iroquoiens (Q-J) =====
+  'experience-autochtones-relation-2': [
+    { id: "ea-r2-d1", title: "Document 1", layout: "text-only",
+      text: "« À moins de circonstances exceptionnelles, jamais on ne voyait les hommes participer aux travaux des femmes, ni les femmes partager ceux des hommes. [...] Ainsi, les femmes sèment, cultivent, cuisinent, cousent, entretiennent les maisons, font la cueillette et éduquent les enfants alors que les hommes abattent les arbres, pêchent, chassent, commercent et construisent les canots, les maisons et les fortifications, et font la guerre. »",
+      sources: ["Source du texte : Denys DELÂGE, Le pays renversé. Amérindiens et Européens en Amérique du Nord-Est (1600-1664), Montréal, Boréal, 1991, p. 63."] },
+    { id: "ea-r2-d2", title: "Document 2", layout: "text-only",
+      text: "Chez ce peuple, les femmes prennent en charge la préparation de la nourriture et des vêtements, l'éducation des jeunes enfants, la cueillette et le ramassage du bois de chauffage alors que les hommes chassent, pêchent et coupent les arbres nécessaires à la construction des tentes. Ce sont également eux qui commercent et font la guerre.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P1 — Établir des liens de causalité — Alliance franco-amérindienne de 1603 (Q-K) =====
+  'experience-autochtones-causalite-1': [
+    { id: "ea-ca1-d1", title: "Document 1 : Défaite des Yroquois au Lac de Champlain (1609)", layout: "image-only",
+      imageUrl: "assets/img/experience-autochtones-causalite-1/doc1.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Samuel de CHAMPLAIN, Défaite des Yroquois au Lac de Champlain, 1609, Bibliothèque et Archives Canada, C-005750, MIKAN 2928537. Licence : image du domaine public."] },
+    { id: "ea-ca1-d2", title: "Document 2", layout: "text-only",
+      text: "« En mai et juin 1603, des représentants du Roi de France, François du Pont Gravé en tête, accompagné entre autres de Samuel Champlain, ont participé à des rencontres diplomatiques. Respectant les coutumes amérindiennes, ils ont fumé le calumet et scellé les premières alliances franco-amérindiennes. Montagnais-Innus et leur chef Anadabijou, Algonquins et leur chef Tessouat, ainsi que Malécites-Etchemins ont lors de ces rencontres diplomatiques exprimé l'acceptation que les Français « peuplât leur terre » [...]. »",
+      sources: ["Source du texte : Alain LAVALLÉE, « Alliances indiennes en Nouvelle-France (1603-1803) : une Amérique franco-amérindienne », Blogue Le Monde, 24 mai 2008."] },
+    { id: "ea-ca1-d3", title: "Document 3", layout: "text-only",
+      text: "« De nombreux ouvrages traitent de cette page d'histoire remarquable et dans l'un d'eux, The Algonkin Tribe de Peter Hessel, l'auteur raconte que cette entente franco-amérindienne était en quelque sorte nécessaire, chacun ayant besoin de l'autre. Le temps allait lui donner raison. »",
+      sources: ["Source du texte : « La grande alliance franco-amérindienne », 1613 Champlain 2013. Deux rives, une seule musique, site consulté le 12 juillet 2016."] }
   ],
 
   // ===== P2 — Causalité — Démographie et filles du Roy =====
@@ -398,6 +515,90 @@ window.DATA = {
         "Jacques Cartier est à la recherche du passage du nord-ouest permettant de se rendre en Asie en contournant ou en traversant l'Amérique.",
         "Le roi de France finance le premier voyage de Jacques Cartier pour qu'il trouve des richesses."
       ] },
+
+    // ===== P1 · Établir des faits — Q-E · Pouvoir des chefs dans les sociétés autochtones =====
+    { id: "q-experience-autochtones-faits-2", operation: "Établir des faits", numero: 2, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Selon le document 1, sur quoi se base le pouvoir des chefs dans les sociétés autochtones ?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ea-f2", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('experience-autochtones-faits-2', 1),
+      corrige: "Le pouvoir des chefs repose sur leur éloquence (capacité de persuasion) ou sur leurs compétences de chasseur leur permettant d'approvisionner leur clan." },
+
+    // ===== P1 · Situer dans le temps et dans l'espace — Q-F · Chronologie des explorations européennes =====
+    { id: "q-experience-autochtones-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence aux explorations des Européens en Amérique du Nord-Est. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"] }
+      },
+      reglettes: [{ id: "r-ea-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('experience-autochtones-situer-3', 1, 2, 3, 4),
+      // Ordre : Doc 2 (Vikings ~1000) → Doc 4 (Cabot 1498) → Doc 3 (Cartier 1534) → Doc 1 (Chauvin 1600)
+      corrige: ["Document 2", "Document 4", "Document 3", "Document 1"] },
+
+    // ===== P1 · Dégager des différences et des similitudes — Q-G · Mode de vie de trois peuples autochtones =====
+    { id: "q-experience-autochtones-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent le mode de vie de trois peuples autochtones. Nomme le peuple qui possède un mode de vie différent et compare son mode de vie avec celui des deux autres.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-ea-d3", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_PEUPLE_DIFFERENT }],
+      documents: pickDocs('experience-autochtones-differences-3', 1, 2, 3),
+      corrige: "Le document 1 présente les Iroquoiens, qui sont sédentaires : ils cultivent la terre et déplacent leurs villages tous les 10 à 15 ans selon l'épuisement des sols. Les Algonquiens (document 2) et les Inuits (document 3) sont nomades : ils se déplacent en bandes pour suivre le gibier et changent d'habitations selon les saisons." },
+
+    // ===== P1 · Déterminer des changements et des continuités — Q-H · Transformation des réseaux d'échange =====
+    { id: "q-experience-autochtones-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Au début du 16e siècle, les Autochtones possèdent de nombreux réseaux d'échange. Comment cette situation se transforme-t-elle après l'arrivée des Européens ?",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-ea-cc1", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('experience-autochtones-changements-1', 1, 2),
+      corrige: "Le commerce des fourrures entre Européens et Autochtones s'intègre aux réseaux commerciaux déjà existants des Autochtones, et des produits européens (outils en fer, armes, chaudrons de cuivre) entrent en circulation dans ces réseaux d'échange." },
+
+    // ===== P1 · Déterminer des causes et des conséquences — Q-I · Échec des tentatives d'établissement français =====
+    { id: "q-experience-autochtones-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Nomme une cause expliquant l'échec des tentatives d'établissement des Français en Amérique entre 1534 et 1603.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ea-c2", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('experience-autochtones-causes-2', 1),
+      corrige: "Le scorbut décime une partie importante des colons français (document 1). Les hivers rigoureux sont également difficiles à surmonter pour les premiers établissements." },
+
+    // ===== P1 · Mettre en relation des faits — Q-J · Partage des tâches Algonquiens vs Iroquoiens =====
+    { id: "q-experience-autochtones-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Indique à l'endroit approprié le numéro du document qui correspond au partage des tâches chez chacune des nations autochtones.",
+        responseSpace: { type: "category-buckets", categories: ["Chez les Algonquiens", "Chez les Iroquoiens"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-ea-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_2_PART }],
+      documents: pickDocs('experience-autochtones-relation-2', 1, 2),
+      corrige: [["Document 2"], ["Document 1"]] },
+
+    // ===== P1 · Établir des liens de causalité — Q-K · Alliance franco-amérindienne de 1603 et conséquences pour les Iroquois =====
+    { id: "q-experience-autochtones-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Explique comment l'alliance franco-amérindienne de 1603 entraîne des conséquences pour les Iroquois. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "L'alliance franco-amérindienne de 1603",
+          "Les motivations de cette alliance pour les Autochtones",
+          "Les conséquences pour les Iroquois"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-ea-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('experience-autochtones-causalite-1', 1, 2, 3),
+      corrige: "Champlain et Gravé Du Pont, représentant le roi de France, concluent une alliance avec les Montagnais-Innus, les Algonquins et les Malécites-Etchemins (document 2). Cette alliance permet à ces peuples autochtones de jouir de l'assistance militaire des Français contre leurs ennemis (document 3). Cela entraîne la défaite des Iroquois lors d'un conflit armé contre leurs ennemis autochtones et leurs alliés français (document 1)." },
 
     // ===== Q4 — P2 · Établir des liens de causalité =====
     { id: "q-evolution-coloniale-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 2,
