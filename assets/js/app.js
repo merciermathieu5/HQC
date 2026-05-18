@@ -1518,25 +1518,58 @@
           const noBorder = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
           const noBorders = { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder };
           const writingLineBorders = { top: noBorder, bottom: lineBorder, left: noBorder, right: noBorder };
-          const llRows = items.map(item => new TableRow({
-            height: { value: 480, rule: "atLeast" },
-            children: [
-              new TableCell({
-                width: { size: labelColW, type: WidthType.DXA },
-                borders: noBorders,
-                verticalAlign: VerticalAlign.BOTTOM,
-                margins: { top: 0, bottom: 60, left: 0, right: 120 },
-                children: [new Paragraph({ children: [new TextRun({ text: item, size: 22 })] })]
-              }),
-              new TableCell({
-                width: { size: answerColW, type: WidthType.DXA },
-                borders: writingLineBorders,
-                verticalAlign: VerticalAlign.BOTTOM,
-                margins: { top: 0, bottom: 0, left: 0, right: 0 },
-                children: [new Paragraph({ children: [new TextRun({ text: "" })] })]
-              })
-            ]
-          }));
+          const linesPerItem = body.responseSpace.linesPerItem || 1;
+          const llRows = [];
+          items.forEach(item => {
+            if (linesPerItem === 1) {
+              // Comportement classique : une row par item (libellé | ligne d'écriture)
+              llRows.push(new TableRow({
+                height: { value: 480, rule: "atLeast" },
+                children: [
+                  new TableCell({
+                    width: { size: labelColW, type: WidthType.DXA },
+                    borders: noBorders,
+                    verticalAlign: VerticalAlign.BOTTOM,
+                    margins: { top: 0, bottom: 60, left: 0, right: 120 },
+                    children: [new Paragraph({ children: [new TextRun({ text: item, size: 22 })] })]
+                  }),
+                  new TableCell({
+                    width: { size: answerColW, type: WidthType.DXA },
+                    borders: writingLineBorders,
+                    verticalAlign: VerticalAlign.BOTTOM,
+                    margins: { top: 0, bottom: 0, left: 0, right: 0 },
+                    children: [new Paragraph({ children: [new TextRun({ text: "" })] })]
+                  })
+                ]
+              }));
+            } else {
+              // Mode multi-lignes : libellé sur la 1re row (top-aligned), puis N rows d'écriture vides
+              // alignées sous la colonne réponse.
+              for (let i = 0; i < linesPerItem; i++) {
+                llRows.push(new TableRow({
+                  height: { value: 420, rule: "atLeast" },
+                  children: [
+                    new TableCell({
+                      width: { size: labelColW, type: WidthType.DXA },
+                      borders: noBorders,
+                      verticalAlign: VerticalAlign.TOP,
+                      margins: { top: i === 0 ? 60 : 0, bottom: 0, left: 0, right: 120 },
+                      children: i === 0
+                        ? [new Paragraph({ children: [new TextRun({ text: item, size: 22, bold: true })] })]
+                        : [new Paragraph({ children: [new TextRun({ text: "" })] })]
+                    }),
+                    new TableCell({
+                      width: { size: answerColW, type: WidthType.DXA },
+                      borders: writingLineBorders,
+                      verticalAlign: VerticalAlign.BOTTOM,
+                      margins: { top: 0, bottom: 0, left: 0, right: 0 },
+                      children: [new Paragraph({ children: [new TextRun({ text: "" })] })]
+                    })
+                  ]
+                }));
+              }
+            }
+          });
           elements.push(new Table({
             width: { size: totalW, type: WidthType.DXA },
             columnWidths: [labelColW, answerColW],

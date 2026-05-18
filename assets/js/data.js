@@ -86,6 +86,40 @@ const R_SIMILITUDES_2PT_CONVERGENCE = rubric3(
   "L'élève présente incorrectement le point de convergence ou ne le présente pas."
 );
 
+// Dégager une différence (2 points) — Q-A : Français vs Innus à Uepishtikuiau.
+const R_DIFFERENCES_2PT_GEN = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève dégage correctement la différence.",
+  "L'élève dégage plus ou moins correctement la différence.",
+  "L'élève dégage incorrectement la différence ou ne la dégage pas."
+);
+
+// Dégager une différence ET une similitude (4 points) — Q-B : prise de décisions algonquiennes vs iroquoiennes.
+const R_DIFFSIM_4PT = { type: "simple", opLabel: "Dégager des différences et des similitudes", maxPoints: 4,
+  levels: [
+    { points: "4 points", condition: "L'élève dégage correctement la différence et la similitude." },
+    { points: "2 points", condition: "L'élève dégage plus ou moins correctement la différence et la similitude, ou ne dégage correctement que l'une des deux." },
+    { points: "0 point", condition: "L'élève ne dégage ni la différence ni la similitude." }
+  ]};
+
+// — Situer dans le temps et dans l'espace —
+// Situer dans le temps, 3 faits — Q-C : peuplement Amérique chronologique.
+const R_SITUER_2PT_T3 = rubric3(
+  "Situer dans le temps et dans l'espace",
+  "L'élève situe tous les faits dans le temps. (3 sur 3)",
+  "L'élève situe certains faits dans le temps. (1 ou 2 sur 3)",
+  "L'élève ne situe pas les faits dans le temps. (0 sur 3)"
+);
+
+// — Déterminer des causes et des conséquences —
+// Deux causes à déterminer (4 points) — Q-D : causes du premier voyage de Cartier.
+const R_CAUSES_4PT_2CAUSES = { type: "simple", opLabel: "Déterminer des causes et des conséquences", maxPoints: 4,
+  levels: [
+    { points: "4 points", condition: "L'élève détermine correctement les deux causes." },
+    { points: "2 points", condition: "L'élève détermine correctement une seule des deux causes, ou les détermine plus ou moins correctement." },
+    { points: "0 point", condition: "L'élève détermine incorrectement les causes ou ne les détermine pas." }
+  ]};
+
 // ============ Helpers de sélection de documents ============
 const pickDocs = (section, ...indices) => indices.map(i => DOCS[section][i - 1]);
 const pickDocsRenumbered = (section, ...indices) => indices.map((origIdx, k) => {
@@ -151,6 +185,57 @@ const DOCS = {
     { id: "ea-f1-d1", title: "Document 1", layout: "image-only",
       imageUrl: "assets/img/experience-autochtones-faits-1/doc1.png", imageWidthCm: 9,
       sources: ["Source de l'image : Les Iroquoiens transmettaient leurs connaissances en racontant des histoires, Contexte éducatif seulement (BY-NC) / Création Bernard Duchesne."] }
+  ],
+
+  // ===== P1 — Différences et similitudes — Français vs Innus à Uepishtikuiau =====
+  // Chaque témoignage innu issu de la tradition orale est un document distinct (un acteur = un document).
+  'experience-autochtones-differences-1': [
+    { id: "ea-d1-d1", title: "Document 1 : Interprétation des écrits de Samuel de Champlain", layout: "text-only",
+      text: "« Au début du 17e siècle, [...] l'intérêt grandissant pour le commerce des fourrures dans [la vallée du Saint-Laurent] conduira Champlain à construire une habitation à Québec, en 1608. L'alliance de 1603 permettait aux Français de s'installer dans ce secteur sans rencontrer l'opposition des populations [autochtones]. »",
+      sources: ["Source : Alain BEAULIEU, « La naissance de l'alliance franco-amérindienne », dans Raymonde LITALIEN et Denis VAUGEOIS (dirs.), Champlain, la naissance de l'Amérique française, Sillery, Septentrion, 2004."] },
+    { id: "ea-d1-d2", title: "Document 2 : Témoignage de Mathieu Menikapu (tradition orale innue)", layout: "text-only",
+      text: "« Le chef français arrivait de l'est quand il demanda aux Innus de lui donner Uepishtikuiau [site de l'actuelle ville de Québec]. Mais ceux-ci ne le lui ont pas donné. C'est lorsqu'il le leur a demandé une deuxième fois qu'ils le lui ont remis. »",
+      sources: ["Source : Sylvie VINCENT, « Compatibilité apparente, incompatibilité réelle des versions autochtones et occidentales de l'histoire : l'exemple innu », Recherches amérindiennes au Québec, vol. 32, no 2, 2002, p. 101."] },
+    { id: "ea-d1-d3", title: "Document 3 : Témoignage de Jean-Baptiste Bellefleur (tradition orale innue)", layout: "text-only",
+      text: "« [Au début, les Français n'ont cultivé qu'un petit lopin de terre.] Les premiers temps, leur jardin n'était pas bien grand, ils ne semaient pas beaucoup. [...] Puis, tandis que les Innus n'étaient pas là, tandis qu'ils étaient partis dans l'arrière-pays, [...] ils ont dû agrandir la terre sur laquelle ils feraient pousser leur blé. [...] C'est avec leur agriculture qu'ils ont dû réussir à repousser les Innus, ils ont dû élargir leur clôture en fonction de ce qu'ils faisaient pousser. Ils ont dû l'agrandir de plus en plus et les Innus, eux, ont dû finir par quitter leur terre. »",
+      sources: ["Source : Sylvie VINCENT, « Compatibilité apparente, incompatibilité réelle des versions autochtones et occidentales de l'histoire : l'exemple innu », Recherches amérindiennes au Québec, vol. 32, no 2, 2002, p. 101."] }
+  ],
+
+  // ===== P1 — Différences et similitudes — Prise de décisions algonquiennes vs iroquoiennes =====
+  'experience-autochtones-differences-2': [
+    { id: "ea-d2-d1", title: "Document 1", layout: "text-only",
+      text: "« La position sociale des femmes leur permettait de participer activement à la vie politique. Elles avaient le pouvoir de nommer les chefs civils et de les destituer. [...] Elles jouaient également un rôle actif dans l'organisation de la guerre et pouvaient inciter les chefs de guerre à organiser des expéditions punitives pour venger la mort des membres d'une famille ou d'une lignée. »",
+      sources: ["Source : Claude CHAPDELAINE, « Les Iroquoiens de la vallée du Saint-Laurent (vers 1500) », Aux couleurs de la terre. Héritage culturel des premières nations, Musée McCord, 1992, en ligne."] },
+    { id: "ea-d2-d2", title: "Document 2", layout: "text-only",
+      text: "« Au sein de plusieurs nations autochtones, les aînés influencent grandement les affaires du village : ils prennent souvent la parole devant le conseil et leurs propositions sont généralement suivies. »",
+      sources: ["Source : Elisabeth TOOKER, « An Ethnography of the Huron Indians, 1615-1649 », Smithsonian Institution of American Ethnology, Bulletin 190, 1965, p. 42. Traduction par le Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "ea-d2-d3", title: "Document 3", layout: "text-image",
+      text: "Dans une bande anichinabée, les familles désignent un chef qui peut guider les décisions liées à la chasse et au déplacement qu'implique la poursuite des troupeaux de gibier. Les qualités recherchées chez un chef sont l'éloquence, le courage et la force, des habiletés dont dépend la bande pour assurer sa survie.",
+      imageUrl: "assets/img/experience-autochtones-differences-2/doc3.png", imageWidthCm: 9,
+      sources: [
+        "Source du texte : Service national du RÉCIT, domaine de l'univers social.",
+        "Source de l'image : Bernard DUCHESNE, Des Algonquiens ramènent au campement un orignal qu'ils ont chassé, Service national du RÉCIT, domaine de l'univers social. Licence : utilisation permise dans un contexte éducatif seulement (BY-NC)."
+      ] }
+  ],
+
+  // ===== P1 — Situer dans le temps et l'espace — Peuplement de l'Amérique (chronologique) =====
+  'experience-autochtones-situer-2': [
+    { id: "ea-s2-d1", title: "Document 1", layout: "text-only",
+      text: "Le réchauffement du climat permet la création d'un corridor terrestre au cœur de l'Amérique du Nord. Ce recul des glaciers libère la vallée du Saint-Laurent et permet aux humains de s'installer sur le territoire qui correspond aujourd'hui au Québec.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "ea-s2-d2", title: "Document 2", layout: "text-only",
+      text: "Des populations humaines suivent un autre axe de peuplement, se déplaçant d'ouest en est dans les régions arctiques du continent. D'autres populations suivent éventuellement cet axe et s'installent vers l'an 1200 de notre ère au sein du territoire qui correspond aujourd'hui à la partie nord du Québec.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "ea-s2-d3", title: "Document 3 : Les premiers êtres humains en Amérique, vers 30 000 ans avant notre ère", layout: "image-only",
+      imageUrl: "assets/img/experience-autochtones-situer-2/doc3.png", imageWidthCm: 11,
+      sources: ["Source de la carte : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P1 — Causes et conséquences — Causes du premier voyage de Cartier (1534) =====
+  'experience-autochtones-causes-1': [
+    { id: "ea-c1-d1", title: "Document 1 : Ordre reçu par Jacques Cartier pour son premier voyage en Amérique du Nord (1534)", layout: "text-only",
+      text: "« Jacques Cartier obtient donc appui et financement royal pour un départ au printemps 1534 avec l'ordre de \"faire le voyage de ce royaume [des Terres Neuves] pour [découvrir] certaines [iles] et pays où l'on dit qu'il [doit se] trouver [grande] quantité d'or et autres riches choses\", avec pour but ultime de découvrir le passage du nord-ouest permettant de rejoindre la Chine. »",
+      sources: ["Source : Éva GUILLOREL, « Saint-Malo et le Canada au xvie siècle : la puissance et l'oubli », Annales de Bretagne et des Pays de l'Ouest, vol. 125, no 3, 6 décembre 2018, p. 170, en ligne sur Open Edition."] }
   ],
 
   // ===== P2 — Causalité — Démographie et filles du Roy =====
@@ -263,6 +348,56 @@ window.DATA = {
       reglettes: [{ id: "r-ea-f1", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
       documents: pickDocs('experience-autochtones-faits-1', 1),
       corrige: "La tradition orale." },
+
+    // ===== P1 · Dégager des différences et des similitudes — Q-A · Français vs Innus à Uepishtikuiau =====
+    { id: "q-experience-autochtones-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent les points de vue des Français et des Innus face à l'établissement d'une habitation sur le site de Uepishtikuiau. Détermine une différence entre ces points de vue.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-ea-d1", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_GEN }],
+      documents: pickDocs('experience-autochtones-differences-1', 1, 2, 3),
+      corrige: "L'analyse des écrits de Samuel de Champlain soutient que l'alliance de 1603 lui permet de construire une habitation sur le site de Uepishtikuiau sans l'opposition des Innus, alors que la tradition orale innue soutient que les Innus refusent d'abord l'installation des Français et que ces derniers les repoussent progressivement une fois installés." },
+
+    // ===== P1 · Dégager des différences et des similitudes — Q-B · Prise de décisions algonquiennes vs iroquoiennes =====
+    { id: "q-experience-autochtones-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 3, indique des similitudes et des différences dans la prise de décisions chez les nations algonquiennes et iroquoiennes.",
+        responseSpace: { type: "labeled-list", items: ["Similitudes", "Différences"], linesPerItem: 4 }
+      },
+      reglettes: [{ id: "r-ea-d2", label: "Réglette (4 points)", ...R_DIFFSIM_4PT }],
+      documents: pickDocs('experience-autochtones-differences-2', 1, 2, 3),
+      corrige: [
+        "Au sein des Premières Nations, les prises de décisions se font à l'aide du consensus ou de la majorité. Les aînés sont également consultés par les chefs, à qui ils offrent conseil.",
+        "Chez les nations iroquoiennes, des femmes que l'on nomme les mères de clan désignent les chefs et elles ont le pouvoir de les destituer, alors que ce sont les familles qui désignent les chefs au sein des nations algonquiennes. De plus, les chefs algonquiens sont choisis en fonction de leur courage, de leur force et de leur habileté à chasser."
+      ] },
+
+    // ===== P1 · Situer dans le temps et dans l'espace — Q-C · Peuplement de l'Amérique en ordre chronologique =====
+    { id: "q-experience-autochtones-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent des événements liés au peuplement de l'Amérique. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["Plus ancien", "Intermédiaire", "Plus récent"] }
+      },
+      reglettes: [{ id: "r-ea-s2", label: "Réglette (2 points)", ...R_SITUER_2PT_T3 }],
+      documents: pickDocs('experience-autochtones-situer-2', 1, 2, 3),
+      corrige: ["Document 3", "Document 1", "Document 2"] },
+
+    // ===== P1 · Déterminer des causes et des conséquences — Q-D · Causes du premier voyage de Cartier =====
+    { id: "q-experience-autochtones-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "À partir du document 1, détermine les causes qui motivent le premier voyage de Jacques Cartier vers l'Amérique.",
+        responseSpace: { type: "labeled-list", items: ["Cause territoriale", "Cause économique"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-ea-c1", label: "Réglette (4 points)", ...R_CAUSES_4PT_2CAUSES }],
+      documents: pickDocs('experience-autochtones-causes-1', 1),
+      corrige: [
+        "Jacques Cartier est à la recherche du passage du nord-ouest permettant de se rendre en Asie en contournant ou en traversant l'Amérique.",
+        "Le roi de France finance le premier voyage de Jacques Cartier pour qu'il trouve des richesses."
+      ] },
 
     // ===== Q4 — P2 · Établir des liens de causalité =====
     { id: "q-evolution-coloniale-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 2,
