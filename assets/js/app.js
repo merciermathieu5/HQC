@@ -831,8 +831,8 @@
           alignment: AlignmentType.CENTER,
           spacing: o.spacing || undefined,
           children: [new TextRun({
-            text: nums.map(circledDigit).join('   '),
-            size: 84, bold: true, color: "8B3A2E"
+            text: nums.map(circledDigit).join(' '),
+            size: 80, color: "8B3A2E"
           })]
         });
       }
@@ -1568,6 +1568,18 @@
                   ]
                 }));
               }
+              // Spacer row entre items (sauf après le dernier) pour séparer visuellement les blocs
+              if (item !== items[items.length - 1]) {
+                llRows.push(new TableRow({
+                  height: { value: 220, rule: "atLeast" },
+                  children: [
+                    new TableCell({ width: { size: labelColW, type: WidthType.DXA }, borders: noBorders,
+                      children: [new Paragraph({ children: [new TextRun({ text: "" })] })] }),
+                    new TableCell({ width: { size: answerColW, type: WidthType.DXA }, borders: noBorders,
+                      children: [new Paragraph({ children: [new TextRun({ text: "" })] })] })
+                  ]
+                }));
+              }
             }
           });
           elements.push(new Table({
@@ -1728,10 +1740,10 @@
             if (n > 0) {
               out.push(new Paragraph({
                 alignment: AlignmentType.CENTER,
-                spacing: { before: 100, after: 100 },
+                spacing: { before: 120, after: 120 },
                 children: [new TextRun({
-                  text: Array.from({ length: n }, () => '○').join('   '),
-                  size: 84
+                  text: Array.from({ length: n }, () => '◯').join(' '),
+                  size: 100
                 })]
               }));
             } else {
@@ -1806,13 +1818,13 @@
               })
             ];
             if (n > 0) {
-              // Ligne de cercles vides ○ ○ ○ ... séparés par des espaces
+              // Ligne de cercles vides ◯ ◯ ◯ ... séparés par des espaces
               cellChildren.push(new Paragraph({
                 alignment: AlignmentType.CENTER,
-                spacing: { before: 100, after: 100 },
+                spacing: { before: 120, after: 120 },
                 children: [new TextRun({
-                  text: Array.from({ length: n }, () => '○').join('   '),
-                  size: 84
+                  text: Array.from({ length: n }, () => '◯').join(' '),
+                  size: 100
                 })]
               }));
             } else {

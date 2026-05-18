@@ -449,10 +449,10 @@ const DOCS = {
   // ===== P4 — Situer dans l'espace — Cartes Acte constitutionnel 1791 =====
   'revendications-situer-1': [
     { id: "rv-s1-d1", title: "Document 1", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-1/doc1.png", imageWidthCm: 7,
+      imageUrl: "assets/img/revendications-situer-1/doc1.png", imageWidthCm: 11,
       sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] },
     { id: "rv-s1-d2", title: "Document 2", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-1/doc2.png", imageWidthCm: 7,
+      imageUrl: "assets/img/revendications-situer-1/doc2.png", imageWidthCm: 11,
       sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
   ]
 
@@ -612,7 +612,7 @@ window.DATA = {
     { id: "q-experience-autochtones-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
-        prompt: "Nomme une cause expliquant l'échec des tentatives d'établissement des Français en Amérique entre 1534 et 1603.",
+        prompt: "Pourquoi certaines tentatives d'établissement des Français en Amérique entre 1534 et 1603 se sont soldées par un échec ?",
         responseSpace: { type: "lines", count: 3 }
       },
       reglettes: [{ id: "r-ea-c2", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
