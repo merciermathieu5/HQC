@@ -1,11 +1,10 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.18.3 (mai 2026)
+   HQC · 3e secondaire — Données — v1.18.4 (mai 2026)
    58 questions · 4 périodes · 7 OI
    Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 15 (7/7 OI), P4 = 8 (7/7 OI) ⭐
-   v1.18.3 — Cartes Q1 P4 affichées côte à côte (mode appairé). Drapeau pair:true ajouté
-   sur les 2 docs (et reconnu par isDocNarrow dans app.js) pour forcer le pairing au-delà
-   du seuil habituel de 7 cm. Chaque carte à ~7,73 cm (clamping naturel maxCmInCell), avec
-   0,5 cm de marge visible de chaque côté dans la cellule de ~9,1 cm. L'encadré inchangé.
+   v1.18.4 — Q7 P4 (situer Russell) : dates retirées des titres de Doc 1 (« (1834) »),
+   Doc 2 (« (1838) ») et Doc 4 (« (novembre 1837) ») qui trahissaient la réponse. Les contenus
+   et sources de chaque doc ne révèlent aucune date.
    ============================================================ */
 
 (function () {
@@ -953,17 +952,18 @@ const DOCS = {
   // ===== P4 — Situer dans le temps — Q7 : avant/après les résolutions Russell (1837) =====
   // Renumérotation : doc 1 = 92 résolutions (était doc 2, Avant), doc 2 = Nelson (était doc 3, Après),
   // doc 3 = Crise des subsides (était doc 4, Avant), doc 4 = Attaque St-Charles (était doc 5, Après).
+  // v1.18.4 — Dates retirées des titres pour ne pas trahir la réponse à cette question de situer.
   'revendications-situer-2': [
-    { id: "rv-s2-d1", title: "Document 1 : Les 92 résolutions (1834)", layout: "image-only",
+    { id: "rv-s2-d1", title: "Document 1 : Les 92 résolutions", layout: "image-only",
       imageUrl: "assets/img/revendications-situer-2/doc1.png", imageWidthCm: 16,
       sources: ["Source du tableau : Service national du RÉCIT, domaine de l'univers social."] },
-    { id: "rv-s2-d2", title: "Document 2 : Déclaration d'indépendance du Bas-Canada (1838)", layout: "text-only",
+    { id: "rv-s2-d2", title: "Document 2 : Déclaration d'indépendance du Bas-Canada", layout: "text-only",
       text: "Alors qu'il est réfugié aux États-Unis, Robert Nelson rentre au Bas-Canada pour un court moment afin d'en déclarer l'indépendance. Voici un extrait de cette déclaration : « DÉCLARONS SOLENNELLEMENT Qu'à compter de ce jour et à l'avenir, le peuple du Canada est absous de toute allégeance avec la Grande-Bretagne, et que la connexion politique entre cette puissance et le Bas-Canada est maintenant dissoute. Que le gouvernement du Bas-Canada doit prendre la forme d'un gouvernement républicain et se déclare maintenant, de fait, république. »",
       sources: ["Source du texte : Robert Nelson, Déclaration d'indépendance du Bas-Canada, dans Marc Chevrier, Louis-Georges Harvey et Samuel Trudeau (dir.), De la république en Amérique française, Sillery, Septentrion, 2013, p. 62-65."] },
     { id: "rv-s2-d3", title: "Document 3 : La crise des subsides au Bas-Canada", layout: "image-only",
       imageUrl: "assets/img/revendications-situer-2/doc3.png", imageWidthCm: 16,
       sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] },
-    { id: "rv-s2-d4", title: "Document 4 : L'attaque contre Saint-Charles (novembre 1837)", layout: "image-only",
+    { id: "rv-s2-d4", title: "Document 4 : L'attaque contre Saint-Charles", layout: "image-only",
       imageUrl: "assets/img/revendications-situer-2/doc4.png", imageWidthCm: 11,
       sources: ["Source de l'image : Charles Beauclerk, L'attaque contre St-Charles, Bibliothèque et Archives Canada, C-000393, MIKAN 2837361. Licence : image du domaine public."] }
   ],
