@@ -28,9 +28,27 @@ Catalogue de questions atomiques pour le programme HQC, 3e secondaire (PFEQ, Min
 - Données dans `assets/js/data.js`
 - Logique applicative dans `assets/js/app.js`
 
-## État actuel — v1.18.0 (mai 2026)
+## État actuel — v1.18.1 (mai 2026)
 
 **58 questions** dans le catalogue. **Couverture COMPLÈTE des 4 périodes à 7/7 OI** ⭐.
+
+| Période | Questions | OI couvertes |
+|---|---|---|
+| **P1** — Des origines à 1608 | 14 | 7 / 7 ✓ |
+| **P2** — 1608-1760 | 21 | 7 / 7 ✓ |
+| **P3** — 1760-1791 | 15 | 7 / 7 ✓ |
+| **P4** — 1791-1840 | 8 | 7 / 7 ✓ |
+
+### Quoi de neuf (v1.18.1)
+
+Correctif d'images P4 :
+- **Plafond `imageWidthCm` relevé** de 13 à 16 cm dans `app.js`
+- **Re-rasterisation à 300 dpi** depuis le PDF source : bateau d'immigrants (Q3, 1450×580), crise des subsides (Q7, 1780×900) — qualité nettement supérieure
+- **Splittage des cartes castors (Q6)** en 2 documents distincts (1780 et 1820) selon la convention « un acteur = un document ». Chaque carte affichée à 14 cm avec qualité Lanczos. Doc 4 (Hudson Bay texte) renuméroté.
+- **Cartes Acte constitutionnel 1791 (Q1)** upscalées au filtre Lanczos (280 → 1200 px de large), `imageWidthCm` 8 → 11 cm. **Les versions HD originales restent à téléverser** pour une qualité optimale.
+- `imageWidthCm` augmenté à 16 cm pour les 4 documents larges (graphiques population Q2, bateau Q3, 92 résolutions Q7, crise des subsides Q7).
+
+## État précédent — v1.18.0 (mai 2026)
 
 | Période | Questions | OI couvertes |
 |---|---|---|

@@ -1,10 +1,11 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.18.0 (mai 2026)
+   HQC · 3e secondaire — Données — v1.18.3 (mai 2026)
    58 questions · 4 périodes · 7 OI
    Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 15 (7/7 OI), P4 = 8 (7/7 OI) ⭐
-   v1.18.0 — +7 questions P4 (PDF Questions courtes 1791-1840). P4 complétée à 7/7 OI ⭐
-   (toutes les 7 OI ajoutées : faits, situer, différences, causes, changements, relation, causalité).
-   Aucune nouvelle réglette nécessaire — réutilisation des constantes existantes.
+   v1.18.3 — Cartes Q1 P4 affichées côte à côte (mode appairé). Drapeau pair:true ajouté
+   sur les 2 docs (et reconnu par isDocNarrow dans app.js) pour forcer le pairing au-delà
+   du seuil habituel de 7 cm. Chaque carte à ~7,73 cm (clamping naturel maxCmInCell), avec
+   0,5 cm de marge visible de chaque côté dans la cellule de ~9,1 cm. L'encadré inchangé.
    ============================================================ */
 
 (function () {
@@ -895,14 +896,14 @@ const DOCS = {
   // ===== P4 — Changements et continuités — Q2 : population anglophone qui s'accroît =====
   'revendications-changements-1': [
     { id: "rv-cc1-d1", title: "Document 1", layout: "image-only",
-      imageUrl: "assets/img/revendications-changements-1/doc1.png", imageWidthCm: 13,
+      imageUrl: "assets/img/revendications-changements-1/doc1.png", imageWidthCm: 16,
       sources: ["Source des graphiques : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
   ],
 
   // ===== P4 — Causes et conséquences — Q3 : cause de propagation des épidémies =====
   'revendications-causes-1': [
     { id: "rv-c1-d1", title: "Document 1", layout: "image-only",
-      imageUrl: "assets/img/revendications-causes-1/doc1.png", imageWidthCm: 11,
+      imageUrl: "assets/img/revendications-causes-1/doc1.png", imageWidthCm: 16,
       sources: ["Source de l'image : « Un bateau d'immigrants - L'intérieur des cabines », The Illustrated London News (1851), Bibliothèque et Archives Canada, C-006556, MIKAN 2956054. Licence : image du domaine public."] }
   ],
 
@@ -930,16 +931,21 @@ const DOCS = {
   ],
 
   // ===== P4 — Liens de causalité — Q6 : coût du commerce des fourrures =====
-  // Renumérotation : doc 1 = Vallerand (était doc 6), doc 2 = cartes castors (était doc 8),
-  // doc 3 = Hudson Bay Company (était doc 13).
+  // Renumérotation : doc 1 = Vallerand (était doc 6), doc 2 = carte 1780 (gauche de l'ex-composite),
+  // doc 3 = carte 1820 (droite de l'ex-composite), doc 4 = Hudson Bay Company (était doc 13).
+  // Les deux cartes sont splittées (un acteur/un état temporel = un document) pour permettre un
+  // affichage individuel plus grand (le composite côte à côte forçait chaque carte à ~7 cm).
   'revendications-causalite-1': [
     { id: "rv-ca1-d1", title: "Document 1", layout: "text-only",
       text: "« Alors que les profits baissent, le climat concurrentiel provoque une hausse des frais d'exploitation; de plus, l'épuisement progressif des ressources en castors oblige les exploitants à s'éloigner de plus en plus de leurs centres de ralliement, ce qui augmente sans cesse les coûts de transport. »",
       sources: ["Source du texte : Noël Vallerand et Robert Lahaise, L'Amérique du Nord britannique, 1760-1867, Montréal, Kébékédit, 1974, p. 73."] },
-    { id: "rv-ca1-d2", title: "Document 2 : Concurrence et réorganisation, de 1760 à 1825", layout: "image-only",
-      imageUrl: "assets/img/revendications-causalite-1/doc2.png", imageWidthCm: 13,
-      sources: ["Source des cartes : Concurrence et réorganisation de 1760 à 1825, L'Atlas canadien en ligne. La zone rouge indique les territoires où les castors sont encore classifiés abondants (1780 à gauche, 1820 à droite)."] },
-    { id: "rv-ca1-d3", title: "Document 3", layout: "text-only",
+    { id: "rv-ca1-d2", title: "Document 2 : Territoire de traite des castors vers 1780", layout: "image-only",
+      imageUrl: "assets/img/revendications-causalite-1/doc2.png", imageWidthCm: 14,
+      sources: ["Source de la carte : Concurrence et réorganisation de 1760 à 1825, L'Atlas canadien en ligne. La zone rouge indique les territoires où les castors sont encore classifiés abondants."] },
+    { id: "rv-ca1-d3", title: "Document 3 : Territoire de traite des castors vers 1820", layout: "image-only",
+      imageUrl: "assets/img/revendications-causalite-1/doc3.png", imageWidthCm: 14,
+      sources: ["Source de la carte : Concurrence et réorganisation de 1760 à 1825, L'Atlas canadien en ligne. La zone rouge indique les territoires où les castors sont encore classifiés abondants."] },
+    { id: "rv-ca1-d4", title: "Document 4", layout: "text-only",
       text: "« [Les deux compagnies] mettent tous leurs efforts à se faire concurrence, si bien que ni l'une ni l'autre ne progresse vraiment. [La Compagnie de la Baie d'Hudson] ayant accès à d'importantes ressources financières, elle peut supporter les temps durs, attendre et voir la [Compagnie du Nord Ouest] épuiser ses ressources. Les dirigeants des deux rivales savent qu'il faut trouver une solution et amorcent les discussions en vue d'une fusion. »",
       sources: ["Source du texte : Hudson Bay Company, « Commerce des fourrures : Compagnie du Nord Ouest », Notre histoire, en ligne."] }
   ],
@@ -949,27 +955,33 @@ const DOCS = {
   // doc 3 = Crise des subsides (était doc 4, Avant), doc 4 = Attaque St-Charles (était doc 5, Après).
   'revendications-situer-2': [
     { id: "rv-s2-d1", title: "Document 1 : Les 92 résolutions (1834)", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-2/doc1.png", imageWidthCm: 13,
+      imageUrl: "assets/img/revendications-situer-2/doc1.png", imageWidthCm: 16,
       sources: ["Source du tableau : Service national du RÉCIT, domaine de l'univers social."] },
     { id: "rv-s2-d2", title: "Document 2 : Déclaration d'indépendance du Bas-Canada (1838)", layout: "text-only",
       text: "Alors qu'il est réfugié aux États-Unis, Robert Nelson rentre au Bas-Canada pour un court moment afin d'en déclarer l'indépendance. Voici un extrait de cette déclaration : « DÉCLARONS SOLENNELLEMENT Qu'à compter de ce jour et à l'avenir, le peuple du Canada est absous de toute allégeance avec la Grande-Bretagne, et que la connexion politique entre cette puissance et le Bas-Canada est maintenant dissoute. Que le gouvernement du Bas-Canada doit prendre la forme d'un gouvernement républicain et se déclare maintenant, de fait, république. »",
       sources: ["Source du texte : Robert Nelson, Déclaration d'indépendance du Bas-Canada, dans Marc Chevrier, Louis-Georges Harvey et Samuel Trudeau (dir.), De la république en Amérique française, Sillery, Septentrion, 2013, p. 62-65."] },
     { id: "rv-s2-d3", title: "Document 3 : La crise des subsides au Bas-Canada", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-2/doc3.png", imageWidthCm: 13,
+      imageUrl: "assets/img/revendications-situer-2/doc3.png", imageWidthCm: 16,
       sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] },
     { id: "rv-s2-d4", title: "Document 4 : L'attaque contre Saint-Charles (novembre 1837)", layout: "image-only",
       imageUrl: "assets/img/revendications-situer-2/doc4.png", imageWidthCm: 11,
       sources: ["Source de l'image : Charles Beauclerk, L'attaque contre St-Charles, Bibliothèque et Archives Canada, C-000393, MIKAN 2837361. Licence : image du domaine public."] }
   ],
 
-  // ===== P4 — Situer dans l'espace — Cartes Acte constitutionnel 1791 =====
+  // ===== P4 — Situer dans l'espace — Cartes Proclamation royale (1763) vs Acte constitutionnel (1791) =====
+  // v1.18.2 — Remplacement des cartes RÉCIT basse résolution par celles de Par ici la démocratie
+  // (Assemblée nationale du Québec). Bandeau de titre/année cropé pour éviter de divulguer la réponse.
+  // v1.18.3 — Affichage en mode appairé (côte à côte) via le drapeau pair:true (introduit dans app.js
+  // pour autoriser le pairing même avec imageWidthCm > 7). imageWidthCm:8 est plafonné naturellement
+  // à ~7,73 cm (maxCmInCell en mode étroit), ce qui laisse exactement 0,5 cm de marge visible de
+  // chaque côté de l'image dans la cellule de ~9,08 cm. L'encadré reste à sa taille standard.
   'revendications-situer-1': [
     { id: "rv-s1-d1", title: "Document 1", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-1/doc1.png", imageWidthCm: 8,
-      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] },
+      imageUrl: "assets/img/revendications-situer-1/doc1.png", imageWidthCm: 8, pair: true,
+      sources: ["Source de la carte : Par ici la démocratie, Assemblée nationale du Québec, « 1763 : Proclamation royale », en ligne."] },
     { id: "rv-s1-d2", title: "Document 2", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-1/doc2.png", imageWidthCm: 8,
-      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
+      imageUrl: "assets/img/revendications-situer-1/doc2.png", imageWidthCm: 8, pair: true,
+      sources: ["Source de la carte : Par ici la démocratie, Assemblée nationale du Québec, « 1791 : Acte constitutionnel », en ligne."] }
   ]
 
 };
@@ -1732,8 +1744,8 @@ window.DATA = {
         responseSpace: { type: "lines", count: 8 }
       },
       reglettes: [{ id: "r-rv-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
-      documents: pickDocs('revendications-causalite-1', 1, 2, 3),
-      corrige: "La population de castors étant de plus en plus rare, le territoire de traite des fourrures est en expansion (documents 1 et 2). Cela entraîne une hausse importante des coûts pour les compagnies de traite des fourrures concurrentes (document 1). En raison de cette hausse des coûts, les deux principales compagnies de traite fusionnent, car la Compagnie du Nord-Ouest manque de ressources financières et ne peut plus soutenir la concurrence (document 3)." },
+      documents: pickDocs('revendications-causalite-1', 1, 2, 3, 4),
+      corrige: "La population de castors étant de plus en plus rare, le territoire de traite des fourrures est en expansion (documents 2 et 3 : la zone abondante de 1780 a presque disparu vers 1820). Cela entraîne une hausse importante des coûts pour les compagnies de traite des fourrures concurrentes (document 1). En raison de cette hausse des coûts, les deux principales compagnies de traite fusionnent, car la Compagnie du Nord-Ouest manque de ressources financières et ne peut plus soutenir la concurrence (document 4)." },
 
     // ===== P4 · Situer dans le temps — Q7 : avant/après les résolutions Russell (1837) =====
     // Renumérotation depuis le PDF source (docs 2, 3, 4, 5) — ordre conservé.

@@ -547,8 +547,9 @@
       const docPieces = g.pieces.filter(p => p.kind === 'document');
 
       // Stratégie d'emballage : grouper les docs consécutifs « étroits » par paires
-      // pour les afficher côte à côte (2 colonnes). Doc « étroit » = image ≤ 7 cm OU texte seul.
-      const isDocNarrow = (d) => !d.imageUrl || (d.imageWidthCm || 12) <= 7;
+      // pour les afficher côte à côte (2 colonnes). Doc « étroit » = image ≤ 7 cm OU texte seul
+      // OU drapeau « pair: true » sur le doc (pour forcer le pairing même avec image plus grande).
+      const isDocNarrow = (d) => !d.imageUrl || d.pair === true || (d.imageWidthCm || 12) <= 7;
       const slots = [];
       let dIdx = 0;
       while (dIdx < docPieces.length) {
@@ -2144,7 +2145,8 @@
         const imgInfo = imageCache[d_doc.imageUrl];
         let targetCm = d_doc.imageWidthCm || 7;
         // En mode étroit, limiter la taille de l'image à ce qui rentre dans la cellule
-        const maxCmInCell = isNarrow ? (innerW / 567) - 1 : 13;
+        // En mode large, plafond à 16 cm (≈ largeur utile d'une page letter avec marges 2,5 cm).
+        const maxCmInCell = isNarrow ? (innerW / 567) - 1 : 16;
         targetCm = Math.min(Math.max(targetCm, 3), maxCmInCell);
         const dims = calcImageDims(imgInfo, targetCm);
 
