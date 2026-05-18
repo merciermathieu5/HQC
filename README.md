@@ -28,41 +28,37 @@ Catalogue de questions atomiques pour le programme HQC, 3e secondaire (PFEQ, Min
 - Données dans `assets/js/data.js`
 - Logique applicative dans `assets/js/app.js`
 
-## État actuel — v1.15 (mai 2026)
+## État actuel — v1.16 (mai 2026)
 
-**38 questions** dans le catalogue. Couverture par période :
+**43 questions** dans le catalogue. Couverture par période :
 
 | Période | Questions | OI couvertes |
 |---|---|---|
 | **P1** — Des origines à 1608 | 14 | 7 / 7 ✓ |
-| **P2** — 1608-1760 | **21** | **7 / 7 ✓** |
-| **P3** — 1760-1791 | 2 | 2 / 7 |
+| **P2** — 1608-1760 | 21 | 7 / 7 ✓ |
+| **P3** — 1760-1791 | **7** | **4 / 7** |
 | **P4** — 1791-1840 | 1 | 1 / 7 |
 
-### Quoi de neuf (v1.15)
+### Quoi de neuf (v1.16)
 
-**Intégration des 8 questions du PDF *Questions courtes 1608-1760* (RÉCIT)** — couverture P2 complétée à 7/7 OI.
+**Intégration des 2 RÉCIT thématiques P3 (1760-1791)** — 5 nouvelles questions issues de :
+- *Du régime militaire au gouvernement civil* : 3 questions (3 conséquences du changement de régime + aspects de société ; similitude/différence Gouvernement royal vs Proclamation royale ; situer 2 docs autochtones avant/après Proclamation royale)
+- *La société coloniale face au changement d'empire* : 2 questions (cause + conséquence arrivée des Loyalistes ; cause + conséquence des pétitions des marchands britanniques)
 
-| # | OI | Format de réponse |
-|---|---|---|
-| Q1 | Établir des faits | lines |
-| Q2 | **Changements et continuités** ⭐ | lines |
-| Q3 | Causes et conséquences | lines |
-| Q4 | Mettre en relation | category-buckets (3 cat × 1 slot) |
-| Q5 | Situer | before-after-axis (pivot : gouvernement royal) |
-| Q6 | Différences et similitudes | lines |
-| Q7 | Liens de causalité | lines (rubrique matricielle 3 pts) |
-| Q8 | Situer | chrono-ordering (4 cases, Doc 3 pré-placé) |
+P3 couvre désormais 4 des 7 OI (causes-conséquences, différences-similitudes, situer, mettre en relation). Manquent : Établir des faits, Liens de causalité, Changements/continuités.
 
-⭐ La Q2 résout l'OI manquante en P2 (« déterminer des changements et des continuités »).
+**2 nouvelles réglettes** créées (la source RÉCIT P3 ne fournit aucun barème — réglettes inventées en s'inspirant du cadre d'évaluation officiel et des patterns existants) :
+- `R_CAUSES_2PT_T3_CONS_MULTI` — variante « 3 conséquences à classer » (3 sur 3 / 1-2 sur 3 / 0 sur 3) pour Q1 R1
+- `R_DIFFSIM_2PT_1SIM_1DIFF` — variante « 1 similitude ET 1 différence » pour Q2 R1
 
-**4 nouvelles réglettes** créées :
-- `R_CONTINUITES_2PT_GEN` — miroir de `R_CHANGEMENTS_2PT_GEN` pour Q2
-- `R_CAUSES_2PT_CONS_SEULE` — variante « une conséquence seule » pour Q3 (libellé au singulier corrigé silencieusement du pluriel de la source)
-- `R_RELATION_2PT_3_PART` — variante 3 sur 3 pour Q4
-- `R_SIMILITUDES_2PT_GEN` — miroir de `R_DIFFERENCES_2PT_GEN` pour Q6
+Les 3 autres questions réutilisent les réglettes existantes (`R_SITUER_1PT_T2`, `R_RELATION_2PT_2_PART`, `R_CAUSES_2PT_CAUSE_CONS`).
 
-**Convention « un acteur = un document » respectée** — les documents partagés entre questions (Doc 7 Mercier, Doc 18 Traiteur) sont dupliqués dans des sections DOCS séparées avec numérotation locale.
+**3 schémas vectoriels rasterisés depuis le PDF du RÉCIT** (Word ne les exporte pas comme bitmap) :
+- Commerce des fourrures vers 1767 (Q1 R1)
+- Schéma Gouvernement royal (1663) (Q2 R1)
+- Schéma Proclamation royale (1763) (Q2 R1)
+
+Les activités « En résumé » des deux RÉCIT (7 au total : comparaisons de cartes libres, séquences A-B-C, tableaux multi-colonnes, schémas démographiques) sont écartées — formats complexes non supportés par le schéma de données actuel.
 
 ## Crédit
 

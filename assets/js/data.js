@@ -1,8 +1,8 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.15 (mai 2026)
-   38 questions · 4 périodes · 7 OI
-   Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 2, P4 = 1
-   v1.15 — +8 questions P2 (Questions courtes RÉCIT 1608-1760).
+   HQC · 3e secondaire — Données — v1.16 (mai 2026)
+   43 questions · 4 périodes · 7 OI
+   Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 7 (4/7 OI), P4 = 1
+   v1.16 — +5 questions P3 (2 RÉCIT thématiques 1760-1791).
    ============================================================ */
 
 (function () {
@@ -93,6 +93,14 @@ const R_CAUSES_2PT_CONS_SEULE = rubric3(
   "L'élève détermine plus ou moins correctement la conséquence.",
   "L'élève détermine incorrectement la conséquence."
 );
+// Variante « trois conséquences à classer » — Q1 P3-R1 (causes-2) : 3 conséquences du changement de régime.
+// Réglette inventée (source RÉCIT P3 ne fournit pas de barème) en miroir du style « 3 sur 3 ».
+const R_CAUSES_2PT_T3_CONS_MULTI = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine les trois conséquences. (3 sur 3)",
+  "L'élève détermine certaines conséquences. (1 ou 2 sur 3)",
+  "L'élève ne détermine pas les conséquences. (0 sur 3)"
+);
 
 // — Dégager des différences et des similitudes —
 // Variante "point de convergence des acteurs" (Q6 du PDF de test).
@@ -119,6 +127,15 @@ const R_SIMILITUDES_2PT_GEN = rubric3(
   "L'élève dégage correctement la similitude.",
   "L'élève dégage plus ou moins correctement la similitude.",
   "L'élève dégage incorrectement la similitude ou ne la dégage pas."
+);
+// Dégager 1 similitude ET 1 différence (2 points) — Q2 P3-R1 (differences-2) :
+// structures politiques Gouvernement royal vs Proclamation royale.
+// Réglette inventée (RÉCIT P3 ne fournit pas de barème) — chaque élément vaut 1 point.
+const R_DIFFSIM_2PT_1SIM_1DIFF = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève dégage correctement la similitude et la différence.",
+  "L'élève dégage correctement la similitude ou la différence.",
+  "L'élève ne dégage correctement ni la similitude ni la différence."
 );
 
 // Dégager une différence ET une similitude (4 points) — Q-B : prise de décisions algonquiennes vs iroquoiennes.
@@ -666,6 +683,76 @@ const DOCS = {
       sources: ["Source : Julie CHARETTE et autres, Périodes : histoire du Québec et du Canada, des origines à 1840, manuel de l'élève, 3e secondaire, Anjou, Les Éditions CEC, 2016, p. 295."] }
   ],
 
+  // ============================================================
+  //   P3 — RÉCIT 1 : Du régime militaire au gouvernement civil
+  //   3 questions : causes-2 / differences-2 / situer-1
+  // ============================================================
+
+  // ===== P3 — Causes et conséquences — Q1 R1 : 3 conséquences du changement de régime =====
+  'conquete-causes-2': [
+    { id: "cq-c2-d1", title: "Document 1 : Le sort de la population", layout: "text-only",
+      text: "« Les articles de la capitulation [de Montréal] accordaient à tous les habitants de la colonie le droit de retourner en France. Quelques milliers de personnes — des hauts fonctionnaires et des militaires pour la plupart, dont la carrière était liée à l'Empire français, et des marchands, représentants de compagnies métropolitaines — quittèrent la colonie accompagnées de leurs familles et de leurs domestiques [...]. »",
+      sources: ["Source : John Dickinson et Brian Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 2003, p. 70-71."] },
+    { id: "cq-c2-d2", title: "Document 2 : Le premier journal publié dans la colonie", layout: "text-only",
+      text: "« L'imprimerie n'avait pu se développer sous le régime français à cause d'un interdit des autorités. Peu de temps après la Conquête, deux imprimeurs anglais vivant à Philadelphie, William Brown et Thomas Gilmore décident de venir s'installer à Québec et fondent en 1764 le premier journal canadien, The Quebec Gazette / La Gazette de Québec. Ce journal bilingue de quatre pages a pu naître et se développer grâce à l'appui financier du gouverneur Murray et de ses successeurs qui confient au nouveau journal la tâche d'imprimer les ordonnances et des documents officiels. [...] De tendance conservatrice, La Gazette de Québec prend le parti de ne critiquer ni les autorités coloniales ni la religion. Cependant, le journal témoignera de son enthousiasme pour la Révolution française et pour les philosophes des Lumières. »",
+      sources: ["Source : Fernand Harvey, « La presse périodique à Québec de 1764 à 1940 : vue d'ensemble d'un processus culturel », Les Cahiers des dix, no 58, 2004, p. 213-250, en ligne sur erudit.org."] },
+    { id: "cq-c2-d3", title: "Document 3 : Le commerce des fourrures vers 1767", layout: "image-only",
+      imageUrl: "assets/img/conquete-causes-2/doc3.png", imageWidthCm: 11,
+      sources: [
+        "Source du schéma : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA).",
+        "Source des données : Fernand Ouellet, Histoire économique et sociale du Québec, 1760-1850, Montréal et Paris, Fides, 1966, p. 76-77."
+      ] }
+  ],
+
+  // ===== P3 — Différences et similitudes — Q2 R1 : Gouvernement royal vs Proclamation royale =====
+  'conquete-differences-2': [
+    { id: "cq-d2-d1", title: "Document 1 : Gouvernement royal (1663)", layout: "image-only",
+      imageUrl: "assets/img/conquete-differences-2/doc1.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "cq-d2-d2", title: "Document 2 : Proclamation royale (1763)", layout: "image-only",
+      imageUrl: "assets/img/conquete-differences-2/doc2.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P3 — Situer dans le temps — Q3 R1 : avant / après la Proclamation royale =====
+  'conquete-situer-1': [
+    { id: "cq-s1-d1", title: "Document 1 : Extrait du Traité d'Oswegatchie", layout: "text-only",
+      text: "« William Johnson promet solennellement aux Sept Nations, constituées d'Oswegatchie (La Présentation), d'Akwesasne, de Kanesatake, de Kahnawake, d'Odanak, de Bécancour (Wolinak), et de Lorette, de leur assurer la possession de leurs terres et le libre exercice de la religion catholique. Les anciens alliés de la France promettent de rester neutres durant le reste de la guerre en échange de la promesse de ne pas être traités comme des ennemis par la suite. Les termes de l'accord sont confirmés lors d'une réunion spéciale à Kahnawake, les 15 et 16 septembre 1760 [...]. »",
+      sources: ["Source : Cornelius J. Jaenen, « Traité d'Oswegatchie », L'Encyclopédie canadienne, dernière mise à jour le 9 novembre 2020."] },
+    { id: "cq-s1-d2", title: "Document 2 : Extrait d'un document signé par des Innus", layout: "text-only",
+      text: "« [...] bien avant que ceux de l'autre bord [les Européens] soient venus s'emparer de ce pays, nos pères et nous avons toujours habités les terres que nous habitons aujourd'hui, les bords de la mer et la profondeur pour la chasse tant en hiver qu'en été [...] Nous lui demandons [au roi britannique] [...] qu'il ne permette pas que l'on donne ou vende nos terres à plusieurs particuliers [les colons], [car] nous avons toujours été Nation libre [...]. »",
+      sources: ["Source : Claude Godefroy Coquart, « Rapport du 17 mars 1765 », dans Denis Delâge et Jean-Pierre Sawaya, Les Traités des Sept-Feux avec les Britanniques, Québec, Septentrion, 2001, p. 109-110."] }
+  ],
+
+  // ============================================================
+  //   P3 — RÉCIT 2 : La société coloniale face au changement d'empire
+  //   2 questions : relation-1 / causes-3
+  // ============================================================
+
+  // ===== P3 — Mettre en relation — Q1 R2 : arrivée des Loyalistes (cause + conséquence) =====
+  'conquete-relation-1': [
+    { id: "cq-r1-d1", title: "Document 1 : L'arrivée des Loyalistes", layout: "text-only",
+      text: "« À la recherche de terres où s'établir, beaucoup de personnes demeurées loyales à la couronne britannique s'établissent ainsi au Bas-Canada, notamment dans la région de l'Outaouais, où vivent des Anishinabeg, et dans les Cantons de l'Est qu'occupent les Abénakis. Tant pour les Anishinabegs que les Abénakis, l'établissement massif de loyalistes et la création de cantons à partir de 1783 ont comme [impact] la perte d'accès aux différentes ressources qui permettaient leur subsistance (gibiers, poissons, plantes comestibles et médicinales, etc.). »",
+      sources: ["Source : texte adapté de Auteur inconnu, « Luc-Antoine Pakinawatik », Algonquin-Anishinabeg Nation, et Auteur inconnu, « Histoire de la Nation », Grand conseil de la Nation Waban-Aki, pages consultées le 2 décembre 2022."] },
+    { id: "cq-r1-d2", title: "Document 2 : La guerre d'indépendance américaine", layout: "text-only",
+      text: "Entre 1775 et 1783, le conflit qui oppose les Treize colonies à la Grande-Bretagne pousse des milliers de Loyalistes à fuir vers le nord. En 1785, environ 60 000 Loyalistes ont quitté les États-Unis à la recherche d'une terre d'accueil britannique. Sur ce nombre, un peu plus de 6 000 s'établissent dans la Province of Quebec.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P3 — Causes et conséquences — Q2 R2 : pétitions des marchands britanniques =====
+  'conquete-causes-3': [
+    { id: "cq-c3-d1", title: "Document 1", layout: "text-only",
+      text: "« Le pragmatisme de Murray souleva la fureur des marchands britanniques qui réclamèrent et obtinrent finalement son rappel. Leur colère avait été attisée par son refus de former une chambre d'assemblée, par ses rapports, fondés sur la compréhension et la cordialité, avec les seigneurs francophones, par sa tolérance envers les catholiques et par la résistance de ses fonctionnaires à appuyer leur objectif de fonder un grand empire commercial. Les marchands accusèrent l'administration, qu'ils jugeaient « vexatrice, oppressive et inconstitutionnelle », et demandèrent « les bienfaits de la liberté britannique ». »",
+      sources: ["Source : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 2009, p. 76."] },
+    { id: "cq-c3-d2", title: "Document 2 : Guy Carleton", layout: "text-image",
+      text: "« Successeur de Murray, sir Guy Carleton appartenait lui aussi à la même classe sociale que l'élite canadienne française, il voyait les membres de l'aristocratie cléricale et seigneuriale comme les chefs naturels d'un Canada français. Il allait de soi qu'il suivit la politique de son prédécesseur. »",
+      imageUrl: "assets/img/conquete-causes-3/doc2.png", imageWidthCm: 6,
+      sources: [
+        "Source du texte : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 2009, p. 76.",
+        "Source de l'image : Guy Carleton, Portrait (vers 1840-90), Library of Congress, LC-USZ62-122004. Licence : domaine public."
+      ] }
+  ],
+
   // ===== P4 — Situer dans l'espace — Cartes Acte constitutionnel 1791 =====
   'revendications-situer-1': [
     { id: "rv-s1-d1", title: "Document 1", layout: "image-only",
@@ -1159,6 +1246,85 @@ window.DATA = {
       reglettes: [{ id: "r-cq-c1", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS }],
       documents: pickDocs('conquete-causes-1', 1, 2),
       corrige: ["Document 1", "Document 2"] },
+
+    // ============================================================
+    //   P3 — RÉCIT 1 : Du régime militaire au gouvernement civil
+    //   (3 questions : Q1 R1 causes-2 / Q2 R1 differences-2 / Q3 R1 situer-1)
+    // ============================================================
+
+    // ===== P3 · Causes et conséquences — Q1 R1 : 3 conséquences du changement de régime =====
+    { id: "q-conquete-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 3, indique trois conséquences du changement de régime. Pour chaque conséquence, précise l'aspect de société concerné (social, politique, économique, culturel ou territorial).",
+        responseSpace: { type: "labeled-list", items: ["Document 1", "Document 2", "Document 3"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cq-c2", label: "Réglette (2 points)", ...R_CAUSES_2PT_T3_CONS_MULTI }],
+      documents: pickDocs('conquete-causes-2', 1, 2, 3),
+      corrige: [
+        "Document 1 (aspect social ou politique) : Le passage du régime français au régime britannique entraîne le départ vers la France de plusieurs milliers de Canadiens, principalement des membres de l'élite coloniale.",
+        "Document 2 (aspect politique ou culturel) : Le changement de régime mène à la fondation d'un premier journal canadien, qui sert à la diffusion des ordonnances et des idées (Lumières, contestation, etc.).",
+        "Document 3 (aspect économique) : Le changement de régime entraîne l'augmentation de la proportion de Britanniques dans le commerce des fourrures (et, corollairement, la diminution de la place des Canadiens)."
+      ] },
+
+    // ===== P3 · Différences et similitudes — Q2 R1 : Gouvernement royal vs Proclamation royale =====
+    { id: "q-conquete-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, dégage une similitude et une différence dans les structures politiques du Gouvernement royal (1663-1760) et de la Proclamation royale (1763-1774).",
+        responseSpace: { type: "labeled-list", items: ["Similitude", "Différence"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cq-d2", label: "Réglette (2 points)", ...R_DIFFSIM_2PT_1SIM_1DIFF }],
+      documents: pickDocs('conquete-differences-2', 1, 2),
+      corrige: [
+        "Similitude : Le gouverneur est le représentant du roi dans la colonie autant sous le Gouvernement royal (1663) que sous la Proclamation royale (1763). (Plusieurs autres réponses sont acceptées.)",
+        "Différence : Sous le Gouvernement royal, la gestion de la colonie est une responsabilité partagée par le Conseil souverain, alors que sous la Proclamation royale, la gestion de la colonie est entièrement une responsabilité du gouverneur. (Plusieurs autres réponses sont acceptées.)"
+      ] },
+
+    // ===== P3 · Situer dans le temps — Q3 R1 : avant / après la Proclamation royale =====
+    { id: "q-conquete-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Les documents 1 et 2 font référence à la situation des Autochtones dans la seconde moitié du 18e siècle. Indique si les faits présentés dans ces documents surviennent avant ou après la Proclamation royale.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Antériorité", afterLabel: "Postériorité", pivot: "Proclamation royale (1763)", slots: { before: 1, after: 1 } }
+      },
+      reglettes: [{ id: "r-cq-s1", label: "Réglette (1 point)", ...R_SITUER_1PT_T2 }],
+      documents: pickDocs('conquete-situer-1', 1, 2),
+      // Doc 1 = Traité d'Oswegatchie, 15-16 sept 1760 → avant 1763 ; Doc 2 = Innus, 17 mars 1765 → après.
+      corrige: { before: ["Document 1"], after: ["Document 2"] } },
+
+    // ============================================================
+    //   P3 — RÉCIT 2 : La société coloniale face au changement d'empire
+    //   (2 questions : Q1 R2 relation-1 / Q2 R2 causes-3)
+    // ============================================================
+
+    // ===== P3 · Mettre en relation — Q1 R2 : arrivée des Loyalistes =====
+    { id: "q-conquete-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, explique une cause et une conséquence de l'arrivée des Loyalistes dans la Province de Québec. Indique le document utilisé pour chaque.",
+        responseSpace: { type: "labeled-list", items: ["Cause (doc.)", "Conséquence (doc.)"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cq-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_2_PART }],
+      documents: pickDocs('conquete-relation-1', 1, 2),
+      corrige: [
+        "Cause (document 2) : La guerre d'indépendance américaine (1775-1783) favorise l'arrivée de plus de 6 000 Loyalistes britanniques dans la Province de Québec.",
+        "Conséquence (document 1) : L'arrivée des Loyalistes dans la Province de Québec et la création de cantons font perdre aux Anishinabegs et aux Abénakis l'accès à des ressources naturelles vitales à leur subsistance."
+      ] },
+
+    // ===== P3 · Causes et conséquences — Q2 R2 : pétitions des marchands britanniques =====
+    { id: "q-conquete-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, détermine une cause et une conséquence des pétitions envoyées à la couronne britannique par les marchands britanniques. Indique le document utilisé pour chaque.",
+        responseSpace: { type: "labeled-list", items: ["Cause (doc.)", "Conséquence (doc.)"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cq-c3", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS }],
+      documents: pickDocs('conquete-causes-3', 1, 2),
+      corrige: [
+        "Cause (document 1) : La tolérance de James Murray envers l'élite coloniale francophone et les catholiques, ainsi que son refus de mettre en place une chambre d'assemblée dans la Province de Québec.",
+        "Conséquence (document 2) : Le renvoi de James Murray et l'arrivée de Guy Carleton en 1774 au poste de gouverneur de la Province de Québec."
+      ] },
 
     // ===== Q8 — P4 · Situer dans le temps et dans l'espace =====
     { id: "q-revendications-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 4,
