@@ -1,7 +1,20 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.18.4 (mai 2026)
-   58 questions · 4 périodes · 7 OI
-   Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 15 (7/7 OI), P4 = 8 (7/7 OI) ⭐
+   HQC · 3e secondaire — Données — v1.19.1 (mai 2026)
+   74 questions · 4 périodes · 7 OI
+   Couverture : P1 = 17 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI) ⭐
+   v1.19.1 — Q4 fam (avant/après Grande Paix de Montréal) : ajout du drapeau
+   `cantSplitAllDocs: true` (nouveau dans app.js) pour forcer Word à garder
+   énoncé + axe + réglette + les 4 documents sur la même page. Image Doc 4 (Officier
+   Carignan-Salières) cropée pour réduire la hauteur (336×480 → 336×415, signature
+   « (1666) Original par L. Rousselot 1931 » coupée en bas — la mention « (1666) »
+   trahissait par ailleurs la réponse Avant/Après).
+   v1.19.0 — Intégration de 16 questions de la Familiarisation épreuve 3e secondaire
+   (documents.recitus.qc.ca). Q12 fam (territoire après Acte constitutionnel) non intégrée :
+   chevauchement avec q-revendications-situer-1. 5 nouvelles réglettes introduites :
+   R_CAUSES_2PT_CAUSE_BINAIRE, R_CHANGEMENTS_2PT_1CHG_1CONT, R_CAUSES_2PT_2CONS,
+   R_SITUER_2PT_T3_BINAIRE, R_DIFFSIM_3PT_1DIFF_1SIM. 10 nouvelles images extraites du PDF
+   source à 300 dpi natif. Convention « un acteur = un document » appliquée au doc 29 fam
+   (3 acteurs sur la Rébellion → 3 documents distincts pour Q15).
    v1.18.4 — Q7 P4 (situer Russell) : dates retirées des titres de Doc 1 (« (1834) »),
    Doc 2 (« (1838) ») et Doc 4 (« (novembre 1837) ») qui trahissaient la réponse. Les contenus
    et sources de chaque doc ne révèlent aucune date.
@@ -239,6 +252,53 @@ const R_DIFFSIM_3PT_PEUPLE_DIFFERENT = { type: "simple", opLabel: "Dégager des 
     { points: "0 point", condition: "L'élève présente tout au plus un seul mode de vie plus ou moins correctement, ou nomme incorrectement le peuple." }
   ]};
 
+// ============ Réglettes ajoutées v1.19.0 (Familiarisation épreuve 3e sec.) ============
+
+// Déterminer 1 cause (2 points, binaire) — Q2 P1 fam : cause de la rivalité entre nations autochtones.
+// Source : rubric binaire 2pt/0pt sans niveau intermédiaire. On garde fidèlement le format.
+const R_CAUSES_2PT_CAUSE_BINAIRE = rubric2(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la cause.",
+  "L'élève détermine incorrectement la cause ou ne la dégage pas."
+);
+
+// Déterminer 1 changement ET 1 continuité (2 points, 2 sur 2) — Q6 P2 fam : politique coloniale après 1663.
+const R_CHANGEMENTS_2PT_1CHG_1CONT = rubric3(
+  "Déterminer des changements et des continuités",
+  "L'élève détermine un élément de continuité et un élément de changement. (2 sur 2)",
+  "L'élève détermine un élément de continuité ou un élément de changement. (1 sur 2)",
+  "L'élève ne détermine aucun élément de continuité et de changement. (0 sur 2)"
+);
+
+// Déterminer 2 conséquences (2 points, 2 sur 2) — Q10 P3 fam : conséquences de l'Acte de Québec.
+const R_CAUSES_2PT_2CONS = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement toutes les conséquences. (2 sur 2)",
+  "L'élève ne détermine pas correctement toutes les conséquences. (1 sur 2)",
+  "L'élève détermine incorrectement les conséquences. (0 sur 2)"
+);
+
+// Situer chrono 3 éléments (2 points, binaire 3/3) — Q13 P4 fam : développement éco du Bas-Canada.
+// Source : rubric binaire 2pt/0pt avec exigence 3 sur 3.
+const R_SITUER_2PT_T3_BINAIRE = {
+  type: "simple", opLabel: "Situer dans le temps et dans l'espace", maxPoints: 2,
+  levels: [
+    { points: "2 points", condition: "L'élève situe les faits dans le temps. (3 sur 3)" },
+    { points: "0 point",  condition: "L'élève ne situe pas les faits dans le temps. (2, 1 ou 0 sur 3)" }
+  ]
+};
+
+// Dégager 1 différence ET 1 similitude (3 points, 4 niveaux) — Q15 P4 fam : 3 acteurs et la Rébellion.
+const R_DIFFSIM_3PT_1DIFF_1SIM = {
+  type: "simple", opLabel: "Dégager des différences et des similitudes", maxPoints: 3,
+  levels: [
+    { points: "3 points", condition: "L'élève dégage correctement la différence et la similitude." },
+    { points: "2 points", condition: "L'élève dégage plus ou moins correctement la différence et la similitude." },
+    { points: "1 point",  condition: "L'élève dégage correctement la différence ou la similitude." },
+    { points: "0 point",  condition: "L'élève dégage incorrectement la différence et la similitude ou ne les dégage pas." }
+  ]
+};
+
 // ============ Helpers de sélection de documents ============
 const pickDocs = (section, ...indices) => indices.map(i => DOCS[section][i - 1]);
 const pickDocsRenumbered = (section, ...indices) => indices.map((origIdx, k) => {
@@ -434,6 +494,33 @@ const DOCS = {
     { id: "ea-ca1-d3", title: "Document 3", layout: "text-only",
       text: "« De nombreux ouvrages traitent de cette page d'histoire remarquable et dans l'un d'eux, The Algonkin Tribe de Peter Hessel, l'auteur raconte que cette entente franco-amérindienne était en quelque sorte nécessaire, chacun ayant besoin de l'autre. Le temps allait lui donner raison. »",
       sources: ["Source du texte : « La grande alliance franco-amérindienne », 1613 Champlain 2013. Deux rives, une seule musique, site consulté le 12 juillet 2016."] }
+  ],
+
+  // ===== P1 — Différences/similitudes — Divergence sur le peuplement de l'Amérique (Familiarisation Q1) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 1 + 2 → Doc 1, Doc 2).
+  'experience-autochtones-differences-4': [
+    { id: "ea-d4-d1", title: "Document 1", layout: "text-only",
+      text: "« D'autres auteurs remettent ce point de vue en question. Selon eux, le territoire du « corridor » ne contient pas de trace de vie animale de plus de 10 000 ou 11 000 ans. De plus, plusieurs sites sud-américains sont beaucoup plus anciens que ceux des plaines de l'Ouest. Les premiers habitants auraient en fait traversé l'océan Pacifique il y a plus de 30 000 ans, en profitant bien involontairement (ou en subissant) des courants favorables. Du continent sud-américain, leurs descendants seraient ensuite remontés vers le nord pour occuper l'Amérique du Nord. »",
+      sources: ["Source du texte : Jean-François Cardin et Claude Couture, Histoire du Canada. Espace et différences, Québec, Les Presses de l'Université Laval, 1996, p. 18."] },
+    { id: "ea-d4-d2", title: "Document 2", layout: "text-only",
+      text: "« Il est aujourd'hui admis partout par les anthropologues et les archéologues que les Indiens ont traversé à pied pendant des périodes où l'intensification des glaciations a entraîné le recul des eaux, faisant du détroit de Béring une steppe herbeuse et souvent marécageuse appelée « Béringie ». [...] Cette étendue d'herbages et de toundra, qui atteint à l'occasion plus de 2000 km de large, tient alors plus du continent que de l'isthme. Elle fournit du fourrage pour des animaux tels que le mammouth, le mastodonte, le bison géant, la saïga et leurs prédateurs. On peut supposer que des chasseurs suivent les troupeaux [...] »",
+      sources: ["Source du texte : Patricia Olive Dickason, Les premières nations du Canada, Sillery, Septentrion, 1996, p. 23."] }
+  ],
+
+  // ===== P1 — Causes/conséquences — Cause de la rivalité entre nations autochtones (Familiarisation Q2) =====
+  // Renumérotation depuis le PDF Familiarisation (doc source 3 → Doc 1).
+  'experience-autochtones-causes-3': [
+    { id: "ea-c3-d1", title: "Document 1", layout: "text-only",
+      text: "L'intégration des nations autochtones aux réseaux d'échanges européens intensifie les guerres entre Autochtones rivaux, particulièrement entre les Hurons et les Iroquois. Cela provoque la quasi-disparition des Hurons de la vallée du Saint-Laurent, les Iroquois étant beaucoup mieux équipés en armes à feu que leurs adversaires.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P1 — Changements/continuités — Mode de vie autochtone après l'arrivée des Européens (Familiarisation Q3) =====
+  // Renumérotation depuis le PDF Familiarisation (doc source 4 → Doc 1).
+  'experience-autochtones-changements-2': [
+    { id: "ea-cc2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/experience-autochtones-changements-2/doc1.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Autochtone à la chasse (19e siècle), Archives de la ville de Montréal, BM99,S1,D1. Licence : Creative Commons (BY-NC-SA)."] }
   ],
 
   // ===== P2 — Causalité — Démographie et filles du Roy =====
@@ -694,6 +781,65 @@ const DOCS = {
       sources: ["Source du texte : Jacques Lacoursière, Jean Provencher, Denis Vaugeois, Canada, Québec, Sillery, Septentrion, 2001, p. 138."] }
   ],
 
+  // ===== P2 — Situer dans le temps — Avant/après la Grande Paix de Montréal, 4 docs (Familiarisation Q4) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 5, 6, 7, 8 → Doc 1, 2, 3, 4). Ordre source conservé.
+  // Avant : Doc 1 (Vimont, attaques iroquoises mi-17e) et Doc 4 (Officier Carignan-Salières, vers 1666).
+  // Après : Doc 2 (commerce sécuritaire 1re moitié 18e siècle) et Doc 3 (siège Fort William-Henry, 1757).
+  'evolution-coloniale-situer-5': [
+    { id: "ec-s5-d1", title: "Document 1", layout: "text-only",
+      text: "« Un Iroquois se tiendra deux ou trois jours sans manger, derrière une souche, à cinquante pas de votre maison pour massacrer le premier qui tombera dans ses embûches. S'il est découvert, le bois lui sert d'asile [...]. Contre une poussée iroquoise, quelle résistance opposeront [...] trois cents habitants? »",
+      sources: ["Source du texte : Barthélémy Vimont, Relation de ce qui s'est passé de plus remarquable en la Nouvelle-France…, cité par Léo-Paul Desrosiers, Iroquoisie, Sillery, Septentrion, 1998, vol. 1."] },
+    { id: "ec-s5-d2", title: "Document 2", layout: "text-only",
+      text: "Dans la première moitié du 18e siècle, le commerce des fourrures reprend de manière sécuritaire, tout comme les expéditions de découverte du territoire. L'expansion française à l'intérieur du continent est grandement facilitée, ce qui renforce la position coloniale de la France. Les missionnaires jésuites recommencent leurs activités d'évangélisation des Autochtones dans la région des Grands Lacs.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "ec-s5-d3", title: "Document 3", layout: "text-only",
+      text: "Lors du siège de Fort William-Henry, au sud du lac George, les alliés autochtones du marquis de Montcalm lui disent :\n\n« Mon père, tu as apporté dans ces lieux l'art de la guerre de ce monde qui est au-delà du grand lac; nous savons que dans cet art tu es un grand maître, mais pour la science et la ruse des découvertes, pour la connaissance de ces bois et la façon d'y faire la guerre nous l'emportons sur toi. Consulte-nous et tu t'en trouveras bien. »",
+      sources: ["Source du texte : P. Whitney Lackenbauer et al., Les Autochtones et l'expérience militaire canadienne, chapitre 2, Le Centre de recherche en histoire de la Direction – Histoire et patrimoine, 2010."] },
+    { id: "ec-s5-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-situer-5/doc4.png", imageWidthCm: 6,
+      sources: ["Source de l'image : R. Roserwarne d'après L. Rousselot, Officier du Régiment de Carignan-Salières (vers 1960). Bibliothèque et Archives Canada, C-010368, MIKAN 2896020. Licence : Gouvernement du Canada."] }
+  ],
+
+  // ===== P2 — Établir des faits — Fonction commerciale des villes en Nouvelle-France (Familiarisation Q5) =====
+  // Renumérotation depuis le PDF Familiarisation (doc source 11 → Doc 1).
+  'evolution-coloniale-faits-3': [
+    { id: "ec-f3-d1", title: "Document 1", layout: "text-only",
+      text: "« Le marché de Montréal se tient chaque vendredi, lorsque les paysans des alentours y apportent des denrées alimentaires et d'autres objets à vendre et, en retour, achètent en ville certaines choses dont ils ont besoin. [...] Ceux qui n'ont ni ferme, ni élevage d'où ils pourraient tirer des produits frais, doivent donc se procurer ce jour-là ce dont ils ont besoin, sous peine d'avoir à en souffrir au long de la semaine qui suit. »",
+      sources: ["Source du texte : Pehr Kalm, Voyage de Pehr Kalm dans l'Amérique septentrionale (1749), cité par Allan Greer, Brève histoire des peuples en Nouvelle-France, Montréal, Boréal, 1998, p. 70-71."] }
+  ],
+
+  // ===== P2 — Changements/continuités — Politique coloniale après 1663 (Familiarisation Q6) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 10 + 13 → Doc 1, Doc 2).
+  // Doc 1 (Caroline Masse) appuie la continuité mercantiliste; Doc 2 (graphique population) appuie le changement des mesures de peuplement.
+  'evolution-coloniale-changements-2': [
+    { id: "ec-cc2-d1", title: "Document 1", layout: "text-only",
+      text: "« Au cours des 17e et 18e siècles, le commerce de la fourrure en Nouvelle-France représente jusqu'à 70 % de ses exportations commerciales [vers la métropole]. Ce commerce est le monopole de compagnies qui se réservent le droit d'exportation du castor [...]. »",
+      sources: ["Source du texte : Caroline Masse, Nouvelle-France (1600-1763), Musée McCord, en ligne."] },
+    { id: "ec-cc2-d2", title: "Document 2 : Population en Nouvelle-France de 1608 à 1760", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-changements-2/doc2.png", imageWidthCm: 13,
+      sources: ["Source de l'image : Graphique du Récit national de l'univers social, à partir des données de Statistiques historiques du Canada, « Recensements du Canada, 1665-1871 », en ligne. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P2 — Établir des faits — Commerce triangulaire (Familiarisation Q7) =====
+  // Renumérotation depuis le PDF Familiarisation (doc source 12 → Doc 1).
+  'evolution-coloniale-faits-4': [
+    { id: "ec-f4-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-faits-4/doc1.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P2 — Différences/similitudes — Communautés religieuses masculines vs féminines (Familiarisation Q8) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 9 + 14 → Doc 1, Doc 2).
+  // Énoncé fam dans le cahier de l'élève : « Dégagez une similitude... » (corrigé identique au cahier).
+  'evolution-coloniale-differences-6': [
+    { id: "ec-d6-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-differences-6/doc1.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Charles W. Jefferys, Un jésuite prêchant aux Autochtones (1934), Bibliothèque et Archives Canada, C-005855, MIKAN 2955874. Licence : image du domaine public."] },
+    { id: "ec-d6-d2", title: "Document 2", layout: "text-only",
+      text: "« [Les ursulines] seront tenues à instruire les petites filles sauvages de la Nouvelle-France en la connaissance de la religion catholique [...]. Leur apprendre à lire et si bon leur semble à écrire, leur apprendre aussi le catéchisme et généralement tout ce qui est nécessaire à savoir pour une bonne chrétienne [...]. »",
+      sources: ["Source du texte : « Acte de fondation du couvent des ursulines de Québec (1639) », cité dans Claire Gourdeau, Les délices de nos coeurs. Marie de l'Incarnation et ses pensionnaires amérindiennes (1639-1672), Sillery, Septentrion, 1994, p. 53."] }
+  ],
+
   // ===== P3 — Dégager des différences et des similitudes — Convergence d'historiens =====
   // Chaque point de vue d'historien est dans un document distinct (un acteur = un document).
   'conquete-differences-1': [
@@ -879,6 +1025,49 @@ const DOCS = {
       sources: ["Source du texte : Service national du RÉCIT de l'univers social. Licence : Creative Commons."] }
   ],
 
+  // ===== P3 — Mettre en relation — 3 groupes sociaux après la Conquête (Familiarisation Q9) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 15, 16, 17 → Doc 1, 2, 3). Ordre source conservé.
+  // Doc 1 = marchands anglophones (PDF 15) ; Doc 2 = administrateurs britanniques (PDF 16) ; Doc 3 = Autochtones (PDF 17).
+  'conquete-relation-3': [
+    { id: "cq-r3-d1", title: "Document 1", layout: "text-only",
+      text: "Les membres de ce groupe, principalement établis à Montréal, veulent que la Proclamation royale soit appliquée à la lettre et désirent une Chambre d'assemblée où ils seraient les seuls à siéger.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "cq-r3-d2", title: "Document 2", layout: "text-only",
+      text: "Les membres de ce groupe veulent se montrer conciliants envers les Canadiens français.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "cq-r3-d3", title: "Document 3", layout: "text-only",
+      text: "Les membres de ce groupe n'acceptent pas que le roi de France ait cédé leurs territoires à l'Angleterre et décident de se révolter pour récupérer leurs terres dans la région des Grands Lacs.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P3 — Causes/conséquences — Deux conséquences de l'Acte de Québec (Familiarisation Q10) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 22 + 24 → Doc 1, Doc 2).
+  // Doc 1 = texte Acte de Québec (religion + dîme) ; Doc 2 = carte territoire étendu.
+  'conquete-causes-5': [
+    { id: "cq-c5-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Il est par les présentes déclaré que les sujets de Sa Majesté professant la religion de l'Église de Rome, de et dans ladite province de Québec, peuvent jouir du libre exercice de la religion de l'Église de Rome [...] et que le clergé de la dite Église peut conserver et percevoir des dus et redevances (la dîme). »",
+      sources: ["Source du texte : Extraits de l'Acte de Québec (1774), cité dans Jacques Lacoursière, Histoire populaire du Québec, tome 1 : Des origines à 1791, Sillery, Septentrion, 1995, p. 386-387."] },
+    { id: "cq-c5-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/conquete-causes-5/doc2.png", imageWidthCm: 9,
+      sources: ["Source de la carte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P3 — Causalité — Lettre du congrès → réponse des Canadiens → invasion (Familiarisation Q11) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 18, 19, 21 → Doc 1, 2, 3). Ordre source conservé.
+  // Doc 1 = rapport Brown (refus des Canadiens) ; Doc 2 = carte routes invasion ; Doc 3 = lettre Dickinson (invitation).
+  // Le doc 20 (carte Acte constitutionnel) du dossier source n'est pas utilisé ici (Q12 fam non intégrée).
+  'conquete-causalite-2': [
+    { id: "cq-ca2-d1", title: "Document 1", layout: "text-only",
+      text: "« Le colonel [américain] John Brown [...] revient à Boston avec un rapport pessimiste : les Canadiens [français], déclare-t-il, n'enverront pas de délégués au prochain Congrès général ; quant aux [Canadiens] anglais, ils hésitent à se joindre aux revendications américaines, pour ne point perdre les avantages de leur commerce avec la métropole. »",
+      sources: ["Source du texte : Marcel Trudel, La tentation américaine, Sillery, Septentrion, 2006, p. 46."] },
+    { id: "cq-ca2-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/conquete-causalite-2/doc2.png", imageWidthCm: 9,
+      sources: ["Source de la carte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "cq-ca2-d3", title: "Document 3", layout: "text-only",
+      text: "« Vous n'êtes qu'un très-petit nombre en comparaison de ceux qui vous invitent à bras ouverts à vous joindre à eux ; un instant de réflexion doit vous convaincre qu'il convient mieux à vos intérêts et à votre bonheur de vous procurer l'amitié constante des peuples de l'Amérique septentrionale, que de les rendre vos implacables ennemis. Les outrages que souffre la ville de Boston ont alarmé et uni ensemble toutes les colonies, depuis la Nouvelle-Écosse jusqu'à la Géorgie, votre province est le seul anneau qui manque pour compléter la chaîne forte et éclatante de leur union. [...] »",
+      sources: ["Source du texte : John Dickinson, Lettre adressée aux habitants de la province de Québec, ci-devant le Canada de la part du Congrès général de l'Amérique septentrionale, tenu à Philadelphie (26 octobre 1774), Pierre Eugène de Simitière (trad.), en ligne."] }
+  ],
+
   // ============================================================
   //   P4 — PDF Questions courtes 1791-1840 (Q1-Q7)
   //   Source : documents.recitus.qc.ca — Questions courtes - Période de 1791 à 1840.
@@ -982,6 +1171,74 @@ const DOCS = {
     { id: "rv-s1-d2", title: "Document 2", layout: "image-only",
       imageUrl: "assets/img/revendications-situer-1/doc2.png", imageWidthCm: 8, pair: true,
       sources: ["Source de la carte : Par ici la démocratie, Assemblée nationale du Québec, « 1791 : Acte constitutionnel », en ligne."] }
+  ],
+
+  // ============================================================
+  //   P4 — Familiarisation épreuve 3e secondaire (Q13-Q17)
+  //   Source : documents.recitus.qc.ca — Familiarisation épreuve 3e secondaire - Questions courtes.
+  //   5 questions ajoutées en v1.19.0.
+  // ============================================================
+
+  // ===== P4 — Situer dans le temps (chrono) — Développement éco du Bas-Canada (Familiarisation Q13) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 25, 26, 27 → Doc 1, 2, 3). Ordre source conservé.
+  // Doc 1 = Buies (exploitation forestière post-blocus continental) ; Doc 2 = canal Lachine ; Doc 3 = Banque de Montréal.
+  // Ordre chronologique attendu : Doc 1 → Doc 3 → Doc 2 (forêts ~1810 → banque 1817 → canal Lachine 1825).
+  'revendications-situer-3': [
+    { id: "rv-s3-d1", title: "Document 1", layout: "text-only",
+      text: "« C'est à la suite des guerres du premier Empire et du blocus continental que Napoléon avait imposé à tous les ports de l'Europe, pour en chasser le commerce anglais, que l'on commença à s'occuper sérieusement de l'exploitation de nos forêts. Les commerçants de bois de la métropole tournèrent leur attention vers les colonies de l'Amérique britannique, et conçurent le projet de venir chercher chez nous le bois que les flottes françaises les empêchaient d'importer des pays de l'Europe septentrionale [du nord]. »",
+      sources: ["Source du texte : Arthur Buies, L'Outaouais supérieur, Québec, C. Darveau, 1889, p. 65-66, en ligne."] },
+    { id: "rv-s3-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/revendications-situer-3/doc2.png", imageWidthCm: 11,
+      sources: ["Source de l'image : James Duncan, Le canal Lachine, Musée McCord, M984.273. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "rv-s3-d3", title: "Document 3", layout: "text-only",
+      text: "« L'accès au capital était crucial pour les producteurs industriels qui, en dehors de la nécessité d'avoir un lieu où effectuer leurs opérations de change, devaient investir lourdement dans les installations. [...] La Banque de Montréal fut fondée [...] pour faciliter les transactions commerciales des marchands. »",
+      sources: ["Source du texte : John Dickinson et Brian Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 2003, p. 203."] }
+  ],
+
+  // ===== P4 — Établir des faits — Revendication des Patriotes sur le Conseil exécutif (Familiarisation Q14) =====
+  // Renumérotation depuis le PDF Familiarisation (doc source 28 → Doc 1).
+  'revendications-faits-2': [
+    { id: "rv-f2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/revendications-faits-2/doc1.png", imageWidthCm: 10,
+      sources: ["Source de l'organigramme : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P4 — Différences/similitudes — 3 acteurs sur la Rébellion possible des Patriotes (Familiarisation Q15) =====
+  // Convention « un acteur = un document » : le Doc 29 fam (3 extraits juxtaposés) est splitté en 3 documents distincts.
+  // Doc 1 = Mgr Lartigue (1837) ; Doc 2 = lord Gosford (1837) ; Doc 3 = Dr Nelson (cité par Dessaulles, 1848).
+  // Note : les dates sont conservées dans les sources car l'OI ici est « différences/similitudes » (la date ne révèle pas la réponse).
+  'revendications-differences-2': [
+    { id: "rv-d2-d1", title: "Document 1", layout: "text-only",
+      text: "« […] les pasteurs devraient faire tous leurs efforts pour rétablir la charité et l'union parmi leurs ouailles*; qu'ils devraient représenter à leurs paroissiens qu'il n'est jamais permis de se révolter contre l'autorité légitime, ni de transgresser les lois du pays […]. »\n\n* Ouailles : paroissiens du curé.",
+      sources: ["Source du texte : « Discours de Mgr Lartigue, évêque de Montréal, prononcé le 25 juillet 1837 », cité dans Gilles Chaussé, « L'Église et les Patriotes », Histoire Québec, vol. 5, no 2 (novembre 1999), p. 29, en ligne."] },
+    { id: "rv-d2-d2", title: "Document 2", layout: "text-only",
+      text: "« J'exhorte très solennellement par ces présentes, et par l'avis du Conseil exécutif de Sa Majesté pour cette province, tous les citoyens à s'unir pour maintenir la paix et le bon ordre [...], je les exhorte à éviter toutes les assemblées d'un caractère équivoque ou dangereux, et j'enjoins [...]. »",
+      sources: ["Source du texte : « Proclamation de lord Gosford, gouverneur du Bas-Canada (1837) », cité dans Gérard Filteau, Histoire des patriotes, Sillery, Septentrion, 2003, p. 286."] },
+    { id: "rv-d2-d3", title: "Document 3", layout: "text-only",
+      text: "« Le Dr. Nelson, qui était dans la foule, entendant [les paroles de Papineau], se hissa sur l'estrade en grimpant sur les épaules de ses voisins et dit à l'assemblée : “[...] Je prétends que le temps est arrivé de fondre nos plats et nos cuillères d'étain pour en faire des balles.” »",
+      sources: ["Source du texte : Louis-Antoine Dessaulles, Papineau et Nelson : blanc et noir… et la lumière fut faite, Montréal, Presses de l'Avenir, 1848, p. 45."] }
+  ],
+
+  // ===== P4 — Changements/continuités — Changement territorial du commerce du bois (Familiarisation Q16) =====
+  // Renumérotation depuis le PDF Familiarisation (doc source 32 → Doc 1).
+  'revendications-changements-2': [
+    { id: "rv-cc2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/revendications-changements-2/doc1.png", imageWidthCm: 13,
+      sources: ["Source de la carte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P4 — Mettre en relation — Idéologies des journaux Le Canadien et La Minerve (Familiarisation Q17) =====
+  // Renumérotation depuis le PDF Familiarisation (docs source 30 + 31 → Doc 1, Doc 2). Ordre source conservé.
+  // Doc 1 = Le Canadien (libéralisme) ; Doc 2 = La Minerve (nationalisme).
+  // Distinct de q-revendications-relation-1 qui oppose « républicanisme » vs « nationalisme canadien »
+  // avec des extraits différents (JALBC 1832-33 + Le Canadien 21 mai 1831).
+  'revendications-relation-2': [
+    { id: "rv-r2-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Si la liberté de presse s'introduisait (dans un pays non démocratique), elle y produirait bientôt la liberté civile et politique. De toutes les presses, la presse périodique est celle qui convient le mieux au peuple, c'est de fait la seule bibliothèque du peuple. »",
+      sources: ["Source du texte : Le Canadien (7 mai 1831), cité dans Yvan Lamonde et Claude Corbo (éd.), Le rouge et le bleu, Montréal, Les Presses de l'Université de Montréal, 1999, p. 87-88."] },
+    { id: "rv-r2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] c'est le pacte qui leur délie les membres, qui rompt leurs chaînes, qui ouvre les portes de leur prison, qui leur donne participation à la souveraineté, qui les égalise à leurs ancêtres, à leurs voisins, qui les place à la tête de l'exploitation de leurs propres biens, de leurs propres affaires. »",
+      sources: ["Source du texte : « De la manière dont se forment les nations », La Minerve, 8, 11, 13, 18 septembre 1834, cité dans Yvan Lamonde, Histoire sociale des idées au Québec (1760-1896), nouvelle édition, Montréal, Fides, 2014, p. 218."] }
   ]
 
 };
@@ -1759,7 +2016,222 @@ window.DATA = {
       },
       reglettes: [{ id: "r-rv-s2", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
       documents: pickDocs('revendications-situer-2', 1, 2, 3, 4),
-      corrige: { before: ["Document 1", "Document 3"], after: ["Document 2", "Document 4"] } }
+      corrige: { before: ["Document 1", "Document 3"], after: ["Document 2", "Document 4"] } },
+
+    // ============================================================
+    //   v1.19.0 — Familiarisation épreuve 3e secondaire (16 questions)
+    //   Source : documents.recitus.qc.ca — Familiarisation épreuve - Questions courtes.
+    //   Q12 fam (territoire après Acte constitutionnel) non intégrée : trop proche
+    //   de q-revendications-situer-1.
+    // ============================================================
+
+    // ===== P1 · Différences/similitudes — Q1 fam : divergence sur le peuplement de l'Amérique =====
+    { id: "q-experience-autochtones-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Sur quel point précis les auteurs des documents 1 et 2 sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ea-d4", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('experience-autochtones-differences-4', 1, 2),
+      corrige: "Ils sont en désaccord sur le chemin emprunté par les premiers occupants entre l'Asie et l'Amérique (documents 1 et 2)." },
+
+    // ===== P1 · Causes/conséquences — Q2 fam : cause de la rivalité entre nations autochtones =====
+    { id: "q-experience-autochtones-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Indique une cause de la rivalité entre les nations autochtones.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ea-c3", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_BINAIRE }],
+      documents: pickDocs('experience-autochtones-causes-3', 1),
+      corrige: "Les nations autochtones sont en compétition, car elles veulent devenir les intermédiaires les plus importants des Européens dans la traite des fourrures (document 1)." },
+
+    // ===== P1 · Changements/continuités — Q3 fam : mode de vie autochtone après contact européen =====
+    { id: "q-experience-autochtones-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement qui survient dans le mode de vie des Autochtones après l'arrivée des Européens en Amérique.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ea-cc2", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('experience-autochtones-changements-2', 1),
+      corrige: "Un accès aux armes à feu et à d'autres objets occidentaux (vêtements, couvertures, objets en métal), ou l'intégration à un nouveau réseau d'échange." },
+
+    // ===== P2 · Situer dans le temps — Q4 fam : avant/après la Grande Paix de Montréal =====
+    // Renumérotation depuis le PDF Familiarisation : docs 5, 6, 7, 8 → Doc 1, 2, 3, 4.
+    // Avant : Doc 1 (Vimont, attaques iroquoises mi-17e) et Doc 4 (Officier Carignan-Salières).
+    // Après : Doc 2 (commerce sécuritaire, 1re moitié 18e) et Doc 3 (Fort William-Henry, 1757).
+    // cantSplitAllDocs : force Word à garder énoncé + axe + réglette + 4 docs sur la même page
+    // (sinon Word coupe naturellement entre paire 1 et paire 2 alors que tout aurait pu tenir).
+    { id: "q-evolution-coloniale-situer-5", operation: "Situer dans le temps et dans l'espace", numero: 5, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      cantSplitAllDocs: true,
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence aux relations entre les Européens et les Autochtones. Indique si les faits présentés dans ces documents se déroulent avant ou après la Grande Paix de Montréal.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "La Grande Paix de Montréal (1701)", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-ec-s5", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('evolution-coloniale-situer-5', 1, 2, 3, 4),
+      corrige: { before: ["Document 1", "Document 4"], after: ["Document 2", "Document 3"] } },
+
+    // ===== P2 · Établir des faits — Q5 fam : fonction commerciale des villes en Nouvelle-France =====
+    { id: "q-evolution-coloniale-faits-3", operation: "Établir des faits", numero: 3, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Indique une fonction importante des villes en Nouvelle-France.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ec-f3", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('evolution-coloniale-faits-3', 1),
+      corrige: "Elles ont une fonction commerciale importante, car les échanges se déroulent dans les villes lors des marchés (document 1)." },
+
+    // ===== P2 · Changements/continuités — Q6 fam : politique coloniale après 1663 =====
+    // Doc 1 (Caroline Masse — commerce des fourrures à 70% des exportations) appuie la continuité (mercantilisme).
+    // Doc 2 (graphique population NF) appuie le changement (mesures de peuplement post-1663).
+    { id: "q-evolution-coloniale-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "La mise en place du Gouvernement royal en 1663 est un événement marquant en Nouvelle-France. À l'aide des documents 1 et 2, indique un changement et une continuité dans la politique coloniale après 1663.",
+        responseSpace: { type: "labeled-list", items: ["Changement", "Continuité"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-ec-cc2", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_1CHG_1CONT }],
+      documents: pickDocs('evolution-coloniale-changements-2', 1, 2),
+      corrige: [
+        "Les mesures de peuplement. Après 1663, les politiques favorisent le peuplement de la colonie (document 2).",
+        "La politique économique reste la même : il s'agit toujours du mercantilisme (document 1)."
+      ] },
+
+    // ===== P2 · Établir des faits — Q7 fam : commerce triangulaire =====
+    { id: "q-evolution-coloniale-faits-4", operation: "Établir des faits", numero: 4, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Nomme le système commercial illustré dans le document 1.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-ec-f4", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('evolution-coloniale-faits-4', 1),
+      corrige: "Le commerce triangulaire (document 1)." },
+
+    // ===== P2 · Différences/similitudes — Q8 fam : communautés religieuses masculines vs féminines =====
+    { id: "q-evolution-coloniale-differences-6", operation: "Dégager des différences et des similitudes", numero: 6, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Dégage une similitude dans le rôle des communautés religieuses masculines et féminines en Nouvelle-France.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ec-d6", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_GEN }],
+      documents: pickDocs('evolution-coloniale-differences-6', 1, 2),
+      corrige: "Les communautés religieuses masculines (jésuites, document 1) et féminines (ursulines, document 2) participent toutes deux à l'évangélisation des Autochtones." },
+
+    // ===== P3 · Mettre en relation — Q9 fam : 3 groupes sociaux après la Conquête =====
+    // Renumérotation depuis le PDF Familiarisation : docs 15, 16, 17 → Doc 1, 2, 3.
+    // Autochtones → Doc 3 (PDF 17, révolte pour Grands Lacs) ;
+    // Marchands anglophones → Doc 1 (PDF 15, Proclamation à la lettre + Chambre où ils sont seuls) ;
+    // Administrateurs britanniques → Doc 2 (PDF 16, conciliants envers les Canadiens français).
+    { id: "q-conquete-relation-3", operation: "Mettre en relation des faits", numero: 3, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent les revendications de différents groupes sociaux au lendemain de la guerre de la Conquête. Inscris à l'endroit approprié le numéro du document correspondant à chacune des positions des groupes sociaux.",
+        responseSpace: { type: "category-buckets", categories: ["Les Autochtones", "Les marchands anglophones", "Les administrateurs britanniques"], slots: [1, 1, 1] }
+      },
+      reglettes: [{ id: "r-cq-r3", label: "Réglette (2 points)", ...R_RELATION_2PT_3_PART }],
+      documents: pickDocs('conquete-relation-3', 1, 2, 3),
+      corrige: [["Document 3"], ["Document 1"], ["Document 2"]] },
+
+    // ===== P3 · Causes/conséquences — Q10 fam : deux conséquences de l'Acte de Québec =====
+    { id: "q-conquete-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Indique deux conséquences de l'Acte de Québec.",
+        responseSpace: { type: "labeled-list", items: ["Conséquence 1", "Conséquence 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cq-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CONS }],
+      documents: pickDocs('conquete-causes-5', 1, 2),
+      corrige: [
+        "Les Canadiens français ont le droit de pratiquer la religion catholique et l'Église peut percevoir la dîme (document 1).",
+        "Le territoire de la Province of Quebec est beaucoup plus étendu (document 2)."
+      ] },
+
+    // ===== P3 · Causalité — Q11 fam : lettre du congrès → réponse des Canadiens → invasion =====
+    // Renumérotation depuis le PDF Familiarisation : docs 18, 19, 21 → Doc 1, 2, 3.
+    // Doc 1 = rapport Brown (refus canadiens) ; Doc 2 = carte invasion ; Doc 3 = lettre Dickinson (invitation).
+    { id: "q-conquete-causalite-2", operation: "Établir des liens de causalité", numero: 2, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Explique comment la réponse des Canadiens à la lettre du congrès américain entraîne une réaction des Treize colonies dans la deuxième moitié du 18e siècle. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "La lettre du congrès américain aux Canadiens",
+          "La réponse des Canadiens",
+          "La réaction des Treize colonies"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-cq-ca2", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('conquete-causalite-2', 1, 2, 3),
+      corrige: "Le congrès américain invite les Canadiens à se joindre à eux dans leur révolution contre la métropole (document 3). Cette invitation est refusée par les Canadiens (document 1). Cette réponse entraîne l'invasion de la Province of Quebec par les Treize colonies (document 2)." },
+
+    // ===== P4 · Situer dans le temps (chrono) — Q13 fam : développement éco du Bas-Canada =====
+    // Renumérotation depuis le PDF Familiarisation : docs 25, 26, 27 → Doc 1, 2, 3.
+    // Ordre chrono : Doc 1 (Buies, exploitation forestière post-blocus continental ~1810)
+    // → Doc 3 (Banque de Montréal, 1817) → Doc 2 (canal Lachine, ouvert 1825).
+    { id: "q-revendications-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Les documents 1 à 3 se rapportent au développement économique du Bas-Canada. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["Plus ancien", "Intermédiaire", "Plus récent"] }
+      },
+      reglettes: [{ id: "r-rv-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T3_BINAIRE }],
+      documents: pickDocs('revendications-situer-3', 1, 2, 3),
+      corrige: ["Document 1", "Document 3", "Document 2"] },
+
+    // ===== P4 · Établir des faits — Q14 fam : revendication des Patriotes sur le Conseil exécutif =====
+    { id: "q-revendications-faits-2", operation: "Établir des faits", numero: 2, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Quelle est la principale revendication des Patriotes en ce qui concerne le Conseil exécutif?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-rv-f2", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('revendications-faits-2', 1),
+      corrige: "Les Patriotes veulent que les membres du Conseil exécutif soient choisis parmi la majorité élue de la Chambre d'assemblée (document 1)." },
+
+    // ===== P4 · Différences/similitudes — Q15 fam : 3 acteurs au sujet de la Rébellion =====
+    // Convention « un acteur = un document » : doc 29 fam splitté en Doc 1 (Lartigue), Doc 2 (Gosford), Doc 3 (Nelson).
+    { id: "q-revendications-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent la position de trois acteurs au sujet de la Rébellion possible des Patriotes. Indique l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-rv-d2", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_1DIFF_1SIM }],
+      documents: pickDocs('revendications-differences-2', 1, 2, 3),
+      corrige: "Le Dr. Nelson (document 3) présente une position différente : il croit qu'il faut se rebeller en prenant les armes. Les deux autres acteurs — Mgr Lartigue, évêque de Montréal (document 1), et lord Gosford, gouverneur du Bas-Canada (document 2) — favorisent au contraire le maintien de la paix (similitude entre les positions de Lartigue et Gosford)." },
+
+    // ===== P4 · Changements/continuités — Q16 fam : changement territorial du commerce du bois =====
+    { id: "q-revendications-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Quel changement important le commerce du bois provoque-t-il au plan territorial?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-rv-cc2", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('revendications-changements-2', 1),
+      corrige: "Il permet le développement de régions forestières comme le Saguenay-Lac-Saint-Jean, la Mauricie et l'Outaouais (document 1)." },
+
+    // ===== P4 · Mettre en relation — Q17 fam : idéologies (libéralisme vs nationalisme) =====
+    // Variante de q-revendications-relation-1 qui oppose « républicanisme » vs « nationalisme canadien »
+    // avec des extraits différents (JALBC 1832-33 et Le Canadien 21 mai 1831).
+    { id: "q-revendications-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent la position de deux journaux du début du 19e siècle. Inscris à l'endroit approprié le numéro du document correspondant à l'idéologie défendue.",
+        responseSpace: { type: "category-buckets", categories: ["Libéralisme", "Nationalisme"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-rv-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_2_PART }],
+      documents: pickDocs('revendications-relation-2', 1, 2),
+      corrige: [["Document 1"], ["Document 2"]] }
 
   ]
 };

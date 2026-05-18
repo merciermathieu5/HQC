@@ -504,26 +504,39 @@
         bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
       }
 
+      // Drapeau optionnel sur la question : `cantSplitAllDocs: true` regroupe
+      // l'énoncé + la réglette + TOUS les documents dans un seul wrapper cantSplit.
+      // Word ne pourra pas alors couper le bloc entre deux pages ; si la question
+      // ne tient pas sur la page courante, elle bascule entièrement sur la suivante.
+      // Utile pour les questions de type situer-avant-après à 4 docs où l'on veut
+      // garder l'axe + les 4 docs visibles ensemble (sinon Word coupe entre paire 1
+      // et paire 2 alors que tout aurait pu tenir).
+      const cantSplitAll = q.cantSplitAllDocs === true;
+
       // Pièces "noyau" : énoncé + réglette → enveloppe non-coupable
       const corePieces = g.pieces.filter(p => p.kind === 'questionBody' || p.kind === 'reglette');
+      const coreChildren = [];
       if (corePieces.length > 0) {
-        const innerChildren = [];
         corePieces.forEach(p => {
           if (p.kind === 'questionBody') {
-            innerChildren.push(...builders.buildQuestionBody(q, seqNumero));
+            coreChildren.push(...builders.buildQuestionBody(q, seqNumero));
           } else if (p.kind === 'reglette') {
             const r = q.reglettes.find(x => x.id === p.pieceId);
             if (r) {
-              innerChildren.push(new Paragraph({ children: [new TextRun({ text: "", size: 8 })], spacing: { before: 0, after: 80 } }));
-              innerChildren.push(...builders.buildReglette(r));
+              coreChildren.push(new Paragraph({ children: [new TextRun({ text: "", size: 8 })], spacing: { before: 0, after: 80 } }));
+              coreChildren.push(...builders.buildReglette(r));
             }
           }
         });
         // Paragraphe minuscule à la fin du wrapper : Word exige un paragraphe en fin de cellule,
         // et sans contrôle de notre part docx-js insère un paragraphe par défaut (size 22) qui
         // crée un espace blanc important entre le wrapper et le premier document.
-        innerChildren.push(new Paragraph({ children: [new TextRun({ text: "", size: 4 })], spacing: { before: 0, after: 0 } }));
+        coreChildren.push(new Paragraph({ children: [new TextRun({ text: "", size: 4 })], spacing: { before: 0, after: 0 } }));
+      }
 
+      // En mode standard, le noyau a son propre wrapper cantSplit indépendant.
+      // En mode cantSplitAllDocs, on diffère l'emballage pour englober aussi les docs.
+      if (corePieces.length > 0 && !cantSplitAll) {
         // Enveloppe : 1 cellule sans bordure, cantSplit:true → impossible de couper entre pages
         bodyChildren.push(new Table({
           width: { size: 10500, type: WidthType.DXA },
@@ -534,7 +547,7 @@
               width: { size: 10500, type: WidthType.DXA },
               borders: WRAPPER_NO_BORDERS,
               margins: { top: 0, bottom: 0, left: 0, right: 0 },
-              children: innerChildren
+              children: coreChildren
             })]
           })]
         }));
@@ -565,10 +578,14 @@
         }
       }
 
+      // En mode cantSplitAllDocs : on collecte toutes les pièces dans un seul tableau
+      // englobant. Sinon, mode classique : chaque slot va dans son propre élément racine.
+      const docsTarget = cantSplitAll ? coreChildren : bodyChildren;
+
       // Espace minimaliste entre l'énoncé/réglette et les documents
       // Police minuscule (size: 8 = 4pt) → hauteur de ligne réduite
       if (slots.length > 0) {
-        bodyChildren.push(new Paragraph({
+        docsTarget.push(new Paragraph({
           children: [new TextRun({ text: "", size: 8 })],
           spacing: { before: 0, after: 60 }
         }));
@@ -576,17 +593,35 @@
 
       slots.forEach((slot, sIdx) => {
         if (sIdx > 0) {
-          bodyChildren.push(new Paragraph({
+          docsTarget.push(new Paragraph({
             children: [new TextRun({ text: "", size: 8 })],
             spacing: { before: 0, after: 60 }
           }));
         }
         if (slot.kind === 'single') {
-          bodyChildren.push(...builders.buildDocument(slot.docs[0]));
+          docsTarget.push(...builders.buildDocument(slot.docs[0]));
         } else {
-          bodyChildren.push(builders.buildPairedDocuments(slot.docs[0], slot.docs[1]));
+          docsTarget.push(builders.buildPairedDocuments(slot.docs[0], slot.docs[1]));
         }
       });
+
+      // En mode cantSplitAllDocs : on emballe maintenant le tout (noyau + docs) dans
+      // un unique wrapper cantSplit, ajouté à bodyChildren.
+      if (cantSplitAll && coreChildren.length > 0) {
+        bodyChildren.push(new Table({
+          width: { size: 10500, type: WidthType.DXA },
+          columnWidths: [10500],
+          rows: [new TableRow({
+            cantSplit: true,
+            children: [new TableCell({
+              width: { size: 10500, type: WidthType.DXA },
+              borders: WRAPPER_NO_BORDERS,
+              margins: { top: 0, bottom: 0, left: 0, right: 0 },
+              children: coreChildren
+            })]
+          })]
+        }));
+      }
     });
 
     const doc = new Document({
