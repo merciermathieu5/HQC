@@ -1,7 +1,8 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.14 (mai 2026)
-   30 questions · 4 périodes · 7 OI
-   Couverture : P1 = 14 (7/7 OI), P2 = 13 (6/7), P3 = 2, P4 = 1
+   HQC · 3e secondaire — Données — v1.15 (mai 2026)
+   38 questions · 4 périodes · 7 OI
+   Couverture : P1 = 14 (7/7 OI), P2 = 21 (7/7 OI), P3 = 2, P4 = 1
+   v1.15 — +8 questions P2 (Questions courtes RÉCIT 1608-1760).
    ============================================================ */
 
 (function () {
@@ -68,6 +69,13 @@ const R_RELATION_2PT_4_PART = rubric3(
   "L'élève met partiellement en relation les faits. (1, 2 ou 3 sur 4)",
   "L'élève ne met pas en relation les faits. (0 sur 4)"
 );
+// Variante 3 sur 3 — Q4 P2 : rôles de l'Église (3 documents à associer).
+const R_RELATION_2PT_3_PART = rubric3(
+  "Mettre en relation des faits",
+  "L'élève met en relation tous les faits. (3 sur 3)",
+  "L'élève met en relation certains faits. (1 ou 2 sur 3)",
+  "L'élève ne met pas en relation les faits. (0 sur 3)"
+);
 
 // — Déterminer des causes et des conséquences —
 const R_CAUSES_2PT_CAUSE_CONS = rubric3(
@@ -75,6 +83,15 @@ const R_CAUSES_2PT_CAUSE_CONS = rubric3(
   "L'élève détermine correctement la cause et la conséquence.",
   "L'élève détermine la cause ou la conséquence.",
   "L'élève détermine incorrectement la cause et la conséquence."
+);
+// Variante « une conséquence seule » — Q3 P2 : effet des guerres iroquoises sur l'économie.
+// Note : libellé corrigé silencieusement du pluriel (PDF source) au singulier, pour
+// concorder avec l'énoncé qui demande « un effet ».
+const R_CAUSES_2PT_CONS_SEULE = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la conséquence.",
+  "L'élève détermine plus ou moins correctement la conséquence.",
+  "L'élève détermine incorrectement la conséquence."
 );
 
 // — Dégager des différences et des similitudes —
@@ -93,6 +110,15 @@ const R_DIFFERENCES_2PT_GEN = rubric3(
   "L'élève dégage correctement la différence.",
   "L'élève dégage plus ou moins correctement la différence.",
   "L'élève dégage incorrectement la différence ou ne la dégage pas."
+);
+// Dégager une similitude (2 points) — Q6 P2 : censitaire vs seigneur.
+// Note : réglette absente de la mise en page du PDF source ; on calque en miroir
+// la R_DIFFERENCES_2PT_GEN ci-dessus, sur le même libellé d'opération.
+const R_SIMILITUDES_2PT_GEN = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève dégage correctement la similitude.",
+  "L'élève dégage plus ou moins correctement la similitude.",
+  "L'élève dégage incorrectement la similitude ou ne la dégage pas."
 );
 
 // Dégager une différence ET une similitude (4 points) — Q-B : prise de décisions algonquiennes vs iroquoiennes.
@@ -136,6 +162,13 @@ const R_CHANGEMENTS_2PT_GEN = rubric3(
   "L'élève détermine correctement le changement.",
   "L'élève détermine plus ou moins correctement le changement.",
   "L'élève détermine incorrectement le changement ou ne le détermine pas."
+);
+// Une continuité à déterminer (2 points) — Q2 P2 : continuité économique en Nouvelle-France.
+const R_CONTINUITES_2PT_GEN = rubric3(
+  "Déterminer des changements et des continuités",
+  "L'élève détermine correctement la continuité.",
+  "L'élève détermine plus ou moins correctement la continuité.",
+  "L'élève détermine incorrectement la continuité ou ne la détermine pas."
 );
 
 // — Mettre en relation des faits —
@@ -510,6 +543,106 @@ const DOCS = {
     { id: "ec-s2-d3", title: "Document 3 : Prise de Louisbourg par les Britanniques", layout: "image-only",
       imageUrl: "assets/img/evolution-coloniale-situer-2/doc3.png", imageWidthCm: 10,
       sources: ["Source de l'image : Auteur inconnu, Prise de Louisbourg par les Britanniques [...], Bibliothèque et Archives nationales du Québec, 0002724411. Licence : domaine public."] }
+  ],
+
+  // ============================================================
+  //   P2 — Questions courtes 1608-1760 (RÉCIT, ressource enseignante)
+  //   8 sections : faits-2 / changements-1 / causes-4 / relation-2 /
+  //                situer-3 / differences-5 / causalite-3 / situer-4
+  //   Document 7 (Mercier 1653) et Document 18 (Traiteur Jefferys)
+  //   sont dupliqués entre sections (convention « 8 sections séparées »).
+  // ============================================================
+
+  // ===== P2 — Établir des faits — Q1 : idéologie de Louis XIV =====
+  'evolution-coloniale-faits-2': [
+    { id: "ec-f2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-faits-2/doc1.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Edmond Lechevallier-Chevignard, Louis XIV jeune homme (entre 1867-1873), Bibliothèque et Archives Canada, C-107650, MIKAN 2897969, modifiée par le service national du RÉCIT, domaine de l'univers social. Licence : image du domaine public."] }
+  ],
+
+  // ===== P2 — Déterminer des changements et des continuités — Q2 : continuité économique =====
+  'evolution-coloniale-changements-1': [
+    { id: "ec-cc1-d1", title: "Document 1", layout: "text-only",
+      text: "« Jamais il n'y eut plus de castors dans nos lacs et dans nos rivières; mais jamais il ne s'en est moins vu dans les magasins du pays. Le magasin de Montréal n'a pas acheté des Sauvages [Autochtones] un seul castor depuis un an [...] Ce sont les Iroquois, dont il faut se plaindre : car ce sont eux [...] qui empêchent tout le commerce des castors [...] »",
+      sources: ["Source du texte : François-Joseph le Mercier, Relations des Jésuites, 1653."] },
+    { id: "ec-cc1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-changements-1/doc2.png", imageWidthCm: 6,
+      sources: ["Source de l'image : Charles William Jefferys, Traiteur de pelleteries indien, 1785. Bibliothèque et Archives Canada, C-0733431, MIKAN 2899012. Licence : image du domaine public."] }
+  ],
+
+  // ===== P2 — Causes et conséquences — Q3 : effet des guerres iroquoises =====
+  'evolution-coloniale-causes-4': [
+    { id: "ec-cs4-d1", title: "Document 1", layout: "text-only",
+      text: "« Jamais il n'y eut plus de castors dans nos lacs et dans nos rivières; mais jamais il ne s'en est moins vu dans les magasins du pays. Le magasin de Montréal n'a pas acheté des Sauvages [Autochtones] un seul castor depuis un an [...] Ce sont les Iroquois, dont il faut se plaindre : car ce sont eux [...] qui empêchent tout le commerce des castors [...] »",
+      sources: ["Source du texte : François-Joseph le Mercier, Relations des Jésuites, 1653."] }
+  ],
+
+  // ===== P2 — Mettre en relation — Q4 : rôles de l'Église =====
+  'evolution-coloniale-relation-2': [
+    { id: "ec-r2-d1", title: "Document 1", layout: "text-only",
+      text: "« Ainsi Dieu, grand amateur du salut des hommes [...] semble avoir choisi cette situation de Montréal [...] pour y assembler un peuple composé de Français et des Sauvages qui seront convertis pour les rendre sédentaires, les former à cultiver [...] la terre, les unir sous une même discipline dans les exercices de la vie chrétienne [...] et faire célébrer les louanges de Dieu en un désert, où Jésus-Christ n'a jamais été nommé [...]. »",
+      sources: ["Source du texte : Jean-Jacques Olier et Élie Laisné de la Marguerie (auteurs présumés), Les véritables motifs de messieurs et dames de la Société de Notre-Dame de Montréal pour la conversion des sauvages de la Nouvelle-France, Paris, 1643, p. 25-26."] },
+    { id: "ec-r2-d2", title: "Document 2", layout: "text-only",
+      text: "« Jeanne Mance se met donc à l'œuvre et fait construire l'Hôtel-Dieu en 1645. Les temps sont difficiles et, en 1659, elle part chercher de l'aide en France et revient accompagnée de trois hospitalières de Saint-Joseph. [...] Les défis sont nombreux pour les religieuses hospitalières de Saint-Joseph, dont la mission est de s'occuper des malades des deux sexes. »",
+      sources: ["Source du texte : Nicolas Bednarz, Anick Forest Bonin et Mario Robert, Quand les Archives racontent Montréal : 100 pièces d'exception, Québec, Les publications du Québec, 2013, p. 10."] },
+    { id: "ec-r2-d3", title: "Document 3", layout: "text-only",
+      text: "« Afin d'asseoir l'autorité du curé, chaque paroissien est assujetti à un code de pratique religieuse qui prévoit tout. D'abord, chaque nouveau-né doit obligatoirement être baptisé afin d'entrer dans l'Église catholique. Cela doit se faire dans les jours qui suivent la naissance. »",
+      sources: ["Source du texte : Ville de Montréal, La religion en Nouvelle-France, en ligne."] }
+  ],
+
+  // ===== P2 — Situer dans le temps — Q5 : avant / après le gouvernement royal =====
+  'evolution-coloniale-situer-3': [
+    { id: "ec-s3-d1", title: "Document 1", layout: "text-only",
+      text: "« Louis XIV souhaite qu'une partie des officiers et des soldats demeurent en Nouvelle-France et se transforment en colons. À cet effet, il leur accorde des vivres pour un an et des gratifications dont le montant varie suivant le grade. L'intendant Talon voit à ce que des terres leur soient concédées. »",
+      sources: ["Source du texte : Jacques Lacoursière, Histoire populaire du Québec. Des origines à 1791, Québec, Septentrion, 1995, p. 111."] },
+    { id: "ec-s3-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-situer-3/doc2.png", imageWidthCm: 11,
+      sources: ["Source de l'image : J. Armstrong, Ville-Marie au moment de sa fondation, Bibliothèque et Archives Canada, C-007885, MIKAN 2963451. Licence : image du domaine public."] },
+    { id: "ec-s3-d3", title: "Document 3", layout: "text-only",
+      text: "« [Elle] promettra [de] faire passer au dit pays de la Nouvelle-France, deux à trois cents hommes de tous métiers dès l'année prochaine [...], et pendant les années suivantes en augmenter le nombre jusqu'à quatre mille de l'un et l'autre sexe, dans quinze ans prochainement venant, et qui finiront en décembre, [...] ; les y loger, nourrir et entretenir de toutes choses généralement quelconques, nécessaires à la vie pendant trois ans seulement [...]. »",
+      sources: ["Source du texte : La charte de la Compagnie des Cent-Associés (1627) dans Raymond Bédard et Jean-François Cardin, Le Québec, une histoire à suivre... Des premiers occupants au changement d'empire, Éditions Grand Duc, Québec, 2007, p. 84."] },
+    { id: "ec-s3-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-situer-3/doc4.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Eleanor Fortescue Brickdale, L'arrivée des Filles du Roy en 1667 (avant 1927). Bibliothèque et Archives Canada, C-020126. Image du domaine public."] }
+  ],
+
+  // ===== P2 — Différences et similitudes — Q6 : censitaire vs seigneur =====
+  'evolution-coloniale-differences-5': [
+    { id: "ec-d5-d1", title: "Document 1", layout: "text-only",
+      text: "« Ainsi, le seigneur perçoit annuellement le cens, une redevance plutôt symbolique d'origine féodale qui donne leur nom à la censive — la terre sur laquelle porte le cens — et au censitaire — le propriétaire de cette terre. Une rente non négligeable versée en argent ou en nature est également perçue en même temps que le cens. »",
+      sources: ["Source du texte : Alain Laberge, « La seigneurie : milieu de vie des anciens Canadiens », Cap-aux-Diamants, no 58, 1999, p. 11."] },
+    { id: "ec-d5-d2", title: "Document 2", layout: "text-only",
+      text: "Le seigneur reçoit un fief afin de favoriser le peuplement de la Nouvelle-France. Si un paysan lui demande une terre, il doit la lui concéder.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P2 — Liens de causalité — Q7 : produits européens, rivalité, guerres Hurons/Iroquois =====
+  'evolution-coloniale-causalite-3': [
+    { id: "ec-c3-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-causalite-3/doc1.png", imageWidthCm: 6,
+      sources: ["Source de l'image : Charles William Jefferys, Traiteur de pelleteries indien, 1785. Bibliothèque et Archives Canada, C-0733431, MIKAN 2899012. Licence : image du domaine public."] },
+    { id: "ec-c3-d2", title: "Document 2", layout: "text-only",
+      text: "« À partir de 1608, les Hurons dominent les échanges avec les Européens. Samuel de Champlain établit une alliance avec eux pour s'assurer d'une mainmise sur ce commerce. Cette relation permet aux Hurons de s'approprier un grand nombre de marchandises européennes. L'entente conclue avec les Hurons-Wendats entraîne l'expansion du réseau de traite des fourrures vers l'ouest. La prospérité des Hurons suscite la convoitise des Iroquois qui souhaitent s'approprier ce commerce. »",
+      sources: ["Source du texte : Histori.ca, « 1608 : Les Hurons, premiers alliés des Français », La cyberligne du temps, en ligne."] },
+    { id: "ec-c3-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-causalite-3/doc3.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Joseph Légaré, [...] Hurons [...] Iroquois, Musée national des beaux-arts du Québec, 1957.204."] }
+  ],
+
+  // ===== P2 — Situer dans le temps — Q8 : ordre chronologique guerre de la Conquête =====
+  'evolution-coloniale-situer-4': [
+    { id: "ec-s4-d1", title: "Document 1", layout: "text-only",
+      text: "Forces en présence sur le champ de bataille des Plaines d'Abraham : du côté des forces françaises, 2 000 troupes régulières, 600 Canadiens incorporés dans les rangs des troupes régulières et 1 800 miliciens et Autochtones, pour un total de 4 400 hommes ; du côté des forces britanniques, 4 426 troupes régulières.",
+      sources: ["Source du texte : André Charbonneau, « Québec, ville assiégée », dans Serge Bernier et al., Québec, ville militaire (1608-2008), Montréal, Art Global, 2008, p. 143, tiré de www.ccbn.gc.ca."] },
+    { id: "ec-s4-d2", title: "Document 2", layout: "text-only",
+      text: "« Cette vallée, couloir naturel entre le Canada et la Louisiane, est nécessaire à l'expansion des colonies françaises. Elle est aussi importante pour les colonies anglaises, surtout la Virginie, qui veut se déverser sur cette région. Les Virginiens ne peuvent accepter que les Français fortifient cette région dont ils revendiquent la propriété. Un jeune officier, George Washington, reçoit l'ordre d'y construire un fort [...] Les coloniaux anglais (rencontre les français) ouvrent le feu et (un officier français) ainsi que 9 de ses compagnons sont tués. »",
+      sources: ["Source du texte : Jacques Lacoursière, Jean Provencher, Denis Vaugeois, Canada, Québec, Sillery, Septentrion, 2001, p. 129."] },
+    { id: "ec-s4-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-situer-4/doc3.png", imageWidthCm: 8,
+      sources: ["Source de l'image : Charles William Jefferys, Lecture de l'ordonnance d'expulsion des Acadiens dans l'église de Parish à Grand Pré, 1755 (1920). Bibliothèque et Archives Canada, C-073709, MIKAN 2897199. Licence : image du domaine public."] },
+    { id: "ec-s4-d4", title: "Document 4", layout: "text-only",
+      text: "« Dans la métropole française, on croit la forteresse [de Louisbourg] imprenable. Elle a coûté si cher ! On croit aussi qu'elle est une protection efficace pour tous les coins du golfe Saint-Laurent. Et pourtant (...) la place est très vulnérable... inachevée... la garnison mal payée, mal entretenue avec peu de munitions. Après 21 jours de siège, la forteresse se rend. La route vers Québec par la mer et le fleuve est libre ! »",
+      sources: ["Source du texte : Jacques Lacoursière, Jean Provencher, Denis Vaugeois, Canada, Québec, Sillery, Septentrion, 2001, p. 138."] }
   ],
 
   // ===== P3 — Dégager des différences et des similitudes — Convergence d'historiens =====
@@ -905,6 +1038,105 @@ window.DATA = {
       documents: pickDocs('evolution-coloniale-situer-2', 1, 2, 3),
       // Ordre : Doc 3 (Louisbourg juillet 1758) → Doc 1 (Québec sept 1759) → Doc 2 (Montréal sept 1760)
       corrige: ["Document 3", "Document 1", "Document 2"] },
+
+    // ============================================================
+    //   P2 — Questions courtes 1608-1760 (RÉCIT, 8 questions Q1-Q8)
+    // ============================================================
+
+    // ===== P2 · Établir des faits — Q1 : idéologie de Louis XIV =====
+    { id: "q-evolution-coloniale-faits-2", operation: "Établir des faits", numero: 2, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "À quelle idéologie fait référence le document 1 ? (Idéologie : ensemble d'idées sociales, politiques et religieuses.)",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-ec-f2", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('evolution-coloniale-faits-2', 1),
+      corrige: "L'absolutisme de droit divin." },
+
+    // ===== P2 · Déterminer des changements et des continuités — Q2 : continuité économique =====
+    // Cette question résout l'OI manquante en P2 (changements et continuités).
+    { id: "q-evolution-coloniale-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Indique une continuité qui marque le développement économique de la Nouvelle-France.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ec-cc1", label: "Réglette (2 points)", ...R_CONTINUITES_2PT_GEN }],
+      documents: pickDocs('evolution-coloniale-changements-1', 1, 2),
+      corrige: "Le commerce des fourrures est une activité économique présente durant toute la période (documents 1 et 2)." },
+
+    // ===== P2 · Causes et conséquences — Q3 : effet des guerres iroquoises =====
+    { id: "q-evolution-coloniale-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Indique un effet des guerres iroquoises sur l'économie de la Nouvelle-France.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ec-cs4", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('evolution-coloniale-causes-4', 1),
+      corrige: "Les guerres iroquoises empêchent (ou ralentissent) le commerce des fourrures (document 1)." },
+
+    // ===== P2 · Mettre en relation — Q4 : rôles de l'Église =====
+    { id: "q-evolution-coloniale-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent le rôle de l'Église à l'époque de la Nouvelle-France. Inscris à l'endroit approprié le numéro du document correspondant à chaque rôle de l'Église.",
+        responseSpace: { type: "category-buckets", categories: ["Services sociaux et soins de santé", "Encadrement des colons", "Évangélisation des Autochtones"], slots: [1, 1, 1] }
+      },
+      reglettes: [{ id: "r-ec-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_3_PART }],
+      documents: pickDocs('evolution-coloniale-relation-2', 1, 2, 3),
+      // Mapping : Doc 1 (Olier) = évangélisation ; Doc 2 (Jeanne Mance) = services sociaux/santé ; Doc 3 (code paroissien) = encadrement.
+      corrige: [["Document 2"], ["Document 3"], ["Document 1"]] },
+
+    // ===== P2 · Situer dans le temps — Q5 : avant / après le gouvernement royal =====
+    { id: "q-evolution-coloniale-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Classe les documents 1 à 4 selon qu'ils présentent des faits qui surviennent avant ou après la mise en place du gouvernement royal.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "Gouvernement royal", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-ec-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('evolution-coloniale-situer-3', 1, 2, 3, 4),
+      // Avant 1663 : Doc 2 (Ville-Marie 1642) et Doc 3 (Cent-Associés 1627).
+      // Après 1663 : Doc 1 (officiers et Talon, 1665+) et Doc 4 (Filles du Roy 1667).
+      corrige: { before: ["Document 2", "Document 3"], after: ["Document 1", "Document 4"] } },
+
+    // ===== P2 · Différences et similitudes — Q6 : censitaire vs seigneur =====
+    { id: "q-evolution-coloniale-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique une similitude entre le rôle du censitaire et celui du seigneur dans le régime seigneurial.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-ec-d5", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_GEN }],
+      documents: pickDocs('evolution-coloniale-differences-5', 1, 2),
+      corrige: "Le seigneur et le censitaire ont tous deux des droits : droit de se faire octroyer une terre (censitaire) et droit de percevoir le cens et les autres redevances (seigneur)." },
+
+    // ===== P2 · Liens de causalité — Q7 : produits européens et guerres Hurons/Iroquois =====
+    { id: "q-evolution-coloniale-causalite-3", operation: "Établir des liens de causalité", numero: 3, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Explique comment les relations commerciales, suite à l'introduction des produits européens, entraînent un impact sur les relations entre les Hurons et les Iroquois. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux :",
+        bullets: ["L'introduction des produits européens", "Les relations commerciales", "Un impact sur les relations entre les Hurons et les Iroquois"],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 6 }
+      },
+      reglettes: [{ id: "r-ec-c3", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('evolution-coloniale-causalite-3', 1, 2, 3),
+      corrige: "Les Hurons et les Iroquois sont grandement intéressés par les nouveaux produits européens obtenus en échange de la fourrure (document 1). Cela entraîne une plus grande rivalité commerciale entre ces peuples autochtones (document 2). Ce contexte de rivalité commerciale provoque des guerres entre Hurons et Iroquois qui mènent au massacre des Hurons par les Iroquois (document 3)." },
+
+    // ===== P2 · Situer dans le temps — Q8 : ordre chronologique guerre de la Conquête =====
+    { id: "q-evolution-coloniale-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence à des événements s'étant produits durant la guerre de la Conquête. Place-les en ordre chronologique. Le document 3 (expulsion des Acadiens, 1755) est déjà placé pour t'aider.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"], prefilled: [null, "Document 3", null, null] }
+      },
+      reglettes: [{ id: "r-ec-s4", label: "Réglette (2 points)", ...R_SITUER_2PT_T3 }],
+      documents: pickDocs('evolution-coloniale-situer-4', 1, 2, 3, 4),
+      // Ordre chrono : Doc 2 (Washington, vallée Ohio 1754) → Doc 3 (Acadiens 1755, pré-placé) → Doc 4 (Louisbourg 1758) → Doc 1 (Plaines d'Abraham 1759).
+      corrige: ["Document 2", "Document 3", "Document 4", "Document 1"] },
 
     // ===== Q6 — P3 · Dégager des différences et des similitudes =====
     { id: "q-conquete-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 3,

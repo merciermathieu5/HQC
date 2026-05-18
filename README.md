@@ -28,27 +28,41 @@ Catalogue de questions atomiques pour le programme HQC, 3e secondaire (PFEQ, Min
 - Données dans `assets/js/data.js`
 - Logique applicative dans `assets/js/app.js`
 
-## État actuel — v1.14 (mai 2026)
+## État actuel — v1.15 (mai 2026)
 
-**30 questions** dans le catalogue. Couverture par période :
+**38 questions** dans le catalogue. Couverture par période :
 
 | Période | Questions | OI couvertes |
 |---|---|---|
 | **P1** — Des origines à 1608 | 14 | 7 / 7 ✓ |
-| **P2** — 1608-1760 | **13** | **6 / 7** (manque : changements et continuités) |
+| **P2** — 1608-1760 | **21** | **7 / 7 ✓** |
 | **P3** — 1760-1791 | 2 | 2 / 7 |
 | **P4** — 1791-1840 | 1 | 1 / 7 |
 
-### Quoi de neuf (v1.14)
+### Quoi de neuf (v1.15)
 
-**Intégration complète des 3 RÉCIT thématiques P2 restants** — 8 nouvelles questions issues de :
-- *Le régime seigneurial et la population coloniale* : 2 questions (objectifs d'implantation, Trudel vs Grenier)
-- *La Nouvelle-France et le territoire* : 3 questions (épidémie Huronie, mercantilisme, mode d'occupation)
-- *La diplomatie et la guerre en Nouvelle-France* : 3 questions (Grande Paix 1701, traité d'Utrecht, ordre chrono Conquête)
+**Intégration des 8 questions du PDF *Questions courtes 1608-1760* (RÉCIT)** — couverture P2 complétée à 7/7 OI.
 
-P2 couvre désormais 6 des 7 OI (manque uniquement « Déterminer des changements et des continuités »).
+| # | OI | Format de réponse |
+|---|---|---|
+| Q1 | Établir des faits | lines |
+| Q2 | **Changements et continuités** ⭐ | lines |
+| Q3 | Causes et conséquences | lines |
+| Q4 | Mettre en relation | category-buckets (3 cat × 1 slot) |
+| Q5 | Situer | before-after-axis (pivot : gouvernement royal) |
+| Q6 | Différences et similitudes | lines |
+| Q7 | Liens de causalité | lines (rubrique matricielle 3 pts) |
+| Q8 | Situer | chrono-ordering (4 cases, Doc 3 pré-placé) |
 
-Aucune nouvelle réglette créée — les 8 questions réutilisent les constantes `R_*` existantes.
+⭐ La Q2 résout l'OI manquante en P2 (« déterminer des changements et des continuités »).
+
+**4 nouvelles réglettes** créées :
+- `R_CONTINUITES_2PT_GEN` — miroir de `R_CHANGEMENTS_2PT_GEN` pour Q2
+- `R_CAUSES_2PT_CONS_SEULE` — variante « une conséquence seule » pour Q3 (libellé au singulier corrigé silencieusement du pluriel de la source)
+- `R_RELATION_2PT_3_PART` — variante 3 sur 3 pour Q4
+- `R_SIMILITUDES_2PT_GEN` — miroir de `R_DIFFERENCES_2PT_GEN` pour Q6
+
+**Convention « un acteur = un document » respectée** — les documents partagés entre questions (Doc 7 Mercier, Doc 18 Traiteur) sont dupliqués dans des sections DOCS séparées avec numérotation locale.
 
 ## Crédit
 
