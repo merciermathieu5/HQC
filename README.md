@@ -28,9 +28,27 @@ Catalogue de questions atomiques pour le programme HQC, 3e secondaire (PFEQ, Min
 - Données dans `assets/js/data.js`
 - Logique applicative dans `assets/js/app.js`
 
-## État actuel — test catalogue
+## État actuel — v1.14 (mai 2026)
 
-Pilote initial avec 8 questions extraites de l'évaluation ESRDL — Été 2022, couvrant les 4 périodes et 6 des 7 opérations intellectuelles (manque : « Déterminer des changements et des continuités »).
+**30 questions** dans le catalogue. Couverture par période :
+
+| Période | Questions | OI couvertes |
+|---|---|---|
+| **P1** — Des origines à 1608 | 14 | 7 / 7 ✓ |
+| **P2** — 1608-1760 | **13** | **6 / 7** (manque : changements et continuités) |
+| **P3** — 1760-1791 | 2 | 2 / 7 |
+| **P4** — 1791-1840 | 1 | 1 / 7 |
+
+### Quoi de neuf (v1.14)
+
+**Intégration complète des 3 RÉCIT thématiques P2 restants** — 8 nouvelles questions issues de :
+- *Le régime seigneurial et la population coloniale* : 2 questions (objectifs d'implantation, Trudel vs Grenier)
+- *La Nouvelle-France et le territoire* : 3 questions (épidémie Huronie, mercantilisme, mode d'occupation)
+- *La diplomatie et la guerre en Nouvelle-France* : 3 questions (Grande Paix 1701, traité d'Utrecht, ordre chrono Conquête)
+
+P2 couvre désormais 6 des 7 OI (manque uniquement « Déterminer des changements et des continuités »).
+
+Aucune nouvelle réglette créée — les 8 questions réutilisent les constantes `R_*` existantes.
 
 ## Crédit
 

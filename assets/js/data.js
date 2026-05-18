@@ -1,8 +1,7 @@
 /* ============================================================
-   HQC · 3e secondaire — Données
-   Test catalogue · Évaluation ESRDL — Été 2022 (8 questions)
-   Périodes couvertes : 1, 2, 3, 4 (toutes)
-   OI couvertes : 6/7 (manque : Déterminer des changements et continuités)
+   HQC · 3e secondaire — Données — v1.14 (mai 2026)
+   30 questions · 4 périodes · 7 OI
+   Couverture : P1 = 14 (7/7 OI), P2 = 13 (6/7), P3 = 2, P4 = 1
    ============================================================ */
 
 (function () {
@@ -425,6 +424,94 @@ const DOCS = {
       sources: ["Source : Édits, ordonnances royaux, vol. 1, p. 37-39, cité dans Marcel TRUDEL, La Nouvelle-France par les textes : Les cadres de vie, Hurtubise, Montréal, 2003, p. 50-51."] }
   ],
 
+  // ===== P2 — Causes/conséquences — Objectifs de l'implantation du régime seigneurial =====
+  // Chaque historien est un document distinct (un acteur = un document).
+  'evolution-coloniale-causes-1': [
+    { id: "ec-cs1-d1", title: "Document 1 : Benoît Grenier (2012)", layout: "text-only",
+      text: "« Pour des Européens, occuper le sol implique sa mise en valeur par l'agriculture, puisque la terre constitue le fondement de l'économie et de la société d'Ancien Régime. La seigneurie sera l'instrument de cette mise en valeur de l'espace laurentien et s'inscrira dès lors au cœur du processus de colonisation. »",
+      sources: ["Source : Benoît GRENIER, Brève histoire du régime seigneurial, Montréal, Boréal, 2012."] },
+    { id: "ec-cs1-d2", title: "Document 2 : Marcel Trudel (1971)", layout: "text-only",
+      text: "« [...] la France a fait du régime seigneurial canadien un système que l'on peut résumer comme suit : accorder à des entrepreneurs qu'on appellera seigneurs, une portion plus ou moins grande de terre pour y établir des habitants, en fixant d'avance et d'une façon précise des droits et devoirs réciproques dont l'État se réserve la surveillance minutieuse. »",
+      sources: ["Source : Marcel TRUDEL, Le régime seigneurial, Ottawa, La société historique du Canada, 1971, p. 3."] }
+  ],
+
+  // ===== P2 — Causes/conséquences — Conséquences économiques du mercantilisme =====
+  'evolution-coloniale-causes-2': [
+    { id: "ec-cs2-d1", title: "Document 1 : John A. Dickinson et Brian Young (2009)", layout: "text-only",
+      text: "« La politique impériale était largement dictée par le mercantilisme qui favorisait le monopole et qui considérait les colonies comme des fournisseurs de ressources naturelles d'une part, et comme des marchés pour les produits manufacturés de la métropole, d'autre part. [...] Le commerce colonial était encouragé, mais non la production de biens qui [auraient] fait concurrence aux produits [importés de France]. »",
+      sources: ["Source : John A. DICKINSON et Brian YOUNG, Brève histoire socio-économique du Québec, Québec, Septentrion, 2009, p. 100."] },
+    { id: "ec-cs2-d2", title: "Document 2 : Rosario Bilodeau (1956)", layout: "text-only",
+      text: "« [Bien qu'il soit géographiquement possible de commercer avec les Treize colonies], le pacte colonial [défend] tout commerce avec les Anglais, le commerce ne devant se faire qu'avec la France. Au moment où le marché français était saturé de castor canadien, cette mesure mercantiliste pèse lourdement sur la vie économique de la Nouvelle-France et présente, du point de vue colonial, une regrettable restriction à la liberté économique et politique. »",
+      sources: ["Source : Rosario BILODEAU, « Liberté économique et politique des Canadiens sous le régime français », Revue d'histoire de l'Amérique française, vol. 10, no 1, 1956, p. 49-58."] }
+  ],
+
+  // ===== P2 — Causes/conséquences — Guerre de Succession d'Espagne (territoriale + économique) =====
+  'evolution-coloniale-causes-3': [
+    { id: "ec-cs3-d1", title: "Document 1 : Territoire revendiqué par la France après le traité d'Utrecht (1713)", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-causes-3/doc1.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "ec-cs3-d2", title: "Document 2 : Guy Frégault sur les dépenses militaires", layout: "text-only",
+      text: "« Les dépenses [militaires] faites en [Nouvelle-France] en 1709 [...] se chiffrent par 184 000 livres*. [...] En raison de l'intensité qui peut marquer les opérations militaires en 1711 [...] [l'intendant] Raudot demande d'inscrire au budget [de guerre et de fortifications] 148 000 livres. Il y a ensuite les frais ordinaires de l'administration : la [paie] des troupes, [la paie] des officiers supérieurs, etc. [En 1711], pour assurer la défense du pays [...], l'intendant demande [donc] un peu plus de 560 000 livres. »\n\n* Livres : Monnaie de la France à cette époque.",
+      sources: ["Source : Guy FRÉGAULT, « Essai sur les finances canadiennes (1700-1750) », Revue d'histoire de l'Amérique française, vol. 39, no 2, 1968, p. 319."] }
+  ],
+
+  // ===== P2 — Différences/similitudes — Trudel vs Grenier sur le rôle de la seigneurie =====
+  'evolution-coloniale-differences-3': [
+    { id: "ec-d3-d1", title: "Document 1 : Marcel Trudel sur le régime seigneurial", layout: "text-only",
+      text: "« L'entraide sociale établie en système »\n\n« Dans cette vallée du Saint-Laurent, [...] le simple immigrant pouvait survivre plus facilement si la société lui offrait un système d'entraide. L'État crée donc le seigneur qui donnera la terre et qui, en retour de certains droits prévus par contrat, [offrira son aide] aux habitants. [...] À son tour, [le censitaire] aidera le seigneur en remplissant les devoirs requis et en faisant ses trois ou quatre jours de corvée par année. »",
+      sources: ["Source : Marcel TRUDEL, Le régime seigneurial, Ottawa, La société historique du Canada, 1971, p. 18."] },
+    { id: "ec-d3-d2", title: "Document 2 : Benoît Grenier sur le régime seigneurial", layout: "text-only",
+      text: "« En vertu de ce système, la terre n'est jamais possédée parfaitement et entièrement ; on la tient de quelqu'un (d'où le mot tenure) dans un rapport de subordination et à l'intérieur d'une hiérarchie. La seigneurie est donc non seulement un territoire mais aussi et surtout un rapport entre individus, rapport marqué par l'inégalité sociale. »",
+      sources: ["Source : Benoît GRENIER, Brève histoire du régime seigneurial, Montréal, Boréal, 2012."] }
+  ],
+
+  // ===== P2 — Différences/similitudes — Point d'accord sur les causes de l'épidémie de la Huronie =====
+  'evolution-coloniale-differences-4': [
+    { id: "ec-d4-d1", title: "Document 1 : Témoignage d'une femme huronne-wendate", layout: "text-only",
+      text: "« [Les missionnaires] se sont logés dans un [...] village huron-wendat où tout le monde se portait bien. Aussitôt qu'ils s'y sont établis, tout le monde y est mort sauf trois ou quatre personnes. Les missionnaires ont changé de lieu et il en est arrivé de même. Ils sont allés visiter les cabanes des autres villages et il n'y a que celles où ils ne sont pas entrés qui aient été épargnées par la mortalité et la maladie. »",
+      sources: ["Source : Marie de l'INCARNATION, « Lettre XIX à la supérieure des Ursulines de Tours », Lettres de la vénérable mère Marie de l'Incarnation, première supérieure des Ursulines de la Nouvelle-France, Paris, Louis Billaine, 1681, p. 340."] },
+    { id: "ec-d4-d2", title: "Document 2 : Synthèse de Bibliothèque et Archives nationales du Québec", layout: "text-only",
+      text: "« Comme ils vivaient au cœur du réseau commercial des Grands Lacs, les Hurons-Wendats sont rapidement devenus les principaux alliés et fournisseurs de fourrures des Français dans la région. Les Jésuites y ont fondé plusieurs missions, dont la principale était Sainte-Marie-des-Hurons. L'intensification des contacts entre Hurons-Wendats et Européens a provoqué des épidémies qui, de 1634 à 1640, ont entraîné la mort de plus de la moitié du peuple huron-wendat, qui comptait auparavant plus de 20 000 personnes réparties dans une vingtaine de villages. »",
+      sources: ["Source : Bibliothèque et Archives nationales du Québec, « Destruction de la Huronie par les Iroquois, 1649-1650 », La Ligne du temps du Québec, 2020."] }
+  ],
+
+  // ===== P2 — Établir des faits — Mode d'occupation du territoire en Nouvelle-France =====
+  'evolution-coloniale-faits-1': [
+    { id: "ec-f1-d1", title: "Document 1", layout: "text-only",
+      text: "Hérité du modèle féodal français, ce mode d'organisation du territoire favorise le peuplement et la mise en valeur des terres de la colonie. Il est régi par un système de droits et devoirs qui lient entre eux le roi, le seigneur et ses censitaires. Les terres sont établies en longues bandes étroites pour que le plus de personnes possible aient accès au fleuve Saint-Laurent.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P2 — Causalité — Établissement de la Grande Paix de Montréal en 1701 =====
+  // Doc 2 (Potherie texte + image Ratification) est splitté en 2 documents (un acteur = un document).
+  'evolution-coloniale-causalite-2': [
+    { id: "ec-c2-d1", title: "Document 1 : Gilles Havard sur la mission diplomatique française", layout: "text-only",
+      text: "« Aussi Callière dépêcha-t-il deux ambassadeurs [...] pour préparer à l'ouest le rendez-vous de 1701. La mission des deux hommes [est de visiter] « toutes les nations [de la région des Grands Lacs] » pour [...] convaincre les chefs alliés de se rendre à Montréal [...], accompagnés de tous leurs captifs iroquois, en vue d'un échange général des prisonniers [...]. Parallèlement à cette mission diplomatique française, Kondiaronk* et Koutaoiliboe** [...] menèrent eux aussi une politique soutenue et d'ailleurs beaucoup plus décisive pour engager les différentes nations de l'alliance à venir pactiser avec les Iroquois à Montréal. »\n\n* Kondiaronk : chef très influent de la nation Hurons-Pétuns.\n** Koutaoiliboe : chef de la nation des Outaouais.",
+      sources: ["Source : Gilles HAVARD, La Grande Paix de Montréal de 1701. Les voies de la diplomatie franco-amérindienne, Montréal, Recherches amérindiennes au Québec, 1992, p. 118."] },
+    { id: "ec-c2-d2", title: "Document 2 : Bacqueville de La Potherie sur la cérémonie du calumet", layout: "text-only",
+      text: "« Après ces discours, on apporta au chevalier de Callière un grand calumet [...] qu'il fuma. Ce calumet lui avait été remis par le chef des Miamis, Chichicatalo, l'un des personnages les plus influents des Pays-d'en-Haut. [...] On porta ensuite le calumet aux Iroquois et aux députés de tous nos alliés, qui à tour de rôle firent de même. Enfin tous les ambassadeurs présents apposèrent leurs marques respectives au bas du traité : un orignal, un castor, un ours, un chevreuil ou d'autres animaux. »",
+      sources: ["Source : Bacqueville de LA POTHERIE, Histoire de l'Amérique septentrionale (1753), dans A. BEAULIEU et R. VIAU, La Grande Paix. Chronique d'une saga diplomatique, Montréal, Libre Expression, 2001, p. 103."] },
+    { id: "ec-c2-d3", title: "Document 3 : Ratification de la Grande Paix de Montréal (1701)", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-causalite-2/doc3.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Ratification de la paix conclue entre les Français, leurs alliés (1701), Bibliothèque et Archives Canada, 3050235, folios 43, 43v et 44. Licence : domaine public."] },
+    { id: "ec-c2-d4", title: "Document 4 : Texte du gouvernement du Canada", layout: "text-only",
+      text: "« Les raids des nations des Grands Lacs, ainsi que des épidémies désastreuses, réduisent la population iroquoise de moitié entre 1689 et 1697. En outre, lorsque le traité de Ryswick met fin à la guerre entre les Français et les Britanniques en 1697, les Iroquois perdent l'appui de leurs alliés britanniques dans leur guerre contre la Nouvelle-France. »",
+      sources: ["Source : P. Whitney LACKENBAUER, John MOSES, R. Scott SHEFFIELD et Maxime GOHIER, Les Autochtones et l'expérience militaire canadienne : une histoire, Ottawa, Ministère de la défense nationale, 2010, p. 34."] }
+  ],
+
+  // ===== P2 — Situer dans le temps — Ordre chronologique de 3 événements de la guerre de la Conquête =====
+  'evolution-coloniale-situer-2': [
+    { id: "ec-s2-d1", title: "Document 1 : Vue de la prise de Québec (1759)", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-situer-2/doc1.png", imageWidthCm: 10,
+      sources: ["Source de l'image : Hervey SMYTH, Vue de la prise de Québec, le 13 septembre 1759 (1797), Bibliothèque du Ministère de la défense nationale via Wikimedia Commons. Licence : domaine public."] },
+    { id: "ec-s2-d2", title: "Document 2 : La chute de Montréal", layout: "text-only",
+      text: "Malgré la victoire des Français à Sainte-Foy, ceux-ci doivent abandonner leur tentative de reprendre Québec, car des navires britanniques arrivent peu de temps après. Les Britanniques remontent alors le Saint-Laurent vers Montréal et contraignent les Français à rendre les armes en septembre 1760, ce qui met fin à la guerre de la Conquête.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "ec-s2-d3", title: "Document 3 : Prise de Louisbourg par les Britanniques", layout: "image-only",
+      imageUrl: "assets/img/evolution-coloniale-situer-2/doc3.png", imageWidthCm: 10,
+      sources: ["Source de l'image : Auteur inconnu, Prise de Louisbourg par les Britanniques [...], Bibliothèque et Archives nationales du Québec, 0002724411. Licence : domaine public."] }
+  ],
+
   // ===== P3 — Dégager des différences et des similitudes — Convergence d'historiens =====
   // Chaque point de vue d'historien est dans un document distinct (un acteur = un document).
   'conquete-differences-1': [
@@ -714,6 +801,110 @@ window.DATA = {
         "L'évêque et les administrateurs coloniaux (intendant et gouverneur) s'occupent conjointement des décisions judiciaires en faisant partie intégrante du Conseil souverain. Le clergé et les administrateurs coloniaux rendent donc la justice en Nouvelle-France.",
         "Le clergé s'occupe des soins de santé, de l'éducation ainsi que de l'encadrement des paroissiens en les incitant à avoir de bonnes mœurs (comportements acceptables). Les administrateurs coloniaux, pour leur part, s'occupent des forces armées, de la politique extérieure, de la question autochtone, de l'économie ainsi que du peuplement de la colonie."
       ] },
+
+    // ===== P2 · Déterminer des causes et des conséquences — Objectifs de l'implantation du régime seigneurial =====
+    { id: "q-evolution-coloniale-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique l'objectif social et l'objectif économique de l'implantation du régime seigneurial en Nouvelle-France. Inscris le numéro du document utilisé pour appuyer chaque objectif.",
+        responseSpace: { type: "labeled-list", items: ["Objectif social (doc. ___)", "Objectif économique (doc. ___)"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-ec-cs1", label: "Réglette (4 points)", ...R_CAUSES_4PT_2CAUSES }],
+      documents: pickDocs('evolution-coloniale-causes-1', 1, 2),
+      corrige: [
+        "Objectif social (doc. 2) : établir des habitants en Nouvelle-France OU assurer le peuplement de la vallée du Saint-Laurent OU fixer les droits et les devoirs des seigneurs et des censitaires.",
+        "Objectif économique (doc. 1) : assurer la mise en valeur des terres OU assurer le développement de l'agriculture."
+      ] },
+
+    // ===== P2 · Déterminer des causes et des conséquences — Conséquences économiques du mercantilisme =====
+    { id: "q-evolution-coloniale-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, détermine deux conséquences économiques du mercantilisme sur le développement de la Nouvelle-France.",
+        responseSpace: { type: "labeled-list", items: ["Conséquence économique 1", "Conséquence économique 2"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-ec-cs2", label: "Réglette (4 points)", ...R_CAUSES_4PT_2CAUSES }],
+      documents: pickDocs('evolution-coloniale-causes-2', 1, 2),
+      corrige: [
+        "Le mercantilisme décourage la production de biens en Nouvelle-France. Il est donc impossible pour un artisan de la Nouvelle-France de concurrencer un artisan européen.",
+        "Le mercantilisme empêche le commerce entre les colonies française et anglaise."
+      ] },
+
+    // ===== P2 · Déterminer des causes et des conséquences — Conséquences territoriale et économique d'Utrecht =====
+    { id: "q-evolution-coloniale-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique une conséquence territoriale et une conséquence économique de la guerre de Succession d'Espagne sur la Nouvelle-France.",
+        responseSpace: { type: "labeled-list", items: ["Conséquence territoriale", "Conséquence économique"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-ec-cs3", label: "Réglette (4 points)", ...R_CAUSES_4PT_2CAUSES }],
+      documents: pickDocs('evolution-coloniale-causes-3', 1, 2),
+      corrige: [
+        "Après le traité d'Utrecht qui met fin à cette guerre en 1713, la France cède Terre-Neuve, l'Acadie et la Baie d'Hudson à la Grande-Bretagne.",
+        "L'intendant de la Nouvelle-France demande à la couronne d'augmenter le budget pour financer les opérations militaires."
+      ] },
+
+    // ===== P2 · Dégager des différences et des similitudes — Trudel vs Grenier sur le rôle de la seigneurie =====
+    { id: "q-evolution-coloniale-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent les positions de deux historiens sur le régime seigneurial. Sur quel point précis sont-ils en désaccord ?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ec-d3", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_GEN }],
+      documents: pickDocs('evolution-coloniale-differences-3', 1, 2),
+      corrige: "Marcel Trudel et Benoît Grenier ne s'entendent pas sur le rôle de la seigneurie. Marcel Trudel soutient qu'il s'agit d'un système d'entraide alors que Benoît Grenier considère qu'il s'agit d'un système de domination de l'élite coloniale et des seigneurs sur les censitaires." },
+
+    // ===== P2 · Dégager des différences et des similitudes — Point d'accord sur les causes de l'épidémie de la Huronie =====
+    { id: "q-evolution-coloniale-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Les documents 1 et 2 relatent les causes de l'épidémie qui a touché la Huronie vers 1650. Sur quel point précis ces documents sont-ils d'accord ?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ec-d4", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_CONVERGENCE }],
+      documents: pickDocs('evolution-coloniale-differences-4', 1, 2),
+      corrige: "Les deux documents s'entendent pour dire que ce sont les contacts avec les missionnaires qui ont provoqué les épidémies dans les villages autochtones hurons-wendats." },
+
+    // ===== P2 · Établir des faits — Mode d'occupation du territoire =====
+    { id: "q-evolution-coloniale-faits-1", operation: "Établir des faits", numero: 1, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Selon le document 1, quel mode d'occupation du territoire est implanté en Nouvelle-France par les autorités coloniales ?",
+        responseSpace: { type: "lines", count: 1 }
+      },
+      reglettes: [{ id: "r-ec-f1", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('evolution-coloniale-faits-1', 1),
+      corrige: "Le régime seigneurial OU la seigneurie OU le régime féodal." },
+
+    // ===== P2 · Établir des liens de causalité — Établissement de la Grande Paix de Montréal en 1701 =====
+    { id: "q-evolution-coloniale-causalite-2", operation: "Établir des liens de causalité", numero: 2, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 4, explique comment les Premières Nations et les Français ont établi une paix en 1701. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Le contexte européen à la fin du 17e siècle",
+          "L'action d'un chef autochtone et l'action du gouverneur français",
+          "Un rassemblement à Montréal en 1701"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-ec-c2", label: "Réglette (3 points)", opLabel: "Établir des liens de causalité", maxPoints: 3, ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('evolution-coloniale-causalite-2', 1, 2, 3, 4),
+      corrige: "Le traité de Ryswick de 1697 mène à une trêve entre Britanniques et Français : les Britanniques ne soutiennent plus les Iroquois dans leur guerre contre la Nouvelle-France. Affaiblis aussi par les épidémies et les guerres dans la région des Grands Lacs, les Iroquois sont prêts à négocier. Cela amène des chefs autochtones comme Kondiaronk et Koutaoiliboe à utiliser leur influence pour négocier la paix avec les nations de la vallée du Saint-Laurent, et le gouverneur français Callière à envoyer des ambassadeurs pour convaincre les chefs alliés de rendre leurs prisonniers aux Iroquois. En conséquence, après des cérémonies où tous les intervenants fument le calumet, les Français et près de 40 nations autochtones signent la Grande Paix de Montréal en 1701." },
+
+    // ===== P2 · Situer dans le temps et dans l'espace — Ordre chronologique de 3 événements de la Conquête =====
+    { id: "q-evolution-coloniale-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Les documents 1 à 3 font référence à des événements liés à la guerre de la Conquête. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["Plus ancien", "Intermédiaire", "Plus récent"] }
+      },
+      reglettes: [{ id: "r-ec-s2", label: "Réglette (2 points)", ...R_SITUER_2PT_T3 }],
+      documents: pickDocs('evolution-coloniale-situer-2', 1, 2, 3),
+      // Ordre : Doc 3 (Louisbourg juillet 1758) → Doc 1 (Québec sept 1759) → Doc 2 (Montréal sept 1760)
+      corrige: ["Document 3", "Document 1", "Document 2"] },
 
     // ===== Q6 — P3 · Dégager des différences et des similitudes =====
     { id: "q-conquete-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 3,
