@@ -449,10 +449,10 @@ const DOCS = {
   // ===== P4 — Situer dans l'espace — Cartes Acte constitutionnel 1791 =====
   'revendications-situer-1': [
     { id: "rv-s1-d1", title: "Document 1", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-1/doc1.png", imageWidthCm: 11,
+      imageUrl: "assets/img/revendications-situer-1/doc1.png", imageWidthCm: 8,
       sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] },
     { id: "rv-s1-d2", title: "Document 2", layout: "image-only",
-      imageUrl: "assets/img/revendications-situer-1/doc2.png", imageWidthCm: 11,
+      imageUrl: "assets/img/revendications-situer-1/doc2.png", imageWidthCm: 8,
       sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
   ]
 
@@ -578,12 +578,12 @@ window.DATA = {
     { id: "q-experience-autochtones-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
-        prompt: "Les documents 1 à 4 font référence aux explorations des Européens en Amérique du Nord-Est. Place-les en ordre chronologique du plus ancien au plus récent.",
-        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"] }
+        prompt: "Les documents 1 à 4 font référence aux explorations des Européens en Amérique du Nord-Est. Place-les en ordre chronologique du plus ancien au plus récent. Le document 4 est déjà placé pour t'aider.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"], prefilled: [null, "Document 4", null, null] }
       },
-      reglettes: [{ id: "r-ea-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      reglettes: [{ id: "r-ea-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T3 }],
       documents: pickDocs('experience-autochtones-situer-3', 1, 2, 3, 4),
-      // Ordre : Doc 2 (Vikings ~1000) → Doc 4 (Cabot 1498) → Doc 3 (Cartier 1534) → Doc 1 (Chauvin 1600)
+      // Ordre : Doc 2 (Vikings ~1000) → Doc 4 (Cabot 1498, pré-placé) → Doc 3 (Cartier 1534) → Doc 1 (Chauvin 1600)
       corrige: ["Document 2", "Document 4", "Document 3", "Document 1"] },
 
     // ===== P1 · Dégager des différences et des similitudes — Q-G · Mode de vie de trois peuples autochtones =====
@@ -690,12 +690,16 @@ window.DATA = {
     { id: "q-evolution-coloniale-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
-        prompt: "Indique si les faits présentés dans les documents 1 à 3 font référence à l'importance géographique de Montréal et/ou à son rôle économique pour la colonie.",
-        responseSpace: { type: "category-buckets", categories: ["Situation géographique", "Rôle économique"], slots: [2, 2] }
+        prompt: "Indique si les faits présentés dans les documents 1 à 3 font référence à l'importance géographique de Montréal et/ou à son rôle économique pour la colonie. Coche toutes les cases qui s'appliquent à chaque document.",
+        responseSpace: { type: "checkbox-table",
+          columns: ["Importance géographique", "Rôle économique"],
+          rows: ["Document 1", "Document 2", "Document 3"]
+        }
       },
       reglettes: [{ id: "r-ec-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_4_PART }],
       documents: pickDocs('evolution-coloniale-relation-1', 1, 2, 3),
-      corrige: [["Document 1", "Document 3"], ["Document 1", "Document 2"]] },
+      // Doc 1 (pelletiers) : géo + éco · Doc 2 (marchands-équipeurs) : éco seulement · Doc 3 (exploration) : géo seulement
+      corrige: [[true, true], [false, true], [true, false]] },
 
     // ===== P2 · Dégager des différences et des similitudes — Rôles administrateurs vs clergé =====
     { id: "q-evolution-coloniale-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 2,

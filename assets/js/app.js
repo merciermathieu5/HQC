@@ -1653,7 +1653,10 @@
           // Format inspiré du gabarit pédagogique original : trois cercles connectés par
           // des flèches que l'élève remplit de gauche (le plus ancien) à droite (le plus récent).
           // Les `items` servent de petites étiquettes AU-DESSUS de chaque case (hors des encadrés).
+          // `prefilled` (optionnel) : array de même longueur que `items`, contenant la valeur
+          // à afficher pré-placée dans certaines cases (null = vide pour l'élève).
           const items = body.responseSpace.items || [];
+          const prefilled = Array.isArray(body.responseSpace.prefilled) ? body.responseSpace.prefilled : [];
           const n = items.length;
           const totalW = 10500;
           const arrowW = 550;
@@ -1675,15 +1678,24 @@
                 children: [new TextRun({ text: label, size: 18, italics: true, color: "6E685C" })]
               })]
             }));
+            // Si pré-placé : afficher le contenu en gris-italique avec une note discrète « (déjà placé) »
+            const pre = prefilled[i];
+            const boxChildren = pre
+              ? [
+                  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: pre, size: 24, bold: true, color: "8B3A2E" })] }),
+                  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "(déjà placé)", size: 16, italics: true, color: "6E685C" })] })
+                ]
+              : [
+                  new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }),
+                  new Paragraph({ children: [new TextRun({ text: "", size: 24 })] })
+                ];
             boxRow.push(new TableCell({
               width: { size: boxW, type: WidthType.DXA },
               borders: ALL_BORDERS,
               verticalAlign: VerticalAlign.CENTER,
               margins: { top: 100, bottom: 100, left: 80, right: 80 },
-              children: [
-                new Paragraph({ children: [new TextRun({ text: "", size: 24 })] }),
-                new Paragraph({ children: [new TextRun({ text: "", size: 24 })] })
-              ]
+              shading: pre ? { type: "clear", color: "auto", fill: "F8F1E8" } : undefined,
+              children: boxChildren
             }));
             if (i < n - 1) {
               widths.push(arrowW);
