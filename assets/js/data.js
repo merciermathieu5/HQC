@@ -1,7 +1,16 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.19.1 (mai 2026)
-   74 questions · 4 périodes · 7 OI
-   Couverture : P1 = 17 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI) ⭐
+   HQC · 3e secondaire — Données — v1.20.0 (mai 2026)
+   80 questions · 4 périodes · 7 OI
+   Couverture : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI) ⭐
+   v1.20.0 — Intégration de 6 questions tirées de l'Évaluation sommative officielle
+   version A « Des origines à 1608 » (Cahier de l'élève + Dossier documentaire, section A).
+   6/7 questions retenues — SQ3 (différence dans la nomination des chefs iroquoiens vs
+   algonquiens) écartée car doublon de fond avec q-experience-autochtones-differences-2.
+   1 nouvelle réglette : R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 (Q1 soma, libellé
+   « facteurs explicatifs » de la rubrique officielle). Pas de nouvelles images :
+   les 2 illustrations utilisées (Cartier plantant la croix / chasse à l'orignal) sont
+   identiques au pixel près à celles déjà présentes dans la plateforme — md5 vérifié,
+   simple copie dans les nouveaux dossiers de section.
    v1.19.1 — Q4 fam (avant/après Grande Paix de Montréal) : ajout du drapeau
    `cantSplitAllDocs: true` (nouveau dans app.js) pour forcer Word à garder
    énoncé + axe + réglette + les 4 documents sur la même page. Image Doc 4 (Officier
@@ -299,6 +308,18 @@ const R_DIFFSIM_3PT_1DIFF_1SIM = {
   ]
 };
 
+// ============ Réglettes ajoutées v1.20.0 (Évaluation sommative version A — P1) ============
+
+// Déterminer 2 causes (2 points, formulation « facteurs explicatifs ») — Q1 soma P1 :
+// alliance franco-amérindienne. Libellé source de l'évaluation sommative officielle, distinct
+// de R_CAUSES_4PT_2CAUSES (qui vaut 4 pts) et de R_CAUSES_2PT_2CONS (qui parle de conséquences).
+const R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement les facteurs explicatifs. (2 sur 2)",
+  "L'élève détermine partiellement les facteurs explicatifs. (1 sur 2)",
+  "L'élève détermine incorrectement les facteurs explicatifs. (0 sur 2)"
+);
+
 // ============ Helpers de sélection de documents ============
 const pickDocs = (section, ...indices) => indices.map(i => DOCS[section][i - 1]);
 const pickDocsRenumbered = (section, ...indices) => indices.map((origIdx, k) => {
@@ -521,6 +542,89 @@ const DOCS = {
     { id: "ea-cc2-d1", title: "Document 1", layout: "image-only",
       imageUrl: "assets/img/experience-autochtones-changements-2/doc1.png", imageWidthCm: 9,
       sources: ["Source de l'image : Autochtone à la chasse (19e siècle), Archives de la ville de Montréal, BM99,S1,D1. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ============================================================
+  //   v1.20.0 — Sections DOCS de l'Évaluation sommative version A (P1)
+  //   Source : « Des origines à 1608 — Cahier de l'élève / Dossier documentaire ».
+  //   Le PDF source utilise un dossier documentaire commun (14 docs) pour les 7
+  //   questions ; on splitte en 6 sections par question (SQ3 non retenue car
+  //   chevauchement de fond avec q-experience-autochtones-differences-2).
+  // ============================================================
+
+  // ===== P1 — Causes/conséquences — Q1 soma : causes de l'alliance franco-amérindienne =====
+  // Renumérotation depuis le PDF soma (docs source 1, 2 → Doc 1, Doc 2).
+  'experience-autochtones-causes-4': [
+    { id: "ea-c4-d1", title: "Document 1", layout: "text-only",
+      text: "« Au printemps 1603, la région de Tadoussac accueille une grande rencontre diplomatique, à laquelle participent trois nations autochtones (Montagnais, Algonquins et Etchemins) et les Français [représentés par Samuel de Champlain]. Cette rencontre [...] ouvre aussi la voie à la fondation d'une colonie française dans la vallée du Saint-Laurent, car en échange de leur promesse d'assister militairement leurs alliés les Français obtiennent alors l'autorisation de s'installer dans la région. »",
+      sources: ["Source : Alain Beaulieu, « La naissance de l'alliance franco-amérindienne », dans Raymonde Litalien et Denis Vaugeois (dir.), Champlain. La naissance de l'Amérique française, Sillery, Septentrion, 2004, p. 153."] },
+    { id: "ea-c4-d2", title: "Document 2", layout: "text-only",
+      text: "« Les Innus, associés aux Algonquins, associés aux Hurons sont en guerre contre les Iroquois et souhaitent l'appui des Français. Le rapport entre les uns et les autres s'est fondé davantage sur le mode d'une alliance à des fins commerciales et militaires que sur celui d'une conquête. »",
+      sources: ["Source : Jean-Claude Ravet, « Des influences refoulées, entrevue avec Denys Delâge », Relations, no 698, février 2005, en ligne."] }
+  ],
+
+  // ===== P1 — Causes/conséquences — Q2 soma : conséquence sociale de la guerre (adoption des prisonniers) =====
+  // Renumérotation depuis le PDF soma (doc source 3 → Doc 1).
+  'experience-autochtones-causes-5': [
+    { id: "ea-c5-d1", title: "Document 1", layout: "text-only",
+      text: "Lorsqu'un prisonnier est fait lors des escarmouches (raids, embuscades), il arrive qu'il soit adopté par un clan afin de remplacer un membre de la famille tombé au combat. Il prend alors la même position sociale que le défunt (mort). Cela lui permet de recommencer une nouvelle vie au sein de ce clan.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P1 — Situer dans le temps — Q4 soma : antériorité/postériorité à Charlesbourg-Royal (1541) =====
+  // Renumérotation depuis le PDF soma (docs source 5, 6, 7, 8 → Doc 1, 2, 3, 4).
+  // Antériorité : Doc 1 (Cartier Stadaconé, 2e voyage 1535-1536) et Doc 3 (image Cartier croix, 1er voyage 1534).
+  // Postériorité : Doc 2 (Tadoussac 1603 Anadabijou) et Doc 4 (Champlain Acadie 1604-1605).
+  // Image Doc 3 identique au pixel près à experience-autochtones-situer-1/doc3.png (md5 confirmé).
+  'experience-autochtones-situer-4': [
+    { id: "ea-s4-d1", title: "Document 1", layout: "text-only",
+      text: "De retour à Stadaconé, pendant l'hiver, plusieurs Français périssent, victimes du scorbut. D'autres sont sauvés par une infusion à base de conifère, l'annedda, préparée par les Amérindiens. Au printemps, les voyageurs rentrent en Europe, avec le chef Donnacona qu'ils capturent de force et qu'ils promettent de ramener l'année suivante. Cartier n'a pas trouvé le passage vers l'ouest, mais rapporte en Europe de nouvelles connaissances géographiques.",
+      sources: ["Source : Bibliothèque et Archives nationales du Québec, Jacques Cartier visite les villages de Stadaconé et de Hochelaga, en ligne sur Ligne du temps du Québec."] },
+    { id: "ea-s4-d2", title: "Document 2", layout: "text-only",
+      text: "Dans ses récits, [il] rapporte qu'en mai [...], quelque 1000 Autochtones établissent leur campement face à Tadoussac, sur l'actuelle pointe aux Alouettes. À l'arrivée des Français, Innus, Algonquins et Etchemins sont en train de célébrer une victoire contre les Iroquois. L'hôte de l'événement est le chef innu (« grand sagamo ») Anadabijou.",
+      sources: ["Source : Bibliothèque et Archives nationales du Québec, Grande tabagie et première alliance franco-autochtone, en ligne sur Ligne du temps du Québec."] },
+    { id: "ea-s4-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/experience-autochtones-situer-4/doc3.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Henri Julien, Jacques Cartier plantant une croix en sol canadien [...] (1908), Bibliothèque et Archives Canada, MIKAN 2928589. Licence : domaine public."] },
+    { id: "ea-s4-d4", title: "Document 4 : Extrait des Voyages du Sieur de Champlain", layout: "text-only",
+      text: "« Il était difficile de bien connaître ce pays sans y passer un hiver... L'hiver nous a surpris plus tôt que nous le pensions... des soixante-dix-neuf que nous étions, trente-cinq sont morts (du scorbut) et vingt autres ont failli périr... C'est pour cette raison que le sieur de Mons et d'autres se sont dits mécontents de l'établissement... L'hiver dure six mois dans ce pays. »",
+      sources: ["Source : Champlain, Samuel de. VOYAGES (1632). The Champlain Society. Toronto : University of Toronto Press. 1971."] }
+  ],
+
+  // ===== P1 — Causes/conséquences — Q5 soma : fondation du comptoir de Tadoussac =====
+  // Renumérotation depuis le PDF soma (doc source 4 → Doc 1).
+  'experience-autochtones-causes-6': [
+    { id: "ea-c6-d1", title: "Document 1", layout: "text-only",
+      text: "« En 1600, Pierre de Chauvin de Tonnetuit, armateur et marchand de Honfleur, [...] établit un poste de traite [à Tadoussac]. S'étant fait accorder un monopole commercial [sur l'exploitation des fourrures], il y installe 16 colons, mais seulement cinq d'entre eux survivent à l'hiver rigoureux, hébergés, soignés et nourris par les Innus. »",
+      sources: ["Source : Bibliothèque et Archives nationales du Québec, Grande tabagie et première alliance franco-autochtone, en ligne sur Ligne du temps du Québec."] }
+  ],
+
+  // ===== P1 — Mettre en relation — Q6 soma : famille linguistique algonquienne vs iroquoienne =====
+  // Renumérotation depuis le PDF soma (docs source 10, 11, 12, 13 → Doc 1, 2, 3, 4).
+  // Algonquien : Doc 1 (patrilinéarité) et Doc 2 (image chasse orignal).
+  // Iroquoien : Doc 3 (agriculture maïs/courge/haricots) et Doc 4 (partage des tâches sédentaires).
+  // Image Doc 2 identique au pixel près à experience-autochtones-relation-1/doc2.png (md5 confirmé).
+  'experience-autochtones-relation-3': [
+    { id: "ea-r3-d1", title: "Document 1", layout: "text-only",
+      text: "« La plupart des peuples [...] étaient [patrilinéaires], ce qui implique que le père déterminait l'appartenance au groupe de base. Le plus souvent, la femme venait habiter dans la maison de son époux. Certains membres de [cette] famille [...], comme les [Abénakis, Mi'gmaqs et les Malécites], reconnaissaient [néanmoins] des liens de filiation du côté maternel ou des deux lignées à la fois, celle du père et de la mère. »",
+      sources: ["Source : Gilles Berger, Diane Boily et Sylvie Savoie, « Territoires et sociétés algonquiennes vers 1500 — Rôle des hommes », EDUTIC : AKI — Sociétés et territoires autochtones, page consultée le 21 janvier 2022."] },
+    { id: "ea-r3-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/experience-autochtones-relation-3/doc2.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Bernard Duchesne, Des hommes ramènent au campement un orignal qu'ils ont chassé. Licence : utilisation permise en contexte éducatif seulement (BY-NC)."] },
+    { id: "ea-r3-d3", title: "Document 3", layout: "text-only",
+      text: "Cultiver nécessite beaucoup de travail, du printemps jusqu'à l'automne. Il faut donc une présence constante dans les champs. Les principaux produits de l'agriculture sont le maïs, les haricots et la courge, qui forment les principales sources de l'alimentation de cette famille linguistique.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "ea-r3-d4", title: "Document 4", layout: "text-only",
+      text: "« À moins de circonstances exceptionnelles, jamais on ne voyait les hommes participer aux travaux des femmes, ni les femmes partager ceux des hommes. Les tâches exigeant des déplacements importants revenaient aux hommes, tandis que les activités plus sédentaires étaient réservées aux femmes. [...] Ainsi, les femmes sèment, cultivent, cuisinent, cousent, entretiennent les maisons, font la cueillette et éduquent les enfants alors que les hommes abattent les arbres, pêchent, chassent, commercent et construisent les canots, les maisons et les fortifications, et font la guerre. »",
+      sources: ["Source : Denys Delâge, Le pays renversé. Amérindiens et Européens en Amérique du Nord-Est (1600-1664), Montréal, Boréal, 1991, p. 63."] }
+  ],
+
+  // ===== P1 — Différences/similitudes — Q7 soma : usage du chaudron de cuivre (perspectives autochtone vs européenne) =====
+  // Renumérotation depuis le PDF soma (doc source 14 → Doc 1).
+  'experience-autochtones-differences-5': [
+    { id: "ea-d5-d1", title: "Document 1", layout: "text-only",
+      text: "« Le cuivre européen est réservé à des usages cérémoniaux et rituels [chez certaines nations autochtones]. Chez les groupes iroquoiens des Grands Lacs, les chaudrons de cuivre ne viennent pas remplacer les traditionnels pots en terre cuite utilisés pour la cuisine de tous les jours [comme chez les Européens]. Les chaudrons sont au contraire [...] retirés de la circulation quotidienne, ils sont conservés dans les habitations où ils servent à rehausser les décors intérieurs. »",
+      sources: ["Source : Laurier Turgeon, Une histoire de la Nouvelle-France : Français et Amérindiens au XVIe siècle, Paris, Belin, 2019."] }
   ],
 
   // ===== P2 — Causalité — Démographie et filles du Roy =====
@@ -2057,6 +2161,103 @@ window.DATA = {
       reglettes: [{ id: "r-ea-cc2", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
       documents: pickDocs('experience-autochtones-changements-2', 1),
       corrige: "Un accès aux armes à feu et à d'autres objets occidentaux (vêtements, couvertures, objets en métal), ou l'intégration à un nouveau réseau d'échange." },
+
+    // ============================================================
+    //   v1.20.0 — Évaluation sommative version A — Des origines à 1608 (P1)
+    //   Source : « Cahier de l'élève — Section A / Dossier documentaire — Section A ».
+    //   6 des 7 questions intégrées (SQ3 sur la nomination des chefs iroquoiens vs
+    //   algonquiens écartée : doublon de fond avec q-experience-autochtones-differences-2).
+    // ============================================================
+
+    // ===== P1 · Causes/conséquences — Q1 soma : 2 causes de l'alliance franco-amérindienne =====
+    // Renumérotation depuis le PDF soma (docs source 1, 2 → Doc 1, Doc 2).
+    { id: "q-experience-autochtones-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique deux causes de l'alliance franco-amérindienne.",
+        responseSpace: { type: "labeled-list", items: ["Cause 1", "Cause 2"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-ea-c4", label: "Réglette (2 points)", ...R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 }],
+      documents: pickDocs('experience-autochtones-causes-4', 1, 2),
+      corrige: [
+        "Les Français souhaitent obtenir la permission de s'installer sur le territoire.",
+        "Plusieurs nations autochtones (Montagnais, Algonquins, Etchemins, Hurons-Wendats) cherchent un allié militaire dans le conflit qui les oppose aux Iroquois."
+      ] },
+
+    // ===== P1 · Causes/conséquences — Q2 soma : conséquence sociale de la guerre (adoption des prisonniers) =====
+    // Renumérotation depuis le PDF soma (doc source 3 → Doc 1).
+    // Réutilisation de R_CAUSES_2PT_CONS_SEULE (libellé quasi-identique : « plus ou moins la
+    // conséquence » vs « plus ou moins correctement la conséquence » — variation sémantique mineure).
+    { id: "q-experience-autochtones-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Indique une conséquence sociale de la guerre chez les nations autochtones du nord-est de l'Amérique.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ea-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('experience-autochtones-causes-5', 1),
+      corrige: "Grâce aux prisonniers faits lors de la guerre, il est possible d'intégrer un ennemi dans la communauté afin qu'il remplace un membre tué lors de l'escarmouche." },
+
+    // ===== P1 · Situer dans le temps — Q4 soma : antériorité/postériorité à Charlesbourg-Royal (1541) =====
+    // Renumérotation depuis le PDF soma : docs source 5, 6, 7, 8 → Doc 1, 2, 3, 4.
+    // Antériorité : Doc 1 (Cartier Stadaconé, 2e voyage 1535-1536) et Doc 3 (image Cartier croix, 1er voyage 1534).
+    // Postériorité : Doc 2 (Tadoussac 1603 Anadabijou) et Doc 4 (Champlain Acadie 1604-1605).
+    // Variante de q-experience-autochtones-situer-1 (même pivot, documents source différents).
+    { id: "q-experience-autochtones-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Indique si les documents 1 à 4 sont antérieurs ou postérieurs à la fondation de l'établissement de Charlesbourg-Royal en 1541.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Antériorité", afterLabel: "Postériorité", pivot: "Fondation de Charlesbourg-Royal (1541)", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-ea-s4", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('experience-autochtones-situer-4', 1, 2, 3, 4),
+      corrige: { before: ["Document 1", "Document 3"], after: ["Document 2", "Document 4"] } },
+
+    // ===== P1 · Causes/conséquences — Q5 soma : cause de la fondation du comptoir de Tadoussac =====
+    // Renumérotation depuis le PDF soma (doc source 4 → Doc 1).
+    // Note : la réglette source dit « la conséquence » alors que l'énoncé demande « une cause »
+    // (probable erreur de copier-coller du PDF source). Correction silencieuse vers
+    // R_CAUSES_2PT_GEN_1CAUSE (libellé cohérent avec l'énoncé).
+    { id: "q-experience-autochtones-causes-6", operation: "Déterminer des causes et des conséquences", numero: 6, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Indique une cause de la fondation d'un comptoir commercial à Tadoussac par Pierre Chauvin de Tonnetuit.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-ea-c6", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('experience-autochtones-causes-6', 1),
+      corrige: "Le commerce des fourrures nécessite la fondation d'un comptoir commercial à Tadoussac." },
+
+    // ===== P1 · Mettre en relation — Q6 soma : famille linguistique algonquienne vs iroquoienne =====
+    // Renumérotation depuis le PDF soma : docs source 10, 11, 12, 13 → Doc 1, 2, 3, 4.
+    // Variante de q-experience-autochtones-relation-1 (même format, documents source différents).
+    // Note : cette question déborde naturellement sur 2 pages (énoncé + buckets + réglette +
+    // Doc 1 + Doc 2 image sur la 1re ; Doc 3 + Doc 4 sur la 2e). Le drapeau cantSplitAllDocs
+    // a été testé et n'aide pas, car le contenu dépasse une page complète. Le découpage
+    // naturel respecte la grille 2-colonnes (paires Doc 1+2 et Doc 3+4).
+    { id: "q-experience-autochtones-relation-3", operation: "Mettre en relation des faits", numero: 3, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Indique si les documents 1 à 4 correspondent à la famille linguistique algonquienne ou à la famille linguistique iroquoienne.",
+        responseSpace: { type: "category-buckets", categories: ["Famille algonquienne", "Famille iroquoienne"], slots: [2, 2] }
+      },
+      reglettes: [{ id: "r-ea-r3", label: "Réglette (2 points)", ...R_RELATION_2PT_4_PART }],
+      documents: pickDocs('experience-autochtones-relation-3', 1, 2, 3, 4),
+      corrige: [["Document 1", "Document 2"], ["Document 3", "Document 4"]] },
+
+    // ===== P1 · Différences/similitudes — Q7 soma : usage du chaudron de cuivre (perspectives) =====
+    // Renumérotation depuis le PDF soma (doc source 14 → Doc 1).
+    // Réutilisation de R_DIFFERENCES_2PT_GEN (libellé du niveau 0 légèrement plus complet :
+    // « dégage incorrectement la différence ou ne la dégage pas » vs source « ne dégage pas »).
+    { id: "q-experience-autochtones-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Le document 1 présente les perspectives iroquoienne et européenne sur l'utilisation du chaudron de cuivre. Indique une différence entre les deux perspectives.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-ea-d5", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_GEN }],
+      documents: pickDocs('experience-autochtones-differences-5', 1),
+      corrige: "Les chaudrons de cuivre sont utilisés lors de rituels et de cérémonies, ainsi que pour décorer l'intérieur des habitations chez les Autochtones, alors qu'ils sont utilisés pour la cuisine chez les Européens." },
 
     // ===== P2 · Situer dans le temps — Q4 fam : avant/après la Grande Paix de Montréal =====
     // Renumérotation depuis le PDF Familiarisation : docs 5, 6, 7, 8 → Doc 1, 2, 3, 4.
