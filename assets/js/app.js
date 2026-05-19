@@ -55,8 +55,8 @@
   }
 
   function populateFilters() {
-    // Affichage trié par niveau (Sec 1 d'abord) ; ordre stable pour réalités de même niveau.
-    const realitesParNiveau = DATA.realites_sociales.slice().sort((a, b) => a.niveau - b.niveau);
+    // Affichage trié par annee puis par niveau (3e sec d'abord, puis 4e sec).
+    const realitesParNiveau = DATA.realites_sociales.slice().sort((a, b) => (a.annee - b.annee) || (a.niveau - b.niveau));
     realitesParNiveau.forEach(r => {
       const o = document.createElement('option');
       o.value = r.id; o.textContent = r.titre;
@@ -104,12 +104,15 @@
 
   // ====== FILTRES ======
   function applyFilters() {
-    const niv = el.filterNiveau.value;
+    const niv = el.filterNiveau.value;  // format "annee-niveau" (ex. "3-1", "4-2") ou "" pour toutes
     const rea = el.filterRealite.value;
     const op  = el.filterOp.value;
 
     state.filteredQuestions = DATA.questions.filter(q => {
-      if (niv && String(q.niveau) !== niv) return false;
+      if (niv) {
+        const [filterAnnee, filterNiveau] = niv.split('-').map(Number);
+        if (q.annee !== filterAnnee || q.niveau !== filterNiveau) return false;
+      }
       if (rea && q.realite_sociale_id !== rea) return false;
       if (op  && q.operation !== op) return false;
       return true;
@@ -153,7 +156,7 @@
     const groupsMap = new Map();
     DATA.realites_sociales
       .slice()
-      .sort((a, b) => a.niveau - b.niveau)
+      .sort((a, b) => (a.annee - b.annee) || (a.niveau - b.niveau))
       .forEach(r => groupsMap.set(r.id, []));
     state.filteredQuestions.forEach(q => {
       if (!groupsMap.has(q.realite_sociale_id)) groupsMap.set(q.realite_sociale_id, []);
@@ -214,10 +217,11 @@
         const checked = isQuestionUsed(q.id) ? 'checked' : '';
         const pointsTotal = computeQuestionPoints(q);
         const realite = realiteTitleById[q.realite_sociale_id] || '';
+        const periodeGlobale = ((q.annee || 3) - 3) * 4 + q.niveau;
 
         const tagsHtml = `
           <div class="q-meta">
-            <span class="tag tag-niveau">Période ${q.niveau}</span>
+            <span class="tag tag-niveau">Période ${periodeGlobale}</span>
             <span class="tag tag-operation">${escapeHtml(q.operation)}</span>
             <span class="tag tag-numero">#${q.numero}</span>
             ${realite ? `<span class="tag tag-realite" data-realite-idx="${realiteIdx}">${escapeHtml(realite)}</span>` : ''}
@@ -673,14 +677,18 @@
     // Déterminer le titre dynamique selon les questions sélectionnées (même logique que la couverture du cahier)
     const corrNiveaux = new Set();
     const corrRealites = new Set();
+    const corrPeriodesGlobales = new Set();
     groups.forEach(g => {
       const q = DATA.questions.find(x => x.id === g.questionId);
       if (q) {
         corrNiveaux.add(q.niveau);
         corrRealites.add(q.realite_sociale_id);
+        const annee = q.annee || 3;
+        corrPeriodesGlobales.add((annee - 3) * 4 + q.niveau);
       }
     });
     const corrUniformNiveau = corrNiveaux.size === 1 ? [...corrNiveaux][0] : null;
+    const corrUniformPeriodeGlobale = corrPeriodesGlobales.size === 1 ? [...corrPeriodesGlobales][0] : null;
     const corrUniformRealiteId = corrRealites.size === 1 ? [...corrRealites][0] : null;
     const corrUniformRealiteTitre = corrUniformRealiteId
       ? (DATA.realites_sociales.find(r => r.id === corrUniformRealiteId) || {}).titre
@@ -688,8 +696,8 @@
 
     // Construire le sous-titre selon ce qui est sélectionné
     let subtitleText;
-    if (corrUniformRealiteTitre && corrUniformNiveau != null) {
-      subtitleText = `${corrUniformRealiteTitre} · Période ${corrUniformNiveau}`;
+    if (corrUniformRealiteTitre && corrUniformPeriodeGlobale != null) {
+      subtitleText = `${corrUniformRealiteTitre} · Période ${corrUniformPeriodeGlobale}`;
     } else if (corrUniformRealiteTitre) {
       subtitleText = corrUniformRealiteTitre;
     } else if (corrRealites.size > 1) {
@@ -1141,14 +1149,19 @@
     // Détection uniformité niveau / réalité sociale
     const niveaux = new Set();
     const realites = new Set();
+    const periodesGlobales = new Set();
     state.cahier.forEach(p => {
       const q = DATA.questions.find(x => x.id === p.questionId);
       if (q) {
         niveaux.add(q.niveau);
         realites.add(q.realite_sociale_id);
+        // Période globale P1-P8 : (annee - 3) * 4 + niveau
+        const annee = q.annee || 3;
+        periodesGlobales.add((annee - 3) * 4 + q.niveau);
       }
     });
     const uniformNiveau = niveaux.size === 1 ? [...niveaux][0] : null;
+    const uniformPeriodeGlobale = periodesGlobales.size === 1 ? [...periodesGlobales][0] : null;
     const uniformRealiteId = realites.size === 1 ? [...realites][0] : null;
     const uniformRealite = uniformRealiteId
       ? (DATA.realites_sociales.find(r => r.id === uniformRealiteId) || {}).titre
@@ -1187,12 +1200,12 @@
       children: [new TextRun({ text: "" })]
     }));
 
-    // Niveau
-    if (uniformNiveau) {
+    // Niveau (période globale P1-P8 si toutes les questions sont de la même période)
+    if (uniformPeriodeGlobale) {
       out.push(new Paragraph({
         alignment: AlignmentType.CENTER,
         spacing: { before: 0, after: 120 },
-        children: [new TextRun({ text: `Période ${uniformNiveau}`, bold: true, size: 32 })]
+        children: [new TextRun({ text: `Période ${uniformPeriodeGlobale}`, bold: true, size: 32 })]
       }));
     }
     // Réalité sociale
@@ -1845,6 +1858,69 @@
             columnWidths: widths,
             rows: [new TableRow({ height: { value: 1400, rule: "atLeast" }, children: baCells })]
           }));
+        } else if (body.responseSpace.type === 'timeline-segments') {
+          // Ligne du temps en N encadrés contigus, un par période. L'élève coche/encercle
+          // l'encadré qui correspond à la période visée.
+          // Forme attendue : { type: 'timeline-segments',
+          //                    periods: [{ letter: 'A', range: '1840-1848' }, ...] }
+          // Forme alternative (rétrocompatible) avec `dates`/`letters` : les périodes sont
+          // construites automatiquement à partir des dates consécutives.
+          const rs = body.responseSpace;
+          let periods = rs.periods;
+          if (!periods && Array.isArray(rs.dates) && Array.isArray(rs.letters)) {
+            // Construire les périodes : letter[i] couvre dates[i] à dates[i+1]
+            periods = rs.letters.map((letter, i) => ({
+              letter,
+              range: `${rs.dates[i]}–${rs.dates[i + 1] || ''}`
+            }));
+          }
+          periods = periods || [];
+
+          const totalW = 10500;
+          const cellW = Math.floor(totalW / periods.length);
+          const colWidths = periods.map(() => cellW);
+
+          // Bordure rouge bourgogne pour séparer visuellement les périodes
+          const PERIOD_BORDER = { style: BorderStyle.SINGLE, size: 12, color: "8B3A2E" };
+          const periodBorders = { top: PERIOD_BORDER, bottom: PERIOD_BORDER, left: PERIOD_BORDER, right: PERIOD_BORDER };
+
+          const periodCells = periods.map(p => new TableCell({
+            width: { size: cellW, type: WidthType.DXA },
+            borders: periodBorders,
+            shading: { fill: "F5EFE2", type: ShadingType.CLEAR, color: "auto" },
+            verticalAlign: VerticalAlign.CENTER,
+            margins: { top: 200, bottom: 200, left: 80, right: 80 },
+            children: [
+              // Lettre en gros
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                spacing: { after: 60 },
+                children: [new TextRun({ text: p.letter, bold: true, size: 48, color: "8B3A2E" })]
+              }),
+              // Période
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                spacing: { after: 100 },
+                children: [new TextRun({ text: p.range, bold: true, size: 24 })]
+              }),
+              // Cercle à encercler
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [new TextRun({ text: '◯', size: 56 })]
+              })
+            ]
+          }));
+
+          elements.push(new Paragraph({
+            spacing: { before: 100, after: 80 },
+            alignment: AlignmentType.CENTER,
+            children: [new TextRun({ text: "Encercle la lettre correspondant à la période appropriée.", italics: true, size: 20, color: "6E685C" })]
+          }));
+          elements.push(new Table({
+            width: { size: totalW, type: WidthType.DXA },
+            columnWidths: colWidths,
+            rows: [new TableRow({ height: { value: 1800, rule: "atLeast" }, children: periodCells })]
+          }));
         } else if (body.responseSpace.type === 'category-buckets') {
           // N boîtes côte à côte, une par catégorie. L'élève écrit les items rangés dans chaque catégorie.
           // Forme attendue : { type: 'category-buckets', categories: ['Cat A', 'Cat B', ...], slots: [2, 2, ...] }
@@ -2081,11 +2157,23 @@
         tableRows.push(new TableRow({ children: cells }));
       }
 
-      return [new Table({
+      const tableEl = new Table({
         width: { size: 10500, type: WidthType.DXA },
         columnWidths: [1800, 3000, 3000, 1200],
         rows: tableRows
-      })];
+      });
+      // Footnote (v1.21.0) : si la rubrique en a un, on l'ajoute en paragraphe italique
+      // sous le tableau. Utilisé par RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS.
+      if (r.footnote) {
+        return [
+          tableEl,
+          new Paragraph({
+            spacing: { before: 80, after: 0 },
+            children: [new TextRun({ text: r.footnote, italics: true, size: 18 })]
+          })
+        ];
+      }
+      return [tableEl];
     }
 
     // ============== DOCUMENT ==============

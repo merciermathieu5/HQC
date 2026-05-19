@@ -1,7 +1,40 @@
 /* ============================================================
-   HQC · 3e secondaire — Données — v1.20.0 (mai 2026)
-   80 questions · 4 périodes · 7 OI
-   Couverture : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI) ⭐
+   HQC · 3e + 4e secondaire — Données — v1.21.2 (mai 2026) ⭐ DÉMARRAGE 4e SEC
+   96 questions · 5 périodes (P1-P5) · 7 OI · 2 cycles
+   Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
+   Couverture 4e : P5 = 16 (7/7 OI) ⭐, P6-P8 = 0
+   v1.21.2 — Q13 (V-B Q5, ligne du temps) : refonte du responseSpace `timeline-segments`.
+   Au lieu de dates et lettres alternées avec une flèche, on a maintenant 3 encadrés contigus
+   avec lettre en grand, période (ex. « 1840–1848 »), et cercle à encercler en-dessous.
+   Nouvelle forme acceptée : `periods: [{ letter, range }, ...]`. L'ancienne forme
+   `dates`/`letters` reste rétro-compatible (les périodes sont construites automatiquement).
+   v1.21.1 — Q13 (V-B Q5, ligne du temps Loi sur les Indiens) : remplacement du
+   responseSpace `lines` (textuel dans l'énoncé) par le nouveau type `timeline-segments`
+   (rendu graphique en table : dates et lettres alternées avec cercles à encercler,
+   flèche → finale). Le source PDF présente une ligne du temps graphique, et le rendu
+   textuel ne donnait pas un espace de réponse adéquat. Le nouveau type est défini dans
+   app.js (section buildQuestionBody, après `before-after-axis`).
+   v1.21.0 — DÉMARRAGE 4e SECONDAIRE :
+     • Ajout du champ `annee: 3 | 4` à toutes les réalités sociales et à toutes les questions.
+     • Ajout de 4 nouvelles réalités sociales (P5 formation-regime-federal, P6 nationalismes-
+       autonomie-canada, P7 modernisation-quebec, P8 choix-societe-quebec-contemporain).
+     • Intégration de 16 questions tirées de l'Évaluation sommative officielle (versions A et B,
+       section A) « 1840-1896 : La formation du régime fédéral canadien ».
+     • Tri app.js : `(a.annee - b.annee) || (a.niveau - b.niveau)`.
+     • Filtre UI Période : valeurs encodées `annee-niveau` (ex. "3-1", "4-1"), avec optgroups
+       3e/4e secondaire dans index.html.
+     • 11 nouvelles réglettes introduites pour les libellés exacts des évaluations sommatives P5 :
+       R_SITUER_2PT_T4_SOMA, R_CAUSES_2PT_1CAUSE_SOMA, R_SITUER_1PT_SP_FAIT_SOMA,
+       R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT, R_CONTINUITES_2PT_GEN_SOMA, R_RELATION_2PT_4_SOMA,
+       RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS (rubrique complexe à 6 lignes + footnote),
+       R_CAUSES_2PT_FACTEUR_EXPLICATIF_CONS, R_SITUER_1PT_T1_FAIT, R_RELATION_1PT_1FAIT,
+       R_SIMILITUDES_2PT_CONVERGENCE_ETABLIT.
+     • Images sommative version A : 6 fichiers extraits/croppés à 300 dpi (doc 1, 2, 3, 4, 5, 12).
+       Doc 9 (curé Labelle), doc 17 (Hôpital Royal Victoria), doc 18 (Pensionnat Bellevue) : images
+       extraites du PDF à 300 dpi.
+     • Images sommative version B : doc 4 splité en 2 (Acte constitutionnel + Acte d'Union),
+       doc 6 (courtepointe), doc 11 (Arthur Buies portrait). Doc 9 v.B (2 acteurs sur la pendaison
+       de Riel) splité en 2 documents distincts (convention « un acteur = un document »).
    v1.20.0 — Intégration de 6 questions tirées de l'Évaluation sommative officielle
    version A « Des origines à 1608 » (Cahier de l'élève + Dossier documentaire, section A).
    6/7 questions retenues — SQ3 (différence dans la nomination des chefs iroquoiens vs
@@ -318,6 +351,126 @@ const R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 = rubric3(
   "L'élève détermine correctement les facteurs explicatifs. (2 sur 2)",
   "L'élève détermine partiellement les facteurs explicatifs. (1 sur 2)",
   "L'élève détermine incorrectement les facteurs explicatifs. (0 sur 2)"
+);
+
+// ============ Réglettes ajoutées v1.21.0 (Évaluations sommatives versions A et B — P5) ============
+
+// Situer dans le temps, 4 docs avant/après — Q1 soma V-A P5 (fédération canadienne).
+// Libellé soma : « (2 ou 3) » et « ou en situe un seul. (0 ou 1) » — distinct de
+// R_SITUER_2PT_T4 (« (3 ou 2 sur 4) » et « (1 ou 0 sur 4) »).
+const R_SITUER_2PT_T4_SOMA = rubric3(
+  "Situer dans le temps et dans l'espace",
+  "L'élève situe tous les faits dans le temps. (4 sur 4)",
+  "L'élève situe certains faits dans le temps. (2 ou 3)",
+  "L'élève ne situe pas les faits dans le temps ou en situe un seul. (0 ou 1)"
+);
+
+// Déterminer 1 cause (2 points) — Q4 soma V-A P5 (objectif missions catholiques).
+// Libellé soma ajoute « ou ne la détermine pas » au niveau 0pt — distinct de
+// R_CAUSES_2PT_GEN_1CAUSE qui n'a pas cet ajout.
+const R_CAUSES_2PT_1CAUSE_SOMA = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la cause.",
+  "L'élève détermine plus ou moins correctement la cause.",
+  "L'élève détermine incorrectement la cause ou ne la détermine pas."
+);
+
+// Situer dans l'espace, 1 fait (1 point) — Q5 soma V-A P5 (lettre exploitation forestière).
+// Libellé soma « le fait dans l'espace » — distinct de R_SITUER_1PT_SP_DOC qui dit
+// « le document dans l'espace (1 sur 1) » et de R_SITUER_2PT_SP_FAIT (2 pts au lieu de 1).
+const R_SITUER_1PT_SP_FAIT_SOMA = rubric2(
+  "Situer dans le temps et dans l'espace",
+  "L'élève situe le fait dans l'espace.",
+  "L'élève ne situe pas le fait dans l'espace."
+);
+
+// Différences (divergence, 2 points) — Q6 soma V-A P5 (deux acteurs sur l'éducation).
+// Libellé soma utilise « établit » (et non « dégage ») — distinct de R_DIFFERENCES_2PT_DIVERGENCE
+// et de R_SIMILITUDES_2PT_CONVERGENCE.
+const R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève établit correctement le point de divergence entre les points de vue.",
+  "L'élève établit plus ou moins correctement le point de divergence entre les points de vue.",
+  "L'élève établit incorrectement le point de divergence entre les points de vue ou ne l'établit pas."
+);
+
+// Continuité (2 points) — Q7 soma V-A P5 (revendications Métis) + Q7 soma V-B P5 (Code civil 1866).
+// Libellé soma « ou ne le détermine pas » (le = élément de continuité) — distinct de
+// R_CONTINUITES_2PT_GEN qui dit « ou ne la détermine pas » (la = continuité).
+const R_CONTINUITES_2PT_GEN_SOMA = rubric3(
+  "Déterminer des changements et des continuités",
+  "L'élève détermine correctement la continuité.",
+  "L'élève détermine plus ou moins correctement la continuité.",
+  "L'élève détermine incorrectement la continuité ou ne le détermine pas."
+);
+
+// Mettre en relation, 4 docs (2 points) — Q8 soma V-A P5 (orgs féminines vs communautés religieuses).
+// Libellé soma : « certains faits. (2 sur 4) » et « (1 ou 0 sur 4) » — distinct de
+// R_RELATION_2PT_4_PART (« partiellement » et « (1, 2 ou 3 sur 4) »).
+const R_RELATION_2PT_4_SOMA = rubric3(
+  "Mettre en relation des faits",
+  "L'élève met en relation tous les faits. (4 sur 4)",
+  "L'élève met en relation certains faits. (2 sur 4)",
+  "L'élève ne met pas en relation les faits. (1 ou 0 sur 4)"
+);
+
+// Changements/continuités complexe (3 points, 6 lignes) — Q1 soma V-B P5 (Acte d'Union).
+// Rubrique à matrice : 2 branches (élève indique/n'indique pas) × 3 niveaux de faits + footnote
+// sur le repère de temps. Format inspiré de RUBRIC_CAUSALITE_3PT (type: complex / rows).
+// Note : le PDF source affiche « 3 points (ou 2 points*) » avec un astérisque, indiquant que
+// l'absence d'un repère de temps exact entraîne -1 pt. On encode l'aspect principal de la rubrique;
+// le footnote du repère de temps est rendu via le champ `footnote`.
+const RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS = {
+  type: "complex",
+  opLabel: "Déterminer des changements et des continuités",
+  maxPoints: 3,
+  rows: [
+    { precise: "L'élève indique s'il y a changement ou continuité", condition: "et présente des faits qui le montrent correctement.", points: "3 points" },
+    { precise: null, condition: "et présente des faits qui le montrent plus ou moins correctement.", points: "2 points" },
+    { precise: null, condition: "et présente des faits qui le montrent incorrectement ou n'en présente pas.", points: "1 point" },
+    { precise: "L'élève n'indique pas s'il y a changement ou continuité", condition: "mais présente des faits exacts.", points: "2 points" },
+    { precise: null, condition: "mais présente des faits plus ou moins exacts.", points: "1 point" },
+    { precise: null, condition: "et présente des faits inexacts ou n'en présente pas.", points: "0 point" }
+  ],
+  footnote: "* L'élève présente un repère de temps plus ou moins exact ou inexact ou n'en présente pas."
+};
+
+// Cause + conséquence (2 points, formulation « facteur explicatif ») — Q3 soma V-B P5
+// (urbanisation : cause + conséquence économique). Libellé soma utilise « facteur explicatif »
+// au lieu de « cause » — distinct de R_CAUSES_2PT_CAUSE_CONS.
+const R_CAUSES_2PT_FACTEUR_EXPLICATIF_CONS = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine le facteur explicatif et la conséquence. (2 sur 2)",
+  "L'élève détermine le facteur explicatif ou la conséquence. (1 sur 2)",
+  "L'élève ne détermine pas le facteur explicatif ni la conséquence. (0 sur 2)"
+);
+
+// Situer dans le temps, 1 fait (1 point) — Q5 soma V-B P5 (Loi sur les Indiens sur ligne du temps).
+// Libellé soma : « L'élève situe les faits dans le temps » (1 pt) — distinct de R_SITUER_1PT_T2
+// (qui exige « tous les faits (2 sur 2) »). Note typographique : « le faits » dans la rubrique source
+// est un singulier collectif / probable typo, on copie textuellement.
+const R_SITUER_1PT_T1_FAIT = rubric2(
+  "Situer dans le temps et dans l'espace",
+  "L'élève situe les faits dans le temps.",
+  "L'élève ne situe pas le faits dans le temps."
+);
+
+// Mettre en relation, 1 fait (1 point) — Q6 soma V-B P5 (idéologie doc 11, anticléricalisme).
+// Libellé soma : « L'élève met en relation le fait » — réglette à 1 point unique (pas 2).
+const R_RELATION_1PT_1FAIT = rubric2(
+  "Mettre en relation des faits",
+  "L'élève met en relation le fait",
+  "L'élève ne met pas en relation le fait"
+);
+
+// Similitudes (convergence, 2 points, formulation « établit » + « entre les points de vue ») —
+// Q8 soma V-B P5 (pendaison de Riel). Libellé soma utilise « établit » et « entre les points de vue »
+// — distinct de R_SIMILITUDES_2PT_CONVERGENCE qui dit « présente » et « des acteurs ».
+const R_SIMILITUDES_2PT_CONVERGENCE_ETABLIT = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève établit correctement le point de convergence entre les points de vue.",
+  "L'élève établit plus ou moins correctement le point de convergence entre les points de vue.",
+  "L'élève établit incorrectement le point de convergence entre les points de vue ou ne l'établit pas."
 );
 
 // ============ Helpers de sélection de documents ============
@@ -1343,6 +1496,219 @@ const DOCS = {
     { id: "rv-r2-d2", title: "Document 2", layout: "text-only",
       text: "« [...] c'est le pacte qui leur délie les membres, qui rompt leurs chaînes, qui ouvre les portes de leur prison, qui leur donne participation à la souveraineté, qui les égalise à leurs ancêtres, à leurs voisins, qui les place à la tête de l'exploitation de leurs propres biens, de leurs propres affaires. »",
       sources: ["Source du texte : « De la manière dont se forment les nations », La Minerve, 8, 11, 13, 18 septembre 1834, cité dans Yvan Lamonde, Histoire sociale des idées au Québec (1760-1896), nouvelle édition, Montréal, Fides, 2014, p. 218."] }
+  ],
+
+  // ============================================================
+  // ===== P5 — Formation du régime fédéral canadien (4e sec.) =====
+  // Sources : Évaluations sommatives officielles versions A et B « 1840-1896 ».
+  // Convention « un acteur = un document » : docs 6, 7, 9 composites (V-A) et 4, 9 (V-B) splittés.
+  // ============================================================
+
+  // ===== P5 — V-A Q1 · Situer dans le temps — Avant/après la fédération canadienne =====
+  // Renumérotation : docs 1-4 du PDF source = docs 1-4 de la section (identité).
+  // Schémas 2 et 4 : titres « Acte de l'Amérique du Nord britannique 1867 » et « Acte
+  // constitutionnel de 1791 » CROPPÉS des images natives car ils trahiraient la réponse.
+  'fc-situer-1': [
+    { id: "fc-s1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/fc-situer-1/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "fc-s1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/fc-situer-1/doc2.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "fc-s1-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/fc-situer-1/doc3.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "fc-s1-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/fc-situer-1/doc4.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P5 — V-A Q2 · Mettre en relation — 3 idéologies =====
+  // Renumérotation : doc 8 source → Doc 1 (Dessaulles, anticléricalisme) ;
+  //                   doc 10 source → Doc 2 (Bernard, nationalisme de survivance) ;
+  //                   doc 11 source → Doc 3 (Cardin, ultramontanisme).
+  'fc-relation-1': [
+    { id: "fc-r1-d1", title: "Document 1", layout: "text-only",
+      text: "« Depuis les premiers jours de son existence, toutes les tendances de l'Institut avaient été essentiellement libérales. Le programme du libéralisme moderne était le sien. Ce programme se résumait dans les mots : Tolérance et liberté de penser. [...] Il n'était encore venu à l'idée de personne dans l'Institut, de limiter le champ de l'étude, de circonscrire le domaine de l'intelligence, d'essayer de bâillonner la pensée, et d'introduire la censure des livres dans une association d'hommes indépendants et libres. »",
+      sources: ["Source : Louis-Antoine Dessaulles, Discours sur l'Institut canadien (1862), Montréal, Les Presses du journal Le Pays, 1863, p. 6, en ligne sur Wikisource."] },
+    { id: "fc-r1-d2", title: "Document 2", layout: "text-only",
+      text: "« Le statut de minorité des Canadiens français dans l'État canadien, résultat de la Conquête, permet à la petite bourgeoisie et au clergé de définir le Canada français comme un groupe ethnique menacé de l'extérieur et qui ne peut survivre que par une cohésion totale derrière ses élites. »",
+      sources: ["Source : Jean-Paul Bernard, Les Rouges. Libéralisme, nationalisme et anticléricalisme au milieu du 19e siècle, Montréal, Presses Universitaires du Québec, 1971, p. 321."] },
+    { id: "fc-r1-d3", title: "Document 3", layout: "text-only",
+      text: "« [Ils] concevaient l'Église comme l'institution dominante dans la société. La politique devait être soumise aux principes moraux de l'Église et, par conséquent, les membres du clergé étaient parfaitement justifiés en intervenant dans la vie politique. »",
+      sources: ["Source : Jean-François Cardin et al., Histoire du Canada. Espaces et différences, Québec, Presses Universitaires de Laval, 1996, p. 210."] }
+  ],
+
+  // ===== P5 — V-A Q3 · Causalité — Économie agricole → émigration → mesure Église =====
+  // Renumérotation : doc 14 → Doc 1 (Ouellet) ; doc 12 → Doc 2 (carte N-Angleterre) ;
+  //                   doc 9 → Doc 3 (curé Labelle inaugure le train de Saint-Jérôme).
+  'fc-causalite-1': [
+    { id: "fc-ca1-d1", title: "Document 1", layout: "text-only",
+      text: "« Les Canadiens français ne formaient pas un peuple de défricheurs. Jusqu'au début du 19e siècle ils avaient peuplé, défriché au rythme de leur croissance démographique les basses terres du Saint-Laurent. C'était là leur domaine. Une paroisse en engendrait une autre. Mais bientôt, la zone seigneuriale avait été saturée de population. Au lieu de se lancer à la conquête des nouveaux espaces, on avait accentué la subdivision des fermes. De sorte que l'épuisement des terres et la rareté croissante du sol cultivable avaient projeté de force l'habitant en dehors de son domaine. [...] Partir ou laisser partir ses fils, telle était désormais la seule issue. »",
+      sources: ["Source : Fernand Ouellet, Histoire économique et sociale du Québec (1760-1850), Montréal, Fides, 1966, p. 481-482."] },
+    { id: "fc-ca1-d2", title: "Document 2 : L'immigration canadienne française en Nouvelle-Angleterre (1840 à 1900)", layout: "image-only",
+      imageUrl: "assets/img/fc-causalite-1/doc2.png", imageWidthCm: 10,
+      sources: [
+        "Source des données : Yves Roby, Histoire d'un rêve brisé? Les Canadiens français aux États-Unis, Sillery, Septentrion, 2007, p. 13.",
+        "Source de la carte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."
+      ] },
+    { id: "fc-ca1-d3", title: "Document 3 : Le curé Labelle inaugure un chemin de fer entre Montréal et une région de colonisation en 1876", layout: "image-only",
+      imageUrl: "assets/img/fc-causalite-1/doc3.png", imageWidthCm: 14,
+      sources: ["Source : Auteur inconnu, « Inauguration du chemin de fer Q.M.O. & G. de Montréal à Saint-Jérôme », L'Opinion publique, vol. 7, no 41 (26 octobre 1876), p. 490, en ligne sur Bibliothèque et Archives nationales du Québec."] }
+  ],
+
+  // ===== P5 — V-A Q4 · Causes et conséquences — Objectif missions catholiques =====
+  // Renumérotation : doc 13 source → Doc 1 (Marcotte).
+  'fc-causes-1': [
+    { id: "fc-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Convertir, pour les missionnaires d'alors, ne signifie pas seulement faire passer un peuple d'une religion à une autre, mais également sédentariser et rallier à la culture dominante les nomades des forêts du nord du pays. »",
+      sources: ["Source : Guillaume Marcotte, « Intempérance et piété chrétienne : les voyageurs canadiens et l'implantation des missions catholiques chez les Autochtones d'Abitibi-Témiscamingue, 1836-1863 », Rabaska, no 12 (2014), p. 63, en ligne sur Érudit."] }
+  ],
+
+  // ===== P5 — V-A Q5 · Situer dans l'espace — Exploitation forestière au Québec =====
+  // Renumérotation : doc 5 source → Doc 1 (carte avec lettres A, B, C, D).
+  'fc-situer-2': [
+    { id: "fc-s2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/fc-situer-2/doc1.png", imageWidthCm: 9,
+      sources: ["Source : Carte du Québec (Canada), D-Maps."] }
+  ],
+
+  // ===== P5 — V-A Q6 · Différences — Désaccord Buies vs Mélanges religieux sur l'éducation =====
+  // Convention « un acteur = un document » : le doc 6 source (deux extraits juxtaposés) splitté
+  // en Doc 1 (Buies) et Doc 2 (Mélanges religieux).
+  'fc-differences-1': [
+    { id: "fc-d1-d1", title: "Document 1", layout: "text-only",
+      text: "« Il convient d'établir dans toute la Province un système général et uniforme d'éducation élémentaire, gratuite, et maintenue entièrement aux frais de l'État, au moyen d'un fonds spécial créé à cet effet. »",
+      sources: ["Source : Arthur Buies, Lettres sur le Canada, 3e lettre (1867), publiée à compte d'auteur, p. 13, en ligne sur Wikisource."] },
+    { id: "fc-d1-d2", title: "Document 2", layout: "text-only",
+      text: "« Le moyen d'améliorer le sort du peuple ne consiste pas précisément à l'instruire, mais à rendre ses maîtres compatissants, charitables et humains. Tant que la religion ne sera pas à la base de l'instruction des mœurs publiques, nous croyons que nous serons longtemps sans pouvoir nous écrier véritablement : maintenant le peuple est libre, il est heureux. »",
+      sources: ["Source : « Mélanges religieux », 19 janvier 1844, cité dans Denise Lemieux, « Les mélanges religieux », Recherches sociographiques, 1969, vol. 10, no 2-3, p. 223."] }
+  ],
+
+  // ===== P5 — V-A Q7 · Continuité — Revendications des Métis (rivière Rouge et Nord-Ouest) =====
+  // Convention « un acteur = un document » : doc 7 source (deux extraits juxtaposés) splitté
+  // en Doc 1 (Neering, rivière Rouge) et Doc 2 (Riel, Nord-Ouest).
+  'fc-continuite-1': [
+    { id: "fc-co1-d1", title: "Document 1 : La rébellion de la rivière Rouge", layout: "text-only",
+      text: "« En préparation à cet événement, le gouvernement canadien avait envoyé une équipe d'arpenteurs à la rivière Rouge. Elle avait pour mission de partager le terrain en lots de deux kilomètres carrés qui puissent être attribués aux colons à leur arrivée. Mais conformément à l'usage qu'ils avaient emprunté au Québec, les Métis avaient depuis longtemps loti leur territoire en bandes longues et étroites donnant sur la rivière. Chaque terre faisait front à la rivière de sorte que chaque fermier disposait de quelques arpents de bonne terre et d'un droit de fenaison à l'intérieur. Les Métis craignaient que ce nouveau lotissement canadien ne bouleverse leurs anciennes frontières. »",
+      sources: ["Source : Rosemary Neering, Louis Riel, Longueuil, Les éditions Julienne, 1977, p. 18."] },
+    { id: "fc-co1-d2", title: "Document 2 : Les rébellions du Nord-Ouest", layout: "text-only",
+      text: "« Les protestations du gouvernement de la Compagnie de la Baie d'Hudson furent bientôt suivies de celles des colons qui s'opposèrent résolument à ce que des hommes aussi suspects ouvrent des chemins publics, et pratiquent des arpentages sur leurs terres propres, au nom d'un gouvernement étranger, avec si peu de garanties. »",
+      sources: ["Source : Louis Riel, L'Amnistie. Mémoire sur les causes des troubles du nord-ouest et sur les négociations qui ont amené leur règlement amiable, Bureau du « Nouveau Monde », 1874, p. 4, en ligne sur Wikisource."] }
+  ],
+
+  // ===== P5 — V-A Q8 · Mettre en relation — Orgs féminines anglophones vs communautés religieuses =====
+  // Renumérotation : doc 15 → Doc 1 (Le coin du feu) ; doc 16 → Doc 2 (CNFC) ;
+  //                   doc 17 → Doc 3 (Hôpital Royal Victoria) ; doc 18 → Doc 4 (Pensionnat Bellevue).
+  'fc-relation-2': [
+    { id: "fc-r2-d1", title: "Document 1", layout: "text-only",
+      text: "« Nous voulons aussi que l'éducation de la femme soit plus pratique et plus conforme à la tâche qui lui incombe souvent de remplacer le père de famille. Afin d'obtenir ce résultat, nous allons donner des conférences sur les sujets suivants : la situation de la femme dans cette province au point de vue légal; les rudiments essentiels des affaires de banques et autres; la connaissance des documents et écrits qu'elle est souvent appelée à signer, et qui la livrent inconsciente au premier venu ayant réussi à capter sa confiance, etc. »",
+      sources: ["Source : Auteur inconnu, « [...] », Le coin du feu, janvier 1894, p. 7, en ligne sur Bibliothèque et Archives nationales du Québec."] },
+    { id: "fc-r2-d2", title: "Document 2", layout: "text-only",
+      text: "« À une époque où les femmes n'ont le droit de vote ni à l'échelon provincial ni à l'échelon fédéral, le Conseil national des femmes du Canada (CNFC) espère devenir un « parlement des femmes », soit un conseil au sein duquel les points de vue des femmes peuvent être présentés et débattus, tout en esquivant les pièges de la partisanerie politique masculine. »",
+      sources: ["Source : Veronica Strong-Bao et Diane Macdonald, « Conseil national des femmes du Canada », L'Encyclopédie canadienne, dernière mise à jour le 2 août 2016, page consultée le 26 octobre 2020."] },
+    { id: "fc-r2-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/fc-relation-2/doc3.png", imageWidthCm: 11,
+      sources: ["Source : William Notman, Salle commune des enfants, Hôpital Royal Victoria (1894), Musée McCord, II-105910.1. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "fc-r2-d4", title: "Document 4 : Congrégations dédiées à l'enseignement fondées au Québec", layout: "image-only",
+      imageUrl: "assets/img/fc-relation-2/doc4.png", imageWidthCm: 8,
+      sources: ["Source : Auteur inconnu, Prospectus du pensionnat Notre-Dame-de-Bellevue (vers 1890), Archives Congrégation de N.-D. Licence : utilisée avec la permission des Archives de la Congrégation de N.-D."] }
+  ],
+
+  // ===== P5 — V-B Q1 · Changement/continuité — Structure politique suite à l'Acte d'Union =====
+  // Convention « un acteur = un document » : le doc 4 source (composite de 2 schémas juxtaposés)
+  // splitté en Doc 1 (Acte constitutionnel 1791) + Doc 2 (Acte d'Union 1840). L'énoncé source
+  // « À partir du document 4 » est renuméroté « À partir des documents 1 et 2 ».
+  'fc-continuite-2': [
+    { id: "fc-co2-d1", title: "Document 1 : Acte constitutionnel", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-2/doc1.png", imageWidthCm: 10,
+      sources: ["Source de l'image : ÉPNG - Classe d'histoire, 2015, en ligne."] },
+    { id: "fc-co2-d2", title: "Document 2 : Acte d'Union", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-2/doc2.png", imageWidthCm: 9,
+      sources: ["Source de l'image : ÉPNG - Classe d'histoire, 2015, en ligne."] }
+  ],
+
+  // ===== P5 — V-B Q2 · Causalité — Libre-échange GB → économie Canada-Uni → traité avec les É-U =====
+  // Renumérotation : doc 8 source → Doc 1 (politique GB) ; doc 5 → Doc 2 (effet économique) ;
+  //                   doc 3 → Doc 3 (mission Elgin / traité de réciprocité).
+  'fc-causalite-2': [
+    { id: "fc-ca2-d1", title: "Document 1", layout: "text-only",
+      text: "« Jusqu'aux années 1840, le gouvernement britannique accorde une protection douanière aux produits importés de ses colonies, nord-américaines ou autres [...] Londres décide d'éliminer graduellement cette protection [...] »",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social, en ligne."] },
+    { id: "fc-ca2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] les produits canadiens ont de la difficulté à trouver preneur sur les marchés internationaux, et ce, en raison de leurs prix élevés. [...] »",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social, en ligne."] },
+    { id: "fc-ca2-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] le gouverneur Elgin a reçu mission du gouvernement britannique de négocier une entente commerciale avec les États-Unis [...] Elgin se rend à Washington et [...] réussit à élaborer [cette] entente [...] dont la durée prévue est de 10 ans. »",
+      sources: ["Source du texte : Jacques Lacoursière, Histoire populaire du Québec, Tome 3, 1841-1896, Québec, Septentrion, 1996, p. 74."] }
+  ],
+
+  // ===== P5 — V-B Q3 · Causes et conséquences — Cause + conséquence économique de l'urbanisation =====
+  // Renumérotation : doc 2 source → Doc 1 (exode rural - cause) ; doc 6 → Doc 2 (image courtepointe).
+  'fc-causes-2': [
+    { id: "fc-c2-d1", title: "Document 1", layout: "text-only",
+      text: "« Dans la seconde moitié du 19e siècle, la population des villes du Québec s'accroît progressivement, particulièrement celle de Montréal. Les habitants de la campagne sont nombreux à quitter leurs terres pour venir chercher du travail dans les usines. Les immigrants grossissent également les rangs de la population montréalaise. »",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social, en ligne."] },
+    { id: "fc-c2-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-2/doc2.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Louis Prudent Vallée, Courtepointe séchant sur une corde à linge, rue Sous le cao, Québec, vers 1890, MP-1978.187.15, Musée McCord, en ligne."] }
+  ],
+
+  // ===== P5 — V-B Q4 · Mettre en relation — Politique nationale de Macdonald (3 objectifs) =====
+  // Renumérotation : doc 7 source → Doc 1 (Politique nationale - protection industrie) ;
+  //                   doc 1 source → Doc 2 (marché intérieur via colonisation de l'Ouest) ;
+  //                   doc 12 source → Doc 3 (chemin de fer transcontinental - peupler l'Ouest).
+  'fc-relation-3': [
+    { id: "fc-r3-d1", title: "Document 1", layout: "text-only",
+      text: "« Il est prévu qu'en élargissant la base économique nationale, les tarifs élevés rétablissent la confiance des Canadiens envers le développement de leur pays [...] On augmente le tarif douanier sur la plupart des produits fabriqués à l'étranger, ce qui offre une protection considérable aux fabricants canadiens [...] »",
+      sources: ["Source du texte : Brown, Robert Craig, « Politique nationale », L'Encyclopédie Canadienne, 04 mars 2015, Historica Canada, en ligne."] },
+    { id: "fc-r3-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] de nouveaux villages sont créés dans l'Ouest canadien pour répondre à la demande. Grâce à l'immigration et à la colonisation de l'Ouest, le nombre de consommateurs augmente sur le territoire, ce qui aide les industries. »",
+      sources: ["Source du texte : Allôprof, en ligne."] },
+    { id: "fc-r3-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] [Cela] enrichit le trésor public et procure des liquidités pour financer la construction du chemin de fer transcontinental [...] [il] représente aussi le moyen par lequel désenclaver l'Ouest et l'ouvrir à la colonisation [...] »",
+      sources: ["Source du texte : Michèle Dagenais, La politique nationale et les déboirs de l'Oncle Sam, Musée McCord, 2007, en ligne."] }
+  ],
+
+  // ===== P5 — V-B Q5 · Situer dans le temps — Loi sur les Indiens (1876) sur la ligne du temps =====
+  // Renumérotation : doc 10 source → Doc 1 (Encyclopédie canadienne, Loi sur les Indiens).
+  // La ligne du temps (1840 | A | 1848 | B | 1867 | C | 1896) est décrite dans l'énoncé.
+  'fc-situer-3': [
+    { id: "fc-s3-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] la Loi [...] octroie au gouvernement de vastes pouvoirs concernant l'identité, les structures politiques, la gouvernance, les pratiques culturelles et l'éducation des Premières Nations [...] la Loi remplace les structures traditionnelles de gouvernance par l'élection de conseils de bande dont l'administration est laissée à la discrétion du ministère et de ses agents. »",
+      sources: ["Source du texte : Henderson, William B., « Loi sur les Indiens », L'Encyclopédie Canadienne, 23 octobre 2018, Historica Canada, en ligne."] }
+  ],
+
+  // ===== P5 — V-B Q6 · Mettre en relation — Identifier une idéologie (anticléricalisme) =====
+  // Renumérotation : doc 11 source → Doc 1 (portrait Buies + extrait La Lanterne, layout text-image).
+  'fc-relation-4': [
+    { id: "fc-r4-d1", title: "Document 1", layout: "text-image",
+      text: "« Notre pays, comme tous les autres pays du monde, doit s'affranchir de ce pouvoir d'un autre âge, de ce gouvernement religieux de l'état civil, de cette ingérence autoritaire qui s'exerce jusque dans les actes les plus ordinaires de la vie [...] »",
+      imageUrl: "assets/img/fc-relation-4/doc1.png", imageWidthCm: 5,
+      sources: [
+        "Source du texte : Arthur Buies, « Article posthume », La Lanterne, 20 octobre 1884, p. 335-336, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000192821.",
+        "Source de l'image : Arthur Buies, Fonds J. E. Livernois Ltée, Bibliothèque et archives nationales du Québec, Cote : P560,S2,D1, P1584."
+      ] }
+  ],
+
+  // ===== P5 — V-B Q7 · Continuité — Droits des femmes dans le Code civil de 1866 =====
+  // Renumérotation : doc 13 source → Doc 1 (Le collectif Clio).
+  'fc-continuite-3': [
+    { id: "fc-co3-d1", title: "Document 1", layout: "text-only",
+      text: "« Dans l'ensemble, les droits civils des femmes sont peu changés par le Code civil de 1866. [...] la fondatrice de l'hôpital Sainte-Justine, Justine Lacoste-Beaubien, devra [...] demander au parlement québécois de la relever de son incapacité juridique afin qu'elle puisse vaquer aux affaires de son hôpital. »",
+      sources: ["Source du texte : Le collectif Clio, Histoire des femmes au Québec depuis quatre siècles, Montréal, Éditions Quinze, 1982, p. 153."] }
+  ],
+
+  // ===== P5 — V-B Q8 · Similitudes — Convergence des acteurs sur la pendaison de Riel =====
+  // Convention « un acteur = un document » : doc 9 source (deux acteurs juxtaposés : article La
+  // Justice + discours Honoré Mercier) splitté en Doc 1 (La Justice) + Doc 2 (Mercier).
+  'fc-differences-2': [
+    { id: "fc-d2-d1", title: "Document 1", layout: "text-only",
+      text: "« Le 16 novembre dernier, une exécution politique fut le signal d'une protestation, aussi spontanée qu'universelle, dans notre province. [...] Partout l'on entendit le cri : « faisons taire les divisions du passé; unissons-nous pour punir les auteurs de ce crime politique et pour faire respecter, à l'avenir, les droits de la civilisation chrétienne ». »",
+      sources: ["Source du texte : Auteur inconnu, article paru dans La Justice, 9 janvier 1886, page 1, en ligne."] },
+    { id: "fc-d2-d2", title: "Document 2 : Honoré Mercier, chef du Parti national", layout: "text-only",
+      text: "« [...], notre frère, est mort, victime de son dévouement à la cause [...] dont il était le chef, victime du fanatisme et de la trahison; du fanatisme de Sir John et de quelques-uns de ses amis; de la trahison de trois des nôtres qui, pour garder leur portefeuille, ont vendu leur frère [...] Sir John n'a pas seulement frappé notre race au cœur, mais il a surtout frappé la cause de la justice et de l'humanité qui, représentée dans toutes les langues et sanctifiée par toutes le croyances religieuses, demandait grâce pour le prisonnier de Regina [...] »",
+      sources: ["Source du texte : Radio-Canada, extrait du discours prononcé par Honoré Mercier au Champ-de-Mars le 22 novembre 1885 à l'occasion de la pendaison de Louis Riel, en ligne."] }
   ]
 
 };
@@ -1351,10 +1717,16 @@ const DOCS = {
 window.DATA = {
 
   realites_sociales: [
-    { id: "experience-autochtones-projet-colonie", titre: "L'expérience des Autochtones et le projet de colonie", niveau: 1 },
-    { id: "evolution-societe-coloniale",          titre: "L'évolution de la société coloniale sous l'autorité de la métropole française", niveau: 2 },
-    { id: "conquete-changement-empire",           titre: "La Conquête et le changement d'empire", niveau: 3 },
-    { id: "revendications-luttes-nationales",     titre: "Les revendications et les luttes nationales", niveau: 4 }
+    // 3e secondaire
+    { id: "experience-autochtones-projet-colonie", titre: "L'expérience des Autochtones et le projet de colonie", annee: 3, niveau: 1 },
+    { id: "evolution-societe-coloniale",          titre: "L'évolution de la société coloniale sous l'autorité de la métropole française", annee: 3, niveau: 2 },
+    { id: "conquete-changement-empire",           titre: "La Conquête et le changement d'empire", annee: 3, niveau: 3 },
+    { id: "revendications-luttes-nationales",     titre: "Les revendications et les luttes nationales", annee: 3, niveau: 4 },
+    // 4e secondaire
+    { id: "formation-regime-federal",             titre: "La formation du régime fédéral canadien", annee: 4, niveau: 1 },
+    { id: "nationalismes-autonomie-canada",       titre: "Les nationalismes et l'autonomie du Canada", annee: 4, niveau: 2 },
+    { id: "modernisation-quebec",                 titre: "La modernisation du Québec et la Révolution tranquille", annee: 4, niveau: 3 },
+    { id: "choix-societe-quebec-contemporain",    titre: "Les choix de société dans le Québec contemporain", annee: 4, niveau: 4 }
   ],
 
   operations_intellectuelles: [
@@ -1370,7 +1742,7 @@ window.DATA = {
   questions: [
 
     // ===== Q1 — P1 · Mettre en relation des faits =====
-    { id: "q-experience-autochtones-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 1,
+    { id: "q-experience-autochtones-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique si les documents 1 à 4 correspondent à la famille linguistique algonquienne ou à la famille linguistique iroquoienne.",
@@ -1381,7 +1753,7 @@ window.DATA = {
       corrige: [["Document 1", "Document 2"], ["Document 3", "Document 4"]] },
 
     // ===== Q2 — P1 · Situer dans le temps et dans l'espace =====
-    { id: "q-experience-autochtones-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 1,
+    { id: "q-experience-autochtones-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique si les documents 1 à 4 sont antérieurs ou postérieurs à 1541 (Fondation de Charlesbourg-Royal par Jacques Cartier).",
@@ -1392,7 +1764,7 @@ window.DATA = {
       corrige: { before: ["Document 1", "Document 3"], after: ["Document 2", "Document 4"] } },
 
     // ===== Q3 — P1 · Établir des faits =====
-    { id: "q-experience-autochtones-faits-1", operation: "Établir des faits", numero: 1, niveau: 1,
+    { id: "q-experience-autochtones-faits-1", operation: "Établir des faits", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Chez les populations autochtones, les aînés occupent une place importante, car ils transmettent des croyances et des récits reliés à leur conception du monde. Nomme un moyen qui permet de faire cette transmission.",
@@ -1403,7 +1775,7 @@ window.DATA = {
       corrige: "La tradition orale." },
 
     // ===== P1 · Dégager des différences et des similitudes — Q-A · Français vs Innus à Uepishtikuiau =====
-    { id: "q-experience-autochtones-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 1,
+    { id: "q-experience-autochtones-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Les documents 1 à 3 présentent les points de vue des Français et des Innus face à l'établissement d'une habitation sur le site de Uepishtikuiau. Détermine une différence entre ces points de vue.",
@@ -1414,7 +1786,7 @@ window.DATA = {
       corrige: "L'analyse des écrits de Samuel de Champlain soutient que l'alliance de 1603 lui permet de construire une habitation sur le site de Uepishtikuiau sans l'opposition des Innus, alors que la tradition orale innue soutient que les Innus refusent d'abord l'installation des Français et que ces derniers les repoussent progressivement une fois installés." },
 
     // ===== P1 · Dégager des différences et des similitudes — Q-B · Prise de décisions algonquiennes vs iroquoiennes =====
-    { id: "q-experience-autochtones-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 1,
+    { id: "q-experience-autochtones-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "À l'aide des documents 1 à 3, indique une similitude et une différence dans la prise de décisions chez les nations algonquiennes et iroquoiennes.",
@@ -1428,7 +1800,7 @@ window.DATA = {
       ] },
 
     // ===== P1 · Situer dans le temps et dans l'espace — Q-C · Peuplement de l'Amérique en ordre chronologique =====
-    { id: "q-experience-autochtones-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 1,
+    { id: "q-experience-autochtones-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Les documents 1 à 3 présentent des événements liés au peuplement de l'Amérique. Place-les en ordre chronologique du plus ancien au plus récent.",
@@ -1439,7 +1811,7 @@ window.DATA = {
       corrige: ["Document 3", "Document 1", "Document 2"] },
 
     // ===== P1 · Déterminer des causes et des conséquences — Q-D · Causes du premier voyage de Cartier =====
-    { id: "q-experience-autochtones-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, niveau: 1,
+    { id: "q-experience-autochtones-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "À partir du document 1, détermine les causes qui motivent le premier voyage de Jacques Cartier vers l'Amérique.",
@@ -1453,7 +1825,7 @@ window.DATA = {
       ] },
 
     // ===== P1 · Établir des faits — Q-E · Pouvoir des chefs dans les sociétés autochtones =====
-    { id: "q-experience-autochtones-faits-2", operation: "Établir des faits", numero: 2, niveau: 1,
+    { id: "q-experience-autochtones-faits-2", operation: "Établir des faits", numero: 2, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Selon le document 1, sur quoi se base le pouvoir des chefs dans les sociétés autochtones ?",
@@ -1464,7 +1836,7 @@ window.DATA = {
       corrige: "Le pouvoir des chefs repose sur leur éloquence (capacité de persuasion) ou sur leurs compétences de chasseur leur permettant d'approvisionner leur clan." },
 
     // ===== P1 · Situer dans le temps et dans l'espace — Q-F · Chronologie des explorations européennes =====
-    { id: "q-experience-autochtones-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 1,
+    { id: "q-experience-autochtones-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Les documents 1 à 4 font référence aux explorations des Européens en Amérique du Nord-Est. Place-les en ordre chronologique du plus ancien au plus récent. Le document 4 est déjà placé pour t'aider.",
@@ -1476,7 +1848,7 @@ window.DATA = {
       corrige: ["Document 2", "Document 4", "Document 3", "Document 1"] },
 
     // ===== P1 · Dégager des différences et des similitudes — Q-G · Mode de vie de trois peuples autochtones =====
-    { id: "q-experience-autochtones-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, niveau: 1,
+    { id: "q-experience-autochtones-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Les documents 1 à 3 présentent le mode de vie de trois peuples autochtones. Nomme le peuple qui possède un mode de vie différent et compare son mode de vie avec celui des deux autres.",
@@ -1487,7 +1859,7 @@ window.DATA = {
       corrige: "Le document 1 présente les Iroquoiens, qui sont sédentaires : ils cultivent la terre et déplacent leurs villages tous les 10 à 15 ans selon l'épuisement des sols. Les Algonquiens (document 2) et les Inuits (document 3) sont nomades : ils se déplacent en bandes pour suivre le gibier et changent d'habitations selon les saisons." },
 
     // ===== P1 · Déterminer des changements et des continuités — Q-H · Transformation des réseaux d'échange =====
-    { id: "q-experience-autochtones-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 1,
+    { id: "q-experience-autochtones-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Au début du 16e siècle, les Autochtones possèdent de nombreux réseaux d'échange. Comment cette situation se transforme-t-elle après l'arrivée des Européens ?",
@@ -1498,7 +1870,7 @@ window.DATA = {
       corrige: "Le commerce des fourrures entre Européens et Autochtones s'intègre aux réseaux commerciaux déjà existants des Autochtones, et des produits européens (outils en fer, armes, chaudrons de cuivre) entrent en circulation dans ces réseaux d'échange." },
 
     // ===== P1 · Déterminer des causes et des conséquences — Q-I · Échec des tentatives d'établissement français =====
-    { id: "q-experience-autochtones-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, niveau: 1,
+    { id: "q-experience-autochtones-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Pourquoi certaines tentatives d'établissement des Français en Amérique entre 1534 et 1603 se sont soldées par un échec ?",
@@ -1509,7 +1881,7 @@ window.DATA = {
       corrige: "Le scorbut décime une partie importante des colons français (document 1). Les hivers rigoureux sont également difficiles à surmonter pour les premiers établissements." },
 
     // ===== P1 · Mettre en relation des faits — Q-J · Partage des tâches Algonquiens vs Iroquoiens =====
-    { id: "q-experience-autochtones-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 1,
+    { id: "q-experience-autochtones-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique à l'endroit approprié le numéro du document qui correspond au partage des tâches chez chacune des nations autochtones.",
@@ -1520,7 +1892,7 @@ window.DATA = {
       corrige: [["Document 2"], ["Document 1"]] },
 
     // ===== P1 · Établir des liens de causalité — Q-K · Alliance franco-amérindienne de 1603 et conséquences pour les Iroquois =====
-    { id: "q-experience-autochtones-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 1,
+    { id: "q-experience-autochtones-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Explique comment l'alliance franco-amérindienne de 1603 entraîne des conséquences pour les Iroquois. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
@@ -1537,7 +1909,7 @@ window.DATA = {
       corrige: "Champlain et Gravé Du Pont, représentant le roi de France, concluent une alliance avec les Montagnais-Innus, les Algonquins et les Malécites-Etchemins (document 2). Cette alliance permet à ces peuples autochtones de jouir de l'assistance militaire des Français contre leurs ennemis (document 3). Cela entraîne la défaite des Iroquois lors d'un conflit armé contre leurs ennemis autochtones et leurs alliés français (document 1)." },
 
     // ===== Q4 — P2 · Établir des liens de causalité =====
-    { id: "q-evolution-coloniale-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 2,
+    { id: "q-evolution-coloniale-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À l'aide des documents 1 à 3, explique comment la situation démographique de la Nouvelle-France a amené l'État français à mettre en place une mesure pour corriger la situation. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
@@ -1554,7 +1926,7 @@ window.DATA = {
       corrige: "Dans la 1re moitié du 17e siècle, le territoire de la Nouvelle-France est très peu peuplé. En effet, la Compagnie des Cent-Associés n'est pas en mesure de respecter son engagement d'installer 4000 colons dans la colonie. C'est pour cette raison que l'intendant Jean Talon a fait venir les filles du Roy avec l'objectif de favoriser le peuplement de la colonie." },
 
     // ===== Q5 — P2 · Situer dans le temps et dans l'espace =====
-    { id: "q-evolution-coloniale-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 2,
+    { id: "q-evolution-coloniale-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 et 2 illustrent des faits relatifs à la Conquête. Inscris le numéro des documents à l'endroit approprié, selon qu'ils présentent des faits survenus avant ou après la bataille des Plaines d'Abraham.",
@@ -1565,7 +1937,7 @@ window.DATA = {
       corrige: { before: ["Document 1"], after: ["Document 2"] } },
 
     // ===== P2 · Dégager des différences et des similitudes — Désaccord d'historiens sur Talon =====
-    { id: "q-evolution-coloniale-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 2,
+    { id: "q-evolution-coloniale-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 et 2 présentent les interprétations de deux historiens concernant les réalisations de l'intendant Jean Talon. Indique le point précis sur lequel ils sont en désaccord.",
@@ -1576,7 +1948,7 @@ window.DATA = {
       corrige: "Les historiens sont en désaccord sur la réussite des réalisations de Talon en Nouvelle-France." },
 
     // ===== P2 · Mettre en relation des faits — Importance géographique et rôle économique de Montréal =====
-    { id: "q-evolution-coloniale-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 2,
+    { id: "q-evolution-coloniale-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Indique si les faits présentés dans les documents 1 à 3 font référence à l'importance géographique de Montréal et/ou à son rôle économique pour la colonie. Coche toutes les cases qui s'appliquent à chaque document.",
@@ -1591,7 +1963,7 @@ window.DATA = {
       corrige: [[true, true], [false, true], [true, false]] },
 
     // ===== P2 · Dégager des différences et des similitudes — Rôles administrateurs vs clergé =====
-    { id: "q-evolution-coloniale-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 2,
+    { id: "q-evolution-coloniale-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À l'aide des documents 1 à 3, indique une similitude et une différence dans le rôle des administrateurs coloniaux et du clergé catholique en Nouvelle-France.",
@@ -1605,7 +1977,7 @@ window.DATA = {
       ] },
 
     // ===== P2 · Déterminer des causes et des conséquences — Objectifs de l'implantation du régime seigneurial =====
-    { id: "q-evolution-coloniale-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, niveau: 2,
+    { id: "q-evolution-coloniale-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À l'aide des documents 1 et 2, indique l'objectif social et l'objectif économique de l'implantation du régime seigneurial en Nouvelle-France. Inscris le numéro du document utilisé pour appuyer chaque objectif.",
@@ -1619,7 +1991,7 @@ window.DATA = {
       ] },
 
     // ===== P2 · Déterminer des causes et des conséquences — Conséquences économiques du mercantilisme =====
-    { id: "q-evolution-coloniale-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, niveau: 2,
+    { id: "q-evolution-coloniale-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À partir des documents 1 et 2, détermine deux conséquences économiques du mercantilisme sur le développement de la Nouvelle-France.",
@@ -1633,7 +2005,7 @@ window.DATA = {
       ] },
 
     // ===== P2 · Déterminer des causes et des conséquences — Conséquences territoriale et économique d'Utrecht =====
-    { id: "q-evolution-coloniale-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, niveau: 2,
+    { id: "q-evolution-coloniale-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À partir des documents 1 et 2, indique une conséquence territoriale et une conséquence économique de la guerre de Succession d'Espagne sur la Nouvelle-France.",
@@ -1647,7 +2019,7 @@ window.DATA = {
       ] },
 
     // ===== P2 · Dégager des différences et des similitudes — Trudel vs Grenier sur le rôle de la seigneurie =====
-    { id: "q-evolution-coloniale-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, niveau: 2,
+    { id: "q-evolution-coloniale-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 et 2 présentent les positions de deux historiens sur le régime seigneurial. Sur quel point précis sont-ils en désaccord ?",
@@ -1658,7 +2030,7 @@ window.DATA = {
       corrige: "Marcel Trudel et Benoît Grenier ne s'entendent pas sur le rôle de la seigneurie. Marcel Trudel soutient qu'il s'agit d'un système d'entraide alors que Benoît Grenier considère qu'il s'agit d'un système de domination de l'élite coloniale et des seigneurs sur les censitaires." },
 
     // ===== P2 · Dégager des différences et des similitudes — Point d'accord sur les causes de l'épidémie de la Huronie =====
-    { id: "q-evolution-coloniale-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, niveau: 2,
+    { id: "q-evolution-coloniale-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 et 2 relatent les causes de l'épidémie qui a touché la Huronie vers 1650. Sur quel point précis ces documents sont-ils d'accord ?",
@@ -1669,7 +2041,7 @@ window.DATA = {
       corrige: "Les deux documents s'entendent pour dire que ce sont les contacts avec les missionnaires qui ont provoqué les épidémies dans les villages autochtones hurons-wendats." },
 
     // ===== P2 · Établir des faits — Mode d'occupation du territoire =====
-    { id: "q-evolution-coloniale-faits-1", operation: "Établir des faits", numero: 1, niveau: 2,
+    { id: "q-evolution-coloniale-faits-1", operation: "Établir des faits", numero: 1, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Selon le document 1, quel mode d'occupation du territoire est implanté en Nouvelle-France par les autorités coloniales ?",
@@ -1680,7 +2052,7 @@ window.DATA = {
       corrige: "Le régime seigneurial OU la seigneurie OU le régime féodal." },
 
     // ===== P2 · Établir des liens de causalité — Établissement de la Grande Paix de Montréal en 1701 =====
-    { id: "q-evolution-coloniale-causalite-2", operation: "Établir des liens de causalité", numero: 2, niveau: 2,
+    { id: "q-evolution-coloniale-causalite-2", operation: "Établir des liens de causalité", numero: 2, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À l'aide des documents 1 à 4, explique comment les Premières Nations et les Français ont établi une paix en 1701. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
@@ -1697,7 +2069,7 @@ window.DATA = {
       corrige: "Le traité de Ryswick de 1697 mène à une trêve entre Britanniques et Français : les Britanniques ne soutiennent plus les Iroquois dans leur guerre contre la Nouvelle-France. Affaiblis aussi par les épidémies et les guerres dans la région des Grands Lacs, les Iroquois sont prêts à négocier. Cela amène des chefs autochtones comme Kondiaronk et Koutaoiliboe à utiliser leur influence pour négocier la paix avec les nations de la vallée du Saint-Laurent, et le gouverneur français Callière à envoyer des ambassadeurs pour convaincre les chefs alliés de rendre leurs prisonniers aux Iroquois. En conséquence, après des cérémonies où tous les intervenants fument le calumet, les Français et près de 40 nations autochtones signent la Grande Paix de Montréal en 1701." },
 
     // ===== P2 · Situer dans le temps et dans l'espace — Ordre chronologique de 3 événements de la Conquête =====
-    { id: "q-evolution-coloniale-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 2,
+    { id: "q-evolution-coloniale-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 à 3 font référence à des événements liés à la guerre de la Conquête. Place-les en ordre chronologique du plus ancien au plus récent.",
@@ -1713,7 +2085,7 @@ window.DATA = {
     // ============================================================
 
     // ===== P2 · Établir des faits — Q1 : idéologie de Louis XIV =====
-    { id: "q-evolution-coloniale-faits-2", operation: "Établir des faits", numero: 2, niveau: 2,
+    { id: "q-evolution-coloniale-faits-2", operation: "Établir des faits", numero: 2, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À quelle idéologie fait référence le document 1 ? (Idéologie : ensemble d'idées sociales, politiques et religieuses.)",
@@ -1725,7 +2097,7 @@ window.DATA = {
 
     // ===== P2 · Déterminer des changements et des continuités — Q2 : continuité économique =====
     // Cette question résout l'OI manquante en P2 (changements et continuités).
-    { id: "q-evolution-coloniale-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 2,
+    { id: "q-evolution-coloniale-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Indique une continuité qui marque le développement économique de la Nouvelle-France.",
@@ -1736,7 +2108,7 @@ window.DATA = {
       corrige: "Le commerce des fourrures est une activité économique présente durant toute la période (documents 1 et 2)." },
 
     // ===== P2 · Causes et conséquences — Q3 : effet des guerres iroquoises =====
-    { id: "q-evolution-coloniale-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, niveau: 2,
+    { id: "q-evolution-coloniale-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Indique un effet des guerres iroquoises sur l'économie de la Nouvelle-France.",
@@ -1747,7 +2119,7 @@ window.DATA = {
       corrige: "Les guerres iroquoises empêchent (ou ralentissent) le commerce des fourrures (document 1)." },
 
     // ===== P2 · Mettre en relation — Q4 : rôles de l'Église =====
-    { id: "q-evolution-coloniale-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 2,
+    { id: "q-evolution-coloniale-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 à 3 présentent le rôle de l'Église à l'époque de la Nouvelle-France. Inscris à l'endroit approprié le numéro du document correspondant à chaque rôle de l'Église.",
@@ -1759,7 +2131,7 @@ window.DATA = {
       corrige: [["Document 2"], ["Document 3"], ["Document 1"]] },
 
     // ===== P2 · Situer dans le temps — Q5 : avant / après le gouvernement royal =====
-    { id: "q-evolution-coloniale-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 2,
+    { id: "q-evolution-coloniale-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Classe les documents 1 à 4 selon qu'ils présentent des faits qui surviennent avant ou après la mise en place du gouvernement royal.",
@@ -1772,7 +2144,7 @@ window.DATA = {
       corrige: { before: ["Document 2", "Document 3"], after: ["Document 1", "Document 4"] } },
 
     // ===== P2 · Différences et similitudes — Q6 : censitaire vs seigneur =====
-    { id: "q-evolution-coloniale-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, niveau: 2,
+    { id: "q-evolution-coloniale-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "À partir des documents 1 et 2, indique une similitude entre le rôle du censitaire et celui du seigneur dans le régime seigneurial.",
@@ -1783,7 +2155,7 @@ window.DATA = {
       corrige: "Le seigneur et le censitaire ont tous deux des droits : droit de se faire octroyer une terre (censitaire) et droit de percevoir le cens et les autres redevances (seigneur)." },
 
     // ===== P2 · Liens de causalité — Q7 : produits européens et guerres Hurons/Iroquois =====
-    { id: "q-evolution-coloniale-causalite-3", operation: "Établir des liens de causalité", numero: 3, niveau: 2,
+    { id: "q-evolution-coloniale-causalite-3", operation: "Établir des liens de causalité", numero: 3, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Explique comment les relations commerciales, suite à l'introduction des produits européens, entraînent un impact sur les relations entre les Hurons et les Iroquois. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux :",
@@ -1796,7 +2168,7 @@ window.DATA = {
       corrige: "Les Hurons et les Iroquois sont grandement intéressés par les nouveaux produits européens obtenus en échange de la fourrure (document 1). Cela entraîne une plus grande rivalité commerciale entre ces peuples autochtones (document 2). Ce contexte de rivalité commerciale provoque des guerres entre Hurons et Iroquois qui mènent au massacre des Hurons par les Iroquois (document 3)." },
 
     // ===== P2 · Situer dans le temps — Q8 : ordre chronologique guerre de la Conquête =====
-    { id: "q-evolution-coloniale-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, niveau: 2,
+    { id: "q-evolution-coloniale-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Les documents 1 à 4 font référence à des événements s'étant produits durant la guerre de la Conquête. Place-les en ordre chronologique. Le document 3 (expulsion des Acadiens, 1755) est déjà placé pour t'aider.",
@@ -1808,7 +2180,7 @@ window.DATA = {
       corrige: ["Document 2", "Document 3", "Document 4", "Document 1"] },
 
     // ===== Q6 — P3 · Dégager des différences et des similitudes =====
-    { id: "q-conquete-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 3,
+    { id: "q-conquete-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Les documents 1 et 2 présentent le point de vue de deux historiens. Sur quel point précis sont-ils d'accord ?",
@@ -1819,7 +2191,7 @@ window.DATA = {
       corrige: "Les deux historiens s'entendent pour dire que plusieurs milliers de Canadiens français sont partis de la colonie à la suite de la Conquête." },
 
     // ===== Q7 — P3 · Déterminer des causes et des conséquences =====
-    { id: "q-conquete-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, niveau: 3,
+    { id: "q-conquete-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "En 1774, l'Acte de Québec est adopté. Inscris le numéro du document qui présente une cause de l'adoption de cette loi et le numéro de celui qui en présente une conséquence.",
@@ -1835,7 +2207,7 @@ window.DATA = {
     // ============================================================
 
     // ===== P3 · Causes et conséquences — Q1 R1 : 3 conséquences du changement de régime =====
-    { id: "q-conquete-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, niveau: 3,
+    { id: "q-conquete-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "À l'aide des documents 1 à 3, indique trois conséquences du changement de régime. Pour chaque conséquence, précise l'aspect de société concerné (social, politique, économique, culturel ou territorial).",
@@ -1850,7 +2222,7 @@ window.DATA = {
       ] },
 
     // ===== P3 · Différences et similitudes — Q2 R1 : Gouvernement royal vs Proclamation royale =====
-    { id: "q-conquete-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 3,
+    { id: "q-conquete-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "À partir des documents 1 et 2, dégage une similitude et une différence dans les structures politiques du Gouvernement royal (1663-1760) et de la Proclamation royale (1763-1774).",
@@ -1864,7 +2236,7 @@ window.DATA = {
       ] },
 
     // ===== P3 · Situer dans le temps — Q3 R1 : avant / après la Proclamation royale =====
-    { id: "q-conquete-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 3,
+    { id: "q-conquete-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Les documents 1 et 2 font référence à la situation des Autochtones dans la seconde moitié du 18e siècle. Indique si les faits présentés dans ces documents surviennent avant ou après la Proclamation royale.",
@@ -1881,7 +2253,7 @@ window.DATA = {
     // ============================================================
 
     // ===== P3 · Mettre en relation — Q1 R2 : arrivée des Loyalistes =====
-    { id: "q-conquete-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 3,
+    { id: "q-conquete-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "À l'aide des documents 1 et 2, explique une cause et une conséquence de l'arrivée des Loyalistes dans la Province de Québec. Indique le document utilisé pour chaque.",
@@ -1895,7 +2267,7 @@ window.DATA = {
       ] },
 
     // ===== P3 · Causes et conséquences — Q2 R2 : pétitions des marchands britanniques =====
-    { id: "q-conquete-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, niveau: 3,
+    { id: "q-conquete-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "À partir des documents 1 et 2, détermine une cause et une conséquence des pétitions envoyées à la couronne britannique par les marchands britanniques. Indique le document utilisé pour chaque.",
@@ -1915,7 +2287,7 @@ window.DATA = {
     // ============================================================
 
     // ===== P3 · Établir des faits — Q1 : religion du clergé arrivé avec Amherst =====
-    { id: "q-conquete-faits-1", operation: "Établir des faits", numero: 1, niveau: 3,
+    { id: "q-conquete-faits-1", operation: "Établir des faits", numero: 1, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "À quelle religion fait référence le document 1?",
@@ -1926,7 +2298,7 @@ window.DATA = {
       corrige: "À la religion anglicane ou à la religion protestante." },
 
     // ===== P3 · Changements et continuités — Q2 : changement politique en 1763 =====
-    { id: "q-conquete-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 3,
+    { id: "q-conquete-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Indique un changement politique important qui survient en 1763.",
@@ -1940,7 +2312,7 @@ window.DATA = {
     // Note : libellé de la réglette source au pluriel (« les conséquences ») incohérent avec
     // l'énoncé qui demande « une cause politique ». On utilise R_CAUSES_2PT_GEN_1CAUSE
     // (miroir au singulier « la cause ») pour assurer la cohérence énoncé/réglette.
-    { id: "q-conquete-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, niveau: 3,
+    { id: "q-conquete-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Indique une cause politique de la révolte de Pontiac.",
@@ -1951,7 +2323,7 @@ window.DATA = {
       corrige: "La conquête de la Nouvelle-France par l'Angleterre, ou le départ des Français de la région des Grands Lacs (document 1)." },
 
     // ===== P3 · Situer dans l'espace — Q4 : carte A/B/C/D (région de traite perdue) =====
-    { id: "q-conquete-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 3,
+    { id: "q-conquete-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "À partir du document 1, identifie la lettre qui correspond à la région de traite des fourrures perdue par la Province of Quebec au moment de la Proclamation royale.",
@@ -1962,7 +2334,7 @@ window.DATA = {
       corrige: "A" },
 
     // ===== P3 · Différences et similitudes — Q5 : désaccord Carleton vs marchands de Québec =====
-    { id: "q-conquete-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, niveau: 3,
+    { id: "q-conquete-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Sur quel point précis les auteurs des documents 1 et 2 sont-ils en désaccord?",
@@ -1975,7 +2347,7 @@ window.DATA = {
     // ===== P3 · Mettre en relation — Q6 : associer document à période =====
     // Docs renumérotés depuis la source : doc 1 = Acte de Québec (texte), doc 2 = Régime militaire
     // (Bishop's House), doc 3 = Proclamation royale (schéma).
-    { id: "q-conquete-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 3,
+    { id: "q-conquete-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Les documents 1 à 3 font référence à la situation politique de la Province of Quebec entre 1760 et 1791. Inscris à l'endroit approprié le numéro du document correspondant à chacune des périodes ci-dessous.",
@@ -1987,7 +2359,7 @@ window.DATA = {
 
     // ===== P3 · Liens de causalité — Q7 : guerre d'indépendance américaine → Loyalistes =====
     // Docs renumérotés depuis la source (originaux 2, 3, 11) selon l'ordre causal des bullets.
-    { id: "q-conquete-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 3,
+    { id: "q-conquete-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Explique comment la situation en Amérique du Nord entre 1776 et 1783, suite à une volonté des Treize colonies, a un impact sur la Province of Quebec. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
@@ -2007,7 +2379,7 @@ window.DATA = {
     // Docs renumérotés depuis la source (originaux 13, 14, 15, 16) — ordre conservé.
     // Avant : Doc 2 (Boston Tea Party, 1773) et Doc 3 (serment du Test, en vigueur avant 1774).
     // Après : Doc 1 (territoire après Acte de Québec, 1774) et Doc 4 (invasion américaine, 1775).
-    { id: "q-conquete-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 3,
+    { id: "q-conquete-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Les documents 1 à 4 font référence à des événements politiques du Régime britannique. Indique si les faits présentés dans ces documents se déroulent avant ou après l'Acte de Québec.",
@@ -2018,7 +2390,7 @@ window.DATA = {
       corrige: { before: ["Document 2", "Document 3"], after: ["Document 1", "Document 4"] } },
 
     // ===== Q8 — P4 · Situer dans le temps et dans l'espace =====
-    { id: "q-revendications-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, niveau: 4,
+    { id: "q-revendications-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "À l'aide des cartes des documents 1 et 2, indique laquelle correspond à l'organisation territoriale après l'Acte constitutionnel de 1791.",
@@ -2034,7 +2406,7 @@ window.DATA = {
     // ============================================================
 
     // ===== P4 · Établir des faits — Q1 : apathie des Canadiens à la guerre de 1812 =====
-    { id: "q-revendications-faits-1", operation: "Établir des faits", numero: 1, niveau: 4,
+    { id: "q-revendications-faits-1", operation: "Établir des faits", numero: 1, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Que nous apprend le document 1 sur la participation des Canadiens à la guerre anglo-américaine de 1812?",
@@ -2045,7 +2417,7 @@ window.DATA = {
       corrige: "La population est apathique, c'est-à-dire qu'elle manifeste un manque d'enthousiasme pour la guerre." },
 
     // ===== P4 · Changements et continuités — Q2 : proportion anglophone qui s'accroît =====
-    { id: "q-revendications-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, niveau: 4,
+    { id: "q-revendications-changements-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Indique un changement qui survient dans la population de la Province of Quebec entre 1791 et 1840.",
@@ -2059,7 +2431,7 @@ window.DATA = {
     // Note : libellé de la réglette source au pluriel (« les conséquences ») incohérent avec
     // l'énoncé qui demande « une cause ». On utilise R_CAUSES_2PT_GEN_1CAUSE au singulier
     // pour assurer la cohérence énoncé/réglette (même correction silencieuse que Q3 P3).
-    { id: "q-revendications-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, niveau: 4,
+    { id: "q-revendications-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Indique une cause de propagation des épidémies au 19e siècle.",
@@ -2070,7 +2442,7 @@ window.DATA = {
       corrige: "La promiscuité (ou le manque d'hygiène) dans les navires qui transportent les immigrants vers le Canada (document 1)." },
 
     // ===== P4 · Différences et similitudes — Q4 : désaccord Durham vs Le Canadien =====
-    { id: "q-revendications-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, niveau: 4,
+    { id: "q-revendications-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Sur quel point précis les auteurs des documents 1 et 2 sont-ils en désaccord?",
@@ -2081,7 +2453,7 @@ window.DATA = {
       corrige: "Sur le projet d'union du Haut et du Bas-Canada." },
 
     // ===== P4 · Mettre en relation — Q5 : associer document à idéologie politique =====
-    { id: "q-revendications-relation-1", operation: "Mettre en relation des faits", numero: 1, niveau: 4,
+    { id: "q-revendications-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Inscris à l'endroit approprié le numéro du document correspondant à chacune des idéologies politiques ci-dessous.",
@@ -2092,7 +2464,7 @@ window.DATA = {
       corrige: [["Document 1"], ["Document 2"]] },
 
     // ===== P4 · Liens de causalité — Q6 : coût du commerce des fourrures → fusion des compagnies =====
-    { id: "q-revendications-causalite-1", operation: "Établir des liens de causalité", numero: 1, niveau: 4,
+    { id: "q-revendications-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Explique comment le coût du commerce des fourrures, suite à un changement dans les territoires de traite, a un impact sur les compagnies de traite au début du 19e siècle. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
@@ -2112,7 +2484,7 @@ window.DATA = {
     // Renumérotation depuis le PDF source (docs 2, 3, 4, 5) — ordre conservé.
     // Avant : Doc 1 (92 résolutions, 1834) et Doc 3 (crise des subsides, conflit antérieur).
     // Après : Doc 2 (déclaration d'indépendance, 1838) et Doc 4 (attaque St-Charles, novembre 1837).
-    { id: "q-revendications-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, niveau: 4,
+    { id: "q-revendications-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Les documents 1 à 4 font référence à des événements politiques du Régime britannique. Indique si les faits présentés dans ces documents se déroulent avant ou après l'adoption des résolutions Russell par le parlement de Londres.",
@@ -2130,7 +2502,7 @@ window.DATA = {
     // ============================================================
 
     // ===== P1 · Différences/similitudes — Q1 fam : divergence sur le peuplement de l'Amérique =====
-    { id: "q-experience-autochtones-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, niveau: 1,
+    { id: "q-experience-autochtones-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Sur quel point précis les auteurs des documents 1 et 2 sont-ils en désaccord?",
@@ -2141,7 +2513,7 @@ window.DATA = {
       corrige: "Ils sont en désaccord sur le chemin emprunté par les premiers occupants entre l'Asie et l'Amérique (documents 1 et 2)." },
 
     // ===== P1 · Causes/conséquences — Q2 fam : cause de la rivalité entre nations autochtones =====
-    { id: "q-experience-autochtones-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, niveau: 1,
+    { id: "q-experience-autochtones-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique une cause de la rivalité entre les nations autochtones.",
@@ -2152,7 +2524,7 @@ window.DATA = {
       corrige: "Les nations autochtones sont en compétition, car elles veulent devenir les intermédiaires les plus importants des Européens dans la traite des fourrures (document 1)." },
 
     // ===== P1 · Changements/continuités — Q3 fam : mode de vie autochtone après contact européen =====
-    { id: "q-experience-autochtones-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, niveau: 1,
+    { id: "q-experience-autochtones-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "À partir du document 1, indique un changement qui survient dans le mode de vie des Autochtones après l'arrivée des Européens en Amérique.",
@@ -2171,7 +2543,7 @@ window.DATA = {
 
     // ===== P1 · Causes/conséquences — Q1 soma : 2 causes de l'alliance franco-amérindienne =====
     // Renumérotation depuis le PDF soma (docs source 1, 2 → Doc 1, Doc 2).
-    { id: "q-experience-autochtones-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, niveau: 1,
+    { id: "q-experience-autochtones-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "À l'aide des documents 1 et 2, indique deux causes de l'alliance franco-amérindienne.",
@@ -2188,7 +2560,7 @@ window.DATA = {
     // Renumérotation depuis le PDF soma (doc source 3 → Doc 1).
     // Réutilisation de R_CAUSES_2PT_CONS_SEULE (libellé quasi-identique : « plus ou moins la
     // conséquence » vs « plus ou moins correctement la conséquence » — variation sémantique mineure).
-    { id: "q-experience-autochtones-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, niveau: 1,
+    { id: "q-experience-autochtones-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique une conséquence sociale de la guerre chez les nations autochtones du nord-est de l'Amérique.",
@@ -2203,7 +2575,7 @@ window.DATA = {
     // Antériorité : Doc 1 (Cartier Stadaconé, 2e voyage 1535-1536) et Doc 3 (image Cartier croix, 1er voyage 1534).
     // Postériorité : Doc 2 (Tadoussac 1603 Anadabijou) et Doc 4 (Champlain Acadie 1604-1605).
     // Variante de q-experience-autochtones-situer-1 (même pivot, documents source différents).
-    { id: "q-experience-autochtones-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, niveau: 1,
+    { id: "q-experience-autochtones-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique si les documents 1 à 4 sont antérieurs ou postérieurs à la fondation de l'établissement de Charlesbourg-Royal en 1541.",
@@ -2218,7 +2590,7 @@ window.DATA = {
     // Note : la réglette source dit « la conséquence » alors que l'énoncé demande « une cause »
     // (probable erreur de copier-coller du PDF source). Correction silencieuse vers
     // R_CAUSES_2PT_GEN_1CAUSE (libellé cohérent avec l'énoncé).
-    { id: "q-experience-autochtones-causes-6", operation: "Déterminer des causes et des conséquences", numero: 6, niveau: 1,
+    { id: "q-experience-autochtones-causes-6", operation: "Déterminer des causes et des conséquences", numero: 6, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique une cause de la fondation d'un comptoir commercial à Tadoussac par Pierre Chauvin de Tonnetuit.",
@@ -2235,7 +2607,7 @@ window.DATA = {
     // Doc 1 + Doc 2 image sur la 1re ; Doc 3 + Doc 4 sur la 2e). Le drapeau cantSplitAllDocs
     // a été testé et n'aide pas, car le contenu dépasse une page complète. Le découpage
     // naturel respecte la grille 2-colonnes (paires Doc 1+2 et Doc 3+4).
-    { id: "q-experience-autochtones-relation-3", operation: "Mettre en relation des faits", numero: 3, niveau: 1,
+    { id: "q-experience-autochtones-relation-3", operation: "Mettre en relation des faits", numero: 3, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Indique si les documents 1 à 4 correspondent à la famille linguistique algonquienne ou à la famille linguistique iroquoienne.",
@@ -2249,7 +2621,7 @@ window.DATA = {
     // Renumérotation depuis le PDF soma (doc source 14 → Doc 1).
     // Réutilisation de R_DIFFERENCES_2PT_GEN (libellé du niveau 0 légèrement plus complet :
     // « dégage incorrectement la différence ou ne la dégage pas » vs source « ne dégage pas »).
-    { id: "q-experience-autochtones-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, niveau: 1,
+    { id: "q-experience-autochtones-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
         prompt: "Le document 1 présente les perspectives iroquoienne et européenne sur l'utilisation du chaudron de cuivre. Indique une différence entre les deux perspectives.",
@@ -2265,7 +2637,7 @@ window.DATA = {
     // Après : Doc 2 (commerce sécuritaire, 1re moitié 18e) et Doc 3 (Fort William-Henry, 1757).
     // cantSplitAllDocs : force Word à garder énoncé + axe + réglette + 4 docs sur la même page
     // (sinon Word coupe naturellement entre paire 1 et paire 2 alors que tout aurait pu tenir).
-    { id: "q-evolution-coloniale-situer-5", operation: "Situer dans le temps et dans l'espace", numero: 5, niveau: 2,
+    { id: "q-evolution-coloniale-situer-5", operation: "Situer dans le temps et dans l'espace", numero: 5, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       cantSplitAllDocs: true,
       questionBody: {
@@ -2277,7 +2649,7 @@ window.DATA = {
       corrige: { before: ["Document 1", "Document 4"], after: ["Document 2", "Document 3"] } },
 
     // ===== P2 · Établir des faits — Q5 fam : fonction commerciale des villes en Nouvelle-France =====
-    { id: "q-evolution-coloniale-faits-3", operation: "Établir des faits", numero: 3, niveau: 2,
+    { id: "q-evolution-coloniale-faits-3", operation: "Établir des faits", numero: 3, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Indique une fonction importante des villes en Nouvelle-France.",
@@ -2290,7 +2662,7 @@ window.DATA = {
     // ===== P2 · Changements/continuités — Q6 fam : politique coloniale après 1663 =====
     // Doc 1 (Caroline Masse — commerce des fourrures à 70% des exportations) appuie la continuité (mercantilisme).
     // Doc 2 (graphique population NF) appuie le changement (mesures de peuplement post-1663).
-    { id: "q-evolution-coloniale-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, niveau: 2,
+    { id: "q-evolution-coloniale-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "La mise en place du Gouvernement royal en 1663 est un événement marquant en Nouvelle-France. À l'aide des documents 1 et 2, indique un changement et une continuité dans la politique coloniale après 1663.",
@@ -2304,7 +2676,7 @@ window.DATA = {
       ] },
 
     // ===== P2 · Établir des faits — Q7 fam : commerce triangulaire =====
-    { id: "q-evolution-coloniale-faits-4", operation: "Établir des faits", numero: 4, niveau: 2,
+    { id: "q-evolution-coloniale-faits-4", operation: "Établir des faits", numero: 4, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Nomme le système commercial illustré dans le document 1.",
@@ -2315,7 +2687,7 @@ window.DATA = {
       corrige: "Le commerce triangulaire (document 1)." },
 
     // ===== P2 · Différences/similitudes — Q8 fam : communautés religieuses masculines vs féminines =====
-    { id: "q-evolution-coloniale-differences-6", operation: "Dégager des différences et des similitudes", numero: 6, niveau: 2,
+    { id: "q-evolution-coloniale-differences-6", operation: "Dégager des différences et des similitudes", numero: 6, annee: 3, niveau: 2,
       realite_sociale_id: "evolution-societe-coloniale",
       questionBody: {
         prompt: "Dégage une similitude dans le rôle des communautés religieuses masculines et féminines en Nouvelle-France.",
@@ -2330,7 +2702,7 @@ window.DATA = {
     // Autochtones → Doc 3 (PDF 17, révolte pour Grands Lacs) ;
     // Marchands anglophones → Doc 1 (PDF 15, Proclamation à la lettre + Chambre où ils sont seuls) ;
     // Administrateurs britanniques → Doc 2 (PDF 16, conciliants envers les Canadiens français).
-    { id: "q-conquete-relation-3", operation: "Mettre en relation des faits", numero: 3, niveau: 3,
+    { id: "q-conquete-relation-3", operation: "Mettre en relation des faits", numero: 3, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Les documents 1 à 3 présentent les revendications de différents groupes sociaux au lendemain de la guerre de la Conquête. Inscris à l'endroit approprié le numéro du document correspondant à chacune des positions des groupes sociaux.",
@@ -2341,7 +2713,7 @@ window.DATA = {
       corrige: [["Document 3"], ["Document 1"], ["Document 2"]] },
 
     // ===== P3 · Causes/conséquences — Q10 fam : deux conséquences de l'Acte de Québec =====
-    { id: "q-conquete-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, niveau: 3,
+    { id: "q-conquete-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Indique deux conséquences de l'Acte de Québec.",
@@ -2357,7 +2729,7 @@ window.DATA = {
     // ===== P3 · Causalité — Q11 fam : lettre du congrès → réponse des Canadiens → invasion =====
     // Renumérotation depuis le PDF Familiarisation : docs 18, 19, 21 → Doc 1, 2, 3.
     // Doc 1 = rapport Brown (refus canadiens) ; Doc 2 = carte invasion ; Doc 3 = lettre Dickinson (invitation).
-    { id: "q-conquete-causalite-2", operation: "Établir des liens de causalité", numero: 2, niveau: 3,
+    { id: "q-conquete-causalite-2", operation: "Établir des liens de causalité", numero: 2, annee: 3, niveau: 3,
       realite_sociale_id: "conquete-changement-empire",
       questionBody: {
         prompt: "Explique comment la réponse des Canadiens à la lettre du congrès américain entraîne une réaction des Treize colonies dans la deuxième moitié du 18e siècle. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
@@ -2377,7 +2749,7 @@ window.DATA = {
     // Renumérotation depuis le PDF Familiarisation : docs 25, 26, 27 → Doc 1, 2, 3.
     // Ordre chrono : Doc 1 (Buies, exploitation forestière post-blocus continental ~1810)
     // → Doc 3 (Banque de Montréal, 1817) → Doc 2 (canal Lachine, ouvert 1825).
-    { id: "q-revendications-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, niveau: 4,
+    { id: "q-revendications-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Les documents 1 à 3 se rapportent au développement économique du Bas-Canada. Place-les en ordre chronologique du plus ancien au plus récent.",
@@ -2388,7 +2760,7 @@ window.DATA = {
       corrige: ["Document 1", "Document 3", "Document 2"] },
 
     // ===== P4 · Établir des faits — Q14 fam : revendication des Patriotes sur le Conseil exécutif =====
-    { id: "q-revendications-faits-2", operation: "Établir des faits", numero: 2, niveau: 4,
+    { id: "q-revendications-faits-2", operation: "Établir des faits", numero: 2, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Quelle est la principale revendication des Patriotes en ce qui concerne le Conseil exécutif?",
@@ -2400,7 +2772,7 @@ window.DATA = {
 
     // ===== P4 · Différences/similitudes — Q15 fam : 3 acteurs au sujet de la Rébellion =====
     // Convention « un acteur = un document » : doc 29 fam splitté en Doc 1 (Lartigue), Doc 2 (Gosford), Doc 3 (Nelson).
-    { id: "q-revendications-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, niveau: 4,
+    { id: "q-revendications-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Les documents 1 à 3 présentent la position de trois acteurs au sujet de la Rébellion possible des Patriotes. Indique l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
@@ -2411,7 +2783,7 @@ window.DATA = {
       corrige: "Le Dr. Nelson (document 3) présente une position différente : il croit qu'il faut se rebeller en prenant les armes. Les deux autres acteurs — Mgr Lartigue, évêque de Montréal (document 1), et lord Gosford, gouverneur du Bas-Canada (document 2) — favorisent au contraire le maintien de la paix (similitude entre les positions de Lartigue et Gosford)." },
 
     // ===== P4 · Changements/continuités — Q16 fam : changement territorial du commerce du bois =====
-    { id: "q-revendications-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, niveau: 4,
+    { id: "q-revendications-changements-2", operation: "Déterminer des changements et des continuités", numero: 2, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Quel changement important le commerce du bois provoque-t-il au plan territorial?",
@@ -2424,7 +2796,7 @@ window.DATA = {
     // ===== P4 · Mettre en relation — Q17 fam : idéologies (libéralisme vs nationalisme) =====
     // Variante de q-revendications-relation-1 qui oppose « républicanisme » vs « nationalisme canadien »
     // avec des extraits différents (JALBC 1832-33 et Le Canadien 21 mai 1831).
-    { id: "q-revendications-relation-2", operation: "Mettre en relation des faits", numero: 2, niveau: 4,
+    { id: "q-revendications-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 3, niveau: 4,
       realite_sociale_id: "revendications-luttes-nationales",
       questionBody: {
         prompt: "Les documents 1 et 2 présentent la position de deux journaux du début du 19e siècle. Inscris à l'endroit approprié le numéro du document correspondant à l'idéologie défendue.",
@@ -2432,7 +2804,212 @@ window.DATA = {
       },
       reglettes: [{ id: "r-rv-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_2_PART }],
       documents: pickDocs('revendications-relation-2', 1, 2),
-      corrige: [["Document 1"], ["Document 2"]] }
+      corrige: [["Document 1"], ["Document 2"]] },
+
+    // ============================================================
+    // ===== P5 — 4e secondaire — Formation du régime fédéral canadien (1840-1896) =====
+    // Source : Évaluations sommatives officielles versions A et B, section A.
+    // ============================================================
+
+    // ===== Q1 — P5 V-A · Situer dans le temps — Avant/après la fédération canadienne =====
+    { id: "q-fc-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Classe les documents 1 à 4 selon qu'ils se situent avant ou après la fédération canadienne.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "Fédération canadienne", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-fc-s1", label: "Réglette (2 points)", ...R_SITUER_2PT_T4_SOMA }],
+      documents: pickDocs('fc-situer-1', 1, 2, 3, 4),
+      // Doc 1 (Province du Canada, Acte d'Union 1840) et Doc 4 (Acte constitutionnel 1791) : AVANT.
+      // Doc 2 (schéma AANB 1867) et Doc 3 (carte post-fédération avec provinces) : APRÈS.
+      corrige: { before: ["Document 1", "Document 4"], after: ["Document 2", "Document 3"] } },
+
+    // ===== Q2 — P5 V-A · Mettre en relation — Trois idéologies =====
+    { id: "q-fc-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Inscris à l'endroit approprié le numéro du document correspondant à chacune des idéologies ci-dessous.",
+        responseSpace: { type: "category-buckets", categories: ["Ultramontanisme", "Anticléricalisme", "Nationalisme de survivance"], slots: [1, 1, 1] }
+      },
+      reglettes: [{ id: "r-fc-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_3_PART }],
+      documents: pickDocs('fc-relation-1', 1, 2, 3),
+      // Ultramontanisme = Doc 3 (Cardin) ; Anticléricalisme = Doc 1 (Dessaulles) ; Nat. de survivance = Doc 2 (Bernard).
+      corrige: [["Document 3"], ["Document 1"], ["Document 2"]] },
+
+    // ===== Q3 — P5 V-A · Établir des liens de causalité — Économie agricole → émigration → mesure Église =====
+    { id: "q-fc-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Explique comment la situation économique québécoise au 19e siècle a amené l'Église catholique à intervenir pour limiter un mouvement de population. Dans ta réponse, tu devras préciser chacun des faits et les lier entre eux.",
+        bullets: [
+          "La situation du territoire agricole au Québec",
+          "Un mouvement de population",
+          "Une mesure mise en place par l'Église catholique"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-fc-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('fc-causalite-1', 1, 2, 3),
+      corrige: "Les terres agricoles sont de plus en plus rares au Québec (situation du territoire agricole). Ainsi, un grand nombre de Québécois émigrent vers les États-Unis (mouvement de population), ce qui amène l'Église catholique à inciter les familles à s'installer sur de nouveaux territoires ouverts à la colonisation, comme dans les Laurentides, et à favoriser la création d'infrastructures (chemin de fer) pour faciliter l'accès aux régions de colonisation (mesure mise en place par l'Église catholique)." },
+
+    // ===== Q4 — P5 V-A · Causes et conséquences — Objectif des missions catholiques =====
+    { id: "q-fc-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Indique l'objectif des missions catholiques chez les Autochtones.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c1", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
+      documents: pickDocs('fc-causes-1', 1),
+      corrige: "Les missions catholiques visent à convertir les Autochtones à la religion catholique OU à favoriser leur sédentarisation." },
+
+    // ===== Q5 — P5 V-A · Situer dans l'espace — Exploitation forestière (lettre sur carte) =====
+    { id: "q-fc-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Selon le document 1, indique la lettre qui désigne une région du Québec où se développe l'exploitation forestière dans la deuxième moitié du 19e siècle.",
+        responseSpace: { type: "lines", count: 1 }
+      },
+      reglettes: [{ id: "r-fc-s2", label: "Réglette (1 point)", ...R_SITUER_1PT_SP_FAIT_SOMA }],
+      documents: pickDocs('fc-situer-2', 1),
+      corrige: "B (Mauricie / Outaouais)." },
+
+    // ===== Q6 — P5 V-A · Différences — Désaccord Buies vs Mélanges religieux sur l'éducation =====
+    { id: "q-fc-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent la position de deux acteurs historiques. Indique sur quel point précis ils sont en désaccord.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-fc-d1", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT }],
+      documents: pickDocs('fc-differences-1', 1, 2),
+      corrige: "Ils ne s'entendent pas sur l'idée de rendre l'éducation obligatoire et gratuite pour tous, OU sur la question de savoir qui de l'État ou de l'Église devrait être responsable de l'éducation." },
+
+    // ===== Q7 — P5 V-A · Continuité — Revendications des Métis (rivière Rouge et Nord-Ouest) =====
+    { id: "q-fc-continuite-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, dégage un élément de continuité dans les revendications des Métis lors de la rébellion de la rivière Rouge et des rébellions du Nord-Ouest.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-fc-co1", label: "Réglette (2 points)", ...R_CONTINUITES_2PT_GEN_SOMA }],
+      documents: pickDocs('fc-continuite-1', 1, 2),
+      corrige: "Dans les deux cas, les Métis revendiquent le droit de conserver leurs territoires." },
+
+    // ===== Q8 — P5 V-A · Mettre en relation — Orgs féminines anglophones vs communautés religieuses =====
+    { id: "q-fc-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Les documents 1 à 4 présentent le rôle de deux types d'associations de femmes durant la deuxième moitié du 19e siècle. Inscris à l'endroit approprié le numéro de chacun des quatre documents.",
+        responseSpace: { type: "category-buckets", categories: ["Organisations féminines anglophones", "Communautés religieuses"], slots: [2, 2] }
+      },
+      reglettes: [{ id: "r-fc-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_4_SOMA }],
+      documents: pickDocs('fc-relation-2', 1, 2, 3, 4),
+      corrige: [["Document 1", "Document 2"], ["Document 3", "Document 4"]] },
+
+    // ===== Q9 — P5 V-B · Changement/continuité — Acte d'Union (structure politique) =====
+    { id: "q-fc-continuite-2", operation: "Déterminer des changements et des continuités", numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique s'il y a changement ou continuité dans la structure politique du Canada suite à l'adoption de l'Acte d'Union. Justifie ton choix par des faits et un repère de temps.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-fc-co2", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('fc-continuite-2', 1, 2),
+      corrige: "Il y a CHANGEMENT, car il n'y a désormais qu'une seule chambre d'assemblée pour les deux parties du Canada en 1840 OU car la chambre d'assemblée compte un nombre égal de députés (42) pour chaque partie du Canada en 1840. OU il y a CONTINUITÉ, car le gouvernement britannique dirige toujours la colonie par l'entremise d'un gouverneur en 1840 OU car le gouverneur nomme encore les membres des conseils exécutifs et législatifs." },
+
+    // ===== Q10 — P5 V-B · Établir des liens de causalité — Libre-échange GB → traité É-U =====
+    { id: "q-fc-causalite-2", operation: "Établir des liens de causalité", numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Explique comment des changements dans la politique économique de la Grande-Bretagne amènent le Canada-Uni à revoir ses relations commerciales avec les États-Unis au début des années 1850. Réponds à la question en précisant les éléments ci-dessous et en les liant entre eux.",
+        bullets: [
+          "La nouvelle politique économique de la Grande-Bretagne envers ses colonies",
+          "Un effet sur l'économie du Canada-Uni",
+          "Une conséquence de cette situation sur les relations commerciales avec les États-Unis"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-fc-ca2", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('fc-causalite-2', 1, 2, 3),
+      corrige: "À la fin des années 1840, le gouvernement britannique adopte une politique de libre-échange avec ses colonies (élimination de la protection douanière). Cette nouvelle politique désavantage le Canada-Uni car les produits canadiens ont de la difficulté à trouver preneur sur les marchés internationaux en raison de leurs prix élevés. Cette situation incite le Canada-Uni à signer un traité de réciprocité avec les États-Unis en 1854." },
+
+    // ===== Q11 — P5 V-B · Causes et conséquences — Urbanisation (cause + conséquence économique) =====
+    { id: "q-fc-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Dans la seconde moitié du 19e siècle, le Québec s'urbanise. Inscris le numéro du document qui présente une cause de l'urbanisation et le numéro du document qui présente une conséquence économique de l'urbanisation.",
+        responseSpace: { type: "category-buckets", categories: ["Cause", "Conséquence économique"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-fc-c2", label: "Réglette (2 points)", ...R_CAUSES_2PT_FACTEUR_EXPLICATIF_CONS }],
+      documents: pickDocs('fc-causes-2', 1, 2),
+      // Cause = Doc 1 (exode rural vers les villes) ; Conséquence économique = Doc 2 (vie urbaine montrée par l'image).
+      corrige: [["Document 1"], ["Document 2"]] },
+
+    // ===== Q12 — P5 V-B · Mettre en relation — Politique nationale Macdonald (3 objectifs) =====
+    { id: "q-fc-relation-3", operation: "Mettre en relation des faits", numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Inscris à l'endroit approprié les documents qui font référence aux objectifs poursuivis par la politique économique adoptée par le gouvernement de John A. Macdonald à la fin des années 1870.",
+        responseSpace: { type: "category-buckets", categories: ["Soutenir l'industrie canadienne", "Développer un marché intérieur", "Peupler l'Ouest"], slots: [1, 1, 1] }
+      },
+      reglettes: [{ id: "r-fc-r3", label: "Réglette (2 points)", ...R_RELATION_2PT_3_PART }],
+      documents: pickDocs('fc-relation-3', 1, 2, 3),
+      // Soutenir l'industrie = Doc 1 (tarifs douaniers) ; Marché intérieur = Doc 2 (Allôprof, colonisation
+      // Ouest crée des consommateurs) ; Peupler l'Ouest = Doc 3 (chemin de fer transcontinental).
+      corrige: [["Document 1"], ["Document 2"], ["Document 3"]] },
+
+    // ===== Q13 — P5 V-B · Situer dans le temps — Loi sur les Indiens (1876) sur ligne du temps =====
+    // Type responseSpace `timeline-segments` (introduit v1.21.0, refonte v1.21.2) : 3 encadrés
+    // contigus avec lettre + période + cercle à encercler.
+    { id: "q-fc-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        responseSpace: { type: "timeline-segments", periods: [
+          { letter: "A", range: "1840–1848" },
+          { letter: "B", range: "1848–1867" },
+          { letter: "C", range: "1867–1896" }
+        ]}
+      },
+      reglettes: [{ id: "r-fc-s3", label: "Réglette (1 point)", ...R_SITUER_1PT_T1_FAIT }],
+      documents: pickDocs('fc-situer-3', 1),
+      corrige: "C (la Loi sur les Indiens est adoptée en 1876, donc dans la période 1867-1896)." },
+
+    // ===== Q14 — P5 V-B · Mettre en relation — Identifier l'idéologie (anticléricalisme) =====
+    { id: "q-fc-relation-4", operation: "Mettre en relation des faits", numero: 4, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Le document 1 fait référence à une idéologie dominante au Québec dans la deuxième moitié du 19e siècle. De quelle idéologie s'agit-il?",
+        responseSpace: { type: "lines", count: 1 }
+      },
+      reglettes: [{ id: "r-fc-r4", label: "Réglette (1 point)", ...R_RELATION_1PT_1FAIT }],
+      documents: pickDocs('fc-relation-4', 1),
+      corrige: "L'anticléricalisme." },
+
+    // ===== Q15 — P5 V-B · Continuité — Droits des femmes dans le Code civil de 1866 =====
+    { id: "q-fc-continuite-3", operation: "Déterminer des changements et des continuités", numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Indique un élément de continuité en ce qui concerne les droits des femmes dans le Code civil de 1866.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-co3", label: "Réglette (2 points)", ...R_CONTINUITES_2PT_GEN_SOMA }],
+      documents: pickDocs('fc-continuite-3', 1),
+      corrige: "Les femmes sont toujours considérées comme mineures selon le Code civil de 1866 OU les femmes conservent leur incapacité juridique selon le Code civil de 1866." },
+
+    // ===== Q16 — P5 V-B · Similitudes — Convergence sur la pendaison de Louis Riel =====
+    { id: "q-fc-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux acteurs sur un événement survenu dans l'Ouest canadien. Sur quel point précis sont-ils d'accord?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-fc-d2", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_CONVERGENCE_ETABLIT }],
+      documents: pickDocs('fc-differences-2', 1, 2),
+      corrige: "Les deux acteurs sont en accord sur le fait que la pendaison de Louis Riel est une injustice infligée aux Canadiens français du Canada, OU sur le fait qu'il faut s'opposer à la pendaison de Louis Riel." }
 
   ]
 };
