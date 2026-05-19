@@ -1,8 +1,38 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.21.2 (mai 2026) ⭐ DÉMARRAGE 4e SEC
-   96 questions · 5 périodes (P1-P5) · 7 OI · 2 cycles
+   HQC · 3e + 4e secondaire — Données — v1.22.0 (mai 2026) ⭐ INTÉGRATION GUIDES PÉDAGOGIQUES RÉCIT P5
+   108 questions · 5 périodes (P1-P5) · 7 OI · 2 cycles
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 16 (7/7 OI) ⭐, P6-P8 = 0
+   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6-P8 = 0
+   v1.22.0 — INTÉGRATION DES GUIDES PÉDAGOGIQUES RÉCIT 1840-1896 :
+     • Intégration de 12 questions « Avec documents » tirées des 6 guides élèves
+       (histoire.recitus.qc.ca) couvrant la période 1840-1896 : Population/vie sociale,
+       Politique nationale, Fédération canadienne, Église/idéologies, Économie,
+       Acte d'Union/gouvernement responsable.
+     • 3 questions écartées comme doublons de fond avec les sommatives P5 déjà intégrées :
+       - Pol Nat Q2 ≈ Q12 V-B (objectifs Politique nationale Macdonald, énoncé identique)
+       - Église Q2 ≈ Q2 V-A (3 documents → 3 idéologies, même structure)
+       - Acte d'Union Q1 ≈ Q9 V-B (changement/continuité structure politique sous Acte d'Union,
+         même rubrique complexe 3pts avec footnote repère de temps)
+     • 3 nouvelles réglettes pour les libellés des guides RÉCIT :
+       R_DIFFSIM_2PT_1SIM_1DIFF_GUIDE (Pop Q1, Pop Q3),
+       R_CAUSES_2PT_1CONS_GUIDE (Pop Q2 — variante « conséquence + ou ne la détermine pas »),
+       R_DIFFERENCES_2PT_1DIFF_PARTIEL_GUIDE (Pol Nat Q1, Féd Q1 — « partiellement une différence »).
+     • Réglettes réutilisées : R_CAUSES_2PT_CAUSE_CONS (Féd Q2), RUBRIC_CAUSALITE_3PT (Féd Q3),
+       R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT (Église Q1), R_SITUER_2PT_T4 (Éco Q1),
+       R_RELATION_2PT_2_PART (Éco Q2), R_CHANGEMENTS_2PT_GEN (Éco Q3),
+       R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 (Acte U Q2 — guide ne fournit pas de barème,
+       on réutilise libellé sommatif équivalent fonctionnel pour « 2 causes 2 sur 2 »).
+     • Images extraites natives via pdfimages (300 dpi) : 7 nouvelles images :
+       fc-differences-3/doc1 (caricature bourgeoise/domestique, upscalée x2),
+       fc-causes-4/doc1 (graphique exportations 1851-1857, upscalée x2) + doc2 (schéma protectionnisme),
+       fc-causalite-3/doc1 (carte traités numérotés 1871-1921),
+       fc-situer-4/doc2 (caricature « Deux paires par jour ») + doc4 (atelier mécanisé, upscalée x2),
+       fc-continuite-4/doc1 (scies circulaires Notman).
+     • Convention « un acteur = un document » : Féd Q3 docs 2 et 3 conservés comme deux entrées
+       distinctes même s'ils proviennent du même livre (Daschuk 2015), car thèmes distincts
+       (épidémies vs intérêts politiques).
+     • Convention de renumérotation appliquée : un document source devient Doc 1 dans sa section
+       (refs dans l'énoncé renumérotées : ex. « documents 5 et 6 » → « documents 1 et 2 »).
    v1.21.2 — Q13 (V-B Q5, ligne du temps) : refonte du responseSpace `timeline-segments`.
    Au lieu de dates et lettres alternées avec une flèche, on a maintenant 3 encadrés contigus
    avec lettre en grand, période (ex. « 1840–1848 »), et cercle à encercler en-dessous.
@@ -471,6 +501,40 @@ const R_SIMILITUDES_2PT_CONVERGENCE_ETABLIT = rubric3(
   "L'élève établit correctement le point de convergence entre les points de vue.",
   "L'élève établit plus ou moins correctement le point de convergence entre les points de vue.",
   "L'élève établit incorrectement le point de convergence entre les points de vue ou ne l'établit pas."
+);
+
+// ============ Réglettes ajoutées v1.22.0 (Guides pédagogiques RÉCIT 1840-1896) ============
+
+// Différences/similitudes (1 sim + 1 diff, 2 points) — Pop&Vie Q1, Pop&Vie Q3 du guide RÉCIT.
+// Libellé sans « correctement », formulation « aucune » au 0pt — distinct de
+// R_DIFFSIM_2PT_1SIM_1DIFF (qui dit « correctement la similitude et la différence »).
+const R_DIFFSIM_2PT_1SIM_1DIFF_GUIDE = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève dégage une similitude et une différence.",
+  "L'élève dégage une similitude ou une différence.",
+  "L'élève ne dégage aucune similitude ou différence."
+);
+
+// Une conséquence (2 points) — Pop&Vie Q2 du guide RÉCIT (Code civil).
+// Libellé identique à R_CAUSES_2PT_1CAUSE_SOMA (« correctement / plus ou moins / incorrectement
+// ou ne la détermine pas ») mais pour « conséquence » au lieu de « cause » — distinct également
+// de R_CAUSES_2PT_CONS_SEULE (qui n'a pas « ou ne la détermine pas » au 0pt).
+const R_CAUSES_2PT_1CONS_GUIDE = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la conséquence.",
+  "L'élève détermine plus ou moins correctement la conséquence.",
+  "L'élève détermine incorrectement la conséquence ou ne la détermine pas."
+);
+
+// Une différence (2 points, formulation « partiellement ») — Pol Nat Q1, Féd Q1 du guide RÉCIT.
+// Libellé « partiellement une différence » et « ne dégage pas la différence » — distinct de
+// R_DIFFERENCES_2PT_GEN (« plus ou moins correctement ») et R_DIFFERENCES_2PT_DIVERGENCE
+// (« point de divergence entre les points de vue »).
+const R_DIFFERENCES_2PT_1DIFF_PARTIEL_GUIDE = rubric3(
+  "Dégager des différences et des similitudes",
+  "L'élève dégage correctement une différence.",
+  "L'élève dégage partiellement une différence.",
+  "L'élève ne dégage pas la différence."
 );
 
 // ============ Helpers de sélection de documents ============
@@ -1709,6 +1773,177 @@ const DOCS = {
     { id: "fc-d2-d2", title: "Document 2 : Honoré Mercier, chef du Parti national", layout: "text-only",
       text: "« [...], notre frère, est mort, victime de son dévouement à la cause [...] dont il était le chef, victime du fanatisme et de la trahison; du fanatisme de Sir John et de quelques-uns de ses amis; de la trahison de trois des nôtres qui, pour garder leur portefeuille, ont vendu leur frère [...] Sir John n'a pas seulement frappé notre race au cœur, mais il a surtout frappé la cause de la justice et de l'humanité qui, représentée dans toutes les langues et sanctifiée par toutes le croyances religieuses, demandait grâce pour le prisonnier de Regina [...] »",
       sources: ["Source du texte : Radio-Canada, extrait du discours prononcé par Honoré Mercier au Champ-de-Mars le 22 novembre 1885 à l'occasion de la pendaison de Louis Riel, en ligne."] }
+  ],
+
+  // ============================================================
+  // ===== Sections ajoutées v1.22.0 : Guides pédagogiques RÉCIT (1840-1896) =====
+  // Source : guides élèves « histoire.recitus.qc.ca » — 6 sections de la période :
+  // Population/vie sociale, Politique nationale, Fédération canadienne, Église/idéologies,
+  // Économie, Acte d'Union/gouvernement responsable. Renumérotation des documents par section
+  // selon la convention « Doc 1 dans la section » (les références dans l'énoncé sont renumérotées).
+  // ============================================================
+
+  // ===== Pop&Vie Q1 — Différences — Femmes bourgeoisie vs ouvrières =====
+  // Renumérotation : guide → section. Docs 1, 2, 3 du guide → Docs 1, 2, 3 (numérotation préservée).
+  'fc-differences-3': [
+    { id: "fc-d3-d1", title: "Document 1 : Une bourgeoise donnant des instructions à sa domestique", layout: "image-only",
+      imageUrl: "assets/img/fc-differences-3/doc1.png", imageWidthCm: 8,
+      sources: ["Source : H., C., « Une bourgeoise donnant ses instructions à sa domestique », Canadian Illustrated News, vol. 25, no.1, 7 janvier 1882, Bibliothèque et Archives Canada, collection Canadian Illustrated News, item 332. Licence : domaine public."] },
+    { id: "fc-d3-d2", title: "Document 2", layout: "text-only",
+      text: "« Le travail : tu te plains, mon pauvre mari, de tes 10 heures d'ouvrage; voici quatorze heures que je travaille, moi, et je n'ai pas encore fini ma journée. »",
+      sources: ["Source : Joseph Swain, « Le travail : tu te plains, mon pauvre mari, de tes 10 heures d'ouvrage; voici quatorze heures que je travaille, moi, et je n'ai pas encore fini ma journée. » (1871), Musée McCord, C572_A.02.532.1. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "fc-d3-d3", title: "Document 3 : Sélection d'articles du Code civil du Bas-Canada (entré en vigueur en 1866)", layout: "text-only",
+      text: "« 174. Le mari doit protection à sa femme; la femme doit obéissance au mari.\n\n175. La femme est obligée d'habiter avec le mari, et de le suivre partout où il juge à propos de résider. Le mari est obligé de la recevoir et lui fournir tout ce qui est nécessaire pour les besoins de la vie, selon ses facultés et son état.\n\n187. Le mari peut demander la séparation de corps pour cause d'adultère de sa femme.\n\n188. La femme peut demander la séparation de corps pour cause d'adultère de son mari, lorsqu'il tient sa concubine dans la maison commune. [...]\n\n985. Toute personne est capable de contracter, si elle n'en est pas expressément déclarée incapable par la loi.\n\n86. Sont incapables de contracter : les mineurs [...]; les interdits; Les femmes mariées, excepté dans les cas spécifiés par la loi [...]. »",
+      sources: ["Source : E.L. de Bellefeuille, Code Civil du Bas-Canada, Montréal, Beauchemin et Valois, 1866, p. 39, 40, 232 et 233, en ligne sur Canadiana."] }
+  ],
+
+  // ===== Pop&Vie Q2 — Causes/conséquences — Conséquence du Code civil pour les femmes mariées =====
+  // Renumérotation : Doc 4 du guide (Texte d'historienne, Collectif Clio) → Doc 1 dans cette section.
+  'fc-causes-3': [
+    { id: "fc-c3-d1", title: "Document 1 : Texte d'historienne sur la condition juridique des femmes au 19e siècle", layout: "text-only",
+      text: "« Les épouses demeurent régies par le principe de l'incapacité juridique pendant leur mariage. [...] Les cours de justice préfèrent maintenir le principe de la puissance maritale en obligeant les femmes à quêter la permission préalable de leur mari avant de disposer de leurs propres biens. Cette incapacité légale pose de lourds problèmes aux femmes qui sont impliquées dans des œuvres de charité. Leurs maris doivent sans cesse signer pour elles : on comprend l'absurdité d'une telle situation! »",
+      sources: ["Source du texte : Le Collectif Clio, L'histoire des femmes au Québec depuis quatre siècles, Montréal, Les Quinze éditeur, 1982, p. 153."] }
+  ],
+
+  // ===== Pop&Vie Q3 — Différences — Premières Nations vs autorités britanniques =====
+  // Renumérotation : Docs 5, 6 du guide → Docs 1, 2 dans cette section.
+  'fc-differences-4': [
+    { id: "fc-d4-d1", title: "Document 1 : Pétition des Algonquins et des Népissingues", layout: "text-only",
+      text: "« Nous étions riches autrefois, rien ne nous manquait : les forêts étaient peuplées d'animaux de toute espèce dont nous vendions les dépouilles bien cher à l'avide marchand; cela nous donnait le moyen de suffire à nos besoins et à ceux de nos enfants. Mais il n'en est plus ainsi maintenant. Les blancs s'établissent de tous côtés sur nos terres; et où l'on ne cultive pas, les gens des chantiers sont là pour détruire et faire fuir les animaux qui restent dans le petit espace de terre que l'on ne nous a pas encore ravi. Nos familles sont sans moyen de subsistance et nous ne savons pas où chercher de quoi vivre. Nous sommes réduits à la plus grande détresse. Nous voulons imiter les blancs. C'est pourquoi nous demandons un terrain pour cultiver. »",
+      sources: ["Source du texte : « Pétition des Algonquins et des Népissingues », 1845, citée dans Alain Beaulieu, Les Autochtones du Québec. Des premières alliances aux revendications contemporaines, Québec et Montréal, Musée de la civilisation/Édition Fides, 2000, p. 67."] },
+    { id: "fc-d4-d2", title: "Document 2 : Lettre de Lord Sydenham, gouverneur en chef de l'Amérique du Nord britannique", layout: "text-only",
+      text: "« Les tentatives faites pour combiner un système de tutelle avec [l]'établissement de ces peuplades dans des parties civilisées du pays, ne produisent que des embarras pour le Gouvernement et des dépenses à la Couronne; ce système entraîne avec lui le gaspillage des ressources de la Province, et fait du tort aux Sauvages eux-mêmes. Ainsi placé, l'indigène se dépouille de toutes les bonnes qualités qu'il possède dans l'état Sauvage, et n'acquiert que les vices de la civilisation. Il ne devient ni meilleur citoyen, ni meilleur cultivateur ou artisan. Il se fait ivrogne ou débauché; et ses femmes et sa famille suivent son exemple. Il occupe de bonnes terres, sans aucun profit pour lui-même et au détriment du pays. Il cause des embarras infinis au Gouvernement, et n'ajoute rien soit à la richesse, ou à l'industrie, ou à la défense du pays. »",
+      sources: ["Source du texte : « Lettre de Lord Sydenham, gouverneur en chef de l'Amérique du Nord britannique, à Lord Russell, secrétaire aux colonies à Londres », 22 juillet 1841, citée dans M. Lavoie et D. Vaugeois (éd.), L'impasse amérindienne : trois commissions d'enquête à l'origine d'une politique de tutelle et d'assimilation, Québec, Septentrion, 2010, 498 p."] }
+  ],
+
+  // ===== Pol Nat Q1 — Différences — Soeur Curran vs Mackenzie sur Louis Riel =====
+  // Docs 1, 2 du guide → Docs 1, 2 dans la section (numérotation préservée).
+  'fc-differences-5': [
+    { id: "fc-d5-d1", title: "Document 1 : Extrait d'une lettre écrite en 1869 par Soeur Mary A. Curran du couvent des Soeurs Grises de Saint-Boniface (colonie de la Rivière-Rouge)", layout: "text-only",
+      text: "« Louis Riel est visiblement l'élu de Dieu pour sauver son pays; il se regarde comme le faible instrument de la providence et fait l'admiration de tous. Il se met toujours au premier poste lorsqu'il y a danger et se tient prêt à la mort, à laquelle il s'attend à tout moment. »",
+      sources: ["Source : Soeur Mary A. Curran, « Lettre du 2 novembre 1869 », citée dans Élisabeth De Moissac, « Les Soeurs Grises et les évènements de 1869-1870 », La vie religieuse au Manitoba, vol. 37, 1970, p. 223, en ligne sur érudit.org."] },
+    { id: "fc-d5-d2", title: "Document 2 : Déclaration prononcée en 1870 par Alexander Mackenzie, député à la Chambre des communes du Canada", layout: "text-only",
+      text: "« Nous devons défendre la justice et la suprématie britanniques dans ce pays avant de communiquer avec des rebelles. J'ai lu quelque part que Riel a émis des décrets et s'est approprié le pouvoir suprême, assumant les fonctions d'un gouvernement non pas provisoire mais permanent [...]. »",
+      sources: ["Source : Alexander Mackenzie, « Rivière-Rouge », 6 avril 1870, Débats de la Chambre des communes (troisième session, première législature), 1870, p. 896, en ligne sur Ressources parlementaires historiques canadiennes."] }
+  ],
+
+  // ===== Féd Q1 — Différences — Dorion (opposant) vs Taché et Cartier (favorables à la confédération) =====
+  // Docs 1, 2, 3 du guide → Docs 1, 2, 3 dans la section.
+  'fc-differences-6': [
+    { id: "fc-d6-d1", title: "Document 1 : L'opinion de Jean-Baptiste-Éric Dorion, député et cofondateur de l'Institut canadien de Montréal", layout: "text-only",
+      text: "« Je m'oppose au projet de confédération [...]. Le fédéralisme est passé bien loin de ce projet, qui concentre tout dans le pouvoir général. Fédéralisme veut dire union de certains États qui conservent leur pleine souveraineté en tout ce qui les concerne immédiatement [...]. Est-ce là ce que l'on nous propose? Pas le moins du monde. Dans le projet que nous examinons, tout est force, puissance, dans le gouvernement [fédéral]; tout est faiblesse, insignifiance, anéantissement dans les gouvernements [des provinces]! ».",
+      sources: ["Source : Discours de Jean-Baptiste-Éric Dorion (9 mars 1865), dans Débats parlementaires sur la question de la confédération des provinces de l'Amérique britannique du Nord, 3e session, 8e parlement, Québec, Hunter, Rose et Lemieux, 1865. p. 858-860."] },
+    { id: "fc-d6-d2", title: "Document 2 : Opinion émise en 1858 par Joseph-Charles Taché, député conservateur de l'Assemblée législative de la Province du Canada", layout: "text-only",
+      text: "« [Les provinces] gagneraient tout ce que peut procurer d'avantages le principe de l'association; car il n'y a rien de plus fort après l'unité que l'union. Elles gagneraient collectivement et séparément en importance politique et commerciale [...].\n\nHalifax serait notre port d'hiver, un chemin de fer relierait maintenant ce port au Nouveau-Brunswick, à Québec et au reste de ces vastes possessions; nous aurions la plus belle ligne des navires à vapeur transatlantiques. »",
+      sources: ["Source : Joseph-Charles Taché, « Des Provinces de l'Atlantique du Nord et d'une union fédérale », 1858, cité dans Michel Brunet, Histoire du Canada par les textes, tome II : 1855-1960, Montréal et Paris, Fides, 1963, p. 13-14."] },
+    { id: "fc-d6-d3", title: "Document 3 : Extrait d'un discours prononcé en 1864 par George-Étienne Cartier, député conservateur de l'Assemblée législative de la Province du Canada", layout: "text-only",
+      text: "« Il faut donc que la confédération de toutes les provinces britanniques s'effectue, sans quoi nous tombons dans la confédération américaine. Je sais que le désir de toutes les personnes présentes est d'achever cette grande œuvre nationale, qui liera en un même faisceau tous les principaux intérêts des colonies, et qui fera de nous tous une véritable nation. [...] »",
+      sources: ["Source : Joseph Tassé (ed.), « Discours de Sir George Cartier », 1864, cité dans Michel Brunet, Histoire du Canada par les textes, tome II : 1855-1960, Montréal et Paris, Fides, 1963, p. 17-18."] }
+  ],
+
+  // ===== Féd Q2 — Causes/conséquences — Traité de réciprocité (1854) =====
+  // Renumérotation : Docs 4, 5 du guide → Docs 1, 2 dans la section.
+  'fc-causes-4': [
+    { id: "fc-c4-d1", title: "Document 1 : Texte d'historien sur le traité de réciprocité", layout: "text-image",
+      text: "« Le gouverneur général Elgin suggère la négociation d'un traité de réciprocité commercial avec les États-Unis. [...] La réciprocité, ce n'est pas tout à fait le libre-échange : on s'entend avec le gouvernement américain sur une liste de biens qui pourront passer la frontière sans droits de douane, des produits agricoles et des matières premières, mais aucun produit manufacturé. Les États-Unis ont moins à gagner que le Canada sur le plan commercial. On offre cependant l'accès aux pêcheries au large des côtes canadiennes aux navires étasuniens [...].\n\nLe traité de réciprocité commerciale, valide pour une durée de dix ans, est finalement signé en 1854. L'une ou l'autre des parties peut y mettre fin sans préavis. C'est ce [que font les États-Unis] en 1866 [...] »",
+      imageUrl: "assets/img/fc-causes-4/doc1.png", imageWidthCm: 8,
+      sources: [
+        "Source du texte : Jean-Pierre Charland, Histoire du Canada contemporain, Sillery, Septentrion, 2007, p. 32.",
+        "Source de l'image : Service national du Récit de l'univers social, avec les données de : M. Guillaumin, Joseph Garnier, Maurice Block, Annuaire de l'économie politique et de la statistique, Volume 18, 1861, en ligne, p. 346-347."
+      ] },
+    { id: "fc-c4-d2", title: "Document 2 : Texte de synthèse sur la fin du protectionnisme britannique", layout: "text-image",
+      text: "« Jusqu'aux années 1840, le gouvernement britannique accorde une protection douanière aux produits importés de ses colonies, nord-américaines ou autres. Lorsque Londres décide d'éliminer graduellement cette protection et d'adopter une politique de libre-échange, les produits canadiens ont de la difficulté à trouver preneur sur les marchés internationaux, et ce, en raison de leurs prix élevés.\n\nLe rappel des lois britanniques sur les céréales, en 1846, suivi de celui, progressif, de la Canada Corn Act, en 1849, et de celui, progressif également, des tarifs préférentiels sur le bois d'œuvre, en 1847 et 1848, ont marqué un important changement dans l'économie canadienne. Celle-ci dépendait fortement, jusqu'alors, des tarifs préférentiels britanniques. C'est à partir de ce moment que le Canada commence à se tourner vers les États-Unis comme partenaire commercial. »",
+      imageUrl: "assets/img/fc-causes-4/doc2.png", imageWidthCm: 7,
+      sources: [
+        "Source du texte : Le système préférentiel britannique, 2001, Bibliothèque et Archives Canada, en ligne.",
+        "Source de l'image : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."
+      ] }
+  ],
+
+  // ===== Féd Q3 — Liens de causalité — Traités numérotés entre gouv féd et nations autochtones =====
+  // Renumérotation : Docs 6, 7, 8 du guide → Docs 1, 2, 3 dans la section.
+  // Docs 2 et 3 sont des extraits du même livre (Daschuk) mais sur des thèmes distincts
+  // (épidémies / intérêts politiques) ; conservés comme deux documents séparés.
+  'fc-causalite-3': [
+    { id: "fc-ca3-d1", title: "Document 1 : Les traités numérotés signés avec les nations autochtones entre 1871 et 1921", layout: "image-only",
+      imageUrl: "assets/img/fc-causalite-3/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "fc-ca3-d2", title: "Document 2 : Texte d'historien sur les épidémies dans l'Ouest au 19e siècle", layout: "text-only",
+      text: "« En 1876, un millier d'immigrants venus d'Islande s'installent sur les berges du lac Winnipeg. Ils s'établissent ainsi sur des terres revendiquées ou déjà occupées par les [Autochtones] du Traité n° 5. Peu après leur arrivée, une flambée de variole dévaste leur collectivité. L'épidémie qui se déchaîne durant tout l'automne et jusqu'au début de l'hiver tue entre 100 et 200 colons. Elle fait aussi des centaines de victimes chez les Saulteaux et les Cris. »",
+      sources: ["Source : James Daschuk, La destruction des Indiens des Plaines : maladies, famines organisées, disparition du mode de vie autochtone, Québec, Presses de l'Université Laval, 2015, p. 191."] },
+    { id: "fc-ca3-d3", title: "Document 3 : Texte d'historien sur les intérêts politiques et économiques du gouvernement fédéral et des Premières Nations", layout: "text-only",
+      text: "« Du point de vue des autorités canadiennes, ces traités constituent le moyen de favoriser le développement économique et politique de la région; ce sont des contraintes légales, des obstacles à déblayer pour ouvrir la voie à la colonisation massive. De leur côté, les collectivités des Plaines constatent l'effondrement de l'économie du bison qui a assuré leur subsistance pendant tant d'années, et jugent l'afflux des colons agriculteurs inévitable désormais. Pour ces Premières Nations, les traités constituent par conséquent le moyen de garantir leur survie dans un monde devenu très incertain. »",
+      sources: ["Source : James Daschuk, La destruction des Indiens des Plaines : maladies, famines organisées, disparition du mode de vie autochtone, Québec, Presses de l'Université Laval, 2015, p. 153."] }
+  ],
+
+  // ===== Église Q1 — Différences — Mgr Bourget vs Dessaulles sur l'Index =====
+  // Docs 1, 2 du guide → Docs 1, 2 dans la section.
+  'fc-differences-7': [
+    { id: "fc-d7-d1", title: "Document 1 : Lettres pastorales de Mgr. Ignace Bourget évêque de Montréal", layout: "text-only",
+      text: "« 1. Ne lisez aucun livre dont la doctrine et la morale ne soient pas approuvées par l'Église. Au besoin, consultez là-dessus vos pasteurs. Car le choix des bons livres est pour vous tous une chose sérieuse et difficile à faire. [...]\n\n4. Que si déjà de mauvais ouvrages se trouvent dans la bibliothèque [...], vous devez en conscience faire tous vos efforts pour les faire disparaître [...] [et] pour que ces mauvais livres soient jetés au feu. »",
+      sources: ["Source : Mgr Ignace Bourget, Lettres pastorales de Mgr. l'évêque de Montréal contre les erreurs du temps, Montréal, Plinguet & Laplante, 1858, p. 9, en ligne sur Archive.org."] },
+    { id: "fc-d7-d2", title: "Document 2 : Lettre à Mgr. Ignace Bourget", layout: "text-only",
+      text: "« Il y a deux manières d'envisager l'Index des livres; l'une étroite et bornée [...], l'autre plus libérale et plus éclairée, qui ne regarde pas comme nécessairement désastreuse pour l'intelligence la lecture d'un livre condamné. »\n\nIndex : Liste de livres interdits par l'Église en raison de leur contenu contraire à la morale et à la doctrine catholique.",
+      sources: ["Source : Louis-Antoine Dessaulles, « À sa Grandeur Monseigneur Ignace Bourget, évêque de Montréal (16 novembre 1864) », cité dans Yvan Lamonde (éd.), Louis-Antoine Dessaulles, Écrits, Montréal, Les Presses de l'Université de Montréal, 1994, p. 255."] }
+  ],
+
+  // ===== Éco Q1 — Situer T/E — 4 docs avant/après première phase d'industrialisation =====
+  // Docs 1, 2, 3, 4 du guide → Docs 1, 2, 3, 4 dans la section.
+  // Avant l'industrialisation : Doc 2 (caricature « Deux paires par jour » sur atelier de cordonnerie 1880),
+  // Doc 3 (commerce des fourrures à York Factory). Après : Doc 1 (témoignage cordonnier 1889 sur les
+  // manufactures), Doc 4 (intérieur d'un atelier mécanisé).
+  'fc-situer-4': [
+    { id: "fc-s4-d1", title: "Document 1 : Témoignage d'Olivier David Benoit, cordonnier à Montréal", layout: "text-only",
+      text: "« Il existe dans les manufactures très peu de cordonniers pouvant faire une paire de chaussures [...]. En règle générale, tous les employés qui travaillent dans les manufactures, surtout les grandes manufactures, ne sont capable de faire qu'un seul ouvrage [...] parce qu'aujourd'hui les machines perfectionnées ont remplacé la main d'œuvre. »",
+      sources: ["Source : James Armstrong et Augustus Toplady Freed, Enquête sur les rapports qui existent entre le capital et le travail au Canada, Ottawa, A. Senécal, 1889, p. 408, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000599736."] },
+    { id: "fc-s4-d2", title: "Document 2 : « Deux paires par jour »", layout: "image-only",
+      imageUrl: "assets/img/fc-situer-4/doc2.png", imageWidthCm: 8,
+      sources: ["Source : John Henry Walker, [...] (1880). Musée McCord, M930.50.5.262. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "fc-s4-d3", title: "Document 3 : Texte de synthèse sur le commerce des fourrures", layout: "text-only",
+      text: "Situé à l'embouchure de la rivière Nelson, aux abords de la baie d'Hudson, York Factory a été l'un des postes de traite les plus importants de la Compagnie de la Baie d'Hudson et son entrepôt principal. Il assurait le lien entre l'Europe et les ressources en fourrures de l'intérieur des terres. De plus, des tribus autochtones installées aux abords de York Factory ont longtemps assuré l'approvisionnement de la Compagnie en pelleteries en échange de marchandises européennes (fusils, poudre à fusil, couvertures, marmites, eau-de-vie, etc.).",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "fc-s4-d4", title: "Document 4 : L'intérieur d'un atelier", layout: "image-only",
+      imageUrl: "assets/img/fc-situer-4/doc4.png", imageWidthCm: 10,
+      sources: ["Source : John Henry Walker, Intérieur d'un atelier, Musée McCord, M930.50.8.79. Licence : Creative Commons (BY-NC-ND)."] }
+  ],
+
+  // ===== Éco Q2 — Mettre en relation — Concepts urbanisation / industrialisation =====
+  // Renumérotation : Docs 5, 6 du guide → Docs 1, 2 dans la section.
+  // ATTENTION : la correspondance avec les catégories de la Q2 est INVERSÉE par rapport à la
+  // numérotation. Doc 1 (ex-Doc 5, processus de fabrication) = INDUSTRIALISATION ; Doc 2
+  // (ex-Doc 6, population rurale qui quitte campagne) = URBANISATION.
+  'fc-relation-5': [
+    { id: "fc-r5-d1", title: "Document 1", layout: "text-only",
+      text: "Il s'agit du processus de fabrication de produits manufacturés à l'aide de techniques permettant une forte productivité du travail et regroupant les travailleurs dans des usines avec des horaires fixes et une réglementation stricte.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "fc-r5-d2", title: "Document 2", layout: "text-only",
+      text: "Attirées par le travail, les populations rurales quittent la campagne pour la ville. Cela entraine d'importants changements sociaux qui ont un impact majeur sur la vie des familles : le travail et les rapports sociaux changent.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== Éco Q3 — Changements/continuités — Industrie forestière (mécanisation) =====
+  // Renumérotation : Doc 7 du guide → Doc 1 dans la section.
+  'fc-continuite-4': [
+    { id: "fc-co4-d1", title: "Document 1 : Texte de synthèse sur l'industrie forestière", layout: "text-image",
+      text: "Les bûcherons abattent les arbres. Puis, ils coupent les billots de bois afin de les rendre carrés. En raison de cette technique de coupe, près du quart du billot est gaspillé. Alors, pourquoi vouloir obtenir cette forme? Celle-ci est nécessaire pour empiler les morceaux de bois à l'intérieur des bateaux pour leur livraison en Grande-Bretagne.",
+      imageUrl: "assets/img/fc-continuite-4/doc1.png", imageWidthCm: 8,
+      sources: [
+        "Source du texte : Service national du RÉCIT, domaine de l'univers social.",
+        "Source de l'image : William Notman, Scies circulaires, Musée McCord, I-78898. Licence : Creative Commons (BY-NC-ND)."
+      ] }
+  ],
+
+  // ===== Acte U Q2 — Causes/conséquences — 2 causes de la responsabilité ministérielle (1848) =====
+  // Renumérotation : Docs 2, 3 du guide → Docs 1, 2 dans la section.
+  // Note : le guide pédagogique ne fournit pas de réglette explicite pour cette question ;
+  // on réutilise R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 (sommative V-A P1) en libellé approximatif.
+  'fc-causes-5': [
+    { id: "fc-c5-d1", title: "Document 1 : Texte d'historien sur la fin du protectionnisme en Grande-Bretagne", layout: "text-only",
+      text: "« Les besoins en céréales à faible coût, à la suite de la famine liée à la maladie de la pomme de terre en Irlande [...] entraînent l'abolition [...] du système protectionniste [en Grande-Bretagne]. À l'élimination de tous les droits d'importation sur les céréales s'ajouta la réduction des tarifs sur le bois ne provenant pas des colonies. Sur le plan politique, [la fin du protectionnisme] signifiait que rien ne pouvait plus justifier que la Grande-Bretagne ne s'oppose à l'autonomie interne des colonies de peuplement. »",
+      sources: ["Source : Peter Gossage et J.I Little, « L'État libéral », Une histoire du Québec - Entre tradition et modernité, Montréal, Éditions Hurtubise, p. 127."] },
+    { id: "fc-c5-d2", title: "Document 2 : Texte de synthèse portant sur l'Acte d'Union", layout: "text-only",
+      text: "Par l'Acte d'Union, le gouvernement britannique unit les deux Canadas en une seule colonie, qui ne possède qu'une seule Chambre d'assemblée. Toutefois, Londres n'accorde pas la responsabilité ministérielle* au gouvernement canadien, malgré les demandes répétées de ses députés.\n\nAfin d'atteindre cet objectif, les députés réformistes menés par Robert Baldwin proposent à leurs collègues du Canada-Est, dirigés par Louis-Hippolyte Lafontaine, de former un partenariat politique. En 1841, cette alliance parvient à faire élire une majorité de députés.\n\n* Responsabilité ministérielle : dans ce type de régime parlementaire, les membres du conseil exécutif doivent être issus de la majorité élue à la Chambre d'assemblée et recevoir son appui en tout temps. S'ils perdent l'appui de la Chambre, ils sont contraints de démissionner.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
   ]
 
 };
@@ -3009,7 +3244,178 @@ window.DATA = {
       },
       reglettes: [{ id: "r-fc-d2", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_CONVERGENCE_ETABLIT }],
       documents: pickDocs('fc-differences-2', 1, 2),
-      corrige: "Les deux acteurs sont en accord sur le fait que la pendaison de Louis Riel est une injustice infligée aux Canadiens français du Canada, OU sur le fait qu'il faut s'opposer à la pendaison de Louis Riel." }
+      corrige: "Les deux acteurs sont en accord sur le fait que la pendaison de Louis Riel est une injustice infligée aux Canadiens français du Canada, OU sur le fait qu'il faut s'opposer à la pendaison de Louis Riel." },
+
+    // ============================================================
+    // ===== Questions ajoutées v1.22.0 — Guides pédagogiques RÉCIT (1840-1896) =====
+    // Source : guides élèves du Service national du RÉCIT, domaine de l'univers social.
+    // Sections : Pop&Vie, Politique nationale, Fédération canadienne, Église/idéologies,
+    // Économie, Acte d'Union/gouvernement responsable. 12 questions retenues sur 15
+    // potentielles ; 3 questions écartées comme doublons de fond avec les sommatives P5 :
+    //   • Pol Nat Q2 ≈ Q12 V-B (objectifs Politique nationale Macdonald)
+    //   • Église Q2 ≈ Q2 V-A (3 documents → 3 idéologies)
+    //   • Acte d'Union Q1 ≈ Q9 V-B (changement/continuité structure politique sous Acte d'Union)
+    // ============================================================
+
+    // ===== Q17 — P5 guide Pop&Vie · Différences — Femmes bourgeoisie vs ouvrières =====
+    { id: "q-fc-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 3, compare la situation des femmes de la bourgeoisie à celle des femmes de la classe ouvrière. Dégage une similitude et une différence.",
+        responseSpace: { type: "labeled-list", items: ["Similitude", "Différence"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-fc-d3", label: "Réglette (2 points)", ...R_DIFFSIM_2PT_1SIM_1DIFF_GUIDE }],
+      documents: pickDocs('fc-differences-3', 1, 2, 3),
+      corrige: [
+        "La femme bourgeoise comme la femme ouvrière sont soumises à l'autorité de leur mari.",
+        "Contrairement à la femme ouvrière, la femme bourgeoise peut déléguer ses tâches à des domestiques."
+      ] },
+
+    // ===== Q18 — P5 guide Pop&Vie · Causes/conséquences — Conséquence du Code civil =====
+    // Énoncé renuméroté : « document 4 » du guide → « document 1 » dans la section.
+    { id: "q-fc-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, nomme une conséquence de l'adoption du Code civil pour la vie quotidienne des femmes mariées.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-fc-c3", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CONS_GUIDE }],
+      documents: pickDocs('fc-causes-3', 1),
+      corrige: "La limitation de la capacité juridique de la femme mariée OU les femmes mariées demeurent soumises à leur mari OU les femmes mariées ont un statut de mineur." },
+
+    // ===== Q19 — P5 guide Pop&Vie · Différences — PN vs autorités britanniques (années 1840) =====
+    // Énoncé renuméroté : « documents 5 et 6 » du guide → « documents 1 et 2 » dans la section.
+    { id: "q-fc-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, dégage une différence dans la manière dont des membres des Premières Nations perçoivent leur situation dans les années 1840 et la manière dont certains représentants des autorités britanniques la décrivent.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-fc-d4", label: "Réglette (2 points)", ...R_DIFFSIM_2PT_1SIM_1DIFF_GUIDE }],
+      documents: pickDocs('fc-differences-4', 1, 2),
+      corrige: "Les Premières Nations perçoivent tristement leur sort et sont résignées à demander des terres au gouvernement afin d'assurer leur subsistance, alors que les autorités britanniques perçoivent les Premières Nations comme un fardeau dont elles sont responsables." },
+
+    // ===== Q20 — P5 guide Pol Nat · Différences — Soeur Curran vs Mackenzie sur Louis Riel (1869-70) =====
+    // Note : Riel de 1869-1870 (Rivière-Rouge), distinct de la pendaison de 1885 traitée en Q16 (V-B).
+    { id: "q-fc-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent la position de deux acteurs vis-à-vis de Louis Riel, chef de la rébellion des Métis. Quelle est la différence entre les deux points de vue?",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-fc-d5", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_1DIFF_PARTIEL_GUIDE }],
+      documents: pickDocs('fc-differences-5', 1, 2),
+      corrige: "Soeur Mary A. Curran considère que Louis Riel et ses actions sont justes et selon la bonne grâce du Seigneur, alors qu'Alexander Mackenzie considère que Louis Riel est un rebelle et que ses actions sont illégitimes." },
+
+    // ===== Q21 — P5 guide Féd · Différences — Dorion (opposant) vs Taché/Cartier (favorables) =====
+    { id: "q-fc-differences-6", operation: "Dégager des différences et des similitudes", numero: 6, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent les positions de trois acteurs sur un projet politique dans la deuxième moitié du 19e siècle. Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-fc-d6", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_1DIFF_PARTIEL_GUIDE }],
+      documents: pickDocs('fc-differences-6', 1, 2, 3),
+      corrige: "Jean-Baptiste-Éric Dorion présente une position différente de Taché et de Cartier. Dorion s'oppose à la réalisation de l'union des colonies britanniques d'Amérique du Nord OU à la création d'une union fédérale, tandis que Taché et Cartier sont pour la réalisation de l'union." },
+
+    // ===== Q22 — P5 guide Féd · Causes/conséquences — Traité de réciprocité (cause + conséquence) =====
+    // Énoncé renuméroté : « documents 4 et 5 » du guide → « documents 1 et 2 » dans la section.
+    { id: "q-fc-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, détermine une cause et une conséquence du traité de réciprocité entre les colonies britanniques en Amérique du Nord et les États-Unis.",
+        responseSpace: { type: "labeled-list", items: ["Cause", "Conséquence"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-fc-c4", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS }],
+      documents: pickDocs('fc-causes-4', 1, 2),
+      corrige: [
+        "La fin des politiques protectionnistes en Grande-Bretagne force la Province du Canada à trouver de nouveaux marchés.",
+        "Grâce au traité de réciprocité commerciale, les exportations vers le marché américain augmentent."
+      ] },
+
+    // ===== Q23 — P5 guide Féd · Liens de causalité — Traités numérotés (3 éléments à lier) =====
+    // Énoncé renuméroté : « documents 6, 7 et 8 » du guide → « documents 1, 2 et 3 » dans la section.
+    { id: "q-fc-causalite-3", operation: "Établir des liens de causalité", numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À partir des documents 1, 2 et 3, établis les liens de causalité qui expliquent la mise en place des ententes entre le gouvernement fédéral et les nations autochtones. Dans ta réponse, tu devras préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Le point de vue du gouvernement fédéral et le point de vue des Autochtones",
+          "La signature des traités numérotés",
+          "Les épidémies dans les communautés autochtones causées par l'immigration européenne"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-fc-ca3", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('fc-causalite-3', 1, 2, 3),
+      corrige: "Cherchant à coloniser l'Ouest afin de développer l'économie du pays, le gouvernement canadien met en place une série de traités numérotés avec les nations autochtones de l'Ouest. Ces nations sont affectées par l'effondrement de l'économie du bison et considèrent que la colonisation est inévitable. Elles acceptent donc de signer les traités. La signature des traités numérotés facilite la colonisation de l'Ouest. L'arrivée massive d'immigrants européens cause de nombreuses épidémies dans les communautés autochtones." },
+
+    // ===== Q24 — P5 guide Église · Différences — Mgr Bourget vs Dessaulles sur l'Index =====
+    { id: "q-fc-differences-7", operation: "Dégager des différences et des similitudes", numero: 7, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux acteurs au milieu du 19e siècle. Sur quel point précis ces deux acteurs sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-fc-d7", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT }],
+      documents: pickDocs('fc-differences-7', 1, 2),
+      corrige: "Les deux auteurs sont en désaccord sur la censure OU sur l'Index OU sur la liberté de choix de lecture." },
+
+    // ===== Q25 — P5 guide Économie · Situer T/E — 4 docs avant/après industrialisation =====
+    { id: "q-fc-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence à l'économie du Bas-Canada. Indique si les faits présentés dans ces documents se déroulent avant ou après le début de la première phase d'industrialisation.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant la première phase d'industrialisation", afterLabel: "Après la première phase d'industrialisation", pivot: "Première phase d'industrialisation", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-fc-s4", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('fc-situer-4', 1, 2, 3, 4),
+      // Avant : Doc 2 (caricature « Deux paires par jour » sur atelier de cordonnerie pré-mécanisation,
+      // tradition artisanale 1880) ET Doc 3 (commerce des fourrures à York Factory, pré-industriel).
+      // Après : Doc 1 (témoignage 1889 sur manufactures mécanisées) ET Doc 4 (intérieur d'atelier mécanisé).
+      corrige: { before: ["Document 2", "Document 3"], after: ["Document 1", "Document 4"] } },
+
+    // ===== Q26 — P5 guide Économie · Mettre en relation — Concepts urbanisation/industrialisation =====
+    // Énoncé renuméroté : « documents 5 et 6 » du guide → « documents 1 et 2 » dans la section.
+    { id: "q-fc-relation-5", operation: "Mettre en relation des faits", numero: 5, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Indique à l'endroit approprié le numéro du document qui correspond à chacun des concepts ci-dessous.",
+        responseSpace: { type: "category-buckets", categories: ["Urbanisation", "Industrialisation"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-fc-r5", label: "Réglette (2 points)", ...R_RELATION_2PT_2_PART }],
+      documents: pickDocs('fc-relation-5', 1, 2),
+      // Doc 1 (ex-Doc 5 guide, processus de fabrication) = Industrialisation.
+      // Doc 2 (ex-Doc 6 guide, population rurale → ville) = Urbanisation.
+      corrige: [["Document 2"], ["Document 1"]] },
+
+    // ===== Q27 — P5 guide Économie · Changements/continuités — Industrie forestière =====
+    // Énoncé renuméroté : « document 7 » du guide → « document 1 » dans la section.
+    { id: "q-fc-continuite-4", operation: "Déterminer des changements et des continuités", numero: 4, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement qui survient dans l'industrie forestière durant la première phase d'industrialisation.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-fc-co4", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-4', 1),
+      corrige: "La mécanisation permet de scier les billots plus facilement OU la mécanisation facilite la transformation du bois OU l'apparition des premières scieries facilite la transformation du bois." },
+
+    // ===== Q28 — P5 guide Acte d'Union · Causes/conséquences — 2 causes responsabilité ministérielle (1848) =====
+    // Énoncé renuméroté : « documents 2 et 3 » du guide → « documents 1 et 2 » dans la section.
+    // Note réglette : le guide pédagogique ne fournit pas de barème explicite pour cette question.
+    // On réutilise R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 (sommative V-A P1, libellé « facteurs
+    // explicatifs ») comme équivalent fonctionnel pour « 2 causes (2 sur 2) ».
+    { id: "q-fc-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine deux causes de l'obtention de la responsabilité ministérielle dans la Province du Canada en 1848. Justifie ta réponse.",
+        responseSpace: { type: "lines", count: 6 }
+      },
+      reglettes: [{ id: "r-fc-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 }],
+      documents: pickDocs('fc-causes-5', 1, 2),
+      corrige: "La fin des politiques protectionnistes britanniques affaiblit le refus d'accorder la responsabilité ministérielle ET l'alliance des partis réformistes permet de faire élire une majorité de députés en faveur de la responsabilité ministérielle au Canada." }
 
   ]
 };
