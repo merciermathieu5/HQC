@@ -1,8 +1,51 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.22.0 (mai 2026) ⭐ INTÉGRATION GUIDES PÉDAGOGIQUES RÉCIT P5
-   108 questions · 5 périodes (P1-P5) · 7 OI · 2 cycles
+   HQC · 3e + 4e secondaire — Données — v1.23.0 (mai 2026) ⭐ INTÉGRATION SOMMATIVES P6 (1896-1945)
+   124 questions · 6 périodes (P1-P6) · 7 OI · 2 cycles
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6-P8 = 0
+   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6 = 16 (7/7 OI) ⭐ (sommatives Section A V-A + V-B), P7-P8 = 0
+   v1.23.0 — INTÉGRATION DES ÉVALUATIONS SOMMATIVES P6 1896-1945 SECTION A :
+     • Intégration de 16 questions « Avec documents » tirées des Sections A des deux versions
+       (V-A : 8 questions, V-B : 8 questions) couvrant la période 1896-1945 « Les nationalismes
+       et l'autonomie du Canada ». Sections B (description avec schéma) et C (texte 150 mots)
+       écartées par convention (hors-portée HQC = compétences 1 et 2 longues).
+     • 2 nouvelles réglettes pour les libellés des sommatives P6 :
+       R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION (Q1 V-A, Q1 V-B — rubrique complexe à 5 lignes :
+         4 niveaux pour « nomme correctement l'acteur » + 1 ligne finale « nomme incorrectement »),
+       R_SITUER_1PT_FAITS (Q5 V-A — libellé propre « ne situe pas les faits dans le temps »,
+         sans la typo « le faits » de R_SITUER_1PT_T1_FAIT héritée du PDF P5 V-B).
+     • Réglettes réutilisées : R_CAUSES_2PT_1CAUSE_SOMA (Q2 V-A, Q6 V-B),
+       R_CONTINUITES_2PT_GEN_SOMA (Q3 V-A), R_RELATION_2PT_3_PART (Q4 V-A),
+       R_CAUSES_2PT_1CONS_GUIDE (Q6 V-A, Q2 V-B — libellé conséquence identique entre
+       guides RÉCIT P5 et sommatives P6), RUBRIC_CAUSALITE_3PT (Q7 V-A, Q3 V-B),
+       RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS (Q8 V-A, Q4 V-B),
+       R_RELATION_2PT_2_PART (Q5 V-B), R_SITUER_2PT_T4 (Q7 V-B),
+       R_CHANGEMENTS_2PT_GEN (Q8 V-B — typo « déterminer » → « détermine » corrigée silencieusement).
+     • Images extraites natives via unzip des .docx (qualité maximale, embedded media) :
+       5 images :
+       na-relation-1/doc1 (affiche Ligue des droits de la femme « Laissez voter maman ! »),
+       na-causalite-1/doc1 (coupure Le Devoir « La panique dans toutes les Bourses d'Amérique »),
+       na-causalite-1/doc3 (graphique « Taux de chômage Canada/USA 1929-1939 », upscalé x2 Lanczos),
+       na-causalite-2/doc2 (carte « L'exploitation des ressources naturelles dans les années 1930 »),
+       na-situer-2/doc3 (portrait John Maynard Keynes, upscalé x2.3 Lanczos).
+     • Image générée nativement via PIL Python (option B) :
+       na-continuite-1/doc1 (tableau d'immigration 1912-1920 et 1939-1946). Le tableau a été
+       recréé proprement depuis les données brutes plutôt qu'extrait du PDF source, pour éviter
+       les bordures du cadre Word externe qui restaient visibles malgré les croppings successifs.
+       Script de rendu : /home/claude/render-immigration-table.py (rendu 4x puis downsample Lanczos
+       pour qualité d'impression). Image finale : 1184×664 px, deux sous-tableaux côte à côte
+       avec en-têtes gris « Année / Nb d'immigrants » et données 1913-1920 / 1939-1946.
+     • Convention « un acteur = un document » appliquée :
+       - Doc 9 V-A (3 acteurs sur guerre des Boers : Bourassa, Laurier, Tupper) splitté en 3 docs distincts.
+       - Doc 10 V-B (3 acteurs sur conscription PGM : Bourassa, Borden, Gouin) splitté en 3 docs distincts.
+     • Convention de renumérotation appliquée : un doc source devient Doc 1 dans sa section
+       (refs dans l'énoncé renumérotées : ex. « document 9 » → « document 1 »).
+     • Correction silencieuse Q4 V-B : l'énoncé du PDF source dit « À l'aide du document 6 »,
+       mais le corrigé attendu (heures de travail, ouvriers spécialisés) correspond clairement
+       au Doc 12 V-B (phases d'industrialisation avec heures de travail), PAS au Doc 6 (Caisses
+       populaires Desjardins). C'est une erreur du PDF source. Doc 12 utilisé (renuméroté Doc 1)
+       et énoncé adapté : « À partir du document 1 ».
+     • Pas de doublons : aucune Q P6 ne chevauche les questions P5 existantes (thèmes distincts :
+       1840-1896 fédération vs 1896-1945 nationalismes).
    v1.22.0 — INTÉGRATION DES GUIDES PÉDAGOGIQUES RÉCIT 1840-1896 :
      • Intégration de 12 questions « Avec documents » tirées des 6 guides élèves
        (histoire.recitus.qc.ca) couvrant la période 1840-1896 : Population/vie sociale,
@@ -535,6 +578,38 @@ const R_DIFFERENCES_2PT_1DIFF_PARTIEL_GUIDE = rubric3(
   "L'élève dégage correctement une différence.",
   "L'élève dégage partiellement une différence.",
   "L'élève ne dégage pas la différence."
+);
+
+// ============ Réglettes ajoutées v1.23.0 (Évaluations sommatives P6 1896-1945 Section A) ============
+
+// Différences/similitudes complexe (3 points, 5 lignes) — Q1 V-A et Q1 V-B P6 (3 acteurs).
+// Rubrique à matrice : 4 niveaux pour la branche « nomme correctement l'acteur qui présente
+// une position différente » (3-2-1-0 points) + 1 ligne finale « nomme incorrectement l'acteur
+// ou ne le nomme pas » (0 point). Format complex (rows) inspiré de RUBRIC_CAUSALITE_3PT.
+// Distincte de R_DIFFSIM_3PT_PEUPLE_DIFFERENT (libellé « peuple / mode de vie » + simplifiée
+// à 4 niveaux en fusionnant la 5e ligne dans le 0pt) et de R_DIFFSIM_3PT_1DIFF_1SIM (fam P4,
+// libellé « la différence et la similitude »).
+const R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION = {
+  type: "complex",
+  opLabel: "Dégager des différences et des similitudes",
+  maxPoints: 3,
+  rows: [
+    { precise: "L'élève nomme correctement l'acteur qui présente une position différente", condition: "et présente correctement les deux positions.", points: "3 points" },
+    { precise: null, condition: "et présente correctement une position et plus ou moins correctement l'autre position.", points: "2 points" },
+    { precise: null, condition: "et présente plus ou moins correctement les deux positions. ou et présente correctement une position et présente incorrectement l'autre position ou ne la présente pas.", points: "1 point" },
+    { precise: null, condition: "et présente tout au plus une seule position plus ou moins correctement.", points: "0 point" },
+    { precise: "L'élève nomme incorrectement l'acteur qui présente une position différente ou ne la nomme pas.", condition: null, points: "0 point" }
+  ]
+};
+
+// Situer dans le temps, 1 fait (1 point) — Q5 V-A P6 (lettre sur ligne du temps pour la radio).
+// Libellé soma : « L'élève situe les faits dans le temps » et « L'élève ne situe pas les faits
+// dans le temps » — distinct de R_SITUER_1PT_T1_FAIT (P5 V-B) qui hérite d'une typo « le faits »
+// dans la négation. Ici le libellé V-A P6 est propre (« les faits » au pluriel correct).
+const R_SITUER_1PT_FAITS = rubric2(
+  "Situer dans le temps et dans l'espace",
+  "L'élève situe les faits dans le temps.",
+  "L'élève ne situe pas les faits dans le temps."
 );
 
 // ============ Helpers de sélection de documents ============
@@ -1941,9 +2016,222 @@ const DOCS = {
     { id: "fc-c5-d1", title: "Document 1 : Texte d'historien sur la fin du protectionnisme en Grande-Bretagne", layout: "text-only",
       text: "« Les besoins en céréales à faible coût, à la suite de la famine liée à la maladie de la pomme de terre en Irlande [...] entraînent l'abolition [...] du système protectionniste [en Grande-Bretagne]. À l'élimination de tous les droits d'importation sur les céréales s'ajouta la réduction des tarifs sur le bois ne provenant pas des colonies. Sur le plan politique, [la fin du protectionnisme] signifiait que rien ne pouvait plus justifier que la Grande-Bretagne ne s'oppose à l'autonomie interne des colonies de peuplement. »",
       sources: ["Source : Peter Gossage et J.I Little, « L'État libéral », Une histoire du Québec - Entre tradition et modernité, Montréal, Éditions Hurtubise, p. 127."] },
-    { id: "fc-c5-d2", title: "Document 2 : Texte de synthèse portant sur l'Acte d'Union", layout: "text-only",
-      text: "Par l'Acte d'Union, le gouvernement britannique unit les deux Canadas en une seule colonie, qui ne possède qu'une seule Chambre d'assemblée. Toutefois, Londres n'accorde pas la responsabilité ministérielle* au gouvernement canadien, malgré les demandes répétées de ses députés.\n\nAfin d'atteindre cet objectif, les députés réformistes menés par Robert Baldwin proposent à leurs collègues du Canada-Est, dirigés par Louis-Hippolyte Lafontaine, de former un partenariat politique. En 1841, cette alliance parvient à faire élire une majorité de députés.\n\n* Responsabilité ministérielle : dans ce type de régime parlementaire, les membres du conseil exécutif doivent être issus de la majorité élue à la Chambre d'assemblée et recevoir son appui en tout temps. S'ils perdent l'appui de la Chambre, ils sont contraints de démissionner.",
+  ],
+
+  // ============================================================
+  // ===== P6 — Les nationalismes et l'autonomie du Canada (4e sec.) =====
+  // Sources : Évaluations sommatives officielles versions A et B « 1896-1945 », Section A.
+  // Sections B (description avec schéma) et C (texte 150 mots) écartées (hors-portée HQC).
+  // Convention « un acteur = un document » : doc 9 V-A et doc 10 V-B (3 acteurs chacun) splittés.
+  // Convention « phase = un document » : doc 12 V-A et doc 12 V-B (deux phases d'industrialisation) splittés en 2.
+  // ============================================================
+
+  // ===== V-A Q1 — Différences/similitudes — 3 acteurs sur la guerre des Boers =====
+  // Convention « un acteur = un document » : Doc 9 source (3 acteurs juxtaposés : Bourassa, Laurier, Tupper)
+  // splitté en Doc 1 (Bourassa) + Doc 2 (Laurier) + Doc 3 (Tupper). Énoncé adapté : « document 9 » → « documents 1, 2 et 3 ».
+  'na-differences-1': [
+    { id: "na-d1-d1", title: "Document 1", layout: "text-only",
+      text: "« Cette Chambre déclare de plus qu'il n'est pas nécessaire d'envoyer de nouvelles troupes canadiennes dans l'Afrique Australe et que l'enrôlement de recrues pour le corps de gendarmerie Sud-africaine ne devrait pas être permis au Canada. »\n\nHenri Bourassa",
+      sources: ["Source : Henri Bourassa, « Discours », Compte rendu officiel des débats de la Chambre des communes du Canada, Ottawa, Imprimeur du Roi, 1901, vol. 54, p. 1358."] },
+    { id: "na-d1-d2", title: "Document 2", layout: "text-only",
+      text: "« Je considère que cette guerre est juste, et comme l'opinion publique désirait vivement que le Canada y prît part, nous avons cru de votre devoir de nous rendre à cette manifestation en envoyant un régiment [...] Nous avons agi avec toute l'indépendance de notre pouvoir souverain. »\n\nWilfrid Laurier",
+      sources: ["Source : Wilfrid Laurier, « Discours », 13 mars 1900, Compte rendu officiel des débats de la Chambre des communes du Canada, cinquième session, huitième parlement, vol. LI, Ottawa, Imprimeur de la Reine, 1900, p. 1836, en ligne sur Canadiana."] },
+    { id: "na-d1-d3", title: "Document 3", layout: "text-only",
+      text: "« Je blâme fortement [le premier ministre] d'appuyer l'Angleterre dans sa guerre injuste contre un petit peuple brave comme les Boers, qui luttent avec courage et patriotisme pour la liberté de leur pays. Je l'accuse de se faire l'instrument de Joe Chamberlain, un fou malcommode, [...] Cette guerre du Transvaal n'est qu'un acte de brigandage. »\n\nCharles Tupper",
+      sources: ["Source : Charles Tupper, cité dans Robert Rumilly, Histoire de la Province de Québec, tome IX, Montréal, 1930, p. 148."] }
+  ],
+
+  // ===== V-A Q2 — Causes/conséquences — Amélioration des conditions de vie en ville =====
+  // Aucun doc explicitement référencé dans l'énoncé, mais le Doc 13 V-A (prospérité 1920s, électrification,
+  // achat à crédit, pouvoir d'achat) correspond directement aux réponses acceptées du corrigé.
+  // Renumérotation : Doc 13 source → Doc 1.
+  'na-causes-1': [
+    { id: "na-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Dans les années 1920, l'Amérique du Nord entre dans une période de prospérité économique sans précédent. La vie quotidienne s'améliore grâce à l'électrification, particulièrement dans les villes. Des produits de luxe autrefois réservés aux élites deviennent d'usage plus commun alors que se développe un système d'achat à crédit. [...] Après avoir connu des conditions de vie difficiles, même les familles ouvrières voient leur pouvoir d'achat augmenter. »",
       sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== V-A Q3 — Continuité — Accueil des immigrants lors des deux guerres mondiales =====
+  // Renumérotation : Doc 1 source → Doc 1. Image extraite : tableau d'immigration croppé depuis PDF 200dpi.
+  'na-continuite-1': [
+    { id: "na-co1-d1", title: "Document 1 — Nombre d'immigrants reçus au Canada, 1912-1920 et 1939-1946", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-1/doc1.png", imageWidthCm: 16,
+      sources: ["Source des données : Statistique Canada, « 150 ans d'immigration au Canada », Statistique Canada, dernière mise à jour le 17 mai 2018, page consultée le 19 mars 2019."] }
+  ],
+
+  // ===== V-A Q4 — Mettre en relation — 3 combats du mouvement féministe =====
+  // Renumérotation : Docs 6 (Ligue), 8 (Gérin-Lajoie), 10 (Circé-Côté) source → Docs 1, 2, 3 (ordre original croissant).
+  // Doc 1 = affiche Ligue droits femme (image + texte) ; Docs 2 et 3 = textes seuls.
+  // Énoncé adapté : pas de référence numérique explicite dans l'énoncé (« Associe le bon document »).
+  'na-relation-1': [
+    { id: "na-r1-d1", title: "Document 1 — Extrait d'une affiche produite par la Ligue des droits de la femme", layout: "text-image",
+      text: "« La femme devrait voter parce que :\nLa femme a des responsabilités dans l'ordre économique :\n1. Puisqu'elle a le droit strict de posséder des biens, n'est-il pas juste et nécessaire qu'elle ait un droit de regard sur les lois qui régissent la propriété ?\n2. Puisqu'elle paie de l'impôt, n'est-il pas juste et nécessaire qu'elle ait un droit de regard sur les lois fiscales ? »",
+      imageUrl: "assets/img/na-relation-1/doc1.png", imageWidthCm: 5,
+      sources: ["Source de l'image et du texte : Ligue des droits de la femme, Laissez voter maman ! (entre 1930 et 1940), Archives de la Ville de Montréal, CA M001 BM014-4-D02. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "na-r1-d2", title: "Document 2", layout: "text-only",
+      text: "« La femme croirait-elle par hasard qu'elle peut défendre ses intérêts, collaborer aux graves problèmes dont la solution lui échoit, en vivant dans l'isolement et sans user de la plénitude de ses moyens d'action [...] Qu'on ne se méprenne pas sur le sens du suffrage féminin, c'est la levée en masse des femmes, leur mobilisation en vue du service de la patrie. »\n\nMarie Lacoste Gérin-Lajoie",
+      sources: ["Source : Marie Lacoste Gérin-Lajoie, « Le suffrage féminin », La bonne parole, vol. 10, 1922, p. 3 et 6, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000158574."] },
+    { id: "na-r1-d3", title: "Document 3", layout: "text-only",
+      text: "« Cette grâce superficielle qui suffisait à la femme d'autrefois pour plaire et charmer serait un trop mince bagage pour la femme d'aujourd'hui. Autres temps, autres mœurs, il faut lui donner une solide instruction non pas seulement parce que c'est un être de chair et de sang qui a droit au savoir comme l'homme, une créature de raison autant que d'amour, une personnalité morale susceptible de hautes aspirations, mais surtout parce que plus que jamais elle est appelée à gagner sa vie, celle de ses parents et de ses enfants. »\n\nÉva Circé-Côté",
+      sources: ["Source : Julien Saint-Michel (pseudonyme d'Éva Circé-Côté), The Labor World/Le Monde ouvrier, 22 avril 1916, p. 1, cité dans Micheline Dumont et Louise Toupin, La pensée féministe au Québec : anthologie (1900-1985), Montréal, Les éditions du remue-ménage, 2003, en ligne sur cybersolidaires.org."] }
+  ],
+
+  // ===== V-A Q5 — Situer dans le temps — Lettre A/B/C/D sur ligne du temps pour la radio =====
+  // Renumérotation : Doc 4 source → Doc 1. Date absente du Doc 4 (pas de date dans l'extrait ni dans le titre source),
+  // donc OI « Situer dans le temps » sans trahissance. Réponse : C (1920-1930).
+  'na-situer-1': [
+    { id: "na-s1-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] la radio prit son essor avec l'inauguration de stations montréalaises : CKAC pour l'auditoire francophone et CFCF pour l'auditoire anglophone. »",
+      sources: ["Source : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Sillery, Septentrion, 2003, p. 265."] }
+  ],
+
+  // ===== V-A Q6 — Causes/conséquences — Conséquence de l'action syndicale =====
+  // Renumérotation : Doc 11 source (loi des accidents de travail 1909) → Doc 1.
+  'na-causes-2': [
+    { id: "na-c2-d1", title: "Document 1", layout: "text-only",
+      text: "« Après une enquête, le gouvernement québécois [...] propose une loi pour remédier à la situation. La loi des accidents de travail de 1909 consacre le principe du risque professionnel, c'est-à-dire qu'indépendamment de la faute du patron ou de l'ouvrier, celui-ci sera indemnisé en cas d'accident. »",
+      sources: ["Source : P.-A. Linteau, R. Durocher et J.-C. Robert, Histoire du Québec contemporain, tome 1 : De la Confédération à la crise (1867-1929), Montréal, Boréal, 1989, p. 548."] }
+  ],
+
+  // ===== V-A Q7 — Liens de causalité — Krach boursier → entreprises → emploi =====
+  // Renumérotation : Doc 2 source (Le Devoir « Panique bourses ») → Doc 1 ;
+  // Doc 7 source (PNB et secteurs en chute) → Doc 2 ; Doc 5 source (graphique chômage) → Doc 3.
+  // Énoncé adapté : « (document 2) » → « (document 1) », « (document 7) » → « (document 2) », « (document 5) » → « (document 3) ».
+  'na-causalite-1': [
+    { id: "na-ca1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/na-causalite-1/doc1.png", imageWidthCm: 12,
+      sources: ["Source : Auteur inconnu, « La panique dans toutes les Bourses d'Amérique », Le Devoir, 24 octobre 1929, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335. Licence : image utilisée avec la permission du Devoir, tous droits réservés."] },
+    { id: "na-ca1-d2", title: "Document 2", layout: "text-only",
+      text: "« Dès 1933, les exportations canadiennes, le PNB et le revenu annuel moyen des Canadiens sont tombés de moitié. [...] Dans ses secteurs manufacturiers et miniers, la valeur de la production baisse de moitié. La chute est encore plus forte dans l'industrie du sciage et l'industrie lourde. »\n\n* PNB : Le produit national brut correspond à la quantité totale de richesses produites par un pays au cours d'une année.",
+      sources: ["Source : Suzanne Clavette, « La grande crise : Une décennie de misère et de rêves brisés », Cap-aux-Diamants, no 41 (printemps 1995), p. 46, en ligne."] },
+    { id: "na-ca1-d3", title: "Document 3 — Taux de chômage au Canada et aux États-Unis (1929-1939)", layout: "image-only",
+      imageUrl: "assets/img/na-causalite-1/doc3.png", imageWidthCm: 11,
+      sources: ["Source des données : Claude Larivière, Crise économique et contrôle social (1929-1937) : le cas de Montréal, Montréal, Éd. coopératives A. St-Martin, 1977, p. 11."] }
+  ],
+
+  // ===== V-A Q8 — Changements/continuités — Deux phases d'industrialisation =====
+  // Convention « phase = un document » : Doc 12 source (deux phases juxtaposées) splitté en
+  // Doc 1 (1850-1896) + Doc 2 (1896-1929). Cohérent avec la pédagogie de comparaison entre phases.
+  // Énoncé adapté : « À partir du document 12 » → « À partir des documents 1 et 2 ».
+  'na-continuite-2': [
+    { id: "na-co2-d1", title: "Document 1 — Première phase d'industrialisation (1850-1896)", layout: "text-only",
+      text: "« L'industrie légère est la plus importante dans l'économie du [Québec]. Les entreprises qui fabriquent des biens de consommation représentent la majorité des usines. [...] Cette industrie requiert une main-d'œuvre abondante et peu qualifiée. [...] Le secteur [...] le plus développé est celui de l'alimentation. L'industrie de la chaussure vient en second plan dans le portrait industriel canadien [et] le secteur textile est en plein essor. »",
+      sources: ["Source : Allô prof, « La première phase d'industrialisation au Canada-Uni (1850-1900) », alloprof, page consultée le 1er mars 2019."] },
+    { id: "na-co2-d2", title: "Document 2 — Deuxième phase d'industrialisation (1896-1929)", layout: "text-only",
+      text: "« Au début du 20e siècle, [des] secteurs industriels comme les pâtes et papiers, l'aluminium et l'hydroélectricité requièrent l'implantation de grandes usines, l'utilisation de nouvelles technologies et une main-d'œuvre spécialisée. Le secteur manufacturier évolue également en [...] réaménageant ses infrastructures. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== V-B Q1 — Différences/similitudes — 3 acteurs sur la conscription PGM =====
+  // Convention « un acteur = un document » : Doc 10 source (3 acteurs juxtaposés : Bourassa, Borden, Gouin)
+  // splitté en Doc 1 (Bourassa) + Doc 2 (Borden) + Doc 3 (Gouin). Énoncé adapté : « document 10 » → « documents 1, 2 et 3 ».
+  // Note : les dates (1917) sont conservées dans le contexte des sources car l'OI est « différences/similitudes »
+  // (les dates ne révèlent pas la réponse, qui porte sur la position de chaque acteur).
+  'na-differences-2': [
+    { id: "na-d2-d1", title: "Document 1", layout: "text-only",
+      text: "« Les Canadiens-français, on ne saurait trop le répéter, sont exclusivement canadiens. Ils n'ont pas d'autre patrie que le Canada. Ils ne reconnaissent, envers aucun autre pays, les devoirs qui, en tout temps et en tout lieu, n'incombent qu'aux citoyens de chaque pays ; et au premier rang de ces devoirs exclusivement nationaux, se place le service militaire [...] À l'égard de l'Angleterre, les Canadiens-français se croient tenus à tous les devoirs qui résultent de la constitution (votée par le parlement britannique) [...] mais à rien de plus [...] »\n\nHenri Bourassa, directeur du journal Le Devoir, 1917",
+      sources: ["Source du texte : Henri Bourassa, La conscription, journal Le Devoir, 1er juin 1917, p. 1, Bibliothèque et Archives nationales du Québec, notice 0005226335."] },
+    { id: "na-d2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] le Gouvernement déposera bientôt un projet de loi destiné à organiser le service obligatoire par classes pour lever les renforts jugés nécessaires afin de maintenir les effectifs de l'armée canadienne au front et lui conserver son rang de troupe de combat de premier ordre dans les forces militaires de l'empire [...] j'espère que tous les membres du Parlement l'accepteront en songeant à la grandeur de la cause qui est en jeu dans le conflit actuel [...] »\n\nRobert Borden, Premier ministre du Canada, 1917",
+      sources: ["Source du texte : 1917 : Discours à la Chambre des communes du premier ministre du Canada, Robert Borden, concernant l'état de la guerre en Europe, en ligne."] },
+    { id: "na-d2-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] Mystérieusement, pour des raisons qu'on ne nous a pas données, on voulut, comme en Australie, essayer de nous imposer [cette loi]. Mais il y eut une différence ; c'est qu'en Australie on a consulté le peuple, et le peuple, où il n'y a pas de Canadiens français, s'est prononcé contre [...] Au Canada, on a dédaigné de consulter le pays et on a cru mieux de lui imposer immédiatement le service forcé. Pourquoi ? »\n\nLomer Gouin, premier ministre du Québec, 1917",
+      sources: ["Source du texte : Discours prononcé par Lomer Gouin, cité dans le journal Le Devoir, 21 août 1917, p. 2, Bibliothèque et Archives nationales du Québec, notice 0005226335."] }
+  ],
+
+  // ===== V-B Q2 — Causes/conséquences — Conséquence de l'immigration sur la composition de la population =====
+  // Aucun doc référencé explicitement dans l'énoncé. Doc 5 V-B source contient 2 textes côte à côte (Linteau sur
+  // Montréal multiethnique + Lacoursière sur le peuplement de l'Ouest et la diversité ethnique). On utilise la
+  // partie Lacoursière qui correspond directement au corrigé (« population des villes canadiennes davantage cosmopolite »).
+  // Convention « un auteur = un document » : seul l'extrait Lacoursière est intégré ici (extrait Linteau
+  // non utilisé dans la Section A — pourrait éventuellement servir à la Section B/C qu'on n'intègre pas).
+  'na-causes-3': [
+    { id: "na-c3-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Grâce au réseau ferroviaire, de grandes cités se développent entre 1896 et 1920. Winnipeg, la métropole de l'Ouest [...] a déjà une population de 136 000 habitants en 1911 [...]. De ce peuplement de l'Ouest émerge une société nouvelle [...] La diversité des langues indique bien une diversité des ethnies [...] »",
+      sources: ["Source du texte : Lacoursière, Provencher et Vaugeois, Canada-Québec, synthèse historique, Montréal, ERPI, 1978, p. 467."] }
+  ],
+
+  // ===== V-B Q3 — Liens de causalité — Énergie 2e phase → secteur → effet territoire =====
+  // Renumérotation : Doc 11 source (cours d'eau / hydroélectricité, Dickinson et Young) → Doc 1 ;
+  // Doc 7 source (carte ressources naturelles années 1930) → Doc 2.
+  // Le doc 11 mentionne « Vers 1933 » et « 8 millions de chevaux-vapeur » — données quantitatives mais
+  // pas trahissantes pour la causalité.
+  'na-causalite-2': [
+    { id: "na-ca2-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Quatre cours d'eau offraient un potentiel énergétique immense : Le Saint-Laurent à l'ouest de Montréal, l'Outaouais et son affluent la rivière Gatineau, les rivières Saint-Maurice et Saguenay. Vers 1933, presque la moitié de toute l'énergie [...] canadienne de 8 millions de chevaux-vapeur était produite au Québec. »",
+      sources: ["Source du texte : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Sillery, Septentrion, 1995, p. 227."] },
+    { id: "na-ca2-d2", title: "Document 2 — L'exploitation des ressources naturelles dans les années 1930", layout: "image-only",
+      imageUrl: "assets/img/na-causalite-2/doc2.png", imageWidthCm: 13,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== V-B Q4 — Changements/continuités (3pt) — Travailleurs entre les deux phases d'industrialisation =====
+  // CORRECTION SILENCIEUSE : l'énoncé du PDF source dit « À l'aide du document 6 », mais le corrigé attendu
+  // (« nombre d'heures de travail baisse chez les ouvriers spécialisés ») correspond clairement au Doc 12 V-B
+  // (phases d'industrialisation avec heures de travail), PAS au Doc 6 (Caisses populaires Desjardins).
+  // C'est une erreur du PDF source. Doc 12 utilisé (splitté en Doc 1 + Doc 2 selon la convention « phase = un doc »).
+  // Énoncé adapté : « À l'aide du document 6 » → « À l'aide des documents 1 et 2 ».
+  'na-continuite-3': [
+    { id: "na-co3-d1", title: "Document 1 — Première phase d'industrialisation", layout: "text-only",
+      text: "« [...] Sous la pression des organisations ouvrières, le Québec se dote, en 1885, d'une loi qui limite le travail à douze heures et demie par jour et à soixante-douze heures et demie par semaine. En 1894, on réduit à douze heures la journée du travail. Une disposition de la loi laisse cependant la porte ouverte à certains accommodements avec les industriels, afin de prolonger le travail [...] »",
+      sources: ["Source du texte : Jean De Bonville, Jean-Baptiste Gagnepetit, les travailleurs montréalais à la fin du 19e siècle, Montréal, Éditions de l'Aurore, 1975, p. 48."] },
+    { id: "na-co3-d2", title: "Document 2 — Deuxième phase d'industrialisation", layout: "text-only",
+      text: "« [...] Dès 1909, de nombreux travailleurs spécialisés obtenaient la semaine de travail de 54 heures, mais les femmes et les enfants travaillaient encore 60 heures par semaine. [...] Et, bien qu'une loi provinciale votée en 1912 eut réduit la semaine de travail dans l'industrie textile à 55 heures, celle-ci n'était pas appliquée. »",
+      sources: ["Source du texte : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Sillery, Septentrion, 1995, p. 239."] }
+  ],
+
+  // ===== V-B Q5 — Mettre en relation — Clergé dans l'économie / dans la société =====
+  // Renumérotation : Doc 6 source (Caisses populaires Desjardins, clergé/économie) → Doc 1 ;
+  // Doc 14 source (cardinal Villeneuve grève Dominion Textile, clergé/société) → Doc 2.
+  // Énoncé adapté : « le numéro du document » est conservé tel quel (l'énoncé ne renvoie pas à un numéro spécifique).
+  'na-relation-2': [
+    { id: "na-r2-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] le mouvement des Caisses populaires prenait de la force ; en 1929, il existait 178 caisses populaires catholiques, avec un actif de 11 millions de dollars. L'idée de son fondateur, Alphonse Desjardins, était que les caisses populaires fondées sur les paroisses pouvaient mobiliser les épargnes des Canadiens français, tout en offrant une solution de rechange aux grandes banques [...] »",
+      sources: ["Source du texte : P. Gossage et J.L. Little, Une histoire du Québec. Entre tradition et modernité, Montréal, Hurtubise, 2015, p. 233."] },
+    { id: "na-r2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] durant la grève des employés de la Dominion Textile à Montmorency, le cardinal Villeneuve intervint personnellement auprès des patrons afin de les inciter à remédier à l'insuffisance des salaires des ouvriers et à les faire signer la convention collective. »",
+      sources: ["Source du texte : Alain Gagnon, L'influence de l'Église sur l'évolution socio-économique du québec de 1850 à 1950, dans l'Action nationale, décembre 1979, p. 268, Bibliothèque et Archives nationale du Québec, notice 0000164214."] }
+  ],
+
+  // ===== V-B Q6 — Causes/conséquences — Cause de la fondation de la Fédération nationale Saint-Jean-Baptiste =====
+  // Aucun doc explicitement référencé dans l'énoncé, mais le Doc 9 V-B (Lavigne & Pinard, Montréalaises et
+  // mouvement de réforme en faveur des droits des femmes) correspond directement à la réponse acceptée du
+  // corrigé (« Obtenir des droits pour les femmes »). Renumérotation : Doc 9 source → Doc 1.
+  'na-causes-4': [
+    { id: "na-c4-d1", title: "Document 1", layout: "text-only",
+      text: "« Au tournant du siècle, de nombreuses Montréalaises deviennent conscientes des problèmes sociaux engendrés par la croissance rapide du capitalisme [...] Elles joignent les rangs du mouvement de réforme et mettent sur pied divers organismes d'action sociale. Ce faisant elles se heurtent quotidiennement aux limites que leur impose leur propre incapacité juridique et politique [...] Une telle situation amène nombre de réformistes à militer en faveur des droits des femmes [...] »",
+      sources: ["Source du texte : Marie Lavigne et Yolande Pinard, Les femmes dans la société québécoise, Montréal, Édition du Boréal Express, 1977, p. 90."] }
+  ],
+
+  // ===== V-B Q7 — Situer dans le temps — Krach boursier : avant/après 1929 sur 4 documents =====
+  // Renumérotation : Docs 1, 2, 3, 4 source → Docs 1, 2, 3, 4 (ordre conservé).
+  // Doc 3 (Keynes texte + portrait) en layout text-image. Réponse corrigé : avant = Docs 2, 4 ; après = Docs 1, 3.
+  'na-situer-2': [
+    { id: "na-s2-d1", title: "Document 1", layout: "text-only",
+      text: "« Les gouvernements lancent également des travaux publics [...] Par exemple, ils construisent des ponts, des routes, des aqueducs, des égouts, des marchés, etc. Le gouvernement fédéral et celui de la province de Québec, avec l'aide du clergé, mettent sur pied des plans de colonisation [...] dans des régions éloignées, telles que l'Abitibi, le Témiscamingue, le Lac-Saint-Jean ou la Gaspésie. »",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-s2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] Les investissements dans l'agriculture atteignent, à l'échelle mondiale, un niveau trop élevé pour la capacité d'absorption des marchés internationaux [...] les stocks de produits agricoles s'accumulent et [...] les prix augmentent [...] ».",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 13."] },
+    { id: "na-s2-d3", title: "Document 3", layout: "text-image",
+      text: "« [...] Il propose plutôt que l'État intervienne afin de diminuer et de prévenir les irrégularités du système capitaliste. Ainsi, l'État serait en mesure de stabiliser l'économie en favorisant la consommation et en relançant l'emploi et la production puisqu'il serait plus présent. »",
+      imageUrl: "assets/img/na-situer-2/doc3.png", imageWidthCm: 5,
+      sources: [
+        "Source du texte : Allôprof, La remise en question du capitalisme, en ligne.",
+        "Source de l'image : Auteur inconnu, en ligne (portrait de John Maynard Keynes)."
+      ] },
+    { id: "na-s2-d4", title: "Document 4", layout: "text-only",
+      text: "« [...] Lorsque les gens qui possèdent des actions réalisent que les différentes compagnies ne font pas autant de profits qu'ils le croyaient, ils vendent leurs actions tous en même temps. La valeur des actions à la bourse dégringole rapidement puisque tous veulent vendre leurs actions sans avoir d'acheteurs potentiels. »",
+      sources: ["Source du texte : Allôprof, La crise économique et ses conséquences au Québec, en ligne."] }
+  ],
+
+  // ===== V-B Q8 — Continuité/changement (2pt) — Droits des Canadiens durant la 2e GM =====
+  // Renumérotation : Doc 8 source (publications communistes bannies / censure) → Doc 1.
+  // Énoncé adapté : « À l'aide du document 8 » → « À l'aide du document 1 ».
+  'na-continuite-4': [
+    { id: "na-co4-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] les publications communistes qui font de la propagande pour le communisme, resteront bannies au Canada, tandis que les publications qui s'occupent de la question russe, de l'effort de guerre russe, seront admises [...] »",
+      sources: ["Source du texte : Musée Canadien de la Guerre, en ligne."] }
   ]
 
 };
@@ -3415,7 +3703,228 @@ window.DATA = {
       },
       reglettes: [{ id: "r-fc-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 }],
       documents: pickDocs('fc-causes-5', 1, 2),
-      corrige: "La fin des politiques protectionnistes britanniques affaiblit le refus d'accorder la responsabilité ministérielle ET l'alliance des partis réformistes permet de faire élire une majorité de députés en faveur de la responsabilité ministérielle au Canada." }
+      corrige: "La fin des politiques protectionnistes britanniques affaiblit le refus d'accorder la responsabilité ministérielle ET l'alliance des partis réformistes permet de faire élire une majorité de députés en faveur de la responsabilité ministérielle au Canada." },
+
+    // ============================================================
+    // ===== P6 — 4e secondaire — Les nationalismes et l'autonomie du Canada (1896-1945) =====
+    // Source : Évaluations sommatives officielles versions A et B, Section A.
+    // 16 questions au total (8 V-A + 8 V-B). Sections B (description schéma) et C (texte 150 mots) écartées.
+    // ============================================================
+
+    // ===== Q1 — P6 V-A · Différences/similitudes — 3 acteurs sur la guerre des Boers =====
+    { id: "q-na-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les documents 1, 2 et 3 présentent la position de trois acteurs concernant une guerre impliquant le Canada au tournant du 20e siècle. Nomme l'acteur qui présente une position différente et compare cette position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-na-d1", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('na-differences-1', 1, 2, 3),
+      corrige: "L'acteur qui présente une position différente est Wilfrid Laurier (Document 2). Il est d'accord avec la participation du Canada à la guerre des Boers OU pour l'envoi de soldats canadiens en Afrique du Sud, tandis que les deux autres acteurs (Henri Bourassa et Charles Tupper) s'y opposent." },
+
+    // ===== Q2 — P6 V-A · Causes/conséquences — Amélioration des conditions de vie en ville =====
+    { id: "q-na-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Indique une raison qui explique l'amélioration des conditions de vie en ville dans la première moitié du 20e siècle.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-na-c1", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
+      documents: pickDocs('na-causes-1', 1),
+      corrige: "Une raison qui explique l'amélioration des conditions de vie en ville est l'électrification des milieux urbains OU l'accessibilité commune aux produits de luxe OU la possibilité d'acheter à crédit OU l'augmentation du pouvoir d'achat pour toutes les classes sociales." },
+
+    // ===== Q3 — P6 V-A · Continuité — Accueil des immigrants lors des deux guerres mondiales =====
+    { id: "q-na-continuite-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un élément de continuité en lien avec l'accueil des immigrants par le gouvernement canadien lors de la Première et de la Deuxième Guerre mondiale.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-na-co1", label: "Réglette (2 points)", ...R_CONTINUITES_2PT_GEN_SOMA }],
+      documents: pickDocs('na-continuite-1', 1),
+      corrige: "Il y a continuité, car le Canada diminue l'accès au pays aux immigrants pendant les deux guerres mondiales OU car le Canada interdit l'accès au pays à certains immigrants OU car le Canada applique des politiques d'immigration discriminatoires pendant les deux guerres mondiales OU car le Canada accueille moins d'immigrants pendant les deux guerres mondiales." },
+
+    // ===== Q4 — P6 V-A · Mettre en relation — 3 combats du mouvement féministe =====
+    // Renumérotation : Doc 6 (Ligue) → Doc 1, Doc 8 (Gérin-Lajoie) → Doc 2, Doc 10 (Circé-Côté) → Doc 3.
+    // Corrigé : Éducation = Doc 3 (Circé-Côté), Droits économiques = Doc 1 (Ligue), Droit de vote = Doc 2 (Gérin-Lajoie).
+    { id: "q-na-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Associe le bon document à chacun des combats menés par le mouvement féministe dans la première moitié du 20e siècle au Canada.",
+        responseSpace: { type: "category-buckets", categories: ["Éducation", "Droits économiques", "Droit de vote"], slots: [1, 1, 1] }
+      },
+      reglettes: [{ id: "r-na-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_3_PART }],
+      documents: pickDocs('na-relation-1', 1, 2, 3),
+      corrige: [["Document 3"], ["Document 1"], ["Document 2"]] },
+
+    // ===== Q5 — P6 V-A · Situer dans le temps — Radio sur ligne du temps 1900-1940 =====
+    // Ligne du temps source : 4 segments contigus (A: 1900-1910, B: 1910-1920, C: 1920-1930, D: 1930-1940) avec flèche →.
+    // Réponse corrigé : C (1920-1930) — fondation des stations CKAC et CFCF à Montréal en 1922.
+    { id: "q-na-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Sur la ligne du temps, identifie la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        responseSpace: { type: "timeline-segments", periods: [
+          { letter: "A", range: "1900-1910" },
+          { letter: "B", range: "1910-1920" },
+          { letter: "C", range: "1920-1930" },
+          { letter: "D", range: "1930-1940" }
+        ] }
+      },
+      reglettes: [{ id: "r-na-s1", label: "Réglette (1 point)", ...R_SITUER_1PT_FAITS }],
+      documents: pickDocs('na-situer-1', 1),
+      corrige: "C (1920-1930) — la radio prit son essor avec l'inauguration des stations montréalaises CKAC et CFCF en 1922." },
+
+    // ===== Q6 — P6 V-A · Causes/conséquences — Conséquence de l'action syndicale =====
+    { id: "q-na-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Indique une conséquence de l'action syndicale sur les conditions de travail des ouvriers dans la première moitié du 20e siècle.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-na-c2", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CONS_GUIDE }],
+      documents: pickDocs('na-causes-2', 1),
+      corrige: "La conséquence de l'action syndicale sur les conditions de travail des ouvriers est la mise en place par l'État québécois de législations afin de protéger les ouvriers OU la mise en place de lois par le gouvernement québécois (ex. loi des accidents de travail de 1909)." },
+
+    // ===== Q7 — P6 V-A · Liens de causalité — Krach boursier → entreprises → emploi =====
+    // Renumérotation : Doc 2 → Doc 1, Doc 7 → Doc 2, Doc 5 → Doc 3.
+    // Énoncé adapté : « (document 2) » → « (document 1) », « (document 7) » → « (document 2) », « (document 5) » → « (document 3) ».
+    { id: "q-na-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Explique comment le marché boursier plonge l'économie canadienne dans une crise dans les années 1930. Dans ta réponse, tu devras préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "L'événement déclencheur de la crise économique (document 1)",
+          "La situation financière des entreprises à la suite de cet événement (document 2)",
+          "La situation de l'emploi pendant la crise (document 3)"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-na-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('na-causalite-1', 1, 2, 3),
+      corrige: "Le Krach boursier de 1929 déclenche la crise économique des années 1930 (document 1), ce qui place plusieurs entreprises en difficulté financière ou en faillite (document 2). Cette situation entraîne une pénurie d'emplois conduisant plusieurs travailleurs au chômage (document 3)." },
+
+    // ===== Q8 — P6 V-A · Changements/continuités (3pt) — Deux phases d'industrialisation =====
+    // Doc 12 source splitté en Doc 1 (1850-1896) + Doc 2 (1896-1929). Énoncé adapté.
+    { id: "q-na-continuite-2", operation: "Déterminer des changements et des continuités", numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique s'il y a changement ou continuité d'une phase d'industrialisation à l'autre. Justifie ton choix par des faits et un repère de temps.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-na-co2", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('na-continuite-2', 1, 2),
+      corrige: "Il y a changement, car à partir de 1896, de nouveaux secteurs industriels apparaissent tels que les pâtes et papiers, l'aluminium et l'hydroélectricité OU les nouveaux secteurs industriels demandent une main-d'œuvre spécialisée.\n\nOU\n\nIl y a continuité, car l'industrie légère demeure un secteur important de 1850 à 1929." },
+
+    // ===== Q9 — P6 V-B Q1 · Différences/similitudes — 3 acteurs sur la conscription PGM =====
+    // Énoncé V-B vouvoie (« Nommez », « comparez ») — on conserve la forme tu/vous selon la version source.
+    // Mais dans HQC, P5 a uniformisé au tutoiement (cf. q-fc-* qui tutoient même quand la V-B vouvoie).
+    // On suit cette convention HQC : tutoiement systématique.
+    { id: "q-na-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les documents 1, 2 et 3 présentent la position de trois acteurs concernant un projet de loi présenté par le gouvernement fédéral durant la Première Guerre mondiale. Nomme l'acteur qui présente une position différente et compare cette position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-na-d2", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('na-differences-2', 1, 2, 3),
+      corrige: "L'acteur qui présente une position différente est Robert Borden (Document 2). Il est en faveur du service militaire obligatoire (conscription), tandis que les deux autres acteurs (Henri Bourassa et Lomer Gouin) s'y opposent." },
+
+    // ===== Q10 — P6 V-B Q2 · Causes/conséquences — Composition de la population canadienne =====
+    // Énoncé sans référence de doc explicite. Doc 5 V-B partie Lacoursière (peuplement Ouest, diversité ethnique)
+    // correspond directement au corrigé. Renuméroté Doc 1.
+    { id: "q-na-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Au début du 20e siècle, le gouvernement fédéral accélère le recrutement de nouveaux immigrants. Indique une conséquence de cette situation sur la composition de la population du Canada.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-na-c3", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CONS_GUIDE }],
+      documents: pickDocs('na-causes-3', 1),
+      corrige: "La population des villes canadiennes est davantage cosmopolite OU la diversité ethnique du Canada s'accroît, particulièrement dans l'Ouest." },
+
+    // ===== Q11 — P6 V-B Q3 · Liens de causalité — Énergie 2e phase → secteur → effet territoire =====
+    // Renumérotation : Doc 11 (hydroélectricité texte) → Doc 1, Doc 7 (carte ressources) → Doc 2.
+    { id: "q-na-causalite-2", operation: "Établir des liens de causalité", numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Explique comment une source d'énergie utilisée lors de la 2e phase d'industrialisation a eu un effet sur le territoire québécois. Réponds à la question en précisant les éléments ci-dessous et en les liant entre eux.",
+        bullets: [
+          "La principale source d'énergie utilisée durant la 2e phase d'industrialisation",
+          "Un secteur de production en expansion au Québec",
+          "Un effet sur le territoire québécois"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-na-ca2", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('na-causalite-2', 1, 2),
+      corrige: "Lors de la deuxième phase d'industrialisation, la source d'énergie utilisée est l'hydroélectricité (document 1). À cause du grand potentiel de production d'hydroélectricité dont le Québec dispose et de ses immenses forêts de bois de pulpe, le Québec devient un des principaux producteurs de pâte et papier (document 2). La production de ces ressources a pour conséquence le développement de plusieurs régions riches en ressources naturelles." },
+
+    // ===== Q12 — P6 V-B Q4 · Changements/continuités (3pt) — Travailleurs entre les deux phases d'industrialisation =====
+    // CORRECTION SILENCIEUSE : énoncé V-B source « À l'aide du document 6 » → erreur du PDF, le corrigé attendu
+    // (heures de travail, ouvriers spécialisés) correspond au Doc 12 V-B (phases d'industrialisation). Énoncé adapté.
+    { id: "q-na-continuite-3", operation: "Déterminer des changements et des continuités", numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique s'il y a changement ou continuité dans la situation des travailleurs et des travailleuses entre la première et la deuxième phase d'industrialisation. Justifie ton choix par des faits et un repère de temps.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-na-co3", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('na-continuite-3', 1, 2),
+      corrige: "Il y a changement, car à partir de 1909, le nombre d'heures de travail baisse chez les ouvriers spécialisés (semaine de 54 heures).\n\nOU\n\nIl y a continuité, car les femmes et les enfants font toujours face à de mauvaises conditions de travail (60 heures par semaine).\n\nOU\n\nIl y a continuité, car les propriétaires d'entreprises ne respectent pas toujours les lois en matière de conditions de travail (loi de 1912 sur l'industrie textile)." },
+
+    // ===== Q13 — P6 V-B Q5 · Mettre en relation — Clergé dans l'économie / dans la société =====
+    // Renumérotation : Doc 6 (Caisses) → Doc 1, Doc 14 (Villeneuve) → Doc 2. Catégories simplifiées au tableau (Économie/Société).
+    { id: "q-na-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Indique au bon endroit le numéro du document qui fait référence à la présence du clergé dans l'économie et le numéro du document qui fait référence à la place du clergé dans la société au Québec dans la première moitié du 20e siècle.",
+        responseSpace: { type: "category-buckets", categories: ["Économie", "Société"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-na-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_2_PART }],
+      documents: pickDocs('na-relation-2', 1, 2),
+      corrige: [["Document 1"], ["Document 2"]] },
+
+    // ===== Q14 — P6 V-B Q6 · Causes/conséquences — Cause de la fondation de la Fédération nationale St-Jean-Baptiste =====
+    // Aucun doc explicitement référencé. Doc 9 V-B (Lavigne & Pinard sur Montréalaises) correspond au corrigé.
+    // Renumérotation : Doc 9 → Doc 1.
+    { id: "q-na-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Qu'est-ce qui explique la fondation de la Fédération nationale Saint-Jean-Baptiste au début du 20e siècle ?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-na-c4", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
+      documents: pickDocs('na-causes-4', 1),
+      corrige: "Obtenir des droits pour les femmes OU militer en faveur des droits des femmes face à leur incapacité juridique et politique." },
+
+    // ===== Q15 — P6 V-B Q7 · Situer dans le temps — Krach boursier (4 documents avant/après 1929) =====
+    // Renumérotation : Docs 1, 2, 3, 4 source → Docs 1, 2, 3, 4 (ordre conservé).
+    // Corrigé : Avant 1929 = Docs 2 (investissements agricoles élevés, situation pré-crise) et 4 (vente d'actions, moment du krach).
+    //          Après 1929 = Docs 1 (travaux publics et plans de colonisation, réponse à la crise) et 3 (Keynes, théorie post-crise).
+    { id: "q-na-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence au Krach boursier. Indique si les faits présentés dans ces documents se déroulent avant ou après 1929.",
+        responseSpace: { type: "before-after-axis", beforeLabel: "Avant", afterLabel: "Après", pivot: "1929", slots: { before: 2, after: 2 } }
+      },
+      reglettes: [{ id: "r-na-s2", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('na-situer-2', 1, 2, 3, 4),
+      corrige: { before: ["Document 2", "Document 4"], after: ["Document 1", "Document 3"] } },
+
+    // ===== Q16 — P6 V-B Q8 · Continuité/changement (2pt) — Droits des Canadiens durant la 2e GM =====
+    // Renumérotation : Doc 8 (publications communistes / censure) → Doc 1. Énoncé adapté.
+    { id: "q-na-continuite-4", operation: "Déterminer des changements et des continuités", numero: 4, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement instauré par l'État en ce qui concerne les droits des Canadiens durant la Seconde Guerre mondiale.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-na-co4", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-4', 1),
+      corrige: "Le gouvernement impose la censure (interdiction des publications communistes / contrôle des publications)." }
 
   ]
 };
