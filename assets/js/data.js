@@ -1,8 +1,124 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.24.0 (mai 2026) ⭐ INTÉGRATION GUIDES RÉCIT 1896-1945
-   138 questions · 6 périodes (P1-P6) · 7 OI · 2 cycles
+   HQC · 3e + 4e secondaire — Données — v1.27.0 (mai 2026) ⭐⭐ P7 COMPLÈTE — SOMMATIVES + 6 GUIDES RÉCIT
+   177 questions · 7 périodes (P1-P7) · 7 OI · 2 cycles
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6 = 30 (7/7 OI) ⭐⭐ (16 sommatives + 14 guides RÉCIT), P7-P8 = 0
+   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6 = 30 (7/7 OI) ⭐⭐ (16 sommatives + 14 guides RÉCIT),
+                   P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT), P8 = 0
+   Répartition OI de P7 (39 q) : situer 9 · causes/conséquences 8 · différences/similitudes 6 · causalité 5 ·
+                   changements/continuités 4 · établir des faits 4 · mettre en relation 3.
+   v1.27.0 — FIN DE L'INTÉGRATION DES GUIDES RÉCIT P7 (LOTS 2 À 6) + AJUSTEMENTS DE FORMAT :
+     • +18 questions tirées des 5 guides restants (préfixe « mq », réalité modernisation-quebec) :
+       — Période duplessiste (3) : situer-espace (6 documents ↔ carte des ressources à lettres A-F,
+         grille à cocher), grève de l'amiante en ordre chronologique, 2 causes + 2 conséquences de
+         la grève (documents partagés mq-situer-7). Q4 « mécanisation des fermes » ÉCARTÉE (doublon
+         dur avec la sommative V-A Q8 : même tableau + électrification, même OI).
+       — Population québécoise (3) : causes de la dénatalité (3 causes, 1 par document, dont un
+         tableau « force de travail » recréé via PIL), caractéristiques de la société de consommation
+         (4 documents : 3 photos + 1 texte), causalité pensionnats/assimilation (carte des pensionnats).
+         Q3 « analyser une iconographie » (étalement urbain, photos aériennes + capsule vidéo) ÉCARTÉE
+         (protocole hors-portée, comme la Q2 Polit.can. en P6).
+       — Culture/langue (4) : changement (théâtre québécois), changement avec données (financement
+         des bibliothèques, tableau recréé via PIL), situer (Loi 101 → ligne du temps, lettre D),
+         mettre en relation (immigration et protection du français).
+       — Mouvements sociaux (4) : causalité (loi anti-briseurs de grève), 2 « établir des faits »
+         (Madeleine Parent ; gains des Cris à la Baie-James), situer (capacité juridique 1964 →
+         ligne du temps, lettre C).
+       — Révolution tranquille / État-providence (4) : différence + similitude (services par l'Église
+         vs par l'État, 4 photos), causalité (Commission Parent → laïcisation), mesures économiques de
+         Lesage et leurs causes (nationalisation de l'électricité + Caisse de dépôt), 3 acteurs sur
+         l'avortement (Lise Payette = position différente).
+     • 8 réglettes ajoutées au total pour les guides (v1.26.0 + v1.27.0) : R_FAITS_3PT_3SUR3,
+       R_SITUER_3PT_SP_6SUR6, R_CAUSES_4PT_2CAUSES_2CONS, R_CAUSES_3PT_3CAUSES, R_FAITS_4PT_4SUR4,
+       R_DIFFSIM_2PT_1DIFF_1SIM, R_CAUSES_4PT_2MESURES_2CAUSES (+ réutilisation de R_CHANGEMENTS_2PT_GEN,
+       R_RELATION_2PT_1FAIT_GUIDE, R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION, RUBRIC_CAUSALITE_3PT,
+       R_SITUER_1PT_FAITS, R_FAITS_1PT_1SUR1, R_SITUER_2PT_T3/T4). Les guides RÉCIT ne fournissant pas
+       de barème, ces réglettes calquent des matrices fonctionnellement équivalentes (mention en
+       commentaire à chaque définition).
+     • Lignes du temps des guides (culture Q3, mouvements Q4) RECONSTRUITES : le graphique source est
+       un dessin Word non extractible. Découpage retenu (cohérent avec les réponses D=1977, C=1964) :
+       A 1945-1955 · B 1955-1960 · C 1960-1970 · D 1970-1980.
+     • Images : 8 photos d'archives extraites en natif (réfrigérateur, affiche touristique, salon de
+       l'auto ; classe religieuse, religieuse soignant un enfant, école laïque, infirmière ; les deux
+       dernières recadrées pour retirer le letterbox noir). 2 cartes natives (pensionnats ; déjà la
+       carte des ressources en v1.27.0-duplessiste). 2 tableaux recréés via PIL (force de travail ;
+       subventions aux bibliothèques) — rendus sans titre intégré, le titre étant porté par le titre
+       de document HQC (évite le rognage). Script : /home/claude/render-tables-lotb.py.
+     • AJUSTEMENTS DE FORMAT (demandés par l'utilisateur, appliqués globalement) :
+       — Source de Jean Lesage (mq-situer-1) : année « (1961) » retirée (elle révélait la réponse).
+       — Carte minière (mq-situer-2) : espace de réponse « 2 lignes » → grille à cocher (lettres A-D).
+       — Carte des ressources duplessiste (mq-situer-6) : 6 cases-catégories → grille d'appariement
+         document × lettre (checkbox-table 6×6) ; carte agrandie à 14 cm.
+       — RIN vs Daniel Johnson (mq-differences-4) : liste étiquetée → 4 lignes libres.
+       — app.js (buildDocument) : taille de police des documents UNIFORMISÉE (corps 20, source 14,
+         titre 22) quelle que soit la largeur de colonne — `isNarrow` ne sert plus qu'aux images.
+         Effet global (toutes périodes) ; le cahier P7 passe ainsi à 53 pages.
+     • Validation : cahier élève P7 = 53 pages · guide enseignant P7 = 11 pages, tous les nouveaux
+       types de réponse et visuels inspectés au rendu PDF.
+   v1.26.0 — INTÉGRATION DES GUIDES PÉDAGOGIQUES RÉCIT P7 (EN COURS) — LOT 1 : NÉONATIONALISME :
+     • 3 questions du guide « Le néonationalisme québécois et la fédération canadienne » :
+       Q1 établir des faits (mouvement souverainiste : politiciens / objectif / moyen, docs 1-3),
+       Q2 situer dans le temps (montée du PQ : chrono RIN 1966 → MSA 1967 → congrès PQ 1968 → élection 1976),
+       Q3 dégager des différences (RIN vs Daniel Johnson sur le statut du Québec).
+     • ⭐ P7 ATTEINT 7/7 OI grâce à la Q1 « établir des faits » (seule OI manquante après le Lot A).
+     • Nouvelle réglette R_FAITS_3PT_3SUR3 (3 faits, matrice à 3 niveaux calquée sur les réglettes
+       « situer », les guides RÉCIT ne fournissant pas de barème). Réutilise R_SITUER_2PT_T4 (Q2) et
+       R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT (Q3). Toutes les pièces sont en texte (aucune image).
+     • Doublon documentaire toléré : Doc 1 de mq-faits-1 (Lévesque, Le Choix du Québec 1976) partage
+       sa source avec mq-differences-2/doc2 (sommative V-A Q7) ; conservé car l'OI et l'ensemble
+       documentaire diffèrent (précédent P5/P6).
+     • RESTE À INTÉGRER (triés) : période duplessiste (4), population québécoise (2 — la Q3
+       « analyser une iconographie » en 4 étapes est écartée, hors-portée comme la Q2 Polit.can. en P6),
+       culture/langue (4), mouvements sociaux (4), Révolution tranquille / État-providence (4).
+     • Validation : cahier élève P7 = 24 pages · guide enseignant P7 = 5 pages, rendus inspectés.
+   v1.25.0 — DÉMARRAGE DE P7 (1945-1980) — ÉVALUATIONS SOMMATIVES SECTION A :
+     • Intégration de 18 questions « Avec documents » tirées des Sections A des deux versions
+       (V-A : 9 questions, V-B : 9 questions) couvrant « 1945-1980 : La modernisation du Québec
+       et la Révolution tranquille ». Réalité sociale modernisation-quebec (annee 4, niveau 3),
+       préfixe d'identifiants « mq » (cohérent avec P5 = fc, P6 = na).
+     • Sections B (description avec schéma) et C (texte 150 mots) écartées par convention HQC.
+     • Aucun doublon dur à l'intérieur du lot. Thèmes récurrents entre V-A et V-B (« gains des
+       femmes 1960-1980 », « autonomie/Duplessis ») conservés des deux côtés car l'OI ou le
+       contenu testé diffèrent (relation vs chrono ; causalité vs relation), comme en P6.
+     • 7 nouvelles réglettes pour les libellés exacts des sommatives P7 :
+       R_CAUSES_2PT_1CONS_SOMA (Q3 V-A — « plus ou moins correctement LES conséquences », pluriel),
+       R_RELATION_2PT_2SUR2 (Q5 V-A, Q2 V-B — décompte « (2 sur 2) »),
+       R_SITUER_2PT_SP_2FAITS (Q6 V-A — 2 régions minières dans l'espace),
+       R_DIFFERENCES_1PT (Q7 V-A — différence à 1 point, binaire),
+       R_CAUSES_2PT_CAUSE_CONS_2SUR2 (Q7 V-B — cause + conséquence décomptées),
+       R_SITUER_2PT_T3_BINAIRE_SOMA (Q8 V-B — chrono binaire « situe TOUS les faits (3 sur 3) »,
+         distinct de R_SITUER_2PT_T3_BINAIRE qui dit « les faits » sans « tous »),
+       RUBRIC_CHANGEMENTS_3PT_REPERE_INLINE (Q4 V-B — même matrice que RUBRIC_CHANGEMENTS_3PT_
+         REPERE_TEMPS mais sous-points affichés en ligne dans les cellules, sans le format
+         « 3 points (ou 2 points*) »).
+     • Réglettes réutilisées : R_SITUER_1PT_FAITS (Q1 V-A timeline Lesage, Q5 V-B timeline B&B),
+       R_CAUSES_2PT_1CAUSE_SOMA (Q2 V-A société de consommation, Q9 V-B rejet Livre blanc),
+       R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT (Q4 V-A grève amiante),
+       RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS (Q8 V-A agriculture),
+       RUBRIC_CAUSALITE_3PT (Q9 V-A autonomie Duplessis, Q3 V-B libéralisme/ressources),
+       R_CAUSES_2PT_1CONS_GUIDE (Q1 V-B pensionnats),
+       R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION (Q6 V-B 3 acteurs fédération).
+     • Réponses graphiques : 2 lignes du temps rendues via responseSpace `timeline-segments`
+       (Q1 V-A : A 1954-1960 / B 1960-1966 / C 1966-1972 / D 1972-1978 → Lesage = B ;
+        Q5 V-B : A 1945-1960 / B 1960-1970 / C 1970-1980 → Commission B&B = B). Carte minière
+       (Q6 V-A) avec cercles A-D, réponse C (Abitibi) + D (Côte-Nord). Catégories à remplir via
+       `category-buckets` (Q5 V-A gains, Q2 V-B autonomie, Q7 V-B ministère). Ordre chrono via
+       `chrono-ordering` avec 1 doc pré-rempli (Q8 V-B gains des femmes).
+     • Conventions « un acteur = un document » appliquées : Doc 8 V-A (Groulx + Duplessis sur la
+       grève de l'amiante) → 2 docs ; Doc 7 V-A (FLQ + Lévesque/PQ) → 2 docs ; Doc 9 V-B
+       (Bourassa + Lévesque + Bertrand) → 3 docs.
+     • 6 images : Jean Lesage (mq-situer-1, extrait natif du .docx, cropé), carte minière D-Maps
+       avec cercles A-D (mq-situer-2, extraite du rendu PDF haute résolution car les cercles sont
+       des formes Word superposées au fond de carte natif), drapeau fleurdelisé (mq-relation-2,
+       extrait natif, converti en PNG pour le ratio), schéma des institutions AANB 1867
+       (mq-continuite-2, extrait natif), pilule contraceptive (mq-situer-4/doc4, extrait natif,
+       converti en PNG). 1 tableau recréé via PIL (option B, pattern v1.23.0/v1.24.0) :
+       mq-continuite-1/doc1 (« Nombre de tracteurs dans les fermes québécoises, 1931-1961 » :
+       2 417 / 5 869 / 31 971 / 70 697). Script : /home/claude/render-tracteurs-table.py.
+     • Note Q5 V-A (mq-r1-d1) : l'éditorial source de 1964 nomme « Madame Marie-Claire Casgrain »
+       (conflation de Claire Kirkland-Casgrain) ; citation reproduite fidèlement.
+     • Validation : cahier élève P7 = 21 pages · guide enseignant P7 = 5 pages. Tous les rendus
+       .docx → .pdf inspectés visuellement (timelines, carte, tableaux, category-buckets, chrono,
+       rubriques complexes).
    v1.24.0 — INTÉGRATION DES GUIDES PÉDAGOGIQUES RÉCIT 1896-1945 :
      • Intégration de 14 questions « Avec documents » tirées des 6 guides élèves
        (documents.recitus.qc.ca) couvrant la période 1896-1945 : Catholicisme/éducation/luttes
@@ -692,6 +808,174 @@ const R_RELATION_2PT_1FAIT_GUIDE = rubric3(
   "L'élève met plus ou moins correctement en relation le fait.",
   "L'élève ne met pas en relation le fait."
 );
+
+// ============ Réglettes ajoutées v1.25.0 (Évaluations sommatives P7 1945-1980 Section A) ============
+
+// Une conséquence (2 points) — Q3 V-A P7 (conséquence des revendications autochtones / Baie-James).
+// Libellé soma : le 1pt dit « plus ou moins correctement LES conséquences » (pluriel) — distinct
+// de R_CAUSES_2PT_1CONS_GUIDE (singulier « la conséquence » au 1pt). Reproduction fidèle du PDF.
+const R_CAUSES_2PT_1CONS_SOMA = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la conséquence.",
+  "L'élève détermine plus ou moins correctement les conséquences.",
+  "L'élève détermine incorrectement la conséquence ou ne la détermine pas."
+);
+
+// Mettre en relation, 2 faits (2 points) — Q5 V-A P7 (gains des femmes) + Q2 V-B P7 (autonomie Duplessis).
+// Libellé soma « (2 sur 2) / (1 sur 2) / (0 sur 2) » — distinct de R_RELATION_2PT_4_SOMA (« (4 sur 4) »)
+// et des R_RELATION_2PT_*_PART (formulation « partiellement »).
+const R_RELATION_2PT_2SUR2 = rubric3(
+  "Mettre en relation des faits",
+  "L'élève met en relation tous les faits (2 sur 2)",
+  "L'élève met en relation certains faits (1 sur 2)",
+  "L'élève ne met pas en relation les faits (0 sur 2)"
+);
+
+// Situer dans l'espace, 2 faits (2 points) — Q6 V-A P7 (2 régions minières sur carte à lettres).
+// Distinct de R_SITUER_1PT_SP_FAIT_SOMA (1 fait, 1 pt) et de R_SITUER_2PT_SP_FAIT (1 fait, 2 pts).
+const R_SITUER_2PT_SP_2FAITS = rubric3(
+  "Situer dans le temps et dans l'espace",
+  "L'élève situe les deux faits dans l'espace. (2 sur 2)",
+  "L'élève situe l'un des faits dans l'espace. (1 sur 2)",
+  "L'élève ne situe pas les faits dans l'espace. (0 sur 2)"
+);
+
+// Dégager une différence (1 point, binaire) — Q7 V-A P7 (moyens PQ vs FLQ pour la souveraineté).
+// Le PDF intitule l'opération « Dégager des similitudes et des différences » (ordre inversé) ;
+// on conserve le libellé canonique pour l'opLabel et le champ operation.
+const R_DIFFERENCES_1PT = rubric2(
+  "Dégager des différences et des similitudes",
+  "L'élève dégage correctement la différence.",
+  "L'élève dégage incorrectement la différence ou ne la dégage pas."
+);
+
+// Cause + conséquence, format décompté (2 points) — Q7 V-B P7 (cause/conséquence de la création
+// du ministère des Affaires culturelles). Libellé soma avec « (2 sur 2) / (1 sur 2) / (0 sur 2) » —
+// distinct de R_CAUSES_2PT_CAUSE_CONS (« correctement la cause et la conséquence », sans décompte)
+// et de R_CAUSES_2PT_FACTEUR_EXPLICATIF_CONS (« facteur explicatif »).
+const R_CAUSES_2PT_CAUSE_CONS_2SUR2 = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine la cause et la conséquence (2 sur 2)",
+  "L'élève détermine la cause ou la conséquence (1 sur 2)",
+  "L'élève ne détermine pas la cause ni la conséquence (0 sur 2)"
+);
+
+// Situer dans le temps, binaire 3 faits (2 points) — Q8 V-B P7 (ordre chrono des gains des femmes,
+// 1 doc pré-rempli + 3 à placer). Variante binaire (2 pts / 0 pt). Le libellé dit « situe TOUS les
+// faits (3 sur 3) » — distinct de R_SITUER_2PT_T3_BINAIRE (« situe les faits », sans « tous »).
+const R_SITUER_2PT_T3_BINAIRE_SOMA = {
+  type: "simple", opLabel: "Situer dans le temps et dans l'espace", maxPoints: 2,
+  levels: [
+    { points: "2 points", condition: "L'élève situe tous les faits dans le temps. (3 sur 3)" },
+    { points: "0 point",  condition: "L'élève ne situe pas les faits dans le temps. (2, 1 ou 0 sur 3)" }
+  ]
+};
+
+// Changements/continuités complexe (3 points) avec sous-points en ligne — Q4 V-B P7 (institutions
+// démocratiques). Même matrice que RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS (V-A) mais le PDF V-B affiche
+// les sous-points directement dans les cellules (« (2 points) », « (1 point) »...) au lieu du format
+// « 3 points (ou 2 points*) ». On reproduit le libellé V-B avec les points inline.
+const RUBRIC_CHANGEMENTS_3PT_REPERE_INLINE = {
+  type: "complex",
+  opLabel: "Déterminer des changements et des continuités",
+  maxPoints: 3,
+  rows: [
+    { precise: "L'élève indique s'il y a changement ou continuité (1 point)", condition: "et présente des faits qui le montrent correctement. (2 points)", points: "3 points" },
+    { precise: null, condition: "et présente des faits qui le montrent plus ou moins correctement. (1 point)", points: "2 points" },
+    { precise: null, condition: "et présente des faits qui le montrent incorrectement ou n'en présente pas. (0 point)", points: "1 point" },
+    { precise: "L'élève n'indique pas s'il y a changement ou continuité (0 point)", condition: "mais présente des faits exacts. (2 points)", points: "2 points" },
+    { precise: null, condition: "mais présente des faits plus ou moins exacts. (1 point)", points: "1 point" },
+    { precise: null, condition: "et présente des faits inexacts ou n'en présente pas. (0 point)", points: "0 point" }
+  ],
+  footnote: "* L'élève présente un repère de temps plus ou moins exact ou inexact ou n'en présente pas."
+};
+
+// ============ Réglettes ajoutées v1.26.0 (Guides pédagogiques RÉCIT P7 1945-1980) ============
+
+// Établir des faits, 3 faits (3 points) — Q1 néonationalisme (politiciens / objectif / moyen).
+// Les guides RÉCIT ne fournissent pas de barème ; on calque la matrice à 3 niveaux des réglettes
+// « situer » (ex. R_SITUER_2PT_T3) sur le libellé « Établir des faits ». Distinct de
+// R_FAITS_1PT_1SUR1 (1 seul fait, binaire).
+const R_FAITS_3PT_3SUR3 = {
+  type: "simple", opLabel: "Établir des faits", maxPoints: 3,
+  levels: [
+    { points: "3 points", condition: "L'élève établit tous les faits. (3 sur 3)" },
+    { points: "1 ou 2 points", condition: "L'élève établit certains faits. (1 ou 2 sur 3)" },
+    { points: "0 point", condition: "L'élève n'établit pas les faits. (0 sur 3)" }
+  ]
+};
+
+// Situer dans l'espace, 6 faits (3 points) — Q1 période duplessiste (placer 6 documents sur une
+// carte des ressources naturelles, lettres A-F). Guide RÉCIT sans barème : matrice proportionnelle
+// calquée sur les réglettes « situer » multi-faits.
+const R_SITUER_3PT_SP_6SUR6 = {
+  type: "simple", opLabel: "Situer dans le temps et dans l'espace", maxPoints: 3,
+  levels: [
+    { points: "3 points", condition: "L'élève situe tous les faits dans l'espace. (6 sur 6)" },
+    { points: "1 ou 2 points", condition: "L'élève situe certains faits dans l'espace. (2 à 5 sur 6)" },
+    { points: "0 point", condition: "L'élève ne situe pas les faits dans l'espace. (0 ou 1 sur 6)" }
+  ]
+};
+
+// Deux causes ET deux conséquences (4 points) — Q3 période duplessiste (grève de l'amiante).
+// Guide RÉCIT sans barème : matrice proportionnelle (4 sur 4). Distinct de R_CAUSES_4PT_2CAUSES
+// (2 causes seulement).
+const R_CAUSES_4PT_2CAUSES_2CONS = {
+  type: "simple", opLabel: "Déterminer des causes et des conséquences", maxPoints: 4,
+  levels: [
+    { points: "4 points", condition: "L'élève détermine correctement les deux causes et les deux conséquences. (4 sur 4)" },
+    { points: "2 ou 3 points", condition: "L'élève détermine correctement certaines causes ou conséquences. (2 ou 3 sur 4)" },
+    { points: "0 ou 1 point", condition: "L'élève ne détermine pas ou peu les causes et les conséquences. (0 ou 1 sur 4)" }
+  ]
+};
+
+// Trois causes (3 points) — Q1 population (causes de la dénatalité, une par document). Guide RÉCIT
+// sans barème : matrice proportionnelle calquée sur les réglettes multi-faits.
+const R_CAUSES_3PT_3CAUSES = {
+  type: "simple", opLabel: "Déterminer des causes et des conséquences", maxPoints: 3,
+  levels: [
+    { points: "3 points", condition: "L'élève détermine correctement les trois causes. (3 sur 3)" },
+    { points: "1 ou 2 points", condition: "L'élève détermine correctement certaines causes. (1 ou 2 sur 3)" },
+    { points: "0 point", condition: "L'élève ne détermine pas les causes. (0 sur 3)" }
+  ]
+};
+
+// Établir des faits, 4 faits (4 points) — Q2 population (caractéristiques de la société de
+// consommation, une par document). Variante à 4 faits de R_FAITS_3PT_3SUR3.
+const R_FAITS_4PT_4SUR4 = {
+  type: "simple", opLabel: "Établir des faits", maxPoints: 4,
+  levels: [
+    { points: "4 points", condition: "L'élève établit tous les faits. (4 sur 4)" },
+    { points: "1 à 3 points", condition: "L'élève établit certains faits. (1 à 3 sur 4)" },
+    { points: "0 point", condition: "L'élève n'établit pas les faits. (0 sur 4)" }
+  ]
+};
+
+// Déterminer un changement (2 points) — Q1 et Q2 culture/langue : on réutilise la réglette
+// existante R_CHANGEMENTS_2PT_GEN (définie plus haut), adaptée à « relever / indiquer un
+// changement » justifié par des faits ou des données.
+
+// Dégager 1 différence ET 1 similitude (2 points) — Q1 Révolution tranquille (deux paires de
+// documents). Guide RÉCIT sans barème : matrice « 2 sur 2 ».
+const R_DIFFSIM_2PT_1DIFF_1SIM = {
+  type: "simple", opLabel: "Dégager des différences et des similitudes", maxPoints: 2,
+  levels: [
+    { points: "2 points", condition: "L'élève dégage correctement la différence et la similitude. (2 sur 2)" },
+    { points: "1 point", condition: "L'élève dégage correctement la différence ou la similitude. (1 sur 2)" },
+    { points: "0 point", condition: "L'élève ne dégage ni différence ni similitude. (0 sur 2)" }
+  ]
+};
+
+// Deux mesures ET leurs causes (4 points) — Q3 Révolution tranquille (mesures économiques de Lesage
+// et leurs raisons). Guide RÉCIT sans barème : matrice proportionnelle (4 sur 4).
+const R_CAUSES_4PT_2MESURES_2CAUSES = {
+  type: "simple", opLabel: "Déterminer des causes et des conséquences", maxPoints: 4,
+  levels: [
+    { points: "4 points", condition: "L'élève détermine correctement les deux mesures et leurs deux causes. (4 sur 4)" },
+    { points: "2 ou 3 points", condition: "L'élève détermine correctement certaines mesures ou causes. (2 ou 3 sur 4)" },
+    { points: "0 ou 1 point", condition: "L'élève ne détermine pas ou peu les mesures et les causes. (0 ou 1 sur 4)" }
+  ]
+};
 
 // ============ Helpers de sélection de documents ============
 const pickDocs = (section, ...indices) => indices.map(i => DOCS[section][i - 1]);
@@ -2528,6 +2812,444 @@ const DOCS = {
     { id: "na-s4-d4", title: "Document 4 — Visite officielle lors de la deuxième conférence de Québec", layout: "image-only",
       imageUrl: "assets/img/na-situer-4/doc4.png", imageWidthCm: 8,
       sources: ["Source de l'image : Office national du film du Canada, Hon. Winston Churchill et W.L. Mackenzie King avec les parlementaires au Château Frontenac pour la conférence de Québec, Bibliothèque et Archives Canada, MIKAN 3624068. Licence : domaine public."] }
+  ],
+
+  // ======================================================================
+  // ============ P7 (1945-1980) — Sommatives Section A (v1.25.0) ==========
+  // ======================================================================
+
+  // ===== V-A Q1 — Situer dans le temps — Mandats de Jean Lesage (ligne du temps) =====
+  'mq-situer-1': [
+    { id: "mq-s1-d1", title: "Document 1 — Jean Lesage", layout: "image-only",
+      imageUrl: "assets/img/mq-situer-1/doc1.png", imageWidthCm: 6,
+      sources: ["Source de l'image : Auteur inconnu, Jean Lesage, Bibliothèque et Archives nationales du Québec, P243,S1,D1004. Licence : Creative Commons (BY-ND)."] }
+  ],
+
+  // ===== V-A Q2 — Causes/conséquences — Cause de la société de consommation =====
+  // 1 doc : Doc 2 source (salaires/pouvoir d'achat 1966) renuméroté Doc 1.
+  'mq-causes-1': [
+    { id: "mq-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Les ventes au détail, l'an dernier, ont augmenté de 6,6 % pour s'établir à 5 429 millions de dollars. [...] Nos ouvriers gagnent presque cinq fois plus qu'avant la guerre. [...] Le salaire hebdomadaire est passé de 21 $ en 1939 à 95 $ maintenant. Le coût de la vie a beaucoup augmenté, mais la rémunération moyenne a monté encore plus vite que les prix à la consommation. Le standard d'existence a vraiment progressé, car en cinq ans le pouvoir d'achat véritable (compte tenu de l'inflation) a augmenté d'environ 13,3 %. »",
+      sources: ["Source : Conrad Langlois, « La vie économique : Le Québec ne progresse pas encore assez rapidement », La Patrie, 18 décembre 1966, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000586549."] }
+  ],
+
+  // ===== V-A Q3 — Causes/conséquences — Conséquence des revendications autochtones (Baie-James) =====
+  'mq-causes-2': [
+    { id: "mq-c2-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Le choix en faveur du projet hydroélectrique centré sur la Grande Rivière est pris en mai 1972 par le gouvernement du Québec. N'ayant pas été consultés par le gouvernement du Québec avant l'annonce d'avril [...], plusieurs Cris et Inuits du Nord québécois s'opposent fermement au projet [...]. Les tribunaux du Québec réaffirment l'obligation du gouvernement du Québec de s'entendre avec les Cris et les Inuits. [Une entente] est signée un an plus tard, le 11 novembre 1975 [...]. »",
+      sources: ["Source : « Convention de la Baie-James et du Nord québécois », Wikipédia, dernière modification le 20 octobre 2020, page consultée le 26 octobre 2020."] }
+  ],
+
+  // ===== V-A Q4 — Différences/similitudes — Désaccord sur la grève de l'amiante =====
+  // Doc 8 source (2 acteurs) splitté en 2 documents distincts (« un acteur = un document »).
+  'mq-differences-1': [
+    { id: "mq-d1-d1", title: "Document 1", layout: "text-only",
+      text: "« Ces grévistes, disais-je dans mon appel au public, on ne l'a peut-être pas assez souligné, ne sont pas des grévistes comme les autres. Ils ne se battent pas seulement pour le salaire et pour manger. Ils se battent proprement pour la défense de leur vie et de celle de leurs filles et garçons ouvriers contre une industrie meurtrière. Ils se battent contre des compagnies qui jamais, autant que l'on sache, ne se sont engagées nettement, loyalement, à la correction du mal abominable qu'elles propagent depuis longtemps [...]. »\n\nL'abbé Lionel Groulx",
+      sources: ["Source : Lionel Groulx, Mes mémoires, tome 4 : 1940-1967, Montréal, Fides, 1974, p. 270."] },
+    { id: "mq-d1-d2", title: "Document 2", layout: "text-only",
+      text: "« Ce ne sont pas des ouvriers qui ne sont pas satisfaits, mais certains chefs ouvriers qui mettent leur intérêt à eux avant celui des ouvriers et qui cherchent à causer du trouble. »\n\nMaurice Duplessis",
+      sources: ["Source : Maurice Duplessis, cité dans Jacques Lacoursière, Histoire populaire du Québec, 1896-1960, Sillery, Septentrion, 1995, p. 354."] }
+  ],
+
+  // ===== V-A Q5 — Mettre en relation — Gains des femmes 1960-1980 =====
+  // Doc 5 source (bill 16, gain juridique) → Doc 1 ; Doc 4 source (contraception) → Doc 2.
+  'mq-relation-1': [
+    { id: "mq-r1-d1", title: "Document 1", layout: "text-only",
+      text: "Extrait d'un éditorial publié en 1964 :\n\n« Le bill 16 que vient de déposer à la législature Madame Marie-Claire Casgrain, la première femme ministre au Québec, [...] amorce au grand jour le déblocage du féminisme. Ce projet de loi [...] comporte certaines améliorations du statut de la femme mariée [...]. [S]i le mari reste obligé de fournir à sa femme tout ce qui lui est nécessaire pour les besoins de la vie, la femme ne devra plus obéissance à son mari. Il s'agit là de reconnaitre légalement ce qui se passe dans notre société nord-américaine ! »",
+      sources: ["Source : J. B., « Qu'est-ce que la femme au 20e siècle ? », Le progrès du golfe, 7 février 1964, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000169264."] },
+    { id: "mq-r1-d2", title: "Document 2", layout: "text-only",
+      text: "« Un amendement apporté en mai [1969] au Code pénal autorisait la publication de renseignements sur les appareils de contraception. »",
+      sources: ["Source : Auteur inconnu, « Le Planned Parenthood voudrait être reconnu comme organisme de charité », Le Devoir, 16 septembre 1969, p. 11, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335."] }
+  ],
+
+  // ===== V-A Q6 — Situer dans l'espace — 2 régions minières (carte à lettres) =====
+  // Carte D-Maps avec 4 cercles A-D superposés. Réponse : C (Abitibi-Témiscamingue) et D (Côte-Nord).
+  'mq-situer-2': [
+    { id: "mq-s2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/mq-situer-2/doc1.png", imageWidthCm: 12,
+      sources: ["Source du fond de carte : Carte du Québec (Canada), D-Maps (d-maps.com). Lettres ajoutées pour les besoins de la question."] }
+  ],
+
+  // ===== V-A Q7 — Différences/similitudes — Moyens PQ vs FLQ pour la souveraineté =====
+  // Doc 7 source (FLQ + Lévesque/PQ, deux acteurs) splitté en 2 documents distincts.
+  'mq-differences-2': [
+    { id: "mq-d2-d1", title: "Document 1", layout: "text-only",
+      text: "« De 1963 à 1970, le Front de libération du Québec (FLQ) [...] mène entre autres des attaques sur des symboles du pouvoir britannique, pose des bombes et organise des vols de banques. En octobre 1970, le FLQ enlève le commissaire commercial britannique James Richard Cross et le ministre du Travail du Québec Pierre Laporte. En échange de la libération de ces deux personnes, le FLQ demande une rançon, la libération de prisonniers politiques et la lecture de son manifeste dans les médias. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mq-d2-d2", title: "Document 2", layout: "text-only",
+      text: "René Lévesque, chef du Parti québécois, lorsque son parti a été porté au pouvoir pour la première fois en 1976 :\n\n« Et je répète en particulier cet engagement central [...] : du fond de notre cœur à tous, on espère, en amitié avec nos concitoyens du Canada, arriver à nous donner le pays qu'est le Québec [...]. Mais ce pays du Québec viendra uniquement quand une société adulte, consciente en elle-même, l'aura approuvé par une majorité claire et démocratique dans un référendum, comme nous l'avons promis. »",
+      sources: ["Source : Le Choix du Québec, 15 novembre 1976, Société Radio-Canada, 09:26-09:53 et 10:23-10:47."] }
+  ],
+
+  // ===== V-A Q8 — Changements/continuités — Agriculture (machinerie + électrification) =====
+  // Doc 10 source (tableau tracteurs) → Doc 1 (image recréée via PIL) ; Doc 11 source → Doc 2.
+  'mq-continuite-1': [
+    { id: "mq-co1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-1/doc1.png", imageWidthCm: 12,
+      sources: ["Source des données : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Sillery, Septentrion, 2003, p. 308."] },
+    { id: "mq-co1-d2", title: "Document 2", layout: "text-only",
+      text: "« Pour bon nombre d'agriculteurs des années 1950, le règne de Duplessis n'a rien d'une grande noirceur. En effet, grâce à l'Office de l'électrification rurale, créé en 1945, la plupart d'entre eux voient enfin la lumière ! En 1960, 98 % des fermes ont l'électricité, alors qu'en 1945 seulement 20 % d'entre elles avaient le courant. »",
+      sources: ["Source : Éric Bédard, L'histoire du Québec pour les nuls, Paris, First Edition, 2015, p. 257."] }
+  ],
+
+  // ===== V-A Q9 — Causalité — Politique fédérale → autonomie de Duplessis =====
+  // Docs 9, 13, 12 source → Docs 1, 2, 3.
+  'mq-causalite-1': [
+    { id: "mq-ca1-d1", title: "Document 1", layout: "text-only",
+      text: "« On fait en sorte que, lors de la Deuxième Guerre mondiale, la centralisation ait des effets plus durables, [avec] certains amendements à la Constitution [qui] permettent au Parlement [fédéral] de créer l'assurance-chômage (1940) et un régime universel de pensions (1951). »",
+      sources: ["Source : C. P. Stacey, « Deuxième Guerre mondiale », L'Encyclopédie canadienne, dernière mise à jour le 13 mai 2015, page consultée le 27 octobre 2020."] },
+    { id: "mq-ca1-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] Ses luttes contre le gouvernement fédéral visent [...] à défendre les compétences et les pouvoirs conférés aux provinces par l'Acte de l'Amérique du Nord britannique (AANB) et menacés par le fédéral [...]. »",
+      sources: ["Source : « Gouvernement Maurice Duplessis (2e) », Wikipédia, dernière modification le 21 juin 2020, page consultée le 27 octobre 2020."] },
+    { id: "mq-ca1-d3", title: "Document 3", layout: "text-only",
+      text: "« Avant 1942, la taxation était de juridiction provinciale. Mais au cours de la guerre, le gouvernement fédéral a demandé aux provinces de lui céder temporairement ses champs de taxation afin de lui permettre de financer son effort de guerre. Une fois le conflit terminé, le premier ministre du Québec, Maurice Duplessis, tente d'obtenir un rétablissement de la situation telle qu'elle existait avant le conflit. [...] Duplessis fera de cet enjeu un véritable cheval de bataille. »",
+      sources: ["Source : Auteur inconnu, dans Jean-Herman Guay (dir.), Bilan du siècle, Université de Sherbrooke, page consultée le 17 septembre 2019."] }
+  ],
+
+  // ===== V-B Q1 — Causes/conséquences — Conséquence des pensionnats sur l'identité autochtone =====
+  'mq-causes-3': [
+    { id: "mq-c3-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Les élèves sont isolés, retirés de leur foyer et séparés de leurs parents et parfois de certains de leurs frères et sœurs, les écoles étant séparées selon le sexe. Leur culture est également dénigrée et, dans certains cas, on leur interdit de parler leur langue maternelle, même dans les lettres qu'ils adressent à leurs parents [...]. Dès leur arrivée à l'école, on leur coupe les cheveux (dans le cas des garçons), on les dépouille de leurs vêtements traditionnels et on les remplace par de nouveaux uniformes. Dans bien des cas, on leur donne aussi un nouveau nom [...]. »",
+      sources: ["Source : J. R. Miller, « Pensionnats indiens au Canada », L'Encyclopédie canadienne, 2 septembre 2020, Historica Canada, page consultée le 13 octobre 2020."] }
+  ],
+
+  // ===== V-B Q2 — Mettre en relation — Autonomie de Duplessis (culturelle + fiscale) =====
+  // Doc 3 source (drapeau fleurdelisé, image) → Doc 1 ; Doc 6 source (entente fiscale) → Doc 2.
+  'mq-relation-2': [
+    { id: "mq-r2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/mq-relation-2/doc1.png", imageWidthCm: 8,
+      sources: ["Source de l'image : Drapeau fleurdelisé du Québec, Flickr (flickr.com)."] },
+    { id: "mq-r2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] les pourparlers entre les deux premiers ministres, Louis Saint-Laurent à Ottawa et Maurice Duplessis à Québec, aboutiront à une entente. Grâce aux ajustements qui prévoient une réduction de l'impôt fédéral, le gouvernement québécois pourra reprendre une partie de son autonomie fiscale sans que les contribuables québécois ne soient pénalisés par rapport à leurs compatriotes des autres provinces. »",
+      sources: ["Source : Bilan du siècle, Université de Sherbrooke, en ligne, page consultée le 19 octobre 2020."] }
+  ],
+
+  // ===== V-B Q3 — Causalité — Libéralisme de Duplessis → exploitation des ressources =====
+  // Docs 5, 7, 2 source → Docs 1, 2, 3.
+  'mq-causalite-2': [
+    { id: "mq-ca2-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] La prospérité et le progrès [...] passent par le laisser-faire [...]. Aucune valeur ne semble plus importante que celle de la propriété privée et son épanouissement dans la recherche du profit maximum. [...] »",
+      sources: ["Source : Fernande Roy, Histoire des idéologies au Québec aux XIXe et XXe siècles, Montréal, Éditions du Boréal, 1993, p. 95-96, en ligne sur Service national du RÉCIT, domaine de l'univers social, page consultée le 19 octobre 2020."] },
+    { id: "mq-ca2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] Tout au cours de la période, [les Américains] conservent la part du lion en ce domaine, assurant environ les trois quarts des investissements étrangers [...]. Le contrôle étranger est particulièrement concentré [...] dans l'exploitation des ressources naturelles [...]. »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain. Le Québec depuis 1930, Montréal, Boréal compact, 1989, p. 231."] },
+    { id: "mq-ca2-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] l'industrie minière s'est signalée non seulement par une croissance rapide, mais aussi par son déplacement vers les régions nordiques du Québec. L'exploitation du minerai de fer, en particulier, s'est développée d'une façon spectaculaire. [...] »",
+      sources: ["Source : Marcel Daneau, « L'évolution économique du Québec-II (1950-1965) », La revue Desjardins, décembre 1965, p. 189, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226567, page consultée le 19 octobre 2020."] }
+  ],
+
+  // ===== V-B Q4 — Changements/continuités — Institutions démocratiques (1867 vs 1968) =====
+  // Doc 12 source : schéma des institutions de 1867 (image) + texte sur la réforme de 1968.
+  'mq-continuite-2': [
+    { id: "mq-co2-d1", title: "Document 1", layout: "text-image",
+      text: "En 1968, la Législature du Québec est réformée :\n\n« Ce projet prévoit que la Législature du Québec se composera désormais uniquement du lieutenant-gouverneur et d'une chambre élective qui sera appelée Assemblée nationale du Québec, au lieu d'Assemblée législative de Québec. [Ceux] qui voient leur poste disparaître ont pour leur part droit à une pension de 10 000 $ [...]. »",
+      imageUrl: "assets/img/mq-continuite-2/doc1.png", imageWidthCm: 8,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social (schéma des institutions selon l'Acte de l'Amérique du Nord britannique de 1867). Source du texte : Bilan du siècle, Université de Sherbrooke, page consultée le 17 novembre 2020."] }
+  ],
+
+  // ===== V-B Q5 — Situer dans le temps — Commission B&B (ligne du temps) =====
+  'mq-situer-3': [
+    { id: "mq-s3-d1", title: "Document 1", layout: "text-only",
+      text: "« La Commission enquête sur trois aspects principaux de la question : l'étendue du bilinguisme dans l'administration fédérale, le rôle des organismes publics et privés dans la promotion de meilleures relations culturelles et les perspectives offertes aux Canadiens de devenir bilingues en français et en anglais. Les commissaires s'appuient sur le principe directeur d'un partenariat égal, c'est-à-dire l'égalité des chances, pour les francophones et les anglophones, de faire partie des institutions qui affectent leur vie. »",
+      sources: ["Source : G. Laing et Céline Cooper, « Commission royale d'enquête sur le bilinguisme et le biculturalisme », L'Encyclopédie canadienne, 24 juillet 2019, Historica Canada, page consultée le 22 octobre 2020."] }
+  ],
+
+  // ===== V-B Q6 — Différences/similitudes — 3 acteurs sur la place du Québec dans la fédération =====
+  // Doc 9 source (3 acteurs : Bourassa, Lévesque, Bertrand) splitté en 3 documents distincts.
+  'mq-differences-3': [
+    { id: "mq-d3-d1", title: "Document 1", layout: "text-only",
+      text: "« Le fédéralisme constitue pour les Québécois le meilleur moyen d'atteindre leurs objectifs économiques, sociaux et culturels. [...] le gouvernement s'applique à renforcer le fédéralisme canadien [...]. Ce fédéralisme doit ainsi garantir aux provinces la liberté d'action nécessaire pour qu'elles assument pleinement leurs responsabilités à l'égard de leurs citoyens. »\n\nRobert Bourassa, premier ministre du Québec, 1971",
+      sources: ["Source : Assemblée nationale du Québec, Déclaration de Robert Bourassa, Journal des débats, 29e législature, 23 juin 1971, vol. 11, no 64, p. 2738-2739, page consultée le 26 octobre 2020."] },
+    { id: "mq-d3-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] Parallèlement, le gouvernement précisera l'option qu'il proposera lui-même, de concert avec ceux qui seront de son avis, au peuple québécois. Cette option, c'est celle de la souveraineté nationale, comme chacun sait, c'est-à-dire le seul régime qui puisse, à notre avis, assurer notre pleine sécurité et notre plein épanouissement. [...] »\n\nRené Lévesque, premier ministre du Québec, 1977",
+      sources: ["Source : Discours du trône, Québec, 8 mars 1977, Société du patrimoine politique du Québec, page consultée le 26 octobre 2020."] },
+    { id: "mq-d3-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] Il est de l'essence même du fédéralisme que les pouvoirs législatifs et fiscaux soient clairement répartis dans une constitution écrite entre la fédération et les États membres. C'est ce que réclame le Québec depuis toujours. »\n\nJean-Jacques Bertrand, chef de l'opposition, Québec, 1971",
+      sources: ["Source : Jean-Jacques Bertrand, « Le Québec a dit non au pouvoir parallèle de la centralisation », cité dans Le Devoir, 25 juin 1971, p. 4, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335, page consultée le 26 octobre 2020."] }
+  ],
+
+  // ===== V-B Q7 — Causes/conséquences — Création du ministère des Affaires culturelles =====
+  // Doc 10 source (motivation/cause) → Doc 1 ; Doc 1 source (outil/conséquence) → Doc 2.
+  'mq-causes-4': [
+    { id: "mq-c4-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] le gouvernement a l'intention de faire de la province de Québec le centre de rayonnement de la culture française en Amérique [...]. Nous croyons que la création d'un ministère [...] est une nécessité vitale, surtout au moment où la population du Québec dans son ensemble est plus que jamais éveillée à l'apport qu'elle pourra fournir à l'épanouissement de notre vie nationale [...]. »",
+      sources: ["Source : « Création du ministère des Affaires culturelles du Québec », Bilan du siècle, Université de Sherbrooke, page consultée le 26 octobre 2020."] },
+    { id: "mq-c4-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] le Ministère se révèle, au cours des années, un outil indispensable aux mains de l'État québécois pour poursuivre le travail commencé, le revitaliser, le bonifier et l'élargir aux nouveaux défis qui se présentent : qualité de la langue, bibliothèques publiques accessibles à tous, dynamisation de la vie culturelle [...]. »",
+      sources: ["Source : Gilles Durand, « Le 50e anniversaire du ministère des Affaires culturelles », Commission franco-québécoise sur les lieux de mémoire communs, Bulletin no 33, décembre 2011, page consultée le 26 octobre 2020."] }
+  ],
+
+  // ===== V-B Q8 — Situer dans le temps — Ordre chrono des gains des femmes =====
+  // Docs 13-16 source → Docs 1-4. Ordre chrono : Doc 2 (capacité jur. 1964) → Doc 1 (divorce 1968)
+  // → Doc 4 (contraception 1969) → Doc 3 (congé maternité 1979). Doc 1 (divorce) pré-rempli (pos. 2).
+  'mq-situer-4': [
+    { id: "mq-s4-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Une fois la loi canadienne et son administration mises en place, [...] une importante course au divorce par les couples québécois, dont l'ampleur n'est pas prévue par l'État, force la province à modifier ses lois matrimoniales. Le mariage civil et l'insertion du divorce dans le Code civil québécois viennent laïciser le mariage et rendre la loi fédérale applicable au Québec [...]. »",
+      sources: ["Source : Jennifer Doyon, Le divorce au Québec… un débat de société, 2011, en ligne sur Savoirs UdeS (Université de Sherbrooke), page consultée le 27 octobre 2020."] },
+    { id: "mq-s4-d2", title: "Document 2", layout: "text-only",
+      text: "« Cette loi permet aux femmes d'être les égales de leur mari sur le plan juridique. Dès lors, elles peuvent ainsi exercer une profession, signer un contrat, intenter un procès, être exécutrices testamentaires ou gérer leurs propres biens, et ce, sans l'autorisation de leur conjoint. La loi met aussi un terme au devoir d'obéissance au mari. »",
+      sources: ["Source : Assemblée nationale du Québec, Par ici la démocratie, page consultée le 27 octobre 2020."] },
+    { id: "mq-s4-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] une nouvelle politique familiale provinciale entre en vigueur. Les Québécoises salariées peuvent désormais se prévaloir d'un congé de maternité de dix-huit semaines sans risquer de perdre leur emploi. »",
+      sources: ["Source : « La reconnaissance du congé de maternité au Québec, c'était il y a 40 ans », Archives Radio-Canada, 7 janvier 2019, page consultée le 27 octobre 2020."] },
+    { id: "mq-s4-d4", title: "Document 4", layout: "text-image",
+      text: "« La contraception fait aussi l'objet d'une libéralisation plus poussée [...] : la diffusion d'informations à ce sujet ainsi que la vente de contraceptifs sont retirées du Code criminel [...]. »",
+      imageUrl: "assets/img/mq-situer-4/doc4.png", imageWidthCm: 5,
+      sources: ["Source du texte : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain. Le Québec depuis 1930, Montréal, Boréal compact, 1989, p. 618. Source de l'image : Pilule contraceptive, Wikimedia Commons, en ligne."] }
+  ],
+
+  // ===== V-B Q9 — Causes/conséquences — Rejet du Livre blanc de 1969 =====
+  'mq-causes-5': [
+    { id: "mq-c5-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Aux yeux de plusieurs critiques, il s'agissait là d'une tentative voilée de se débarrasser des traités, les ententes de nation à nation [...]. Pour les peuples autochtones au Canada, cela n'était simplement qu'une autre tentative de disperser leurs nations et de les forcer à s'assimiler à une société eurocanadienne. Ils croyaient que, si cette situation s'avérait, leurs aspirations de gouverner leurs propres affaires seraient ruinées à jamais. »",
+      sources: ["Source : Vies volées : les peuples autochtones au Canada et le régime des pensionnats, chapitre 8, « Livre blanc, livre rouge », Facing History and Ourselves, page consultée le 27 octobre 2020."] }
+  ],
+
+  // ======================================================================
+  // ========= P7 (1945-1980) — Guides pédagogiques RÉCIT (v1.26.0) ========
+  // ======================================================================
+
+  // ===== Néonationalisme Q1 — Établir des faits — Mouvement souverainiste 1960-1970 =====
+  // Docs 1-3 source. NB : Doc 1 (Lévesque 1976) partage la source de mq-differences-2/doc2
+  // (sommative V-A Q7) ; conservé car l'OI (établir des faits) et l'ensemble documentaire diffèrent.
+  'mq-faits-1': [
+    { id: "mq-f1-d1", title: "Document 1 — Extrait du discours de victoire de René Lévesque, 1976", layout: "text-only",
+      text: "« Et je répète en particulier cet engagement central [...] : du fond de notre cœur à tous, on espère, en amitié avec nos concitoyens du Canada, arriver à nous donner le pays qu'est le Québec [...]. Mais ce pays du Québec viendra uniquement quand une société adulte, consciente en elle-même, l'aura approuvé par une majorité claire et démocratique dans un référendum, comme nous l'avons promis. »",
+      sources: ["Source : Transcription de Le Choix du Québec, 15 novembre 1976, Société Radio-Canada, 09:26-09:53 et 10:23-10:47."] },
+    { id: "mq-f1-d2", title: "Document 2 — Extrait d'un article de journal publié en juin 1970", layout: "text-only",
+      text: "« Par ailleurs, le [...] porte-parole officiel du Parti québécois [...] a rappelé que son parti s'est toujours prononcé contre les attentats à la bombe et toutes les autres formes de violence, et que c'est par des moyens démocratiques et pacifiques qu'il allait réaliser l'indépendance du Québec. »",
+      sources: ["Source : Auteur inconnu, « Cinq bombes explosent à Westmount », Le Soleil du Saguenay-Lac-Saint-Jean, 1er juin 1970, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005221050."] },
+    { id: "mq-f1-d3", title: "Document 3 — Extrait d'un article de la revue L'Indépendance, publiée en 1966 par le RIN", layout: "text-only",
+      text: "« Le RIN veut faire du Québec un état indépendant et démocratique avec l'assentiment de la majorité de la population. Depuis cinq ans qu'il poursuit son travail d'organisation [...], le RIN a fait des progrès remarquables. Par d'innombrables assemblées dans tous les coins du Québec, par de nombreuses études, brochures et tracts, et depuis quatre ans, par la diffusion de son journal L'Indépendance, le RIN a grandement contribué à l'éveil de la population aux réalités économiques, politiques, sociales et culturelles du Québec. »",
+      sources: ["Source : Rassemblement pour l'indépendance nationale, « Choisissez votre avenir », L'Indépendance, supplément no 1, 25 octobre 1966, p. 5, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0006288942."] }
+  ],
+
+  // ===== Néonationalisme Q2 — Situer dans le temps — Montée du Parti québécois =====
+  // Docs 4-7 source → Docs 1-4. Ordre chrono : Doc 2 (RIN 1966) → Doc 3 (MSA 1967) →
+  // Doc 4 (congrès PQ 1968) → Doc 1 (élection PQ 1976).
+  'mq-situer-5': [
+    { id: "mq-s5-d1", title: "Document 1 — Extrait de la soirée électorale de Radio-Canada (Bernard Derome)", layout: "text-only",
+      text: "« Radio-Canada, à 8 heures 40 minutes, prévoit que le prochain gouvernement du Québec sera formé par le Parti québécois et que ce gouvernement sera majoritaire. »",
+      sources: ["Source : Transcription de Le Choix du Québec, Société Radio-Canada, 00:00-00:12."] },
+    { id: "mq-s5-d2", title: "Document 2 — Extrait d'un article de journal publié en 1966", layout: "text-only",
+      text: "« Le chef du Rassemblement pour l'indépendance nationale, M. Pierre Bourgault, a déclaré hier soir que le résultat des élections québécoises “place définitivement le RIN sur la carte politique du Québec”. M. Bourgault a affirmé que ce résultat, qui a accordé environ 8 % des voix au RIN, peut signifier que son parti “va balayer la province aux prochaines élections”. »",
+      sources: ["Source : Presse canadienne, « Bourgault : Le RIN est sur la carte », La Tribune, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004875943."] },
+    { id: "mq-s5-d3", title: "Document 3 — Extrait d'un article de journal", layout: "text-only",
+      text: "« En septembre, c'est au tour du député libéral de Laurier, M. René Lévesque, d'ajouter son grain de sel. Dans un manifeste publié le 15 septembre, le député libéral fait savoir qu'il opte pour la souveraineté du Québec dans le cadre d'une union économique avec le Canada. Le 14 octobre, sa thèse est rejetée par le parti libéral [...]. Lévesque quitte le parti libéral pour fonder le mouvement souveraineté-association, qui se répand comme une traînée de poudre à travers la province. »",
+      sources: ["Source : Pierre Godin, « De Gaulle découvre le Québec et le fait découvrir au Canada anglais », La Presse, p. 32, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] },
+    { id: "mq-s5-d4", title: "Document 4 — Extrait d'une émission de Radio-Canada (Louis Martin), 1968", layout: "text-only",
+      text: "« Le congrès de fusion du Mouvement souveraineté-association et du Ralliement national vient de prendre fin à Québec. Ce congrès a réuni pendant plus de trois jours quelque 800 délégués en provenance de 98 comtés québécois. Le nouveau parti s'est donné un statut, un programme, un nom et un chef : monsieur René Lévesque, leader, ou président si vous préférez, du Parti québécois. »",
+      sources: ["Source : Transcription de Deux plus un, Société Radio-Canada, 00:00-00:30."] }
+  ],
+
+  // ===== Néonationalisme Q3 — Différences/similitudes — RIN vs Daniel Johnson =====
+  // Docs 8-9 source → Docs 1-2.
+  'mq-differences-4': [
+    { id: "mq-d4-d1", title: "Document 1 — Extrait d'un rapport publié en 1964 par le RIN", layout: "text-only",
+      text: "« Depuis que la Confédération existe, la nation canadienne-française a consacré une grande partie de ses énergies à lutter contre l'assimilation et contre la centralisation fédérale. [...] Dans cette optique, l'indépendance du Québec est la seule formule qui règle une fois pour toutes le problème de la coexistence des deux nations [...]. Avec l'indépendance, tout conflit qui opposerait le Québec et le Canada serait situé sur le plan international entre deux peuples égaux devant le monde [...]. »",
+      sources: ["Source : Rassemblement pour l'indépendance nationale (RIN), Mémoire du Rassemblement pour l'indépendance nationale au comité parlementaire de la constitution, 1964, p. 30-31."] },
+    { id: "mq-d4-d2", title: "Document 2 — Opinion exprimée en 1965 dans un livre de Daniel Johnson, chef de l'Union nationale", layout: "text-only",
+      text: "« Nous avons vu que la cause principale de nos difficultés présentes réside dans l'absence d'une constitution adaptée aux réalités politiques et sociologiques du Canada moderne. [...] La seule façon d'y parvenir est de rédiger un nouveau texte dont la base soit la reconnaissance des deux nations, qui ait assez de souplesse pour nous laisser évoluer à notre guise [...]. [...] je préfère, pour ma part, avant de me résoudre à l'ultime recours du séparatisme, tenter tout ce qui peut encore être tenté, pour que la nation canadienne-française puisse se sentir chez elle, comme dans une véritable patrie, dans la totalité du Canada. »",
+      sources: ["Source : Daniel Johnson, Égalité ou indépendance, Ottawa, Éditions Renaissance, 1965, p. 83, 90, 105 et 109."] }
+  ],
+
+  // ===== Période duplessiste Q1 — Situer dans l'espace — Ressources naturelles ~1960 =====
+  // Docs 1-6 = textes (régions) ; Doc 7 = carte à lettres A-F. Réponse : A=Doc3, B=Doc4, C=Doc6,
+  // D=Doc5, E=Doc2, F=Doc1.
+  'mq-situer-6': [
+    { id: "mq-s6-d1", title: "Document 1 — Fer et titane", layout: "text-only",
+      text: "Entre 1948 et 1950, la première compagnie d'extraction de minerais québécoise commence l'exploitation du titane et du fer des lacs Tio et Allard, près de Havre-Saint-Pierre. C'est le premier port minier de la Côte-Nord. Dans les années 1950 et 1960, la compagnie exporte entre 1 et 1,5 million de tonnes de minerais chaque année, alors que cette production était inexistante auparavant.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mq-s6-d2", title: "Document 2 — Fer", layout: "text-only",
+      text: "Dans les années 1950, la compagnie Iron Ore, financée par des capitaux américains, se donne les moyens d'exploiter les gisements de fer du Nouveau-Québec. Pour cela, elle fait construire une ligne de chemin de fer de 574 km qui relie Sept-Îles à Schefferville. En 1954, les tout premiers chargements de fer sont expédiés. En cinq ans, la valeur de la production explose et atteint 92 millions de dollars. Sept-Îles devient un des ports maritimes les plus fréquentés, surtout après l'ouverture de la voie maritime du Saint-Laurent.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mq-s6-d3", title: "Document 3 — Métaux", layout: "text-only",
+      text: "En plus du fer, l'exploitation des autres métaux connait aussi une hausse importante, particulièrement en Abitibi et dans le Nord-du-Québec. La production du cuivre fait plus que tripler, alors que celle d'amiante double. L'or, l'argent, le zinc, le nickel et le molybdène sont également en croissance.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mq-s6-d4", title: "Document 4 — Pâtes et papiers", layout: "text-only",
+      text: "Le secteur des pâtes et papiers connait un âge d'or après la Seconde Guerre mondiale. Le Canada demeure le chef de file mondial de la production de papier journal. Au Québec, c'est l'industrie qui emploie le plus grand nombre de travailleurs, avec plus de 25 000 travailleurs, notamment dans les régions de la Mauricie, de l'Outaouais et de l'Abitibi. Une première école nationale de papeterie ouvre ses portes à Trois-Rivières.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mq-s6-d5", title: "Document 5 — Hydroélectricité", layout: "text-only",
+      text: "Dans le but de répondre aux besoins des nouvelles exploitations minières et à la demande industrielle, de nouvelles centrales hydroélectriques sont mises en chantier. Sur la Côte-Nord, le gouvernement québécois confie à Hydro-Québec le soin de construire deux centrales à l'ouest de Baie-Comeau : les centrales Bersimis 1 (ouverte en 1956) et Bersimis 2 (ouverte en 1959). En Abitibi et en Outaouais, de nouvelles centrales sont également mises en service.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mq-s6-d6", title: "Document 6 — Canaux et écluses", layout: "text-only",
+      text: "Pour faciliter l'acheminement des ressources naturelles vers l'intérieur du continent, les États-Unis et le Canada lancent ensemble un vaste projet de construction d'écluses et de canaux. Ouverte en 1959, la voie maritime du Saint-Laurent permet à des navires de 225 mètres de long et de 23 mètres de large de naviguer de l'océan Atlantique jusqu'aux Grands Lacs. Cet axe de navigation contourne des obstacles tels que les rapides de Lachine ou les chutes du Niagara. Il accentue le mouvement de continentalisation de l'économie.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mq-s6-d7", title: "Document 7 — L'exploitation des ressources naturelles en 1960", layout: "image-only",
+      imageUrl: "assets/img/mq-situer-6/doc7.png", imageWidthCm: 14,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== Période duplessiste Q2 (chrono) + Q3 (causes/cons) — Grève de l'amiante =====
+  // Docs 7-9 source → Docs 1-3. Section partagée par mq-situer-7 (chrono) et mq-causes-6 (causes/cons).
+  'mq-situer-7': [
+    { id: "mq-s7-d1", title: "Document 1 — Extrait d'un article de journal", layout: "text-only",
+      text: "« Les actes de violence d'hier, les plus graves depuis le début de cette grève de 5 000 mineurs, [...] ont nécessité ces renforts policiers, armés de bombes lacrymogènes, de mitraillettes Sten et de revolvers réglementaires. On a rapporté que 12 des 60 policiers provinciaux en devoir à Asbestos et 14 des grévistes ont été blessés hier. »",
+      sources: ["Source : Auteur inconnu, « L'acte d'émeute lu à Asbestos », Le Soleil, p. 1 et 12, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] },
+    { id: "mq-s7-d2", title: "Document 2 — Extrait d'un article de journal", layout: "text-only",
+      text: "« M. Jean Marchand, secrétaire général de la Confédération des travailleurs catholiques du Canada, a annoncé hier soir que le syndicat des mineurs d'amiante a signé les contrats collectifs de travail de 1949 et 1950 avec deux des compagnies de Thetford. [...] Le contrat collectif de 1950 inclut une augmentation de 10 cents l'heure, en plus d'un boni de vie chère [...], quatre congés chômés et payés durant l'année et une semaine de vacances après un an de service [...]. L'entente met donc fin à une dispute qui a déjà causé une grève générale de 4 mois et demi [...]. »",
+      sources: ["Source : Auteur inconnu, « Contrat signé à Thetford », La Tribune, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004875943."] },
+    { id: "mq-s7-d3", title: "Document 3 — Extrait d'un article de journal", layout: "text-only",
+      text: "« Grève générale de l'amiante — 5 000 mineurs ont déjà quitté le travail. Quelque 2 500 mineurs d'Asbestos sont entrés en grève hier soir, ce qui porte à 5 000 le nombre des ouvriers de l'amiante actuellement en grève dans la région. [...] Les ouvriers d'Asbestos sont entrés en grève pour deux raisons : d'abord pour obtenir une augmentation de salaire de 15 cents l'heure, ensuite pour que la compagnie accepte de signer une clause, dans le contrat de travail, par laquelle elle s'engagerait à employer les moyens les plus efficaces et les plus modernes pour assurer la suppression de la poussière d'amiante à l'intérieur et à l'extérieur des usines. »",
+      sources: ["Source : Auteur inconnu, « Grève générale de l'amiante », Le Devoir, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335."] }
+  ],
+
+  // ===== Population Q1 — Causes/conséquences — Causes de la dénatalité (fin du baby-boom) =====
+  'mq-causes-7': [
+    { id: "mq-c7-d1", title: "Document 1 — Extrait d'un article de journal publié en 1968", layout: "text-only",
+      text: "« La “pilule” se vend bien au Canada, si bien même qu'elle rapporte plus de 30 000 000 $ par année et que, devant la demande croissante au Québec, les compagnies de produits pharmaceutiques jugent nécessaire de faire imprimer le mode d'emploi en français aussi bien qu'en anglais. [...] La vente de “la pilule” est toujours illégale au Canada, mais cinq compagnies de Toronto estiment que sa légalisation ne changera rien à leur chiffre d'affaires. Plus d'un million de Canadiennes prennent déjà la “pilule” régulièrement. »",
+      sources: ["Source : PC, « La pilule connaît une vague croissante au Québec », La Presse, 2 janvier 1968, p. 37, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] },
+    { id: "mq-c7-d2", title: "Document 2 — Extrait d'un article de revue publié en 1967", layout: "text-only",
+      text: "« On constate, dans le Québec, une baisse considérable de la pratique religieuse. [...] elles indiquent assez clairement un changement accéléré qui se produit non seulement chez la jeunesse étudiante et dans le monde universitaire, mais également dans la population ouvrière des villes [...]. Dans certaines paroisses ouvrières de Montréal, le taux de pratique est de l'ordre de 30 à 40 pour cent, taux qui continue à baisser avec la disparition des plus âgés. [...] »",
+      sources: ["Source : Vincent Harvey, « Le Dieu des sans-messe », Maintenant, juin-juillet 1967, p. 210, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005021251."] },
+    { id: "mq-c7-d3", title: "Document 3 — Répartition de la force de travail canadienne selon le sexe (1941-1971)", layout: "image-only",
+      imageUrl: "assets/img/mq-causes-7/doc3.png", imageWidthCm: 13,
+      sources: ["Source des données : Statistique Canada, « Séries D8-85, Force de travail, par branche d'activité et sexe, années de recensement, 1911 à 1971 », Statistiques historiques du Canada, section D."] }
+  ],
+
+  // ===== Population Q2 — Établir des faits — Caractéristiques de la société de consommation =====
+  'mq-faits-2': [
+    { id: "mq-f2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/mq-faits-2/doc1.png", imageWidthCm: 6,
+      sources: ["Source de l'image : Conrad Poirier, Commercial. Evercold (1949), Bibliothèque et Archives nationales du Québec, P48,S1,P17436. Licence : domaine public."] },
+    { id: "mq-f2-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/mq-faits-2/doc2.png", imageWidthCm: 5,
+      sources: ["Source de l'image : Ernest Sénécal, Visitez la province de Québec (vers 1950), Bibliothèque et Archives nationales du Québec, notice 0003009942. Licence : domaine public."] },
+    { id: "mq-f2-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/mq-faits-2/doc3.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Gabor Szilasi, Salon de l'automobile, Place Bonaventure, Montréal (1970), Bibliothèque et Archives nationales du Québec, E6,S7,SS1,D700114-700115. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "mq-f2-d4", title: "Document 4 — Extrait d'une émission de radio, 1978", layout: "text-only",
+      text: "« Le phénomène des centres d'achats est passé sur le commerce de détail il y a une quinzaine d'années comme un véritable raz-de-marée. [...] Je pense que les banlieusards en particulier trouvent dans le centre d'achats la formule idéale pour le consommateur un peu fortuné et le consommateur pressé, le consommateur motorisé. Le centre d'achats répond à ses désirs, et c'est pour ça d'ailleurs que les centres d'achats ont connu une popularité comme vous le connaissez. »",
+      sources: ["Source : Transcription de Consommateurs plus, 22 septembre 1978, Société Radio-Canada."] }
+  ],
+
+  // ===== Population Q4 — Causalité — Pensionnats et assimilation des Autochtones =====
+  // Docs 9, 10, 11 source → Docs 1, 2, 3 (Doc 3 = carte des pensionnats, image).
+  'mq-causalite-3': [
+    { id: "mq-ca3-d1", title: "Document 1 — Témoignage de Lucie Basile, ancienne élève du pensionnat de Pointe-Bleue", layout: "text-only",
+      text: "« La culpabilité qu'on nous faisait subir au pensionnat nous empêchait de développer une relation saine avec nos parents. On nous reprochait tellement de choses sans raison, on culpabilisait. Puis nos parents nous adulaient presque parce qu'on était “bien élevés”, ils ne nous apprenaient rien de notre culture, de peur de défaire ce qu'on avait appris [dans les pensionnats]. On ne pouvait pas regarder nos parents dans les yeux. »",
+      sources: ["Source : Lucie Basile, « Témoignage », cité dans Henri Goulet, Histoire des pensionnats indiens catholiques au Québec, Montréal, Les Presses de l'Université de Montréal, 2016."] },
+    { id: "mq-ca3-d2", title: "Document 2 — Extrait d'un article de journal", layout: "text-only",
+      text: "« Nous avons le devoir d'apporter les bienfaits de notre civilisation aux Indiens [Premières Nations] et aux Esquimaux [Inuits] du Nord canadien. Comme nous, ils sont Canadiens et comme nous aussi ils font partie de notre grande famille nationale. [Jean Lesage, ministre fédéral du Nord canadien et des Ressources naturelles] précisait que l'instruction des Indiens aussi bien que des Esquimaux est urgente, parce que des tâches importantes dans l'administration des territoires du nord devront être remplies avec avantage par des citoyens de ces régions. »",
+      sources: ["Source : Auteur inconnu, « Quelques aspects du problème éducatif et économique du Nord », L'Action catholique, 5 janvier 1956, p. 3 et 15, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000169215."] },
+    { id: "mq-ca3-d3", title: "Document 3 — Carte des pensionnats autochtones du Québec au 20e siècle", layout: "image-only",
+      imageUrl: "assets/img/mq-causalite-3/doc3.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== Culture/langue Q1 — Changements/continuités — Théâtre québécois =====
+  'mq-continuite-3': [
+    { id: "mq-co3-d1", title: "Document 1 — Article de journal publié en 1975 (10 ans du Centre d'essai des auteurs dramatiques)", layout: "text-only",
+      text: "« Depuis dix ans, quel chemin a parcouru le théâtre québécois ! [...] [E]n mai 1965, notre dramaturgie [...], mis à part quelques pionniers tels Gratien Gélinas ou Marcel Dubé, semblait sans avenir [...]. Les troupes professionnelles puisaient inlassablement au répertoire universel [international] sans être trop préoccupées par l'émergence souhaitable d'une dramaturgie ambiante [québécoise]. [...] Aujourd'hui, dix ans après, le Centre d'essai des auteurs dramatiques, c'est 185 pièces, 85 auteurs, 65 lectures publiques, 33 ateliers d'écriture [...]. C'est aussi et surtout un organisme qui s'occupe du nouvel auteur [...]. »",
+      sources: ["Source : Martine Corrivault, « Les dix ans d'effort du Centre d'essai des auteurs dramatiques pour une dramaturgie sans complexes », Le Soleil, 22 octobre 1975, p. F14, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] }
+  ],
+
+  // ===== Culture/langue Q2 — Changements/continuités — Financement des bibliothèques =====
+  'mq-continuite-4': [
+    { id: "mq-co4-d1", title: "Document 1 — Montant des subventions allouées aux bibliothèques du Québec, 1960 et 1969", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-4/doc1.png", imageWidthCm: 13,
+      sources: ["Source des données : Ministère des Affaires culturelles (Gouvernement du Québec), Rapport annuel 1968-69, Québec, 1969, p. 89, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000179764."] }
+  ],
+
+  // ===== Culture/langue Q3 — Situer dans le temps — Charte de la langue française (Loi 101) =====
+  'mq-situer-8': [
+    { id: "mq-s8-d1", title: "Document 1 — Préambule d'une loi québécoise", layout: "text-only",
+      text: "« L'Assemblée nationale reconnaît la volonté des Québécois d'assurer la qualité et le rayonnement de la langue française. Elle est donc résolue à faire du français la langue de l'État et de la Loi aussi bien que la langue normale et habituelle du travail, de l'enseignement, des communications, du commerce et des affaires. »",
+      sources: ["Source : Charte de la langue française, LQ, c. 5, préambule, en ligne sur Bibliothèque de l'Assemblée nationale du Québec."] }
+  ],
+
+  // ===== Culture/langue Q4 — Mettre en relation — Ministère de l'Immigration et langue française =====
+  'mq-relation-3': [
+    { id: "mq-r3-d1", title: "Document 1 — Extrait d'un article de journal, 1965", layout: "text-only",
+      text: "« Le député Gabriel Loubier de l'Union nationale a [...] [demandé] que le Québec étudie la possibilité de créer un ministère de l'Immigration [...]. Les raisons invoquées par M. Loubier [...] sont les suivantes : 1) l'immigration dans le Québec doit être orientée dans le sens des intérêts économiques du Québec ; 2) le Québec doit s'occuper des immigrants qui viennent dans la province afin que l'immigration ne soit pas, entre les mains du gouvernement fédéral, un moyen de modifier la composition culturelle de la communauté québécoise ; 3) le Québec doit s'occuper des immigrants admis dans la province afin que ceux-ci puissent bénéficier de tous les services d'accueil et d'assistance qui leur sont nécessaires pour préserver leurs particularismes légitimes et pour faciliter leur apport à la vie québécoise. »",
+      sources: ["Source : Auteur inconnu, « Créer un ministère de l'Immigration », L'Action, 3 février 1965, p. 14, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000169226."] }
+  ],
+
+  // ===== Mouvements sociaux Q1 — Causalité — Loi anti-briseurs de grève =====
+  'mq-causalite-4': [
+    { id: "mq-ca4-d1", title: "Document 1 — Extrait d'une loi québécoise adoptée en 1977", layout: "text-only",
+      text: "« 97a. Il est interdit à un employeur : a) d'utiliser les services d'une personne pour remplir les fonctions d'un salarié représenté par une association accréditée [syndicat] qui a déclaré une grève ou d'un salarié lock-outé [...]. »",
+      sources: ["Source : Loi modifiant le Code du travail et la Loi sur le ministère du Travail et de la Main-d'œuvre, LQ 1977, c. 41, art. 97, en ligne sur Bibliothèque de l'Assemblée nationale du Québec."] },
+    { id: "mq-ca4-d2", title: "Document 2 — Extrait d'un article de journal publié en 1973", layout: "text-only",
+      text: "« André Leclerc de la FTQ affirme la volonté des 400 grévistes appartenant à 17 entreprises différentes, qui ont occupé le ministère du Travail dans la journée d'hier [...]. Les manifestants veulent [...] remettre au ministre du Travail un manifeste par lequel ils [...] proposent [...] une série d'amendements au Code du travail, comme de déclarer illégale l'utilisation de “scabs” [briseurs de grève] et de forces policières pour assurer la production de l'entreprise [dont les travailleurs sont en grève]. »",
+      sources: ["Source : Dominique Payette, « 400 grévistes oubliés rencontrent Cournoyer », La Presse, 28 août 1973, p. A3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] },
+    { id: "mq-ca4-d3", title: "Document 3 — Extrait d'un article de journal publié en 1973", layout: "text-only",
+      text: "« Le 7UP coule encore à flot après 10 mois de grève : le produit est embouteillé à Sainte-Foy comme d'habitude, vendu partout dans le Québec métropolitain comme d'habitude [...]. L'arrêt de travail des 47 syndiqués, le 14 août 1972, n'a aucunement ralenti la production parce que le patron s'est rapidement trouvé des remplaçants [briseurs de grève]. [...] Rien ne forçait l'employeur à souhaiter un règlement du conflit, même pas le ministère du Travail [...]. »",
+      sources: ["Source : Michel Choquette, Gilles Laframboise et Marc Saint-Pierre, « 3 grèves pourries », Le Soleil, 30 juin 1973, p. 19, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] }
+  ],
+
+  // ===== Mouvements sociaux Q2 — Établir des faits — Madeleine Parent =====
+  'mq-faits-3': [
+    { id: "mq-f3-d1", title: "Document 1 — Extrait d'un article de journal publié en 1979", layout: "text-only",
+      text: "« [Madeleine Parent] [...] est une syndicaliste qui s'est battue contre les puissants de ce monde : des barons du textile aux chefs syndicaux. [...] Depuis 38 ans maintenant, elle réclame de meilleurs salaires et conditions de travail pour les femmes œuvrant dans l'industrie du textile. »",
+      sources: ["Source : Auteur inconnu, « Une syndicaliste en lutte depuis 38 ans », Le Soleil, 7 février 1979, p. G2, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] }
+  ],
+
+  // ===== Mouvements sociaux Q3 — Établir des faits — Gains des Cris (Convention Baie-James) =====
+  'mq-faits-4': [
+    { id: "mq-f4-d1", title: "Document 1 — Extrait d'un article de journal", layout: "text-only",
+      text: "« Les parties impliquées dans l'entente accordent aux Autochtones des garanties permanentes de droits exclusifs de chasse, de pêche et de trappage sur certaines terres. [...] Ils sont de plus assurés d'une voix au chapitre pour toutes les décisions ayant trait à leur environnement ainsi que d'une participation, comme investisseurs et travailleurs, aux futurs projets d'aménagement dans le territoire. [...] les Autochtones du territoire recevront, au cours des 20 prochaines années, un montant de 225 millions $ à titre d'indemnités et de compensation pour la perte de certains droits et privilèges. »",
+      sources: ["Source : Réjean Lacombe, « Les autochtones remportent une victoire », Le Nouvelliste, 15 novembre 1975, p. 7, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878386."] }
+  ],
+
+  // ===== Mouvements sociaux Q4 — Situer dans le temps — Loi sur la capacité juridique (1964) =====
+  'mq-situer-9': [
+    { id: "mq-s9-d1", title: "Document 1 — Extrait d'un article de revue écrit par un juriste", layout: "text-only",
+      text: "« La nouvelle législation sur la capacité juridique de la femme mariée est entrée en vigueur le 1er juillet [...]. En premier lieu, la femme mariée acquiert en principe la libre disposition de ses biens. [...] En second lieu, la femme mariée peut [aller] en justice tant en demande qu'en défense [...]. Enfin, la femme mariée peut désormais, et sans autorisation maritale, exercer une profession distincte de celle de son mari [...]. »",
+      sources: ["Source : Jean-Louis Baudouin, « Examen critique de la réforme sur la capacité juridique de la femme mariée québécoise », Can. Bar Rev., p. 393, 406 et 407."] }
+  ],
+
+  // ===== Révolution tranquille Q1 — Différences/similitudes — Services par l'Église vs l'État =====
+  // Docs 1-4 = images. Docs 1-2 (Église/religieux) vs Docs 3-4 (laïque/État).
+  'mq-differences-5': [
+    { id: "mq-d5-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/mq-differences-5/doc1.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Conrad Poirier, News. L'Oeuvre aux enfants infirmes (1942), Bibliothèque et Archives nationales du Québec, P48,S1,P8074. Licence : domaine public."] },
+    { id: "mq-d5-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/mq-differences-5/doc2.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Conrad Poirier, Religieuse soignant un enfant à l'hôpital Sainte-Justine (1945), Bibliothèque et Archives nationales du Québec, P48,S1,P12209. Licence : domaine public."] },
+    { id: "mq-d5-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/mq-differences-5/doc3.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Gabor Szilasi, École monseigneur Laval, rue du Souvenir, Chomedey, Laval (1964), Bibliothèque et Archives nationales du Québec, E6,S7,SS1,D642670. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "mq-d5-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/mq-differences-5/doc4.png", imageWidthCm: 6,
+      sources: ["Source de l'image : Auteur inconnu, L'infirmière Grace Manatch soigne une patiente (entre 1930 et 1960), Bibliothèque et Archives Canada, no 4370310. Licence : domaine public."] }
+  ],
+
+  // ===== Révolution tranquille Q2 — Causalité — Commission Parent et laïcisation de l'éducation =====
+  'mq-causalite-5': [
+    { id: "mq-ca5-d1", title: "Document 1 — Extrait d'un chapitre de livre écrit par un sociologue", layout: "text-only",
+      text: "« En ce qui a trait à la confessionnalité [...], la Commission Parent recommandait : premièrement, de [laïciser] la direction du système public et privé, par l'institution d'un ministère de l'Éducation non confessionnel [...], mais qui pouvait comporter des secteurs ayant la responsabilité de l'enseignement confessionnel qui allait demeurer ; deuxièmement, de déconfessionnaliser toutes les institutions d'enseignement postsecondaires, c'est-à-dire de niveau collégial et universitaire [...]. »",
+      sources: ["Source : Guy Rocher, « La sécularisation des institutions d'enseignement [...] », dans R. Comeau (dir.), Jean Lesage et l'éveil d'une nation, Sillery, Les Presses de l'Université du Québec, 1989, p. 173."] },
+    { id: "mq-ca5-d2", title: "Document 2 — Texte publié en 1966 par la Fédération des Collèges classiques", layout: "text-only",
+      text: "« L'Église, par une présence directe de la hiérarchie au sein du comité catholique [du Département de l'Instruction publique], a la possibilité [...] d'exercer un droit de regard et un contrôle précis sur les principaux aspects de l'enseignement dispensé dans les écoles catholiques [...] : la durée du cycle des études ; le programme des études et celui des différents cours ; les manuels à utiliser ; le régime et la discipline des écoles ; les conditions d'engagement et les devoirs du personnel enseignant [...]. »",
+      sources: ["Source : Fédération des Collèges classiques, La présence de l'Église en éducation, Montréal, 1966, p. 110."] },
+    { id: "mq-ca5-d3", title: "Document 3 — Texte publié en 1966 par la Fédération des Collèges classiques", layout: "text-only",
+      text: "« Depuis la sanction du Bill [projet de loi] 60, le 19 mars 1964 [...] : la hiérarchie de l'Église catholique n'a plus de pouvoir précis au niveau de la direction de l'ensemble du système d'éducation au Québec ; [...] l'Église, via le Comité catholique, a conservé des pouvoirs réels et une présence juridiquement reconnue en ce qui touche les aspects moraux et religieux de l'enseignement ; [...] l'État [...] a situé le système scolaire dans la ligne de la laïcité de l'État [...]. »",
+      sources: ["Source : Fédération des Collèges classiques, La présence de l'Église en éducation, Montréal, 1966, p. 112."] }
+  ],
+
+  // ===== Révolution tranquille Q3 — Causes/conséquences — Mesures économiques de Lesage =====
+  'mq-causes-8': [
+    { id: "mq-c8-d1", title: "Document 1 — Exposé de René Lévesque sur la nationalisation de l'électricité (1962)", layout: "text-only",
+      text: "« C'est au peuple du Québec de prendre dans ses mains, librement et fièrement, la première et la plus importante de toutes les clés d'une économie moderne. Et ça, ça veut dire la nationalisation de l'électricité. [...] la nationalisation, c'est simplement de ramener dans le Québec la propriété entre les mains de 5 300 000 actionnaires, c'est-à-dire nous tous, la propriété de notre électricité. »",
+      sources: ["Source : Transcription de Parti libéral du Québec, Maîtres chez nous - La nationalisation de l'électricité expliquée par René Lévesque (1962), Bibliothèque et Archives nationales du Québec, P443,S77,DFN90-503."] },
+    { id: "mq-c8-d2", title: "Document 2 — Extrait d'un article de journal publié en 1965", layout: "text-only",
+      text: "« Les économistes consultés par le gouvernement de M. Lesage [...] soutiennent que la création, par le gouvernement, d'une Caisse de dépôt et de placement [...] se révélera le grand moyen pour les Québécois de prendre la direction des centres de décisions économiques selon leurs intérêts, leurs besoins et leurs objectifs. [...] La Caisse de dépôt et de placement permettra le regroupement, dans les mains des Québécois, de leurs épargnes collectives, ce qui permettra d'utiliser ces capitaux pour la modernisation de notre commerce et de notre industrie. »",
+      sources: ["Source : Auteur inconnu, « Projet de loi déposé aujourd'hui : création de la Caisse de dépôt », Le Soleil, 26 mai 1965, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] }
+  ],
+
+  // ===== Révolution tranquille Q4 — Différences/similitudes — 3 acteurs sur l'avortement =====
+  'mq-differences-6': [
+    { id: "mq-d6-d1", title: "Document 1 — Mémoire de l'Association des bureaux médicaux des hôpitaux du Québec (1968)", layout: "text-only",
+      text: "« Les médecins des hôpitaux du Québec croient que tout avortement est un homicide, car le fœtus est un être humain. [...] À cause des abus que ce projet de loi sur l'avortement peut apporter, l'Association des bureaux médicaux des hôpitaux de la province de Québec (ABMHPQ) s'oppose à la légalisation de l'avortement thérapeutique, dans les cas où l'unique motivation est la santé et le bien-être de la mère [...]. »",
+      sources: ["Source : Les Directeurs de l'ABMHPQ, « Avortement : mémoire des médecins d'hôpitaux », Maintenant, août 1968, p. 204-206, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005021251."] },
+    { id: "mq-d6-d2", title: "Document 2 — Article de revue écrit par le religieux jésuite Marcel Marcotte (1968)", layout: "text-only",
+      text: "« [T]oute femme a droit de décider du nombre de ses enfants, mais la mise en œuvre de cette décision relève du contrôle des naissances, non de l'avortement ; toute femme a pareillement droit d'user de son corps à sa convenance, mais le fœtus, au dire de la science, est un être humain indépendant [...]. Il s'ensuit que, si l'avortement peut être autorisé dans les cas les plus graves de péril pour la vie ou la santé de la mère, il ne doit jamais l'être pour de simples motifs d'ordre économique ou social, ou pour des raisons de commodité. »",
+      sources: ["Source : Marcel Marcotte, S.J., « Catholiques et non-catholiques devant l'avortement », Relations, no 326, avril 1968, p. 110, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004875781."] },
+    { id: "mq-d6-d3", title: "Document 3 — Citation de Lise Payette, animatrice à Radio-Canada (1968)", layout: "text-only",
+      text: "« Pour moi, la légalisation de l'avortement, c'est d'abord et avant tout une question de liberté. Je reconnais à la femme le droit de décider de la vie qu'elle porte dans ses entrailles. Elle doit pouvoir accepter ou refuser de donner naissance à un enfant. [...] [Il faut] donner à celles qui acceptent librement l'intervention chirurgicale la possibilité qu'elle soit pratiquée par un médecin reconnu, dans une institution adéquate. »",
+      sources: ["Source : France Demers, « L'avortement légalisé, bienfait ou désastre ? », La Patrie, 17 mars 1968, p. 17, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000586549."] }
   ]
 
 };
@@ -4401,7 +5123,501 @@ window.DATA = {
       },
       reglettes: [{ id: "r-na-s4", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
       documents: pickDocs('na-situer-4', 1, 2, 3, 4),
-      corrige: ["Document 3", "Document 1", "Document 2", "Document 4"] }
+      corrige: ["Document 3", "Document 1", "Document 2", "Document 4"] },
+
+    // ======================================================================
+    // ============ P7 (1945-1980) — Sommatives Section A (v1.25.0) ==========
+    // ======================================================================
+
+    // ===== V-A Q1 — Situer dans le temps — Mandats de Jean Lesage (ligne du temps) =====
+    { id: "q-mq-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Sur la ligne du temps, encercle la lettre qui correspond aux mandats du premier ministre du Québec présenté dans le document 1.",
+        responseSpace: { type: "timeline-segments", periods: [
+          { letter: "A", range: "1954–1960" },
+          { letter: "B", range: "1960–1966" },
+          { letter: "C", range: "1966–1972" },
+          { letter: "D", range: "1972–1978" }
+        ]}
+      },
+      reglettes: [{ id: "r-mq-s1", label: "Réglette (1 point)", ...R_SITUER_1PT_FAITS }],
+      documents: pickDocs('mq-situer-1', 1),
+      corrige: "B (Jean Lesage est premier ministre du Québec de 1960 à 1966, soit la période 1960-1966)." },
+
+    // ===== V-A Q2 — Causes/conséquences — Cause de la société de consommation =====
+    { id: "q-mq-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, nomme une cause de l'avènement de la société de consommation au Québec.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-mq-c1", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
+      documents: pickDocs('mq-causes-1', 1),
+      corrige: "Une cause de l'avènement de la société de consommation au Québec est l'augmentation du pouvoir d'achat (ou la hausse des salaires) à la suite de la Seconde Guerre mondiale." },
+
+    // ===== V-A Q3 — Causes/conséquences — Conséquence des revendications autochtones (Baie-James) =====
+    { id: "q-mq-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence des revendications autochtones à la suite de la mise en chantier du projet de la Baie-James.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-mq-c2", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CONS_SOMA }],
+      documents: pickDocs('mq-causes-2', 1),
+      corrige: "Une conséquence est la signature de la Convention de la Baie-James et du Nord québécois en 1975 (ou la signature d'une entente entre les Cris, les Inuits et le gouvernement du Québec)." },
+
+    // ===== V-A Q4 — Différences/similitudes — Désaccord sur la grève de l'amiante =====
+    { id: "q-mq-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Les documents 1 et 2 exposent le point de vue de deux acteurs sur la grève de l'amiante. Sur quel sujet précis sont-ils en désaccord ?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-mq-d1", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT }],
+      documents: pickDocs('mq-differences-1', 1, 2),
+      corrige: "Lionel Groulx et Maurice Duplessis sont en désaccord sur les causes de la grève (ou sur les intentions des grévistes : Groulx parle de la défense de la vie et de la santé des ouvriers contre une industrie meurtrière, tandis que Duplessis affirme que certains chefs ouvriers cherchent à causer du trouble)." },
+
+    // ===== V-A Q5 — Mettre en relation — Gains des femmes 1960-1980 =====
+    { id: "q-mq-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Inscris le numéro du document qui correspond à chacun des gains faits par les femmes entre 1960 et 1980.",
+        responseSpace: { type: "category-buckets", categories: ["Gain juridique", "Gain sur les droits sexuels et reproductifs"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-mq-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_2SUR2 }],
+      documents: pickDocs('mq-relation-1', 1, 2),
+      corrige: [["Document 1"], ["Document 2"]] },
+
+    // ===== V-A Q6 — Situer dans l'espace — 2 régions minières (carte à lettres) =====
+    { id: "q-mq-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, coche les 2 lettres correspondant aux régions du Québec qui se développent grâce à l'industrie minière.",
+        responseSpace: { type: "checkbox-table", columns: ["A", "B", "C", "D"], rows: ["Région développée grâce à l'industrie minière"] }
+      },
+      reglettes: [{ id: "r-mq-s2", label: "Réglette (2 points)", ...R_SITUER_2PT_SP_2FAITS }],
+      documents: pickDocs('mq-situer-2', 1),
+      corrige: [[false, false, true, true]] },
+
+    // ===== V-A Q7 — Différences/similitudes — Moyens PQ vs FLQ pour la souveraineté =====
+    { id: "q-mq-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, nomme une différence dans les moyens que prennent le Front de libération du Québec (document 1) et le Parti québécois (document 2) afin de réaliser la souveraineté.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-mq-d2", label: "Réglette (1 point)", ...R_DIFFERENCES_1PT }],
+      documents: pickDocs('mq-differences-2', 1, 2),
+      corrige: "Le Parti québécois souhaite réaliser la souveraineté à l'aide d'un référendum (par la voie démocratique), alors que le Front de libération du Québec emploie la violence (bombes, enlèvements)." },
+
+    // ===== V-A Q8 — Changements/continuités — Agriculture (machinerie + électrification) =====
+    { id: "q-mq-continuite-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique s'il y a changement ou continuité dans le domaine de l'agriculture. Justifie ta réponse à l'aide de faits.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-mq-co1", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('mq-continuite-1', 1, 2),
+      corrige: "Il y a changement : les fermes utilisent beaucoup plus de machinerie agricole en 1961 qu'en 1931 (le nombre de tracteurs passe de 2 417 à 70 697). On peut aussi répondre qu'il y a changement parce que plus de 98 % des fermes sont électrifiées en 1960, contre 20 % en 1945. (Une réponse en termes de continuité — l'électrification rurale se poursuit de 1945 à 1960 — est aussi acceptée si elle est justifiée par des faits et un repère de temps.)" },
+
+    // ===== V-A Q9 — Causalité — Politique fédérale → autonomie de Duplessis =====
+    { id: "q-mq-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique comment la politique du gouvernement fédéral à la suite de la Deuxième Guerre mondiale amène le gouvernement du Québec à intervenir contre la politique fédérale. En utilisant les documents 1, 2 et 3, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "La politique du gouvernement fédéral à la suite de la Seconde Guerre mondiale",
+          "Un principe défendu par Maurice Duplessis",
+          "Une mesure mise en place par Maurice Duplessis pour contrer la politique fédérale"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-mq-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('mq-causalite-1', 1, 2, 3),
+      corrige: "Le gouvernement fédéral adopte une politique centralisatrice durant et après la Seconde Guerre mondiale (création de l'assurance-chômage en 1940 et d'un régime universel de pensions en 1951) (document 1). Cette politique amène Maurice Duplessis à défendre l'autonomie provinciale et le respect des compétences conférées aux provinces par l'AANB (document 2). Pour contrer la politique fédérale, Duplessis lutte pour rétablir le pouvoir de taxation du Québec et instaure un impôt provincial (document 3)." },
+
+    // ===== V-B Q1 — Causes/conséquences — Conséquence des pensionnats sur l'identité autochtone =====
+    { id: "q-mq-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Jusqu'à la fin des années 1950, beaucoup d'enfants autochtones continuent de fréquenter les pensionnats du gouvernement fédéral. À l'aide du document 1, indique une conséquence de cette situation sur l'identité des enfants autochtones.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-mq-c3", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CONS_GUIDE }],
+      documents: pickDocs('mq-causes-3', 1),
+      corrige: "Une conséquence est l'assimilation des enfants autochtones à une autre culture (la perte de leur langue, de leur culture et de leur identité)." },
+
+    // ===== V-B Q2 — Mettre en relation — Autonomie de Duplessis (culturelle + fiscale) =====
+    { id: "q-mq-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Inscris au bon endroit le numéro du document qui fait référence à une manifestation culturelle de l'autonomie provinciale défendue par Maurice Duplessis et le numéro du document qui fait référence à une mesure fiscale qui favorise cette autonomie au cours des années 1940 et 1950.",
+        responseSpace: { type: "category-buckets", categories: ["Manifestation culturelle de l'autonomie provinciale", "Mesure fiscale favorisant l'autonomie"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-mq-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_2SUR2 }],
+      documents: pickDocs('mq-relation-2', 1, 2),
+      corrige: [["Document 1"], ["Document 2"]] },
+
+    // ===== V-B Q3 — Causalité — Libéralisme de Duplessis → exploitation des ressources =====
+    { id: "q-mq-causalite-2", operation: "Établir des liens de causalité", numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique comment un principe économique défendu par Maurice Duplessis a des conséquences sur l'exploitation des ressources naturelles du Québec après la Seconde Guerre mondiale. En utilisant les documents 1, 2 et 3, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Le principe économique défendu par Maurice Duplessis",
+          "La provenance des capitaux investis au Québec",
+          "Une conséquence sur l'exploitation des ressources naturelles"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-mq-ca2", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('mq-causalite-2', 1, 2, 3),
+      corrige: "Maurice Duplessis défend le libéralisme économique (le laisser-faire) et laisse à l'entreprise privée le développement économique du Québec (document 1). Cette vision laisse une grande place aux investissements étrangers, surtout américains, qui assurent environ les trois quarts des investissements étrangers (document 2). Ces investissements entrainent une croissance rapide de l'exploitation minière et le développement des régions nordiques du Québec, comme l'exploitation spectaculaire du minerai de fer (document 3)." },
+
+    // ===== V-B Q4 — Changements/continuités — Institutions démocratiques (1867 vs 1968) =====
+    { id: "q-mq-continuite-2", operation: "Déterminer des changements et des continuités", numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique s'il y a changement ou continuité dans les institutions démocratiques du Québec au cours des années 1960. Justifie ton choix par des faits et un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co2", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_INLINE }],
+      documents: pickDocs('mq-continuite-2', 1),
+      corrige: "Il y a changement : le Conseil législatif est aboli en 1968 et l'Assemblée législative devient l'Assemblée nationale. On peut aussi répondre qu'il y a continuité : le poste de lieutenant-gouverneur est toujours en place en 1968." },
+
+    // ===== V-B Q5 — Situer dans le temps — Commission B&B (ligne du temps) =====
+    { id: "q-mq-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        responseSpace: { type: "timeline-segments", periods: [
+          { letter: "A", range: "1945–1960" },
+          { letter: "B", range: "1960–1970" },
+          { letter: "C", range: "1970–1980" }
+        ]}
+      },
+      reglettes: [{ id: "r-mq-s3", label: "Réglette (1 point)", ...R_SITUER_1PT_FAITS }],
+      documents: pickDocs('mq-situer-3', 1),
+      corrige: "B (la Commission royale d'enquête sur le bilinguisme et le biculturalisme est créée en 1963 et mène ses travaux durant les années 1960, soit la période 1960-1970)." },
+
+    // ===== V-B Q6 — Différences/similitudes — 3 acteurs sur la place du Québec dans la fédération =====
+    { id: "q-mq-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Les documents 1, 2 et 3 présentent la position de trois acteurs concernant la place du Québec au sein de la fédération canadienne au cours des années 1970. Nomme l'acteur qui présente une position différente et compare cette position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-d3", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('mq-differences-3', 1, 2, 3),
+      corrige: "René Lévesque (document 2) présente une position différente : il défend la souveraineté (l'indépendance) du Québec, tandis que Robert Bourassa (document 1) et Jean-Jacques Bertrand (document 3) prônent le maintien du Québec dans la fédération canadienne." },
+
+    // ===== V-B Q7 — Causes/conséquences — Création du ministère des Affaires culturelles =====
+    { id: "q-mq-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Au début des années 1960, le gouvernement Lesage crée le ministère des Affaires culturelles. Inscris le numéro du document qui présente une cause de la création de ce ministère et le numéro du document qui présente une conséquence de cette création.",
+        responseSpace: { type: "category-buckets", categories: ["Une cause de la création de ce ministère", "Une conséquence de la création de ce ministère"], slots: [1, 1] }
+      },
+      reglettes: [{ id: "r-mq-c4", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS_2SUR2 }],
+      documents: pickDocs('mq-causes-4', 1, 2),
+      corrige: [["Document 1"], ["Document 2"]] },
+
+    // ===== V-B Q8 — Situer dans le temps — Ordre chrono des gains des femmes =====
+    { id: "q-mq-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence à des gains obtenus par les femmes au Canada et au Québec au cours des années 1960 et 1970. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"], prefilled: [null, "Document 1", null, null] }
+      },
+      reglettes: [{ id: "r-mq-s4", label: "Réglette (2 points)", ...R_SITUER_2PT_T3_BINAIRE_SOMA }],
+      documents: pickDocs('mq-situer-4', 1, 2, 3, 4),
+      corrige: ["Document 2", "Document 1", "Document 4", "Document 3"] },
+
+    // ===== V-B Q9 — Causes/conséquences — Rejet du Livre blanc de 1969 =====
+    { id: "q-mq-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pour quelle raison les Autochtones rejettent le Livre blanc sur la politique indienne du gouvernement du Canada, publié en 1969.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
+      documents: pickDocs('mq-causes-5', 1),
+      corrige: "Les Autochtones craignent que cette politique, en leur faisant perdre leur statut d'Indien et leurs traités (les ententes de nation à nation), accélère leur assimilation à la société eurocanadienne. La perte de territoires et de leur capacité à gouverner leurs propres affaires est aussi un enjeu important." },
+
+    // ======================================================================
+    // ========= P7 (1945-1980) — Guides pédagogiques RÉCIT (v1.26.0) ========
+    // ======================================================================
+
+    // ===== Néonationalisme Q1 — Établir des faits — Mouvement souverainiste 1960-1970 =====
+    { id: "q-mq-faits-1", operation: "Établir des faits", numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "En utilisant les documents 1 à 3, indique quels sont les principaux politiciens du mouvement souverainiste dans les années 1960-1970, quel objectif ils poursuivent et quel moyen ils veulent utiliser pour atteindre leur objectif.",
+        responseSpace: { type: "labeled-list", items: ["Principaux politiciens", "Objectif poursuivi", "Moyen utilisé"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-f1", label: "Réglette (3 points)", ...R_FAITS_3PT_3SUR3 }],
+      documents: pickDocs('mq-faits-1', 1, 2, 3),
+      corrige: "Principaux politiciens : René Lévesque et Pierre Bourgault. Objectif poursuivi : ils veulent l'indépendance (la souveraineté) du Québec. Moyen utilisé : ils privilégient des moyens démocratiques en formant des partis politiques pour se faire élire (le RIN tient des assemblées et diffuse de l'information par des tracts, des brochures et un journal ; le Parti québécois propose la tenue d'un référendum)." },
+
+    // ===== Néonationalisme Q2 — Situer dans le temps — Montée du Parti québécois =====
+    { id: "q-mq-situer-5", operation: "Situer dans le temps et dans l'espace", numero: 5, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Place les documents 1 à 4 en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"] }
+      },
+      reglettes: [{ id: "r-mq-s5", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('mq-situer-5', 1, 2, 3, 4),
+      corrige: ["Document 2", "Document 3", "Document 4", "Document 1"] },
+
+    // ===== Néonationalisme Q3 — Différences/similitudes — RIN vs Daniel Johnson =====
+    { id: "q-mq-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "En utilisant les documents 1 et 2, dégage la différence entre la position du Rassemblement pour l'indépendance nationale et celle de Daniel Johnson sur le statut du Québec dans le Canada.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-d4", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE_ETABLIT }],
+      documents: pickDocs('mq-differences-4', 1, 2),
+      corrige: "Le RIN envisage l'indépendance complète du Québec comme l'idéal politique à atteindre : le Québec et le Canada deviendraient deux pays distincts. Daniel Johnson, lui, présente d'abord le fédéralisme comme la situation idéale et demande une réécriture de la Constitution reconnaissant l'existence de deux nations ; il n'envisage l'indépendance qu'en dernier recours, si la nation canadienne-française ne parvient pas à s'épanouir au sein du Canada." },
+
+    // ===== Période duplessiste Q1 — Situer dans l'espace — Ressources naturelles ~1960 =====
+    { id: "q-mq-situer-6", operation: "Situer dans le temps et dans l'espace", numero: 6, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Consulte les documents 1 à 6 et situe chacun d'eux sur la carte (document 7) illustrant l'exploitation des ressources naturelles à la fin de la période duplessiste : pour chaque document, coche la lettre qui lui correspond.",
+        responseSpace: { type: "checkbox-table", columns: ["A", "B", "C", "D", "E", "F"], rows: ["Document 1", "Document 2", "Document 3", "Document 4", "Document 5", "Document 6"] }
+      },
+      reglettes: [{ id: "r-mq-s6", label: "Réglette (3 points)", ...R_SITUER_3PT_SP_6SUR6 }],
+      documents: pickDocs('mq-situer-6', 1, 2, 3, 4, 5, 6, 7),
+      corrige: [
+        [false, false, false, false, false, true],  // Document 1 (Fer et titane, Havre-Saint-Pierre) → F
+        [false, false, false, false, true, false],  // Document 2 (Fer, Sept-Îles/Schefferville) → E
+        [true, false, false, false, false, false],  // Document 3 (Métaux, Abitibi) → A
+        [false, true, false, false, false, false],  // Document 4 (Pâtes et papiers, Mauricie) → B
+        [false, false, false, true, false, false],  // Document 5 (Hydroélectricité, Bersimis/Côte-Nord) → D
+        [false, false, true, false, false, false]   // Document 6 (Voie maritime du Saint-Laurent) → C
+      ] },
+
+    // ===== Période duplessiste Q2 — Situer dans le temps — Grève de l'amiante (chrono) =====
+    { id: "q-mq-situer-7", operation: "Situer dans le temps et dans l'espace", numero: 7, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Les documents 1 à 3 relatent les principaux évènements de la grève de l'amiante. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e"] }
+      },
+      reglettes: [{ id: "r-mq-s7", label: "Réglette (2 points)", ...R_SITUER_2PT_T3 }],
+      documents: pickDocs('mq-situer-7', 1, 2, 3),
+      corrige: ["Document 3", "Document 1", "Document 2"] },
+
+    // ===== Période duplessiste Q3 — Causes/conséquences — Grève de l'amiante =====
+    // Réutilise les documents de mq-situer-7 (mêmes docs 1-3 que la question chrono).
+    { id: "q-mq-causes-6", operation: "Déterminer des causes et des conséquences", numero: 6, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "En te basant sur les documents 1 à 3 (les mêmes qu'à la question précédente), nomme deux causes et deux conséquences de la grève de l'amiante.",
+        responseSpace: { type: "labeled-list", items: ["Cause 1", "Cause 2", "Conséquence 1", "Conséquence 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-c6", label: "Réglette (4 points)", ...R_CAUSES_4PT_2CAUSES_2CONS }],
+      documents: pickDocs('mq-situer-7', 1, 2, 3),
+      corrige: "Causes : (1) les ouvriers réclament une augmentation de salaire de 15 cents l'heure ; (2) ils exigent que la compagnie s'engage à supprimer la poussière d'amiante (enjeu de santé et de sécurité). Conséquences : (1) la grève entraine des actes de violence et une intervention policière (émeute à Asbestos, blessés) ; (2) elle se termine par la signature d'un contrat collectif accordant des gains aux travailleurs (augmentation de salaire, congés payés, vacances)." },
+
+    // ===== Population Q1 — Causes/conséquences — Causes de la dénatalité =====
+    { id: "q-mq-causes-7", operation: "Déterminer des causes et des conséquences", numero: 7, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Le début des années 1960 marque la fin du baby-boom, et la natalité chute progressivement. À l'aide des documents 1 à 3, indique, pour chaque document, une cause de cette baisse de la natalité (dénatalité).",
+        responseSpace: { type: "labeled-list", items: ["Document 1", "Document 2", "Document 3"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-c7", label: "Réglette (3 points)", ...R_CAUSES_3PT_3CAUSES }],
+      documents: pickDocs('mq-causes-7', 1, 2, 3),
+      corrige: "Document 1 : l'accès à la contraception (la pilule) permet aux femmes de limiter les naissances. Document 2 : la baisse de la pratique religieuse (sécularisation) réduit l'influence de l'Église, qui valorisait les familles nombreuses. Document 3 : la hausse de la participation des femmes au marché du travail (de 19,8 % en 1941 à 34,3 % en 1971) les amène à avoir moins d'enfants." },
+
+    // ===== Population Q2 — Établir des faits — Caractéristiques de la société de consommation =====
+    { id: "q-mq-faits-2", operation: "Établir des faits", numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "La période d'après-guerre marque le début de l'essor de la société de consommation. À l'aide des documents 1 à 4, indique, pour chaque document, une caractéristique de cette société de consommation.",
+        responseSpace: { type: "labeled-list", items: ["Document 1", "Document 2", "Document 3", "Document 4"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-f2", label: "Réglette (4 points)", ...R_FAITS_4PT_4SUR4 }],
+      documents: pickDocs('mq-faits-2', 1, 2, 3, 4),
+      corrige: "Document 1 : la diffusion des électroménagers (le réfrigérateur), qui facilitent la vie quotidienne. Document 2 : l'essor des loisirs et du tourisme. Document 3 : la place centrale de l'automobile et des biens de consommation. Document 4 : l'apparition des centres d'achats et le développement de la banlieue." },
+
+    // ===== Population Q4 — Causalité — Pensionnats et assimilation des Autochtones =====
+    { id: "q-mq-causalite-3", operation: "Établir des liens de causalité", numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique comment une mesure mise en place par le gouvernement canadien pour atteindre ses objectifs affecte différentes communautés autochtones. En utilisant les documents 1, 2 et 3, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Les objectifs poursuivis par le gouvernement canadien",
+          "La mesure mise en place pour atteindre ces objectifs",
+          "Une conséquence de cette mesure sur les Autochtones"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-mq-ca3", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('mq-causalite-3', 1, 2, 3),
+      corrige: "Le gouvernement canadien poursuit l'objectif d'assimiler les Autochtones à la société eurocanadienne, en leur « apportant les bienfaits de la civilisation » (document 2). Pour atteindre cet objectif, il met en place le réseau des pensionnats autochtones répartis sur le territoire (documents 2 et 3). Une conséquence est la perte de la culture et de la langue autochtones ainsi que la rupture des liens familiaux, comme en témoigne Lucie Basile (document 1)." },
+
+    // ===== Culture/langue Q1 — Changements/continuités — Théâtre québécois =====
+    { id: "q-mq-continuite-3", operation: "Déterminer des changements et des continuités", numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir du document 1, relève un élément de changement lié au théâtre québécois.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co3", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-3', 1),
+      corrige: "Il y a changement : avant le milieu des années 1960, le théâtre québécois s'appuyait surtout sur le répertoire international ; une dizaine d'années plus tard, grâce notamment au Centre d'essai des auteurs dramatiques, une dramaturgie québécoise originale s'est développée (185 pièces et 85 auteurs)." },
+
+    // ===== Culture/langue Q2 — Changements/continuités — Financement des bibliothèques =====
+    { id: "q-mq-continuite-4", operation: "Déterminer des changements et des continuités", numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "En utilisant le document 1, indique un changement concernant le financement des lieux de diffusion culturelle comme les bibliothèques à partir de 1960. Spécifie le changement à l'aide de données précises.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co4", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-4', 1),
+      corrige: "Il y a changement : le financement des bibliothèques augmente fortement et l'État provincial commence à les subventionner. Le total des subventions passe de 1 554 000 $ en 1960 à 5 422 811 $ en 1969, et le ministère des Affaires culturelles verse 1 472 432 $ en 1969 alors qu'il ne versait rien (N/d) en 1960." },
+
+    // ===== Culture/langue Q3 — Situer dans le temps — Charte de la langue française (Loi 101) =====
+    { id: "q-mq-situer-8", operation: "Situer dans le temps et dans l'espace", numero: 8, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        responseSpace: { type: "timeline-segments", periods: [
+          { letter: "A", range: "1945–1955" },
+          { letter: "B", range: "1955–1960" },
+          { letter: "C", range: "1960–1970" },
+          { letter: "D", range: "1970–1980" }
+        ]}
+      },
+      reglettes: [{ id: "r-mq-s8", label: "Réglette (1 point)", ...R_SITUER_1PT_FAITS }],
+      documents: pickDocs('mq-situer-8', 1),
+      corrige: "D (la Charte de la langue française, la loi 101, est adoptée en 1977, soit la période 1970-1980)." },
+
+    // ===== Culture/langue Q4 — Mettre en relation — Ministère de l'Immigration et langue française =====
+    { id: "q-mq-relation-3", operation: "Mettre en relation des faits", numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Le document 1 précise des raisons pour lesquelles le gouvernement du Québec songe à créer un ministère de l'Immigration. Associe une de ces raisons à la protection de la langue française et justifie ta réponse.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-r3", label: "Réglette (2 points)", ...R_RELATION_2PT_1FAIT_GUIDE }],
+      documents: pickDocs('mq-relation-3', 1),
+      corrige: "La raison liée à la protection de la langue française est la deuxième : le Québec veut s'occuper lui-même de l'immigration afin que celle-ci ne devienne pas, entre les mains du gouvernement fédéral, un moyen de modifier la composition culturelle (et donc linguistique) de la société québécoise. En contrôlant l'immigration, le Québec peut mieux protéger le caractère francophone de sa population." },
+
+    // ===== Mouvements sociaux Q1 — Causalité — Loi anti-briseurs de grève =====
+    { id: "q-mq-causalite-4", operation: "Établir des liens de causalité", numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir des documents 1 à 3, explique comment un changement revendiqué par les syndicats pour régler une situation qui les mécontente permet d'obtenir des gains pour les travailleurs. En utilisant les documents, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Une pratique qui nuit aux grévistes et qui est permise dans le Code du travail",
+          "Un changement revendiqué par les syndicats",
+          "Un gain obtenu pour les travailleurs"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-mq-ca4", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('mq-causalite-4', 1, 2, 3),
+      corrige: "Une pratique qui nuit aux grévistes est l'utilisation de briseurs de grève (« scabs ») pour maintenir la production pendant une grève, ce que le Code du travail permettait (documents 2 et 3 : la grève du 7UP se prolonge parce que le patron remplace les grévistes). Les syndicats revendiquent l'interdiction des briseurs de grève (document 2). Le gain obtenu est l'adoption, en 1977, d'une loi interdisant à l'employeur de remplacer les salariés en grève (document 1)." },
+
+    // ===== Mouvements sociaux Q2 — Établir des faits — Madeleine Parent =====
+    { id: "q-mq-faits-3", operation: "Établir des faits", numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une revendication de la syndicaliste Madeleine Parent quant au travail des femmes.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-mq-f3", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('mq-faits-3', 1),
+      corrige: "Madeleine Parent revendique de meilleurs salaires et de meilleures conditions de travail pour les femmes, en particulier celles qui travaillent dans l'industrie du textile." },
+
+    // ===== Mouvements sociaux Q3 — Établir des faits — Gains des Cris (Convention Baie-James) =====
+    { id: "q-mq-faits-4", operation: "Établir des faits", numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Selon le document 1, quels sont les gains réalisés par les Cris dans le cadre de la signature de la Convention de la Baie-James et du Nord québécois ?",
+        responseSpace: { type: "labeled-list", items: ["Gain 1", "Gain 2", "Gain 3"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-f4", label: "Réglette (3 points)", ...R_FAITS_3PT_3SUR3 }],
+      documents: pickDocs('mq-faits-4', 1),
+      corrige: "Gain 1 : des droits exclusifs et permanents de chasse, de pêche et de trappage sur certaines terres. Gain 2 : une voix dans les décisions touchant leur environnement et une participation aux projets d'aménagement du territoire. Gain 3 : une compensation financière de 225 millions de dollars versée sur 20 ans." },
+
+    // ===== Mouvements sociaux Q4 — Situer dans le temps — Loi sur la capacité juridique (1964) =====
+    { id: "q-mq-situer-9", operation: "Situer dans le temps et dans l'espace", numero: 9, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Sur la ligne du temps, encercle la lettre correspondant à la période pendant laquelle entre en vigueur la loi présentée dans le document 1.",
+        responseSpace: { type: "timeline-segments", periods: [
+          { letter: "A", range: "1945–1955" },
+          { letter: "B", range: "1955–1960" },
+          { letter: "C", range: "1960–1970" },
+          { letter: "D", range: "1970–1980" }
+        ]}
+      },
+      reglettes: [{ id: "r-mq-s9", label: "Réglette (1 point)", ...R_SITUER_1PT_FAITS }],
+      documents: pickDocs('mq-situer-9', 1),
+      corrige: "C (la Loi sur la capacité juridique de la femme mariée entre en vigueur en 1964, soit la période 1960-1970)." },
+
+    // ===== Révolution tranquille Q1 — Différences/similitudes — Services par l'Église vs l'État =====
+    { id: "q-mq-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Qu'est-ce qui distingue les documents 1 et 2 des documents 3 et 4 ? Dégage une différence entre les deux paires de documents, puis dégage une similitude entre ces deux paires.",
+        responseSpace: { type: "labeled-list", items: ["Différence", "Similitude"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-mq-d5", label: "Réglette (2 points)", ...R_DIFFSIM_2PT_1DIFF_1SIM }],
+      documents: pickDocs('mq-differences-5', 1, 2, 3, 4),
+      corrige: "Différence : dans les documents 1 et 2, ce sont des membres du clergé (un religieux, une religieuse) qui assurent les services d'éducation et de santé, tandis que dans les documents 3 et 4, ce sont des laïcs (un enseignant, une infirmière) au service de l'État. Similitude : dans les deux cas, on offre les mêmes services à la population, soit l'éducation et les soins de santé." },
+
+    // ===== Révolution tranquille Q2 — Causalité — Commission Parent et laïcisation de l'éducation =====
+    { id: "q-mq-causalite-5", operation: "Établir des liens de causalité", numero: 5, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Selon les documents 1 à 3, comment l'étude du système scolaire par la Commission royale d'enquête sur l'enseignement (Commission Parent) transforme-t-elle le rôle de l'Église en éducation ? En utilisant les documents, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Le fonctionnement du système scolaire québécois au début de la Révolution tranquille",
+          "Les recommandations de la Commission royale d'enquête sur l'enseignement (Commission Parent)",
+          "Les conséquences sur le rôle de l'Église en éducation"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-mq-ca5", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('mq-causalite-5', 1, 2, 3),
+      corrige: "Au début de la Révolution tranquille, l'Église catholique contrôle le système scolaire : par le comité catholique, elle décide des programmes, des manuels, de l'embauche des enseignants, etc. (document 2). La Commission Parent recommande de laïciser la direction du système scolaire en créant un ministère de l'Éducation non confessionnel et de déconfessionnaliser l'enseignement supérieur (document 1). En conséquence, après l'adoption du Bill 60 en 1964, l'Église perd son pouvoir sur la direction du système scolaire — même si elle conserve un rôle dans les aspects moraux et religieux —, et l'État laïcise l'éducation (document 3)." },
+
+    // ===== Révolution tranquille Q3 — Causes/conséquences — Mesures économiques de Lesage =====
+    { id: "q-mq-causes-8", operation: "Déterminer des causes et des conséquences", numero: 8, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "En examinant les documents 1 et 2, identifie, pour chacun, une mesure économique mise en place par le gouvernement de Jean Lesage et explique la raison qui pousse le gouvernement à prendre cette mesure.",
+        responseSpace: { type: "labeled-list", items: ["Document 1 — mesure et raison", "Document 2 — mesure et raison"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-mq-c8", label: "Réglette (4 points)", ...R_CAUSES_4PT_2MESURES_2CAUSES }],
+      documents: pickDocs('mq-causes-8', 1, 2),
+      corrige: "Document 1 : la mesure est la nationalisation de l'électricité (création d'Hydro-Québec) ; la raison est de redonner aux Québécois le contrôle de leur économie et de leurs ressources plutôt que de les laisser à des compagnies privées (« maîtres chez nous »). Document 2 : la mesure est la création de la Caisse de dépôt et placement ; la raison est de regrouper l'épargne collective des Québécois afin qu'ils prennent le contrôle des centres de décisions économiques et financent la modernisation de l'économie." },
+
+    // ===== Révolution tranquille Q4 — Différences/similitudes — 3 acteurs sur l'avortement =====
+    { id: "q-mq-differences-6", operation: "Dégager des différences et des similitudes", numero: 6, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent les positions de trois acteurs sur l'avortement. Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-d6", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('mq-differences-6', 1, 2, 3),
+      corrige: "Lise Payette (document 3) présente une position différente : elle défend la légalisation de l'avortement au nom de la liberté de la femme de décider. Les deux autres acteurs s'opposent à l'avortement : l'Association des bureaux médicaux des hôpitaux du Québec (document 1) considère l'avortement comme un homicide et s'oppose à sa légalisation, et le jésuite Marcel Marcotte (document 2) estime qu'il ne devrait être autorisé que dans les cas de péril grave pour la vie ou la santé de la mère." }
 
   ]
 };

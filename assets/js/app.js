@@ -2183,12 +2183,15 @@
       outerWidth = outerWidth || 10500;
       const isNarrow = outerWidth < 6000;
       const innerW = outerWidth - 200; // un peu de marge interne pour le cell padding
-      const fontSize = isNarrow ? 18 : 20;
-      const sourceFontSize = isNarrow ? 12 : 14;
+      // Taille de police UNIFORME pour tous les documents, quelle que soit la largeur de leur
+      // colonne (paire côte à côte ou pleine largeur) : les documents d'une même page ont ainsi
+      // une police identique. `isNarrow` ne sert désormais qu'au dimensionnement des images.
+      const fontSize = 20;
+      const sourceFontSize = 14;
       const elements = [];
 
       const titleP = new Paragraph({
-        children: [new TextRun({ text: d_doc.title, bold: true, color: "1F77B4", size: isNarrow ? 20 : 22 })],
+        children: [new TextRun({ text: d_doc.title, bold: true, color: "1F77B4", size: 22 })],
         spacing: { after: 80 }
       });
       const sourcesPs = d_doc.sources.map(s =>
