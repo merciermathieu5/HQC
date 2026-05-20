@@ -1,8 +1,61 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.23.0 (mai 2026) ⭐ INTÉGRATION SOMMATIVES P6 (1896-1945)
-   124 questions · 6 périodes (P1-P6) · 7 OI · 2 cycles
+   HQC · 3e + 4e secondaire — Données — v1.24.0 (mai 2026) ⭐ INTÉGRATION GUIDES RÉCIT 1896-1945
+   138 questions · 6 périodes (P1-P6) · 7 OI · 2 cycles
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6 = 16 (7/7 OI) ⭐ (sommatives Section A V-A + V-B), P7-P8 = 0
+   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6 = 30 (7/7 OI) ⭐⭐ (16 sommatives + 14 guides RÉCIT), P7-P8 = 0
+   v1.24.0 — INTÉGRATION DES GUIDES PÉDAGOGIQUES RÉCIT 1896-1945 :
+     • Intégration de 14 questions « Avec documents » tirées des 6 guides élèves
+       (documents.recitus.qc.ca) couvrant la période 1896-1945 : Catholicisme/éducation/luttes
+       des femmes (4 questions), Politique intérieure et immigration (3), Politique canadienne
+       (1), Vie économique (3), Grande dépression (1), Seconde Guerre mondiale (2).
+     • 3 questions sources écartées comme doublons de fond ou format atypique :
+       - Polit. can. Q1 (Laurier/Bourassa/Borden sur marine canadienne 1910) ≈ q-na-differences-1
+         V-A (Bourassa/Laurier/Tupper sur Boers) : 3 acteurs, même enjeu militaire impérial,
+         même rubrique R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION.
+       - Polit. can. Q2 (analyse iconographique affiche de propagande PGM) : protocole en
+         4 étapes (intention/contextualisation/compréhension/réponse) hors-portée HQC.
+       - Grande dép. Q2 (2 évènements baisse immigration) ≈ q-na-continuite-1 : même contenu
+         testé (PGM + Crise des années 30), seul le support visuel diffère (graphique vs tableau).
+     • 2 nouvelles réglettes créées :
+       R_CAUSES_3PT_T6_CONS_GUIDE (Polit. can. Q3 — 6 conséquences à déterminer, 3 pts,
+         format soma simple en miroir de RUBRIC_CAUSALITE_3PT),
+       R_RELATION_2PT_1FAIT_GUIDE (Grande dép. Q1 — 1 fait à mettre en relation, 2 pts,
+         style « guide » v1.22.0 distinct de R_RELATION_1PT_1FAIT P5 V-B).
+     • Réglettes réutilisées : R_FAITS_1PT_1SUR1 (Catho Q1), R_SITUER_2PT_T4 (Catho Q2 et 2GM Q2),
+       R_CONTINUITES_2PT_GEN (Catho Q3), R_RELATION_2PT_4_PART (Catho Q4),
+       R_CAUSES_2PT_GEN_1CAUSE (Polit. intér. Q1), R_CAUSES_2PT_T3_CONS_MULTI (Polit. intér. Q2
+       et 2GM Q1), R_DIFFERENCES_2PT_DIVERGENCE (Polit. intér. Q3), RUBRIC_CAUSALITE_3PT
+       (Vie éco Q1, Q2 et Q3).
+     • Images extraites natives via unzip des .docx (qualité maximale, embedded media) :
+       8 images :
+       na-situer-3/doc2 (coupure Le Devoir « Depuis hier soir, le suffrage féminin est devenu
+         loi dans la province de Québec »),
+       na-continuite-5/doc1 (Orphelinat agricole de Notre-Dame de Montfort, 1896),
+       na-continuite-5/doc2 (religieuse enseignante avec deux écolières — voir note ci-dessous
+         sur la source PDF buggée),
+       na-causes-7/doc1 (Manufacture Northern Electric Co. Ltd., munitions, 1916),
+       na-causes-7/doc4 (Camp d'internement de Spirit Lake en Abitibi, entre 1915 et 1917),
+       na-causalite-3/doc1 (Travailleurs d'une usine Dominion Textile, vers 1895),
+       na-causalite-4/doc2 (Convention des unions nationales catholiques à Hull, 1921),
+       na-causes-8/doc1 (Cecilia Butler à l'usine de munitions John Inglis, 1943),
+       na-situer-4/doc4 (Winston Churchill et W.L. Mackenzie King au Château Frontenac).
+     • Image générée nativement via PIL Python (option B, pattern v1.23.0) :
+       na-faits-1/doc1 (tableau « Fréquentation scolaire à Québec, 1901, par groupe social »).
+       Script de rendu : /home/claude/render-frequentation-table.py (rendu 4x puis downsample
+       Lanczos pour qualité d'impression). En-tête col 2 sur 2 lignes (« Taux de fréquentation /
+       scolaire ») comme dans le PDF source.
+     • Note Catho Q3 (na-continuite-5/doc2) : le PDF source du guide RÉCIT cite pour Doc 7
+       la même source que Doc 6 (Orphelinat Notre-Dame de Montfort, 1896) alors que l'image
+       embedded effectivement présente est différente (scène de classe avec une religieuse et
+       deux écolières, datant probablement de 1930-1950). C'est manifestement un bug de
+       copier-coller du fichier RÉCIT. L'image illustre néanmoins parfaitement la continuité
+       du rôle de l'Église dans l'éducation entre 1896 et 1950, ce qui est précisément l'objet
+       de la question. Source documentée comme « à confirmer » dans le champ sources.
+     • Note Catho Q4 : énoncé du guide RÉCIT formulé « Inscrivez les numéros des documents... »
+       (vouvoiement) — adapté au tutoiement pour cohérence avec le reste du catalogue HQC.
+     • Convention de renumérotation appliquée à chaque section : un document source devient
+       Doc 1 dans sa section (refs dans l'énoncé renumérotées : ex. « documents 8 à 11 » du
+       Catho Q4 → « documents 1, 2, 3 et 4 »).
    v1.23.0 — INTÉGRATION DES ÉVALUATIONS SOMMATIVES P6 1896-1945 SECTION A :
      • Intégration de 16 questions « Avec documents » tirées des Sections A des deux versions
        (V-A : 8 questions, V-B : 8 questions) couvrant la période 1896-1945 « Les nationalismes
@@ -610,6 +663,34 @@ const R_SITUER_1PT_FAITS = rubric2(
   "Situer dans le temps et dans l'espace",
   "L'élève situe les faits dans le temps.",
   "L'élève ne situe pas les faits dans le temps."
+);
+
+// ============ Réglettes ajoutées v1.24.0 (Guides pédagogiques RÉCIT 1896-1945) ============
+
+// Six conséquences à déterminer (3 points) — Polit. can. Q3 du guide RÉCIT.
+// Question à 6 documents (Docs 5-10 source) où l'élève doit nommer une conséquence pour
+// chacun. Le guide ne fournit pas de barème ; on calque le format à 3 points en miroir
+// de RUBRIC_CAUSALITE_3PT mais en mode simple (pas de matrice). Distinct de
+// R_CAUSES_2PT_T3_CONS_MULTI (3 conséquences à 2 pts).
+const R_CAUSES_3PT_T6_CONS_GUIDE = {
+  type: "simple", opLabel: "Déterminer des causes et des conséquences", maxPoints: 3,
+  levels: [
+    { points: "3 points", condition: "L'élève détermine toutes les conséquences. (6 sur 6)" },
+    { points: "2 points", condition: "L'élève détermine la majorité des conséquences. (4 ou 5 sur 6)" },
+    { points: "1 point",  condition: "L'élève détermine certaines conséquences. (2 ou 3 sur 6)" },
+    { points: "0 point",  condition: "L'élève ne détermine pas les conséquences. (0 ou 1 sur 6)" }
+  ]
+};
+
+// Mettre en relation 1 fait (2 points) — Grande dép. Q1 du guide RÉCIT (Loi assurance-chômage
+// inspirée du keynésianisme). Libellé en miroir du style « guide » introduit en v1.22.0 :
+// « plus ou moins correctement / ne met pas en relation ». Distinct de R_RELATION_1PT_1FAIT
+// (P5 V-B, 1 pt) et de R_RELATION_2PT_2_PART (2 faits).
+const R_RELATION_2PT_1FAIT_GUIDE = rubric3(
+  "Mettre en relation des faits",
+  "L'élève met correctement en relation le fait.",
+  "L'élève met plus ou moins correctement en relation le fait.",
+  "L'élève ne met pas en relation le fait."
 );
 
 // ============ Helpers de sélection de documents ============
@@ -2232,6 +2313,221 @@ const DOCS = {
     { id: "na-co4-d1", title: "Document 1", layout: "text-only",
       text: "« [...] les publications communistes qui font de la propagande pour le communisme, resteront bannies au Canada, tandis que les publications qui s'occupent de la question russe, de l'effort de guerre russe, seront admises [...] »",
       sources: ["Source du texte : Musée Canadien de la Guerre, en ligne."] }
+  ],
+
+  // ============================================================
+  // === v1.24.0 — Guides pédagogiques RÉCIT 1896-1945 (14 questions) ===
+  // ============================================================
+
+  // ===== Catho Q1 — Établir des faits — Lien groupe social/fréquentation scolaire =====
+  // 1 doc unique (tableau Word natif recréé via PIL : voir render-frequentation-table.py).
+  'na-faits-1': [
+    { id: "na-f1-d1", title: "Document 1 — La fréquentation scolaire des enfants âgés de 12 à 15 ans dans la ville de Québec en fonction du groupe social, 1901", layout: "image-only",
+      imageUrl: "assets/img/na-faits-1/doc1.png", imageWidthCm: 12,
+      sources: ["Source des données : Mélanie Julien, « La fréquentation scolaire à Québec, 1871-1901 : l'effet de l'industrialisation, de l'appartenance culturelle et de la classe sociale », Cahiers québécois de démographie, vol. 37, no 1 (printemps 2008), p. 43-44, en ligne sur Érudit."] }
+  ],
+
+  // ===== Catho Q2 — Situer dans le temps — 4 docs ordre chrono luttes des femmes =====
+  // Renumérotation : Docs 2-5 source → Docs 1-4. Ordre chrono attendu (source) : 5, 3, 4, 2
+  // → en renumérotation : Doc 4 (École Marg.-Bourgeoys 1908), Doc 2 (droit vote féd. 1918),
+  // Doc 3 (Code civil 1931), Doc 1 (suffrage Québec 1940).
+  // Note : les dates sont visibles dans les sources des docs (article daté, SQ 1930-31, etc.) —
+  // reproduction fidèle du PDF source, pédagogiquement c'est passable car l'élève doit
+  // associer le doc à son évènement, pas simplement lire la date.
+  'na-situer-3': [
+    { id: "na-s3-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/na-situer-3/doc2.png", imageWidthCm: 13,
+      sources: ["Source : Auteur inconnu, « Depuis hier soir, le suffrage féminin est devenu loi dans la province de Québec », Le Devoir, p. 6, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335. Licence : image utilisée avec la permission du Devoir, tous droits réservés."] },
+    { id: "na-s3-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] la Chambre [des communes] a décidé d'accorder le droit de vote aux femmes canadiennes »",
+      sources: ["Source : Auteur inconnu, « Les femmes voteront », L'Étoile du Nord, 25 avril 1918, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000169256."] },
+    { id: "na-s3-d3", title: "Document 3", layout: "text-only",
+      text: "Le 11 mars 19[...], l'article suivant est ajouté au Code civil du Bas-Canada :\n\n« 1425 a) [...] les produits du travail personnel de la femme, les économies en provenant et les meubles ou immeubles qu'elle aura acquis en en faisant emploi [...] sont réservés à l'entière administration de la femme. »",
+      sources: ["Source : Loi modifiant le Code civil et le Code de procédure civile, relativement aux droits civils de la femme, SQ 1930-31 (21 GeoV), c. 101, art. 1425, en ligne sur Bibliothèque de l'Assemblée nationale du Québec."] },
+    { id: "na-s3-d4", title: "Document 4", layout: "text-only",
+      text: "« Grâce au dévouement des Sœurs de la Congrégation de Notre-Dame, Montréal sera bientôt doté d'une École supérieure pour les jeunes filles [collège classique]. C'est au mois d'octobre prochain, dans leur nouvelle maison-mère de la rue Sherbrooke, que les Filles de l'illustre Marguerite Bourgeois ouvriront [...] [la première] École d'Enseignement supérieur. »",
+      sources: ["Source : Auteur inconnu, « Une école d'enseignement supérieur », L'Enseignement primaire, vol. 30, no 1, septembre 1908, p. 63, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004885831."] }
+  ],
+
+  // ===== Catho Q3 — Changements/continuités — Rôle de l'Église 1896-1950 =====
+  // Renumérotation : Docs 6 et 7 source → Docs 1 et 2. Énoncé adapté.
+  // Doc 2 : voir note d'en-tête v1.24.0 — source PDF buggée (dupliquée du Doc 1) mais
+  // l'image embedded est différente (scène scolaire avec religieuse). Source documentée
+  // comme « à confirmer ».
+  'na-continuite-5': [
+    { id: "na-co5-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-5/doc1.png", imageWidthCm: 10,
+      sources: ["Source de l'image : A.J. Rice, Laprés & Lavergne, L'orphelinat agricole de Notre-Dame de Montfort (1896), Bibliothèque et Archives nationales du Québec, notice 0002748414. Licence : domaine public."] },
+    { id: "na-co5-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-5/doc2.png", imageWidthCm: 10,
+      sources: ["Source de l'image : Auteur inconnu, Religieuse enseignante avec deux écolières (entre 1930 et 1950 environ). Source précise à confirmer (la référence citée dans le PDF source du guide RÉCIT correspond au Document 1 et ne s'applique pas à cette image)."] }
+  ],
+
+  // ===== Catho Q4 — Mettre en relation des faits — 4 docs → 2 idéologies =====
+  // Renumérotation : Docs 8-11 source → Docs 1-4.
+  // Catégories : Nationalisme canadien-français (Docs 2 et 4) | Clérico-nationalisme (Docs 1 et 3).
+  // Note : énoncé source dit « Inscrivez » (vouvoiement) — adapté en « Inscris » pour cohérence
+  // avec le reste du catalogue HQC qui tutoie systématiquement l'élève.
+  'na-relation-3': [
+    { id: "na-r3-d1", title: "Document 1", layout: "text-only",
+      text: "« L'habitant canadien aime beaucoup sa famille. Il aime aussi beaucoup sa terre qu'il a faite, en tout ou en partie, pouce par pouce, pied par pied, qui lui permet de mettre du pain sur la table, qui chaque jour réunit en corvée joyeuse la bande de ses enfants et sa femme elle-même, dure aux travaux des champs comme à ceux de la maison. »",
+      sources: ["Source : Abbé Lionel Groulx, Chez nos ancêtres, Montréal, Bibliothèque de l'Action française, 1920, p. 23 et 27, en ligne sur Fondation Lionel-Groulx."] },
+    { id: "na-r3-d2", title: "Document 2", layout: "text-only",
+      text: "Cette idéologie défend l'autonomie du Canada par rapport à l'Empire britannique et l'autonomie des provinces vis-à-vis du gouvernement fédéral.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-r3-d3", title: "Document 3", layout: "text-only",
+      text: "Cette idéologie prône des valeurs traditionnelles. Elle place la religion catholique au centre de ses valeurs auxquelles s'ajoutent l'agriculture et la langue française.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-r3-d4", title: "Document 4", layout: "text-only",
+      text: "« Il s'agit de décider si le peuple canadien sera appelé à prendre part à toutes les guerres de l'Empire sans que les portes du cabinet et du parlement impériaux lui soient ouvertes, sans même que ses représentants et son gouvernement soient consultés sur l'opportunité de ces luttes sanglantes. Je ne consentirai jamais à appuyer cette politique rétrograde. »\n\nHenri Bourassa, 1899",
+      sources: ["Source : Henri Bourassa, « Lettre de démission à Sir Wilfrid Laurier », 20 octobre 1899, citée dans Yvan Lamonde et Claude Corbo, Le rouge et le bleu. Une anthologie de la pensée politique au Québec de la Conquête à la Révolution tranquille, Montréal, Presses de l'Université de Montréal, 1999, p. 302-303."] }
+  ],
+
+  // ===== Polit. intér. Q1 — Causes/conséquences — Objectif décret immigration 1931 =====
+  // 1 doc unique (Décret PC 1931-695).
+  'na-causes-5': [
+    { id: "na-c5-d1", title: "Document 1", layout: "text-only",
+      text: "« L'agent d'immigration peut permettre l'entrée au Canada à [...] :\nUn sujet britannique entrant au Canada directement ou indirectement [...] et disposant de moyens suffisants pour se maintenir jusqu'à ce qu'il parvienne à trouver un emploi [...].\nUn citoyen américain entrant au Canada en provenance des États-Unis et disposant de moyens suffisants pour se maintenir jusqu'à ce qu'il parvienne à trouver un emploi. [...]\nUn agriculteur ayant les moyens suffisants pour cultiver au Canada. [...]\nLes dispositions de ce Décret du conseil ne s'appliquent pas aux immigrants de race asiatique. »",
+      sources: ["Source : Gouvernement du Canada, « Décret du Conseil PC 1931-695, 21 mars 1931 », Bibliothèque et Archives Canada, MIKAN 1446825."] }
+  ],
+
+  // ===== Polit. intér. Q2 — Causes/conséquences — 3 docs conséquences augmentation pop urbaine =====
+  // Renumérotation : Docs 2-4 source → Docs 1-3.
+  'na-causes-6': [
+    { id: "na-c6-d1", title: "Document 1 — Extrait du rapport publié en 1910 par la Commission royale d'enquête qui avait comme mandat de proposer des solutions pour enrayer la propagation de la tuberculose", layout: "text-only",
+      text: "« Nos villes ne présentent pas toutes le même degré d'insalubrité ni les mêmes éléments. Entre toutes, Montréal est la plus insalubre, à cause de son atmosphère pleine de poussière soulevée par les automobiles et les tramways; de la fumée fournie par les cheminées de ses nombreuses usines; de ses nombreuses habitations insalubres; de sa population considérable d'immigrants qui se tassent dans des logements malpropres, infectés et humides et dans des quartiers insalubres par leur vétusté; enfin, à cause du tassement des maisons et de l'étroitesse des rues. »",
+      sources: ["Source : Emmanuel Persillier Lachapelle et al., Rapport de la Commission royale de la tuberculose, Province de Québec, 1909-1910, p. 86, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0006204728."] },
+    { id: "na-c6-d2", title: "Document 2 — Extrait d'un article de journal paru en 1921", layout: "text-only",
+      text: "« [I]l n'en est pas ainsi dans des campagnes où il n'y a pas d'égouts, pas d'aqueduc, pas de chauffage central! [...] Combien d'agriculteurs, chez nous, furent attirés à la ville par l'attrait des commodités matérielles qu'offre, en comparaison de l'habitation rurale la plus opulente [luxueuse], le logement urbain le plus modeste? »",
+      sources: ["Source : Ol. Asselin, « L'hygiène à la ferme », L'Avenir du Nord, 1er avril 1921, p. 2, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000164429."] },
+    { id: "na-c6-d3", title: "Document 3 — Extrait d'un article de journal publié en 1917", layout: "text-only",
+      text: "« La désertion des campagnes, en congestionnant les faubourgs des villes, en a augmenté la densité, qui a eu pour effet de raréfier les logements convenables, qui étaient déjà assez rares auparavant. »",
+      sources: ["Source : Louis-Marie Royer, « Le problème des habitations », Le Progrès de l'Est, 26 janvier 1917, p. 4, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000053364."] }
+  ],
+
+  // ===== Polit. intér. Q3 — Différences/similitudes — Désaccord censure cinéma =====
+  // Renumérotation : Doc 5 source (Morris, contre la censure) → Doc 1 ; Doc 6 source (Bureau,
+  // pour la censure) → Doc 2. Énoncé adapté.
+  'na-differences-3': [
+    { id: "na-d3-d1", title: "Document 1 — Extrait d'un journal montréalais anglophone publié en 1923", layout: "text-only",
+      text: "« La censure est une menace pour la liberté [...] Les gens ne sont-ils pas en mesure de déterminer par eux-mêmes ce qu'ils aiment et ce qu'ils n'aiment pas sans qu'un comité de censure ne décide pour eux ce qu'ils ont le droit de voir? [...] Si les films doivent être censurés par des hommes qui n'ont pas forcément la même opinion que le public, [...] alors les films ne deviendront qu'une masse de balivernes et de radotages. Il ne se produira plus de bons films, car à quoi bon produire un drame à des fins éducatives et basé sur les réalités de la vie si tout ce qui est réel en sera retiré par les censeurs? »",
+      sources: ["Source : Joseph Morris, « Censorship and Liberty », The Axe, 12 janvier 1923, Bibliothèque et Archives nationales du Québec, notice 000008295. Traduction libre par le Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-d3-d2", title: "Document 2 — Extrait d'un article de journal paru en 1916", layout: "text-only",
+      text: "« Le bureau de censure des vues animées de la province de Québec a raison d'être fier de son travail de l'année. Durant l'exercice écoulé, environ 16 000 films ont été examinés : de ce nombre 1 300 ont été prohibés [interdits] et près de 75 000 pieds [de film] ont été éliminés de sujets autorisés. C'est dire que sans la censure, les foules nombreuses qui assistent chaque jour aux représentations cinématographiques auraient vu dérouler sous leurs yeux des scènes disgracieuses et immorales, des meurtres, des crimes dégoûtants, etc. »",
+      sources: ["Source : Auteur inconnu, « La censure des cinémas », L'autorité, 8 janvier 1916, p. 2, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000081857."] }
+  ],
+
+  // ===== Polit. can. Q3 — Causes/conséquences — 6 docs conséquences entrée en guerre =====
+  // Renumérotation : Docs 5-10 source → Docs 1-6. 6 conséquences à déterminer (3 pts).
+  // Images : Doc 1 (Northern Electric, usine de munitions) et Doc 4 (camp Spirit Lake).
+  'na-causes-7': [
+    { id: "na-c7-d1", title: "Document 1", layout: "text-image",
+      text: "Pendant le conflit, les Canadiennes deviennent de plus en plus nombreuses à occuper un emploi puisque leur contribution est nécessaire afin de remplacer les hommes enrôlés dans l'armée. Elles sont notamment appelées à travailler dans les usines d'armement et de munitions. Lorsque la guerre prend fin, la production d'armes ralentit et les soldats rentrés du front retournent au travail. La contribution des femmes n'étant plus considérée essentielle, un grand nombre d'entre elles sont encouragées à quitter le marché du travail pour se consacrer de nouveau aux tâches du foyer.",
+      imageUrl: "assets/img/na-causes-7/doc1.jpg", imageWidthCm: 6,
+      sources: ["Source de l'image : Ministère de la Défense nationale, Manufacture de la compagnie Northern Electric Co. Ltd. (1916), Bibliothèque et Archives Canada, MIKAN 3623032. Licence : domaine public. Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-c7-d2", title: "Document 2", layout: "text-only",
+      text: "« La CIM [Commission impériale des munitions] construisait des navires et des avions et aménageait des terrains d'aviation pour un imposant programme d'entraînement des pilotes. À la fin de la guerre, ses 600 usines avaient achevé 103 navires de la marine, 2 600 avions d'entraînement et 30 hydravions à coque. Quand la CIM cessa ses opérations en 1919, elle était le plus grand employeur civil du Canada, avec plus de 290 000 employés. »",
+      sources: ["Source : Musée canadien de la guerre, « Finances et production de guerre », en ligne. Licence : extrait utilisé avec la permission du Musée canadien de la guerre, tous droits réservés."] },
+    { id: "na-c7-d3", title: "Document 3 — Extrait d'un article de journal publié en 1919", layout: "text-only",
+      text: "« Voilà maintenant plus d'une année que l'armistice a été signé et que la guerre a pris fin, mais, contrairement aux prévisions presque unanimement énoncées au moment de la cessation des hostilités, le coût de la vie, au lieu de diminuer graduellement, ne fait que monter de plus en plus. [...]\n\nL'augmentation de la dette nationale — Tous les peuples qui ont pris part au conflit, à l'exception peut-être des États-Unis, ont augmenté leur dette nationale dans des proportions fabuleuses. Celle du Canada [est] passée d'un peu plus de 800 000 000 $ à deux milliards et il faut que [...] les intérêts de cette dette se paient par des taxes directes ou indirectes qui font monter les prix des articles imposés et, par suite, celui du coût de la vie en général. »",
+      sources: ["Source : Auteur inconnu, « La cherté de la vie », Le Clairon, 21 novembre 1919, p. 2 et 5, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000165382."] },
+    { id: "na-c7-d4", title: "Document 4", layout: "text-image",
+      text: "De 1914 à 1920, un total de 8 579 personnes sont détenues dans les 24 camps d'internement canadiens en vertu de la Loi des mesures de guerre. Ces camps sont destinés aux prisonniers de guerre ainsi qu'aux personnes considérées suspectes parce qu'elles sont originaires de pays en guerre avec le Canada, comme l'Autriche-Hongrie ou l'Allemagne.",
+      imageUrl: "assets/img/na-causes-7/doc4.jpg", imageWidthCm: 6,
+      sources: ["Source de l'image : Auteur inconnu, Femmes et enfants prisonniers au camp d'internement de Spirit Lake, en Abitibi (entre 1915 et 1917), Bibliothèque et Archives Canada, MIKAN 4628433. Licence : domaine public. Source du texte : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-c7-d5", title: "Document 5 — Sermon prononcé par Monseigneur Joseph-Médard Émard, évêque de Valleyfield", layout: "text-only",
+      text: "« Un immense voile s'étend épais sur une partie notable du monde, couvrant des misères sans nom : que de larmes, que d'angoisses; que de foyers, heureux naguère, maintenant plongés dans la tristesse et le deuil. Pauvres mères, malheureuses épouses, petits orphelins, que votre douleur est navrante! Aucune consolation humaine ne saurait l'atteindre dans ce déluge de maux qui submerge tant de familles. »",
+      sources: ["Source : Mgr J.-M. Emard, « La guerre : Sermon prononcé à Rigaud à l'occasion du vingt-cinquième pèlerinage conduit par les clercs de Saint-Viateur à Notre-Dame de Lourdes », 1914, dans Œuvres pastorales de Mgr J.-M. Emard, tome IV, Paris, Pierre Téqui, 1922, p. 41-42, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000324637."] },
+    { id: "na-c7-d6", title: "Document 6", layout: "text-only",
+      text: "Une épidémie de grippe se propage au Canada entre autres par le biais des soldats rapatriés au pays qui sont porteurs de la maladie. Cette grippe particulièrement virulente fait 50 000 victimes au Canada.\n\nExtrait d'un article de journal de l'époque :\n« Une épidémie que l'on désigne sous le nom de grippe espagnole exerce actuellement de terribles ravages dans nos Cantons de l'Est. [...] On signalait une maladie étrange qui faisait beaucoup de victimes en Espagne. [...] Les camps militaires sont particulièrement affectés, et l'on estimait à plus de vingt mille le nombre des soldats souffrant de la grippe. La maladie présente toujours un caractère grave, et le chiffre des mortalités devient inquiétant. »",
+      sources: ["Source : Joseph Barnard, « La Grippe Espagnole — Une alarmante épidémie », Le Bien public, 26 septembre 1918, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000164337."] }
+  ],
+
+  // ===== Vie éco Q1 — Causalité — Besoins nouveaux secteurs / stratégie / impact =====
+  // 3 docs : Dominion Textile (image), concentration entreprises (texte synthèse), nouveaux secteurs (texte synthèse).
+  'na-causalite-3': [
+    { id: "na-ca3-d1", title: "Document 1", layout: "text-image",
+      text: "« En 1905, plusieurs filatures canadiennes, dont celles de la Dominion Cotton Mills, fusionnent pour former la Dominion Textile. Cette opération a pour but de rentabiliser plusieurs usines en coordonnant leurs activités. [...] En 1914, la compagnie investit à Magog 370 000 $ afin de construire des hangars à métiers à tisser à l'arrière de la filature. »",
+      imageUrl: "assets/img/na-causalite-3/doc1.png", imageWidthCm: 6,
+      sources: ["Source de l'image : Dominion Textile Company, Travailleurs d'une usine de textile probablement située à Magog (vers 1895), Bibliothèque et Archives Canada, MIKAN 5098343. Licence : domaine public. Source du texte : Ministère de la Culture et des Communications, « Usine Dominion Textile : informations historiques », en ligne sur le Répertoire du patrimoine culturel du Québec. Licence : reproduction autorisée à des fins éducatives, tous droits réservés."] },
+    { id: "na-ca3-d2", title: "Document 2 — Extrait d'un texte de synthèse", layout: "text-only",
+      text: "« La concentration des entreprises constitue un des traits marquants de l'économie québécoise au début du 20e siècle. Elle affecte les secteurs des services publics, des transports, des banques, du textile, du fer et de l'acier et certaines industries alimentaires. Cette concentration permet aux plus importantes compagnies de limiter la concurrence grâce à l'obtention d'un quasi-monopole dans leur domaine de production. Toutefois, plusieurs petites entreprises canadiennes-françaises, incapables de soutenir une telle concurrence, disparaissent. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-ca3-d3", title: "Document 3 — Extrait d'un texte de synthèse", layout: "text-only",
+      text: "« Au début du 20e siècle, les nouveaux secteurs industriels comme les pâtes et papiers, l'aluminium et l'hydroélectricité requièrent l'implantation de grandes usines, l'utilisation de nouvelles technologies et une main-d'œuvre spécialisée. Le secteur manufacturier évolue également en renouvelant l'énergie utilisée par l'hydroélectricité et en réaménageant ses équipements et ses bâtiments. Toutes ces nouveautés nécessitent d'importantes sommes d'argent que peu d'entreprises canadiennes-françaises détiennent. Seules les plus grosses compagnies peuvent investir de tels capitaux. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== Vie éco Q2 — Causalité — Syndicats américains / position Église / CTCC =====
+  // Renumérotation : Doc 4 source → Doc 1, Doc 5 source (Hull congrès) → Doc 2, Doc 6 source (évêques) → Doc 3.
+  'na-causalite-4': [
+    { id: "na-ca4-d1", title: "Document 1 — Extrait d'une brochure publiée en 1913", layout: "text-only",
+      text: "« Un syndicat international est 1° celui dont le siège est aux États-Unis; [...]\n\nÀ la fin de 1912, [...], notre province comptait 246 syndicats [...]. 194 de ces syndicats étaient internationaux, 36, nationaux et 16, indépendants. »",
+      sources: ["Source : Arthur Saint-Pierre, L'organisation ouvrière dans la province de Québec, Montréal, École sociale populaire, 1913, p. 4 et 12, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000116603."] },
+    { id: "na-ca4-d2", title: "Document 2 — Extrait d'une brochure qui fait un compte rendu de la réunion de deux cents délégués représentant 80 syndicats (ou unions) catholiques rassemblés en congrès à Hull afin de former une confédération à l'automne 1921", layout: "text-image",
+      text: "« Si la Confédération des Travailleurs catholiques du Canada se propose de travailler le plus possible à l'organisation professionnelle des travailleurs catholiques du Canada, ce n'est pas seulement parce que ceux-ci y ont droit et qu'elle leur est utile et avantageuse, c'est aussi que l'association ouvrière est une nécessité des temps présents. »",
+      imageUrl: "assets/img/na-causalite-4/doc2.png", imageWidthCm: 8,
+      sources: ["Source de l'image : Studio de luxe, « La Convention des unions nationales catholiques, à Hull », La Patrie, 28 septembre 1921, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec. Licence : domaine public. Source du texte : Confédération des Travailleurs catholiques du Canada, La Confédération des Travailleurs catholiques du Canada, Montréal, École sociale populaire, sans date, p. 4-5, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004920400."] },
+    { id: "na-ca4-d3", title: "Document 3 — Extrait d'une brochure qui décrit une rencontre ayant eu lieu en 1909 à Québec et au cours de laquelle les évêques canadiens dénoncent les syndicats internationaux qui rassemblent des membres de diverses confessions religieuses. Ils parlent des syndicats en les nommant « sociétés »", layout: "text-only",
+      text: "« [Certaines sociétés] doivent être tenues pour suspectes par des catholiques. Ce sont toutes les sociétés, d'ordre économique ou moral, qui font profession de neutralité religieuse, ouvrent leur rang aux hommes de toute croyance, mettent toutes les religions sur un pied de complète égalité [...].\n\nBien plus, et c'est un point très important pour la sauvegarde de la foi, les catholiques doivent de préférence s'associer à des catholiques, à moins que la nécessité ne les oblige à faire autrement. »",
+      sources: ["Source : Joseph-Papin Archambault, L'Église et les associations ouvrières [...], Montréal, École sociale populaire, 1913, p. 18, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000083050."] }
+  ],
+
+  // ===== Vie éco Q3 — Causalité — Marché du fromage / coopérative / impact =====
+  // Renumérotation : Docs 7-9 source → Docs 1-3.
+  'na-causalite-5': [
+    { id: "na-ca5-d1", title: "Document 1 — Extrait d'un article de journal publié en 1892", layout: "text-only",
+      text: "« En consultant les journaux spéciaux des deux continents [Amérique du Nord et Europe] qui s'occupent des marchés au fromage, on constate que le French Cheese ou fromage français, c'est-à-dire fabriqué dans la Province de Québec, est toujours coté au-dessous des fromages [d'Ontario], [...] cette différence de prix ne correspondant nullement à des différences de qualité. »",
+      sources: ["Source : Auteur inconnu, « French Cheese », La Presse, 20 octobre 1892, p. 2, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] },
+    { id: "na-ca5-d2", title: "Document 2 — Extrait d'un article publié dans le Bulletin de la Société coopérative agricole des fromagers de Québec en 1916", layout: "text-only",
+      text: "« La Société [...] a réussi à obtenir pour les produits vendus par son entremise de meilleurs prix, enfin à protéger les intérêts des cultivateurs. Pourquoi a-t-elle obtenu ce résultat? Parce que d'année en année elle a groupé un nombre plus grand de cultivateurs, que chacun, par sa modique contribution, lui a permis de progresser, de se développer [...]. »",
+      sources: ["Source : Auguste Trudel, « Ce que peuvent faire les cultivateurs qui s'organisent », Bulletin de la Société coopérative agricole des fromagers de Québec, 12 août 1916, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000164818."] },
+    { id: "na-ca5-d3", title: "Document 3 — Extrait d'un article scientifique écrit par un historien qui relate la formation de la Société coopérative agricole des fromagers de Québec le 5 mai 1910", layout: "text-only",
+      text: "« [O]n mit en place un système d'inspection des fabriques et de classification des produits. [...] La fonction principale de la Coopérative était [la vente] des produits agricoles qu'elle recevait de ses membres. [...] En matière d'approvisionnement, la Coopérative offrit [...] à ses membres certains biens nécessaires à la fabrication du beurre et du fromage. »",
+      sources: ["Source : Claude Beauchamp, « Les débuts de la coopération et du syndicalisme agricoles, 1900-1930 : quelques éléments de la pratique », Recherches sociographiques, vol. 20, no 3, 1979, p. 350-351."] }
+  ],
+
+  // ===== Grande dép. Q1 — Mettre en relation — Loi assur.-chômage inspirée du keynésianisme =====
+  // 1 doc unique (Loi 1941 Le Clairon).
+  'na-relation-4': [
+    { id: "na-r4-d1", title: "Document 1 — Extrait d'un article de journal sur une mesure économique et sociale mise en place par le gouvernement canadien", layout: "text-only",
+      text: "« Le Parlement a pris une mesure importante, au mois d'août dernier, en adoptant la Loi sur l'assurance-chômage [...]. Le plan d'assurance-chômage protégera plus de deux millions d'ouvriers, soit quatre-vingts pourcent de toutes les personnes qui travaillent pour gagner leur vie au Canada. [...]\n\nPendant une période de dépression, quand les ouvriers sont sans travail par centaines de mille, l'assurance-chômage est un facteur important dans le maintien du pouvoir d'achat du consommateur, et de cette manière elle stabilise les affaires dans toute l'étendue du pays. [...] »",
+      sources: ["Source : Auteur inconnu, « Assurance-chômage », Le Clairon, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000165382."] }
+  ],
+
+  // ===== 2GM Q1 — Causes/conséquences — 3 conséquences socioéconomiques après-guerre =====
+  // Doc 1 a une image embedded (Cecilia Butler à l'usine Inglis). Docs 2 et 3 textuels.
+  'na-causes-8': [
+    { id: "na-c8-d1", title: "Document 1 — Extrait d'un texte de synthèse écrit par une historienne", layout: "text-image",
+      text: "« [...] dans l'immédiat après-guerre, la proportion de femmes dans la main-d'œuvre connaît une baisse importante, passant de 33,5 % en 1944, [...], à 25,3 % en 1946 pour l'ensemble du pays. Mais ce retrait n'est que temporaire : dès la fin des années 1940, les femmes mariées retournent sur le marché de l'emploi en nombre toujours croissant, malgré les discours qui font la promotion d'un idéal domestique fondé sur la complémentarité du couple pourvoyeur-ménagère. »",
+      imageUrl: "assets/img/na-causes-8/doc1.png", imageWidthCm: 5,
+      sources: ["Source du texte : Denyse Baillargeon, Brève histoire des femmes au Québec, Montréal, Boréal, 2012, p. 271. Source de l'image : Office national du film du Canada, Cecilia Butler, ancienne chanteuse et danseuse de boîte de nuit, est maintenant aléseuse à la section Small Arms Ltd. de l'usine de munitions de la John Inglis Company (1943), Bibliothèque et Archives Canada, MIKAN 3627216. Licence : domaine public."] },
+    { id: "na-c8-d2", title: "Document 2 — Extrait d'un article de journal publié en 1945", layout: "text-only",
+      text: "« Le retour par milliers de soldats d'outre-mer pose un problème d'urgence nationale. Le gouvernement doit dès maintenant songer à réintégrer dans la vie civile tous les hommes et les femmes qui ont servi sous les drapeaux. En même temps, le [ralentissement] dans les industries de guerre jette sur le pavé des milliers d'ouvriers qui doivent maintenant se chercher du travail. Pendant plusieurs mois à venir, la principale préoccupation de nos gouvernants sera de prévenir une recrudescence de chômage. »",
+      sources: ["Source : Auteur inconnu, « L'Information politique », Le Courrier de Saint-Hyacinthe, 29 juin 1945, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082592."] },
+    { id: "na-c8-d3", title: "Document 3 — Extrait d'un article de journal publié en 1947", layout: "text-only",
+      text: "Durant la guerre, peu de nouveaux logements sont construits parce que le gouvernement se concentre surtout sur la production militaire. Ceci posera un problème après la fin du conflit.\n\n« L'opposition libérale a attiré hier midi l'attention du gouvernement sur la crise du logement dans les grandes villes. [...] [L]es centres urbains sont aux prises avec le problème du logement à cause de l'émigration des gens de la campagne vers les villes, à cause aussi du retour des soldats. Cela fait que deux ou trois familles sont obligées de demeurer dans 5 ou 6 pièces. »",
+      sources: ["Source : Auteur inconnu, « La crise du logement donne lieu à un amendement mis hors d'ordre », Le Soleil, 8 mai 1947, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] }
+  ],
+
+  // ===== 2GM Q2 — Situer dans le temps — 4 docs ordre chrono Seconde Guerre mondiale =====
+  // Renumérotation : Docs 4-7 source → Docs 1-4. Ordre chrono attendu (source) : 6, 4, 5, 7
+  // → en renumérotation : Doc 3 (déclaration guerre sept. 1939), Doc 1 (Loi sur les mesures
+  // de guerre), Doc 2 (plébiscite 1942), Doc 4 (conférence Québec).
+  // Note : Doc 4 a une image (Churchill/King au Frontenac).
+  'na-situer-4': [
+    { id: "na-s4-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] Elle conférait au gouvernement des pouvoirs d'urgence spéciaux qui lui permettaient de mobiliser toutes nos ressources humaines et matérielles pour la défense du Canada [...] Les hommes et les femmes pouvaient s'engager dans l'armée, servir au sein du gouvernement ou travailler pour des compagnies qui contribuaient à l'effort de guerre [...]. »",
+      sources: ["Source du texte : Bibliothèque et Archives Canada, Chronologie de la conscription de la deuxième guerre mondiale, en ligne."] },
+    { id: "na-s4-d2", title: "Document 2", layout: "text-only",
+      text: "« Le gouvernement fédéral tient un plébiscite pan-canadien sur la promesse du premier ministre William Lyon Mackenzie King de ne pas rendre la conscription obligatoire. Les Canadiens votent majoritairement pour désengager King de sa promesse alors qu'au Québec la population s'oppose massivement (72,1 %) au projet de conscription. »",
+      sources: ["Source du texte : Jean Guy Herman (dir.), « Début d'une deuxième Conférence internationale à Québec », Bilan du siècle, page consultée le 22 juin 2020."] },
+    { id: "na-s4-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] Le 7 septembre, le Parlement du Canada s'est réuni en session spéciale; le 9 septembre, il accorde son appui à la Grande-Bretagne et à la France et le 10 septembre, le roi George VI annonce que le Canada a déclaré la guerre. »",
+      sources: ["Source : Anciens Combattants Canada, « Le début de la guerre », en ligne, page consultée le 22 juin 2020."] },
+    { id: "na-s4-d4", title: "Document 4 — Visite officielle lors de la deuxième conférence de Québec", layout: "image-only",
+      imageUrl: "assets/img/na-situer-4/doc4.png", imageWidthCm: 8,
+      sources: ["Source de l'image : Office national du film du Canada, Hon. Winston Churchill et W.L. Mackenzie King avec les parlementaires au Château Frontenac pour la conférence de Québec, Bibliothèque et Archives Canada, MIKAN 3624068. Licence : domaine public."] }
   ]
 
 };
@@ -3924,7 +4220,188 @@ window.DATA = {
       },
       reglettes: [{ id: "r-na-co4", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
       documents: pickDocs('na-continuite-4', 1),
-      corrige: "Le gouvernement impose la censure (interdiction des publications communistes / contrôle des publications)." }
+      corrige: "Le gouvernement impose la censure (interdiction des publications communistes / contrôle des publications)." },
+
+    // ============================================================
+    // === v1.24.0 — Guides pédagogiques RÉCIT 1896-1945 (14 questions) ===
+    // ============================================================
+
+    // ===== Catho Q1 — Établir des faits — Groupe social et fréquentation scolaire =====
+    { id: "q-na-faits-1", operation: "Établir des faits", numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Que t'apprend le document 1 sur le lien entre le groupe social et la fréquentation scolaire au début du 20e siècle ?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-na-f1", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('na-faits-1', 1),
+      corrige: "Plus le groupe social est aisé, plus la fréquentation scolaire des enfants âgés de 12 à 15 ans est élevée." },
+
+    // ===== Catho Q2 — Situer dans le temps — Luttes des femmes en ordre chronologique =====
+    // Ordre chrono attendu : Doc 4 (École Marg.-Bourgeoys 1908) → Doc 2 (droit vote féd. 1918)
+    // → Doc 3 (Code civil 1931) → Doc 1 (suffrage Québec 1940).
+    { id: "q-na-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les documents 1 à 4 présentent des évènements en lien avec les luttes des femmes au début du 20e siècle. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"] }
+      },
+      reglettes: [{ id: "r-na-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('na-situer-3', 1, 2, 3, 4),
+      corrige: ["Document 4", "Document 2", "Document 3", "Document 1"] },
+
+    // ===== Catho Q3 — Continuité du rôle de l'Église entre 1896 et 1950 =====
+    { id: "q-na-continuite-5", operation: "Déterminer des changements et des continuités", numero: 5, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique un élément de continuité dans le rôle de l'Église entre 1896 et 1950.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-na-co5", label: "Réglette (2 points)", ...R_CONTINUITES_2PT_GEN }],
+      documents: pickDocs('na-continuite-5', 1, 2),
+      corrige: "Entre 1896 et 1950, les communautés religieuses prennent en charge les orphelinats (ou certains services sociaux, ou les institutions de charité, ou l'éducation des enfants — toute autre réponse équivalente est acceptée)." },
+
+    // ===== Catho Q4 — Mettre en relation des faits — Nationalisme cf vs clérico-nationalisme =====
+    // Catégories : Doc 2 + Doc 4 = nationalisme canadien-français, Doc 1 + Doc 3 = clérico-nationalisme.
+    { id: "q-na-relation-3", operation: "Mettre en relation des faits", numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Inscris les numéros des documents qui présentent des faits relatifs au nationalisme canadien-français et au clérico-nationalisme.",
+        responseSpace: { type: "category-buckets", categories: ["Le nationalisme canadien-français", "Le clérico-nationalisme"], slots: [2, 2] }
+      },
+      reglettes: [{ id: "r-na-r3", label: "Réglette (2 points)", ...R_RELATION_2PT_4_PART }],
+      documents: pickDocs('na-relation-3', 1, 2, 3, 4),
+      corrige: [["Document 2", "Document 4"], ["Document 1", "Document 3"]] },
+
+    // ===== Polit. intér. Q1 — Causes/conséquences — Objectif du décret 1931 =====
+    { id: "q-na-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Le document 1 présente l'extrait d'un décret adopté le 21 mars 1931 par le Ministère de l'Immigration et de la Colonisation du Canada. Quel était l'objectif de cette loi ? Ajoute des précisions en lien avec la provenance et avec le statut économique des immigrants.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-na-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-5', 1),
+      corrige: "L'objectif de cette loi est d'établir des règles strictes pour contrôler l'immigration transatlantique (ou : le décret de 1931 vise à définir qui peut immigrer au Canada ou non). Les immigrants d'origine asiatique ne peuvent entrer au Canada pour s'y établir, ce qui est discriminatoire. Les immigrants britanniques et américains aisés sont les seuls à être acceptés au Canada." },
+
+    // ===== Polit. intér. Q2 — Causes/conséquences — 3 conséquences pop urbaine =====
+    { id: "q-na-causes-6", operation: "Déterminer des causes et des conséquences", numero: 6, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les documents 1, 2 et 3 présentent des conséquences de l'augmentation de la population urbaine. Pour chacun des documents, nomme la conséquence et indique si elle améliore ou non les conditions de vie de la classe ouvrière.",
+        responseSpace: { type: "labeled-list", items: ["Document 1", "Document 2", "Document 3"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-na-c6", label: "Réglette (2 points)", ...R_CAUSES_2PT_T3_CONS_MULTI }],
+      documents: pickDocs('na-causes-6', 1, 2, 3),
+      corrige: "Document 1 : Problèmes d'insalubrité (ou problèmes d'hygiène) — conséquence qui empire les conditions de vie. Document 2 : Construction d'infrastructures (ou amélioration de l'offre de services) — conséquence qui améliore les conditions de vie. Document 3 : Accès restreint à un logement convenable — conséquence qui empire les conditions de vie." },
+
+    // ===== Polit. intér. Q3 — Différences/similitudes — Désaccord censure cinéma =====
+    { id: "q-na-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, sur quel point précis M. Joseph Morris et le Bureau de la censure sont-ils en désaccord ?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-na-d3", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('na-differences-3', 1, 2),
+      corrige: "Les acteurs sont en désaccord sur la censure au cinéma (ou sur la nécessité de censurer les films, ou sur l'importance de la censure au cinéma)." },
+
+    // ===== Polit. can. Q3 — Causes/conséquences — 6 conséquences entrée en guerre PGM =====
+    { id: "q-na-causes-7", operation: "Déterminer des causes et des conséquences", numero: 7, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Quelles sont les conséquences de l'entrée en guerre du Canada lors de la Première Guerre mondiale ? Détermine une conséquence pour chacun des documents ci-dessous.",
+        responseSpace: { type: "labeled-list", items: ["Document 1", "Document 2", "Document 3", "Document 4", "Document 5", "Document 6"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-na-c7", label: "Réglette (3 points)", ...R_CAUSES_3PT_T6_CONS_GUIDE }],
+      documents: pickDocs('na-causes-7', 1, 2, 3, 4, 5, 6),
+      corrige: "Document 1 : Les femmes entrent sur le marché du travail pendant la guerre afin de remplacer les hommes partis au front (industrie de guerre, armes, munitions). Document 2 : Le gouvernement canadien met sur pied la Commission impériale des munitions qui emploie un grand nombre de travailleurs et produit avions, navires et hydravions. Document 3 : Après la fin du conflit, le pays est aux prises avec un problème d'inflation qui fait monter le coût de la vie, en partie à cause de l'augmentation spectaculaire de la dette nationale. Document 4 : En vertu de la Loi sur les mesures de guerre, le Canada met sur pied des camps d'internement dans lesquels il détient des ressortissants de pays ennemis. Document 5 : Le conflit a provoqué 61 000 morts et 172 000 blessés, plongeant de nombreuses familles dans le deuil. Document 6 : Au retour du front, les soldats canadiens ramènent avec eux la grippe espagnole, qui fera 50 000 morts au Canada." },
+
+    // ===== Vie éco Q1 — Causalité — Besoins industriels / fusion / monopole =====
+    { id: "q-na-causalite-3", operation: "Établir des liens de causalité", numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "En utilisant les documents 1, 2 et 3, explique comment les besoins des nouveaux secteurs industriels ont un impact sur l'économie québécoise. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Les besoins des nouveaux secteurs industriels",
+          "La stratégie de certaines entreprises",
+          "Un impact sur le modèle économique québécois"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-na-ca3", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('na-causalite-3', 1, 2, 3),
+      corrige: "Les nouveaux secteurs industriels (pâtes et papiers, aluminium, hydroélectricité) demandent plus de capitaux en raison des coûts des technologies, de la main-d'œuvre spécialisée et de la grandeur des usines (document 3). Étant donné ces coûts élevés et pour limiter la concurrence, les grandes compagnies fusionnent — par exemple plusieurs filatures forment la Dominion Textile en 1905 (document 1). Cela entraine la naissance d'un capitalisme de monopole où les plus importantes compagnies obtiennent un quasi-monopole dans leur domaine, et la fermeture de petites entreprises canadiennes-françaises incapables de concurrencer (document 2)." },
+
+    // ===== Vie éco Q2 — Causalité — Syndicats américains / Église / CTCC =====
+    { id: "q-na-causalite-4", operation: "Établir des liens de causalité", numero: 4, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "En utilisant les documents 1, 2 et 3, explique comment la réaction de l'Église catholique face aux syndicats américains entraine la naissance d'une nouvelle organisation syndicale. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "La présence des syndicats américains au Québec",
+          "La position de l'Église catholique face aux syndicats américains",
+          "La naissance d'une nouvelle organisation syndicale"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-na-ca4", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('na-causalite-4', 1, 2, 3),
+      corrige: "Le nombre de syndicats américains regroupant des travailleurs canadiens est très élevé au début du 20e siècle : en 1912, 194 syndicats américains sur un total de 246 au Québec (document 1). Parce qu'elle craint que ces syndicats ne demeurent pas neutres sur le plan religieux et qu'ils aient une mauvaise influence, l'Église encourage le regroupement des travailleurs catholiques entre eux (document 3). Par conséquent, en 1921, 80 syndicats catholiques s'unissent à Hull pour former la Confédération des travailleurs catholiques du Canada (CTCC) (document 2)." },
+
+    // ===== Vie éco Q3 — Causalité — Marché du fromage / coopérative / hausse prix =====
+    { id: "q-na-causalite-5", operation: "Établir des liens de causalité", numero: 5, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "En utilisant les documents 1, 2 et 3, explique comment la création d'un nouveau type d'entreprise a un impact sur le marché du fromage. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "La situation du marché du fromage au tournant du 20e siècle",
+          "La création d'un nouveau type d'entreprise",
+          "L'impact sur le marché du fromage"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-na-ca5", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('na-causalite-5', 1, 2, 3),
+      corrige: "Le marché du fromage québécois est défectueux au tournant du 20e siècle : les fromages québécois sont toujours vendus moins cher que ceux de l'Ontario, même s'ils sont de qualité similaire (document 1). Pour remédier à cette situation, on met en place une société coopérative agricole en 1910 qui aide à l'inspection, à la classification des produits et à leur vente, ainsi qu'à l'approvisionnement des producteurs (document 3). Par conséquent, les prix de vente des fromages augmentent et les cultivateurs voient leurs intérêts protégés (document 2)." },
+
+    // ===== Grande dép. Q1 — Mettre en relation — Loi assur.-chômage inspirée du keynésianisme =====
+    { id: "q-na-relation-4", operation: "Mettre en relation des faits", numero: 4, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Explique en quoi la mesure mise en place par le gouvernement canadien présentée dans le document 1 est inspirée du keynésianisme.",
+        responseSpace: { type: "lines", count: 5 }
+      },
+      reglettes: [{ id: "r-na-r4", label: "Réglette (2 points)", ...R_RELATION_2PT_1FAIT_GUIDE }],
+      documents: pickDocs('na-relation-4', 1),
+      corrige: "La Loi sur l'assurance-chômage est inspirée du keynésianisme parce qu'elle représente une façon d'intervenir dans l'économie (sur l'emploi et le pouvoir d'achat des travailleurs). Cette intervention sert à garantir la relance de l'économie en temps de crise plutôt que d'espérer que les crises se résolvent d'elles-mêmes." },
+
+    // ===== 2GM Q1 — Causes/conséquences — 3 conséquences socioéconomiques après-guerre =====
+    { id: "q-na-causes-8", operation: "Déterminer des causes et des conséquences", numero: 8, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Lis les documents 1 à 3 et dégage trois conséquences socioéconomiques de la Seconde Guerre mondiale.",
+        responseSpace: { type: "labeled-list", items: ["Document 1", "Document 2", "Document 3"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-na-c8", label: "Réglette (2 points)", ...R_CAUSES_2PT_T3_CONS_MULTI }],
+      documents: pickDocs('na-causes-8', 1, 2, 3),
+      corrige: "Document 1 : Les femmes demeurent sur le marché du travail après la guerre, malgré une baisse temporaire de la main-d'œuvre féminine immédiatement après le conflit. Document 2 : Le retour au pays des soldats canadiens et le ralentissement de l'industrie de guerre provoquent une hausse du chômage tout de suite après la guerre, ce qui préoccupe le gouvernement. Document 3 : Peu de logements ont été construits pendant la guerre, ce qui entraine une crise du logement en raison de l'exode rural et du retour des soldats." },
+
+    // ===== 2GM Q2 — Situer dans le temps — 4 docs ordre chrono Seconde Guerre mondiale =====
+    // Ordre chrono attendu : Doc 3 (déclaration guerre sept. 1939) → Doc 1 (Loi mesures de
+    // guerre) → Doc 2 (plébiscite 1942) → Doc 4 (conférence Québec 1944).
+    { id: "q-na-situer-4", operation: "Situer dans le temps et dans l'espace", numero: 4, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence à des évènements liés à la Seconde Guerre mondiale. Place-les en ordre chronologique du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"] }
+      },
+      reglettes: [{ id: "r-na-s4", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('na-situer-4', 1, 2, 3, 4),
+      corrige: ["Document 3", "Document 1", "Document 2", "Document 4"] }
 
   ]
 };
