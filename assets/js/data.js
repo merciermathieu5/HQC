@@ -1,11 +1,39 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.27.0 (mai 2026) ⭐⭐ P7 COMPLÈTE — SOMMATIVES + 6 GUIDES RÉCIT
-   177 questions · 7 périodes (P1-P7) · 7 OI · 2 cycles
+   HQC · 3e + 4e secondaire — Données — v1.28.0 (mai 2026) ⭐ P8 DÉMARRÉE — SOMMATIVES SECTION A (LOT A)
+   194 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
    Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6 = 30 (7/7 OI) ⭐⭐ (16 sommatives + 14 guides RÉCIT),
-                   P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT), P8 = 0
-   Répartition OI de P7 (39 q) : situer 9 · causes/conséquences 8 · différences/similitudes 6 · causalité 5 ·
-                   changements/continuités 4 · établir des faits 4 · mettre en relation 3.
+                   P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT),
+                   P8 = 17 (6/7 OI ⭐ — sommatives Section A V-A + V-B ; « établir des faits » à combler par les guides RÉCIT).
+   Répartition OI de P8 (17 q) : causes/conséquences 5 · mettre en relation 3 · changements/continuités 3 ·
+                   situer 2 · causalité 2 · différences/similitudes 2 · établir des faits 0.
+   v1.28.0 — DÉMARRAGE DE P8 (1980 À NOS JOURS) — ÉVALUATIONS SOMMATIVES SECTION A (LOT A) :
+     • +17 questions (préfixe « cs », réalité choix-societe-quebec-contemporain), tirées des versions A et B
+       de l'Évaluation sommative officielle « 1980 à nos jours », Section A « Avec documents » uniquement
+       (Sections B et C écartées, conformément à la commande). Total cahier : 38 points.
+       — V-A (8 q) : statut politique 1980-1995 en ordre chrono (doc pré-rempli), conséquence du libre-échange,
+         appariement 4×4 des droits autochtones, causalité récession→dette→programmes sociaux, continuité
+         salariale H/F, 3 acteurs sur la Loi 178 (affichage), cause du vieillissement, Internet vs concentration
+         des médias (2 sur 2).
+       — V-B (9 q) : projets de réforme constitutionnelle (2 sur 2, colonne unique), ligne du temps (ALÉ),
+         cause du déclin régional, causalité vieillissement+natalité→RQAP, conséquence de la Loi 86, continuité
+         culturelle (repère de temps), changement (info via Internet), 3 acteurs sur les frais de scolarité,
+         couche d'ozone cause/conséquence (2 sur 2).
+     • 2 réglettes ajoutées : R_DIFFSIM_3PT_2POSITIONS_SOMA (V-A Q6 — 4 niveaux, nommer l'acteur + comparer
+       2 positions) et R_SITUER_2PT_T3_SOMA (V-A Q1 — 3 niveaux « 3 sur 3 / 1 ou 2 / 0 », distincte de la
+       variante binaire R_SITUER_2PT_T3_BINAIRE_SOMA). Toutes les autres réglettes sont réutilisées.
+     • Images préparées (10) : graphique du référendum de 1995, exportations vers les É.-U., drapeau du Nunavut,
+       carte de la crise d'Oka (BANDEAU-TITRE « Crise d'Oka (1990) » RECADRÉ pour ne pas révéler la réponse de
+       l'appariement), tableau du chômage (recréé via PIL), graphique de la dette, rémunération H/F, natalité/
+       mortalité, infographie de Meech, tableau de la structure par âge (recréé via PIL).
+     • DÉCISIONS DE FIDÉLITÉ : (1) la photo de la signature de 1982 (La Presse canadienne, tous droits réservés)
+       est REMPLACÉE par un texte factuel sur le rapatriement de la Constitution. (2) DISCORDANCE V-B Q6 : le
+       corrigé montre une réglette 2 pts, le cahier élève une réglette 3 pts avec repère de temps ; le libellé
+       (« justifie par des faits et un repère de temps ») commande la 3 pts — retenue. (3) Q1 V-A : doc le plus
+       ancien (référendum de 1980) pré-rempli en 1re position, titres et textes purgés des années pour ne pas
+       révéler l'ordre.
+     • OI « Établir des faits » = 0 en P8 (les sommatives Section A ne le sollicitent pas). À combler par le
+       Lot B (guides pédagogiques RÉCIT), comme en P5/P6/P7 — guides NON ENCORE FOURNIS.
    v1.27.0 — FIN DE L'INTÉGRATION DES GUIDES RÉCIT P7 (LOTS 2 À 6) + AJUSTEMENTS DE FORMAT :
      • +18 questions tirées des 5 guides restants (préfixe « mq », réalité modernisation-quebec) :
        — Période duplessiste (3) : situer-espace (6 documents ↔ carte des ressources à lettres A-F,
@@ -871,6 +899,15 @@ const R_SITUER_2PT_T3_BINAIRE_SOMA = {
   ]
 };
 
+// Situer 3 faits (2 points), 3 niveaux — Q1 V-A P8 (statut politique 1980-1995). Niveau partiel
+// « certains faits (1 ou 2) » distinct de la variante binaire R_SITUER_2PT_T3_BINAIRE_SOMA.
+const R_SITUER_2PT_T3_SOMA = rubric3(
+  "Situer dans le temps et dans l'espace",
+  "L'élève situe tous les faits dans le temps. (3 sur 3)",
+  "L'élève situe certains faits dans le temps. (1 ou 2)",
+  "L'élève ne situe pas les faits dans le temps. (0)"
+);
+
 // Changements/continuités complexe (3 points) avec sous-points en ligne — Q4 V-B P7 (institutions
 // démocratiques). Même matrice que RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS (V-A) mais le PDF V-B affiche
 // les sous-points directement dans les cellules (« (2 points) », « (1 point) »...) au lieu du format
@@ -974,6 +1011,25 @@ const R_CAUSES_4PT_2MESURES_2CAUSES = {
     { points: "4 points", condition: "L'élève détermine correctement les deux mesures et leurs deux causes. (4 sur 4)" },
     { points: "2 ou 3 points", condition: "L'élève détermine correctement certaines mesures ou causes. (2 ou 3 sur 4)" },
     { points: "0 ou 1 point", condition: "L'élève ne détermine pas ou peu les mesures et les causes. (0 ou 1 sur 4)" }
+  ]
+};
+
+// ============ Réglettes ajoutées v1.28.0 (Évaluations sommatives P8 — 1980 à nos jours) ============
+
+// Différences/similitudes, 3 acteurs (3 points, format « 2 positions ») — Q6 V-A P8 (3 acteurs sur
+// le projet de loi 178 / affichage). Le PDF source utilise une matrice « simple » à 4 colonnes
+// (3/2/1/0 pts) centrée sur la présentation des deux positions, avec un astérisque renvoyant à la
+// nomination correcte de l'acteur. On encode l'astérisque DIRECTEMENT dans les conditions (le rendu
+// « simple » ne porte pas de footnote, réservé au type « complex »). Distinct de
+// R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION (Q8 V-B P8 / P6) qui est la matrice « complexe » à 5 lignes
+// avec branche explicite « nomme l'acteur » + footnote.
+const R_DIFFSIM_3PT_2POSITIONS_SOMA = {
+  type: "simple", opLabel: "Dégager des différences et des similitudes", maxPoints: 3,
+  levels: [
+    { points: "3 points", condition: "L'élève présente correctement les deux positions et nomme correctement l'acteur qui présente une position différente." },
+    { points: "2 points", condition: "L'élève présente correctement une position et présente plus ou moins correctement l'autre position." },
+    { points: "1 point",  condition: "L'élève présente plus ou moins correctement les deux positions, ou présente correctement une position et présente incorrectement l'autre position ou ne la présente pas." },
+    { points: "0 point",  condition: "L'élève présente incorrectement les deux positions ou ne les présente pas, ou nomme incorrectement l'acteur qui présente une position différente." }
   ]
 };
 
@@ -3250,6 +3306,194 @@ const DOCS = {
     { id: "mq-d6-d3", title: "Document 3 — Citation de Lise Payette, animatrice à Radio-Canada (1968)", layout: "text-only",
       text: "« Pour moi, la légalisation de l'avortement, c'est d'abord et avant tout une question de liberté. Je reconnais à la femme le droit de décider de la vie qu'elle porte dans ses entrailles. Elle doit pouvoir accepter ou refuser de donner naissance à un enfant. [...] [Il faut] donner à celles qui acceptent librement l'intervention chirurgicale la possibilité qu'elle soit pratiquée par un médecin reconnu, dans une institution adéquate. »",
       sources: ["Source : France Demers, « L'avortement légalisé, bienfait ou désastre ? », La Patrie, 17 mars 1968, p. 17, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000586549."] }
+  ],
+
+  // ============================================================
+  // ===== P8 — 1980 à nos jours — Les choix de société dans le Québec contemporain =====
+  // ============================================================
+
+  // ===== P8 · Situer dans le temps — Statut politique du Québec (1980-1995) =====
+  // Ordre d'affichage volontairement mélangé. Document 2 (référendum de 1980) pré-rempli en 1re position.
+  // NOTE : le doc 4 (patriation 1982) remplace une photo de presse sous droits (La Presse canadienne) par un texte factuel.
+  'cs-situer-1': [
+    { id: "cs-s1-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] le gouvernement progressiste-conservateur du premier ministre Brian Mulroney tente d'obtenir l'accord du Québec quant à la révision de la Constitution canadienne. Il en résulte [...] une entente entre les gouvernements fédéral et provinciaux afin de modifier la Constitution. »",
+      sources: ["Source : Gerald L. Gall, « Accord du lac Meech », L'encyclopédie canadienne, dernière modification le 27 avril 2020, page consultée le 30 mars 2021."] },
+    { id: "cs-s1-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] 59,4 % des Québécois ont voté pour le Non, 40,6 % pour le Oui. Une mince majorité de francophones s'est prononcée pour le Non [...]. [Le premier ministre] tente d'apaiser ses militants déçus [...] tout en sommant le gouvernement d'Ottawa de remplir ses promesses. »",
+      sources: ["Source : « René Lévesque », Wikipédia, dernière modification le 29 mars 2021, page consultée le 30 mars 2021."] },
+    { id: "cs-s1-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/cs-situer-1/doc3.png", imageWidthCm: 12,
+      sources: ["Source des données : Directeur général des élections du Québec, résultats référendaires."] },
+    { id: "cs-s1-d4", title: "Document 4", layout: "text-only",
+      text: "Le rapatriement de la Constitution permet désormais au Canada de modifier sa loi fondamentale sans l'accord du Royaume-Uni. La nouvelle Loi constitutionnelle inclut une Charte des droits et libertés. Le gouvernement du Québec refuse toutefois de signer cette entente, car elle a été conclue sans son accord.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P8 · Déterminer des causes et conséquences — Conséquence des accords de libre-échange =====
+  'cs-causes-1': [
+    { id: "cs-c1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/cs-causes-1/doc1.png", imageWidthCm: 12,
+      sources: ["Source des données : Institut de la statistique du Québec, Commerce extérieur du Québec 1981-1998 [...], Québec, Publications du Québec, 1999, p. 73."] }
+  ],
+
+  // ===== P8 · Mettre en relation — Événements liés aux droits des Autochtones =====
+  'cs-relation-1': [
+    { id: "cs-r1-d1", title: "Document 1", layout: "text-only",
+      text: "« Cette loi reconnait les droits ancestraux ainsi que les droits issus de traités entre les peuples autochtones et le gouvernement, ce qui inclut les ententes conclues avant la création de la fédération canadienne en 1867. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "cs-r1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/cs-relation-1/doc2.png", imageWidthCm: 7,
+      sources: ["Source de l'image : Kooma, Drapeau du [...] (2005), Wikimedia Commons. Licence : domaine public."] },
+    { id: "cs-r1-d3", title: "Document 3", layout: "text-only",
+      text: "« Le Québec encouragera et facilitera la participation des Cris de la Baie-James à des projets de développement forestier, hydroélectrique et minier dans le Territoire par le biais de partenariats, d'emplois et de contrats. »",
+      sources: ["Source : Loi assurant la mise en oeuvre de l'Entente concernant une nouvelle relation entre le gouvernement du Québec et les Cris du Québec (RLRQ), c. M-35.1.2, à jour au 31 octobre 2020, article 2.4, en ligne sur Légis Québec."] },
+    { id: "cs-r1-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/cs-relation-1/doc4.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P8 · Établir des liens de causalité — Récession et financement des programmes sociaux =====
+  'cs-causalite-1': [
+    { id: "cs-ca1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/cs-causalite-1/doc1.png", imageWidthCm: 9,
+      sources: ["Source des données : Statistique Canada, « Taux de chômage, 1976 à 2007 », Statistique Canada, dernière mise à jour le 30 novembre 2015, page consultée le 21 mai 2019."] },
+    { id: "cs-ca1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/cs-causalite-1/doc2.png", imageWidthCm: 12,
+      sources: ["Source des données : Ministère des Finances et de l'Économie du Québec, Données historiques depuis 1970-1971 : Budget 2013-2014, 2012, p. 19."] },
+    { id: "cs-ca1-d3", title: "Document 3", layout: "text-only",
+      text: "« Les difficultés économiques des années 1980-1990 provoquent une remise en cause de l'État-providence. Alors que les gouvernements affrontent des crises budgétaires, les soins de santé, le système d'éducation et les programmes sociaux financés par l'État sont de plus en plus difficiles à maintenir [...] »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+
+  // ===== P8 · Déterminer changements et continuités — Conditions salariales H/F (continuité) =====
+  'cs-continuite-1': [
+    { id: "cs-co1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/cs-continuite-1/doc1.png", imageWidthCm: 12,
+      sources: ["Source des données : Statistique Canada, « Gains annuels moyens des hommes et des femmes en dollars constants de 2008, 1976-2008 », Statistique Canada, dernière mise à jour le 30 novembre 2015, page consultée le 21 mai 2019."] }
+  ],
+
+  // ===== P8 · Dégager différences et similitudes — Projet de loi 178 sur l'affichage (un acteur = un document) =====
+  'cs-differences-1': [
+    { id: "cs-d1-d1", title: "Document 1 : Joan Dougherty, députée libérale (1988)", layout: "text-only",
+      text: "« [...] je ne peux accepter un projet de loi qui maintient la prohibition d'autres langues dans l'affichage public à l'extérieur, ce qui va à l'encontre des droits fondamentaux reconnus par la Cour suprême [...]. Je ne peux, de plus, accepter une loi qui ne respecte pas l'esprit de la politique d'affichage de notre parti que nous avons adoptée à plusieurs reprises [...]. »",
+      sources: ["Source : Journal des débats de l'Assemblée nationale, 33e législature, 2e session, vol. 30, no 82, 19 décembre 1988, en ligne sur Assemblée nationale du Québec."] },
+    { id: "cs-d1-d2", title: "Document 2 : Guy Rivard, ministre délégué aux Affaires culturelles (1988)", layout: "text-only",
+      text: "« [...] Le gouvernement décide qu'à l'extérieur du commerce [...] l'affichage se fera uniquement en français [...]. À l'intérieur [...], le commerçant de toute origine doit pouvoir exercer son droit de renseigner sa clientèle sur sa marchandise et d'utiliser [...] la langue de son choix dans l'affichage [...]. »",
+      sources: ["Source : Journal des débats de l'Assemblée nationale, 33e législature, 2e session, vol. 30, no 82, 19 décembre 1988, en ligne sur Assemblée nationale du Québec."] },
+    { id: "cs-d1-d3", title: "Document 3 : Jean-Pierre Charbonneau, député du Parti québécois (1988)", layout: "text-only",
+      text: "« Il ne faut pas reculer [sur l'affichage commercial unilingue français], parce que l'affichage commercial, c'est un des signaux importants que l'on donne aux nouveaux arrivants. »",
+      sources: ["Source : Journal des débats de l'Assemblée nationale, 33e législature, 2e session, vol. 30, no 82, 19 décembre 1988, en ligne sur Assemblée nationale du Québec."] }
+  ],
+
+  // ===== P8 · Déterminer des causes et conséquences — Cause du vieillissement de la population =====
+  'cs-causes-2': [
+    { id: "cs-c2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/cs-causes-2/doc1.png", imageWidthCm: 12,
+      sources: ["Source des données : Institut de la statistique du Québec, « Décès et taux de mortalité, Québec, 1900-2020 » et « Naissances et taux de natalité, Québec, 1900-2020 », page consultée le 30 mars 2021."] }
+  ],
+
+  // ===== P8 · Mettre en relation — Internet vs concentration des médias (2 sur 2) =====
+  'cs-relation-2': [
+    { id: "cs-r2-d1", title: "Document 1", layout: "text-only",
+      text: "« Malgré des interventions significatives en matière de valorisation et de francisation, la situation du français reste précaire au Québec, encore plus dans le contexte de diversification croissante de la société, de la mondialisation accélérée et de l'omniprésence de l'anglais dans l'univers numérique. »",
+      sources: ["Source : Ministère de la Culture et des Communications, Renouvellement de la politique culturelle du Québec, Cahier de consultation, mars 2016, p. 19."] },
+    { id: "cs-r2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] la Fédération professionnelle des journalistes et le Conseil de presse du Québec se sont penchés sur la concentration des organes d'information et soulignent les problèmes que pose entre autres la propriété croisée d'un journal et d'une station de télévision [...]. Au bas mot, 96 % du marché francophone de la presse écrite quotidienne est contrôlé par deux propriétaires (Quebecor et Gesca). »",
+      sources: ["Source : Jean-Pierre Leblanc, Brève histoire de la presse d'information au Québec, Centre de ressources en information aux médias, 2003, p. 12."] }
+  ],
+
+  // ===== P8 · Mettre en relation — Projets de réforme constitutionnelle (2 sur 2, colonne unique) =====
+  'cs-relation-3': [
+    { id: "cs-r3-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/cs-relation-3/doc1.png", imageWidthCm: 13,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "cs-r3-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] les gouvernements provinciaux et le gouvernement fédéral soumettent l'accord [...] aux citoyens canadiens. Cet accord qui touche plusieurs aspects de la constitution canadienne comporte entre autres des mesures qui assurent plus de pouvoirs au Québec [...]. Cet accord est soumis à la population canadienne sous la forme d'un référendum. Le « Non » l'emporte avec 54,3 % des votes contre 45,7 % pour le « Oui ». »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "cs-r3-d3", title: "Document 3", layout: "text-only",
+      text: "« Le 4 octobre marque une étape importante dans les relations commerciales entre le Canada et les États-Unis [...] : les deux pays concluaient l'Accord de libre-échange [...]. Les deux pays en venaient à une entente historique qui a placé le Canada et les États-Unis à l'avant-garde de la libéralisation du commerce. »",
+      sources: ["Source : Accord de libre-échange entre le Canada et les États-Unis, Affaires mondiales Canada, page consultée le 30 novembre 2020."] },
+    { id: "cs-r3-d4", title: "Document 4", layout: "text-only",
+      text: "« [...] La loi 86 maintient l'obligation de l'affichage public en français seulement à l'extérieur des commerces. Elle permet toutefois l'usage d'une autre langue à l'intérieur des commerces, pourvu que le français y occupe une place prédominante [...]. »",
+      sources: ["Source : M. Martel et M. Pâquet, Langue et politique au Canada et au Québec, une synthèse historique, Montréal, Boréal, 2010, p. 237."] }
+  ],
+
+  // ===== P8 · Situer dans le temps — Accord de libre-échange Canada-É.-U. (ligne du temps) =====
+  // Source : ligne du temps non extractible (dessin Word) ; segments reconstruits par tranches de 5 ans.
+  'cs-situer-2': [
+    { id: "cs-s2-d1", title: "Document 1", layout: "text-only",
+      text: "« Le 4 octobre marque une étape importante dans les relations commerciales entre le Canada et les États-Unis [...] : les deux pays concluaient l'Accord de libre-échange [...]. Les deux pays en venaient à une entente historique qui a placé le Canada et les États-Unis à l'avant-garde de la libéralisation du commerce. »",
+      sources: ["Source : Accord de libre-échange entre le Canada et les États-Unis, Affaires mondiales Canada, page consultée le 30 novembre 2020."] }
+  ],
+
+  // ===== P8 · Déterminer des causes et conséquences — Cause du déclin économique des régions =====
+  'cs-causes-3': [
+    { id: "cs-c3-d1", title: "Document 1", layout: "text-only",
+      text: "« L'économie d'une large portion des territoires ruraux [...] repose sur l'exploitation des ressources naturelles et des ressources énergétiques [...]. Les communautés locales contrôlent très peu les ressources qui sont exploitées sur leur territoire, ce qui crée une importante dépendance économique, puisque leur vitalité dépend de l'exploitation des ressources par un décideur extérieur [...]. »",
+      sources: ["Source : Groupe de travail sur les communautés dévitalisées, Des communautés à revitaliser : un défi collectif pour le Québec, 2010."] }
+  ],
+
+  // ===== P8 · Établir des liens de causalité — Vieillissement, natalité et RQAP =====
+  'cs-causalite-2': [
+    { id: "cs-ca2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/cs-causalite-2/doc1.png", imageWidthCm: 13,
+      sources: ["Source des données : Les aînés du Québec - Quelques données récentes (2e édition), Ministère de la Santé et des Services sociaux, Québec, 2018, page consultée le 30 novembre 2020."] },
+    { id: "cs-ca2-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] Au Québec, le nombre moyen d'enfants par femme est passé sous le seuil de remplacement des générations [...] en 1970 et a poursuivi sa décroissance jusqu'en 1987, année où il a atteint le niveau le plus faible de son histoire [...]. »",
+      sources: ["Source : Institut de la statistique du Québec, Le bilan démographique du Québec : édition 2019, p. 38, page consultée le 1er décembre 2020."] },
+    { id: "cs-ca2-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] le Régime [québécois d'assurance parentale] constitue un moyen concret, pour les travailleuses et les travailleurs, de mieux concilier leurs responsabilités familiales et professionnelles. Il vise à soutenir financièrement les parents [...], à les encourager dans leur désir d'avoir des enfants et à les soutenir dans leur volonté de consacrer plus de temps à leurs enfants. »",
+      sources: ["Source : Gouvernement du Québec, Régime québécois d'assurance parentale, page consultée le 1er décembre 2020."] }
+  ],
+
+  // ===== P8 · Déterminer des causes et conséquences — Conséquence de la Loi 86 (affichage) =====
+  'cs-causes-4': [
+    { id: "cs-c4-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] La loi 86 maintient l'obligation de l'affichage public en français seulement à l'extérieur des commerces. Elle permet toutefois l'usage d'une autre langue à l'intérieur des commerces, pourvu que le français y occupe une place prédominante [...]. »",
+      sources: ["Source : M. Martel et M. Pâquet, Langue et politique au Canada et au Québec, une synthèse historique, Montréal, Boréal, 2010, p. 237."] }
+  ],
+
+  // ===== P8 · Déterminer changements et continuités — Place de la culture (continuité, repère de temps) =====
+  // DISCORDANCE SOURCE : le corrigé montre une réglette 2 pts ; le cahier élève montre une réglette 3 pts avec repère de temps.
+  // Le libellé (« justifie par des faits et un repère de temps ») commande la réglette 3 pts — retenue ici.
+  'cs-continuite-2': [
+    { id: "cs-co2-d1", title: "Document 1", layout: "text-only",
+      text: "« La création d'un ministère des Affaires culturelles, en 1961, témoigne à cet égard d'une volonté d'inscrire la culture parmi les grands facteurs de développement du Québec. »",
+      sources: ["Source : La politique culturelle du Québec, notre culture, notre avenir, gouvernement du Québec, 1992, p. 4."] },
+    { id: "cs-co2-d2", title: "Document 2", layout: "text-only",
+      text: "« [Des] éléments importants se dégagent du Plan stratégique [2012-2016] : [...] le second élément est de faire en sorte que la culture soit une composante essentielle du développement de la société québécoise, intégrée aux dimensions sociales, économiques, environnementales et territoriales [...]. »",
+      sources: ["Source : Ministère de la Culture et des Communications, Plan stratégique 2012-2016, 2013, p. 13."] }
+  ],
+
+  // ===== P8 · Déterminer changements et continuités — Diffusion de l'information via Internet (changement) =====
+  'cs-continuite-3': [
+    { id: "cs-co3-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] [Internet] permet d'informer les masses d'une façon quasi instantanée. Les sites Web des organes d'information que sont les journaux et les stations de radio et de télévision affichent rapidement des contenus, alors que les sites [...] de nouvelles soulignent [...] l'ampleur d'un événement au fur et à mesure que des dizaines, puis des centaines d'articles sont mis en ligne. »",
+      sources: ["Source : Jean-François Ferland, Les avantages et les risques de l'information instantanée, Direction informatique, 22 septembre 2006, page consultée le 2 décembre 2020."] }
+  ],
+
+  // ===== P8 · Dégager différences et similitudes — Financement des études universitaires (un acteur = un document) =====
+  'cs-differences-2': [
+    { id: "cs-d2-d1", title: "Document 1 : Martine Desjardins, présidente de la FEUQ (2011)", layout: "text-only",
+      text: "« En appuyant la hausse [des frais de scolarité] de Jean Charest, M. Legault se fait le complice de l'endettement des étudiants et de leurs familles [...]. Il n'y a rien de bon pour l'avenir du Québec là-dedans. »",
+      sources: ["Source : FEUQ, Hausse des frais de scolarité - Legault et Charest, même combat, arrondissement.com, page consultée le 13 janvier 2021."] },
+    { id: "cs-d2-d2", title: "Document 2 : Luc Godbout, économiste (2012)", layout: "text-only",
+      text: "« [...] pour tenir compte des frais de scolarité plus élevés, ils [les étudiants] bénéficieraient également de crédits d'impôt pour frais de scolarité additionnels. Au net, pour une hausse de frais de scolarité de 1500 $, ils économiseraient 488 $ [...]. »",
+      sources: ["Source : Luc Godbout, Une hausse des frais de scolarité profiterait aux étudiants les moins fortunés !, Libres échanges, 5 mars 2012, page consultée le 13 janvier 2021."] },
+    { id: "cs-d2-d3", title: "Document 3 : Léo Bureau-Blouin, président de la FECQ (2011)", layout: "text-only",
+      text: "« On a déjà encaissé des hausses de 30 % dans les cinq dernières années, c'est un niveau critique ; donc, on demande à Québec de plafonner les droits [de scolarité] [...]. »",
+      sources: ["Source : Droits de scolarité : les fédérations étudiantes entendent multiplier leurs moyens de pression, Radio-Canada, 12 août 2011, page consultée le 13 janvier 2021."] }
+  ],
+
+  // ===== P8 · Déterminer des causes et conséquences — Couche d'ozone : cause et conséquence (2 sur 2) =====
+  'cs-causes-5': [
+    { id: "cs-c5-d1", title: "Document 1", layout: "text-only",
+      text: "« Les activités humaines sont le principal facteur responsable de la perturbation de cet équilibre naturel, principalement à cause des émissions dans l'atmosphère de produits chimiques de synthèse [...]. Il s'agit de substances [...] qui contiennent du chlore et/ou du brome. »",
+      sources: ["Source : Gouvernement du Canada, page consultée le 13 janvier 2021."] },
+    { id: "cs-c5-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] les gouvernements du monde entier ont signé le protocole de Montréal, [...] en supprimant progressivement les substances [...] émises par les activités humaines. [...] L'action mondiale menée en vertu du protocole de Montréal a stoppé [la] détérioration [de la couche d'ozone] [...] et lui a permis de commencer à se reconstituer [...]. »",
+      sources: ["Source : Protection de la couche d'ozone, L'action de l'Union européenne, page consultée le 13 janvier 2021."] }
   ]
 
 };
@@ -5617,7 +5861,228 @@ window.DATA = {
       },
       reglettes: [{ id: "r-mq-d6", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
       documents: pickDocs('mq-differences-6', 1, 2, 3),
-      corrige: "Lise Payette (document 3) présente une position différente : elle défend la légalisation de l'avortement au nom de la liberté de la femme de décider. Les deux autres acteurs s'opposent à l'avortement : l'Association des bureaux médicaux des hôpitaux du Québec (document 1) considère l'avortement comme un homicide et s'oppose à sa légalisation, et le jésuite Marcel Marcotte (document 2) estime qu'il ne devrait être autorisé que dans les cas de péril grave pour la vie ou la santé de la mère." }
+      corrige: "Lise Payette (document 3) présente une position différente : elle défend la légalisation de l'avortement au nom de la liberté de la femme de décider. Les deux autres acteurs s'opposent à l'avortement : l'Association des bureaux médicaux des hôpitaux du Québec (document 1) considère l'avortement comme un homicide et s'oppose à sa légalisation, et le jésuite Marcel Marcotte (document 2) estime qu'il ne devrait être autorisé que dans les cas de péril grave pour la vie ou la santé de la mère." },
+
+    // ============================================================
+    // ===== P8 — 1980 à nos jours — Les choix de société dans le Québec contemporain =====
+    // Lot A — évaluations sommatives (Section A « Avec documents »), versions A et B.
+    // ============================================================
+
+    // ===== P8 · V-A Q1 · Situer dans le temps — Statut politique du Québec (chrono, doc pré-rempli) =====
+    { id: "q-cs-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 4 font référence au statut politique du Québec entre 1980 et 1995. Place-les en ordre chronologique, du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"], prefilled: ["Document 2", null, null, null] }
+      },
+      reglettes: [{ id: "r-cs-s1", label: "Réglette (2 points)", ...R_SITUER_2PT_T3_SOMA }],
+      documents: pickDocs('cs-situer-1', 1, 2, 3, 4),
+      corrige: ["Document 2", "Document 4", "Document 1", "Document 3"] },
+
+    // ===== P8 · V-A Q2 · Causes/conséquences — Conséquence des accords de libre-échange =====
+    { id: "q-cs-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence des accords de libre-échange sur l'économie du Québec.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c1", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CONS_SOMA }],
+      documents: pickDocs('cs-causes-1', 1),
+      corrige: "Une conséquence des accords de libre-échange sur l'économie du Québec est l'augmentation des exportations du Québec vers l'étranger." },
+
+    // ===== P8 · V-A Q3 · Mettre en relation — Événements liés aux droits des Autochtones (4 sur 4) =====
+    { id: "q-cs-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 4 correspondent à des événements liés aux droits des Autochtones du Québec. Pour chaque document, coche l'événement auquel il se rapporte.",
+        responseSpace: { type: "checkbox-table",
+          columns: ["La Loi constitutionnelle (1982)", "La création du Nunavut (1999)", "La Paix des Braves (2002)", "La crise d'Oka (1990)"],
+          rows: ["Document 1", "Document 2", "Document 3", "Document 4"]
+        }
+      },
+      reglettes: [{ id: "r-cs-r1", label: "Réglette (2 points)", ...R_RELATION_2PT_4_SOMA }],
+      documents: pickDocs('cs-relation-1', 1, 2, 3, 4),
+      corrige: [[true, false, false, false], [false, true, false, false], [false, false, true, false], [false, false, false, true]] },
+
+    // ===== P8 · V-A Q4 · Causalité — Récession et financement des programmes sociaux =====
+    { id: "q-cs-causalite-1", operation: "Établir des liens de causalité", numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Explique comment la situation économique du Québec et du Canada au cours des années 1980 a eu un effet sur le financement des programmes sociaux. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "La situation économique du Québec et du Canada au cours des années 1980",
+          "La situation des finances publiques",
+          "Un effet sur le financement des programmes sociaux"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-cs-ca1", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('cs-causalite-1', 1, 2, 3),
+      corrige: "Au cours des années 1980, le Québec et le Canada traversent une grave récession et le taux de chômage y est très élevé (document 1). Cette situation fait augmenter de façon importante la dette publique du Québec (document 2). Pour faire face à cette crise budgétaire, les gouvernements diminuent le financement des programmes sociaux (document 3)." },
+
+    // ===== P8 · V-A Q5 · Changements/continuités — Conditions salariales H/F (continuité) =====
+    { id: "q-cs-continuite-1", operation: "Déterminer des changements et des continuités", numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À partir du document 1, indique un élément de continuité lié aux conditions salariales des hommes et des femmes entre 1980 et 2010.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-cs-co1", label: "Réglette (2 points)", ...R_CONTINUITES_2PT_GEN_SOMA }],
+      documents: pickDocs('cs-continuite-1', 1),
+      corrige: "Un élément de continuité lié aux conditions salariales des hommes et des femmes entre 1980 et 2010 est que les femmes perçoivent toujours un salaire inférieur à celui des hommes." },
+
+    // ===== P8 · V-A Q6 · Différences/similitudes — Projet de loi 178 sur l'affichage (acteur différent) =====
+    { id: "q-cs-differences-1", operation: "Dégager des différences et des similitudes", numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent la position de trois acteurs concernant un projet de loi sur l'affichage présenté à l'Assemblée nationale dans les années 1980. Nomme l'acteur qui présente une position différente et compare cette position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-d1", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_2POSITIONS_SOMA }],
+      documents: pickDocs('cs-differences-1', 1, 2, 3),
+      corrige: "Joan Dougherty (document 1) présente une position différente : elle s'oppose à l'affichage public extérieur uniquement en français et à l'interdiction d'afficher dans une autre langue à l'extérieur des commerces. Les deux autres acteurs appuient cette mesure : Guy Rivard (document 2) défend l'affichage uniquement en français à l'extérieur des commerces et Jean-Pierre Charbonneau (document 3) estime qu'il ne faut pas reculer sur l'affichage commercial unilingue français." },
+
+    // ===== P8 · V-A Q7 · Causes/conséquences — Cause du vieillissement de la population =====
+    { id: "q-cs-causes-2", operation: "Déterminer des causes et des conséquences", numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Depuis le début des années 1980, la population âgée de 65 ans et plus augmente. À l'aide du document 1, indique une cause de cette situation.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c2", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
+      documents: pickDocs('cs-causes-2', 1),
+      corrige: "Une cause du vieillissement de la population au Québec est la diminution du taux de natalité ou l'augmentation de l'espérance de vie ou le faible taux de mortalité." },
+
+    // ===== P8 · V-A Q8 · Mettre en relation — Internet vs concentration des médias (2 sur 2) =====
+    { id: "q-cs-relation-2", operation: "Mettre en relation des faits", numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Pour chaque document, coche le problème qu'il présente : un problème culturel lié à l'utilisation d'Internet ou un problème lié à la concentration des médias dans les années 2000.",
+        responseSpace: { type: "checkbox-table",
+          columns: ["Problème culturel lié à l'utilisation d'Internet", "Problème lié à la concentration des médias"],
+          rows: ["Document 1", "Document 2"]
+        }
+      },
+      reglettes: [{ id: "r-cs-r2", label: "Réglette (2 points)", ...R_RELATION_2PT_2SUR2 }],
+      documents: pickDocs('cs-relation-2', 1, 2),
+      corrige: [[true, false], [false, true]] },
+
+    // ===== P8 · V-B Q1 · Mettre en relation — Projets de réforme constitutionnelle (2 sur 2) =====
+    { id: "q-cs-relation-3", operation: "Mettre en relation des faits", numero: 3, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Au cours des années 1980 et 1990, des projets de réforme constitutionnelle sont à l'ordre du jour. Pour chaque document, coche la case s'il se rapporte à un projet de réforme constitutionnelle.",
+        responseSpace: { type: "checkbox-table",
+          columns: ["Se rapporte à un projet de réforme constitutionnelle"],
+          rows: ["Document 1", "Document 2", "Document 3", "Document 4"]
+        }
+      },
+      reglettes: [{ id: "r-cs-r3", label: "Réglette (2 points)", ...R_RELATION_2PT_2SUR2 }],
+      documents: pickDocs('cs-relation-3', 1, 2, 3, 4),
+      corrige: [[true], [true], [false], [false]] },
+
+    // ===== P8 · V-B Q2 · Situer dans le temps — Accord de libre-échange (ligne du temps) =====
+    { id: "q-cs-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        responseSpace: { type: "timeline-segments", periods: [
+          { letter: "A", range: "1980–1985" },
+          { letter: "B", range: "1985–1990" },
+          { letter: "C", range: "1990–1995" },
+          { letter: "D", range: "1995–2000" }
+        ]}
+      },
+      reglettes: [{ id: "r-cs-s2", label: "Réglette (1 point)", ...R_SITUER_1PT_FAITS }],
+      documents: pickDocs('cs-situer-2', 1),
+      corrige: "B (l'Accord de libre-échange entre le Canada et les États-Unis est conclu à la fin des années 1980, soit la période 1985-1990)." },
+
+    // ===== P8 · V-B Q3 · Causes/conséquences — Cause du déclin économique des régions =====
+    { id: "q-cs-causes-3", operation: "Déterminer des causes et des conséquences", numero: 3, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Depuis le début des années 1980, on assiste au déclin économique de certaines régions du Québec. À l'aide du document 1, indique une cause de ce déclin.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c3", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
+      documents: pickDocs('cs-causes-3', 1),
+      corrige: "Une cause du déclin économique de certaines régions du Québec est leur dépendance économique à l'exploitation des ressources naturelles, car leur économie repose sur l'exploitation de ces ressources par un décideur extérieur." },
+
+    // ===== P8 · V-B Q4 · Causalité — Vieillissement, natalité et politique familiale (RQAP) =====
+    { id: "q-cs-causalite-2", operation: "Établir des liens de causalité", numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Explique comment une caractéristique de la population québécoise depuis le début des années 1980 a influencé la politique familiale du gouvernement du Québec. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Une caractéristique de la population québécoise",
+          "La situation de la natalité au Québec",
+          "Un élément de la politique familiale du gouvernement dans les années 2000"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-cs-ca2", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('cs-causalite-2', 1, 2, 3),
+      corrige: "Depuis le début des années 1980, le Québec fait face au vieillissement de sa population (document 1). De plus, il doit composer avec une baisse constante du nombre d'enfants par femme (document 2). Pour tenter de minimiser les effets de ces deux réalités, le gouvernement du Québec a mis sur pied le Régime québécois d'assurance parentale (document 3)." },
+
+    // ===== P8 · V-B Q5 · Causes/conséquences — Conséquence de la Loi 86 sur l'affichage =====
+    { id: "q-cs-causes-4", operation: "Déterminer des causes et des conséquences", numero: 4, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence de la Loi 86 sur l'affichage public au Québec.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c4", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CONS_SOMA }],
+      documents: pickDocs('cs-causes-4', 1),
+      corrige: "Une conséquence de la Loi 86 sur l'affichage public au Québec est la possibilité d'afficher dans une autre langue à l'intérieur d'un commerce, à condition que le français y occupe une place prédominante." },
+
+    // ===== P8 · V-B Q6 · Changements/continuités — Place de la culture (continuité, repère de temps) =====
+    { id: "q-cs-continuite-2", operation: "Déterminer des changements et des continuités", numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique une continuité dans la place que l'État québécois veut donner à la culture. Justifie ton choix à l'aide de faits et d'un repère de temps.",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-cs-co2", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_INLINE }],
+      documents: pickDocs('cs-continuite-2', 1, 2),
+      corrige: "Un élément de continuité est que l'État québécois présente la culture comme un élément majeur du développement de la société québécoise, autant au début des années 1960 (création du ministère des Affaires culturelles en 1961, document 1) qu'au début des années 2010 (Plan stratégique 2012-2016, document 2)." },
+
+    // ===== P8 · V-B Q7 · Changements/continuités — Diffusion de l'information via Internet (changement) =====
+    { id: "q-cs-continuite-3", operation: "Déterminer des changements et des continuités", numero: 3, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "L'avènement d'Internet amène un changement dans la manière de diffuser l'information en continu à partir des années 2000. À l'aide du document 1, indique quel est ce changement.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-co3", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('cs-continuite-3', 1),
+      corrige: "Un changement dans la manière de diffuser l'information en continu à partir des années 2000 est la diffusion rapide et quasi instantanée de l'information grâce aux différentes plateformes Web (sites des journaux, de la radio et de la télévision)." },
+
+    // ===== P8 · V-B Q8 · Différences/similitudes — Financement des études universitaires (acteur différent) =====
+    { id: "q-cs-differences-2", operation: "Dégager des différences et des similitudes", numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent la position de trois acteurs concernant le financement des études universitaires au Québec au cours des années 2010. Nomme l'acteur qui présente une position différente et compare cette position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-d2", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('cs-differences-2', 1, 2, 3),
+      corrige: "Luc Godbout (document 2) présente une position différente : selon lui, la hausse des frais de scolarité est une bonne chose, car elle permettrait aux étudiants d'obtenir des crédits d'impôt additionnels et de s'enrichir. Les deux autres acteurs s'opposent à la hausse des frais de scolarité : Martine Desjardins (document 1), de la FEUQ, dénonce l'endettement des étudiants et de leurs familles, et Léo Bureau-Blouin (document 3), de la FECQ, demande au gouvernement de plafonner les droits de scolarité." },
+
+    // ===== P8 · V-B Q9 · Causes/conséquences — Couche d'ozone : cause et conséquence (2 sur 2) =====
+    { id: "q-cs-causes-5", operation: "Déterminer des causes et des conséquences", numero: 5, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Au cours des années 1980, des crises écologiques sont au coeur des préoccupations environnementales. Au sujet de la couche d'ozone, coche pour chaque document s'il présente une cause ou une conséquence.",
+        responseSpace: { type: "checkbox-table",
+          columns: ["Une cause", "Une conséquence"],
+          rows: ["Document 1", "Document 2"]
+        }
+      },
+      reglettes: [{ id: "r-cs-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS_2SUR2 }],
+      documents: pickDocs('cs-causes-5', 1, 2),
+      corrige: [[true, false], [false, true]] }
 
   ]
 };
