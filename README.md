@@ -1,151 +1,95 @@
-# Histoire du Québec et du Canada — Catalogue d'opérations intellectuelles, 3e secondaire
+# Histoire du Québec et du Canada — Catalogue d'opérations intellectuelles (3e + 4e secondaire)
 
-Catalogue de questions atomiques pour le programme HQC, 3e secondaire (PFEQ, Ministère de l'Éducation du Québec). Permet à un enseignant de composer un cahier à la pièce et d'exporter en format Word (cahier de l'élève + guide de l'enseignant).
+Catalogue de questions atomiques pour le programme **Histoire du Québec et du Canada** (PFEQ, Ministère de l'Éducation du Québec), couvrant **les deux années du 2e cycle du secondaire** (3e et 4e). L'application permet à un enseignant de composer un cahier d'évaluation à la pièce et de l'exporter en format Word — **cahier de l'élève** + **guide de l'enseignant** (corrigé avec réglettes de correction).
 
 ## Structure pédagogique
 
-**4 périodes historiques** (sec 3 = des origines à 1840) — chacune avec une réalité sociale unique :
+**8 périodes historiques** réparties en 2 années, chacune liée à une réalité sociale unique.
+
+**3e secondaire — des origines à 1840 :**
 
 1. **Des origines à 1608** — L'expérience des Autochtones et le projet de colonie
 2. **1608-1760** — L'évolution de la société coloniale sous l'autorité de la métropole française
 3. **1760-1791** — La Conquête et le changement d'empire
 4. **1791-1840** — Les revendications et les luttes nationales
 
-**7 opérations intellectuelles** (2e cycle) :
+**4e secondaire — de 1840 à nos jours :**
+
+5. **1840-1896** — La formation du régime fédéral canadien
+6. **1896-1945** — Les nationalismes et l'autonomie du Canada
+7. **1945-1980** — La modernisation du Québec et la Révolution tranquille
+8. **1980 à nos jours** — Les choix de société dans le Québec contemporain
+
+**7 opérations intellectuelles** (OI) du 2e cycle :
+
 - Établir des faits
-- Situer dans le temps et dans l'espace (fusionnées au 2e cycle)
+- Situer dans le temps et dans l'espace
 - Mettre en relation des faits
 - Établir des liens de causalité
 - Déterminer des causes et des conséquences
 - Dégager des différences et des similitudes
 - Déterminer des changements et des continuités
 
+## État actuel — v1.29.0 (mai 2026)
+
+**202 questions** dans le catalogue, **440 points** au total, réparties sur les **8 périodes**.
+**7 périodes sur 8 sont à 7/7 OI.** Seule **P5** reste à 6/7 (voir « Points d'attention »).
+
+| Période | Année | Questions | OI couvertes | Points |
+|---|---|---|---|---|
+| **P1** — Des origines à 1608 | 3e | 23 | 7 / 7 ✓ | 50 |
+| **P2** — 1608-1760 | 3e | 26 | 7 / 7 ✓ | 58 |
+| **P3** — 1760-1791 | 3e | 18 | 7 / 7 ✓ | 36 |
+| **P4** — 1791-1840 | 3e | 13 | 7 / 7 ✓ | 25 |
+| **P5** — 1840-1896 | 4e | 28 | **6 / 7** ⚠ | 57 |
+| **P6** — 1896-1945 | 4e | 30 | 7 / 7 ✓ | 68 |
+| **P7** — 1945-1980 | 4e | 39 | 7 / 7 ✓ | 91 |
+| **P8** — 1980 à nos jours | 4e | 25 | 7 / 7 ✓ | 55 |
+| **TOTAL** | | **202** | **7 périodes / 8 à 7 / 7** | **440** |
+
+Sous-total 3e secondaire : **80 questions, 169 points** · sous-total 4e secondaire : **122 questions, 271 points**.
+
+### Quoi de neuf (v1.29.0)
+
+**Achèvement de la P8 (1980 à nos jours) par les guides pédagogiques RÉCIT (Lot B)** et **passe de cohérence sur les 8 périodes.**
+
+- **+8 questions P8** (préfixe `cs`, réalité `choix-societe-quebec-contemporain`) tirées des 4 guides RÉCIT de la période. **P8 passe de 6/7 à 7/7 OI** ; cahier P8 de 38 à 55 points.
+  - **Priorité atteinte** : l'OI « Établir des faits » (absente des sommatives) est couverte par `q-cs-faits-1` — deux facteurs limitant le branchement à Internet, avec un **graphique recréé** (population branchée selon le revenu, 2012-2016).
+  - Autres OI complétées : situer (chrono des 4 accords de libre-échange depuis 1980), causalité (services numériques → taxe), causes/conséquences (Commission de vérité et réconciliation), différences/similitudes (Lévesque vs Trudeau ; missions de paix vs armées ; neutralité religieuse à Saguenay), changements/continuités (Loi constitutionnelle 1867 vs 1982).
+  - 1 réglette créée (`R_FAITS_2PT_2SUR2`) ; 7 réglettes existantes réutilisées. 7 questions candidates écartées (doublons avec les sommatives ou formats hors-portée).
+- **Passe de cohérence (8 périodes)** :
+  - **Correctif de barème** — `R_CAUSES_2PT_CAUSE_BINAIRE` (Q2 P1 familiarisation) était implémentée via `rubric2()`, qui plafonne à 1 point, en contradiction avec son nom, son label « Réglette (2 points) » et sa source documentée. Restaurée en barème binaire **2 pts / 0 pt**. P1 passe de 49 à 50 points.
+  - **Correctif de documentation** — l'en-tête de `data.js` annonçait P5 à 7/7 OI ; P5 est en réalité à **6/7** (l'OI « Établir des faits » n'y a jamais été couverte). En-tête corrigé pour refléter la réalité.
+  - **Vérifié sans anomalie** : contiguïté et unicité des compteurs `numero` (par réalité × OI), concordance label ↔ `maxPoints` de toutes les réglettes, présence d'une source sur chaque document.
+
 ## Architecture technique
 
-- HTML/CSS/JS vanilla, aucun build step
-- Déploiement GitHub Pages
-- Dépendances CDN : SortableJS, docx, JSZip, docx-preview
-- Données dans `assets/js/data.js`
-- Logique applicative dans `assets/js/app.js`
+- HTML / CSS / JS *vanilla*, aucune étape de *build*.
+- Déploiement GitHub Pages (`.nojekyll`).
+- Dépendances CDN : SortableJS, `docx` (v8.5.0), JSZip, docx-preview.
+- **Toutes les données** (questions, documents, réglettes) vivent dans `assets/js/data.js`.
+- **Logique applicative** et génération .docx côté client dans `assets/js/app.js`.
 
-## État actuel — v1.18.1 (mai 2026)
+### Méthode d'intégration des questions
 
-**58 questions** dans le catalogue. **Couverture COMPLÈTE des 4 périodes à 7/7 OI** ⭐.
+Deux sources alimentent le catalogue, selon une méthode uniforme d'une période à l'autre :
 
-| Période | Questions | OI couvertes |
-|---|---|---|
-| **P1** — Des origines à 1608 | 14 | 7 / 7 ✓ |
-| **P2** — 1608-1760 | 21 | 7 / 7 ✓ |
-| **P3** — 1760-1791 | 15 | 7 / 7 ✓ |
-| **P4** — 1791-1840 | 8 | 7 / 7 ✓ |
+1. **Évaluations sommatives officielles** (Section A « Avec documents ») — fournissent l'ossature de chaque période et leurs barèmes officiels.
+2. **Guides pédagogiques RÉCIT** — comblent les OI manquantes (souvent « Établir des faits ») et ajoutent de la variété. Les guides RÉCIT **ne fournissent pas de barème** : on calque alors une réglette fonctionnellement équivalente parmi les constantes existantes (ou on en crée une, en le documentant en commentaire).
 
-### Quoi de neuf (v1.18.1)
+**Conventions appliquées partout** : tutoiement ; guillemets français `« »` ; « un acteur = un document » (les documents multi-acteurs sont éclatés) ; renumérotation des documents à partir de « Document 1 » par question ; aucune source ne doit révéler la réponse (ex. années retirées des questions chronologiques, photos sous droits remplacées par du texte factuel).
 
-Correctif d'images P4 :
-- **Plafond `imageWidthCm` relevé** de 13 à 16 cm dans `app.js`
-- **Re-rasterisation à 300 dpi** depuis le PDF source : bateau d'immigrants (Q3, 1450×580), crise des subsides (Q7, 1780×900) — qualité nettement supérieure
-- **Splittage des cartes castors (Q6)** en 2 documents distincts (1780 et 1820) selon la convention « un acteur = un document ». Chaque carte affichée à 14 cm avec qualité Lanczos. Doc 4 (Hudson Bay texte) renuméroté.
-- **Cartes Acte constitutionnel 1791 (Q1)** upscalées au filtre Lanczos (280 → 1200 px de large), `imageWidthCm` 8 → 11 cm. **Les versions HD originales restent à téléverser** pour une qualité optimale.
-- `imageWidthCm` augmenté à 16 cm pour les 4 documents larges (graphiques population Q2, bateau Q3, 92 résolutions Q7, crise des subsides Q7).
+## Points d'attention connus
 
-## État précédent — v1.18.0 (mai 2026)
+- **P5 (1840-1896) — 6/7 OI** : l'OI **« Établir des faits »** n'est pas encore couverte. C'est le seul écart de couverture restant du catalogue. Il se comblerait par une question issue d'un guide RÉCIT de P5 (même méthode que P8 en v1.29.0), guide non encore traité.
+- **`na-continuite-5/doc2` (P6) — source « à confirmer »** : le PDF du guide RÉCIT cite pour ce document la même source que le document précédent (Orphelinat de Notre-Dame de Montfort, 1896), alors que l'image réellement intégrée est différente (une religieuse enseignante avec deux écolières, vraisemblablement 1930-1950). C'est un bug de copier-coller du fichier source. L'image illustre fidèlement la continuité du rôle de l'Église dans l'éducation — l'objet même de la question — mais sa provenance exacte ne peut être établie de façon fiable sans recherche par image inverse. Le libellé « à confirmer » est maintenu volontairement (aucune attribution n'est inventée) ; à trancher par l'enseignant.
 
-| Période | Questions | OI couvertes |
-|---|---|---|
-| **P1** — Des origines à 1608 | 14 | 7 / 7 ✓ |
-| **P2** — 1608-1760 | 21 | 7 / 7 ✓ |
-| **P3** — 1760-1791 | 15 | 7 / 7 ✓ |
-| **P4** — 1791-1840 | **8** | **7 / 7 ✓** ⭐ |
+## Historique des versions (résumé)
 
-### Quoi de neuf (v1.18.0)
-
-**Intégration du PDF Questions courtes 1791-1840** — 7 nouvelles questions P4 qui **amènent P4 de 1/7 à 7/7 OI** ⭐ :
-
-| Q | OI | Pts | Sujet |
-|---|---|---|---|
-| Q1 | Établir des faits ⭐ | 1 | Apathie des Canadiens à la guerre de 1812 (Brock) |
-| Q2 | Changements/continuités ⭐ | 2 | Population anglophone qui s'accroît 1791-1840 |
-| Q3 | Causes/conséquences ⭐ | 2 | Cause de propagation des épidémies (promiscuité) |
-| Q4 | Différences/similitudes ⭐ | 2 | Désaccord Durham vs Le Canadien sur l'Union |
-| Q5 | Mettre en relation ⭐ | 2 | Républicanisme vs Nationalisme canadien |
-| Q6 | Liens de causalité ⭐ | 3 | Coût des fourrures → fusion des compagnies |
-| Q7 | Situer dans le temps ⭐ | 2 | Avant/après les résolutions Russell (1837) |
-
-Les 7 OI étaient absentes de P4 en v1.17.0 (1 seule question existait : Q1 P4 cartes Acte constitutionnel).
-
-**Aucune nouvelle réglette nécessaire** — réutilisation complète des constantes existantes (notamment `R_DIFFERENCES_2PT_DIVERGENCE` créée en v1.17.0 pour Q5 P3 et qui s'applique aussi à Q4 P4).
-
-**7 images intégrées** :
-- Graphiques population 1791 vs 1840 (Q2, HD 2500×1211)
-- Bateau d'immigrants (Q3)
-- Cartes castors 1780/1820 composites (Q6)
-- Tableau « Les 92 résolutions » rasterisé du PDF (Q7)
-- Schéma « La crise des subsides au Bas-Canada » (Q7)
-- L'attaque contre Saint-Charles (Q7)
-
-## État précédent — v1.17.0 (mai 2026)
-
-**51 questions** dans le catalogue. Couverture par période :
-
-| Période | Questions | OI couvertes |
-|---|---|---|
-| **P1** — Des origines à 1608 | 14 | 7 / 7 ✓ |
-| **P2** — 1608-1760 | 21 | 7 / 7 ✓ |
-| **P3** — 1760-1791 | **15** | **7 / 7 ✓** ⭐ |
-| **P4** — 1791-1840 | 1 | 1 / 7 |
-
-### Quoi de neuf (v1.17.0)
-
-**Intégration du PDF Questions courtes 1760-1791** — 8 nouvelles questions P3 qui **complètent P3 à 7/7 OI** ⭐ :
-
-| Q | OI | Pts | Sujet |
-|---|---|---|---|
-| Q1 | Établir des faits ⭐ | 1 | Religion du clergé arrivé avec Amherst (1759) |
-| Q2 | Changements/continuités ⭐ | 2 | Changement politique en 1763 (portrait Murray) |
-| Q3 | Causes/conséquences | 2 | Cause politique de la révolte de Pontiac |
-| Q4 | Situer dans l'espace | 2 | Carte A/B/C/D — région de traite perdue |
-| Q5 | Différences/similitudes | 2 | Désaccord Carleton vs marchands de Québec |
-| Q6 | Mettre en relation | 2 | Régime militaire / Proclamation royale / Acte de Québec |
-| Q7 | Liens de causalité ⭐ | 3 | Guerre d'indépendance américaine → Loyalistes |
-| Q8 | Situer dans le temps | 2 | Avant/après l'Acte de Québec (4 documents) |
-
-Les 3 OI marquées ⭐ étaient absentes de P3 en v1.16.1.
-
-**3 nouvelles réglettes** créées :
-- `R_SITUER_2PT_SP_FAIT` — situer 1 fait dans l'espace (Q4, binaire 2 pts/0 pt)
-- `R_SITUER_2PT_T4_BINAIRE` — situer 4 faits dans le temps (Q8, binaire 2 pts/0 pt). Note : libellé corrigé silencieusement de « (3 sur 3) » (PDF source) à « (4 sur 4) » — erreur évidente de copier-coller du template du PDF source qui a 4 documents.
-- `R_DIFFERENCES_2PT_DIVERGENCE` — point de divergence entre points de vue (Q5)
-
-**8 images intégrées** :
-- Portrait James Murray (Q2)
-- Carte A/B/C/D Proclamation royale (Q4)
-- Maison de l'évêque ruines (Q6)
-- Schéma gouvernement Proclamation royale (Q6, rasterisé du PDF)
-- Spirit of '76 (Q7)
-- Carte arrivée des Loyalistes (Q7)
-- Carte territoire après Acte de Québec (Q8)
-- Boston Tea Party (Q8)
-
-## État actuel — v1.16 (mai 2026)
-
-**Intégration des 2 RÉCIT thématiques P3 (1760-1791)** — 5 nouvelles questions issues de :
-- *Du régime militaire au gouvernement civil* : 3 questions (3 conséquences du changement de régime + aspects de société ; similitude/différence Gouvernement royal vs Proclamation royale ; situer 2 docs autochtones avant/après Proclamation royale)
-- *La société coloniale face au changement d'empire* : 2 questions (cause + conséquence arrivée des Loyalistes ; cause + conséquence des pétitions des marchands britanniques)
-
-P3 couvre désormais 4 des 7 OI (causes-conséquences, différences-similitudes, situer, mettre en relation). Manquent : Établir des faits, Liens de causalité, Changements/continuités.
-
-**2 nouvelles réglettes** créées (la source RÉCIT P3 ne fournit aucun barème — réglettes inventées en s'inspirant du cadre d'évaluation officiel et des patterns existants) :
-- `R_CAUSES_2PT_T3_CONS_MULTI` — variante « 3 conséquences à classer » (3 sur 3 / 1-2 sur 3 / 0 sur 3) pour Q1 R1
-- `R_DIFFSIM_2PT_1SIM_1DIFF` — variante « 1 similitude ET 1 différence » pour Q2 R1
-
-Les 3 autres questions réutilisent les réglettes existantes (`R_SITUER_1PT_T2`, `R_RELATION_2PT_2_PART`, `R_CAUSES_2PT_CAUSE_CONS`).
-
-**3 schémas vectoriels rasterisés depuis le PDF du RÉCIT** (Word ne les exporte pas comme bitmap) :
-- Commerce des fourrures vers 1767 (Q1 R1)
-- Schéma Gouvernement royal (1663) (Q2 R1)
-- Schéma Proclamation royale (1763) (Q2 R1)
-
-Les activités « En résumé » des deux RÉCIT (7 au total : comparaisons de cartes libres, séquences A-B-C, tableaux multi-colonnes, schémas démographiques) sont écartées — formats complexes non supportés par le schéma de données actuel.
+- **v1.29.0** — P8 complétée par les guides RÉCIT (Lot B) ; passe de cohérence (8 périodes). 202 questions.
+- **v1.28.0** — Démarrage de P8 : 17 questions des évaluations sommatives Section A (Lot A).
+- **v1.27.0** — Fin de l'intégration des guides RÉCIT de P7 (modernisation du Québec).
+- **v1.18.x / v1.17.0 / v1.16** — Complétion de P3 et P4 à 7/7 (PDF « Questions courtes » et RÉCIT thématiques), correctifs d'images.
 
 ## Crédit
 

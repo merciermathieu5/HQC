@@ -1,12 +1,46 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.28.0 (mai 2026) ⭐ P8 DÉMARRÉE — SOMMATIVES SECTION A (LOT A)
-   194 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles
+   HQC · 3e + 4e secondaire — Données — v1.29.0 (mai 2026) ⭐⭐ P8 COMPLÉTÉE — SOMMATIVES (LOT A) + GUIDES RÉCIT (LOT B)
+   202 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 7 PÉRIODES SUR 8 À 7/7 OI ; P5 reste à 6/7 (« établir des faits » manquante) ⚠
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 28 (7/7 OI) ⭐⭐ (16 sommatives + 12 guides RÉCIT), P6 = 30 (7/7 OI) ⭐⭐ (16 sommatives + 14 guides RÉCIT),
+   Couverture 4e : P5 = 28 (6/7 OI ⚠ — « établir des faits » MANQUANTE ; 16 sommatives + 12 guides RÉCIT), P6 = 30 (7/7 OI) ⭐⭐ (16 sommatives + 14 guides RÉCIT),
                    P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT),
-                   P8 = 17 (6/7 OI ⭐ — sommatives Section A V-A + V-B ; « établir des faits » à combler par les guides RÉCIT).
-   Répartition OI de P8 (17 q) : causes/conséquences 5 · mettre en relation 3 · changements/continuités 3 ·
-                   situer 2 · causalité 2 · différences/similitudes 2 · établir des faits 0.
+                   P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
+   Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
+                   mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.29.0 — FIN DE P8 (1980 À NOS JOURS) — INTÉGRATION DES GUIDES PÉDAGOGIQUES RÉCIT (LOT B) :
+     • +8 questions (préfixe « cs », réalité choix-societe-quebec-contemporain), tirées des 4 guides RÉCIT de P8
+       (« La population québécoise et la culture », « Le statut politique du Québec », « Le Québec dans le monde »,
+       « Les revendications sociales »). P8 passe de 6/7 à 7/7 OI ; total cahier 38 → 55 points (+17).
+       — PRIORITÉ ATTEINTE : « Établir des faits » 0 → 1 (q-cs-faits-1, numero 1) : deux facteurs limitant le
+         branchement à Internet (revenu, région), avec un graphique recréé via matplotlib (Document 2).
+       — Autres OI complétées : situer 2 → 3 (chrono des 4 accords de libre-échange depuis 1980), causalité 2 → 3
+         (Netflix → taxe des services numériques), causes/conséquences 5 → 6 (2 conséquences de la CVR), diff/sim
+         2 → 5 (Lévesque vs Trudeau ; missions de paix vs armées ; neutralité religieuse à Saguenay), changements/
+         continuités 3 → 4 (Loi const. 1867 vs 1982).
+     • 1 réglette ajoutée : R_FAITS_2PT_2SUR2 (type simple, 2 pts, 3 niveaux « 2/2 · 1/2 · 0/2 ») — les guides RÉCIT
+       ne fournissent pas de barème, calque des réglettes « établir des faits » des autres périodes. Toutes les
+       autres réglettes du Lot B sont réutilisées (R_DIFFERENCES_2PT_DIVERGENCE, R_CHANGEMENTS_2PT_1CHG_1CONT,
+       R_CAUSES_2PT_2CONS, R_SITUER_2PT_T4, R_DIFFSIM_2PT_1SIM_1DIFF, R_SIMILITUDES_2PT_CONVERGENCE, RUBRIC_CAUSALITE_3PT).
+     • 1 image préparée : graphique « population branchée à Internet selon le revenu, 2012-2016 » (cs-faits-1/doc2.png),
+       recréé via matplotlib (suréchantillon), SANS titre intégré (le titre est porté par « Document 2 »).
+     • DÉCISIONS DE FIDÉLITÉ : la photo de la signature de l'ACEUM (domaine public) est convertie en texte factuel ;
+       les années sont retirées des contenus et des sources de la question « situer » pour ne pas révéler l'ordre
+       chronologique (l'élève situe via les acteurs et les accords nommés).
+     • 7 questions candidates ÉCARTÉES (doublons durs avec les sommatives ou protocoles hors-portée) : revend Q1
+       (doublon cs-differences-2, frais de scolarité), monde Q2 (doublon cs-causes-1, conséquence du libre-échange),
+       monde Q3 (doublon cs-causalite-1, finances publiques), pop Q1 (chevauchement cs-causes-2 + 3 graphiques),
+       statut Q3 (infographies non extractibles + diff/sim sur-couvert), revend Q3 (chevauchement cs-relation-1 +
+       2 photos droits réservés), revend Q4 (causalité déjà couverte + visuels à reconstruire).
+     • PASSE DE COHÉRENCE GLOBALE (8 périodes) : (1) CORRECTIF de barème — R_CAUSES_2PT_CAUSE_BINAIRE (Q2 P1
+       familiarisation) était implémentée via rubric2() (plafond 1 pt), en contradiction avec son nom, son label
+       « Réglette (2 points) » et sa source documentée ; restaurée en barème binaire 2 pts/0 pt. P1 passe de 49 à
+       50 points ; total catalogue 439 → 440 points. (2) CORRECTIF de documentation — P5 était annoncée 7/7 OI
+       dans cet en-tête alors qu'elle est à 6/7 (l'OI « établir des faits » n'a jamais été couverte ; aucune
+       question cs-faits/équivalent en P5). En-tête corrigé. (3) Vérifié sans anomalie : contiguïté et unicité des
+       compteurs `numero` par réalité×OI, concordance label↔maxPoints (24+1 réglettes 1-2 pts), présence d'une
+       source sur chaque document. (4) na-continuite-5/doc2 (P6) : source toujours « à confirmer » (image archivistique
+       d'une religieuse enseignante et de deux écolières ; la provenance exacte ne peut être établie de façon fiable
+       sans recherche par image inverse — le libellé « à confirmer » est maintenu, à trancher par l'enseignant).
    v1.28.0 — DÉMARRAGE DE P8 (1980 À NOS JOURS) — ÉVALUATIONS SOMMATIVES SECTION A (LOT A) :
      • +17 questions (préfixe « cs », réalité choix-societe-quebec-contemporain), tirées des versions A et B
        de l'Évaluation sommative officielle « 1980 à nos jours », Section A « Avec documents » uniquement
@@ -568,11 +602,17 @@ const R_DIFFSIM_3PT_PEUPLE_DIFFERENT = { type: "simple", opLabel: "Dégager des 
 
 // Déterminer 1 cause (2 points, binaire) — Q2 P1 fam : cause de la rivalité entre nations autochtones.
 // Source : rubric binaire 2pt/0pt sans niveau intermédiaire. On garde fidèlement le format.
-const R_CAUSES_2PT_CAUSE_BINAIRE = rubric2(
-  "Déterminer des causes et des conséquences",
-  "L'élève détermine correctement la cause.",
-  "L'élève détermine incorrectement la cause ou ne la dégage pas."
-);
+// v1.29.0 (passe de cohérence) — CORRECTIF : la définition utilisait rubric2(), qui plafonne à
+// maxPoints:1 (« 1 point / 0 point »), ce qui contredisait le nom de la constante, le label
+// « Réglette (2 points) » de la question et la source documentée ci-dessus. Restauré en barème
+// binaire 2 pts/0 pt explicite, sur le modèle de R_SITUER_2PT_T3_BINAIRE.
+const R_CAUSES_2PT_CAUSE_BINAIRE = {
+  type: "simple", opLabel: "Déterminer des causes et des conséquences", maxPoints: 2,
+  levels: [
+    { points: "2 points", condition: "L'élève détermine correctement la cause." },
+    { points: "0 point",  condition: "L'élève détermine incorrectement la cause ou ne la dégage pas." }
+  ]
+};
 
 // Déterminer 1 changement ET 1 continuité (2 points, 2 sur 2) — Q6 P2 fam : politique coloniale après 1663.
 const R_CHANGEMENTS_2PT_1CHG_1CONT = rubric3(
@@ -1030,6 +1070,21 @@ const R_DIFFSIM_3PT_2POSITIONS_SOMA = {
     { points: "2 points", condition: "L'élève présente correctement une position et présente plus ou moins correctement l'autre position." },
     { points: "1 point",  condition: "L'élève présente plus ou moins correctement les deux positions, ou présente correctement une position et présente incorrectement l'autre position ou ne la présente pas." },
     { points: "0 point",  condition: "L'élève présente incorrectement les deux positions ou ne les présente pas, ou nomme incorrectement l'acteur qui présente une position différente." }
+  ]
+};
+
+// ============ Réglettes ajoutées v1.29.0 (Guides pédagogiques RÉCIT P8 — 1980 à nos jours) ============
+
+// Établir des faits, 2 faits (2 points) — Q4 « Population et culture » (deux facteurs qui limitent
+// le branchement à Internet). Les guides RÉCIT ne fournissent pas de barème ; on calque la matrice
+// proportionnelle à 3 niveaux des autres réglettes « Établir des faits » (R_FAITS_3PT_3SUR3,
+// R_FAITS_4PT_4SUR4), déclinée pour 2 faits. PRIORITÉ : seule OI manquante de P8 (passe à 7/7).
+const R_FAITS_2PT_2SUR2 = {
+  type: "simple", opLabel: "Établir des faits", maxPoints: 2,
+  levels: [
+    { points: "2 points", condition: "L'élève établit tous les faits. (2 sur 2)" },
+    { points: "1 point", condition: "L'élève établit certains faits. (1 sur 2)" },
+    { points: "0 point", condition: "L'élève n'établit pas les faits. (0 sur 2)" }
   ]
 };
 
@@ -3494,6 +3549,107 @@ const DOCS = {
     { id: "cs-c5-d2", title: "Document 2", layout: "text-only",
       text: "« [...] les gouvernements du monde entier ont signé le protocole de Montréal, [...] en supprimant progressivement les substances [...] émises par les activités humaines. [...] L'action mondiale menée en vertu du protocole de Montréal a stoppé [la] détérioration [de la couche d'ozone] [...] et lui a permis de commencer à se reconstituer [...]. »",
       sources: ["Source : Protection de la couche d'ozone, L'action de l'Union européenne, page consultée le 13 janvier 2021."] }
+  ],
+
+  // ============================================================
+  // ===== P8 · Lot B — Guides pédagogiques RÉCIT (v1.29.0) =====
+  // ============================================================
+
+  // ===== P8 · Établir des faits — Facteurs limitant le branchement à Internet (2 sur 2) =====
+  // Guide « La population québécoise et la culture », Q4. Doc 1 = texte (régions), Doc 2 = graphique
+  // (revenu) recréé via matplotlib SANS titre intégré (le titre est porté par « Document 2 »).
+  'cs-faits-1': [
+    { id: "cs-f1-d1", title: "Document 1", layout: "text-only",
+      text: "« Les ménages vivant dans [les régions métropolitaines] (90,2 %) sont significativement plus branchés que ceux vivant hors [des régions métropolitaines] (84,0 %). Même constat en 2012 : les trois quarts des ménages situés hors des [régions métropolitaines] avaient une connexion Internet (75,8 %), alors que les ménages vivant en milieu urbain affichaient un taux de branchement de 84,2 %. »",
+      sources: ["Source : Marianne Bernier, « L'accès des ménages à Internet en 2016 », Science, technologie et innovation en bref, novembre 2017, p. 3, en ligne sur l'Institut de la statistique du Québec."] },
+    { id: "cs-f1-d2", title: "Document 2 : La population branchée à Internet en fonction du revenu, Québec, 2012-2016", layout: "image-only",
+      imageUrl: "assets/img/cs-faits-1/doc2.png", imageWidthCm: 12,
+      sources: ["Source des données : Marianne Bernier, « L'accès des ménages à Internet en 2016 », Science, technologie et innovation en bref, novembre 2017, p. 2, en ligne sur l'Institut de la statistique du Québec."] }
+  ],
+
+  // ===== P8 · Dégager des différences et des similitudes — Lévesque vs Trudeau : point de désaccord =====
+  // Guide « Le statut politique du Québec », Q1. Un acteur = un document.
+  'cs-differences-3': [
+    { id: "cs-d3-d1", title: "Document 1 : Citation du premier ministre du Canada Pierre Elliott Trudeau (1980)", layout: "text-only",
+      text: "« Aussi le gouvernement [fédéral] espère-t-il ardemment que le référendum [sur la souveraineté-association] tenu au Québec dans quelques semaines sera, non seulement pour les Québécois mais pour tous les Canadiens, l'occasion de sortir de l'ambiguïté et de réaffirmer [...] leur commune appartenance au Canada. »",
+      sources: ["Source : Pierre Elliott Trudeau, « Discours du trône, Ottawa, 1980 », en ligne sur la Société du patrimoine politique du Québec."] },
+    { id: "cs-d3-d2", title: "Document 2 : Citation du premier ministre du Québec René Lévesque (1979)", layout: "text-only",
+      text: "« Mais, à notre humble avis – et je n'apprends rien à personne – toute émancipation [libération] véritable devra d'abord passer [...] par la souveraineté politique qui, seule, pourra rapatrier tous les instruments qui sont nécessaires [au développement du Québec]. »",
+      sources: ["Source : René Lévesque, « Discours du trône, Québec, 6 mars 1979 », en ligne sur la Société du patrimoine politique du Québec."] }
+  ],
+
+  // ===== P8 · Déterminer des changements et des continuités — Loi constitutionnelle 1867 vs 1982 =====
+  // Guide « Le statut politique du Québec », Q2 (1 continuité ET 1 changement).
+  'cs-continuite-4': [
+    { id: "cs-co4-d1", title: "Document 1 : Article de journal publié le jour de l'entrée en vigueur de la Loi constitutionnelle de 1982", layout: "text-only",
+      text: "« [La] constitution canadienne [...] de 1867, amputée et modifiée, reste en vigueur. Ce qui est nouveau et qu'on appelle la « nouvelle constitution » tient essentiellement dans la Charte des droits et libertés et dans la procédure de modification de la constitution, à quoi s'ajoutent des dispositions générales, des articles sur [...] la péréquation, sur les droits des peuples autochtones et sur l'avenir de la révision constitutionnelle. »",
+      sources: ["Source : Michel Roy, « Le rapatriement : jour de gloire et sombre samedi », La Presse, 17 avril 1982, p. 1B, en ligne sur Bibliothèque et Archives nationales du Québec."] },
+    { id: "cs-co4-d2", title: "Document 2 : Explications d'un professeur de droit", layout: "text-only",
+      text: "« La Charte canadienne des droits et libertés qui vient d'entrer en vigueur fait partie de la Constitution, donc de la loi suprême du pays et, à ce titre, elle lie les deux [paliers] de gouvernement. Toute loi fédérale ou provinciale doit s'y conformer. [...] La Déclaration canadienne des droits de 1960 et la Charte des droits et libertés de la personne du Québec de 1975 demeurent en vigueur. [...] »",
+      sources: ["Source : Gérald A. Beaudoin, « Charte fédérale et Code civil : des risques de conflits? », Le Devoir, 19 mai 1982, p. 13, en ligne sur Bibliothèque et Archives nationales du Québec."] }
+  ],
+
+  // ===== P8 · Déterminer des causes et des conséquences — Conséquences de la Commission de vérité et réconciliation =====
+  // Guide « Les revendications sociales », Q2 (deux conséquences).
+  'cs-causes-6': [
+    { id: "cs-c6-d1", title: "Document 1 : Rapport de l'Assemblée des Premières Nations publié en 2020", layout: "text-only",
+      text: "« Vous trouverez ci-dessous l'évaluation générale de l'Assemblée des Premières Nations concernant les progrès réalisés par le gouvernement du Canada [...] dans la réalisation des objectifs fixés par [...] la Commission de vérité et réconciliation [...]. Une formation de sensibilisation à l'intention des fonctionnaires : des progrès considérables ont été réalisés dans ce domaine. L'École de la fonction publique du Canada a créé une série d'apprentissages sur les Autochtones pour tous les fonctionnaires fédéraux [...]. Justice : peu de progrès ont été réalisés dans ce domaine. Un rapport annuel indiquera et suivra les progrès réalisés dans l'élimination de la surreprésentation des Autochtones en détention. »",
+      sources: ["Source : Assemblée des Premières Nations, Progrès réalisés dans le cadre des Appels à l'action de la Commission de vérité et réconciliation, 2020, p. 2-3, en ligne sur l'Assemblée des Premières Nations."] }
+  ],
+
+  // ===== P8 · Situer dans le temps — Ordre chronologique des accords de libre-échange depuis 1980 =====
+  // Guide « Le Québec dans le monde », Q1 (chrono-ordering 4 documents). Doc 2 (photo de signature de
+  // l'ACEUM, domaine public) converti en texte factuel ; années retirées des contenus et des sources
+  // pour ne pas révéler l'ordre (situer via les acteurs et les accords nommés).
+  'cs-situer-3': [
+    { id: "cs-s3-d1", title: "Document 1 : Extrait d'un article de journal", layout: "text-only",
+      text: "« Le président américain George Bush, le président mexicain Carlos Salinas de Gortari et le premier ministre Brian Mulroney signeront l'Accord de libre-échange nord-américain dans leurs capitales respectives le 17 décembre prochain. »",
+      sources: ["Source : « Mulroney signera l'accord à Ottawa », La Tribune, en ligne sur Bibliothèque et Archives nationales du Québec."] },
+    { id: "cs-s3-d2", title: "Document 2 : Description d'une photographie", layout: "text-only",
+      text: "Le président américain Donald Trump, le président mexicain Enrique Peña Nieto et le premier ministre canadien Justin Trudeau signent l'Accord Canada-États-Unis-Mexique, en marge d'un sommet du G20 tenu à Buenos Aires, en Argentine.",
+      sources: ["Source : d'après Shealah Craighead, photographie de la signature de l'Accord Canada-États-Unis-Mexique, Wikimedia Commons. Licence : domaine public."] },
+    { id: "cs-s3-d3", title: "Document 3 : Extrait d'un site web gouvernemental", layout: "text-only",
+      text: "« L'Accord de partenariat transpacifique global et progressiste (PTPGP) est un accord de libre-échange entre le Canada et 10 autres pays de la région Asie-Pacifique : l'Australie, Brunéi, le Chili, le Japon, la Malaisie, le Mexique, la Nouvelle-Zélande, le Pérou, Singapour et le Vietnam. »",
+      sources: ["Source : Affaires mondiales Canada, « L'Accord de Partenariat transpacifique global et progressiste », international.gc.ca."] },
+    { id: "cs-s3-d4", title: "Document 4 : Extrait d'un article de journal", layout: "text-only",
+      text: "« [Signé] par le président Ronald Reagan et le premier ministre Brian Mulroney, l'accord de libre-échange entre le Canada et les États-Unis a été adopté hier après-midi par le Sénat et a immédiatement reçu la sanction royale. »",
+      sources: ["Source : Michel Vastel, « Le libre-échange entre en vigueur », Le Devoir, en ligne sur Bibliothèque et Archives nationales du Québec."] }
+  ],
+
+  // ===== P8 · Dégager des différences et des similitudes — Missions de paix vs missions armées (1 sim + 1 diff) =====
+  // Guide « Le Québec dans le monde », Q4. Un acteur (mission) = un document.
+  'cs-differences-4': [
+    { id: "cs-d4-d1", title: "Document 1 : Extrait d'un article de journal", layout: "text-only",
+      text: "« Le lieutenant-colonel Pierre Desjardins commande les Casques bleus canadiens en Bosnie-Herzégovine centrale [...]. " + "\u201C" + "Notre mandat est essentiellement d'escorter les convois d'aide humanitaire vers Sarajevo et la région [...]. Ce que nos deux compagnies font actuellement [...], c'est de la protection de civils [...]. On essaie de maintenir un havre de paix relative là-bas." + "\u201D" + " Un autre complément de mandat, note-t-il, est l'escorte de travailleurs locaux qui réparent les routes ou les installations publiques. »",
+      sources: ["Source : Denis Arcand, « C'est lui le vrai boss », La Presse, 6 juin 1993, p. A1, en ligne sur Bibliothèque et Archives nationales du Québec."] },
+    { id: "cs-d4-d2", title: "Document 2 : Extrait d'un article de journal", layout: "text-only",
+      text: "« Depuis le début de la mission en 2002, 157 soldats canadiens ont trouvé la mort en Afghanistan, tandis que 600 autres ont été blessés. [...] Les militaires canadiens ont chassé les insurgés de [Ma'sum Ghar] en 2006 à la suite de dures batailles [...]. La plupart des opérations de combat importantes du Canada dans la région sont parties de Ma'sum Ghar, une cible populaire pour les roquettes et les mortiers de l'ennemi. »",
+      sources: ["Source : La Presse canadienne et l'Agence France-Presse, « Le Canada en Afghanistan : point final à neuf ans de combats », Le Devoir, 6 juillet 2011, p. A1 et A8, en ligne sur Bibliothèque et Archives nationales du Québec."] }
+  ],
+
+  // ===== P8 · Dégager des différences et des similitudes — Neutralité religieuse de l'État : point d'accord =====
+  // Guide « La population québécoise et la culture », Q2. Un tribunal = un document.
+  'cs-differences-5': [
+    { id: "cs-d5-d1", title: "Document 1 : Extrait d'un article publié en 2011 sur un jugement du Tribunal des droits de la personne", layout: "text-only",
+      text: "« [...] une municipalité ne peut pas favoriser une religion au détriment d'une autre, écrit [...] la juge. La récitation de la prière ne respecte pas cette neutralité et compromet le droit à la liberté de conscience [d'un citoyen]. »",
+      sources: ["Source : Patrick Lagacé, « Jésus de Saguenay », La Presse, 17 février 2011, en ligne sur La Presse."] },
+    { id: "cs-d5-d2", title: "Document 2 : Extrait d'un article publié en 2015 sur un jugement de la Cour suprême du Canada", layout: "text-only",
+      text: "« Selon [les juges], la prière crée une distinction, une exclusion et une préférence fondée sur la religion qui a pour effet de compromettre le droit [d'un citoyen] à l'exercice de sa liberté de conscience et de religion. »",
+      sources: ["Source : Radio-Canada, « La Cour suprême du Canada dit non à la prière au conseil municipal de Saguenay », Radio-Canada, 14 avril 2015, en ligne sur Société Radio-Canada."] }
+  ],
+
+  // ===== P8 · Établir des liens de causalité — Services numériques (Netflix) et intervention de l'État =====
+  // Guide « La population québécoise et la culture », Q3 (3 éléments à lier).
+  'cs-causalite-3': [
+    { id: "cs-ca3-d1", title: "Document 1 : Extrait d'un article de journal publié en 2017", layout: "text-only",
+      text: "« [L'avocate et politicienne Marwah Rizqy] rappelle quelques constats fondamentaux : le Canada est parfaitement souverain en matière de fiscalité sur son territoire; la fourniture d'un service est taxable; et pour forcer une compagnie offrant un service au pays, même à partir de l'étranger, il suffit de légiférer [...]. " + "\u201C" + "On ne peut pas se permettre de dérouler le tapis rouge à une multinationale américaine [comme Netflix] [...]." + "\u201D" + " »",
+      sources: ["Source : Stéphane Baillargeon, « Le Canada renonce-t-il à sa souveraineté culturelle devant Netflix? », Le Devoir, 30 septembre 2017, en ligne sur Le Devoir."] },
+    { id: "cs-ca3-d2", title: "Document 2 : Extrait d'un article de journal publié en 2019", layout: "text-only",
+      text: "« Obligatoire depuis le 1er janvier, l'inscription au registre mis sur pied par Québec force les entreprises étrangères vendant des services numériques à facturer la TVQ [taxe de vente du Québec] [...]. Toutes les grandes entreprises visées, les Netflix, Spotify, Apple, Amazon, Facebook et Google, facturent la taxe de vente québécoise à leurs clients. [...] »",
+      sources: ["Source : Karim Benessaieh, « La taxe Netflix a rapporté deux fois plus que prévu à Québec », La Presse, 1er mai 2019, en ligne sur La Presse."] },
+    { id: "cs-ca3-d3", title: "Document 3 : Extrait d'une étude universitaire sur Netflix", layout: "text-only",
+      text: "« Bien que sa plateforme numérique soit disponible au Canada uniquement depuis 2010, Netflix est en activité depuis 1997 en Californie, d'abord sous la forme d'une boutique électronique de location de DVD livrés à domicile par service postal. [...] Netflix compte à présent 118 millions d'abonnés partout dans le monde, une croissance de 392 % sur une période de six ans. »",
+      sources: ["Source : Hélène Aucoin, L'irruption de Netflix sur le marché canadien : la réponse du gouvernement canadien, Mémoire de maîtrise (communication), Université du Québec à Montréal, 2019, p. 10, en ligne sur Archipel UQAM."] }
   ]
 
 };
@@ -6082,7 +6238,136 @@ window.DATA = {
       },
       reglettes: [{ id: "r-cs-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS_2SUR2 }],
       documents: pickDocs('cs-causes-5', 1, 2),
-      corrige: [[true, false], [false, true]] }
+      corrige: [[true, false], [false, true]] },
+
+    // ============================================================
+    // ===== P8 · Lot B — Guides pédagogiques RÉCIT (v1.29.0) =====
+    // ============================================================
+
+    // ===== P8 · Établir des faits (numero 1) — Facteurs limitant le branchement à Internet (2 sur 2) =====
+    // Guide « La population québécoise et la culture », Q4. PRIORITÉ : comble l'OI « Établir des faits »
+    // (P8 passe à 7/7). Réglette R_FAITS_2PT_2SUR2 créée pour le Lot B (le guide RÉCIT ne fournit pas de
+    // barème) : type simple 2 pts, 3 niveaux « 2 sur 2 / 1 sur 2 / 0 sur 2 », calquée sur les réglettes
+    // « établir des faits » des autres périodes.
+    { id: "q-cs-faits-1", operation: "Établir des faits", numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Au Québec, entre 2012 et 2016, la proportion de la population branchée à Internet augmente, mais ce service n'est pas accessible à tous. À l'aide des documents 1 et 2, indique deux facteurs qui limitent le branchement à Internet.",
+        responseSpace: { type: "labeled-list", items: ["Facteur 1", "Facteur 2"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-cs-f1", label: "Réglette (2 points)", ...R_FAITS_2PT_2SUR2 }],
+      documents: pickDocs('cs-faits-1', 1, 2),
+      corrige: [
+        "Avoir un revenu plus faible limite le branchement à Internet. Tant en 2012 qu'en 2016, les ménages dont le revenu se situe entre 0 et 30 000 $ forment la catégorie de la population la moins branchée à Internet (document 2).",
+        "Habiter dans une région plus éloignée des grandes villes limite le branchement à Internet. Tant en 2012 qu'en 2016, les ménages vivant hors des régions métropolitaines sont moins branchés que ceux des milieux urbains (document 1)."
+      ] },
+
+    // ===== P8 · Dégager des différences et des similitudes (numero 3) — Lévesque vs Trudeau : désaccord =====
+    // Guide « Le statut politique du Québec », Q1. Réglette R_DIFFERENCES_2PT_DIVERGENCE réutilisée (libellé
+    // « point de divergence entre les points de vue »), conforme à la consigne « sur quel point sont-ils en désaccord ».
+    { id: "q-cs-differences-3", operation: "Dégager des différences et des similitudes", numero: 3, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent les positions de René Lévesque et de Pierre Elliott Trudeau concernant le statut politique du Québec. Sur quel point précis sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-cs-d3", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('cs-differences-3', 1, 2),
+      corrige: "Pierre Elliott Trudeau (document 1) et René Lévesque (document 2) sont en désaccord sur la souveraineté (ou l'indépendance) du Québec. Lévesque défend la souveraineté politique du Québec, alors que Trudeau souhaite que les Québécois réaffirment leur appartenance au Canada." },
+
+    // ===== P8 · Déterminer des changements et des continuités (numero 4) — Loi const. 1867 vs 1982 =====
+    // Guide « Le statut politique du Québec », Q2 (une continuité ET un changement). Réglette
+    // R_CHANGEMENTS_2PT_1CHG_1CONT réutilisée (1 continuité + 1 changement, 2 sur 2).
+    { id: "q-cs-continuite-4", operation: "Déterminer des changements et des continuités", numero: 4, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique une continuité et un changement entre la Loi constitutionnelle de 1867 et la Loi constitutionnelle de 1982.",
+        responseSpace: { type: "labeled-list", items: ["Continuité", "Changement"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cs-co4", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_1CHG_1CONT }],
+      documents: pickDocs('cs-continuite-4', 1, 2),
+      corrige: [
+        "La constitution canadienne de 1867 reste en vigueur dans la Loi constitutionnelle de 1982 : la structure de la fédération canadienne demeure en grande partie la même (document 1).",
+        "Un changement apporté par la Loi constitutionnelle de 1982 est l'ajout de la Charte canadienne des droits et libertés, à laquelle toutes les lois provinciales et fédérales doivent désormais se conformer (documents 1 et 2)."
+      ] },
+
+    // ===== P8 · Déterminer des causes et des conséquences (numero 6) — Conséquences de la CVR =====
+    // Guide « Les revendications sociales », Q2 (deux conséquences). Document renuméroté à « Document 1 ».
+    // Réglette R_CAUSES_2PT_2CONS réutilisée (toutes les conséquences, 2 sur 2).
+    { id: "q-cs-causes-6", operation: "Déterminer des causes et des conséquences", numero: 6, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique deux conséquences de la Commission de vérité et réconciliation du Canada.",
+        responseSpace: { type: "labeled-list", items: ["Conséquence 1", "Conséquence 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cs-c6", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CONS }],
+      documents: pickDocs('cs-causes-6', 1),
+      corrige: [
+        "Les fonctionnaires fédéraux reçoivent une formation de sensibilisation aux réalités autochtones, grâce à la série d'apprentissages créée par l'École de la fonction publique du Canada (document 1).",
+        "Un suivi est mis en place pour mesurer les progrès dans l'élimination de la surreprésentation des Autochtones en détention (document 1)."
+      ] },
+
+    // ===== P8 · Situer dans le temps et dans l'espace (numero 3) — Accords de libre-échange depuis 1980 =====
+    // Guide « Le Québec dans le monde », Q1 (chrono-ordering 4 documents). Réglette R_SITUER_2PT_T4 réutilisée
+    // (situer 4 faits, 4 sur 4). Années retirées des contenus/sources pour ne pas révéler l'ordre.
+    // Ordre : ALÉ Canada–É.-U. (en vigueur 1989, doc 4) < ALÉNA (1994, doc 1) < PTPGP (2018, doc 3) < ACEUM (2020, doc 2).
+    { id: "q-cs-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 4, place en ordre chronologique les ententes de libre-échange dont le Canada fait partie depuis 1980, du plus ancien au plus récent.",
+        responseSpace: { type: "chrono-ordering", items: ["1er", "2e", "3e", "4e"] }
+      },
+      reglettes: [{ id: "r-cs-s3", label: "Réglette (2 points)", ...R_SITUER_2PT_T4 }],
+      documents: pickDocs('cs-situer-3', 1, 2, 3, 4),
+      corrige: ["Document 4", "Document 1", "Document 3", "Document 2"] },
+
+    // ===== P8 · Dégager des différences et des similitudes (numero 4) — Missions de paix vs missions armées =====
+    // Guide « Le Québec dans le monde », Q4 (une similitude ET une différence). Une mission = un document.
+    // Réglette R_DIFFSIM_2PT_1SIM_1DIFF réutilisée (1 similitude + 1 différence, chaque élément vaut 1 point).
+    { id: "q-cs-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent des missions de l'armée canadienne à l'étranger. Indique une similitude et une différence entre les missions de paix et les missions armées.",
+        responseSpace: { type: "labeled-list", items: ["Similitude", "Différence"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-cs-d4", label: "Réglette (2 points)", ...R_DIFFSIM_2PT_1SIM_1DIFF }],
+      documents: pickDocs('cs-differences-4', 1, 2),
+      corrige: [
+        "Les deux types de missions impliquent l'envoi de militaires canadiens sur le terrain à l'étranger (documents 1 et 2).",
+        "L'objectif des missions diffère : les missions de paix consistent à escorter des convois d'aide humanitaire et à protéger des civils (document 1), alors que les missions armées visent à mener des opérations de combat pour chasser les insurgés (document 2)."
+      ] },
+
+    // ===== P8 · Dégager des différences et des similitudes (numero 5) — Neutralité religieuse : point d'accord =====
+    // Guide « La population québécoise et la culture », Q2. Un tribunal = un document. Réglette
+    // R_SIMILITUDES_2PT_CONVERGENCE réutilisée (point de convergence des acteurs).
+    { id: "q-cs-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent deux jugements rendus au sujet de la récitation d'une prière au conseil municipal de Saguenay. Sur quel point ces deux tribunaux sont-ils en accord?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-cs-d5", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_CONVERGENCE }],
+      documents: pickDocs('cs-differences-5', 1, 2),
+      corrige: "Les deux tribunaux s'accordent sur le fait que le principe de neutralité religieuse de l'État doit être respecté. Selon eux, la récitation d'une prière au conseil municipal compromet la liberté de conscience et de religion du citoyen (documents 1 et 2)." },
+
+    // ===== P8 · Établir des liens de causalité (numero 3) — Services numériques (Netflix) et intervention de l'État =====
+    // Guide « La population québécoise et la culture », Q3 (3 éléments à lier). Réglette RUBRIC_CAUSALITE_3PT
+    // réutilisée (préciser 3 éléments + établir 2 liens). Patron causalité standard (bullets + instructions + 8 lignes).
+    { id: "q-cs-causalite-3", operation: "Établir des liens de causalité", numero: 3, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Explique comment l'arrivée des services numériques étrangers comme Netflix a mené l'État québécois à intervenir. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "La popularité croissante des services numériques étrangers comme Netflix au Canada",
+          "La concurrence économique et culturelle exercée par ces multinationales non taxées",
+          "L'intervention de l'État québécois envers les services numériques"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-cs-ca3", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('cs-causalite-3', 1, 2, 3),
+      corrige: "À partir de 2010, un nombre croissant de Québécois et de Canadiens consomment la culture par l'intermédiaire de plateformes numériques étrangères comme Netflix (document 3). Ce changement dans les habitudes de consommation renforce la concurrence économique et culturelle des multinationales américaines, dont les services ne sont pas taxés au Canada (document 1). En conséquence, l'État québécois adopte une loi qui force les entreprises étrangères de services numériques à percevoir la taxe de vente, afin d'assurer une concurrence loyale aux entreprises d'ici (document 2)." }
 
   ]
 };
