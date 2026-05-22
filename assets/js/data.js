@@ -412,6 +412,13 @@ const R_CAUSES_1PT = rubric2(
   "L'élève ne détermine pas correctement la cause. (0 sur 1)"
 );
 
+// — Déterminer une conséquence (1 point, binaire 1/0) —
+const R_CAUSES_1PT_CONS = rubric2(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la conséquence. (1 sur 1)",
+  "L'élève ne détermine pas correctement la conséquence. (0 sur 1)"
+);
+
 // — Situer dans le temps et dans l'espace —
 const R_SITUER_2PT_T4 = rubric3(
   "Situer dans le temps et dans l'espace",
@@ -578,6 +585,14 @@ const R_CHANGEMENTS_2PT_GEN = rubric3(
   "L'élève détermine plus ou moins correctement le changement.",
   "L'élève détermine incorrectement le changement ou ne le détermine pas."
 );
+
+// — Deux changements à déterminer (2 points, 2 sur 2 / 1 sur 2 / 0) —
+const R_CHANGEMENTS_2PT_2 = rubric3(
+  "Déterminer des changements et des continuités",
+  "L'élève détermine correctement tous les changements. (2 sur 2)",
+  "L'élève détermine partiellement les changements. (1 sur 2)",
+  "L'élève détermine incorrectement les changements. (0 sur 2)"
+);
 // Une continuité à déterminer (2 points) — Q2 P2 : continuité économique en Nouvelle-France.
 const R_CONTINUITES_2PT_GEN = rubric3(
   "Déterminer des changements et des continuités",
@@ -633,8 +648,16 @@ const R_CHANGEMENTS_2PT_1CHG_1CONT = rubric3(
 const R_CAUSES_2PT_2CONS = rubric3(
   "Déterminer des causes et des conséquences",
   "L'élève détermine correctement toutes les conséquences. (2 sur 2)",
-  "L'élève ne détermine pas correctement toutes les conséquences. (1 sur 2)",
+  "L'élève détermine partiellement les conséquences. (1 sur 2)",
   "L'élève détermine incorrectement les conséquences. (0 sur 2)"
+);
+
+// — Deux causes à déterminer (2 points, 2 sur 2 / 1 sur 2 / 0) —
+const R_CAUSES_2PT_2CAUSES = rubric3(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement toutes les causes. (2 sur 2)",
+  "L'élève détermine partiellement les causes. (1 sur 2)",
+  "L'élève détermine incorrectement les causes. (0 sur 2)"
 );
 
 // Situer chrono 3 éléments (2 points, binaire 3/3) — Q13 P4 fam : développement éco du Bas-Canada.
@@ -3745,6 +3768,71 @@ const DOCS = {
     { id: "fc-c13-d1", title: "Document 1 : L'abrogation du traité de réciprocité (1866)", layout: "text-only",
       text: "« Durant la guerre de Sécession, le Royaume-Uni soutient en catimini la lutte des États du Sud contre le Nord. À l'issue de la guerre, les politiciens du Nord, mécontents du Royaume-Uni en raison de cette collaboration, cherchent à mettre fin à la réciprocité avec les colonies britanniques [...] et poussent les États-Unis à abroger le traité le 17 mars 1866. »",
       sources: ["« Réciprocité », dans l'Encyclopédie canadienne, en ligne (consulté le 25 juin 2019)."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 4 (Affaires indiennes) =====
+  'fc-causes-14': [
+    { id: "fc-c14-d1", title: "Document 1 : Pétition de Montagnais au gouverneur Elgin (1847)", layout: "text-only",
+      text: "« C'est pour la première fois que notre parole t'est portée [...] Nous ne sommes déjà que trop malheureux. La chasse n'est plus abondante dans nos forêts; et sur la mer, voilà qu'on nous enlève notre territoire. [...] Chaque été ils reçoivent les présents, depuis que leurs terres de chasse sont cultivées par des étrangers. »",
+      sources: ["Pétition montagnaise du 8 avril 1847, citée dans J. Frenette (2013), Recherches amérindiennes au Québec, 43 (2-3), p. 77-91."] }
+  ],
+  'fc-causes-15': [
+    { id: "fc-c15-d1", title: "Document 1 : Rapport du Ministère de l'Intérieur (1876)", layout: "text-only",
+      text: "« Notre législation indienne repose sur le principe que les autochtones doivent rester dans un statut de tutelle et être traités comme des pupilles ou enfants de l'État [...] c'est notre devoir de le préparer, par l'éducation et tout autre moyen, [...] à assumer les privilèges et les responsabilités d'une citoyenneté entière. »",
+      sources: ["Rapport du Ministère de l'Intérieur, 1876, tel que cité dans « Loi sur les Indiens », Wikipédia (consulté le 25 juin 2019)."] }
+  ],
+  'fc-continuite-8': [
+    { id: "fc-cont8-d1", title: "Document 1 : Église autochtone, Pointe-Bleue, Lac-Saint-Jean, 1892", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-8/doc1.png", imageWidthCm: 9,
+      sources: ["Photographie, Wm. Notman & Son, 1892 (?). Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] },
+    { id: "fc-cont8-d2", title: "Document 2 : Thomas Moore avant et après son entrée à l'école", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-8/doc2.png", imageWidthCm: 11,
+      sources: ["Rapport annuel du ministère des Affaires indiennes, 1896. Bibliothèque et Archives Canada, NL-022474."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 5 (A.A.N.B.) =====
+  'fc-causes-16': [
+    { id: "fc-c16-d1", title: "Document 1 : Les principales lignes du réseau ferroviaire du nord de l'Amérique vers 1860", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-16/doc1.png", imageWidthCm: 12,
+      sources: ["Carte : Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] },
+    { id: "fc-c16-d2", title: "Document 2 : La fin de la réciprocité et la recherche de nouveaux marchés", layout: "text-only",
+      text: "« Le traité de réciprocité avec les États-Unis tire à sa fin; le Canada n'a d'autre choix que celui de se lancer à l'assaut des marchés que représentent les colonies britanniques de l'Atlantique. [...] Une union de toutes les colonies britanniques de l'Amérique du Nord aiderait alors grandement à ouvrir de nouveaux marchés. »",
+      sources: ["Bibliothèque et Archives Canada, La confédération canadienne (archivée), consulté le 24 juillet 2019."] }
+  ],
+  'fc-causes-17': [
+    { id: "fc-c17-d1", title: "Document 1 : La Grande Coalition et la fin de l'instabilité ministérielle", layout: "text-only",
+      text: "« À l'été 1864, ces « libéraux » ontariens [Clear Grits], menés par George Brown, acceptèrent de s'allier avec leurs adversaires conservateurs dirigés par John A. Macdonald pour former la « Grande coalition » [...] afin de modifier l'union en un système fédéral. La réalisation de la Grande coalition mit fin à dix ans d'instabilité ministérielle. »",
+      sources: ["J.-F. Cardin et C. Couture, Histoire du Canada : Espace et différences, Presses de l'Université Laval, 2000, p. 57."] },
+    { id: "fc-c17-d2", title: "Document 2 : La crainte de l'annexion américaine", layout: "text-only",
+      text: "« Entre 1860 et 1870, on craint l'invasion militaire et l'annexion américaine. [...] Les habitants des colonies craignent que le Nord, pour se venger de l'Angleterre, n'envahisse ses colonies d'Amérique. »",
+      sources: ["J. Lacoursière, J. Provencher et D. Vaugeois, Canada-Québec (1534-2000), Septentrion, 2001, p. 314-315."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 6 (Relations fédérales-provinciales) =====
+  'fc-causes-18': [
+    { id: "fc-c18-d1", title: "Document 1 : Honoré Mercier et la conférence interprovinciale de 1887", layout: "text-only",
+      text: "« Selon [Honoré] Mercier, le Québec doit s'affirmer comme nation française et catholique [...]. Le premier ministre du Québec convoque alors, en octobre 1887, une conférence interprovinciale [...] pour discuter de l'autonomie provinciale et des subventions fédérales [...]. »",
+      sources: ["J. Lacoursière, J. Provencher et D. Vaugeois, Canada-Québec, synthèse historique (1534-2000), Septentrion, 2001, p. 370-371."] }
+  ],
+  'fc-causes-19': [
+    { id: "fc-c19-d1", title: "Document 1 : Le soulèvement de la rivière Rouge (1869-1870)", layout: "text-only",
+      text: "« À l'automne 1869, les premiers arpenteurs débarquent à la colonie de la rivière Rouge pour prendre possession des terres agricoles que les Métis ont reçues de la Compagnie de la Baie d'Hudson [...]. Devenu le chef des Métis, Louis Riel mène la résistance. [...] Le Parlement vote la loi qui annexe la rivière Rouge à la Confédération sous le nom de province du Manitoba. »",
+      sources: ["D. Combet et I. Toussaint, Louis Riel, l'inoubliable chef des Métis, Encyclopédie de l'Amérique française."] }
+  ],
+  'fc-causes-20': [
+    { id: "fc-c20-d1", title: "Document 1 : Le partage des revenus en 1867", layout: "text-only",
+      text: "« En 1867, les responsabilités des provinces sont moins coûteuses que celles du fédéral. L'éducation et la santé [...] sont surtout prises en charge par l'Église. De son côté, le gouvernement fédéral a à sa charge les chemins de fer et les canaux [...], la défense, la justice et la fonction publique. Ainsi, le gouvernement fédéral reçoit la plus grande part des revenus. »",
+      sources: ["Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+  'fc-causes-21': [
+    { id: "fc-c21-d1", title: "Document 1 : Le Gibet (la pendaison de Louis Riel, 1885)", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-21/doc1.png", imageWidthCm: 9,
+      sources: ["J. Lecomte, « Le Gibet », dans Louis Riel, martyr du Nord-Ouest : sa vie, son procès, sa mort, 2e éd., Imprimerie générale, 1885, p. 62. Bibliothèque et Archives nationales du Québec."] }
+  ],
+  'fc-causes-22': [
+    { id: "fc-c22-d1", title: "Document 1 : Les limites imposées à l'enseignement religieux", layout: "text-only",
+      text: "« [D]ans les provinces à majorité protestante, la population accepte mal que les fonds publics servent à l'enseignement d'un contenu religieux [...]. À compter des années 1870, certains gouvernements provinciaux choisissent de limiter ou d'abolir l'enseignement religieux dans les écoles, afin de moderniser leur système éducatif. »",
+      sources: ["J. P. Couturier, Le passé composé. Le Canada de 1850 à nos jours, Les Éditions d'Acadie, 2000, p. 99."] }
   ]
 
 };
@@ -5393,6 +5481,130 @@ window.DATA = {
       reglettes: [{ id: "r-fc-c13", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
       documents: pickDocs('fc-causes-13', 1),
       corrige: "Les tensions créées par le soutien britannique au Sud durant la guerre de Sécession poussent les États-Unis à abroger le traité en 1866." },
+
+    // ============================================================
+    // ===== P5 · Leçon 4 — Affaires indiennes (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 4 — Déterminer une cause. Doc 51 (pétition montagnaise, 1847).
+    { id: "q-fc-causes-14", operation: "Déterminer des causes et des conséquences", numero: 14, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les Autochtones rédigent des pétitions dans les années 1840.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c14", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-14', 1),
+      corrige: "Les ressources vitales à leur mode de vie (la chasse, le territoire) deviennent de plus en plus rares." },
+
+    // OI 4 — Déterminer un objectif (cause). Doc 52 (rapport du Ministère de l'Intérieur, 1876).
+    { id: "q-fc-causes-15", operation: "Déterminer des causes et des conséquences", numero: 15, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine l'objectif des autorités gouvernementales avec la Loi sur les Indiens de 1876.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c15", label: "Réglette (1 point)", ...R_CAUSES_1PT }],
+      documents: pickDocs('fc-causes-15', 1),
+      corrige: "L'objectif est l'assimilation des Autochtones (les amener à une « citoyenneté entière » en les sortant de leur mode de vie)." },
+
+    // OI 5 — Déterminer deux changements. Docs 49 (église) + 50 (Thomas Moore avant/après).
+    { id: "q-fc-continuite-8", operation: "Déterminer des changements et des continuités", numero: 8, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine un changement dans la culture des Autochtones.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont8", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-8', 1, 2),
+      corrige: "Les Autochtones délaissent leur spiritualité au profit du christianisme (document 1), ou ils adoptent le mode de vie européen, ce qui mène à l'acculturation (document 2)." },
+
+    // ============================================================
+    // ===== P5 · Leçon 5 — Acte de l'Amérique du Nord britannique (cahier Période 5, 2019) =====
+    // Q6 d'origine = grand tableau de causes (éco + pol) de la fédération → scindée en deux questions OI 4.
+    // ============================================================
+
+    // OI 4 — Deux causes économiques de la fédération. Docs 69 (carte ferroviaire) + 68 (fin réciprocité).
+    { id: "q-fc-causes-16", operation: "Déterminer des causes et des conséquences", numero: 16, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine deux causes de la formation de la fédération canadienne.",
+        responseSpace: { type: "labeled-list", items: ["Cause 1", "Cause 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-fc-c16", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('fc-causes-16', 1, 2),
+      corrige: ["La construction d'un chemin de fer reliant les colonies créerait un marché intérieur (document 1).", "La fin du traité de réciprocité oblige à trouver de nouveaux marchés; une fédération y aiderait (document 2)."] },
+
+    // OI 4 — Deux causes politiques de la fédération. Docs 70 (Grande Coalition) + 67 (menace américaine).
+    // Cause politique acceptée également : la mise en place de la représentation proportionnelle (« Rep by pop »).
+    { id: "q-fc-causes-17", operation: "Déterminer des causes et des conséquences", numero: 17, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine deux causes de la formation de la fédération canadienne.",
+        responseSpace: { type: "labeled-list", items: ["Cause 1", "Cause 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-fc-c17", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('fc-causes-17', 1, 2),
+      corrige: ["Une fédération mettrait fin à l'instabilité politique en donnant à chaque colonie le pouvoir de se gouverner localement (document 1).", "L'union est nécessaire face à la menace d'une invasion américaine, alors que la métropole veut se dégager de la défense de ses colonies (document 2)."] },
+
+    // ============================================================
+    // ===== P5 · Leçon 6 — Relations fédérales-provinciales (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 4 — Deux causes (motivations). Cahier badge « OI 5 », reclassée OI 4 (« raisons qui ont motivé » = causes). Doc 90.
+    { id: "q-fc-causes-18", operation: "Déterminer des causes et des conséquences", numero: 18, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une raison qui a motivé Honoré Mercier à organiser une conférence interprovinciale en 1887.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c18", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-18', 1),
+      corrige: "Discuter de l'autonomie provinciale (ou discuter des subventions fédérales)." },
+
+    // OI 4 — Une cause et une conséquence. Doc 87 (soulèvement de la rivière Rouge).
+    { id: "q-fc-causes-19", operation: "Déterminer des causes et des conséquences", numero: 19, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une cause et une conséquence du soulèvement des Métis de 1869-1870.",
+        responseSpace: { type: "labeled-list", items: ["Cause", "Conséquence"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-fc-c19", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS }],
+      documents: pickDocs('fc-causes-19', 1),
+      corrige: ["Les Métis craignent de perdre leurs terres (document 1).", "La colonie de la rivière Rouge devient la cinquième province du Canada, le Manitoba (document 1)."] },
+
+    // OI 4 — Une cause. Doc 91 (partage des revenus en 1867).
+    { id: "q-fc-causes-20", operation: "Déterminer des causes et des conséquences", numero: 20, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine pourquoi les revenus les plus importants sont accordés au gouvernement fédéral plutôt qu'aux gouvernements provinciaux.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c20", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-20', 1),
+      corrige: "Parce que le gouvernement fédéral assume les responsabilités les plus coûteuses (chemins de fer, canaux, défense, etc.)." },
+
+    // OI 4 — Une conséquence (résultat). Doc 89 (Le Gibet : pendaison de Riel).
+    { id: "q-fc-causes-21", operation: "Déterminer des causes et des conséquences", numero: 21, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine le résultat du deuxième soulèvement (1885) pour Louis Riel.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c21", label: "Réglette (1 point)", ...R_CAUSES_1PT_CONS }],
+      documents: pickDocs('fc-causes-21', 1),
+      corrige: "Le deuxième soulèvement est un échec : le chef Louis Riel est pendu." },
+
+    // OI 4 — Une cause. Doc 88 (limites à l'enseignement religieux).
+    { id: "q-fc-causes-22", operation: "Déterminer des causes et des conséquences", numero: 22, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, quelle raison est évoquée pour justifier les limites imposées à l'enseignement religieux par certaines provinces (comme le Manitoba et le Nouveau-Brunswick)?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c22", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-22', 1),
+      corrige: "Pour moderniser le système scolaire et le rendre laïque (cesser de financer l'enseignement religieux avec des fonds publics)." },
 
     // ============================================================
     // ===== P6 — 4e secondaire — Les nationalismes et l'autonomie du Canada (1896-1945) =====
