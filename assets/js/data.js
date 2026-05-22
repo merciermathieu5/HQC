@@ -3683,6 +3683,44 @@ const DOCS = {
     { id: "fc-c7-d3", title: "Document 3 : Population de la Province du Canada en 1840", layout: "image-only",
       imageUrl: "assets/img/fc-causes-7/doc3.png", imageWidthCm: 9,
       sources: ["Graphique : Jimmy Grenier. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 2 (Le gouvernement responsable) =====
+  'fc-continuite-5': [
+    { id: "fc-cont5-d1", title: "Document 1 : Le gouvernement non responsable (1840-1848)", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-5/doc1.png", imageWidthCm: 12,
+      sources: ["Schéma : Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] },
+    { id: "fc-cont5-d2", title: "Document 2 : Le gouvernement responsable (1848)", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-5/doc2.png", imageWidthCm: 12,
+      sources: ["Schéma : Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+  'fc-continuite-6': [
+    { id: "fc-cont6-d1", title: "Document 1 : Le gouvernement non responsable (1840-1848)", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-6/doc1.png", imageWidthCm: 12,
+      sources: ["Schéma : Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] },
+    { id: "fc-cont6-d2", title: "Document 2 : Le gouvernement responsable (1848)", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-6/doc2.png", imageWidthCm: 12,
+      sources: ["Schéma : Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+  'fc-continuite-7': [
+    { id: "fc-cont7-d1", title: "Document 1 : Population du Haut-Canada et du Bas-Canada au milieu du 19e siècle", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-7/doc1.png", imageWidthCm: 13,
+      sources: ["Graphique : Jimmy Grenier, à partir de Statistique Canada. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+  'fc-causes-8': [
+    { id: "fc-c8-d1", title: "Document 1 : Louis-Hippolyte Lafontaine sur l'union des réformistes (1840)", layout: "text-only",
+      text: "« Il est de l'intérêt des réformistes des deux provinces de se rencontrer sur le terrain législatif, dans un esprit de paix, d'union, d'amitié et de fraternité. L'unité d'action est nécessaire plus que jamais. »",
+      sources: ["Louis-Hippolyte Lafontaine, extrait d'un discours publié dans le journal Le Canadien, le 31 août 1840. (Domaine public.)"] }
+  ],
+  'fc-causes-9': [
+    { id: "fc-c9-d1", title: "Document 1 : La loi d'indemnisation du Bas-Canada (1849)", layout: "text-only",
+      text: "« C'est en février 1849 que sir Louis-Hippolyte Lafontaine propose un projet de loi d'indemnisation des habitants du Bas-Canada pour les dommages subis à leurs propriétés lors des rébellions de 1837-1838 (un montant d'environ 100 000 livres). »",
+      sources: ["« Loi d'indemnisation pour le Bas-Canada », dans l'Encyclopédie canadienne, en ligne (consulté le 20 juin 2019)."] }
+  ],
+  'fc-causes-10': [
+    { id: "fc-c10-d1", title: "Document 1 : Les tensions au sein du gouvernement de l'Union", layout: "text-only",
+      text: "« [La Province du Canada] est marquée par de nombreux débats et conflits : la représentation proportionnelle (Rep by pop), la difficulté de nouer des alliances et l'impossibilité d'obtenir une double majorité de députés opposent les radicaux (« rouges » et « Clear Grits ») aux conservateurs de Macdonald et de Cartier. »",
+      sources: ["D'après le Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
   ]
 
 };
@@ -5222,6 +5260,77 @@ window.DATA = {
       reglettes: [{ id: "r-fc-c7", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CONS }],
       documents: pickDocs('fc-causes-7', 1, 2, 3),
       corrige: ["L'anglais devient la seule langue officielle de la colonie (document 1).", "Les francophones du Bas-Canada sont sous-représentés : la région compte le même nombre de députés (42) que le Haut-Canada même si elle est plus peuplée (documents 2 et 3)."] },
+
+    // ============================================================
+    // ===== P5 · Leçon 2 — Le gouvernement responsable (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 5 — Déterminer un changement. Cahier P5 2019, Leçon 2. Doc d'origine : schémas 26-27 (gouvernement non responsable / responsable).
+    { id: "q-fc-continuite-5", operation: "Déterminer des changements et des continuités", numero: 5, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine un changement politique survenu dans la Province du Canada en 1848.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont5", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-5', 1, 2),
+      corrige: "La responsabilité ministérielle est mise en place : le Conseil exécutif doit désormais être issu de la majorité de la Chambre d'assemblée (gouvernement responsable)." },
+
+    // OI 5 — Déterminer une continuité. Cahier P5 2019, Leçon 2.
+    // Note : le cahier demandait deux continuités; reformulée en une continuité pour réutiliser la réglette « une continuité » existante.
+    { id: "q-fc-continuite-6", operation: "Déterminer des changements et des continuités", numero: 6, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine une continuité politique entre 1840 et 1848 dans la Province du Canada.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont6", label: "Réglette (2 points)", ...R_CONTINUITES_2PT_GEN }],
+      documents: pickDocs('fc-continuite-6', 1, 2),
+      corrige: "Le gouverneur demeure nommé par Londres (la Chambre d'assemblée demeure élue et le Conseil législatif demeure nommé)." },
+
+    // OI 4 — Déterminer une cause (moyen). Cahier P5 2019, Leçon 2. Doc 28 (discours de Lafontaine).
+    { id: "q-fc-causes-8", operation: "Déterminer des causes et des conséquences", numero: 8, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine le moyen pris par les réformistes pour obtenir la responsabilité ministérielle.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c8", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-8', 1),
+      corrige: "Les réformistes du Haut-Canada et du Bas-Canada concluent une alliance politique." },
+
+    // OI 4 — Déterminer une cause. Cahier P5 2019, Leçon 2. Doc 32 (loi d'indemnisation).
+    { id: "q-fc-causes-9", operation: "Déterminer des causes et des conséquences", numero: 9, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une cause de l'incendie du Parlement de Montréal en 1849.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c9", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-9', 1),
+      corrige: "Les conservateurs (Tories) s'opposent à la loi qui vise à indemniser les victimes des Rébellions de 1837-1838 du Bas-Canada." },
+
+    // OI 4 — Déterminer une cause. Cahier P5 2019, Leçon 2. Doc 29 (tensions au gouvernement).
+    { id: "q-fc-causes-10", operation: "Déterminer des causes et des conséquences", numero: 10, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une cause de l'instabilité ministérielle dans la Province du Canada entre 1854 et 1864.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c10", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-10', 1),
+      corrige: "Les nombreux conflits au gouvernement (par exemple l'impossibilité d'obtenir une double majorité ou la difficulté de former des alliances) provoquent l'instabilité." },
+
+    // OI 5 — Déterminer un changement. Cahier P5 2019, Leçon 2. Doc 30 (population 1841-1861).
+    { id: "q-fc-continuite-7", operation: "Déterminer des changements et des continuités", numero: 7, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine un changement dans la composition de la population du Haut-Canada et du Bas-Canada entre 1841 et 1861.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont7", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-7', 1),
+      corrige: "La population du Haut-Canada dépasse celle du Bas-Canada à partir de 1851 (alors que le Bas-Canada était plus peuplé en 1841)." },
 
     // ============================================================
     // ===== P6 — 4e secondaire — Les nationalismes et l'autonomie du Canada (1896-1945) =====
