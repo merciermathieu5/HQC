@@ -1610,11 +1610,87 @@
         useBase64URL: true
       });
 
+      // VARIANTE : l'aperçu n'affiche pas les coupures de page (docx-preview ne repagine pas
+      // le texte qui s'enchaîne). On les simule, sans toucher au .docx, une fois les images
+      // chargées. Le ratio « hauteur utile / largeur utile » dépend des marges, qui diffèrent
+      // entre le cahier (720 partout → 14400/10800) et le guide (900/1080 → 14040/10080).
+      // Repli sûr : toute erreur est avalée et l'aperçu reste affiché.
+      if (variant) {
+        await awaitImages(el.previewContainer);
+        const ratio = corrige ? (14040 / 10080) : (14400 / 10800);
+        simulatePageBreaks(el.previewContainer, ratio);
+      }
+
       hideLoading();
     } catch (err) {
       hideLoading();
       console.error('Erreur lors de la prévisualisation :', err);
       alert('Erreur lors de la prévisualisation : ' + err.message);
+    }
+  }
+
+  // Attend le chargement de toutes les images du conteneur (pour mesurer des hauteurs justes).
+  function awaitImages(container) {
+    const imgs = Array.from(container.querySelectorAll('img'));
+    return Promise.all(imgs.map(img => (img.complete && img.naturalHeight !== 0)
+      ? Promise.resolve()
+      : new Promise(res => {
+          img.addEventListener('load', res, { once: true });
+          img.addEventListener('error', res, { once: true });
+          setTimeout(res, 3000); // garde-fou
+        })
+    ));
+  }
+
+  // Simule les coupures de page dans l'aperçu de la variante (affichage seulement).
+  // Principe : chaque bloc de premier niveau est insécable (enveloppe cantSplit pour les
+  // questions, tableau unique pour chaque document) — exactement comme Word les traite. On
+  // empile les blocs et, dès qu'un bloc déborde la hauteur utile d'une page, on insère une
+  // coupure AVANT lui (comble + ligne pointillée + n° de page), reproduisant la pagination de Word.
+  // docx-preview rend : <section class="docx"> <article> blocs… </article> ; les blocs sont les
+  // enfants de l'<article>. Hauteur utile (px) = largeur de contenu rendue (px) × ratio fourni.
+  function simulatePageBreaks(container, ratio) {
+    try {
+      const R = (ratio > 0) ? ratio : (14400 / 10800);
+      const sections = container.querySelectorAll('section.docx');
+      if (!sections.length) return;
+      sections.forEach(section => {
+        const article = section.querySelector(':scope > article') || section;
+        const contentWidthPx = (article.clientWidth || section.clientWidth || 0);
+        const pageContentHeightPx = contentWidthPx * R;
+        if (!(pageContentHeightPx > 0)) return;
+
+        const blocks = Array.from(article.children);
+        if (blocks.length < 2) return;
+
+        // Mesurer toutes les hauteurs AVANT toute insertion (évite tout effet de reflux).
+        const heights = blocks.map(b => {
+          const bcs = getComputedStyle(b);
+          return b.offsetHeight + (parseFloat(bcs.marginTop) || 0) + (parseFloat(bcs.marginBottom) || 0);
+        });
+
+        let acc = 0, pageNo = 1;
+        blocks.forEach((block, i) => {
+          const h = heights[i];
+          if (i > 0 && acc + h > pageContentHeightPx) {
+            const remaining = Math.max(0, pageContentHeightPx - acc);
+            const spacer = document.createElement('div');
+            spacer.className = 'page-sim-spacer';
+            spacer.style.height = remaining + 'px';
+            pageNo++;
+            const brk = document.createElement('div');
+            brk.className = 'page-sim-break';
+            brk.setAttribute('data-page', 'Page ' + pageNo);
+            article.insertBefore(spacer, block);
+            article.insertBefore(brk, block);
+            acc = 0;
+          }
+          acc += h;
+          if (h > pageContentHeightPx) acc = 0; // bloc plus grand qu'une page : on repart à 0
+        });
+      });
+    } catch (e) {
+      console.warn('Simulation de pages (aperçu) ignorée :', e);
     }
   }
 

@@ -629,6 +629,27 @@ html, body {
   background: #fbf1ee;
 }
 
+/* Aperçu variante : coupures de page simulées (affichage seulement, ne touche pas le .docx) */
+.page-sim-spacer { width: 100%; }
+.page-sim-break {
+  position: relative;
+  height: 0;
+  border-top: 2px dashed var(--color-primary);
+  margin: 0 0 30px;
+}
+.page-sim-break::after {
+  content: attr(data-page);
+  position: absolute;
+  top: 5px;
+  right: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: #fff;
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
 .btn {
   font-family: inherit;
   font-size: 0.82rem;
