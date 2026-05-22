@@ -3650,6 +3650,39 @@ const DOCS = {
     { id: "cs-ca3-d3", title: "Document 3 : Extrait d'une étude universitaire sur Netflix", layout: "text-only",
       text: "« Bien que sa plateforme numérique soit disponible au Canada uniquement depuis 2010, Netflix est en activité depuis 1997 en Californie, d'abord sous la forme d'une boutique électronique de location de DVD livrés à domicile par service postal. [...] Netflix compte à présent 118 millions d'abonnés partout dans le monde, une croissance de 392 % sur une période de six ans. »",
       sources: ["Source : Hélène Aucoin, L'irruption de Netflix sur le marché canadien : la réponse du gouvernement canadien, Mémoire de maîtrise (communication), Université du Québec à Montréal, 2019, p. 10, en ligne sur Archipel UQAM."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 1 (Acte d'Union) =====
+  'fc-differences-8': [
+    { id: "fc-d8-d1", title: "Document 1 : Représentation politique des régions de la Province du Canada en 1840", layout: "image-only",
+      imageUrl: "assets/img/fc-differences-8/doc1.png", imageWidthCm: 9,
+      sources: ["Graphique : Jimmy Grenier. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+  'fc-causes-6': [
+    { id: "fc-c6-d1", title: "Document 1 : Territoire du Canada-Uni après l'Acte d'Union de 1840", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-6/doc1.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+  'fc-faits-1': [
+    { id: "fc-f1-d1", title: "Document 1 : Extrait de l'article 41 de l'Acte d'Union (1840)", layout: "text-only",
+      text: "« Et qu'il soit statué, que depuis et après la Réunion desdites deux Provinces, tous Brefs, Proclamations, Instruments [...] ayant rapport au Conseil législatif et à l'Assemblée législative [...] ne seront que dans la langue Anglaise. »",
+      sources: ["Extrait de l'article 41 de l'Acte d'Union (1840). Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+  'fc-differences-9': [
+    { id: "fc-d9-d1", title: "Document 1 : Population de la Province du Canada en 1840", layout: "image-only",
+      imageUrl: "assets/img/fc-differences-9/doc1.png", imageWidthCm: 9,
+      sources: ["Graphique : Jimmy Grenier. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+  'fc-causes-7': [
+    { id: "fc-c7-d1", title: "Document 1 : Extrait de l'article 41 de l'Acte d'Union (1840)", layout: "text-only",
+      text: "« [...] tous Brefs, Proclamations, Instruments [...] ayant rapport au Conseil législatif et à l'Assemblée législative [...] ne seront que dans la langue Anglaise. »",
+      sources: ["Extrait de l'article 41 de l'Acte d'Union (1840). Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] },
+    { id: "fc-c7-d2", title: "Document 2 : Représentation politique des régions de la Province du Canada en 1840", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-7/doc2.png", imageWidthCm: 9,
+      sources: ["Graphique : Jimmy Grenier. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] },
+    { id: "fc-c7-d3", title: "Document 3 : Population de la Province du Canada en 1840", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-7/doc3.png", imageWidthCm: 9,
+      sources: ["Graphique : Jimmy Grenier. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
   ]
 
 };
@@ -5122,6 +5155,73 @@ window.DATA = {
       reglettes: [{ id: "r-fc-c5", label: "Réglette (2 points)", ...R_CAUSES_2PT_FACTEURS_EXPLICATIFS_T2 }],
       documents: pickDocs('fc-causes-5', 1, 2),
       corrige: "La fin des politiques protectionnistes britanniques affaiblit le refus d'accorder la responsabilité ministérielle ET l'alliance des partis réformistes permet de faire élire une majorité de députés en faveur de la responsabilité ministérielle au Canada." },
+
+    // ============================================================
+    // ===== P5 · Questions reconstruites à partir du cahier « Période 5 » (2019) =====
+    // Échantillon de démonstration : opérations intellectuelles du cahier 2019 (mal libellées,
+    // sans réglette) reformulées en verbe d'action, associées aux réglettes HQC, dotées d'un
+    // espace de réponse, avec images extraites du dossier documentaire.
+    // ============================================================
+
+    // OI 3 — Dégager une similitude. Cahier P5 2019, Leçon 1 (Acte d'Union), doc « représentation ».
+    // Reclassée OI 3 (« dégage une similitude » = différences/similitudes, et non « Établir des faits »).
+    { id: "q-fc-differences-8", operation: "Dégager des différences et des similitudes", numero: 8, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, dégage une similitude dans la représentation politique du Haut-Canada et du Bas-Canada.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-d8", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_GEN }],
+      documents: pickDocs('fc-differences-8', 1),
+      corrige: "Le Haut-Canada et le Bas-Canada comptent le même nombre de députés (42 chacun)." },
+
+    // OI 4 — Déterminer une conséquence. Cahier P5 2019, Leçon 1.
+    // Libellé d'origine : « Indique un effet de l'Acte d'Union sur l'organisation territoriale… » → verbe d'action « Détermine une conséquence ».
+    { id: "q-fc-causes-6", operation: "Déterminer des causes et des conséquences", numero: 6, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Détermine une conséquence territoriale de l'Acte d'Union de 1840.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c6", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('fc-causes-6', 1),
+      corrige: "Le Bas-Canada et le Haut-Canada sont unis en une seule colonie : la Province du Canada (le Canada-Uni)." },
+
+    // OI 1 — Établir des faits (comble l'absence de cette OI en P5). Cahier P5 2019, Leçon 1, doc « langue » (art. 41).
+    // Libellé d'origine : « Établis les faits présentés dans le dossier documentaire. » → recentré sur un fait précis.
+    { id: "q-fc-faits-1", operation: "Établir des faits", numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique la langue officielle de la Province du Canada suite à l'Acte d'Union.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-f1", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('fc-faits-1', 1),
+      corrige: "L'anglais devient la seule langue officielle des lois et des institutions législatives de la colonie." },
+
+    // OI 3 — Dégager une différence. Cahier P5 2019, Leçon 1, doc « population ».
+    { id: "q-fc-differences-9", operation: "Dégager des différences et des similitudes", numero: 9, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, dégage une différence dans les populations du Haut-Canada et du Bas-Canada en 1840.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-d9", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_GEN }],
+      documents: pickDocs('fc-differences-9', 1),
+      corrige: "Le Bas-Canada est plus peuplé (650 000 habitants) que le Haut-Canada (450 000 habitants)." },
+
+    // OI 4 — Déterminer deux conséquences. Cahier P5 2019, Leçon 1.
+    // Reclassée OI 4 (« détermine deux conséquences » = causes/conséquences, et non « Mettre en relation »).
+    // Libellé d'origine : « L'Acte d'Union est désavantageux pour les francophones. Démontre cette affirmation avec deux faits. »
+    { id: "q-fc-causes-7", operation: "Déterminer des causes et des conséquences", numero: 7, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 3, détermine deux conséquences de l'Acte d'Union de 1840 pour les francophones.",
+        responseSpace: { type: "labeled-list", items: ["Conséquence 1", "Conséquence 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-fc-c7", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CONS }],
+      documents: pickDocs('fc-causes-7', 1, 2, 3),
+      corrige: ["L'anglais devient la seule langue officielle de la colonie (document 1).", "Les francophones du Bas-Canada sont sous-représentés : la région compte le même nombre de députés (42) que le Haut-Canada même si elle est plus peuplée (documents 2 et 3)."] },
 
     // ============================================================
     // ===== P6 — 4e secondaire — Les nationalismes et l'autonomie du Canada (1896-1945) =====
