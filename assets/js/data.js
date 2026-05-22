@@ -3833,6 +3833,90 @@ const DOCS = {
     { id: "fc-c22-d1", title: "Document 1 : Les limites imposées à l'enseignement religieux", layout: "text-only",
       text: "« [D]ans les provinces à majorité protestante, la population accepte mal que les fonds publics servent à l'enseignement d'un contenu religieux [...]. À compter des années 1870, certains gouvernements provinciaux choisissent de limiter ou d'abolir l'enseignement religieux dans les écoles, afin de moderniser leur système éducatif. »",
       sources: ["J. P. Couturier, Le passé composé. Le Canada de 1850 à nos jours, Les Éditions d'Acadie, 2000, p. 99."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 7 (Politique nationale) =====
+  'fc-causes-23': [
+    { id: "fc-c23-d1", title: "Document 1 : La crise économique de la fin du 19e siècle", layout: "text-only",
+      text: "« À la fin du 19e siècle, l'activité économique de l'Occident connaît une série de ralentissements. [...] De 1873 à 1879, la plus importante des crises ébranle l'économie occidentale. [...] Alors que ses produits sont refusés sur les marchés des autres pays, les produits étrangers entrent facilement au Canada à cause d'un tarif douanier peu élevé et font une concurrence aux produits canadiens. »",
+      sources: ["J.-F. Cardin, R. Bédard et R. Fortin, Le Québec : héritages et projets, 2e éd., Éditions Grand Duc / HRW, 2004, p. 278."] }
+  ],
+  'fc-causalite-4': [
+    { id: "fc-ca4-d1", title: "Document 1 : Le chemin de fer et la colonisation de l'Ouest", layout: "text-only",
+      text: "« L'objectif ultime poursuivi par le grand projet de construction ferroviaire consiste à accélérer la colonisation des immenses territoires de l'Ouest. L'accroissement de la population des Prairies est à son tour essentiel à la rentabilité du chemin de fer et au développement d'un axe commercial entre l'Est et l'Ouest. »",
+      sources: ["J.-P. Couturier, Un passé composé. Le Canada de 1850 à nos jours, Les Éditions d'Acadie, 2000, p. 86."] },
+    { id: "fc-ca4-d2", title: "Document 2 : La politique de développement national", layout: "text-only",
+      text: "« [La] politique de développement national [comprend] : tarif protecteur, expansion des chemins de fer, établissement d'une population agricole dans les Prairies. Ces orientations [...] intègreraient l'Ouest dans le dominion à la fois en tant que consommateur de produits manufacturés et en tant que producteur de comestibles. »",
+      sources: ["« Le peuplement de l'Ouest », dans le Dictionnaire biographique du Canada, en ligne (consulté le 30 juillet 2019)."] },
+    { id: "fc-ca4-d3", title: "Document 3 : L'essor des manufactures", layout: "text-only",
+      text: "« Les manufactures, qui sont censées profiter de la protection, [...] deviennent une composante importante de la vie économique du Canada. [...] L'industrie canadienne semble éclore tout d'un coup dans la période de prospérité au début des années 1880. De nouvelles manufactures apparaissent. »",
+      sources: ["C. Brown et al., Histoire générale du Canada, Boréal, 1990, p. 410."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 8 (Migrations) =====
+  'fc-causes-24': [
+    { id: "fc-c24-d1", title: "Document 1 : L'immigration britannique au Bas-Canada (1815-1861)", layout: "text-only",
+      text: "« Entre 1815 et 1851, dans le port de Québec, on enregistra plus de 800 000 immigrants d'origine britannique et irlandaise. [...] Cette immigration fit passer le pourcentage des anglophones dans la population globale [du Bas-Canada] de 15 % en 1815 à un sommet de 24,3 % en 1861. »",
+      sources: ["J. A. Dickinson et B. Young, Brève histoire socio-économique du Québec, Septentrion, 2009, p. 183-184."] }
+  ],
+  'fc-causes-25': [
+    { id: "fc-c25-d1", title: "Document 1 : Le clergé et la colonisation", layout: "text-only",
+      text: "« Pour contrer l'exode des Canadiens français vers les États-Unis, le clergé encourage la colonisation de nouvelles terres agricoles dans des régions plus éloignées [...]. Les membres du clergé craignent que l'émigration mette en danger la survie des Canadiens français en Amérique du Nord. Ils cherchent aussi à maintenir les valeurs traditionnelles de la société rurale québécoise afin de garder une plus grande emprise sur elle. »",
+      sources: ["Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+  'fc-causes-26': [
+    { id: "fc-c26-d1", title: "Document 1 : L'exode rural canadien-français au 19e siècle", layout: "text-only",
+      text: "« Au 19e siècle, l'augmentation du taux de natalité, l'épuisement des sols et les techniques d'agriculture inefficaces créent des conditions d'appauvrissement et d'endettement pour de nombreuses familles d'agriculteurs. Celles-ci sont alors poussées à vendre leurs terres et à quitter les campagnes en quête de travail [...], par une émigration importante vers les villes manufacturières des États-Unis. »",
+      sources: ["Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] },
+    { id: "fc-c26-d2", title: "Document 2 : Little Canada, Lewiston (Maine), vers 1900", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-26/doc2.png", imageWidthCm: 11,
+      sources: ["Franco-American Collection, Maine Memory Network (consulté le 12 août 2019)."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 9 (Rôle des femmes) =====
+  'fc-faits-2': [
+    { id: "fc-f2-d1", title: "Document 1 : Discours de Mme Reid, Woman's Club of Montreal (1894)", layout: "text-only",
+      text: "« Notre club [...] a pour mission de développer chez ses membres un plus grand sentiment de solidarité dans l'intérêt de la femme en général; de cultiver les sciences et les arts. Nous voulons aussi que l'éducation de la femme soit plus pratique et plus conforme à la tâche qui lui incombe. »",
+      sources: ["« Les Associations féminines à Montréal », Le Coin du feu (janvier 1894), p. 7-8. Bibliothèque et Archives nationales du Québec."] }
+  ],
+  'fc-continuite-9': [
+    { id: "fc-cont9-d1", title: "Document 1 : Les femmes dans les industries du textile, 1915", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-9/doc1.png", imageWidthCm: 11,
+      sources: ["Source inconnue. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 10 (Présence de l'Église catholique) =====
+  'fc-faits-3': [
+    { id: "fc-f3-d1", title: "Document 1 : L'excommunication majeure (Mgr Bourget, 1875)", layout: "text-only",
+      text: "« L'excommunication majeure étant une peine spirituelle, infligée par l'Église, c'est à elle seule qu'il appartient de décider comment il faut l'interpréter et par qui et comment elle a pu être encourue. »",
+      sources: ["Mgr Ignace Bourget, « Lettre pastorale concernant la sépulture de Joseph Guibord », Mandements des évêques de Montréal, vol. 7, 3 octobre 1875, p. 12-13."] }
+  ],
+  'fc-causes-28': [
+    { id: "fc-c28-d1", title: "Document 1 : L'Index Librorum Prohibitorum (version de 1564)", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-28/doc1.png", imageWidthCm: 8,
+      sources: ["L'Index Librorum Prohibitorum, version de 1564. Wikimédia Commons."] }
+  ],
+  'fc-continuite-10': [
+    { id: "fc-cont10-d1", title: "Document 1 : L'éducation au Québec après 1867", layout: "text-only",
+      text: "« La Constitution canadienne de 1867 fait de l'éducation une compétence de juridiction provinciale. [...] Le Québec se dote, en 1868, d'un premier ministère de l'Instruction publique mais, face aux pressions de l'Église catholique, l'abolit en 1875. L'éducation est alors confiée à l'autorité du département de l'Instruction publique (DIP), formé d'un comité catholique et d'un comité protestant. »",
+      sources: ["M. Pigeon, « L'éducation au Québec, avant et après la réforme Parent », Musée McCord, en ligne (consulté le 29 juin 2019)."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 11 (Manifestations socioculturelles) =====
+  'fc-causes-29': [
+    { id: "fc-c29-d1", title: "Document 1 : Le poème « Le Laboureur » de William Chapman (1904)", layout: "text-only",
+      text: "Poème « Le Laboureur » de William Chapman (1904). Le poème célèbre le travail de la terre et le mode de vie rural; il évoque les valeurs traditionnelles canadiennes-françaises (l'agriculture, la campagne) et se termine sur l'idée que le laboureur collabore avec Dieu.",
+      sources: ["W. Chapman, « Le Laboureur », dans Les aspirations. Poésies canadiennes, Québec, Brousseau imprimeur, 1904."] }
+  ],
+  'fc-causes-30': [
+    { id: "fc-c30-d1", title: "Document 1 : Les femmes et l'écriture au 19e siècle", layout: "text-only",
+      text: "« Si les souffrances et les espoirs des femmes ont été dits, il n'en reste guère de traces écrites. [...] Seules les femmes instruites et fortunées ont assez de temps pour écrire une fois que leurs enfants sont élevés. »",
+      sources: ["Collectif Clio, L'histoire des femmes au Québec depuis quatre siècles, Le Jour éditeur, 1992, p. 240-241."] }
+  ],
+  'fc-causes-31': [
+    { id: "fc-c31-d1", title: "Document 1 : La bourgeoisie anglo-écossaise et les institutions anglo-protestantes", layout: "text-only",
+      text: "« Les membres de la bourgeoisie anglo-écossaise [...] contribuent généreusement au financement des institutions anglo-protestantes, en particulier l'Université McGill et le Montreal General Hospital. Le Board of Trade est le porte-parole très écouté de cette classe dominante. »",
+      sources: ["P.-A. Linteau, « Montréal, ville industrielle, 1850-1896 », Musée McCord, en ligne (consulté le 12 août)."] }
   ]
 
 };
@@ -5605,6 +5689,175 @@ window.DATA = {
       reglettes: [{ id: "r-fc-c22", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
       documents: pickDocs('fc-causes-22', 1),
       corrige: "Pour moderniser le système scolaire et le rendre laïque (cesser de financer l'enseignement religieux avec des fonds publics)." },
+
+    // ============================================================
+    // ===== P5 · Leçon 7 — Politique nationale (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 4 — Une cause. Doc 103 (crise économique de 1873-1879).
+    { id: "q-fc-causes-23", operation: "Déterminer des causes et des conséquences", numero: 23, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une cause de la mise en place de la Politique nationale en 1879.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c23", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-23', 1),
+      corrige: "Une importante crise économique frappe le Canada à partir de 1873; comme les tarifs douaniers sont peu élevés, les produits étrangers concurrencent les produits canadiens." },
+
+    // OI 7 — Lien de causalité (chaîne à 3 éléments). Reformulée à partir de la Q4 (tableau de liens). Docs 100/102/101.
+    { id: "q-fc-causalite-4", operation: "Établir des liens de causalité", numero: 4, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Explique comment l'achèvement du chemin de fer transcontinental, prévu par la Politique nationale, a entraîné un regain de l'activité industrielle. Dans ta réponse, tu devras préciser chacun des faits et les lier entre eux.",
+        bullets: [
+          "L'achèvement du chemin de fer transcontinental",
+          "Le peuplement de l'Ouest",
+          "Le regain de l'activité industrielle"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-fc-ca4", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('fc-causalite-4', 1, 2, 3),
+      corrige: "Le chemin de fer transcontinental est achevé, ce qui permet aux immigrants de s'établir plus facilement et plus rapidement dans l'Ouest (peuplement de l'Ouest). La hausse de la population fait augmenter la demande, ce qui entraîne un regain de l'activité industrielle et l'émergence de nouvelles industries." },
+
+    // ============================================================
+    // ===== P5 · Leçon 8 — Migrations (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 4 — Une conséquence. Doc 112 (immigration britannique au Bas-Canada).
+    { id: "q-fc-causes-24", operation: "Déterminer des causes et des conséquences", numero: 24, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une conséquence de l'immigration transatlantique sur la population du Bas-Canada.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c24", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('fc-causes-24', 1),
+      corrige: "La proportion de la population anglophone (d'origine britannique) du Bas-Canada augmente." },
+
+    // OI 4 — Une cause (raison). Doc 117 (clergé et colonisation).
+    { id: "q-fc-causes-25", operation: "Déterminer des causes et des conséquences", numero: 25, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le clergé catholique incite la population à s'établir dans des régions de colonisation.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c25", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-25', 1),
+      corrige: "Pour assurer la survie des Canadiens français et garder son influence sur eux (en maintenant les valeurs traditionnelles de la société rurale)." },
+
+    // OI 4 — Une cause et une conséquence. Docs 113 (exode rural) + 118 (Little Canada).
+    { id: "q-fc-causes-26", operation: "Déterminer des causes et des conséquences", numero: 26, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine une cause et une conséquence de l'émigration des Canadiens français vers les États-Unis.",
+        responseSpace: { type: "labeled-list", items: ["Cause", "Conséquence"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-fc-c26", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS }],
+      documents: pickDocs('fc-causes-26', 1, 2),
+      corrige: ["L'épuisement des sols et le manque de terres agricoles appauvrissent les familles et les poussent à quitter les campagnes (document 1).", "Des communautés canadiennes-françaises (les « Petits Canadas ») se forment dans les villes manufacturières des États-Unis (document 2)."] },
+
+    // ============================================================
+    // ===== P5 · Leçon 9 — Rôle des femmes (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 1 — Établir un fait. Cahier badge « OI 4 », reclassée OI 1 (identifier une revendication = établir un fait). Doc 131.
+    { id: "q-fc-faits-2", operation: "Établir des faits", numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une revendication des associations féminines, comme le Woman's Club of Montreal.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-f2", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('fc-faits-2', 1),
+      corrige: "Développer un sentiment de solidarité entre les femmes, les éduquer (les instruire) et améliorer la situation de la femme en général." },
+
+    // OI 5 — Un changement. Doc 130 (femmes dans le textile).
+    { id: "q-fc-continuite-9", operation: "Déterminer des changements et des continuités", numero: 9, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine un changement dans la place de la femme durant la Première Guerre mondiale.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont9", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-9', 1),
+      corrige: "Les femmes peuvent désormais travailler dans des manufactures (à l'extérieur de la maison)." },
+
+    // ============================================================
+    // ===== P5 · Leçon 10 — Présence de l'Église catholique (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 1 — Établir un fait. Cahier badge « OI 4 », reformulée en « Établir des faits » (qu'impose le clergé). Doc 140.
+    { id: "q-fc-faits-3", operation: "Établir des faits", numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Qu'impose le clergé catholique aux anticléricaux qui défient son autorité?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-f3", label: "Réglette (1 point)", ...R_FAITS_1PT_1SUR1 }],
+      documents: pickDocs('fc-faits-3', 1),
+      corrige: "Les anticléricaux peuvent être excommuniés, c'est-à-dire exclus de la religion catholique." },
+
+    // OI 4 — Une conséquence. Doc 141 (l'Index).
+    { id: "q-fc-causes-28", operation: "Déterminer des causes et des conséquences", numero: 28, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une conséquence de l'ultramontanisme sur certaines œuvres de littérature.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c28", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('fc-causes-28', 1),
+      corrige: "L'Église catholique interdit aux catholiques la lecture des livres inscrits à l'Index." },
+
+    // OI 5 — Un changement ou une continuité. Doc 138 (éducation après 1867).
+    { id: "q-fc-continuite-10", operation: "Déterminer des changements et des continuités", numero: 10, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine un changement dans l'influence que l'Église catholique a sur l'éducation au Québec.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont10", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-10', 1),
+      corrige: "Le ministère de l'Instruction publique, créé en 1868, est aboli en 1875 et l'éducation est confiée au département de l'Instruction publique (DIP)." },
+
+    // ============================================================
+    // ===== P5 · Leçon 11 — Manifestations socioculturelles (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 4 — Une cause (raison). Doc 152 (poème « Le Laboureur », décrit).
+    { id: "q-fc-causes-29", operation: "Déterminer des causes et des conséquences", numero: 29, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi l'Église catholique est en faveur des œuvres patriotiques.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c29", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-29', 1),
+      corrige: "Ces œuvres font la promotion des valeurs traditionnelles que l'Église valorise : le mode de vie rural, la religion catholique et la langue française." },
+
+    // OI 4 — Une cause. Doc 151 (les femmes et l'écriture).
+    { id: "q-fc-causes-30", operation: "Déterminer des causes et des conséquences", numero: 30, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi la plupart des auteures sont d'origine bourgeoise.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c30", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-30', 1),
+      corrige: "Comme elles sont instruites, les femmes de la bourgeoisie ont le temps et les moyens d'écrire." },
+
+    // OI 4 — Une cause. Doc 153 (bourgeoisie anglo-écossaise et institutions).
+    { id: "q-fc-causes-31", operation: "Déterminer des causes et des conséquences", numero: 31, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les universités anglophones sont plus ouvertes aux facultés de sciences et de génie dans la seconde moitié du 19e siècle.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c31", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-31', 1),
+      corrige: "Ces universités sont financées par de riches capitalistes industriels anglophones." },
 
     // ============================================================
     // ===== P6 — 4e secondaire — Les nationalismes et l'autonomie du Canada (1896-1945) =====
