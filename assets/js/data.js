@@ -405,6 +405,13 @@ const R_FAITS_1PT_1SUR1 = rubric2(
   "L'élève n'établit pas le fait (0 sur 1)"
 );
 
+// — Déterminer des causes et des conséquences (1 point, binaire 1/0) —
+const R_CAUSES_1PT = rubric2(
+  "Déterminer des causes et des conséquences",
+  "L'élève détermine correctement la cause. (1 sur 1)",
+  "L'élève ne détermine pas correctement la cause. (0 sur 1)"
+);
+
 // — Situer dans le temps et dans l'espace —
 const R_SITUER_2PT_T4 = rubric3(
   "Situer dans le temps et dans l'espace",
@@ -3721,6 +3728,23 @@ const DOCS = {
     { id: "fc-c10-d1", title: "Document 1 : Les tensions au sein du gouvernement de l'Union", layout: "text-only",
       text: "« [La Province du Canada] est marquée par de nombreux débats et conflits : la représentation proportionnelle (Rep by pop), la difficulté de nouer des alliances et l'impossibilité d'obtenir une double majorité de députés opposent les radicaux (« rouges » et « Clear Grits ») aux conservateurs de Macdonald et de Cartier. »",
       sources: ["D'après le Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 3 (Économie coloniale) =====
+  'fc-causes-11': [
+    { id: "fc-c11-d1", title: "Document 1 : Réunion de la Ligue Anti-Corn Law, Royaume-Uni, 1846", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-11/doc1.png", imageWidthCm: 11,
+      sources: ["Auteur inconnu, Wikimédia Commons. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+  'fc-causes-12': [
+    { id: "fc-c12-d1", title: "Document 1 : Les exportations canadiennes vers les États-Unis, en millions de dollars (1851-1857)", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-12/doc1.png", imageWidthCm: 11,
+      sources: ["Graphique : Service national du RÉCIT de l'univers social. Cahier « La formation du régime fédéral canadien (1840-1896) »."] }
+  ],
+  'fc-causes-13': [
+    { id: "fc-c13-d1", title: "Document 1 : L'abrogation du traité de réciprocité (1866)", layout: "text-only",
+      text: "« Durant la guerre de Sécession, le Royaume-Uni soutient en catimini la lutte des États du Sud contre le Nord. À l'issue de la guerre, les politiciens du Nord, mécontents du Royaume-Uni en raison de cette collaboration, cherchent à mettre fin à la réciprocité avec les colonies britanniques [...] et poussent les États-Unis à abroger le traité le 17 mars 1866. »",
+      sources: ["« Réciprocité », dans l'Encyclopédie canadienne, en ligne (consulté le 25 juin 2019)."] }
   ]
 
 };
@@ -5331,6 +5355,44 @@ window.DATA = {
       reglettes: [{ id: "r-fc-cont7", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
       documents: pickDocs('fc-continuite-7', 1),
       corrige: "La population du Haut-Canada dépasse celle du Bas-Canada à partir de 1851 (alors que le Bas-Canada était plus peuplé en 1841)." },
+
+    // ============================================================
+    // ===== P5 · Leçon 3 — Économie coloniale (cahier Période 5, 2019) =====
+    // Questions d'OI toutes de type OI 4 (causes/conséquences), conformes au contenu économique de la leçon.
+    // ============================================================
+
+    // OI 4 — Déterminer une cause. Doc 40 (gravure : Ligue Anti-Corn Law, 1846).
+    { id: "q-fc-causes-11", operation: "Déterminer des causes et des conséquences", numero: 11, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une cause de la fin du protectionnisme britannique en 1846.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c11", label: "Réglette (1 point)", ...R_CAUSES_1PT }],
+      documents: pickDocs('fc-causes-11', 1),
+      corrige: "Une pression est exercée dans la métropole pour faire abolir la Corn Law, d'autant que le blé et le bois coûtent moins cher ailleurs." },
+
+    // OI 4 — Déterminer une conséquence. Doc 41 (graphique des exportations 1851-1857).
+    { id: "q-fc-causes-12", operation: "Déterminer des causes et des conséquences", numero: 12, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une conséquence économique du traité de réciprocité de 1854.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c12", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('fc-causes-12', 1),
+      corrige: "Le traité de réciprocité de 1854 fait augmenter les exportations canadiennes vers les États-Unis." },
+
+    // OI 4 — Déterminer une cause. Doc 39 (abrogation du traité de réciprocité, 1866).
+    { id: "q-fc-causes-13", operation: "Déterminer des causes et des conséquences", numero: 13, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, détermine une cause de la fin du traité de réciprocité en 1866.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c13", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-13', 1),
+      corrige: "Les tensions créées par le soutien britannique au Sud durant la guerre de Sécession poussent les États-Unis à abroger le traité en 1866." },
 
     // ============================================================
     // ===== P6 — 4e secondaire — Les nationalismes et l'autonomie du Canada (1896-1945) =====
