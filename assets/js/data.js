@@ -1,12 +1,30 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.36.0 (mai 2026) ⭐⭐ CATALOGUE 319 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 EN COURS (Lots 1-2 : leçons 1-9)
-   319 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
+   HQC · 3e + 4e secondaire — Données — v1.37.0 (mai 2026) ⭐⭐ CATALOGUE 327 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 EN COURS (Lots 1-3 : leçons 1-11)
+   327 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
    Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 82 (7/7 OI ✓ — slugs na-* ; +52 tirées du Cahier P6, leçons 1-15, extraction TERMINÉE),
-                   P7 = 61 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 22 du Cahier P7, Lots 1-2 leçons 1-9),
+                   P7 = 69 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 30 du Cahier P7, Lots 1-3 leçons 1-11),
                    P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
    Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.37.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 3 (LEÇONS 10-11) :
+     • +8 questions (mq-*), tirées des ÉTAPES 2 des leçons 10 (Néonationalisme) et 11 (Révolution tranquille).
+       P7 : 61 → 69. Lot enfin diversifié. — OI7 : mq-causalite-6 (actions du FLQ en octobre 1970 → intervention
+       fédérale) et mq-causalite-7 (intervention sur la langue d'enseignement), RUBRIC_CAUSALITE_3PT + puces +
+       CAUSALITE_INSTRUCTIONS. — OI3 : mq-differences-7 (point de convergence de deux acteurs sur l'éducation :
+       Commission Parent / Desbiens), R_SIMILITUDES_2PT_CONVERGENCE. — OI5 : mq-continuite-12 (hydroélectricité
+       1940-1970, 3 pts repère), 13 (rôle économique de l'État) et 14 (laïcisation des services sociaux). —
+       OI4 : mq-causes-24 (assurance-hospitalisation) et 25 (financement des partis, 1977).
+     • 6 images extraites et vérifiées : mq-causalite-6/doc3 (« 250 arrestations en un jour », Journal de Québec),
+       mq-continuite-12/doc1+2 (logo Hydro-Québec 1944 + affiche « Maîtres chez nous » 1962), mq-causalite-7/
+       doc1+2+3 (camembert des allophones, crise de Saint-Léonard, frise des lois linguistiques).
+     • CONVENTION (sur demande de l'enseignant) : pour les questions de divergence/convergence, chaque acteur est
+       désormais placé dans un document distinct (mq-differences-7 : doc 1 Commission Parent, doc 2 Desbiens).
+     • DÉCISION DE L'ENSEIGNANT : la question « changement d'identité » de la leçon 10 est ÉCARTÉE — son document-
+       source (181) est un extrait de paroles de chanson (Les Sinners), non reproductible. Numérotation OI5
+       décalée en conséquence (l'hydroélectricité prend continuite-12).
+     • ÉCARTÉES (conventions) : « Établis les faits », « Inscris le numéro du document qui… » (L10 mouvement de
+       libération, L11 transformations en éducation), tableaux/schémas (ÉTAPE 1) et ÉTAPE 3.
    v1.36.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 2 (LEÇONS 3, 7, 8, 9) :
      • +10 questions (mq-*), tirées des ÉTAPES 2 des leçons 3 (Société de consommation), 7 (Fédération
        canadienne), 8 (Pensionnats) et 9 (Période duplessiste) — leçons partiellement extraites : récolte des
@@ -4508,6 +4526,65 @@ const DOCS = {
       sources: ["Source : Bibliothèque et Archives nationales du Québec."] }
   ],
 
+  'mq-causalite-6': [
+    { id: "mq-ca6-d1", title: "Document 1", layout: "text-only",
+      text: "« […] entreprend des actions en vue de créer un climat propice à la révolution et au renversement du gouvernement. On signale de nombreux vols de dynamite. Puis, plusieurs attentats à la bombe sont perpétrés. […] [La crise] prend une tout autre forme avec l'enlèvement […] : le ministre du Travail du Québec, Pierre Laporte, est à son tour enlevé et séquestré. »",
+      sources: ["Source : Bourdon et Lamarre, Histoire du Québec, une société nord-américaine, 1998."] },
+    { id: "mq-ca6-d2", title: "Document 2", layout: "text-only",
+      text: "« Cette loi, jamais utilisée auparavant en temps de paix, imposait un régime de loi martiale en vertu duquel le FLQ était officiellement déclaré illégal et certaines libertés civiles étaient suspendues, notamment l'immunité d'arrestation et de détention […]. »",
+      sources: ["Source : Gossage et Little, Une histoire du Québec, entre tradition et modernité, 2015."] },
+    { id: "mq-ca6-d3", title: "Document 3 — « 250 arrestations en un jour! »", layout: "image-only",
+      imageUrl: "assets/img/mq-causalite-6/doc3.png", imageWidthCm: 8,
+      sources: ["Source : Le Journal de Québec, octobre 1970."] }
+  ],
+  'mq-continuite-12': [
+    { id: "mq-co12-d1", title: "Document 1 — Logo d'Hydro-Québec, 1944", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-12/doc1.png", imageWidthCm: 7,
+      sources: ["Source : Archives d'Hydro-Québec."] },
+    { id: "mq-co12-d2", title: "Document 2 — Affiche électorale de la campagne de 1962", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-12/doc2.png", imageWidthCm: 8,
+      sources: ["Source : Parti libéral du Québec."] }
+  ],
+  'mq-causalite-7': [
+    { id: "mq-ca7-d1", title: "Document 1 — Inscriptions des allophones dans les écoles publiques en 1971-1972", layout: "image-only",
+      imageUrl: "assets/img/mq-causalite-7/doc1.png", imageWidthCm: 9,
+      sources: ["Source : Jimmy Grenier, à partir des données de Dickinson et Young, Brève histoire socioéconomique du Québec, Septentrion, 1995."] },
+    { id: "mq-ca7-d2", title: "Document 2 — La crise de Saint-Léonard", layout: "image-only",
+      imageUrl: "assets/img/mq-causalite-7/doc2.png", imageWidthCm: 11,
+      sources: ["Source : Bibliothèque et Archives nationales du Québec."] },
+    { id: "mq-ca7-d3", title: "Document 3 — Les lois linguistiques du Québec", layout: "image-only",
+      imageUrl: "assets/img/mq-causalite-7/doc3.png", imageWidthCm: 13,
+      sources: ["Source : Service national du RÉCIT de l'univers social."] }
+  ],
+  'mq-continuite-13': [
+    { id: "mq-co13-d1", title: "Document 1", layout: "text-only",
+      text: "« À partir des années 1960, il met sur pied plusieurs sociétés : SOQUEM pour l'exploitation minière, SOQUIP pour l'exploitation pétrolière et REXFOR pour la récupération et l'exploitation forestière. Il ne faut pas non plus oublier […] le domaine de la sidérurgie avec la création de la SIDBEC. »",
+      sources: ["Source : Gérard Cachat, À la recherche de mes racines, LIDEC, 1984, p. 639."] }
+  ],
+  'mq-differences-7': [
+    { id: "mq-d7-d1", title: "Document 1 — Commission Parent", layout: "text-only",
+      text: "« Le cri d'alarme s'est fait entendre, il y a peu d'années, devant la montée des problèmes : énorme vague d'étudiants à l'assaut des écoles, insuffisance manifeste de bâtiments, laboratoires, bibliothèques et personnel enseignant; il faut donc assurer à l'ensemble de la population un niveau d'instruction assez élevé. […] Il faut un plan d'ensemble, une orientation unifiée en vue du bien commun. »",
+      sources: ["Source : Rapport de la Commission Parent, ministère de l'Éducation du Québec, 1963."] },
+    { id: "mq-d7-d2", title: "Document 2 — Jean-Paul Desbiens", layout: "text-only",
+      text: "« On parle joual; on vit joual; on pense joual. […] impossible d'expliquer autrement un échec aussi lamentable : le système d'éducation a raté. […] Tout a été improvisé de ce côté : les programmes, les manuels, les professeurs. »",
+      sources: ["Source : Jean-Paul Desbiens, Les insolences du frère Untel, Montréal, Éditions de l'Homme, 1960, p. 37-38."] }
+  ],
+  'mq-causes-24': [
+    { id: "mq-c24-d1", title: "Document 1", layout: "text-only",
+      text: "« Afin que les résidents du Québec et les autres personnes déterminées par règlement reçoivent gratuitement des services [de santé] assurés selon des modalités uniformes, le ministre [de la Santé] attribue aux établissements visés par la Loi sur les services de santé […] les sommes nécessaires au financement du coût des services assurés qu'ils dispensent […]. »",
+      sources: ["Source : Publications du Québec, Loi sur l'assurance-hospitalisation, 1964."] }
+  ],
+  'mq-continuite-14': [
+    { id: "mq-co14-d1", title: "Document 1", layout: "text-only",
+      text: "« Avant 1960, la présence religieuse était importante au Québec, le clergé y dirigeant les écoles, les hôpitaux, en plus de guider les gens dans leur vie sociale et familiale. Avec la Révolution tranquille, l'État se substitue à l'Église dans ces domaines, en créant le ministère de l'Éducation et celui des Affaires sociales. […] La laïcisation d'une société est constituée par le passage d'un monde dominé par des religieux à un monde dominé par des laïcs. »",
+      sources: ["Source : Gérard Cachat, À la recherche de mes racines, LIDEC, 1984, p. 640."] }
+  ],
+  'mq-causes-25': [
+    { id: "mq-c25-d1", title: "Document 1", layout: "text-only",
+      text: "« Le Parti veut moderniser les institutions québécoises avant de lancer ses grandes réformes. La corruption et le favoritisme sont encore répandus et le Parti doit tenir tête aux puissants lobbys industriels et financiers. [...] S'il est adopté, les entreprises, les syndicats, les corporations, les coopératives et les associations de toutes sortes n'auront désormais plus le droit de contribuer au financement des partis politiques. Seuls les citoyens pourront le faire et leur contribution ne devra pas excéder 3 000 $ par année. De plus, les différentes formations politiques seront tenues de divulguer le nom de leurs souscripteurs. [...] »",
+      sources: ["Source : Jean-Herman Guay, « Dépôt d'un projet de loi sur le financement des partis politiques », dans Bilan du siècle (Université de Sherbrooke)."] }
+  ],
+
 };
 
 // ============ EXPORT ============
@@ -8242,6 +8319,104 @@ window.DATA = {
       reglettes: [{ id: "r-mq-c23", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
       documents: pickDocs('mq-causes-23', 1),
       corrige: "Une conséquence territoriale est le développement de nouvelles régions, comme la Côte-Nord (par exemple la ville de Sept-Îles) ou le Nord-du-Québec." },
+
+    // ============================================================
+    // ===== P7 — Cahier P7, LOT 3 (leçons 10-11) — OI7 + OI3 + OI5 + OI4 =====
+    // ============================================================
+
+    // ----- Leçon 10 — Néonationalisme -----
+    { id: "q-mq-causalite-6", operation: "Établir des liens de causalité", numero: 6, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique comment les actions du Front de libération du Québec en octobre 1970 amènent le gouvernement fédéral à agir. En utilisant les documents 1 à 3, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Une action du FLQ en octobre 1970",
+          "La loi appliquée par le gouvernement fédéral",
+          "Une action menée contre les personnes soupçonnées d'appuyer le FLQ"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-mq-ca6", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('mq-causalite-6', 1, 2, 3),
+      corrige: "En octobre 1970, le FLQ enlève le ministre du Travail du Québec, Pierre Laporte (document 1). À la suite de cet enlèvement, le gouvernement canadien impose la Loi sur les mesures de guerre afin de régler la crise (document 2). La police procède alors à l'arrestation de plusieurs centaines de personnes soupçonnées d'appuyer le mouvement (document 3)." },
+
+    // ----- Leçon 11 — Révolution tranquille -----
+    { id: "q-mq-continuite-12", operation: "Déterminer des changements et des continuités", numero: 12, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique s'il y a changement ou continuité dans la gestion de l'hydroélectricité au Québec entre 1940 et 1970. Justifie ta réponse par un fait et un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co12", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('mq-continuite-12', 1, 2),
+      corrige: "Il y a changement : en 1963, le Québec nationalise la production d'électricité en achetant les compagnies privées et en les intégrant à Hydro-Québec, une société d'État. (On accepte aussi la continuité : l'État conserve un certain contrôle sur l'hydroélectricité depuis la première nationalisation de 1944.)" },
+
+    { id: "q-mq-causalite-7", operation: "Établir des liens de causalité", numero: 7, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique comment le gouvernement intervient quant au choix de la langue d'enseignement des immigrants durant la Révolution tranquille. En utilisant les documents 1 à 3, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: [
+          "Un enjeu dans le choix de la langue d'enseignement des immigrants",
+          "Une crise linguistique survenue à la fin des années 1960",
+          "Une mesure instaurée par le gouvernement provincial"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-mq-ca7", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('mq-causalite-7', 1, 2, 3),
+      corrige: "Au tournant des années 1960, la majorité des familles allophones inscrivent leurs enfants à l'école anglaise (document 1). La protection du français devient alors un enjeu majeur, qui culmine avec la crise de Saint-Léonard, où la communauté italienne s'oppose à la scolarisation obligatoire en français (document 2). Cette situation amène le gouvernement à légiférer en adoptant successivement les lois 63, 22 puis 101 (document 3)." },
+
+    { id: "q-mq-continuite-13", operation: "Déterminer des changements et des continuités", numero: 13, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique le principal changement quant au rôle économique de l'État au Québec au cours des années 1960.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co13", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-13', 1),
+      corrige: "Le changement principal est que l'État intervient désormais directement dans l'économie en créant des sociétés d'État (SOQUEM, SOQUIP, REXFOR, SIDBEC)." },
+
+    { id: "q-mq-differences-7", operation: "Dégager des différences et des similitudes", numero: 7, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux acteurs sur un enjeu lié à l'éducation. Sur quel point précis sont-ils en accord?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-mq-d7", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_CONVERGENCE }],
+      documents: pickDocs('mq-differences-7', 1, 2),
+      corrige: "Les deux acteurs sont en accord sur le fait que le système d'éducation est en échec et qu'il doit être repensé en profondeur (vers un système mieux organisé, accessible et de qualité)." },
+
+    { id: "q-mq-causes-24", operation: "Déterminer des causes et des conséquences", numero: 24, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le gouvernement québécois implante la Loi sur l'assurance-hospitalisation.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c24", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-24', 1),
+      corrige: "Pour que les résidents du Québec puissent recevoir gratuitement des services de santé (des soins hospitaliers)." },
+
+    { id: "q-mq-continuite-14", operation: "Déterminer des changements et des continuités", numero: 14, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique le changement majeur survenu dans les services sociaux (santé, éducation) au Québec durant les années 1960.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co14", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-14', 1),
+      corrige: "La laïcisation (la déconfessionnalisation) des services sociaux : l'État se substitue à l'Église, qui dirigeait jusque-là les écoles et les hôpitaux (passage d'un monde dominé par des religieux à un monde dominé par des laïcs)." },
+
+    { id: "q-mq-causes-25", operation: "Déterminer des causes et des conséquences", numero: 25, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le gouvernement de René Lévesque adopte la Loi sur le financement des partis politiques en 1977.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c25", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-25', 1),
+      corrige: "Pour lutter contre la corruption et le favoritisme en politique : la loi interdit le financement des partis par les entreprises et les syndicats, plafonne les dons des citoyens et oblige à divulguer le nom des donateurs." },
 
     // ============================================================
     // ===== P8 — 1980 à nos jours — Les choix de société dans le Québec contemporain =====
