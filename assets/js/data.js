@@ -1,12 +1,53 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.38.0 (mai 2026) ⭐⭐ CATALOGUE 337 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 TERMINÉE (Lots 1-4 : leçons 1-15)
-   337 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
+   HQC · 3e + 4e secondaire — Données — v1.42.0 (mai 2026) ⭐⭐ CATALOGUE 375 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P8 TERMINÉE (Lots 1-4 : leçons 1-12)
+   375 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
    Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 82 (7/7 OI ✓ — slugs na-* ; +52 tirées du Cahier P6, leçons 1-15, extraction TERMINÉE),
                    P7 = 79 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 40 du Cahier P7, Lots 1-4 leçons 1-15),
-                   P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
-   Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
+                   P8 = 63 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT + 38 du Cahier P8, Lots 1-4 leçons 1-12, extraction TERMINÉE). Total cahier P8 (sommatif) = 55 points.
+   Répartition OI de P8 (63 q) : causes/conséquences 17 · différences/similitudes 20 · changements/continuités 16 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.42.0 — EXTRACTION DU CAHIER PÉRIODE 8 — LOT 4 (LEÇONS 10-12) + FIN DE L'EXTRACTION P8 :
+     • +8 questions (cs-*, réalité choix-societe-quebec-contemporain), tirées des ÉTAPES 2 des leçons 10
+       (Dévitalisation de localités), 11 (Relations internationales) et 12 (Ère de l'information) du Cahier
+       Période 8 (version 2020). P8 : 55 → 63 ; catalogue 367 → 375. EXTRACTION DU CAHIER P8 TERMINÉE.
+     • OI : causes/conséquences +5 (cs-causes 13-17), différences/similitudes +1 (cs-differences-20),
+       changements/continuités +2 (cs-continuite 15-16). Tous les documents en texte (aucune image).
+     • OI4 « but/raison » reformulées en « Explique pourquoi » (missions économiques, fermeture des villes
+       mono-industrielles, refus d'appuyer les É.-U. en Irak). L11 : doc-image (armée en Afghanistan)
+       remplacé par un document texte équivalent. Questions « inscris le numéro » écartées.
+   v1.41.0 — EXTRACTION DU CAHIER PÉRIODE 8 — LOT 3 (LEÇONS 7-9) :
+     • +7 questions (cs-*, réalité choix-societe-quebec-contemporain), tirées des ÉTAPES 2 des leçons 7
+       (Industrie culturelle), 8 (Question linguistique) et 9 (Préoccupations environnementales) du Cahier
+       Période 8 (version 2020). P8 : 48 → 55 ; catalogue 360 → 367.
+     • OI : différences/similitudes +3 (dont une convergence, cs-differences 17-19), causes/conséquences +1
+       (cs-causes-12), changements/continuités +3 (cs-continuite 12-14). Tous les documents en texte.
+     • Réglettes réutilisées (dont R_SIMILITUDES_2PT_CONVERGENCE pour le point d'accord, et
+       R_CHANGEMENTS_2PT_1CHG_1CONT pour Kyoto/Paris). Question L8 « cause + moyen » des langues
+       autochtones écartée (2 volets sans OI propre pour le moyen, causes pré-1980).
+   v1.40.0 — EXTRACTION DU CAHIER PÉRIODE 8 — LOT 2 (LEÇONS 4-6) :
+     • +11 questions (cs-*, réalité choix-societe-quebec-contemporain), tirées des ÉTAPES 2 des leçons 4
+       (Statut politique du Québec), 5 (Évolution sociodémographique) et 6 (Égalité hommes-femmes) du
+       Cahier Période 8 (version 2020). P8 : 37 → 48 ; catalogue 349 → 360.
+     • OI : différences/similitudes +6 (cs-differences 11-16), causes/conséquences +2 (cs-causes 10-11),
+       changements/continuités +3 (cs-continuite 9-11). Tous les documents sont en texte (aucune image).
+     • Nouvelle réglette R_CHANGEMENTS_1PT (motif rubric2) : « indique un changement » noté sur 1 point
+       (cs-continuite-9, rapatriement de la Constitution 1982).
+     • Question « cause et conséquence de l'échec du lac Meech » scindée en deux questions ouvertes
+       (cs-causes-10 une cause ; cs-causes-11 une conséquence) pour agrandir l'espace de réponse.
+     • Question sur les conditions de vie des Autochtones (cs-continuite-10) : extrait scindé en deux
+       documents (accès à l'eau / qualité de l'eau potable).
+   v1.39.0 — EXTRACTION DU CAHIER PÉRIODE 8 — LOT 1 (LEÇONS 1-3) :
+     • +12 questions (cs-*, réalité choix-societe-quebec-contemporain), tirées des ÉTAPES 2 des leçons 1
+       (Redéfinition du rôle de l'État), 2 (Droits des autochtones) et 3 (Mondialisation de l'économie) du
+       Cahier Période 8 (version 2020). P8 : 25 → 37 ; catalogue 337 → 349.
+     • OI : différences/similitudes +5 (cs-differences 6-10), causes/conséquences +3 (cs-causes 7-9),
+       changements/continuités +4 (cs-continuite 5-8). Tous les documents sont en texte (aucune image).
+     • Réglettes réutilisées : R_DIFFERENCES_2PT_DIVERGENCE, R_SIMILITUDES_2PT_GEN, R_DIFFERENCES_2PT_GEN,
+       R_CAUSES_2PT_GEN_1CAUSE, R_CAUSES_2PT_CONS_SEULE, R_CHANGEMENTS_2PT_GEN,
+       R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION, RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS.
+     • Doc « Principaux pays d'exportation du Canada, 2017 » (graphique du cahier) rendu en texte ; source
+       ajoutée (Données de Statistique Canada, 2017 — le cahier n'attribuait pas le graphique).
    v1.38.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 4 (LEÇONS 12-15) + FIN DE L'EXTRACTION P7 :
      • +10 questions (mq-*), tirées des ÉTAPES 2 des leçons 12 (Féminisme), 13 (Effervescence socioculturelle),
        14 (Affirmation des peuples autochtones) et 15 (Relations patronales-syndicales). P7 : 69 → 79.
@@ -733,6 +774,13 @@ const R_CHANGEMENTS_2PT_GEN = rubric3(
   "L'élève détermine correctement le changement.",
   "L'élève détermine plus ou moins correctement le changement.",
   "L'élève détermine incorrectement le changement ou ne le détermine pas."
+);
+
+// Determiner un changement (1 point, binaire 1/0) — ajoutee v1.40.0 (Cahier P8 Lot 2, Q rapatriement 1982)
+const R_CHANGEMENTS_1PT = rubric2(
+  "Déterminer des changements et des continuités",
+  "L'élève détermine correctement le changement. (1 sur 1)",
+  "L'élève ne détermine pas correctement le changement. (0 sur 1)"
 );
 
 // — Deux changements à déterminer (2 points, 2 sur 2 / 1 sur 2 / 0) —
@@ -4135,6 +4183,285 @@ const DOCS = {
     { id: "cs-ca3-d3", title: "Document 3 : Extrait d'une étude universitaire sur Netflix", layout: "text-only",
       text: "« Bien que sa plateforme numérique soit disponible au Canada uniquement depuis 2010, Netflix est en activité depuis 1997 en Californie, d'abord sous la forme d'une boutique électronique de location de DVD livrés à domicile par service postal. [...] Netflix compte à présent 118 millions d'abonnés partout dans le monde, une croissance de 392 % sur une période de six ans. »",
       sources: ["Source : Hélène Aucoin, L'irruption de Netflix sur le marché canadien : la réponse du gouvernement canadien, Mémoire de maîtrise (communication), Université du Québec à Montréal, 2019, p. 10, en ligne sur Archipel UQAM."] }
+  ],
+
+  // ===== P8 - Cahier Periode 8, Lot 1 (lecons 1-3) - documents =====
+  'cs-differences-6': [
+    { id: "cs-d6-d1", title: "Document 1 : Andrew Scheer, chef du Parti conservateur (2017-2020)", layout: "text-only",
+      text: "« Les Canadiens subissent déjà les conséquences d'une promesse rompue sur l'équilibre budgétaire : l'imprudence fiscale de Justin Trudeau se traduira par une dette supplémentaire d'au moins 100 milliards, sur le dos de nos enfants et petits-enfants [...] Plus le retour à l'équilibre sera reporté, plus la dette s'accumulera et plus les Canadiens perdront des milliards de dollars en paiements d'intérêts. »",
+      sources: ["Source : La Presse canadienne, « Andrew Scheer promet le déficit zéro en cinq ans », La Presse, 24 mai 2019."] },
+    { id: "cs-d6-d2", title: "Document 2 : Justin Trudeau, premier ministre du Canada (2015-)", layout: "text-only",
+      text: "« Ce n'est pas un calcul mathématique, c'est de l'argent investi dans la vie des gens qui va avoir un impact positif, réel, dans leur vie. [...] C'est des dépenses qu'on fait, des investissements qu'on fait, pour du transport collectif, pour aider les gens à se rendre au travail de façon plus efficace, pour investir dans nos routes, dans nos ports, pour aider les familles qui sont en train de vivre des moments d'endettement extrêmement élevés, qui ont besoin d'avoir de l'optimisme et de la confiance. »",
+      sources: ["Source : Lina Dib, La Presse canadienne, « Trudeau défend le déficit de 29,4 milliards $ », Le Soleil, 23 mars 2016."] }
+  ],
+  'cs-causes-7': [
+    { id: "cs-c7-d1", title: "Document 1 : La remise en question de l'État-providence", layout: "text-only",
+      text: "« Les difficultés économiques des années 1980-1990 provoquent une remise en cause de l'État-providence. Alors que les gouvernements affrontent des crises budgétaires, les soins de santé, le système d'éducation et les programmes sociaux financés par l'État sont de plus en plus difficiles à maintenir. De plus, en raison des taux de chômage élevés, de l'inflation et du ralentissement de l'économie, le coût de ces programmes s'accroît. Pour y arriver, les gouvernements accumulent des déficits budgétaires, année après année, accroissant sans cesse la dette publique. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+  'cs-continuite-5': [
+    { id: "cs-co5-d1", title: "Document 1 : Extrait du projet de loi 21 (2019)", layout: "text-only",
+      text: "« 1. L'État du Québec est laïque. 2. La laïcité de l'État repose sur les principes suivants : la séparation de l'État et des religions; la neutralité religieuse de l'État; l'égalité de tous les citoyens et citoyennes; la liberté de conscience et la liberté de religion. 6. Le port d'un signe religieux est interdit dans l'exercice de leurs fonctions aux personnes énumérées à l'annexe II. Au sens du présent article, est un signe religieux tout objet, notamment un vêtement, un symbole, un bijou, une parure, un accessoire ou un couvre-chef, qui est porté en lien avec une conviction ou une croyance religieuse ou raisonnablement considéré comme référant à une appartenance religieuse. »",
+      sources: ["Source : Projet de loi 21, 2019, Publications du Québec."] }
+  ],
+  'cs-differences-7': [
+    { id: "cs-d7-d1", title: "Document 1 : Chef héréditaire Na'Moks, clan Tsayu", layout: "text-only",
+      text: "« Les bandes n'ont de compétence qu'à l'intérieur des limites de la bande [...] Notre loi dit que ce projet ne peut pas se réaliser sur le territoire. »",
+      sources: ["Source : Cité par Tasha Kheirddin, « Gazoduc Coastal GasLink : la réconciliation est morte », La Presse, 13 février 2020."] },
+    { id: "cs-d7-d2", title: "Document 2 : Bonnie George, membre de la communauté Wet'suwet'en et employée de Coastal GasLink", layout: "text-only",
+      text: "« Il y a pas mal de soutien pour ce projet. Mais les gens ont peur de s'exprimer parce que, au cours des dernières années, les gens qui ont pris la parole ont été soit ostracisés, ridiculisés, intimidés, harcelés, menacés et traités de traîtres - de vendus. »",
+      sources: ["Source : Citée par Tasha Kheirddin, « Gazoduc Coastal GasLink : la réconciliation est morte », La Presse, 13 février 2020."] }
+  ],
+  'cs-differences-8': [
+    { id: "cs-d8-d1", title: "Document 1 : Le conflit du gazoduc Coastal GasLink (2020)", layout: "text-only",
+      text: "« Des manifestants opposés au gazoduc Coastal GasLink, sur le territoire de la nation wet'suwet'en en Colombie-Britannique, ont bloqué 150 trains de marchandises en Colombie-Britannique et en Ontario. Près de 25 000 voyageurs n'ont pas pu utiliser les services de VIA Rail dans le couloir Québec-Windsor. Un service de train de banlieue à Montréal a été arrêté pendant deux jours. [...] plusieurs bureaux de ministres fédéraux ont été occupés [...]. »",
+      sources: ["Source : Tasha Kheirddin, « Gazoduc Coastal GasLink : la réconciliation est morte », La Presse, 13 février 2020."] },
+    { id: "cs-d8-d2", title: "Document 2 : La crise d'Oka (1990)", layout: "text-only",
+      text: "« La tension monte et, le 11 juillet, la Sûreté du Québec attaquera le barrage. [...] Plusieurs coups de feu seront tirés au cours de l'assaut qui entraînera la mort du caporal Marcel Lemay. À la suite de ces événements [...], des négociations seront entreprises entre le gouvernement provincial et les autorités de la réserve de Kanesatake. Leur embourbement, et la venue éventuelle de l'armée pour tenter de solutionner l'impasse, constitueront des moments importants de cette crise d'Oka [...]. »",
+      sources: ["Source : Jean Herman Guay et Serge Gaudreau, « Début de la crise d'Oka », Bilan du siècle."] }
+  ],
+  'cs-causes-8': [
+    { id: "cs-c8-d1", title: "Document 1 : Dix ans après la Paix des Braves", layout: "text-only",
+      text: "« Dix ans après sa signature, la paix des Braves a transformé les Cris du Québec en une nation prospère. Les 16 000 autochtones de la baie James ont maintenant un revenu personnel disponible parmi les plus élevés du Québec, grâce notamment aux contrats d'Hydro-Québec et aux transferts gouvernementaux. En 2009-2010, plus d'un milliard de dollars ont circulé chez les Cris en provenance des pouvoirs publics et des sociétés d'État [...]. »",
+      sources: ["Source : André Dubuc, « 10 ans après la paix des Braves : les Cris empochent 645 millions chaque année », La Presse, 8 octobre 2011."] }
+  ],
+  'cs-differences-9': [
+    { id: "cs-d9-d1", title: "Document 1 : Manifestation autochtone sur la Colline du Parlement (1981)", layout: "text-only",
+      text: "« Plus de 100 Autochtones manifestent sur la Colline du Parlement pour protester contre l'élimination des droits des peuples autochtones proposée dans le projet de constitution, le 16 novembre 1981. »",
+      sources: ["Source : William B. Henderson et Catherine Bell, « Droits ancestraux », L'Encyclopédie canadienne."] },
+    { id: "cs-d9-d2", title: "Document 2 : La crise d'Oka (1990)", layout: "text-only",
+      text: "« La tension monte et, le 11 juillet, la Sûreté du Québec attaquera le barrage. [...] Plusieurs coups de feu seront tirés au cours de l'assaut qui entraînera la mort du caporal Marcel Lemay. À la suite de ces événements [...], la venue éventuelle de l'armée pour tenter de solutionner l'impasse constituera un moment important de cette crise d'Oka [...]. »",
+      sources: ["Source : Jean Herman Guay et Serge Gaudreau, « Début de la crise d'Oka », Bilan du siècle."] }
+  ],
+  'cs-continuite-6': [
+    { id: "cs-co6-d1", title: "Document 1 : La création du Nunavut", layout: "text-only",
+      text: "« En 1992, les Inuit de l'Arctique de l'Est ont commencé à écrire un nouveau chapitre de l'histoire du Canada lorsqu'ils ont conclu une entente avec le gouvernement du Canada pour créer, en 1999, un nouveau territoire appelé Nunavut. Avec deux millions de kilomètres carrés, soit environ trois fois la superficie de l'île de Terre-Neuve, le Nunavut représente un cinquième du territoire canadien. »",
+      sources: ["Source : Relations Couronne-Autochtones et Affaires du Nord Canada, Gouvernement du Canada."] }
+  ],
+  'cs-causes-9': [
+    { id: "cs-c9-d1", title: "Document 1 : Principaux pays d'exportation du Canada, 2017", layout: "text-only",
+      text: "En 2017, les principaux pays de destination des exportations du Canada se répartissent ainsi : États-Unis (76 %), Chine (4 %), Royaume-Uni (3 %), Japon (2 %) et Mexique (1 %).",
+      sources: ["Source : Données de Statistique Canada, 2017."] }
+  ],
+  'cs-differences-10': [
+    { id: "cs-d10-d1", title: "Document 1 : Bruno Letendre, Fédération des producteurs de lait du Québec", layout: "text-only",
+      text: "« Malgré tous nos efforts [...], le Canada a finalement cédé aux pressions américaines », a déploré Bruno Letendre. Il a martelé que l'ACEUM s'était « conclue sur le dos des producteurs de lait », en « écorchant » la gestion de l'offre en vigueur en production laitière. Il estime qu'en plus d'ouvrir davantage son marché laitier aux produits américains, le Canada a cédé sa souveraineté politique [...].",
+      sources: ["Source : « Lien de confiance brisé à l'égard du fédéral », La Terre de chez nous, 17 avril 2019."] },
+    { id: "cs-d10-d2", title: "Document 2 : Yves-Thomas Dorval, Conseil du patronat du Québec", layout: "text-only",
+      text: "« Près de 70 % des exportations du Québec, 75 % des exportations canadiennes sont destinées aux États-Unis [...]. La mise en oeuvre de l'Accord permet de protéger les chaînes de valeurs nord-américaines, ce qui importe pour la compétitivité des exportations [...]. Le nouvel accord permet donc d'assurer la stabilité nécessaire au développement des affaires et à la fluidité commerciale. Il est dans l'intérêt supérieur du Québec et du Canada. »",
+      sources: ["Source : Yves-Thomas Dorval et al., « ACEUM : un accord essentiel pour la prospérité du Québec », Conseil du patronat du Québec."] },
+    { id: "cs-d10-d3", title: "Document 3 : Michel Desbiens, Syndicat des employés de l'aluminium de Baie-Comeau", layout: "text-only",
+      text: "« Le président du Syndicat des employés de l'aluminium de Baie-Comeau, Michel Desbiens, pense aussi que la nouvelle mouture de l'Accord Canada-États-Unis-Mexique (ACEUM) n'encadre pas de façon stricte les produits de l'aluminium fabriqués au Mexique, ce qui pourrait nuire aux industries québécoises. [...] Comment les gouvernements vont-ils faire pour s'assurer que le métal qui rentre au Mexique provenant de la Chine ne soit pas refondu et passé comme du métal qui provient de l'Amérique du Nord? Il est là, le problème [...]. »",
+      sources: ["Source : « Aluminium : un syndicat de Baie-Comeau aussi préoccupé par le nouvel ACEUM », Radio-Canada, 29 janvier 2020."] }
+  ],
+  'cs-continuite-7': [
+    { id: "cs-co7-d1", title: "Document 1 : Les sièges sociaux qui quittent le Québec (1977)", layout: "text-only",
+      text: "« Ainsi, selon des analyses du ministère de l'Expansion économique régionale, pour deux nouveaux sièges sociaux qui s'installent actuellement au Québec, entre 23 et 25 quittent la province dans la même période. Les compagnies qui quittent le Québec [...] ne seront pas particulièrement intéressées à y investir par la suite. [...] »",
+      sources: ["Source : Jean Pelletier, « Pour deux nouveaux sièges sociaux, 25 quittent le Québec », La Presse, 27 avril 1977."] },
+    { id: "cs-co7-d2", title: "Document 2 : Le déclin des sièges sociaux au Québec (2017)", layout: "text-only",
+      text: "« Rona, Saint-Hubert, le Cirque du Soleil, Abitibi-Consol, Domtar, Alcan, la Bourse de Montréal, Sico... Le Québec perd à une vitesse de plus en plus rapide ses pouvoirs décisionnels. Plus de 300 sièges sociaux ont quitté le Québec depuis 2000. La part des sièges sociaux chute au Québec, tandis qu'elle augmente en Ontario. »",
+      sources: ["Source : Gérald Fillion, « Sièges sociaux : le déclin du Québec s'accélère... », Radio-Canada, 25 mai 2017."] }
+  ],
+  'cs-continuite-8': [
+    { id: "cs-co8-d1", title: "Document 1 : L'ALENA (1994)", layout: "text-only",
+      text: "« Mis en oeuvre en 1994 entre les gouvernements des États-Unis, du Canada et du Mexique, cet accord commercial a réduit considérablement les barrières tarifaires, facilitant ainsi le commerce des biens, des services et des capitaux. Cet accord a créé l'une des plus importantes zones de libre-échange. »",
+      sources: ["Source : « ALENA », Perspective Monde, Université de Sherbrooke."] },
+    { id: "cs-co8-d2", title: "Document 2 : L'ACEUM (2018)", layout: "text-only",
+      text: "« L'Accord Canada-États-Unis-Mexique est un accord de libre-échange entre les États-Unis, le Mexique et le Canada [...] destiné à remplacer l'actuel Accord de libre-échange nord-américain (ALENA), entré en vigueur le 1er janvier 1994. L'ACEUM est le résultat de la renégociation en 2017-2018 de l'ALENA [...]. Le traité a été officiellement signé le 30 novembre 2018 en marge du G20 à Buenos Aires, en Argentine. »",
+      sources: ["Source : « Accord Canada-États-Unis-Mexique », Wikipédia."] }
+  ],
+
+  // ===== P8 - Cahier Periode 8, Lot 2 (lecons 4-6) - documents =====
+  'cs-differences-11': [
+    { id: "cs-d11-d1", title: "Document 1 : Louise Beaudoin, députée du Parti québécois", layout: "text-only",
+      text: "« Si la population du Québec se prononce majoritairement et pacifiquement pour l'indépendance du Québec, c'est le droit international ultimement qui s'applique et c'est la reconnaissance internationale qui compte. »",
+      sources: ["Source : La Presse canadienne, « Le droit international prime la loi sur la clarté, selon les souverainistes », Le Devoir, 24 juillet 2010."] },
+    { id: "cs-d11-d2", title: "Document 2 : Stéphane Dion, ministre fédéral des Affaires intergouvernementales", layout: "text-only",
+      text: "« La conséquence concrète de cette absence de droit à la sécession unilatérale est fondamentale. Elle signifie que le gouvernement du Québec n'a pas le droit d'enlever le Canada aux Québécois qui veulent le garder. [...] Or, non seulement le consentement du gouvernement fédéral, mais aussi sa participation active serait nécessaire pour procéder à la sécession, ne serait-ce que pour des considérations pratiques. » (Unilatérale : qui n'engage qu'une seule partie.)",
+      sources: ["Source : Stéphane Dion, « Le Renvoi relatif à la sécession du Québec : des suites positives », Association québécoise de droit constitutionnel."] },
+    { id: "cs-d11-d3", title: "Document 3 : Joseph Facal, ministre québécois responsable des Affaires intergouvernementales canadiennes", layout: "text-only",
+      text: "« Voilà pourquoi le gouvernement du Québec a déposé le projet de loi sur lequel nous allons maintenant nous pencher, qui réaffirme solennellement les droits fondamentaux du peuple québécois quant à son avenir politique, de même que les responsabilités qui en découlent pour l'État québécois et l'Assemblée nationale. »",
+      sources: ["Source : Allocution de Joseph Facal sur le projet de loi 99 (Loi sur l'exercice des droits fondamentaux et des prérogatives du peuple québécois et de l'État du Québec), Gouvernement du Québec, 8 février 2000."] }
+  ],
+  'cs-continuite-9': [
+    { id: "cs-co9-d1", title: "Document 1 : Le rapatriement de la Constitution (1982)", layout: "text-only",
+      text: "« La reine Elisabeth II est à Ottawa pour signer la Constitution canadienne ramenée de Londres. Cette signature met fin au long débat qui a entouré le rapatriement de ce document. Mais ce n'est pas la fin des querelles constitutionnelles puisque le jour même où cette cérémonie se déroule à Ottawa, le Parti québécois organise une contre-manifestation qui attire 30 000 personnes à Montréal. On y souligne le fait que le gouvernement du Québec n'a pas accordé son appui à cette démarche dont il conteste la légitimité. »",
+      sources: ["Source : Jean-Herman Guay, « Proclamation royale de la nouvelle Constitution du Canada, 17 avril 1982 », Bilan du siècle, Université de Sherbrooke."] }
+  ],
+  'cs-causes-10': [
+    { id: "cs-c10-d1", title: "Document 1 : L'échec de l'Accord du lac Meech (1990)", layout: "text-only",
+      text: "« Le gouvernement fédéral [...] tente de dénouer l'impasse en proposant une nouvelle entente connue sous le nom d'Accord du lac Meech. Elle obtient l'approbation de la Chambre des communes et de l'Assemblée nationale du Québec, en 1987. Pour entrer en vigueur, l'Accord doit être ratifié par les législatures des 10 provinces du Canada avant juin 1990. Malgré les pressions, deux provinces refusent la ratification - Terre-Neuve et le Manitoba -, ce qui entraîne l'échec de l'Accord. Ce dénouement est interprété au Québec, seule province du pays à majorité francophone, comme un rejet de la part du Canada anglais. Le mouvement souverainiste, qui favorise l'accession du Québec à l'indépendance, connaîtra un élan marqué au cours des prochains mois. »",
+      sources: ["Source : « 23 juin 1990, Échec de l'accord constitutionnel du lac Meech au Canada », Perspective Monde, Université de Sherbrooke."] }
+  ],
+  'cs-causes-11': [
+    { id: "cs-c11-d1", title: "Document 1 : L'échec de l'Accord du lac Meech (1990)", layout: "text-only",
+      text: "« Le gouvernement fédéral [...] tente de dénouer l'impasse en proposant une nouvelle entente connue sous le nom d'Accord du lac Meech. Elle obtient l'approbation de la Chambre des communes et de l'Assemblée nationale du Québec, en 1987. Pour entrer en vigueur, l'Accord doit être ratifié par les législatures des 10 provinces du Canada avant juin 1990. Malgré les pressions, deux provinces refusent la ratification - Terre-Neuve et le Manitoba -, ce qui entraîne l'échec de l'Accord. Ce dénouement est interprété au Québec, seule province du pays à majorité francophone, comme un rejet de la part du Canada anglais. Le mouvement souverainiste, qui favorise l'accession du Québec à l'indépendance, connaîtra un élan marqué au cours des prochains mois. »",
+      sources: ["Source : « 23 juin 1990, Échec de l'accord constitutionnel du lac Meech au Canada », Perspective Monde, Université de Sherbrooke."] }
+  ],
+  'cs-differences-12': [
+    { id: "cs-d12-d1", title: "Document 1 : La Commission Bélanger-Campeau (1991)", layout: "text-only",
+      text: "« La Commission sur l'avenir politique et constitutionnel du Québec, souvent désignée comme la commission Bélanger-Campeau, fut établie par l'Assemblée nationale du Québec à l'initiative du premier ministre Robert Bourassa, après le rejet de l'accord du lac Meech. La commission a pour mandat d'étudier et d'analyser le statut politique et constitutionnel du Québec et de formuler, à cet égard, des recommandations à l'Assemblée nationale. Elle fut présidée par Michel Bélanger et Jean Campeau. »",
+      sources: ["Source : « Commission sur l'avenir politique et constitutionnel du Québec », Wikipédia."] },
+    { id: "cs-d12-d2", title: "Document 2 : Le rapport Allaire (1991)", layout: "text-only",
+      text: "« Un Québec libre de ses choix : Rapport du Comité constitutionnel du Parti libéral du Québec (plus connu sous le titre rapport Allaire) est le rapport du comité constitutionnel du Parti libéral du Québec déposé à l'occasion du 25e congrès des membres du Parti. Le rapport, publié le 28 janvier 1991, proposait au Parti libéral la voie à suivre au niveau constitutionnel pour faire suite à l'échec de l'accord du lac Meech. »",
+      sources: ["Source : « Rapport Allaire », Wikipédia."] }
+  ],
+  'cs-differences-13': [
+    { id: "cs-d13-d1", title: "Document 1 : Jean Chrétien, premier ministre du Canada", layout: "text-only",
+      text: "« La dissolution du Canada serait l'échec d'un rêve. Ce serait la fin d'un pays qui fait l'envie du monde entier. Le Canada n'est pas n'importe quel pays. C'est un pays unique au monde, le meilleur. [...] Nous avons construit ensemble au Canada quelque chose de grand et de noble. »",
+      sources: ["Source : « Message à la nation, le 25 octobre 1995 », Bibliothèque et Archives Canada."] },
+    { id: "cs-d13-d2", title: "Document 2 : Jacques Parizeau, premier ministre du Québec", layout: "text-only",
+      text: "« Car, vous n'êtes pas sans le savoir, le Parti que je dirige a pour programme et pour mandat de proposer aux Québécois, d'ici quelques mois, de se donner un État. De sortir, bref, d'un État fédéré et de se donner un État-nation. [...] La souveraineté du Québec, c'est notre façon de consacrer notre arrivée sur la scène internationale, d'y parler de notre propre voix. »",
+      sources: ["Source : Notes pour un discours de Jacques Parizeau à l'Institut France-Amérique, Paris, 27 janvier 1995, ministère des Relations internationales du Québec."] }
+  ],
+  'cs-continuite-10': [
+    { id: "cs-co10-d1", title: "Document 1 : L'accès à l'eau dans les réserves", layout: "text-only",
+      text: "« La plupart des habitations dans les communautés autochtones sont inadéquates et ont besoin de réparations. En 1977-1978, 53 % des résidences situées dans les réserves avaient une alimentation en eau de base, mais 20 ans plus tard, ce taux s'était amélioré à 98 %. En 2011, 72 % des maisons situées dans les réserves sont alimentées en eau par conduite d'eau, 13,5 % par camion, 13 % par puits individuel et 1,5 % ne sont pas alimentées en eau. »",
+      sources: ["Source : Joe Sawchuk, « Conditions sociales des peuples autochtones au Canada », L'Encyclopédie canadienne, 31 octobre 2011."] },
+    { id: "cs-co10-d2", title: "Document 2 : La qualité de l'eau potable", layout: "text-only",
+      text: "« Même si le niveau d'approvisionnement en eau est élevé, de nombreuses communautés doivent composer avec de l'eau contaminée. C'est pourquoi l'eau potable demeure un enjeu important. »",
+      sources: ["Source : Joe Sawchuk, « Conditions sociales des peuples autochtones au Canada », L'Encyclopédie canadienne, 31 octobre 2011."] }
+  ],
+  'cs-differences-14': [
+    { id: "cs-d14-d1", title: "Document 1 : Michel Leblanc, Chambre de commerce du Montréal métropolitain", layout: "text-only",
+      text: "« Nous estimons que nous aurons besoin de beaucoup plus d'aide si nous voulons pleinement saisir l'occasion unique qui se présente à nous. [...] Le Québec pourrait connaître un âge d'or économique inédit. Pour y parvenir, nous aurons besoin de davantage de bras et de cerveaux. Devant pareille occasion, hausser significativement les seuils d'immigration constitue un acte de nationalisme économique. »",
+      sources: ["Source : « Hausser les seuils d'immigration constitue un acte de nationalisme économique », Le Devoir, 19 août 2019."] },
+    { id: "cs-d14-d2", title: "Document 2 : François Legault, chef de la Coalition avenir Québec", layout: "text-only",
+      text: "« Le chef de la Coalition Avenir Québec, François Legault, a profité de la clôture du caucus présessionnel de ses députés pour inviter le gouvernement libéral à faire marche arrière sur son intention de hausser les seuils d'immigration de 5 % d'ici 2019. Il lui demande plutôt d'opter pour une réduction immédiate de 20 % du nombre d'immigrants acceptés au Québec, soit l'équivalent de 10 000 personnes de moins par année. »",
+      sources: ["Source : « La CAQ propose une baisse de 10 000 immigrants par année », site de la Coalition avenir Québec, 16 août 2016."] }
+  ],
+  'cs-continuite-11': [
+    { id: "cs-co11-d1", title: "Document 1 : L'écart salarial entre les femmes et les hommes au Québec", layout: "text-only",
+      text: "« Selon l'ISQ, en 1998, une travailleuse salariée gagnait 84 cents en moyenne pour chaque dollar gagné par le travailleur moyen. Ce ratio de 84 % s'est amélioré depuis 1998 pour s'établir plutôt à 90 % en 2016. Cette amélioration ne s'est toutefois pas réalisée de façon homogène dans toutes les industries et pour toutes les caractéristiques des personnes, des professions et des milieux de travail. L'endroit où les femmes ont fait le plus de progrès est dans le groupe des 25-34 ans, puisque leur rémunération y est à égalité statistique par rapport aux hommes. »",
+      sources: ["Source : François Durocher et Eve-Lyne Couturier, IRIS, 2019, d'après des données de l'Institut de la statistique du Québec."] }
+  ],
+  'cs-differences-15': [
+    { id: "cs-d15-d1", title: "Document 1 : Alain Dubuc, chroniqueur", layout: "text-only",
+      text: "« Il est vrai que le Québec a fait des bonds de géant. En 1976, le taux d'activité féminin était de 41,4 % ; quatre femmes sur dix étaient sur le marché du travail. En 2016, 40 ans plus tard, ce taux était passé à 60,7 %. Cela ne fait pas du Québec un modèle. Avec 60,7 %, il est encore en dessous de la moyenne canadienne, loin d'une province comme l'Alberta où il atteint 66,3 %. En fait, le Québec se retrouve au 5e rang des provinces. »",
+      sources: ["Source : Alain Dubuc, « L'illusion du succès », La Presse, 7 mars 2017."] },
+    { id: "cs-d15-d2", title: "Document 2 : Pierre Fortin, économiste", layout: "text-only",
+      text: "« Il existe un consensus scientifique solide selon lequel le système de garde a entraîné une hausse sensible du taux d'activité des mères québécoises. [...] depuis 1997, année du lancement du nouveau système de garde, le taux d'activité des femmes de 25 à 44 ans est passé de 77 % à 86 % au Québec, mais de 79 % à seulement 81 % ailleurs au pays. Autrement dit, il y a 20 ans, le taux d'activité des Québécoises était inférieur de 2 points à celui des autres Canadiennes, alors qu'aujourd'hui il lui est supérieur de 5 points. »",
+      sources: ["Source : Pierre Fortin, « Garderies : haro sur les faits alternatifs », L'Actualité, 30 mars 2017."] }
+  ],
+  'cs-differences-16': [
+    { id: "cs-d16-d1", title: "Document 1 : Pascale Navarro, auteure", layout: "text-only",
+      text: "« [Les] hommes politiques ont tendance à s'entourer de semblables. [...] les hommes politiques ouverts à l'instauration des quotas sont prêts à remettre en question certaines pratiques et habitudes, ce qui permet de modifier les critères de recherche en matière de recrutement. La classe politique se renouvelle donc davantage, et permet une diversité de représentation. En fait, les quotas bouleversent les traditions de réseautage habituelles. »",
+      sources: ["Source : Pascale Navarro, « Égalité hommes-femmes, le tabou des quotas », La Presse, 17 avril 2018."] },
+    { id: "cs-d16-d2", title: "Document 2 : Lise Thériault, femme politique", layout: "text-only",
+      text: "« Oui, ça prend plus de femmes en politique, oui aux mesures incitatives, non aux quotas. [...] Les femmes ne veulent pas se faire dire qu'elles occupent un poste ou qu'elles sont à un endroit parce qu'il y a un quota, a dit Mme Thériault. Moi-même, quelqu'un m'a déjà dit lors d'une entrevue que j'étais ministre parce qu'il y avait des quotas, que ça prenait des femmes, donc que j'étais ministre. Je trouve ça franchement insultant. »",
+      sources: ["Source : Martin Croteau, « Lise Thériault s'oppose à des quotas de candidatures féminines », La Presse, 9 mars 2017."] },
+    { id: "cs-d16-d3", title: "Document 3 : Noémi Mercier, journaliste", layout: "text-only",
+      text: "« [Il] serait temps de cesser d'entretenir le mythe que ces mesures provoqueraient une dégradation de la qualité des élus et discréditeraient les femmes. Admettons enfin que nous ne vivons pas dans une méritocratie parfaite : si les hommes sont depuis toujours surreprésentés en politique [...] ce n'est pas parce qu'ils sont fondamentalement plus méritants. [...] Les quotas neutralisent ces facteurs pour mieux permettre à chacun - et à chacune - de s'illustrer à la hauteur de ses talents véritables. »",
+      sources: ["Source : Noémi Mercier, « Moins compétentes, vraiment ? », L'Actualité, 3 mai 2017."] }
+  ],
+
+  // ===== P8 - Cahier Periode 8, Lot 3 (lecons 7-9) - documents =====
+  'cs-causes-12': [
+    { id: "cs-c12-d1", title: "Document 1 : Les revenus des artistes à l'ère de la diffusion en continu", layout: "text-only",
+      text: "« Les données compilées par la société de gestion des droits d'auteur, la SOCAN, indiquent que les créateurs n'ont reçu que 38,72 $ en moyenne en provenance de plateformes de streaming comme Spotify, Apple, Google, Amazon et Netflix en 2017. »",
+      sources: ["Source : Pierre Couture, « Musique en ligne : des miettes pour les artistes », Le Journal de Québec, 29 octobre 2019."] }
+  ],
+  'cs-continuite-12': [
+    { id: "cs-co12-d1", title: "Document 1 : L'arrivée de Napster (1999)", layout: "text-only",
+      text: "« Les plus vieux se souviendront de ce fameux mois de juin 1999, alors que des dizaines de milliers d'internautes [...] prenaient d'assaut le site Napster.com afin de télécharger ce nouvel outil permettant le partage et l'échange de fichiers musicaux. [...] En moins de six mois, Napster était devenu de facto la première plateforme mondiale de partage de fichiers [...]. Bénéficiant à la fois d'une technologie novatrice et, surtout, d'un vide juridique [...], Fanning faisait basculer l'échange de musique du monde analogique à l'univers numérique. Terminée la copie sur cassette. Dorénavant, la numérisation était la voie à suivre. »",
+      sources: ["Source : Michel Dumais, « Napster : 15 ans déjà », Le Journal de Montréal, 4 octobre 2014."] }
+  ],
+  'cs-continuite-13': [
+    { id: "cs-co13-d1", title: "Document 1 : La création de MusiquePlus (1986)", layout: "text-only",
+      text: "« MusiquePlus était une chaîne de télévision québécoise spécialisée [...]. Initialement à vocation musicale, la chaîne a été fondée le 2 septembre 1986 par Moses Znaimer et Pierre Marchand [...]. Elle devient ainsi la première chaîne spécialisée francophone. »",
+      sources: ["Source : « MusiquePlus », Wikipédia."] },
+    { id: "cs-co13-d2", title: "Document 2 : L'arrivée de Netflix au Canada (2010)", layout: "text-only",
+      text: "« L'entreprise américaine compte offrir sa formule d'abonnement mensuel permettant de regarder des films et des émissions sur Internet, en diffusion en continu, au Canada. [...] Elle compte offrir un service d'abonnement permettant de visionner des films et des émissions en diffusion en continu dès l'automne prochain. Le montant précis de l'abonnement reste inconnu, mais celui de base s'élève à près de 9 $US aux États-Unis. »",
+      sources: ["Source : « Netflix arrive au Canada », Radio-Canada, 19 juillet 2010."] }
+  ],
+  'cs-differences-17': [
+    { id: "cs-d17-d1", title: "Document 1 : Gérald Fillion, journaliste économique", layout: "text-only",
+      text: "« Les câblodistributeurs participent au Fonds des médias du Canada et perçoivent la TPS et la TVQ. Netflix ne participera pas au Fonds des médias du Canada et ne va pas percevoir la TPS et la TVQ. Ces entreprises-là participent à la production canadienne, ils sont obligés, ça fait partie de la loi. »",
+      sources: ["Source : Gérald Fillion, cité dans Le Huffington Post Québec, 8 octobre 2017."] },
+    { id: "cs-d17-d2", title: "Document 2 : Rosalie Wyonch, analyste à l'Institut C.D. Howe", layout: "text-only",
+      text: "« En ne taxant pas les services d'une entreprise étrangère de la sorte, ça équivaut à financer ses activités, explique-t-elle. Le gouvernement désavantage les entreprises canadiennes qui, elles, sont dans l'obligation de percevoir des taxes. »",
+      sources: ["Source : Rosalie Wyonch, citée dans TVA Nouvelles, 8 octobre 2019."] }
+  ],
+  'cs-differences-18': [
+    { id: "cs-d18-d1", title: "Document 1 : Clifford Lincoln, ministre démissionnaire", layout: "text-only",
+      text: "« J'aurais préféré fondamentalement [...] que tout reste comme c'est, plutôt que de faire quelque chose qui est encore plus humiliant, de dire : à l'intérieur, c'est permis, mais à l'extérieur, ne vous affichez pas [...]. Je ne pense pas que ce soit ce que les francophones pensent. [...] Je pense différemment, mais je respecte profondément vos opinions. »",
+      sources: ["Source : Clifford Lincoln, cité dans Le Devoir, 21 décembre 1988."] },
+    { id: "cs-d18-d2", title: "Document 2 : Robert Bourassa, premier ministre du Québec", layout: "text-only",
+      text: "« Par son choix, le gouvernement demande une énorme concession aux anglophones en niant leur droit d'afficher dans leur langue à l'extérieur de leurs commerces, en dépit du jugement de la Cour suprême. [...] Selon la Cour suprême, le français est menacé, a souligné M. Bourassa. Le gouvernement a donc opté pour l'unilinguisme à l'extérieur pour protéger le visage français et clairement dire aux immigrants à quel groupe ils doivent s'intégrer. »",
+      sources: ["Source : Denis Lessard, Le Soleil, 19 décembre 1988."] }
+  ],
+  'cs-continuite-14': [
+    { id: "cs-co14-d1", title: "Document 1 : Le protocole de Kyoto", layout: "text-only",
+      text: "« Le protocole de Kyoto est un accord international visant à la réduction des émissions de gaz à effet de serre. Il est entré en vigueur en 2005. Ce protocole visait à réduire, entre 2008 et 2012, d'au moins 5 % par rapport au niveau de 1990 les émissions des gaz à effet de serre. Les États-Unis signent mais ne ratifient pas le Protocole de Kyoto. Le Canada est devenu, le 12 décembre 2011, le premier pays à vouloir se retirer du protocole de Kyoto [...]. 184 pays signent sur les 193 pays membres de l'ONU. »",
+      sources: ["Source : « Protocole de Kyoto », Wikipédia."] },
+    { id: "cs-co14-d2", title: "Document 2 : L'accord de Paris", layout: "text-only",
+      text: "« L'accord de Paris est le premier accord universel sur le climat et le réchauffement climatique. [...] Il est entré en vigueur en 2016. Cet accord vise le zéro émission net : diminuer nos émissions de GES pour qu'elles soient progressivement compensées par les puits de carbone [...]. Les pays s'engagent à limiter la hausse de la température bien en deçà de 2 degrés Celsius [...]. En 2017, [...] 195 pays sur les 197 pays membres de l'ONU ont signé l'accord de Paris [...]. »",
+      sources: ["Source : « Accord de Paris sur le climat », Wikipédia."] }
+  ],
+  'cs-differences-19': [
+    { id: "cs-d19-d1", title: "Document 1 : Margot Venton, avocate (ÉcoJustice)", layout: "text-only",
+      text: "« Selon l'avocate d'ÉcoJustice Margot Venton, l'augmentation spectaculaire du bruit sous-marin, des risques de collision avec un navire ou d'un déversement catastrophique de pétrole associé au projet Trans Mountain pourrait être une condamnation à mort pour les épaulards. En outre, des projets de pipeline comme Trans Mountain accélèrent les changements climatiques à un moment où nous savons qu'il est urgent d'agir [...]. »",
+      sources: ["Source : Stéphanie Rousseau, « Trans Mountain : la Cour d'appel fédérale entendra 6 contestations », Radio-Canada, 4 septembre 2019."] },
+    { id: "cs-d19-d2", title: "Document 2 : Annie Chaloux, professeure", layout: "text-only",
+      text: "« Dans une perspective de lutte contre les changements climatiques, le développement de cette infrastructure n'a pas sa place, déplore Annie Chaloux, professeure à l'École de politique appliquée de l'Université de Sherbrooke [...]. Si le gouvernement promet de réinvestir les profits du projet de l'oléoduc dans la transition énergétique du Canada, Annie Chaloux considère que cet argent aurait pu être investi dans des emplois verts. »",
+      sources: ["Source : « Protection de l'environnement : le pipeline de la discorde », Radio-Canada, 18 juin 2019."] },
+    { id: "cs-d19-d3", title: "Document 3 : Justin Trudeau, premier ministre du Canada", layout: "text-only",
+      text: "« Le premier ministre Trudeau ne voit pas de contradiction entre l'expansion d'un pipeline pour transporter plus de pétrole et l'urgence climatique décrétée par son propre gouvernement. Il soutient que le Canada a besoin d'élargir de nouveaux marchés - en Asie - pendant que le monde est encore dépendant du pétrole. Il veut éviter que le pays soit prisonnier du marché américain [...]. »",
+      sources: ["Source : Catherine Lévesque, « Ottawa donne le feu vert au projet d'expansion de l'oléoduc Trans Mountain », L'Actualité, 18 juin 2019."] }
+  ],
+
+  // ===== P8 - Cahier Periode 8, Lot 4 (lecons 10-12) - documents =====
+  'cs-differences-20': [
+    { id: "cs-d20-d1", title: "Document 1 : Daniel Côté, maire de Gaspé", layout: "text-only",
+      text: "« Il y a pu avoir des économies d'échelle, ça saute aux yeux, admet le maire, Daniel Côté. Plus d'équité aussi parce que les territoires dévitalisés peuvent avoir un souffle des municipalités plus fortes. [...] si nous étions quatre municipalités, avec quatre réseaux d'aqueduc, on aurait accès à du 85 %, 90 % de financement gouvernemental. »",
+      sources: ["Source : « Fusions municipales : des avantages et des inconvénients à Gaspé », Radio-Canada."] },
+    { id: "cs-d20-d2", title: "Document 2 : Robert Gagné, professeur aux HEC", layout: "text-only",
+      text: "« Les études sur l'efficacité des fusions au Québec vont dans le même sens que l'étude ontarienne, confirme Robert Gagné, directeur du Centre sur la productivité et la prospérité aux HEC. Son groupe de recherche a d'ailleurs constaté [...] que les villes fusionnées affichaient des coûts plus élevés. [...] Au départ, il y a des économies d'échelle, mais ces économies atteignent vite un plancher, puis ça repart à la hausse, dit Gagné. »",
+      sources: ["Source : Pierre-André Normandin, « Fusions municipales : pas d'économies d'échelle, conclut une étude », La Presse."] },
+    { id: "cs-d20-d3", title: "Document 3 : Jean-Paul L'Allier, maire de Québec", layout: "text-only",
+      text: "« Sans les fusions, explique-t-il, Québec aurait continué à être une ville de 185 000 habitants, une belle ville jardin-village qui se fait grignoter son développement par la périphérie. L'objectif des fusions était d'être plus fort ensemble plutôt que divisé à 13 autour d'une table [...]. »",
+      sources: ["Source : Normand Provencher, « Dans l'oeil de Jean-Paul L'Allier », Le Soleil, 6 septembre 2014."] }
+  ],
+  'cs-causes-13': [
+    { id: "cs-c13-d1", title: "Document 1 : Le déclin de Schefferville", layout: "text-only",
+      text: "« Déjà, à la fin des années cinquante, la concurrence mondiale avait fait ses ravages, soit par la découverte de gisements à teneur plus concentrée, soit par la mise au point de procédés de concentration économiques. [...] À cela s'ajoute la concurrence féroce sur le marché de l'acier, où les producteurs américains, dont dépend notre industrie minière, n'ont pas le haut du pavé. [...] le monde de l'acier est également occupé par les producteurs du Japon, de l'Europe de l'ouest, de la Corée et de l'Afrique du Sud. »",
+      sources: ["Source : Alain Dubuc, « Le lent déclin de Schefferville », La Presse, 3 novembre 1982."] }
+  ],
+  'cs-causes-14': [
+    { id: "cs-c14-d1", title: "Document 1 : La difficulté de concilier travail et vie personnelle", layout: "text-only",
+      text: "« Les réticences à être en couple avec un agriculteur sont nombreuses. La campagne et la charge de travail sont souvent considérées comme un obstacle dans les rencontres amoureuses. [...] Cultivatrice de pommes de terre et de grandes cultures, Marie-Christine Brière a vécu la discrimination envers son métier [...]. La peur de la campagne, les interminables heures de travail, des raisons elle en a entendues. »",
+      sources: ["Source : Joany Dufresne, « L'amour quand on est agriculteur », Le Journal de Montréal, 14 février 2013."] },
+    { id: "cs-c14-d2", title: "Document 2 : Le coût élevé des entreprises agricoles", layout: "text-only",
+      text: "« Jean-Philippe Perrier, [...] professeur à la Faculté des sciences de l'agriculture et de l'alimentation de l'Université Laval, étudie l'établissement des jeunes en agriculture. Aujourd'hui, explique-t-il, les parents ont accumulé très peu d'épargne en dehors de l'agriculture et ont besoin d'argent pour leur retraite. Ils doivent donc vendre l'entreprise [...]. Or, quand une ferme laitière moyenne vaut deux millions $, le jeune n'a tout simplement pas les moyens de l'acheter à ses parents. »",
+      sources: ["Source : Valérie Levée, « Malaise chez la relève agricole », Le Magazine Contact, printemps 2011."] }
+  ],
+  'cs-causes-15': [
+    { id: "cs-c15-d1", title: "Document 1 : Une mission économique en Chine (2018)", layout: "text-only",
+      text: "« La mission économique menée par le gouvernement Couillard en Chine a été marquée lundi par des annonces de partenariats et de contrats évalués à près de 240 millions de dollars. La société montréalaise Enerkem, spécialisée dans la production de biocarburants à partir de déchets, a dévoilé un accord de 125 millions avec la compagnie Sinobioway afin de prendre de l'expansion en Chine et d'y construire, en coentreprise, une centaine d'installations de ce genre d'ici 2035. »",
+      sources: ["Source : François Desjardins, « Une mission économique québécoise fructueuse en Chine », Le Devoir, 23 janvier 2018."] }
+  ],
+  'cs-continuite-15': [
+    { id: "cs-co15-d1", title: "Document 1 : La mission de paix au Rwanda (années 1990)", layout: "text-only",
+      text: "« Le Canada reconnaît la contribution des membres de la mission des Nations Unies pour appuyer la paix au Rwanda, notamment les Casques bleus canadiens et le général Roméo Dallaire, qui ont risqué leur vie pour sauver celle des autres et protéger ceux qui fuyaient le génocide. [...] »",
+      sources: ["Source : « La gouverneure générale du Canada se rendra au Rwanda », Cabinet du premier ministre du Canada, 2019."] },
+    { id: "cs-co15-d2", title: "Document 2 : La mission de combat en Afghanistan (années 2000)", layout: "text-only",
+      text: "« Des soldats canadiens ont également été dépêchés [...]. C'est là qu'ils se sont joints aux troupes américaines et britanniques qui combattaient déjà pour renverser le régime taliban, éliminer les opérations de terrorisme et jeter les assises d'une paix durable dans ce pays déchiré. Face à la défaite éventuelle des talibans, l'attention s'est tournée vers la stabilisation du pays [...]. »",
+      sources: ["Source : « Les Forces armées canadiennes en Afghanistan », Anciens Combattants Canada."] }
+  ],
+  'cs-causes-16': [
+    { id: "cs-c16-d1", title: "Document 1 : Kofi Annan, secrétaire général de l'ONU (2004)", layout: "text-only",
+      text: "« J'espère ne plus voir déclenchée, avant longtemps, une opération du type de celle menée actuellement en Irak, sans accord de l'ONU et le soutien d'une grande partie de la communauté internationale. [...] préférable de travailler ensemble avec nos alliés au sein des Nations unies afin de résoudre une partie de ces problèmes. »",
+      sources: ["Source : Mounia Daoudi, « La guerre en Irak illégale pour Kofi Annan », RFI, 16 septembre 2004."] }
+  ],
+  'cs-continuite-16': [
+    { id: "cs-co16-d1", title: "Document 1 : La restructuration du Groupe Capitales Médias", layout: "text-only",
+      text: "« La Cour supérieure du Québec approuve le plan de restructuration des journaux du Groupe Capitales Médias en coopératives de travailleurs. Les six quotidiens régionaux du Groupe Capitales Médias (GCM) sont donc sauvés. [...] La nouvelle entité portera le nom de Coopérative nationale de l'information indépendante (CN2i). Il s'agira du premier grand groupe de presse de nature coopérative au Québec [...]. »",
+      sources: ["Source : Yannick Bergeron, « Groupe Capitales Médias : le tribunal approuve la restructuration », Radio-Canada, 23 décembre 2020."] }
+  ],
+  'cs-causes-17': [
+    { id: "cs-c17-d1", title: "Document 1 : La baisse des revenus publicitaires des médias", layout: "text-only",
+      text: "« La direction d'un groupe de presse, Transcontinental, et celle d'un quotidien [...], The Gazette, sont venues témoigner en commission parlementaire pour dire à quel point la baisse continue des recettes publicitaires avait mis en péril leurs activités. [...] Depuis 2015, les revenus publicitaires des marques spécialisées de Transcontinental Media (TC Media) au Québec ont chuté d'environ 40 pour cent [...]. »",
+      sources: ["Source : La Presse canadienne, « Crise des médias : revenus publicitaires en baisse constante depuis 10 ans », Les Affaires, 30 août 2019."] }
   ],
 
   // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 1 (Acte d'Union) =====
@@ -8954,8 +9281,355 @@ window.DATA = {
       },
       reglettes: [{ id: "r-cs-ca3", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
       documents: pickDocs('cs-causalite-3', 1, 2, 3),
-      corrige: "À partir de 2010, un nombre croissant de Québécois et de Canadiens consomment la culture par l'intermédiaire de plateformes numériques étrangères comme Netflix (document 3). Ce changement dans les habitudes de consommation renforce la concurrence économique et culturelle des multinationales américaines, dont les services ne sont pas taxés au Canada (document 1). En conséquence, l'État québécois adopte une loi qui force les entreprises étrangères de services numériques à percevoir la taxe de vente, afin d'assurer une concurrence loyale aux entreprises d'ici (document 2)." }
+      corrige: "À partir de 2010, un nombre croissant de Québécois et de Canadiens consomment la culture par l'intermédiaire de plateformes numériques étrangères comme Netflix (document 3). Ce changement dans les habitudes de consommation renforce la concurrence économique et culturelle des multinationales américaines, dont les services ne sont pas taxés au Canada (document 1). En conséquence, l'État québécois adopte une loi qui force les entreprises étrangères de services numériques à percevoir la taxe de vente, afin d'assurer une concurrence loyale aux entreprises d'ici (document 2)." },
 
+    // ===== P8 - Cahier Periode 8, Lot 1 (lecons 1-3) =====
+    { id: "q-cs-differences-6", operation: "Dégager des différences et des similitudes", numero: 6, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue d'Andrew Scheer et de Justin Trudeau au sujet des finances publiques du Canada à la fin des années 2010. Sur quel point précis sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d6", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('cs-differences-6', 1, 2),
+      corrige: "Andrew Scheer et Justin Trudeau ne s'entendent pas sur la nécessité d'atteindre l'équilibre budgétaire : Scheer dénonce les déficits et l'accumulation de la dette publique, alors que Trudeau défend ces dépenses comme des investissements bénéfiques pour la population. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-7", operation: "Déterminer des causes et des conséquences", numero: 7, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le modèle de l'État-providence est remis en question au Québec et au Canada dans les années 1980 et 1990.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c7", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('cs-causes-7', 1),
+      corrige: "Les difficultés économiques des années 1980-1990 (crises budgétaires, chômage élevé, inflation, ralentissement de l'économie) font augmenter le coût des programmes sociaux, de la santé et de l'éducation, qui deviennent de plus en plus difficiles à financer : c'est pourquoi le modèle de l'État-providence est remis en question. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-5", operation: "Déterminer des changements et des continuités", numero: 5, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement apporté par la Loi sur la laïcité de l'État (loi 21) en 2019.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-co5", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('cs-continuite-5', 1),
+      corrige: "Document 1 : depuis la loi 21 (2019), le port d'un signe religieux est dorénavant interdit, dans l'exercice de leurs fonctions, aux employés de l'État en position d'autorité (personnes énumérées à l'annexe II). Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-7", operation: "Dégager des différences et des similitudes", numero: 7, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux membres de la nation Wet'suwet'en au sujet du projet de gazoduc Coastal GasLink en 2020. Sur quel point précis sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d7", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('cs-differences-7', 1, 2),
+      corrige: "Les deux acteurs sont en désaccord sur la réalisation du projet de gazoduc Coastal GasLink et son tracé sur le territoire autochtone : le chef Na'Moks soutient que le projet ne peut pas se faire sur le territoire, alors que Bonnie George affirme qu'il existe un appui important au projet dans la communauté. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-8", operation: "Dégager des différences et des similitudes", numero: 8, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent deux conflits liés au territoire autochtone : le projet de gazoduc Coastal GasLink (2020) et la crise d'Oka (1990). Indique une similitude entre ces deux événements.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d8", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_GEN }],
+      documents: pickDocs('cs-differences-8', 1, 2),
+      corrige: "Une similitude : dans les deux cas, des Autochtones bloquent des voies de communication importantes (barrages routiers, blocages ferroviaires) pour s'opposer à un projet de développement réalisé sur une réserve sans l'accord de ses habitants. Accepter une seule similitude équivalente." },
+    { id: "q-cs-causes-8", operation: "Déterminer des causes et des conséquences", numero: 8, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence, pour la nation crie, de la signature de la Paix des Braves en 2001.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c8", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('cs-causes-8', 1),
+      corrige: "Document 1 : une conséquence est l'enrichissement de la nation crie (revenu personnel parmi les plus élevés du Québec, importants revenus provenant des contrats d'Hydro-Québec et des transferts gouvernementaux). Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-9", operation: "Dégager des différences et des similitudes", numero: 9, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent deux moments de la lutte des Autochtones pour faire valoir leurs droits : une manifestation en 1981 et la crise d'Oka en 1990. Indique une différence dans la manière dont les Autochtones manifestent leur mécontentement.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d9", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_GEN }],
+      documents: pickDocs('cs-differences-9', 1, 2),
+      corrige: "Une différence : en 1981, les Autochtones manifestent de façon pacifique (rassemblement, manifestation sur la Colline du Parlement), alors qu'en 1990, lors de la crise d'Oka, le conflit prend une tournure violente (barricades, affrontement armé avec la Sûreté du Québec, coups de feu, mort d'un policier). Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-6", operation: "Déterminer des changements et des continuités", numero: 6, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement important pour les Inuits qui survient à la fin des années 1990.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-co6", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('cs-continuite-6', 1),
+      corrige: "Document 1 : un changement important est la création du territoire du Nunavut en 1999, à la suite d'une entente conclue entre les Inuit de l'Arctique de l'Est et le gouvernement du Canada. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-9", operation: "Déterminer des causes et des conséquences", numero: 9, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence de l'ALENA sur la destination des exportations canadiennes.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c9", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('cs-causes-9', 1),
+      corrige: "Document 1 : une conséquence de l'ALENA est que les exportations canadiennes sont très majoritairement destinées aux États-Unis (76 % en 2017). Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-10", operation: "Dégager des différences et des similitudes", numero: 10, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent l'opinion de trois acteurs au sujet de l'ACEUM (Accord Canada-États-Unis-Mexique) à la fin des années 2010. Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-d10", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('cs-differences-10', 1, 2, 3),
+      corrige: "Yves-Thomas Dorval (document 2) présente une position différente : il est le seul à considérer l'ACEUM comme une entente positive, qui protège les exportations et assure la stabilité économique du Québec et du Canada. Les deux autres acteurs y voient surtout des conséquences négatives : Bruno Letendre (document 1) dénonce les concessions faites sur le dos des producteurs de lait et la perte de souveraineté, et Michel Desbiens (document 3) craint que l'accord nuise à l'industrie québécoise de l'aluminium. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-7", operation: "Déterminer des changements et des continuités", numero: 7, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique une continuité quant à la place du Québec inc. entre les années 1970 et les années 2010.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-co7", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('cs-continuite-7', 1, 2),
+      corrige: "Documents 1 et 2 : depuis les années 1970 jusqu'aux années 2010, on observe une continuité : les entreprises québécoises continuent de quitter la province ou d'être rachetées, ce qui entraîne une perte de sièges sociaux et de pouvoirs décisionnels au Québec. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-8", operation: "Déterminer des changements et des continuités", numero: 8, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique s'il y a changement ou continuité dans les relations commerciales en Amérique du Nord. Justifie ton choix à l'aide de faits et d'un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-co8", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('cs-continuite-8', 1, 2),
+      corrige: "Il y a continuité dans les relations commerciales en Amérique du Nord entre 1994 et 2018. En effet, l'ACEUM, signé en 2018, remplace l'ALENA (en vigueur depuis 1994) comme entente de libre-échange entre le Canada, les États-Unis et le Mexique : la zone de libre-échange nord-américaine demeure. Accepter toutes les formulations équivalentes (changement ou continuité bien justifié avec un repère de temps)." },
+
+    // ===== P8 - Cahier Periode 8, Lot 2 (lecons 4-6) =====
+    { id: "q-cs-differences-11", operation: "Dégager des différences et des similitudes", numero: 11, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent l'opinion de trois acteurs sur l'avenir politique du Québec au tournant des années 2000. Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-d11", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('cs-differences-11', 1, 2, 3),
+      corrige: "Stéphane Dion (document 2) présente une position différente : il est le seul à soutenir que le Québec ne peut pas se séparer du Canada de façon unilatérale et que le consentement et la participation du gouvernement fédéral seraient nécessaires. Les deux autres acteurs défendent plutôt le droit du Québec de décider seul de son avenir : Louise Beaudoin (document 1) affirme qu'un vote majoritaire pour l'indépendance relèverait du droit international et de la reconnaissance internationale, et Joseph Facal (document 3) défend un projet de loi réaffirmant les droits fondamentaux du peuple québécois quant à son avenir politique. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-9", operation: "Déterminer des changements et des continuités", numero: 9, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement politique important qui survient au Canada au début des années 1980.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-co9", label: "Réglette (1 point)", ...R_CHANGEMENTS_1PT }],
+      documents: pickDocs('cs-continuite-9', 1),
+      corrige: "Document 1 : un changement politique important est le rapatriement de la Constitution canadienne en 1982 ; la Constitution, jusque-là conservée à Londres, passe désormais sous l'autorité du Canada, même si le gouvernement du Québec en conteste la légitimité. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-10", operation: "Déterminer des causes et des conséquences", numero: 10, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une cause de l'échec de l'Accord du lac Meech.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c10", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('cs-causes-10', 1),
+      corrige: "Document 1 : une cause de l'échec de l'Accord du lac Meech est le refus de deux provinces (Terre-Neuve et le Manitoba) de ratifier l'Accord avant l'échéance de juin 1990. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-11", operation: "Déterminer des causes et des conséquences", numero: 11, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence de l'échec de l'Accord du lac Meech.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c11", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('cs-causes-11', 1),
+      corrige: "Document 1 : une conséquence de l'échec de l'Accord du lac Meech est l'élan marqué du mouvement souverainiste québécois, l'échec étant perçu au Québec comme un rejet de la part du Canada anglais. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-12", operation: "Dégager des différences et des similitudes", numero: 12, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent deux démarches sur l'avenir politique du Québec au début des années 1990. Indique une similitude et une différence entre la Commission Bélanger-Campeau et le rapport Allaire.",
+        responseSpace: { type: "labeled-list", items: ["Similitude","Différence"], linesPerItem: 3 }
+      },
+      reglettes: [{ id: "r-cs-d12", label: "Réglette (2 points)", ...R_DIFFSIM_2PT_1SIM_1DIFF }],
+      documents: pickDocs('cs-differences-12', 1, 2),
+      corrige: "Similitude : dans les deux cas, on formule des recommandations sur l'avenir politique et constitutionnel du Québec, à la suite de l'échec de l'Accord du lac Meech. Différence : le rapport Allaire est un document partisan, présenté au Parti libéral du Québec, alors que la Commission Bélanger-Campeau est non partisane et relève de l'Assemblée nationale. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-13", operation: "Dégager des différences et des similitudes", numero: 13, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux acteurs importants de la scène politique dans les années 1990. Sur quel point précis sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d13", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('cs-differences-13', 1, 2),
+      corrige: "Jean Chrétien et Jacques Parizeau sont en désaccord sur l'avenir politique du Québec, c'est-à-dire sur la souveraineté du Québec : Chrétien défend le maintien du Québec au sein du Canada, alors que Parizeau veut faire du Québec un État-nation souverain. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-10", operation: "Déterminer des changements et des continuités", numero: 10, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique s'il y a changement ou continuité quant aux conditions de vie des Autochtones depuis 1977. Justifie ton choix à l'aide de faits et d'un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-co10", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('cs-continuite-10', 1, 2),
+      corrige: "Réponses possibles. Changement (document 1) : depuis 1977, l'accès à l'eau de base dans les réserves s'est nettement amélioré (de 53 % des résidences en 1977-1978 à 98 % une vingtaine d'années plus tard). Continuité (document 2) : depuis 1977, l'accès à une eau potable de qualité demeure un problème, plusieurs communautés devant composer avec de l'eau contaminée. Accepter un changement OU une continuité, bien justifié à l'aide de faits et d'un repère de temps." },
+    { id: "q-cs-differences-14", operation: "Dégager des différences et des similitudes", numero: 14, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux acteurs au sujet de l'immigration au Québec à la fin des années 2010. Sur quel point précis sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d14", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('cs-differences-14', 1, 2),
+      corrige: "Les deux acteurs sont en désaccord sur le nombre d'immigrants que le Québec devrait accueillir : Michel Leblanc souhaite hausser significativement les seuils d'immigration, alors que François Legault veut au contraire les réduire. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-11", operation: "Déterminer des changements et des continuités", numero: 11, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique s'il y a changement ou continuité quant à l'égalité salariale entre les femmes et les hommes au Québec depuis 1998. Justifie ton choix à l'aide de faits et d'un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-co11", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('cs-continuite-11', 1),
+      corrige: "Réponses possibles. Changement : depuis 1998, l'écart salarial entre les femmes et les hommes au Québec a diminué (le ratio est passé d'environ 84 cents par dollar gagné par le travailleur moyen en 1998 à environ 90 cents en 2016). Continuité : depuis 1998, les femmes gagnent toujours, en moyenne, moins que les hommes (l'égalité salariale complète n'est pas atteinte). Accepter un changement OU une continuité, bien justifié à l'aide de faits et d'un repère de temps." },
+    { id: "q-cs-differences-15", operation: "Dégager des différences et des similitudes", numero: 15, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux observateurs au sujet de la place des femmes sur le marché du travail au Québec. Sur quel point précis sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d15", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('cs-differences-15', 1, 2),
+      corrige: "Les deux observateurs sont en désaccord sur l'évaluation de la place des femmes sur le marché du travail au Québec par rapport au reste du Canada : Alain Dubuc juge que le Québec demeure sous la moyenne canadienne (un succès en demi-teinte), alors que Pierre Fortin estime que le Québec a dépassé les autres provinces grâce à son système de garderies. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-16", operation: "Dégager des différences et des similitudes", numero: 16, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent l'opinion de trois acteurs au sujet des quotas de femmes en politique dans les années 2000. Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-d16", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('cs-differences-16', 1, 2, 3),
+      corrige: "Lise Thériault (document 2) présente une position différente : elle est la seule à s'opposer aux quotas de femmes en politique, estimant que les femmes doivent être choisies en fonction de leurs compétences et non d'un quota. Les deux autres acteurs sont favorables aux quotas : Pascale Navarro (document 1) y voit un moyen de renouveler la classe politique et de diversifier la représentation, et Noémi Mercier (document 3) soutient qu'ils neutralisent les facteurs historiques qui avantagent les hommes. Accepter toutes les formulations équivalentes." },
+    // ===== P8 - Cahier Periode 8, Lot 3 (lecons 7-9) =====
+    { id: "q-cs-causes-12", operation: "Déterminer des causes et des conséquences", numero: 12, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une cause de la diminution des revenus des artistes dans les années 2010.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c12", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('cs-causes-12', 1),
+      corrige: "Document 1 : une cause de la diminution des revenus des artistes est l'essor de la diffusion en continu (streaming), qui ne verse que de très faibles sommes aux créateurs. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-12", operation: "Déterminer des changements et des continuités", numero: 12, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement dans la façon de diffuser la musique survenu au tournant du 21e siècle.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-co12", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('cs-continuite-12', 1),
+      corrige: "Document 1 : un changement est le passage à la diffusion numérique de la musique, avec l'apparition du partage et de l'échange de fichiers musicaux en ligne (peer-to-peer), comme avec Napster en 1999. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-13", operation: "Déterminer des changements et des continuités", numero: 13, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique s'il y a changement ou continuité dans l'offre télévisuelle au Québec entre 1980 et 2010. Justifie ton choix à l'aide de faits et d'un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-co13", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('cs-continuite-13', 1, 2),
+      corrige: "Réponses possibles. Changement : l'offre télévisuelle passe d'une chaîne spécialisée diffusée à la télévision (MusiquePlus, 1986) à des services d'abonnement de diffusion en continu sur Internet (Netflix, 2010). Accepter un changement OU une continuité, bien justifié à l'aide de faits et d'un repère de temps." },
+    { id: "q-cs-differences-17", operation: "Dégager des différences et des similitudes", numero: 17, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de Gérald Fillion et de Rosalie Wyonch au sujet de la taxation des entreprises étrangères de diffusion en continu. Sur quel point précis sont-ils en accord?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d17", label: "Réglette (2 points)", ...R_SIMILITUDES_2PT_CONVERGENCE }],
+      documents: pickDocs('cs-differences-17', 1, 2),
+      corrige: "Les deux acteurs sont d'accord sur le fait que l'absence de perception de taxes par les entreprises étrangères de diffusion en continu (comme Netflix) désavantage les entreprises canadiennes, qui doivent, elles, percevoir ces taxes. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-18", operation: "Dégager des différences et des similitudes", numero: 18, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent le point de vue de deux acteurs au sujet de la loi 178 sur l'affichage commercial (1988). Sur quel point précis sont-ils en désaccord?",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-d18", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('cs-differences-18', 1, 2),
+      corrige: "Clifford Lincoln et Robert Bourassa sont en désaccord sur la loi 178 (l'affichage commercial uniquement en français à l'extérieur des commerces) : Bourassa défend cet unilinguisme français à l'extérieur pour protéger le visage français, alors que Lincoln s'y oppose, jugeant cette mesure humiliante pour les anglophones. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-14", operation: "Déterminer des changements et des continuités", numero: 14, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 et 2 présentent deux accords internationaux sur le climat. Relève un élément de continuité et un élément de changement entre le protocole de Kyoto et l'accord de Paris.",
+        responseSpace: { type: "labeled-list", items: ["Continuité","Changement"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cs-co14", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_1CHG_1CONT }],
+      documents: pickDocs('cs-continuite-14', 1, 2),
+      corrige: "Continuité : le protocole de Kyoto et l'accord de Paris visent tous les deux à réduire les émissions de gaz à effet de serre. Changement : les deux accords n'ont pas la même envergure - Kyoto visait une réduction d'au moins 5 % par rapport au niveau de 1990, alors que l'accord de Paris vise le zéro émission net. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-differences-19", operation: "Dégager des différences et des similitudes", numero: 19, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent l'opinion de trois acteurs au sujet du projet d'oléoduc Trans Mountain dans les années 2010. Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-d19", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('cs-differences-19', 1, 2, 3),
+      corrige: "Justin Trudeau (document 3) présente une position différente : il est le seul à appuyer le projet d'oléoduc Trans Mountain, ne voyant pas de contradiction entre son expansion et l'urgence climatique. Les deux autres acteurs s'opposent au projet pour des raisons environnementales : Margot Venton (document 1) dénonce ses dangers pour les épaulards et pour le climat, et Annie Chaloux (document 2) estime qu'il n'a pas sa place dans une perspective de lutte contre les changements climatiques. Accepter toutes les formulations équivalentes." },
+    // ===== P8 - Cahier Periode 8, Lot 4 (lecons 10-12) =====
+    { id: "q-cs-differences-20", operation: "Dégager des différences et des similitudes", numero: 20, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent l'opinion de trois acteurs au sujet des fusions municipales au Québec dans les années 2000. Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres acteurs.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-d20", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('cs-differences-20', 1, 2, 3),
+      corrige: "Robert Gagné (document 2) présente une position différente : il est le seul à s'opposer aux fusions municipales, soutenant, études à l'appui, que les villes fusionnées finissent par afficher des coûts plus élevés. Les deux autres acteurs sont favorables aux fusions : Daniel Côté (document 1) y voit des économies d'échelle et plus d'équité entre les territoires, et Jean-Paul L'Allier (document 3) estime qu'elles permettent d'être plus fort ensemble et de mieux soutenir le développement. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-13", operation: "Déterminer des causes et des conséquences", numero: 13, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi certaines villes mono-industrielles du Québec ferment dans les années 1980.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c13", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('cs-causes-13', 1),
+      corrige: "Document 1 : certaines villes mono-industrielles ferment parce que leur principale activité économique (par exemple l'industrie minière) subit la concurrence mondiale, ce qui fait chuter la demande et le prix de la matière première. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-14", operation: "Déterminer des causes et des conséquences", numero: 14, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, explique pourquoi il est difficile de trouver de la relève dans le secteur agricole au Québec.",
+        responseSpace: { type: "labeled-list", items: ["Cause 1","Cause 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-cs-c14", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('cs-causes-14', 1, 2),
+      corrige: "Cause 1 (document 1) : la difficulté de concilier le travail agricole (longues heures, lourde charge de travail) et la vie personnelle. Cause 2 (document 2) : le coût très élevé d'achat d'une entreprise agricole, que les jeunes n'ont pas les moyens de payer. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-15", operation: "Déterminer des causes et des conséquences", numero: 15, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le Canada organise des missions économiques à l'étranger.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c15", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('cs-causes-15', 1),
+      corrige: "Document 1 : le Canada (et le Québec) organise des missions économiques à l'étranger afin d'aider ses entreprises à conclure des partenariats et à signer des contrats avec des entreprises étrangères, et ainsi à prendre de l'expansion sur de nouveaux marchés. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-15", operation: "Déterminer des changements et des continuités", numero: 15, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique s'il y a changement ou continuité quant à la participation canadienne aux missions à l'étranger entre les années 1990 et les années 2000. Justifie ton choix à l'aide de faits et d'un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-cs-co15", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('cs-continuite-15', 1, 2),
+      corrige: "Réponses possibles. Changement : la participation canadienne passe des missions de paix (comme les Casques bleus au Rwanda dans les années 1990) à des missions de combat (comme en Afghanistan dans les années 2000). Accepter un changement OU une continuité, bien justifié à l'aide de faits et d'un repère de temps." },
+    { id: "q-cs-causes-16", operation: "Déterminer des causes et des conséquences", numero: 16, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le Canada refuse de soutenir les États-Unis lors de la guerre en Irak au début des années 2000.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c16", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('cs-causes-16', 1),
+      corrige: "Document 1 : le Canada refuse de soutenir les États-Unis dans la guerre en Irak parce que cette intervention n'a pas l'accord de l'ONU ni le soutien de la communauté internationale. Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-continuite-16", operation: "Déterminer des changements et des continuités", numero: 16, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement dans la gestion des médias survenu dans les années 2010.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-co16", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('cs-continuite-16', 1),
+      corrige: "Document 1 : un changement est qu'un grand groupe de presse québécois (le Groupe Capitales Médias) est désormais administré, pour la première fois, sous la forme d'une coopérative (la Coopérative nationale de l'information indépendante). Accepter toutes les formulations équivalentes." },
+    { id: "q-cs-causes-17", operation: "Déterminer des causes et des conséquences", numero: 17, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique la source de la crise médiatique de certains groupes médiatiques.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-cs-c17", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('cs-causes-17', 1),
+      corrige: "Document 1 : une cause de la crise des médias est la baisse continue de leurs revenus publicitaires. Accepter toutes les formulations équivalentes." },
   ]
 };
 
