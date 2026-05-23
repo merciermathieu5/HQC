@@ -1,12 +1,29 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.35.0 (mai 2026) ⭐⭐ CATALOGUE 309 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 EN COURS (Lot 1 : leçons 1-2-4-5)
-   309 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
+   HQC · 3e + 4e secondaire — Données — v1.36.0 (mai 2026) ⭐⭐ CATALOGUE 319 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 EN COURS (Lots 1-2 : leçons 1-9)
+   319 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
    Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 82 (7/7 OI ✓ — slugs na-* ; +52 tirées du Cahier P6, leçons 1-15, extraction TERMINÉE),
-                   P7 = 51 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 12 du Cahier P7, Lot 1 leçons 1-2-4-5),
+                   P7 = 61 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 22 du Cahier P7, Lots 1-2 leçons 1-9),
                    P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
    Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.36.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 2 (LEÇONS 3, 7, 8, 9) :
+     • +10 questions (mq-*), tirées des ÉTAPES 2 des leçons 3 (Société de consommation), 7 (Fédération
+       canadienne), 8 (Pensionnats) et 9 (Période duplessiste) — leçons partiellement extraites : récolte des
+       questions OI manquantes après dédoublonnage. P7 : 51 → 61. — OI4 : mq-causes-16 à 23 (8 q). —
+       OI5 : mq-continuite-10 et 11 (2 q). Leçon 6 écartée (doublon de continuite-1).
+     • Réglettes réutilisées : R_CAUSES_2PT_GEN_1CAUSE, R_CAUSES_2PT_2CONS, R_CAUSES_2PT_2CAUSES (échec scolaire),
+       R_CAUSES_2PT_CONS_SEULE, RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS (constitutionnel). PREMIÈRE UTILISATION de
+       R_CHANGEMENTS_2PT_2 (« 2 changements », définie mais jamais employée) pour mq-continuite-10.
+     • 2 images extraites et vérifiées à l'œil : mq-causes-17/doc1 (revenu salarial par groupe linguistique,
+       Montréal 1960) et mq-causes-23/doc1 (vue aérienne de Sept-Îles). Toutes les autres questions reposent sur
+       des documents-textes ; pour mq-causes-16, le doc-texte 54 (urbanisation/banlieues), autonome, a été
+       préféré aux photos 55/56 du corrigé d'origine.
+     • DÉCISIONS DE L'ENSEIGNANT : Lot 2 = leçons 3, 7, 8, 9 ; L6 écartée (doublon) ; mq-causes-20 (objectif de
+       l'électrification) conservée malgré la proximité avec continuite-1 ; L7 Q8 (« cause des relations tendues
+       Québec-fédéral », doc 126) ÉCARTÉE comme doublon de causalite-1.
+     • ÉCARTÉES (conventions) : « Établis les faits », « Inscris le numéro des documents qui… » (L3 Q7
+       américanisme, L9 Q8 effets de la lutte), tableaux/schémas à compléter (ÉTAPE 1) et ÉTAPE 3.
    v1.35.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 1 (LEÇONS 1, 2, 4, 5) :
      • +12 questions (mq-*), tirées des ÉTAPES 2 des leçons 1 (Rapports de force en Occident),
        2 (Agglomération urbaine), 4 (Accroissement naturel) et 5 (Nouveaux arrivants) — leçons jusque-là
@@ -4437,6 +4454,60 @@ const DOCS = {
       sources: ["Source : Jimmy Grenier, à partir des données de Statistique Canada."] }
   ],
 
+  'mq-causes-16': [
+    { id: "mq-c16-d1", title: "Document 1", layout: "text-only",
+      text: "« Après la guerre, l'urbanisation se poursuit et la population urbaine passe de 61,2 % en 1941 à 66,8 % en 1951, puis à 74,3 % en 1961. […] Alors que le territoire urbain prend constamment de l'expansion, ceux qui en ont les moyens fuient le centre-ville, lui préférant les banlieues qui commencent à se développer. […] Les banlieues se multiplient à partir de la décennie des années 1950 et l'automobile devient en quelque sorte le véhicule de cette nouvelle tendance. […] Il faut attendre le début des années 1960 pour que soit construit un réseau d'autoroutes desservant les abords de la métropole. »",
+      sources: ["Source : Yves Bourdon et Jean Lamarre, Histoire du Québec, une société nord-américaine, Éditions Beauchemin, 1998, p. 200."] }
+  ],
+  'mq-continuite-10': [
+    { id: "mq-co10-d1", title: "Document 1", layout: "text-only",
+      text: "« De nouvelles habitudes naissent avec l'augmentation des revenus […] plusieurs familles se dotent d'appareils électriques (machine à laver, réfrigérateurs, téléphones, cuisinières) à l'instar des familles américaines. La vente d'appareils électroménagers augmente en flèche. En 1951, 47 % des logements sont équipés d'un réfrigérateur; la proportion est de 92 % en 1961. Le téléphone, présent dans 33 % des résidences avant la guerre, se retrouve dans 84 % des foyers en 1960. »",
+      sources: ["Source : Yves Bourdon et Jean Lamarre, Histoire du Québec, une société nord-américaine, Éditions Beauchemin, 1998, p. 203."] },
+    { id: "mq-co10-d2", title: "Document 2", layout: "text-only",
+      text: "« Avec l'arrivée du cinéma parlant en 1928, les salles de cinéma se multiplient. La guerre coupe temporairement les ponts entre l'Europe et l'Amérique, si bien que les productions américaines occupent les écrans. Même si le cinéma européen reprend une place non négligeable au Québec après la guerre, le cinéma américain y a opéré une percée définitive. »",
+      sources: ["Source : Yves Bourdon et Jean Lamarre, Histoire du Québec, une société nord-américaine, Éditions Beauchemin, 1998, p. 169."] }
+  ],
+  'mq-causes-17': [
+    { id: "mq-c17-d1", title: "Document 1 — Revenu salarial moyen des travailleurs masculins par groupe linguistique (Montréal, 1960)", layout: "image-only",
+      imageUrl: "assets/img/mq-causes-17/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT de l'univers social."] }
+  ],
+  'mq-continuite-11': [
+    { id: "mq-co11-d1", title: "Document 1", layout: "text-only",
+      text: "« Au terme de cette conférence constitutionnelle de trois jours, le gouvernement fédéral et ceux des autres provinces refusent d'accorder au Québec la primauté législative en matière sociale. Une charte constitutionnelle est rédigée qui doit être soumise aux gouvernements intéressés. Une semaine plus tard, le 23 juin, le premier ministre du Québec, Robert Bourassa, annonce que son gouvernement n'accepte pas la charte constitutionnelle telle que présentée lors de la conférence de Victoria. […] La décision du Québec met un terme à la plus récente série de conférences constitutionnelles et reléguera à l'oubli le projet de rapatriement jusqu'au début des années 80. »",
+      sources: ["Source : Jean-Herman Guay et Serge Gaudreau, « Ouverture d'une conférence fédérale-provinciale sur la Constitution à Victoria », dans Bilan du siècle."] }
+  ],
+  'mq-causes-18': [
+    { id: "mq-c18-d1", title: "Document 1", layout: "text-only",
+      text: "« Ne mangeant pas à leur faim et souffrant de malnutrition, les élèves sont particulièrement vulnérables devant des maladies telles la tuberculose et la grippe (y compris l'épidémie de grippe espagnole de 1918-1919). La nourriture est de mauvaise qualité et en quantité insuffisante, en grande partie à cause des préoccupations concernant les coûts. À cause d'un financement limité, les pensionnats reçoivent l'instruction d'observer « l'économie la plus stricte [...] à tous les points de vue ». De façon générale, les menus semblent à la fois monotones et inadéquats sur le plan nutritionnel. […] »",
+      sources: ["Source : J. R. Miller, « Pensionnats indiens au Canada », dans l'Encyclopédie canadienne."] }
+  ],
+  'mq-causes-19': [
+    { id: "mq-c19-d1", title: "Document 1", layout: "text-only",
+      text: "« On ne pouvait guère s'attendre à de bons résultats si l'on songe à la mauvaise qualité de l'enseignement d'un programme sans pertinence, dispensé une demi-journée à la fois à des enfants dont l'anglais n'était pas la langue maternelle et qui ne demeuraient pas longtemps à l'école. Évidemment, on attribuait plus facilement les piètres résultats à l'origine ou à la capacité intellectuelle des élèves plutôt qu'aux déficiences du système. […] »",
+      sources: ["Source : B. Titley, « Isoler et embrigader : la tendance coercitive des politiques d'éducation pour enfants autochtones (1870-1932) », Recherches amérindiennes au Québec, 41(1), 2011, p. 3-15."] }
+  ],
+  'mq-causes-20': [
+    { id: "mq-c20-d1", title: "Document 1", layout: "text-only",
+      text: "« Même si Maurice Duplessis venait d'une famille bourgeoise de Trois-Rivières, il a dirigé un gouvernement qui a fait beaucoup pour développer les milieux ruraux du Québec et qui a compté sur leur appui pour se maintenir au pouvoir durant 18 ans. Les gouvernements de Maurice Duplessis sont marqués par une administration serrée de l'argent public. Yves Dufresne rappelle que ce gouvernement a présenté 15 budgets équilibrés. Cela n'a pas empêché Duplessis d'investir dans un aspect fondamental du développement du Québec : l'électrification rurale. »",
+      sources: ["Source : Martin Lafrenière, « Maurice Duplessis, 1890-1959 : la campagne à l'avant-plan », dans Le Soleil."] }
+  ],
+  'mq-causes-21': [
+    { id: "mq-c21-d1", title: "Document 1", layout: "text-only",
+      text: "« Le manifeste est un livre très virulent. Comme son titre l'indique, les signataires veulent une rupture totale avec la société traditionnelle, rupture par opposition à continuité mais aussi à évolution. On veut donc changer radicalement du tout au tout. Borduas y dénonce l'autoritarisme du clergé et du gouvernement. Il revendique une totale liberté dans l'art et aussi dans la vie. […] »",
+      sources: ["Source : M. Poulain, « L'art à l'époque de la « grande noirceur » : le Refus global », Histoire Québec, 5(3), 2000, p. 15-20."] }
+  ],
+  'mq-causes-22': [
+    { id: "mq-c22-d1", title: "Document 1", layout: "text-only",
+      text: "« Hanté par le communisme, comme toute l'Amérique du Nord à cette époque, il promulgue en 1938 la Loi du cadenas, qui permet au gouvernement de fermer tout établissement considéré comme séditieux, d'arrêter toute personne pouvant propager le communisme. »",
+      sources: ["Source : Gérard Cachat, À la recherche de mes racines, LIDEC, 1984, p. 626."] }
+  ],
+  'mq-causes-23': [
+    { id: "mq-c23-d1", title: "Document 1 — Vue aérienne de la ville de Sept-Îles", layout: "image-only",
+      imageUrl: "assets/img/mq-causes-23/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Bibliothèque et Archives nationales du Québec."] }
+  ],
+
 };
 
 // ============ EXPORT ============
@@ -8063,6 +8134,114 @@ window.DATA = {
       reglettes: [{ id: "r-mq-c15", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
       documents: pickDocs('mq-causes-15', 1),
       corrige: "Des immigrants haïtiens arrivent au Québec en raison du régime répressif (la dictature) du président François Duvalier, installé en 1957, qui pousse de nombreux Haïtiens à fuir le pays." },
+
+    // ============================================================
+    // ===== P7 — Cahier P7, LOT 2 (leçons 3, 7, 8, 9) — OI4 + OI5 =====
+    // ============================================================
+
+    // ----- Leçon 3 — Société de consommation -----
+    { id: "q-mq-causes-16", operation: "Déterminer des causes et des conséquences", numero: 16, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique deux conséquences territoriales de l'avènement de la société de consommation au Québec.",
+        responseSpace: { type: "labeled-list", items: ["Conséquence 1", "Conséquence 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-c16", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CONS }],
+      documents: pickDocs('mq-causes-16', 1),
+      corrige: "Conséquence 1 : l'expansion (l'étalement) du territoire urbain. Conséquence 2 : le développement des banlieues." },
+
+    { id: "q-mq-continuite-10", operation: "Déterminer des changements et des continuités", numero: 10, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique deux changements dans la culture au Québec. Justifie ta réponse par des faits et un repère de temps.",
+        responseSpace: { type: "labeled-list", items: ["Changement 1", "Changement 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-co10", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_2 }],
+      documents: pickDocs('mq-continuite-10', 1, 2),
+      corrige: "Changement 1 (document 1) : entre 1951 et 1961, les biens de consommation (réfrigérateurs, téléphones) prennent une place beaucoup plus importante dans la vie des Québécois. Changement 2 (document 2) : après la Seconde Guerre mondiale, le cinéma (et la musique) américain devient très populaire au Québec." },
+
+    // ----- Leçon 7 — Fédération canadienne -----
+    { id: "q-mq-causes-17", operation: "Déterminer des causes et des conséquences", numero: 17, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les francophones sont mécontents des anglophones sur le plan économique, dans les années 1960.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c17", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-17', 1),
+      corrige: "Le revenu salarial moyen des francophones est beaucoup plus faible que celui des anglophones (les anglophones occupent les emplois les mieux rémunérés)." },
+
+    { id: "q-mq-continuite-11", operation: "Déterminer des changements et des continuités", numero: 11, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a changement ou continuité sur le plan constitutionnel. Justifie ton choix par des faits et un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co11", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('mq-continuite-11', 1),
+      corrige: "Il y a continuité : entre 1931 et le début des années 1980, la Constitution canadienne demeure au Royaume-Uni, faute de consensus sur son rapatriement (le Québec refuse la charte de Victoria en 1971)." },
+
+    // ----- Leçon 8 — Pensionnats indiens -----
+    { id: "q-mq-causes-18", operation: "Déterminer des causes et des conséquences", numero: 18, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le nombre de décès chez les enfants autochtones dans les pensionnats est élevé.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c18", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-18', 1),
+      corrige: "Le nombre élevé de décès s'explique par la malnutrition : la nourriture, en quantité insuffisante et de mauvaise qualité (financement limité), rend les élèves vulnérables aux maladies (tuberculose, grippe)." },
+
+    { id: "q-mq-causes-19", operation: "Déterminer des causes et des conséquences", numero: 19, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les résultats scolaires des Autochtones dans les pensionnats sont faibles. Donne deux causes.",
+        responseSpace: { type: "labeled-list", items: ["Cause 1", "Cause 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-c19", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('mq-causes-19', 1),
+      corrige: "Cause 1 : la mauvaise qualité de l'enseignement (programmes sans pertinence, enseignement à demi-temps). Cause 2 : la barrière de la langue (l'anglais n'est pas la langue maternelle des élèves)." },
+
+    // ----- Leçon 9 — Période duplessiste -----
+    { id: "q-mq-causes-20", operation: "Déterminer des causes et des conséquences", numero: 20, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le gouvernement du Québec procède à l'électrification des milieux ruraux.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c20", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-20', 1),
+      corrige: "L'objectif est de se maintenir au pouvoir : l'Union nationale de Duplessis compte sur l'appui des milieux ruraux et investit dans leur développement. (On accepte aussi : pour moderniser l'agriculture.)" },
+
+    { id: "q-mq-causes-21", operation: "Déterminer des causes et des conséquences", numero: 21, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le Refus global est publié en 1948.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c21", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-21', 1),
+      corrige: "Le Refus global est publié pour dénoncer le conservatisme et le traditionalisme de la société québécoise (l'autoritarisme du clergé et du gouvernement de Duplessis) et pour réclamer que le Québec entre dans la modernité." },
+
+    { id: "q-mq-causes-22", operation: "Déterminer des causes et des conséquences", numero: 22, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence, pour les syndicats et les communistes, du conservatisme social de Maurice Duplessis.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c22", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('mq-causes-22', 1),
+      corrige: "L'adoption de la Loi du cadenas (1938) : le gouvernement peut fermer tout établissement jugé séditieux et arrêter toute personne soupçonnée de propager le communisme." },
+
+    { id: "q-mq-causes-23", operation: "Déterminer des causes et des conséquences", numero: 23, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence territoriale de l'exploitation des ressources naturelles.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c23", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('mq-causes-23', 1),
+      corrige: "Une conséquence territoriale est le développement de nouvelles régions, comme la Côte-Nord (par exemple la ville de Sept-Îles) ou le Nord-du-Québec." },
 
     // ============================================================
     // ===== P8 — 1980 à nos jours — Les choix de société dans le Québec contemporain =====
