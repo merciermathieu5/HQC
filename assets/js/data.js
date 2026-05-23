@@ -1,12 +1,28 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.32.0 (mai 2026) ⭐⭐ CATALOGUE 257 Q · 8 PÉRIODES À 7/7 OI · extraction P6 en cours
-   257 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
+   HQC · 3e + 4e secondaire — Données — v1.33.0 (mai 2026) ⭐⭐ CATALOGUE 273 Q · 8 PÉRIODES À 7/7 OI · extraction P6 en cours
+   273 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 42 (7/7 OI ; +12 du Cahier P6, leçons 1-4 — extraction en cours),
+   Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 58 (7/7 OI ; +28 du Cahier P6, leçons 1-8 — extraction en cours),
                    P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT),
                    P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
    Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.33.0 — EXTRACTION DU CAHIER PÉRIODE 6 — LOT 3 (LEÇONS 5-6-7-8) :
+     • +16 questions (na-*), tirées des ÉTAPES 2 des leçons 5 (Milieux urbains), 6 (Culture de masse),
+       7 (Lutte des femmes) et 8 (Mouvement syndical). P6 : 42 → 58.
+       — OI4 : na-causes-15 à 22 (8 q). ⚠ Surcharge OI4 toujours assumée (na-causes = 22, dominante).
+       — OI5 : na-continuite-11 à 15 (5 q). — OI3 : na-differences-5 (universités anglo/franco) et
+         na-differences-6 (3 acteurs sur le suffrage féminin, patron na-differences-1, 3 pts).
+       — OI6 : na-relation-5 — RECLASSÉE sur décision de l'enseignant : le « tri causes/conséquences »
+         (classer A-D) relève de « mettre en relation des faits » plutôt que d'une OI4 ouverte ;
+         énoncés A-D en bullets, réglette R_RELATION_2PT_4_PART, sans document.
+     • 4 images extraites du cahier (intégrées, bien cadrées — aucun recadrage) : na-causes-15/doc1
+       et na-continuite-12/doc1 (même graphique « population rurale/urbaine 1891-1931 »), na-causes-16/doc1
+       (photo Goutte de lait, Hôpital Ste-Justine) + doc2 (bouchons de lait, Musée McCord),
+       na-continuite-14/doc1 (graphique « femmes sur le marché du travail 1850-1961 »).
+     • L7 : paire chaînée conservée sur décision de l'enseignant — na-continuite-14 (le changement, OI5)
+       ET na-causes-20 (ses 2 causes, OI4). doc 132 (Mgr Bégin) : citation primaire d'époque reproduite
+       telle quelle. « Établis les faits » + ÉTAPE 3 systématiquement écartés. Restent : leçons 9 à 15.
    v1.32.0 — EXTRACTION DU CAHIER PÉRIODE 6 — LOT 2 (LEÇONS 2-3-4) :
      • +10 questions (na-*), tirées des ÉTAPES 2 des leçons 2 (Clérico-nationalisme), 3 (Politique
        intérieure canadienne) et 4 (Deuxième phase d'industrialisation). P6 : 32 → 42.
@@ -3072,6 +3088,95 @@ const DOCS = {
     { id: "na-c14-d1", title: "Document 1 — L'exploitation des ressources naturelles dans les années 1930", layout: "image-only",
       imageUrl: "assets/img/na-causes-14/doc1.png", imageWidthCm: 15,
       sources: ["Source : Service national du RÉCIT, domaine de l'univers social (carte)."] }
+  ],
+
+  // ----- Lot 3 (leçons 5-8) -----
+  'na-continuite-11': [
+    { id: "na-co11-d1", title: "Document 1 — L'État et la sécurité sociale au début de la crise", layout: "text-only",
+      text: "« Au moment où éclate la crise [économique des années 1930], la société est prise au dépourvu : elle n'a aucun système de sécurité sociale. En cette matière, la conception traditionnelle prévaut. L'individu est le seul responsable de son bien-être et de celui de ses dépendants. [...] La montée des problèmes liés à l'urbanisation avait nécessité l'intervention timide du gouvernement pour s'occuper des personnes sans famille et inaptes au travail. La loi de l'assistance publique de 1921 pourvoyait à l'entretien des indigents placés en institution, les coûts étant partagés également entre le gouvernement provincial, la municipalité et l'institution. »",
+      sources: ["Source : P.-A. Linteau, R. Durocher, J.-C. Robert et F. Ricard, Histoire du Québec contemporain, tome II : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 83."] }
+  ],
+  'na-causes-15': [
+    { id: "na-c15-d1", title: "Document 1 — Population rurale et urbaine au Québec (1891-1931)", layout: "image-only",
+      imageUrl: "assets/img/na-causes-15/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : Statistique Canada."] }
+  ],
+  'na-continuite-12': [
+    { id: "na-co12-d1", title: "Document 1 — Population rurale et urbaine au Québec (1891-1931)", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-12/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : Statistique Canada."] }
+  ],
+  'na-causes-16': [
+    { id: "na-c16-d1", title: "Document 1 — La Goutte de lait à l'Hôpital Sainte-Justine", layout: "image-only",
+      imageUrl: "assets/img/na-causes-16/doc1.png", imageWidthCm: 8,
+      sources: ["Source de l'image : Archives de l'hôpital Sainte-Justine."] },
+    { id: "na-c16-d2", title: "Document 2 — Bouchons de lait pasteurisé", layout: "image-only",
+      imageUrl: "assets/img/na-causes-16/doc2.png", imageWidthCm: 8,
+      sources: ["Source de l'image : Musée McCord."] }
+  ],
+  'na-causes-17': [
+    { id: "na-c17-d1", title: "Document 1 — Le hockey, phénomène culturel", layout: "text-only",
+      text: "« Les pages sportives publiées par les journaux, la radiodiffusion des matchs dès 1934 [...] permettent au hockey et à la Ligue nationale de toucher de larges couches de la population. Au-delà des barrières linguistique et culturelle, le hockey devient un véritable phénomène culturel. [...] Les jeunes garçons tentent d'imiter les gestes de leurs idoles en jouant au hockey dans les cours, dans les ruelles ou sur les patinoires improvisées [...]. »",
+      sources: ["Source : « Le tour du chapeau », Mémoires des Montréalais, 20 janvier 2016, Centre d'histoire de Montréal."] }
+  ],
+  'na-continuite-13': [
+    { id: "na-co13-d1", title: "Document 1 — Le cinéma à Montréal pendant la guerre", layout: "text-only",
+      text: "« Jusqu'à la Première Guerre mondiale, le programme des cinémas est composé de courts métrages projetés l'un à la suite de l'autre. Les premiers longs métrages, venus d'Europe, apparaissent vers 1912. Ils remportent un succès instantané, mais la source transatlantique se tarit pendant la guerre. Hollywood prend alors la relève et le cinéma américain s'impose désormais sur les écrans montréalais. L'arrivée du long métrage s'accompagne d'une mise en marché plus dynamique qui nourrit le star-system. »",
+      sources: ["Source : Paul-André Linteau, La rue Sainte-Catherine. Au cœur de la vie montréalaise, Montréal, Les éditions de l'Homme, 2010, p. 137."] }
+  ],
+  'na-causes-18': [
+    { id: "na-c18-d1", title: "Document 1 — Les cabarets de Montréal", layout: "text-only",
+      text: "« Les cabarets de Montréal prennent leur essor au cours des années 1920, alors que le Québec est un des seuls endroits en Amérique du Nord sans prohibition sur l'alcool. La formule est simple : le cabaret vend de l'alcool et présente des spectacles populaires comme du théâtre de variétés, des comédies (vaudevilles) ou du burlesque. Montréal acquiert rapidement une réputation de « ville des plaisirs » [...]. Les cabarets attirent les artistes de jazz et les vedettes de music-hall et de vaudeville américaines qui viennent se produire devant un public grandissant de touristes [...]. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+  'na-differences-5': [
+    { id: "na-d5-d1", title: "Document 1 — L'accès des femmes francophones à l'université", layout: "text-only",
+      text: "« En 1911, la toute première bachelière de l'école d'enseignement supérieur, Marie Gérin-Lajoie, remporte le premier prix au concours des collèges du Québec. Son prix, toutefois, est remis au garçon qui s'était classé deuxième. La raison? Le prix était assorti d'une bourse d'études universitaires. Or, à cette époque, les femmes n'étaient pas encore admises dans les universités francophones au Québec. Marie Gérin-Lajoie devra s'inscrire à l'Université Columbia, à New York. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-d5-d2", title: "Document 2 — L'accès des femmes anglophones à l'université", layout: "text-only",
+      text: "« Les femmes anglophones ont accès aux études universitaires plus rapidement que les francophones. À l'Université McGill, les femmes sont autorisées à assister à des cours à partir de 1884, quoique dans des salles séparées de celles des hommes. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+  'na-differences-6': [
+    { id: "na-d6-d1", title: "Document 1 — Louis-Alexandre Taschereau, premier ministre du Québec (1922)", layout: "text-only",
+      text: "« Si jamais les femmes du Québec obtiennent le droit de vote, ce n'est pas moi qui le leur aurai donné. »",
+      sources: ["Source : Louis-Alexandre Taschereau, premier ministre du Québec, 1922."] },
+    { id: "na-d6-d2", title: "Document 2 — Mgr Bégin, archevêque de Québec (1922)", layout: "text-only",
+      text: "« Une législation qui ouvrirait la porte au suffrage des femmes serait un attentat contre les traditions fondamentales de notre race et de notre foi… »",
+      sources: ["Source : Mgr Bégin, archevêque de Québec, « Un attentat contre les traditions fondamentales de notre race et de notre foi », La Presse, 18 février 1922."] },
+    { id: "na-d6-d3", title: "Document 3 — La revue L'Action française", layout: "text-only",
+      text: "« Le foyer, votre empire, Mesdames. »",
+      sources: ["Source : Tiré d'une chronique hebdomadaire du journal L'Action française."] }
+  ],
+  'na-causes-19': [
+    { id: "na-c19-d1", title: "Document 1 — Le Traité de droit usuel (1902)", layout: "text-only",
+      text: "« Le Traité de droit usuel est un ouvrage de vulgarisation du droit civil et constitutionnel. Publié par Marie Lacoste-Gérin-Lajoie en 1902, il est destiné à un large public, mais tout spécialement aux femmes. [...] Marie Lacoste-Gérin-Lajoie est une juriste autodidacte convaincue que le droit civil est injuste pour les femmes, particulièrement pour celles qui se marient et tombent ainsi sous la tutelle de leur époux. Avec son Traité de droit usuel, elle désire informer les femmes des discriminations inhérentes au Code civil. »",
+      sources: ["Source : « Le traité de droit usuel », Par ici la démocratie, en ligne, consulté le 13 septembre 2019."] }
+  ],
+  'na-continuite-14': [
+    { id: "na-co14-d1", title: "Document 1 — La présence des femmes sur le marché du travail au Québec (1850-1961)", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-14/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : Lucie Desrosiers, Œuvres de femmes (1890-1961), Québec, Les publications du Québec, 2003, p. 98."] }
+  ],
+  'na-causes-20': [
+    { id: "na-c20-d1", title: "Document 1 — Les femmes mariées sur le marché de l'emploi", layout: "text-only",
+      text: "« De nombreux changements sociaux expliquent cet accroissement du nombre des femmes mariées sur le marché de l'emploi [après la Seconde Guerre mondiale]. La réduction de la semaine de travail dans les usines et les bureaux et l'introduction de nouvelles technologies domestiques qui allègent les tâches ménagères, tout comme la baisse de la fécondité, y contribuent certainement, mais d'autres facteurs telle la prolongation de la scolarité des enfants sont aussi en cause [...]. »",
+      sources: ["Source : Denyse Baillargeon, Brève histoire des femmes au Québec, Montréal, Boréal, 2012, p. 171-172."] }
+  ],
+  'na-causes-21': [
+    { id: "na-c21-d1", title: "Document 1 — La grève des débardeurs de Montréal (1903)", layout: "text-only",
+      text: "« Le 31 mars [1903, un an après la formation de leur premier syndicat], 2 200 débardeurs [...] déclenchent une grève qui durera jusqu'au 11 mai, une grève ponctuée d'affrontements musclés qui entraineront la lecture de l'Acte d'émeute et l'intervention des soldats de la Milice canadienne. [...] C'est finalement la grande solidarité des débardeurs et de leurs alliés qui a poussé le ministre fédéral du Travail, sir William Mullock, à intervenir comme médiateur. L'Union obtint sa reconnaissance [...] et une hausse des salaires de 10 %. »",
+      sources: ["Source : « Guerre civile sur les quais de Montréal : les débardeurs en grève », Le Monde ouvrier, no 86 (mars-avril 2010), p. 10, en ligne."] }
+  ],
+  'na-continuite-15': [
+    { id: "na-co15-d1", title: "Document 1 — La Loi des relations ouvrières (1944)", layout: "text-only",
+      text: "« Le gouvernement québécois emboite le pas le 17 février 1944 [...] en votant la Loi des relations ouvrières. [...] La Loi des relations ouvrières (loi 3) [...] oblige les employeurs à négocier de « bonne foi » avec les représentants des travailleurs lorsqu'au moins 60 % d'entre eux désirent obtenir un contrat de travail collectif; elle exige du syndicat son accréditation auprès de la Commission des relations ouvrières; elle lui permet de représenter non pas seulement ses membres, mais la totalité des travailleurs de l'unité de négociation [...]. »",
+      sources: ["Source : Jacques Rouillard, Le syndicalisme québécois. Deux siècles d'histoire, Montréal, Boréal, 2004, p. 98-99."] }
+  ],
+  'na-causes-22': [
+    { id: "na-c22-d1", title: "Document 1 — L'Église et les syndicats internationaux", layout: "text-only",
+      text: "« [...] le clergé catholique craignait les syndicats internationaux parce qu'ils étaient neutres sur le plan religieux et, par conséquent, ouverts aux idées socialistes et anticléricales, et parce qu'ils représentaient une influence étrangère sur les travailleurs canadiens-français. Plutôt que de dénoncer les syndicats ouvriers, la réaction de l'Église fut d'instituer des syndicats confessionnels [...]. L'idée [...] se consolida [...] en fondant la Confédération des travailleurs catholiques du Canada (CTCC) [...]. »",
+      sources: ["Source : Peter Gossage et J. I. Little, Une histoire du Québec. Entre tradition et modernité, Montréal, Hurtubise, 2015, p. 183."] }
   ],
 
   // ======================================================================
@@ -6650,6 +6755,183 @@ window.DATA = {
       reglettes: [{ id: "r-na-c14", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
       documents: pickDocs('na-causes-14', 1),
       corrige: "L'essor industriel entraine un développement accru du territoire québécois : de nouvelles régions s'ouvrent à l'exploitation des ressources (centrales hydroélectriques, papetières, mines), ce qui étend l'occupation et l'aménagement du territoire (document 1)." },
+
+    // ===== Leçon 5 — Rôle de l'État dans les années 1930 (chang./contin. + repère) — OI5 =====
+    { id: "q-na-continuite-11", operation: "Déterminer des changements et des continuités", numero: 11, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a changement ou continuité quant au rôle de l'État dans les années 1930. Justifie ta réponse par un fait et un repère de temps.",
+        responseSpace: {"type":"lines","count":5}
+      },
+      reglettes: [{ id: "r-na-co11", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('na-continuite-11', 1),
+      corrige: "Il y a changement : dans les années 1930, l'État abandonne peu à peu la conception traditionnelle (où l'individu et la famille sont seuls responsables) pour intervenir davantage (interventionnisme) afin de répondre aux problèmes sociaux engendrés par la crise et l'urbanisation. Repère de temps : les années 1930 (la loi de l'assistance publique datait déjà de 1921)." },
+
+    // ===== Leçon 5 — Effet de l'urbanisation sur la population — OI4 (doc-image) =====
+    { id: "q-na-causes-15", operation: "Déterminer des causes et des conséquences", numero: 15, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un effet de l'urbanisation rapide sur la population des villes au début du 20e siècle.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c15", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-15', 1),
+      corrige: "L'urbanisation rapide entraine une surpopulation des logements dans les villes, ce qui favorise la propagation des maladies contagieuses et une hausse de la mortalité (notamment infantile)." },
+
+    // ===== Leçon 5 — Répartition rurale/urbaine (1921) — OI5 (doc-image) =====
+    { id: "q-na-continuite-12", operation: "Déterminer des changements et des continuités", numero: 12, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement quant à la répartition de la population rurale et urbaine au Québec dans les années 1920.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co12", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-12', 1),
+      corrige: "À partir de 1921, la population urbaine du Québec dépasse pour la première fois la population rurale : le Québec devient une société majoritairement urbaine." },
+
+    // ===== Leçon 5 — Mesure de santé publique + sa conséquence — OI4 (2 docs-image) =====
+    { id: "q-na-causes-16", operation: "Déterminer des causes et des conséquences", numero: 16, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique une mesure mise en place pour améliorer la santé des enfants, puis indique sa conséquence sur la population.",
+        responseSpace: {"type":"labeled-list","items":["Mesure","Conséquence"],"linesPerItem":2}
+      },
+      reglettes: [{ id: "r-na-c16", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS }],
+      documents: pickDocs('na-causes-16', 1, 2),
+      corrige: "Mesure : la création de cliniques de la « Goutte de lait » (document 1) — ou la pasteurisation du lait (document 2). Conséquence : on offre aux enfants des familles défavorisées un lait sain et de meilleure qualité, ce qui contribue à faire baisser la mortalité infantile." },
+
+    // ===== Leçon 6 — Hockey, élément de la culture de masse — OI4 =====
+    { id: "q-na-causes-17", operation: "Déterminer des causes et des conséquences", numero: 17, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique une raison qui explique pourquoi le hockey est devenu un élément de la culture de masse.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c17", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-17', 1),
+      corrige: "Le hockey devient accessible à de larges couches de la population grâce aux médias de masse : les pages sportives des journaux et, surtout, la radiodiffusion des matchs (dès 1934) le font entrer dans tous les foyers, par-delà les barrières linguistiques et culturelles." },
+
+    // ===== Leçon 6 — Le cinéma pendant la Première Guerre mondiale — OI5 =====
+    { id: "q-na-continuite-13", operation: "Déterminer des changements et des continuités", numero: 13, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement qui touche le cinéma à Montréal pendant la Première Guerre mondiale.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co13", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-13', 1),
+      corrige: "Pendant la Première Guerre mondiale, la source européenne de films se tarit : le cinéma américain (Hollywood) prend la relève et s'impose désormais sur les écrans montréalais, accompagné du long métrage et du star-system." },
+
+    // ===== Leçon 6 — Effet de la prohibition américaine sur Montréal — OI4 =====
+    { id: "q-na-causes-18", operation: "Déterminer des causes et des conséquences", numero: 18, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un effet de la prohibition de l'alcool aux États-Unis sur la culture à Montréal.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c18", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-18', 1),
+      corrige: "Comme la prohibition n'est pas en vigueur au Québec, Montréal devient une « ville des plaisirs » : un grand nombre de cabarets voient le jour, attirant artistes américains (jazz, music-hall) et touristes venus des États-Unis." },
+
+    // ===== Leçon 6 — Tri causes/conséquences des divertissements (A-D) — OI6 =====
+    { id: "q-na-relation-5", operation: "Mettre en relation des faits", numero: 5, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les années 1920 sont marquées par de nombreux changements dans la façon de se divertir. Indique si chacun des énoncés suivants est une cause ou une conséquence de ces changements (inscris les lettres aux bons endroits).",
+        bullets: ["A. Augmentation du nombre de cinémas et de théâtres","B. Diminution du nombre d'heures de travail","C. Protestations du clergé catholique","D. Augmentation du temps libre"],
+        responseSpace: {"type":"labeled-list","items":["Causes","Conséquences"],"linesPerItem":1}
+      },
+      reglettes: [{ id: "r-na-r5", label: "Réglette (2 points)", ...R_RELATION_2PT_4_PART }],
+      documents: [],
+      corrige: "Causes : B (diminution du nombre d'heures de travail) et D (augmentation du temps libre). Conséquences : A (augmentation du nombre de cinémas et de théâtres) et C (protestations du clergé catholique)." },
+
+    // ===== Leçon 7 — Accès aux universités (anglophones vs francophones) — OI3 =====
+    { id: "q-na-differences-5", operation: "Dégager des différences et des similitudes", numero: 5, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, dégage une différence quant à l'accès aux études universitaires entre les femmes anglophones et les femmes francophones au début du 20e siècle.",
+        responseSpace: {"type":"lines","count":3}
+      },
+      reglettes: [{ id: "r-na-d5", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_GEN }],
+      documents: pickDocs('na-differences-5', 1, 2),
+      corrige: "Les femmes anglophones accèdent aux études universitaires beaucoup plus tôt que les francophones : dès 1884 à l'Université McGill, alors que les universités francophones du Québec ne les admettent pas encore au début du 20e siècle (Marie Gérin-Lajoie doit s'inscrire à New York en 1911)." },
+
+    // ===== Leçon 7 — Trois acteurs sur le suffrage féminin (position différente) — OI3 =====
+    { id: "q-na-differences-6", operation: "Dégager des différences et des similitudes", numero: 6, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Les documents 1, 2 et 3 présentent la position de trois acteurs concernant la place des femmes dans la société. Nomme l'acteur qui présente une position différente et compare cette position à celle des deux autres acteurs.",
+        responseSpace: {"type":"lines","count":5}
+      },
+      reglettes: [{ id: "r-na-d6", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('na-differences-6', 1, 2, 3),
+      corrige: "L'acteur qui présente une position différente est Louis-Alexandre Taschereau : il s'oppose au suffrage des femmes pour des raisons politiques (il refuse d'en être l'instigateur). Mgr Bégin et L'Action française, eux, s'y opposent au nom de la tradition, de la foi et du rôle de la femme au foyer. Les trois rejettent le droit de vote des femmes, mais Taschereau le fait sur une base politique plutôt que religieuse et traditionaliste." },
+
+    // ===== Leçon 7 — Raison de la publication du Traité de droit usuel (1902) — OI4 =====
+    { id: "q-na-causes-19", operation: "Déterminer des causes et des conséquences", numero: 19, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique une raison qui explique la publication du Traité de droit usuel, en 1902.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c19", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-19', 1),
+      corrige: "Le Traité de droit usuel est publié pour vulgariser les règles du droit civil et constitutionnel afin que les femmes comprennent mieux leurs droits et prennent conscience des discriminations dont elles sont victimes dans le Code civil (notamment la tutelle de l'époux)." },
+
+    // ===== Leçon 7 — Place des femmes sur le marché du travail (+repère) — OI5 (doc-image) =====
+    { id: "q-na-continuite-14", operation: "Déterminer des changements et des continuités", numero: 14, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement quant à la place des femmes sur le marché du travail au Québec. Appuie ta réponse sur un repère de temps.",
+        responseSpace: {"type":"lines","count":3}
+      },
+      reglettes: [{ id: "r-na-co14", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-14', 1),
+      corrige: "La présence des femmes sur le marché du travail augmente de façon constante : de 1850 à 1961, leur proportion passe d'environ 10 % à près de 25 %. Repère de temps : à partir de 1850 (ou tout au long de la période 1850-1961)." },
+
+    // ===== Leçon 7 — Deux causes du travail des femmes mariées — OI4 =====
+    { id: "q-na-causes-20", operation: "Déterminer des causes et des conséquences", numero: 20, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique deux causes qui expliquent l'augmentation du nombre de femmes mariées sur le marché du travail après la Seconde Guerre mondiale.",
+        responseSpace: {"type":"labeled-list","items":["Cause 1","Cause 2"],"linesPerItem":2}
+      },
+      reglettes: [{ id: "r-na-c20", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('na-causes-20', 1),
+      corrige: "Cause 1 : la réduction de la semaine de travail (dans les usines et les bureaux) et l'arrivée de nouvelles technologies domestiques, qui allègent les tâches ménagères et libèrent du temps. Cause 2 : la baisse de la fécondité (et la prolongation de la scolarité des enfants), qui modifie le rôle des femmes dans la famille. (Toute combinaison de deux de ces facteurs est acceptée.)" },
+
+    // ===== Leçon 8 — Deux conséquences de la grève des débardeurs (1903) — OI4 =====
+    { id: "q-na-causes-21", operation: "Déterminer des causes et des conséquences", numero: 21, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique deux conséquences de la grève des débardeurs de 1903 pour les travailleurs.",
+        responseSpace: {"type":"labeled-list","items":["Conséquence 1","Conséquence 2"],"linesPerItem":2}
+      },
+      reglettes: [{ id: "r-na-c21", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CONS }],
+      documents: pickDocs('na-causes-21', 1),
+      corrige: "Conséquence 1 : le syndicat (l'Union) obtient sa reconnaissance officielle. Conséquence 2 : les débardeurs obtiennent une hausse de salaire de 10 %. (La grève a aussi entrainé la lecture de l'Acte d'émeute et l'intervention de la Milice canadienne.)" },
+
+    // ===== Leçon 8 — La Loi des relations ouvrières (1944) — OI5 =====
+    { id: "q-na-continuite-15", operation: "Déterminer des changements et des continuités", numero: 15, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement apporté aux relations de travail au Québec dans les années 1940.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co15", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-15', 1),
+      corrige: "En 1944, le Québec adopte la Loi des relations ouvrières : pour la première fois, l'État oblige les employeurs à reconnaitre les syndicats et à négocier de « bonne foi » une convention collective lorsqu'au moins 60 % des travailleurs le souhaitent. Le droit syndical est désormais encadré par la loi." },
+
+    // ===== Leçon 8 — Réticences du clergé / syndicats internationaux — OI4 =====
+    { id: "q-na-causes-22", operation: "Déterminer des causes et des conséquences", numero: 22, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique une raison qui explique les réticences du clergé catholique face au syndicalisme international.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c22", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-22', 1),
+      corrige: "Le clergé se méfie des syndicats internationaux parce qu'ils sont neutres sur le plan religieux — donc ouverts aux idées socialistes et anticléricales — et parce qu'ils représentent une influence étrangère sur les travailleurs canadiens-français." },
 
     // ======================================================================
     // ============ P7 (1945-1980) — Sommatives Section A (v1.25.0) ==========
