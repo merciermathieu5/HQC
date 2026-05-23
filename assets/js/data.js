@@ -1,12 +1,32 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.37.0 (mai 2026) ⭐⭐ CATALOGUE 327 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 EN COURS (Lots 1-3 : leçons 1-11)
-   327 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
+   HQC · 3e + 4e secondaire — Données — v1.38.0 (mai 2026) ⭐⭐ CATALOGUE 337 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 TERMINÉE (Lots 1-4 : leçons 1-15)
+   337 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
    Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 82 (7/7 OI ✓ — slugs na-* ; +52 tirées du Cahier P6, leçons 1-15, extraction TERMINÉE),
-                   P7 = 69 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 30 du Cahier P7, Lots 1-3 leçons 1-11),
+                   P7 = 79 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 40 du Cahier P7, Lots 1-4 leçons 1-15),
                    P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
    Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.38.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 4 (LEÇONS 12-15) + FIN DE L'EXTRACTION P7 :
+     • +10 questions (mq-*), tirées des ÉTAPES 2 des leçons 12 (Féminisme), 13 (Effervescence socioculturelle),
+       14 (Affirmation des peuples autochtones) et 15 (Relations patronales-syndicales). P7 : 69 → 79.
+       EXTRACTION DU CAHIER PÉRIODE 7 TERMINÉE — 40 questions ajoutées au total sur 4 lots (leçons 1 à 15).
+       — OI5 : mq-continuite-15 (présence des femmes au travail, 3 pts), 16 (statut juridique de la femme),
+       17 (Radio-Québec), 18 (théâtre : démocratisation + joual, R_CHANGEMENTS_2PT_2), 19 (droits politiques
+       autochtones), 20 (place du syndicalisme, 3 pts). — OI4 : mq-causes-26 (commission Bird), 27 (opposition
+       des Cris au Projet du siècle), 28 (opposition aux conseils de bande). — OI3 : mq-differences-8 (acteur
+       divergent sur la grève de l'amiante, R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION).
+     • 2 images extraites et vérifiées : mq-continuite-15/doc1 (« Les femmes sur le marché du travail »,
+       ré-extrait à 300 dpi pour la netteté) et mq-continuite-20/doc1 (« Les travailleurs syndiqués au Québec,
+       1941-1971 »). Le tableau du droit de vote (doc 279) est rendu en TEXTE (liste province/année).
+     • CONVENTION divergence/convergence : mq-differences-8 place les trois acteurs (Mgr Charbonneau, Antonio
+       Barrette, Gérard Picard) dans trois documents distincts.
+     • DÉCISIONS DE L'ENSEIGNANT : mq-differences-8 (amiante) et mq-continuite-18 (théâtre) conservées malgré
+       leur proximité avec differences-1 et continuite-3 ; énoncé de mq-continuite-16 reformulé (« statut
+       juridique de la femme ») pour être moins dirigé.
+     • ÉCARTÉES (conventions) : « Établis les faits » ; tableaux à deux volets (L12 causes/conséquences, L12
+       moyens/droits, L14 objectif + conséquence du Livre blanc — chevauche aussi causes-5, L15 cause +
+       conséquence de l'emprisonnement de 1972) ; tableaux/schémas (ÉTAPE 1) ; ÉTAPE 3.
    v1.37.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 3 (LEÇONS 10-11) :
      • +8 questions (mq-*), tirées des ÉTAPES 2 des leçons 10 (Néonationalisme) et 11 (Révolution tranquille).
        P7 : 61 → 69. Lot enfin diversifié. — OI7 : mq-causalite-6 (actions du FLQ en octobre 1970 → intervention
@@ -4585,6 +4605,66 @@ const DOCS = {
       sources: ["Source : Jean-Herman Guay, « Dépôt d'un projet de loi sur le financement des partis politiques », dans Bilan du siècle (Université de Sherbrooke)."] }
   ],
 
+  'mq-continuite-15': [
+    { id: "mq-co15-d1", title: "Document 1 — Les femmes sur le marché du travail", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-15/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Francine Barry, Le travail de la femme au Québec : l'évolution de 1940 à 1970, Presses de l'Université du Québec, 1977."] }
+  ],
+  'mq-continuite-16': [
+    { id: "mq-co16-d1", title: "Document 1", layout: "text-only",
+      text: "« La modification du Code civil du Québec constitue une autre réforme importante adoptée en 1964. Elle confère aux épouses une autonomie juridique sans précédent vis-à-vis leurs maris. Ainsi, la signature de leurs maris n'est plus nécessaire lorsqu'elles s'engagent par contrat, ouvrent un compte ou encore font un emprunt bancaire. Elles peuvent exercer une profession différente de celle de leur mari, ce que leur interdisait en principe le Code civil. Elles peuvent désormais être exécutrices testamentaires et curatrices, ou encore intenter un procès. »",
+      sources: ["Source : Josianne Lavallée, « Femmes et Révolution tranquille », dans l'Encyclopédie canadienne."] }
+  ],
+  'mq-causes-26': [
+    { id: "mq-c26-d1", title: "Document 1", layout: "text-only",
+      text: "« L'année 1967 est aussi marquée par le début des audiences de la Commission d'enquête sur la situation de la femme au Canada, aussi connue sous le nom de commission Bird, du nom de sa présidente Florence Bird. […] Instituée par le gouvernement libéral de Lester Bowles Pearson à la suite des pressions de groupes de femmes, cette commission a pour mandat d'étudier la condition de la femme au Canada et de faire des recommandations au gouvernement fédéral afin d'assurer leur égalité (des chances égales) dans toutes les sphères de la société canadienne. Son rapport, qui comporte 167 recommandations, est soumis au gouvernement fédéral le 28 septembre 1970. »",
+      sources: ["Source : Josianne Lavallée, « Femmes et Révolution tranquille », dans l'Encyclopédie canadienne."] }
+  ],
+  'mq-continuite-17': [
+    { id: "mq-co17-d1", title: "Document 1", layout: "text-only",
+      text: "« Le premier ministre du Québec, Daniel Johnson, utilise une loi de 1945 pour procéder à la création d'un service provincial de radio-diffusion : Radio-Québec. Ce geste du premier ministre est interprété par plusieurs comme une manifestation autonomiste face à Ottawa dans le domaine de l'éducation et des communications. […] Au début, on y fait seulement de la production d'émissions dont le contenu est souvent éducatif. Ce n'est qu'en 1972 que Radio-Québec télédiffusera sa propre programmation. »",
+      sources: ["Source : Jean-Herman Guay, « Annonce de la création de Radio-Québec », dans Bilan du siècle."] }
+  ],
+  'mq-continuite-18': [
+    { id: "mq-co18-d1", title: "Document 1", layout: "text-only",
+      text: "« Avant Michel Tremblay, le théâtre québécois était souvent bourgeois, élitiste et peu accessible au peuple canadien-français. On présentait beaucoup de pièces venues de la France qui ne représentaient pas la réalité vécue par les Québécois. […] C'est à cette époque, en 1965, que la pièce Les Belles-Sœurs est écrite. Cette période est marquée par la séparation de l'État et de l'Église, par l'affirmation québécoise, politique, culturelle et linguistique, par la montée des syndicats et par le féminisme. Ainsi, les mœurs de la population changent peu à peu. »",
+      sources: ["Source : « Contexte historique », dans Les Belles-Sœurs, lesbellessoeurs.weebly.com."] },
+    { id: "mq-co18-d2", title: "Document 2", layout: "text-only",
+      text: "« Le fait que Tremblay utilise le joual (le français québécois) et qu'il illustre la misère des milieux ouvriers (populaires) montréalais à partir des années 40 occasionne la création de tout un mouvement littéraire et théâtral dans les années 70 qui contribue au sentiment d'appartenance à la nation québécoise. »",
+      sources: ["Source : Bilan du siècle, « L'évolution de la culture québécoise pendant le XXe siècle »."] }
+  ],
+  'mq-causes-27': [
+    { id: "mq-c27-d1", title: "Document 1", layout: "text-only",
+      text: "« Au début des années 70, le gouvernement libéral de Robert Bourassa lançait un grand projet de développement des ressources hydro-électriques du Grand Nord québécois en s'appuyant sur des évaluations environnementales minimales et sur la négation des droits des peuples autochtones. Les Cris, dont les territoires de chasse, de pêche et de trappe étaient directement menacés par ce projet, s'y sont opposés. »",
+      sources: ["Source : Alexandra Parent, « Territoires autochtones et chevauchement », Faits et causes, 2014."] }
+  ],
+  'mq-causes-28': [
+    { id: "mq-c28-d1", title: "Document 1", layout: "text-only",
+      text: "« Pierrot Ross-Tremblay rappelle que la Loi constitutionnelle de 1867 a imposé la structure des conseils de bande. Depuis, des conflits entre les défenseurs des lois anciennes et ceux des lois coloniales existent dans ces conseils. Une autre loi, celle sur les Indiens, a changé le système de gouvernance et a tout fait pour déstabiliser les communautés, souvent dirigées par des femmes au sein des Premières Nations. […] C'est une loi qui est non seulement paternaliste, la Loi sur les Indiens qui a amené les conseils de bande, mais c'est une loi qui est machiste*. » (Isabelle Picard, ethnologue)\n\n*Machiste : idéologie de la suprématie du mâle.",
+      sources: ["Source : « La légitimité des conseils de bande remise en question », Radio-Canada, 2019."] }
+  ],
+  'mq-continuite-19': [
+    { id: "mq-co19-d1", title: "Document 1 — Octroi du droit de vote aux Indiens inscrits", layout: "text-only",
+      text: "Année où le droit de vote est accordé aux Indiens inscrits, selon l'administration : Nouvelle-Écosse (1885), Colombie-Britannique (1949), Terre-Neuve (1949), Manitoba (1952), Ontario (1954), Canada (1960), Saskatchewan (1960), Nouveau-Brunswick et Île-du-Prince-Édouard (1963), Alberta (1965), Québec (1969).",
+      sources: ["Source : Kiera L. Ladner et Michael McCrossan (Élections Canada), La participation des Autochtones aux élections, 2007."] }
+  ],
+  'mq-differences-8': [
+    { id: "mq-d8-d1", title: "Document 1 — Mgr Charbonneau, archevêque de Montréal", layout: "text-only",
+      text: "« La classe ouvrière est victime d'une conspiration qui vise à la détruire, et lorsqu'il existe une conspiration pour briser la classe ouvrière, il est du devoir de l'Église d'intervenir. Nous voulons la paix sociale, mais nous ne voulons pas l'écrasement de la classe ouvrière. Nous sommes attachés à l'homme plus qu'au capital. »",
+      sources: ["Source : Mgr Charbonneau, discours, 2 mai 1949."] },
+    { id: "mq-d8-d2", title: "Document 2 — Antonio Barrette, homme politique", layout: "text-only",
+      text: "« La raison principale de la grève d'amiante n'est pas la décision des ouvriers de se débarrasser de la poussière d'amiante. Il s'agit d'une grève étrange. C'est une grève illégale; j'ai donné l'avertissement aux ouvriers de retourner au travail et de soumettre leurs demandes à un conseil d'arbitrage. »",
+      sources: ["Source : Antonio Barrette, discours, 16 février 1949."] },
+    { id: "mq-d8-d3", title: "Document 3 — Gérard Picard, journaliste (C.T.C.C.)", layout: "text-only",
+      text: "« La C.T.C.C. a accordé son appui aux mineurs d'amiante et ne voit aucune raison sérieuse de le leur retirer, en dépit des déclarations identiques du Premier Ministre de la Province, du Ministre du Travail et des compagnies. […] Si l'on a ruiné la confiance des mineurs d'amiante dans l'institution arbitrale, à qui la faute? À qui la faute également, si non seulement les mineurs d'amiante, mais si la classe ouvrière n'a plus confiance au gouvernement provincial? »",
+      sources: ["Source : Gérard Picard, Le Travail, avril 1949."] }
+  ],
+  'mq-continuite-20': [
+    { id: "mq-co20-d1", title: "Document 1 — Les travailleurs syndiqués au Québec, 1941-1971", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-20/doc1.png", imageWidthCm: 12,
+      sources: ["Source : Service national du RÉCIT de l'univers social."] }
+  ],
+
 };
 
 // ============ EXPORT ============
@@ -8417,6 +8497,114 @@ window.DATA = {
       reglettes: [{ id: "r-mq-c25", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
       documents: pickDocs('mq-causes-25', 1),
       corrige: "Pour lutter contre la corruption et le favoritisme en politique : la loi interdit le financement des partis par les entreprises et les syndicats, plafonne les dons des citoyens et oblige à divulguer le nom des donateurs." },
+
+    // ============================================================
+    // ===== P7 — Cahier P7, LOT 4 (leçons 12-15) — fin de l'extraction =====
+    // ============================================================
+
+    // ----- Leçon 12 — Féminisme -----
+    { id: "q-mq-continuite-15", operation: "Déterminer des changements et des continuités", numero: 15, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a continuité ou changement quant à la présence des femmes sur le marché du travail au Québec entre 1950 et 1970. Justifie ta réponse par un fait et un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co15", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('mq-continuite-15', 1),
+      corrige: "Il y a changement : les femmes sont beaucoup plus présentes sur le marché du travail en 1971 qu'en 1951 (environ 350 000 travailleuses en 1951 contre environ 750 000 en 1971)." },
+
+    { id: "q-mq-continuite-16", operation: "Déterminer des changements et des continuités", numero: 16, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement quant au statut juridique de la femme au Québec dans les années 1960.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co16", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-16', 1),
+      corrige: "La modification du Code civil (1964), aussi appelée Loi sur la capacité juridique de la femme mariée : l'épouse n'a plus besoin de la signature de son mari pour signer un contrat, ouvrir un compte ou faire un emprunt." },
+
+    { id: "q-mq-causes-26", operation: "Déterminer des causes et des conséquences", numero: 26, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le gouvernement de Lester B. Pearson met sur pied la commission Bird.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c26", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-26', 1),
+      corrige: "Pour étudier la condition de la femme au Canada et formuler des recommandations afin d'assurer l'égalité (des chances égales) entre les femmes et les hommes, à la suite des pressions de groupes de femmes." },
+
+    // ----- Leçon 13 — Effervescence socioculturelle -----
+    { id: "q-mq-continuite-17", operation: "Déterminer des changements et des continuités", numero: 17, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement survenu en 1968 en lien avec la diffusion de la culture au Québec.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co17", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-17', 1),
+      corrige: "La création de Radio-Québec (en 1968), un service public provincial de radiodiffusion qui permet la diffusion de la culture québécoise." },
+
+    { id: "q-mq-continuite-18", operation: "Déterminer des changements et des continuités", numero: 18, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique deux changements survenus dans le monde du théâtre québécois durant les années 1960.",
+        responseSpace: { type: "labeled-list", items: ["Changement 1", "Changement 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-co18", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_2 }],
+      documents: pickDocs('mq-continuite-18', 1, 2),
+      corrige: "Changement 1 (document 1) : la démocratisation du théâtre, qui devient plus accessible au peuple et reflète la réalité québécoise. Changement 2 (document 2) : l'utilisation du joual (le français québécois) sur scène, notamment par Michel Tremblay." },
+
+    // ----- Leçon 14 — Affirmation des peuples autochtones -----
+    { id: "q-mq-causes-27", operation: "Déterminer des causes et des conséquences", numero: 27, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les Cris du Québec s'opposent au Projet du siècle (le développement hydroélectrique de la baie James).",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c27", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-27', 1),
+      corrige: "Parce que le projet menace directement leurs territoires de chasse, de pêche et de trappe (leurs activités traditionnelles), et qu'il nie leurs droits." },
+
+    { id: "q-mq-causes-28", operation: "Déterminer des causes et des conséquences", numero: 28, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi certains Autochtones s'opposent au mode de gouvernance fondé sur les conseils de bande.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c28", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-28', 1),
+      corrige: "Parce que ce mode de gouvernance, imposé par la Loi sur les Indiens, est jugé paternaliste et machiste : il a déstabilisé des communautés autochtones traditionnellement dirigées par des femmes." },
+
+    { id: "q-mq-continuite-19", operation: "Déterminer des changements et des continuités", numero: 19, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement important quant aux droits politiques des Autochtones au cours de la période 1945-1980.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co19", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-19', 1),
+      corrige: "Les Autochtones (Indiens inscrits) obtiennent le droit de vote : au fédéral en 1960 et au Québec en 1969 (entre 1945 et 1980, le droit de vote leur est accordé dans l'ensemble des administrations canadiennes)." },
+
+    // ----- Leçon 15 — Relations patronales-syndicales -----
+    { id: "q-mq-differences-8", operation: "Dégager des différences et des similitudes", numero: 8, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Les documents 1 à 3 présentent la position de trois acteurs sur un conflit de travail durant la période duplessiste (la grève de l'amiante, 1949). Nomme l'acteur qui présente une position différente et compare sa position à celle des deux autres.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-d8", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
+      documents: pickDocs('mq-differences-8', 1, 2, 3),
+      corrige: "Antonio Barrette (document 2) présente une position différente : il juge la grève illégale et somme les ouvriers de retourner au travail. Mgr Charbonneau (document 1) et Gérard Picard (document 3) appuient au contraire les ouvriers (l'Église défend la classe ouvrière; le syndicat soutient les mineurs, qui n'ont plus confiance en l'arbitrage ni au gouvernement)." },
+
+    { id: "q-mq-continuite-20", operation: "Déterminer des changements et des continuités", numero: 20, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a continuité ou changement quant à la place du syndicalisme au Québec entre 1941 et 1971. Justifie ton choix par un fait et un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co20", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('mq-continuite-20', 1),
+      corrige: "Il y a changement : la proportion de travailleurs syndiqués augmente nettement, passant d'environ 20 % en 1941 à environ 37 % en 1971." },
 
     // ============================================================
     // ===== P8 — 1980 à nos jours — Les choix de société dans le Québec contemporain =====
