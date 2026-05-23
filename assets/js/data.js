@@ -3917,6 +3917,57 @@ const DOCS = {
     { id: "fc-c31-d1", title: "Document 1 : La bourgeoisie anglo-écossaise et les institutions anglo-protestantes", layout: "text-only",
       text: "« Les membres de la bourgeoisie anglo-écossaise [...] contribuent généreusement au financement des institutions anglo-protestantes, en particulier l'Université McGill et le Montreal General Hospital. Le Board of Trade est le porte-parole très écouté de cette classe dominante. »",
       sources: ["P.-A. Linteau, « Montréal, ville industrielle, 1850-1896 », Musée McCord, en ligne (consulté le 12 août)."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 12 (Première phase industrielle) =====
+  'fc-continuite-11': [
+    { id: "fc-cont11-d1", title: "Document 1 : Intérieur d'un atelier (entre 1850 et 1885)", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-11/doc1.png", imageWidthCm: 11,
+      sources: ["John Henry Walker, « Intérieur d'un atelier », Musée McCord, M930.50.8.79."] },
+    { id: "fc-cont11-d2", title: "Document 2 : La division du travail (Adam Smith, 1776)", layout: "text-only",
+      text: "« Prenons un exemple [...] : une manufacture d'épingles. [...] cette industrie [...] est divisée en un grand nombre de branches [...]. Un ouvrier tire le fil, un autre le dresse, un troisième le coupe [...]. Ainsi dix ouvriers pouvaient faire entre eux plus de quarante-huit milliers d'épingles dans une journée [...]. »",
+      sources: ["Adam Smith, Recherches sur la nature et les causes de la richesse des nations (1776), chapitre 1, p. 12."] }
+  ],
+  'fc-causes-32': [
+    { id: "fc-c32-d1", title: "Document 1 : Montréal, ville industrielle, 1896", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-32/doc1.png", imageWidthCm: 13,
+      sources: ["Musée McCord. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 13 (Industrie forestière) =====
+  'fc-causes-33': [
+    { id: "fc-c33-d1", title: "Document 1 : Chute et moulin, Cantons de l'Est", layout: "image-only",
+      imageUrl: "assets/img/fc-causes-33/doc1.png", imageWidthCm: 10,
+      sources: ["Musée McCord. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] },
+    { id: "fc-c33-d2", title: "Document 2 : La région forestière du Saguenay", layout: "text-only",
+      text: "« La région du Saguenay [...], bordée de montagnes richement recouvertes de bois, [...] offrait à l'exploitation forestière des réserves énormes de pins et d'épinettes et d'autres essences. »",
+      sources: ["N. Séguin (1976), « L'économie agro-forestière : genèse du développement au Saguenay au XIXe siècle », Revue d'histoire de l'Amérique française, 29 (4), p. 559-565."] }
+  ],
+  'fc-causes-34': [
+    { id: "fc-c34-d1", title: "Document 1 : Le passage de l'équarrissage au sciage", layout: "text-only",
+      text: "« Au milieu du XIXe siècle, la Grande-Bretagne abandonna ses tarifs protecteurs pour adopter le libre-échange. [...] l'urbanisation croissante aux États-Unis créa l'ouverture d'un nouveau marché [...]. Les progrès techniques et les coûts de main-d'œuvre, au milieu du siècle dernier, déclassèrent rapidement l'équarrissage au profit du sciage. »",
+      sources: ["R. Hardy (2001), « L'exploitation forestière dans l'histoire du Québec et de la Mauricie », Histoire Québec, 6 (3), p. 6-7."] }
+  ],
+
+  // ===== P5 — Documents extraits du cahier « Période 5 » (2019), Leçon 14 (Exploitations agricoles) =====
+  'fc-continuite-12': [
+    { id: "fc-cont12-d1", title: "Document 1 : Témoignage d'un cultivateur (1894)", layout: "text-only",
+      text: "« Mon père a connu le temps de la faucille et celui de la moissonneuse-lieuse. Il a connu la herse à dents de bois et le semoir mécanique [...], le fléau et la machine à battre [...], la fourche de bois et la fourche d'acier mécanique [...]. »",
+      sources: ["Adélard Beauregard, cultivateur, 1894."] },
+    { id: "fc-cont12-d2", title: "Document 2 : Tracteur à vapeur Reeve tirant une herse", layout: "image-only",
+      imageUrl: "assets/img/fc-continuite-12/doc2.png", imageWidthCm: 11,
+      sources: ["Musée McCord. Cahier « La formation du régime fédéral canadien (1840-1896) », Service national du RÉCIT de l'univers social."] }
+  ],
+  'fc-causalite-5': [
+    { id: "fc-ca5-d1", title: "Document 1 : Évolution de la population du Bas-Canada et du Québec (1851-1901)", layout: "image-only",
+      imageUrl: "assets/img/fc-causalite-5/doc1.png", imageWidthCm: 12,
+      sources: ["Graphique : Jimmy Grenier, à partir des données de Statistique Canada. Musée McCord."] },
+    { id: "fc-ca5-d2", title: "Document 2 : La distribution des produits laitiers (Ferme St-Laurent)", layout: "image-only",
+      imageUrl: "assets/img/fc-causalite-5/doc2.png", imageWidthCm: 10,
+      sources: ["Brochure promotionnelle du 25e anniversaire de la Ferme St-Laurent (1952). Écomusée du fier monde."] },
+    { id: "fc-ca5-d3", title: "Document 3 : Le développement de l'industrie laitière au Québec", layout: "image-only",
+      imageUrl: "assets/img/fc-causalite-5/doc3.png", imageWidthCm: 13,
+      sources: ["Carte et données : Service national du RÉCIT de l'univers social, d'après Statistique Canada, Annuaire du Canada 1966-1967."] }
   ]
 
 };
@@ -5858,6 +5909,90 @@ window.DATA = {
       reglettes: [{ id: "r-fc-c31", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
       documents: pickDocs('fc-causes-31', 1),
       corrige: "Ces universités sont financées par de riches capitalistes industriels anglophones." },
+
+    // ============================================================
+    // ===== P5 · Leçon 12 — Première phase industrielle (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 5 — Un changement. Docs 181 (atelier mécanisé) + 186 (division du travail).
+    { id: "q-fc-continuite-11", operation: "Déterminer des changements et des continuités", numero: 11, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine un changement que l'industrialisation apporte dans la manière de produire des biens au 19e siècle.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont11", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-11', 1, 2),
+      corrige: "La production est désormais mécanisée et se fait en usine (document 1), ou le travail est divisé entre plusieurs ouvriers spécialisés (document 2)." },
+
+    // OI 4 — Une cause (« Explique pourquoi »). Doc 182 (Montréal industrielle).
+    { id: "q-fc-causes-32", operation: "Déterminer des causes et des conséquences", numero: 32, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les industries s'installent à proximité de l'eau.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c32", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-32', 1),
+      corrige: "Parce que l'eau (le fleuve et les canaux) sert de voie de transport pour les marchandises." },
+
+    // ============================================================
+    // ===== P5 · Leçon 13 — Industrie forestière (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 4 — Une cause (« Explique pourquoi »). Docs 191 (chute et moulin) + 192 (forêts du Saguenay).
+    { id: "q-fc-causes-33", operation: "Déterminer des causes et des conséquences", numero: 33, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, explique pourquoi les industries forestières s'établissent dans des régions comme le Saguenay ou la Mauricie.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c33", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-33', 1, 2),
+      corrige: "Parce que la ressource (la forêt) y est abondante, ou parce que les nombreux cours d'eau y facilitent le transport du bois." },
+
+    // OI 4 — Une cause (« Explique pourquoi »). Doc 193 (passage de l'équarrissage au sciage).
+    { id: "q-fc-causes-34", operation: "Déterminer des causes et des conséquences", numero: 34, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les scieries se multiplient au Québec dans la seconde moitié du 19e siècle.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-c34", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('fc-causes-34', 1),
+      corrige: "Grâce aux progrès techniques de l'industrialisation et à une main-d'œuvre bon marché, qui permettent au sciage de remplacer l'équarrissage." },
+
+    // ============================================================
+    // ===== P5 · Leçon 14 — Exploitations agricoles (cahier Période 5, 2019) =====
+    // ============================================================
+
+    // OI 5 — Un changement. Docs : témoignage de cultivateur (1894) + tracteur à vapeur (Doc 199).
+    { id: "q-fc-continuite-12", operation: "Déterminer des changements et des continuités", numero: 12, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine un changement dans l'industrie agricole.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-fc-cont12", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('fc-continuite-12', 1, 2),
+      corrige: "La mécanisation des techniques agricoles : on passe des outils manuels (faucille, herse de bois, fléau) aux machines (moissonneuse-lieuse, semoir mécanique, machine à battre)." },
+
+    // OI 7 — Lien de causalité (chaîne à 3 éléments). Docs 197 (population) + 196 (demande) + 198 (industrie laitière).
+    { id: "q-fc-causalite-5", operation: "Établir des liens de causalité", numero: 5, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Explique comment l'industrialisation et l'urbanisation ont eu des impacts sur l'industrie laitière au Québec. Dans ta réponse, tu devras préciser chacun des faits et les lier entre eux.",
+        bullets: [
+          "La croissance de la population au Québec",
+          "La demande en produits laitiers",
+          "La création de fromageries et de beurreries"
+        ],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: { type: "lines", count: 8 }
+      },
+      reglettes: [{ id: "r-fc-ca5", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('fc-causalite-5', 1, 2, 3),
+      corrige: "La population du Québec est en pleine croissance (document 1). Pour subvenir à ses besoins, la demande en produits laitiers augmente (document 2). Pour répondre à cette demande, de nombreuses fromageries et beurreries sont créées (document 3)." },
 
     // ============================================================
     // ===== P6 — 4e secondaire — Les nationalismes et l'autonomie du Canada (1896-1945) =====
