@@ -1,12 +1,31 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.34.0 (mai 2026) ⭐⭐ CATALOGUE 297 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P6 TERMINÉE (leçons 1-15)
-   297 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
+   HQC · 3e + 4e secondaire — Données — v1.35.0 (mai 2026) ⭐⭐ CATALOGUE 309 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P7 EN COURS (Lot 1 : leçons 1-2-4-5)
+   309 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
    Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 82 (7/7 OI ✓ — slugs na-* ; +52 tirées du Cahier P6, leçons 1-15, extraction TERMINÉE),
-                   P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT),
+                   P7 = 51 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT + 12 du Cahier P7, Lot 1 leçons 1-2-4-5),
                    P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
    Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.35.0 — EXTRACTION DU CAHIER PÉRIODE 7 — LOT 1 (LEÇONS 1, 2, 4, 5) :
+     • +12 questions (mq-*), tirées des ÉTAPES 2 des leçons 1 (Rapports de force en Occident),
+       2 (Agglomération urbaine), 4 (Accroissement naturel) et 5 (Nouveaux arrivants) — leçons jusque-là
+       non extraites. P7 : 39 → 51. — OI4 : mq-causes-9 à 15 (7 q). — OI5 : mq-continuite-5 à 9 (5 q).
+     • Énoncés OI4 « pourquoi » rédigés d'emblée « Explique pourquoi… » (Guerre froide, déplacement des
+       Inuits, mai 1968, immigration vietnamienne et haïtienne). « Indique une conséquence » réservé aux
+       conséquences (mq-causes-10 : 2 conséquences de la Guerre froide ; mq-causes-13 : conséquence
+       territoriale des communautés culturelles). OI5 à 3 pts (changement/continuité + repère de temps)
+       pour mq-continuite-6 (population urbaine) et mq-continuite-9 (origine des immigrants).
+     • 9 images extraites et vérifiées à l'œil : mq-causes-10/doc1 (stocks d'armes nucléaires) + doc2 (mur
+       de Berlin), mq-causes-13/doc1 (Chinatown, Montréal), mq-continuite-6/doc1 (population rurale/urbaine
+       1941-1981), mq-continuite-7/doc1 (indice de fécondité 1937-1988), mq-continuite-8/doc1 + doc2
+       (pyramides des âges 1951 et 1971), mq-continuite-9/doc1 (origine des immigrants 1901 vs 1961, deux
+       diagrammes). Réglettes existantes réutilisées (R_CAUSES_2PT_GEN_1CAUSE, R_CAUSES_2PT_2CONS,
+       R_CAUSES_2PT_CONS_SEULE, R_CHANGEMENTS_2PT_GEN, RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS).
+     • DÉCISIONS DE L'ENSEIGNANT : Lot 1 = leçons vierges (1, 2, 4, 5) ; paire Vietnam/Haïti scindée en deux
+       questions autonomes (mq-causes-14, mq-causes-15) ; déséquilibre OI4/OI5 assumé. SUPPRIMÉE en cours de
+       validation : « pourquoi la mortalité infantile autochtone diminue » (renumérotation 14→13, 15→14, 16→15).
+     • ÉCARTÉES (conventions) : « Établis les faits », tableaux/schémas à compléter (ÉTAPE 1), ÉTAPE 3.
    v1.34.0 — EXTRACTION DU CAHIER PÉRIODE 6 — LOT 4 (LEÇONS 9-15) + FIN DE L'EXTRACTION :
      • +24 questions (na-*), tirées des ÉTAPES 2 des leçons 9 (Église), 10 (Éducation), 11 (Flux
        migratoires), 12 (Première Guerre mondiale), 13 (Grande dépression), 14 (Remise en question du
@@ -4349,7 +4368,74 @@ const DOCS = {
     { id: "fc-ca5-d3", title: "Document 3 : Le développement de l'industrie laitière au Québec", layout: "image-only",
       imageUrl: "assets/img/fc-causalite-5/doc3.png", imageWidthCm: 13,
       sources: ["Carte et données : Service national du RÉCIT de l'univers social, d'après Statistique Canada, Annuaire du Canada 1966-1967."] }
-  ]
+  ],
+
+  'mq-causes-9': [
+    { id: "mq-c9-d1", title: "Document 1", layout: "text-only",
+      text: "« La Guerre froide débute avec l'effritement de l'alliance américaine-britannique-soviétique qui a vaincu les Allemands et les Japonais pendant la Deuxième Guerre mondiale. Déjà envenimées par l'opposition idéologique et la méfiance à l'égard de leurs visées mondiales respectives, les relations diplomatiques entre les États-Unis et la Grande-Bretagne d'une part et l'Union soviétique de Joseph Staline d'autre part se détériorent sérieusement après la guerre. Plusieurs différends sont en cause : en particulier, les Soviétiques ont mis en place et maintenu au pouvoir des partis communistes locaux fantoches* dans plusieurs pays autrefois indépendants d'Europe de l'Est, sans processus démocratique. Cette situation conduit l'ancien premier ministre britannique sir Winston Churchill à déclarer le 5 mars 1946 qu'un « rideau de fer » a été descendu sur le continent européen. »\n\n*Fantoche : contrôlé comme une marionnette par une puissance extérieure.",
+      sources: ["Source : Alex Herd, « Le Canada et la Guerre froide », dans l'Encyclopédie canadienne."] }
+  ],
+  'mq-causes-10': [
+    { id: "mq-c10-d1", title: "Document 1 — Stocks d'armes nucléaires entre 1945 et 2005", layout: "image-only",
+      imageUrl: "assets/img/mq-causes-10/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Wikimédia Commons."] },
+    { id: "mq-c10-d2", title: "Document 2 — Le mur de Berlin, 1961", layout: "image-only",
+      imageUrl: "assets/img/mq-causes-10/doc2.png", imageWidthCm: 10,
+      sources: ["Source : Wikimédia Commons."] }
+  ],
+  'mq-causes-11': [
+    { id: "mq-c11-d1", title: "Document 1", layout: "text-only",
+      text: "« Pour les fonctionnaires canadiens, la délocalisation des Inuits dans l'Extrême-Arctique présente plusieurs avantages. Tout d'abord, on souhaite garantir la souveraineté canadienne dans l'Arctique. Pendant la Deuxième Guerre mondiale, les États-Unis établissent une présence militaire dans l'Arctique. En pleine guerre froide, alors que plusieurs craignent une attaque soviétique, les États-Unis renforcent leurs effectifs militaires dans cette région, ce qui menace potentiellement les revendications du Canada dans le Nord. Le ministère des Ressources et du Développement, responsable des affaires inuites à l'époque, décide alors de peupler d'Inuits les îles d'Ellesmere et de Cornwallis, des régions jusque-là inhabitées. »",
+      sources: ["Source : Sania Madwar, « Délocalisation d'Inuits dans l'Extrême-Arctique au Canada », dans l'Encyclopédie canadienne."] }
+  ],
+  'mq-causes-12': [
+    { id: "mq-c12-d1", title: "Document 1", layout: "text-only",
+      text: "« Plus de vingt ans après la fin de la Seconde Guerre mondiale, l'heure est donc à la contestation au cœur d'une jeunesse à la fois fruit du Baby-boom et des Trente Glorieuses. À l'heure de la pilule contraceptive, la morale traditionnelle est contestée, comme le montrent aussi bien les apologies de l'amour libre dans les rues en mai 68, que l'ambiance détendue de Woodstock un an plus tard. Le modèle capitaliste et la consommation de masse concentrent également les attaques. […] Or, au sein des universités françaises, cette jeunesse est particulièrement active et avance sur un terrain favorable : au-delà d'une surcharge très problématique des universités, le système éducatif peine à se réformer et à dépasser son modèle traditionnel. […] En 1968, il s'y crée le Mouvement du 22 mars, dont la revendication initiale était l'accès pour les étudiants aux bâtiments des étudiantes, mais qui prend des positions plus politiques après l'arrestation d'étudiants manifestant contre la guerre du Vietnam. »",
+      sources: ["Source : « Mai 68 : ses causes et ses conséquences », dans L'Internaute."] }
+  ],
+  'mq-causes-13': [
+    { id: "mq-c13-d1", title: "Document 1 — Chinatown, Montréal", layout: "image-only",
+      imageUrl: "assets/img/mq-causes-13/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Archives de la Ville de Montréal."] }
+  ],
+  'mq-causes-14': [
+    { id: "mq-c14-d1", title: "Document 1", layout: "text-only",
+      text: "« En 1978, le Vietnam et la Chine entrent en conflit militaire. La minorité sino-vietnamienne*, perçue comme étant au service des intérêts chinois, est contrainte de quitter le pays par la mer. Dès 1979, ce groupe forme une importante part de la deuxième vague de réfugiés qui arrivent à Montréal. Cette année-là, le gouvernement du Canada réagit à la crise des boat people et décide d'accueillir davantage de ressortissants vietnamiens en mettant sur pied un programme de parrainage. Entre 1979 et 1981, le Québec reçoit 13 000 de ces migrants. […] »\n\n*Sino : Chinois.",
+      sources: ["Source : Olivier Paré, « L'arrivée des « boat people » à Montréal », dans Mémoire des Montréalais."] }
+  ],
+  'mq-causes-15': [
+    { id: "mq-c15-d1", title: "Document 1", layout: "text-only",
+      text: "« L'histoire de l'immigration haïtienne au Québec […] s'intensifie surtout après l'installation en 1957 du régime répressif du président François Duvalier. La dictature duvaliériste marque le début de l'exode des cerveaux, qui correspond à la première vague d'immigration principalement composée d'activistes politiques, d'intellectuels, d'artistes et de professionnels francophones et créoles. […] La deuxième vague d'immigration, lors des années 1970, est plus forte. Cette fois, les nouveaux arrivants sont en majorité des travailleurs non spécialisés. À Montréal, la petite communauté haïtienne de 500 personnes en 1967 compte plus de 3700 personnes en 1971. »",
+      sources: ["Source : Vanessa Exama, « L'immigration haïtienne au Québec : une histoire d'amour vacillante? », dans Perspective Monde."] }
+  ],
+  'mq-continuite-5': [
+    { id: "mq-co5-d1", title: "Document 1", layout: "text-only",
+      text: "« Le président des États-Unis, Lyndon B. Johnson, signe le Civil Rights Act à la Maison-Blanche le 2 juillet 1964. Cette législation d'envergure rend illégale la discrimination selon la race, la religion, le sexe ou l'origine nationale dans les bâtiments publics, dont les écoles, ainsi que dans les pratiques d'embauche et le processus électoral. »",
+      sources: ["Source : « Adoption du Civil Rights Act aux États-Unis », dans Perspective Monde."] }
+  ],
+  'mq-continuite-6': [
+    { id: "mq-co6-d1", title: "Document 1 — Population rurale et urbaine au Québec entre 1941 et 1981", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-6/doc1.png", imageWidthCm: 12,
+      sources: ["Source : Jimmy Grenier, à partir des données de Linteau et al., Histoire du Québec contemporain : le Québec depuis 1930, Montréal, Boréal, 1986."] }
+  ],
+  'mq-continuite-7': [
+    { id: "mq-co7-d1", title: "Document 1 — Indice synthétique de fécondité du Québec, 1937 à 1988", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-7/doc1.png", imageWidthCm: 10,
+      sources: ["Source : Jimmy Grenier, à partir des données de Statistique Canada et de Henripin, 1968."] }
+  ],
+  'mq-continuite-8': [
+    { id: "mq-co8-d1", title: "Document 1 — Pyramide des âges au Québec en 1951", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-8/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Jimmy Grenier, à partir des données de Statistique Canada."] },
+    { id: "mq-co8-d2", title: "Document 2 — Pyramide des âges au Québec en 1971", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-8/doc2.png", imageWidthCm: 11,
+      sources: ["Source : Jimmy Grenier, à partir des données de Statistique Canada."] }
+  ],
+  'mq-continuite-9': [
+    { id: "mq-co9-d1", title: "Document 1 — Lieu d'origine de la population née à l'étranger (1901 et 1961)", layout: "image-only",
+      imageUrl: "assets/img/mq-continuite-9/doc1.png", imageWidthCm: 15,
+      sources: ["Source : Jimmy Grenier, à partir des données de Statistique Canada."] }
+  ],
 
 };
 
@@ -7849,6 +7935,134 @@ window.DATA = {
       reglettes: [{ id: "r-mq-d6", label: "Réglette (3 points)", ...R_DIFFSIM_3PT_ACTEUR_DIFFERENT_POSITION }],
       documents: pickDocs('mq-differences-6', 1, 2, 3),
       corrige: "Lise Payette (document 3) présente une position différente : elle défend la légalisation de l'avortement au nom de la liberté de la femme de décider. Les deux autres acteurs s'opposent à l'avortement : l'Association des bureaux médicaux des hôpitaux du Québec (document 1) considère l'avortement comme un homicide et s'oppose à sa légalisation, et le jésuite Marcel Marcotte (document 2) estime qu'il ne devrait être autorisé que dans les cas de péril grave pour la vie ou la santé de la mère." },
+
+    // ============================================================
+    // ===== P7 — Cahier P7, LOT 1 (leçons 1, 2, 4, 5) — OI4 + OI5 =====
+    // ============================================================
+
+    // ----- Leçon 1 — Rapports de force en Occident -----
+    { id: "q-mq-causes-9", operation: "Déterminer des causes et des conséquences", numero: 9, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi la Guerre froide éclate suite à la Seconde Guerre mondiale.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c9", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-9', 1),
+      corrige: "Une cause est l'effritement de l'alliance entre les États-Unis, la Grande-Bretagne et l'Union soviétique après la Seconde Guerre mondiale (opposition idéologique, méfiance, mainmise soviétique sur l'Europe de l'Est)." },
+
+    { id: "q-mq-causes-10", operation: "Déterminer des causes et des conséquences", numero: 10, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique deux conséquences de la rivalité entre les Soviétiques et les Américains durant la Guerre froide.",
+        responseSpace: { type: "labeled-list", items: ["Conséquence 1", "Conséquence 2"], linesPerItem: 2 }
+      },
+      reglettes: [{ id: "r-mq-c10", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CONS }],
+      documents: pickDocs('mq-causes-10', 1, 2),
+      corrige: "Conséquence 1 (document 1) : l'augmentation du stock d'armes nucléaires aux États-Unis et en URSS. Conséquence 2 (document 2) : la construction du mur de Berlin." },
+
+    { id: "q-mq-causes-11", operation: "Déterminer des causes et des conséquences", numero: 11, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi le Canada déplace des populations inuites vers l'Extrême-Arctique dans les années 1950.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c11", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-11', 1),
+      corrige: "Le Canada souhaite affirmer sa souveraineté dans l'Arctique, OU il craint une attaque soviétique, OU il réagit au renforcement des effectifs militaires américains dans la région." },
+
+    { id: "q-mq-causes-12", operation: "Déterminer des causes et des conséquences", numero: 12, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi les événements de mai 1968 éclatent en France.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c12", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-12', 1),
+      corrige: "Une cause est la remise en question de la morale traditionnelle (critique du capitalisme et de la consommation de masse), OU la contestation étudiante liée au système éducatif et à l'accès aux bâtiments des étudiantes." },
+
+    { id: "q-mq-continuite-5", operation: "Déterminer des changements et des continuités", numero: 5, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement quant aux droits d'une minorité aux États-Unis dans les années 1960.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co5", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-5', 1),
+      corrige: "Il y a changement : l'adoption du Civil Rights Act en 1964 reconnaît des droits à une minorité (les Noirs américains) en rendant illégale la discrimination." },
+
+    // ----- Leçon 2 — Agglomération urbaine -----
+    { id: "q-mq-continuite-6", operation: "Déterminer des changements et des continuités", numero: 6, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a changement ou continuité dans la répartition de la population urbaine au Québec entre 1941 et 1981. Justifie ta réponse par un fait et un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co6", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('mq-continuite-6', 1),
+      corrige: "Il y a changement : la population devient nettement plus urbaine. En 1941, la population urbaine représente environ 61 %, alors qu'elle atteint environ 78 % en 1981. (Réponse variable : on accepte aussi la continuité — la population demeure majoritairement urbaine durant toute la période.)" },
+
+    // ----- Leçon 4 — Accroissement naturel -----
+    { id: "q-mq-continuite-7", operation: "Déterminer des changements et des continuités", numero: 7, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique un changement quant à l'accroissement naturel survenu au Québec entre 1945 et 1960.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co7", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-7', 1),
+      corrige: "Il y a changement : entre 1945 et 1960, on observe un bébé-boum, c'est-à-dire une forte augmentation de la natalité (indice de fécondité élevé)." },
+
+    { id: "q-mq-continuite-8", operation: "Déterminer des changements et des continuités", numero: 8, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique un changement quant à la répartition de la population québécoise selon l'âge entre 1951 et 1971.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-co8", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('mq-continuite-8', 1, 2),
+      corrige: "Il y a changement : entre 1951 et 1971, la population québécoise rajeunit nettement (la majorité de la population a moins de 25 ans), conséquence du baby-boom." },
+
+    // ----- Leçon 5 — Nouveaux arrivants -----
+    { id: "q-mq-causes-13", operation: "Déterminer des causes et des conséquences", numero: 13, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, indique une conséquence territoriale de la présence de communautés culturelles à Montréal.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c13", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('mq-causes-13', 1),
+      corrige: "Une conséquence territoriale est le développement de quartiers ethniques à Montréal (par exemple le quartier chinois)." },
+
+    { id: "q-mq-continuite-9", operation: "Déterminer des changements et des continuités", numero: 9, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a changement ou continuité quant à l'origine des immigrants au Québec entre 1901 et 1961. Justifie ta réponse par un fait et un repère de temps.",
+        responseSpace: { type: "lines", count: 4 }
+      },
+      reglettes: [{ id: "r-mq-co9", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('mq-continuite-9', 1),
+      corrige: "Il y a changement : entre 1901 et 1961, la proportion d'immigrants en provenance des îles Britanniques diminue au profit d'autres origines européennes (Europe de l'Est, du Sud, de l'Ouest). (Réponse variable : on accepte aussi la continuité — les immigrants demeurent en majorité originaires des îles Britanniques.)" },
+
+    { id: "q-mq-causes-14", operation: "Déterminer des causes et des conséquences", numero: 14, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi des immigrants originaires du Vietnam arrivent au Québec dans les années 1970.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c14", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-14', 1),
+      corrige: "Des immigrants vietnamiens arrivent au Québec en raison du conflit militaire entre le Vietnam et la Chine (1978) : la minorité sino-vietnamienne, persécutée, fuit le pays (crise des boat people) et craint pour sa sécurité." },
+
+    { id: "q-mq-causes-15", operation: "Déterminer des causes et des conséquences", numero: 15, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "À l'aide du document 1, explique pourquoi des immigrants originaires d'Haïti arrivent au Québec dans les années 1970.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-mq-c15", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('mq-causes-15', 1),
+      corrige: "Des immigrants haïtiens arrivent au Québec en raison du régime répressif (la dictature) du président François Duvalier, installé en 1957, qui pousse de nombreux Haïtiens à fuir le pays." },
 
     // ============================================================
     // ===== P8 — 1980 à nos jours — Les choix de société dans le Québec contemporain =====
