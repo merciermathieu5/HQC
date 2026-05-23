@@ -1,12 +1,51 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.29.0 (mai 2026) ⭐⭐ P8 COMPLÉTÉE — SOMMATIVES (LOT A) + GUIDES RÉCIT (LOT B)
-   202 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 7 PÉRIODES SUR 8 À 7/7 OI ; P5 reste à 6/7 (« établir des faits » manquante) ⚠
+   HQC · 3e + 4e secondaire — Données — v1.32.0 (mai 2026) ⭐⭐ CATALOGUE 257 Q · 8 PÉRIODES À 7/7 OI · extraction P6 en cours
+   257 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 28 (6/7 OI ⚠ — « établir des faits » MANQUANTE ; 16 sommatives + 12 guides RÉCIT), P6 = 30 (7/7 OI) ⭐⭐ (16 sommatives + 14 guides RÉCIT),
+   Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 42 (7/7 OI ; +12 du Cahier P6, leçons 1-4 — extraction en cours),
                    P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT),
                    P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
    Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.32.0 — EXTRACTION DU CAHIER PÉRIODE 6 — LOT 2 (LEÇONS 2-3-4) :
+     • +10 questions (na-*), tirées des ÉTAPES 2 des leçons 2 (Clérico-nationalisme), 3 (Politique
+       intérieure canadienne) et 4 (Deuxième phase d'industrialisation). P6 : 32 → 42.
+       — OI4 (causes/conséquences) : na-causes-9 à 14 (6 q). ⚠ Surcharge OI4 ASSUMÉE par l'enseignant
+         (na-causes passe de 8 à 14, de loin l'OI la plus chargée de la P6) : toutes les questions
+         candidates ont été conservées malgré le débalancement, sur décision explicite.
+       — OI5 (changements/continuités) : na-continuite-7 à 10 (4 q), dont na-continuite-7 sur le patron
+         3 pts « changement/continuité + justification + repère de temps » (clone de na-continuite-2).
+     • 6 images extraites du cahier (intégrées, bien cadrées dès l'extraction — aucun recadrage) :
+       na-causes-11/doc1 (diagramme francophones hors-Québec 1901), na-causes-13/doc1 (conso de papier
+       É.-U.) + doc3 (production manufacturière), na-causes-14/doc1 (carte des ressources 1930),
+       na-continuite-9/doc1 (photo de centrale hydroélectrique, Musée McCord), na-continuite-10/doc1
+       (graphique investissements étrangers). Réglettes existantes réutilisées (R_CAUSES_2PT_GEN_1CAUSE,
+       R_CAUSES_2PT_2CAUSES, R_CAUSES_2PT_CONS_SEULE, R_CHANGEMENTS_2PT_GEN, RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS).
+     • na-continuite-10 : période nommée (« entre 1900 et 1930 ») plutôt que « durant cette période ».
+       doc 42 (pensionnats) : citation primaire de J. A. Macdonald reproduite telle quelle (source CVR),
+       pour l'étude critique de la politique d'assimilation. « Établis les faits » + ÉTAPE 3 écartés.
+   v1.31.0 — EXTRACTION DU CAHIER PÉRIODE 6 (lot par lot) — LEÇON 1 :
+     • +2 questions (na-*, réalité nationalismes-autonomie-canada), tirées de l'ÉTAPE 2 (INTERPRÉTATION)
+       de la leçon 1 « Statut du Canada dans l'empire britannique » du Cahier Période 6 (version 2019).
+       — na-continuite-6 (OI5) : un changement de statut politique (statut de Westminster, 1931), doc-texte.
+       — na-differences-4 (OI3) : point de désaccord sur la participation à la guerre des Boers (doc 14/15).
+     • OI au verbe réel (le cahier ne badge pas les OI). Réglettes existantes réutilisées
+       (R_CHANGEMENTS_2PT_GEN, R_DIFFERENCES_2PT_DIVERGENCE). Aucune image (documents-texte).
+     • Questions candidates ÉCARTÉES (choix enseignant) : la « cause de ce changement » (OI4, chaînée sur
+       le même doc que na-continuite-6) et le 2e « désaccord » identique (marine, doc 16/17) — pour éviter
+       la redondance et la surcharge en OI4. La consigne générique « Établis les faits » et l'ÉTAPE 3 sont
+       systématiquement écartées. Extraction des leçons 2-15 à suivre (lots de 3-4 leçons, aperçu PDF).
+   v1.30.0 — CORRECTIF D'EN-TÊTE + TERMINOLOGIE (aucune donnée de fond modifiée) :
+     • SOMMAIRE PÉRIMÉ CORRIGÉ — l'en-tête annonçait « 202 questions » et « P5 = 28 (6/7 OI,
+       "établir des faits" manquante) ». Le contenu réel du fichier compte 245 questions, dont
+       P5 = 71 (slugs fc-*, tirés du Cahier Période 5), à 7/7 OI — y compris 3 questions OI1
+       « établir des faits » (fc-faits-*). Les 7 autres périodes étaient déjà conformes au sommaire.
+       Bilan corrigé : 245 q · 8 périodes sur 8 à 7/7 OI. (Vraisemblablement un artefact de fusion :
+       la P5 étendue avait été intégrée sans mise à jour du bloc-commentaire de tête.)
+     • TERMINOLOGIE « ligne du temps » — verbe « encercle » → « coche » dans les 6 prompts « situer »
+       concernés (q-fc-situer-3, q-mq-situer-1, q-mq-situer-3, q-mq-situer-8, q-mq-situer-9,
+       q-cs-situer-2), pour s'aligner sur q-…-situer déjà en « coche ». NB : le rendu graphique de
+       app.js dessine encore des cercles (« cercle à encercler ») — à ajuster si on veut des cases à cocher.
    v1.29.0 — FIN DE P8 (1980 À NOS JOURS) — INTÉGRATION DES GUIDES PÉDAGOGIQUES RÉCIT (LOT B) :
      • +8 questions (préfixe « cs », réalité choix-societe-quebec-contemporain), tirées des 4 guides RÉCIT de P8
        (« La population québécoise et la culture », « Le statut politique du Québec », « Le Québec dans le monde »,
@@ -2956,6 +2995,86 @@ const DOCS = {
   ],
 
   // ======================================================================
+  // ============ P6 — CAHIER (leçons) — extraction OI (v1.31.0) ===========
+  // ======================================================================
+
+  // ===== Leçon 1 — Statut du Canada dans l'empire britannique =====
+  'na-continuite-6': [
+    { id: "na-co6-d1", title: "Document 1 — Le statut de Westminster (1931)", layout: "text-only",
+      text: "« Jusqu'alors, les pouvoirs du gouvernement britannique en matière de législation des dominions — le Canada, l'Australie, la Nouvelle-Zélande et l'Afrique du Sud — étaient mal définis, ce qui lui assurait en fin de compte l'autorité suprême. La situation commence à changer toutefois après la Première Guerre mondiale : les sacrifices consentis par le Canada et les autres dominions sur les champs de bataille européens ont éveillé des sentiments d'identité nationale et le désir d'une plus grande autonomie vis-à-vis la mère patrie. […] Enfin, en 1931, à la demande des dominions et avec leur consentement, le Parlement britannique vote le statut de Westminster, clarifiant et cimentant davantage l'indépendance législative des dominions. »",
+      sources: ["Source : « Statut de Westminster », L'Encyclopédie canadienne, en ligne, consulté le 26 août 2019."] }
+  ],
+  'na-differences-4': [
+    { id: "na-d4-d1", title: "Document 1 — La démission d'Henri Bourassa du Parti libéral (1899)", layout: "text-only",
+      text: "« Le 13 octobre [1899], […] Laurier décide de l'envoi d'équipement et de troupes « volontaires ». […] Bourassa tient tête à Laurier, critique franchement ses positions et finit par remettre sa lettre de démission du Parti libéral du Canada le 18 octobre 1899, contestant les propensions impérialistes de Laurier, réitérant sa propre conviction d'une autonomie plus grande du Canada à l'égard de la Grande-Bretagne [...]. » Henri Bourassa écrit, dans sa lettre de démission : « Il s'agit de savoir si le Canada est prêt à renoncer à ses prérogatives de colonie constitutionnelle, à sa liberté parlementaire, au pacte conclu avec la métropole après soixante-quinze ans de luttes — et à retourner à l'état primitif de colonie de la Couronne. Il s'agit de décider si le peuple canadien sera appelé à prendre part à toutes les guerres de l'Empire sans que les portes du cabinet et du parlement impériaux lui soient ouvertes, sans même que ses représentants et son gouvernement soient consultés sur l'opportunité de ces luttes sanglantes. Je ne consentirai jamais à appuyer cette politique rétrograde. »",
+      sources: ["Source : Yvan Lamonde, Histoire sociale des idées au Québec, vol. 2 : 1896-1929, Québec, Fides, 2004, p. 22 et Henri Bourassa, « Lettre de démission à Sir Wilfrid Laurier », 20 octobre 1899, citée dans Yvan Lamonde et Claude Corbo, Le rouge et le bleu. Une anthologie de la pensée politique au Québec de la Conquête à la Révolution tranquille, Montréal, Presses de l'Université de Montréal, 1999, p. 302-303."] },
+    { id: "na-d4-d2", title: "Document 2 — Les arguments des partisans de la participation à la guerre des Boers", layout: "text-only",
+      text: "« En pressant Laurier d'envoyer des troupes en Afrique du Sud, les tenants de la participation canadienne à la guerre ne manquaient pas d'arguments. Le ministre fédéral de la Justice, David Mills, fit remarquer dans son livre English in Africa (1900) que les colonies britanniques émancipées se devaient de faire des sacrifices pour la sauvegarde de l'Empire. À son avis, s'il advenait que la Grande-Bretagne fût écrasée en Afrique du Sud, la position du Canada en Amérique du Nord ne pourrait que s'affaiblir. [...] D'autres encore considéraient la question du point de vue économique. Comme le dit un journaliste canadien : « Une présence forte de la Grande-Bretagne en Afrique du Sud présente d'importants avantages commerciaux pour le Canada. En effet, nos manufactures en sont maintenant à un stade où elles ont besoin d'un marché d'exportation. Sous l'aile protectrice de l'Empire, nos industries peuvent trouver dans cette région du monde le marché dont elles rêvent. » Par conséquent, il fallait y envoyer des régiments pour protéger les intérêts commerciaux canadiens : plus l'Empire était vaste, plus était vaste aussi le marché à la disposition des industries canadiennes. »",
+      sources: ["Source : Robert Page, La guerre des Boers et l'impérialisme canadien, Ottawa, La Société historique du Canada, 1987, p. 13-14, en ligne."] }
+  ],
+
+  // ----- Lot 2 (leçons 2-4) -----
+  'na-causes-9': [
+    { id: "na-c9-d1", title: "Document 1 — Le Programme de restauration sociale (1933)", layout: "text-only",
+      text: "« L'École sociale populaire, une institution fondée en 1911 par les jésuites, publie en 1933 son « Programme de restauration sociale ». Ce document critique fortement le capitalisme et le libéralisme, qu'il rend responsables de la Grande Dépression. Le programme recommande un retour aux valeurs traditionnelles chrétiennes, comme la charité, la moralité, l'ordre et la modération. Il ne rejette pas entièrement l'urbanisation et l'industrialisation, mais favorise des mesures comme le retour à la terre, le retour des femmes au foyer et la création d'entreprises et de coopératives canadiennes-françaises. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+  'na-continuite-7': [
+    { id: "na-co7-d1", title: "Document 1 — Le nationalisme de survivance", layout: "text-only",
+      text: "« Le nationalisme de survivance se développe au Bas-Canada après l'échec des Rébellions et l'instauration de l'Acte d'Union, en réponse aux tentatives d'assimilation des autorités britanniques. Il vise la survie de la nation par le maintien de la religion catholique, de la langue française et des institutions canadiennes-françaises et encourage la participation des Canadiens français à la vie économique. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "na-co7-d2", title: "Document 2 — La revue L'Action française (1917)", layout: "text-only",
+      text: "« Ce nous est un grand plaisir que de présenter au public canadien-français l'Action française. […] L'action, en effet, si nous voulons que notre race survive, n'est-elle pas aussi nécessaire à l'époque actuelle qu'aux périodes les plus critiques de notre histoire? Nos droits, nos traditions, notre langue… qu'en restera-t-il dans dix ou vingt ans [...]? Eh bien! nous les rappellerons, nous les restaurerons, nous les défendrons. [...] nous poursuivrons la haute et noble et belle tâche que nous nous sommes imposée : travailler, par une action inlassable, à la survivance de notre race, c'est-à-dire au maintien de sa foi, de sa langue et de ses traditions. »",
+      sources: ["Source : Joseph Gauvreau, « Au public », L'Action française, vol. 1 (25 janvier 1917), p. 8-9, Bibliothèque et Archives nationales du Québec."] }
+  ],
+  'na-continuite-8': [
+    { id: "na-co8-d1", title: "Document 1 — La décision Re Eskimo (1939)", layout: "text-only",
+      text: "« Au début des années 1930, l'effondrement des prix des peaux de renard et la rareté du caribou ont provoqué une importante famine chez les Inuit, au Labrador, dans le Nord du Québec et dans tout l'Arctique. [...] le statut des Inuit et la responsabilité de l'administration de leurs affaires par le gouvernement fédéral n'étaient pas clairement définis. [...] Comme la Loi sur les Indiens ne s'appliquait plus aux Inuit, [...] le Québec a soumis la question de la responsabilité envers les Inuit à la Cour suprême en 1935. [...] Le 5 avril 1939, la Cour suprême a rendu son jugement, Re Eskimo, en donnant raison au Québec et en précisant qu'en termes constitutionnels, les Inuit étaient considérés comme des Indiens au Canada. [...] D'après les Inuit, la décision Re Eskimo leur a conféré le droit à des programmes fédéraux spécifiques dans les domaines qui les concernent, comme les soins de la santé. »",
+      sources: ["Source du texte : Sarah Bonesteel, « La décision Re Eskimo de 1939 et ses répercussions sur les relations entre l'État et les Inuit », juin 2016, Ministère des Affaires autochtones et du Nord Canada, en ligne."] }
+  ],
+  'na-causes-10': [
+    { id: "na-c10-d1", title: "Document 1 — L'impôt, une mesure de guerre", layout: "text-only",
+      text: "« À cause de la Première Guerre mondiale, les coffres du Dominion du Canada se vidaient à une vitesse sans précédent. [...] Une taxe de luxe sur le tabac et l'alcool a été la première de toute une série de taxes introduites durant la Grande Guerre. [...] La Loi taxant les profits d'affaires pour la guerre de 1916 obligeait toutes les sociétés canadiennes dotées de capitaux de 50 000 $ et plus de produire une déclaration de revenus tous les ans. L'impôt sur le revenu des particuliers, introduit en vertu de la Loi de l'impôt de guerre sur le revenu de 1917, était censé être — comme les autres impôts de guerre — une mesure provisoire. »",
+      sources: ["Source : « L'impôt sur le revenu, une mesure de guerre provisoire ? », Découvrez la collection : le Canada et la Première Guerre mondiale, Bibliothèque et Archives Canada."] }
+  ],
+  'na-causes-11': [
+    { id: "na-c11-d1", title: "Document 1 — Proportion de la population francophone du Canada hors-Québec en 1901", layout: "image-only",
+      imageUrl: "assets/img/na-causes-11/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : Statistique Canada."] }
+  ],
+  'na-causes-12': [
+    { id: "na-c12-d1", title: "Document 1 — La création des pensionnats (1883)", layout: "text-only",
+      text: "« En 1883, le gouvernement canadien adopte une politique d'assimilation des Autochtones en créant des pensionnats destinés à inculquer aux enfants la culture occidentale. Pour justifier cette politique, le premier ministre du Canada, sir John A. Macdonald, s'adresse ainsi à la Chambre des communes : « [...] On a fortement insisté auprès de moi, comme chef du département de l'Intérieur, pour soustraire autant que possible les enfants [autochtones] à l'influence de leurs parents. Or, le seul moyen d'y réussir serait de placer ces enfants dans des écoles industrielles centrales [des pensionnats], où ils adopteraient les habitudes et les façons de penser des blancs. » Les trois premiers pensionnats sont créés en 1883, mais leur nombre augmente significativement dans les premières décennies du 20e siècle. En 1930, on en compte 80 à travers le Canada. »",
+      sources: ["Source de la citation : John A. Macdonald, cité dans Commission de vérité et réconciliation du Canada, Ce que nous avons retenu : les principes de la vérité et de la réconciliation, p. 6, en ligne."] }
+  ],
+  'na-continuite-9': [
+    { id: "na-co9-d1", title: "Document 1 — Une centrale hydroélectrique au Québec", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-9/doc1.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Musée McCord."] }
+  ],
+  'na-causes-13': [
+    { id: "na-c13-d1", title: "Document 1 — Consommation de papier per capita aux États-Unis", layout: "image-only",
+      imageUrl: "assets/img/na-causes-13/doc1.png", imageWidthCm: 10,
+      sources: ["Source : Service national du RÉCIT de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "na-c13-d2", title: "Document 2 — L'industrie de la pâte et du papier au Québec", layout: "text-only",
+      text: "« On [les États-Unis] s'approvisionne en pulpe au Québec et la transformation finale (de loin l'opération la plus payante) se fait aux États-Unis. Conscient que les bénéfices émanant de l'exploitation de ses ressources lui échappent, l'État québécois adopte, en 1910, une première mesure visant à ramener le contrôle de ses forêts. Avec cette loi, le Premier ministre Lomer Gouin interdit l'exportation de la pulpe aux États-Unis : les entreprises de l'extérieur doivent désormais s'installer et transformer au Québec pour s'assurer un accès à la ressource. »",
+      sources: ["Source : Valérie Bourgeois et Catherine Lampron-Desaulniers, Industrie papetière au Canada français, Encyclopédie du patrimoine culturel de l'Amérique française."] },
+    { id: "na-c13-d3", title: "Document 3 — Répartition de la production manufacturière au Québec (1900 à 1945)", layout: "image-only",
+      imageUrl: "assets/img/na-causes-13/doc3.png", imageWidthCm: 12,
+      sources: ["Source des données : Marc Vallières, Les industries manufacturières du Québec, 1900-1959, cité dans Paul-André Linteau et al., Histoire du Québec contemporain, Montréal, Boréal, 1989."] }
+  ],
+  'na-continuite-10': [
+    { id: "na-co10-d1", title: "Document 1 — Investissements étrangers au Canada (1900-1930)", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-10/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : Paul-André Linteau et al., Histoire du Québec contemporain : de la Confédération à la Crise, tome 2, Montréal, Boréal, 1989."] }
+  ],
+  'na-causes-14': [
+    { id: "na-c14-d1", title: "Document 1 — L'exploitation des ressources naturelles dans les années 1930", layout: "image-only",
+      imageUrl: "assets/img/na-causes-14/doc1.png", imageWidthCm: 15,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social (carte)."] }
+  ],
+
+  // ======================================================================
   // ============ P7 (1945-1980) — Sommatives Section A (v1.25.0) ==========
   // ======================================================================
 
@@ -5226,7 +5345,7 @@ window.DATA = {
     { id: "q-fc-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 4, niveau: 1,
       realite_sociale_id: "formation-regime-federal",
       questionBody: {
-        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        prompt: "Sur la ligne du temps, coche la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
         responseSpace: { type: "timeline-segments", periods: [
           { letter: "A", range: "1840–1848" },
           { letter: "B", range: "1848–1867" },
@@ -6397,6 +6516,142 @@ window.DATA = {
       corrige: ["Document 3", "Document 1", "Document 2", "Document 4"] },
 
     // ======================================================================
+    // ============ P6 — CAHIER (leçons) — extraction OI (v1.31.0) ===========
+    // ======================================================================
+
+    // ===== Leçon 1 — Statut du Canada dans l'empire — OI5 (changement : Statut de Westminster) =====
+    { id: "q-na-continuite-6", operation: "Déterminer des changements et des continuités", numero: 6, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement quant au statut politique du Canada.",
+        responseSpace: { type: "lines", count: 2 }
+      },
+      reglettes: [{ id: "r-na-co6", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-6', 1),
+      corrige: "Avec l'adoption du statut de Westminster (1931), le Canada devient libre sur le plan de la politique extérieure : il obtient l'autonomie législative et peut désormais mener ses propres relations internationales sans l'autorité du Parlement britannique." },
+
+    // ===== Leçon 1 — Statut du Canada dans l'empire — OI3 (désaccord : guerre des Boers) =====
+    { id: "q-na-differences-4", operation: "Dégager des différences et des similitudes", numero: 4, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Sur quel point précis les acteurs des documents 1 et 2 sont-ils en désaccord ?",
+        responseSpace: { type: "lines", count: 3 }
+      },
+      reglettes: [{ id: "r-na-d4", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('na-differences-4', 1, 2),
+      corrige: "Les acteurs sont en désaccord sur la participation militaire du Canada aux guerres de l'Empire britannique (la guerre des Boers, en Afrique du Sud). Bourassa s'y oppose au nom de l'autonomie canadienne, tandis que Mills la juge nécessaire à la sauvegarde de l'Empire et avantageuse sur le plan économique." },
+
+    // ===== Leçon 2 — Programme de restauration sociale (raison) — OI4 =====
+    { id: "q-na-causes-9", operation: "Déterminer des causes et des conséquences", numero: 9, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique une raison qui explique la publication du Programme de restauration sociale par l'École sociale populaire, en 1933.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c9", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-9', 1),
+      corrige: "L'École sociale populaire publie le Programme de restauration sociale afin d'offrir une alternative au capitalisme, qu'elle juge responsable de la Grande Dépression, et de promouvoir un retour aux valeurs traditionnelles chrétiennes." },
+
+    // ===== Leçon 2 — Continuité/changement des idées (justif. + repère de temps) — OI5 =====
+    { id: "q-na-continuite-7", operation: "Déterminer des changements et des continuités", numero: 7, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir des documents 1 et 2, indique s'il y a changement ou continuité dans les idées véhiculées au Québec. Justifie ton choix par des faits et un repère de temps.",
+        responseSpace: {"type":"lines","count":5}
+      },
+      reglettes: [{ id: "r-na-co7", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('na-continuite-7', 1, 2),
+      corrige: "Il y a continuité : comme la revue L'Action française dès 1917, le Programme de restauration sociale (1933) défend la survivance de la nation par le maintien de la langue française et de la religion catholique et encourage le retour à la terre. (On peut aussi soutenir « changement », car le Programme propose des idées nouvelles comme le mouvement coopératif et la création d'entreprises canadiennes-françaises.)" },
+
+    // ===== Leçon 3 — Statut des Inuits (jugement Re Eskimo, 1939) — OI5 =====
+    { id: "q-na-continuite-8", operation: "Déterminer des changements et des continuités", numero: 8, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement quant au statut des Inuits dans les années 1930.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co8", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-8', 1),
+      corrige: "À partir de 1939 (jugement Re Eskimo de la Cour suprême), les Inuits sont considérés comme des « Indiens » au sens constitutionnel : la responsabilité de leurs affaires relève désormais du gouvernement fédéral (tutelle fédérale), ce qui leur ouvre l'accès à des programmes fédéraux." },
+
+    // ===== Leçon 3 — Nouveaux impôts (financer l'effort de guerre) — OI4 =====
+    { id: "q-na-causes-10", operation: "Déterminer des causes et des conséquences", numero: 10, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique une raison qui explique l'instauration de nouveaux impôts au Canada dans les années 1910.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c10", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-10', 1),
+      corrige: "De nouveaux impôts sont instaurés afin de financer l'effort de guerre (Première Guerre mondiale), car les coffres du Dominion du Canada se vidaient à une vitesse sans précédent." },
+
+    // ===== Leçon 3 — Francophones hors-Québec minoritaires — OI4 (doc-image : diagramme) =====
+    { id: "q-na-causes-11", operation: "Déterminer des causes et des conséquences", numero: 11, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un facteur qui explique pourquoi les droits des Canadiens français hors-Québec sont menacés au début du 20e siècle.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c11", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-11', 1),
+      corrige: "Les Canadiens français hors-Québec voient leurs droits menacés parce qu'ils y sont très minoritaires : en 1901, ils ne représentent qu'environ 8 % de la population du Canada hors-Québec (document 1)." },
+
+    // ===== Leçon 3 — Création des pensionnats (assimilation) — OI4 =====
+    { id: "q-na-causes-12", operation: "Déterminer des causes et des conséquences", numero: 12, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique pour quelle raison les pensionnats autochtones ont été créés, en 1883.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c12", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-12', 1),
+      corrige: "Les pensionnats sont créés dans le but d'assimiler les Autochtones : on cherche à inculquer aux enfants la culture et les façons de penser des Blancs, notamment en les soustrayant à l'influence de leurs parents." },
+
+    // ===== Leçon 4 — Source d'énergie (charbon → hydroélectricité) — OI5 (doc-image : photo) =====
+    { id: "q-na-continuite-9", operation: "Déterminer des changements et des continuités", numero: 9, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique le changement qui s'est produit quant à la principale source d'énergie entre la première et la deuxième phase d'industrialisation.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co9", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-9', 1),
+      corrige: "La principale source d'énergie passe du charbon (machine à vapeur), durant la première phase d'industrialisation, à l'hydroélectricité durant la deuxième phase." },
+
+    // ===== Leçon 4 — Exportations de papier (2 raisons) — OI4 (docs : image + texte + image) =====
+    { id: "q-na-causes-13", operation: "Déterminer des causes et des conséquences", numero: 13, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 à 3, indique deux raisons qui expliquent la hausse des exportations de papier canadien vers les États-Unis dans les années 1910.",
+        responseSpace: {"type":"labeled-list","items":["Cause 1","Cause 2"],"linesPerItem":2}
+      },
+      reglettes: [{ id: "r-na-c13", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('na-causes-13', 1, 2, 3),
+      corrige: "Cause 1 : le Québec dispose de vastes forêts de conifères, une matière première abondante pour la fabrication de la pâte et du papier (documents 2 et 3). Cause 2 : la demande des États-Unis en papier (notamment en papier journal) est très forte et en forte croissance au début du 20e siècle (document 1)." },
+
+    // ===== Leçon 4 — Partenaires économiques (R.-U. → É.-U.) — OI5 (doc-image : graphique) =====
+    { id: "q-na-continuite-10", operation: "Déterminer des changements et des continuités", numero: 10, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement quant aux principaux partenaires économiques du Canada entre 1900 et 1930.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co10", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-10', 1),
+      corrige: "Le principal partenaire économique change : avant la deuxième phase d'industrialisation, c'était le Royaume-Uni, alors qu'ensuite ce sont les États-Unis qui dominent les investissements et les échanges au Canada." },
+
+    // ===== Leçon 4 — Essor industriel → développement du territoire (conséquence) — OI4 (doc-image : carte) =====
+    { id: "q-na-causes-14", operation: "Déterminer des causes et des conséquences", numero: 14, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique une conséquence de l'essor industriel sur le développement du territoire québécois.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c14", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-14', 1),
+      corrige: "L'essor industriel entraine un développement accru du territoire québécois : de nouvelles régions s'ouvrent à l'exploitation des ressources (centrales hydroélectriques, papetières, mines), ce qui étend l'occupation et l'aménagement du territoire (document 1)." },
+
+    // ======================================================================
     // ============ P7 (1945-1980) — Sommatives Section A (v1.25.0) ==========
     // ======================================================================
 
@@ -6404,7 +6659,7 @@ window.DATA = {
     { id: "q-mq-situer-1", operation: "Situer dans le temps et dans l'espace", numero: 1, annee: 4, niveau: 3,
       realite_sociale_id: "modernisation-quebec",
       questionBody: {
-        prompt: "Sur la ligne du temps, encercle la lettre qui correspond aux mandats du premier ministre du Québec présenté dans le document 1.",
+        prompt: "Sur la ligne du temps, coche la lettre qui correspond aux mandats du premier ministre du Québec présenté dans le document 1.",
         responseSpace: { type: "timeline-segments", periods: [
           { letter: "A", range: "1954–1960" },
           { letter: "B", range: "1960–1966" },
@@ -6564,7 +6819,7 @@ window.DATA = {
     { id: "q-mq-situer-3", operation: "Situer dans le temps et dans l'espace", numero: 3, annee: 4, niveau: 3,
       realite_sociale_id: "modernisation-quebec",
       questionBody: {
-        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        prompt: "Sur la ligne du temps, coche la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
         responseSpace: { type: "timeline-segments", periods: [
           { letter: "A", range: "1945–1960" },
           { letter: "B", range: "1960–1970" },
@@ -6762,7 +7017,7 @@ window.DATA = {
     { id: "q-mq-situer-8", operation: "Situer dans le temps et dans l'espace", numero: 8, annee: 4, niveau: 3,
       realite_sociale_id: "modernisation-quebec",
       questionBody: {
-        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        prompt: "Sur la ligne du temps, coche la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
         responseSpace: { type: "timeline-segments", periods: [
           { letter: "A", range: "1945–1955" },
           { letter: "B", range: "1955–1960" },
@@ -6828,7 +7083,7 @@ window.DATA = {
     { id: "q-mq-situer-9", operation: "Situer dans le temps et dans l'espace", numero: 9, annee: 4, niveau: 3,
       realite_sociale_id: "modernisation-quebec",
       questionBody: {
-        prompt: "Sur la ligne du temps, encercle la lettre correspondant à la période pendant laquelle entre en vigueur la loi présentée dans le document 1.",
+        prompt: "Sur la ligne du temps, coche la lettre correspondant à la période pendant laquelle entre en vigueur la loi présentée dans le document 1.",
         responseSpace: { type: "timeline-segments", periods: [
           { letter: "A", range: "1945–1955" },
           { letter: "B", range: "1955–1960" },
@@ -7013,7 +7268,7 @@ window.DATA = {
     { id: "q-cs-situer-2", operation: "Situer dans le temps et dans l'espace", numero: 2, annee: 4, niveau: 4,
       realite_sociale_id: "choix-societe-quebec-contemporain",
       questionBody: {
-        prompt: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
+        prompt: "Sur la ligne du temps, coche la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document 1.",
         responseSpace: { type: "timeline-segments", periods: [
           { letter: "A", range: "1980–1985" },
           { letter: "B", range: "1985–1990" },
