@@ -1,12 +1,32 @@
 /* ============================================================
-   HQC · 3e + 4e secondaire — Données — v1.33.0 (mai 2026) ⭐⭐ CATALOGUE 273 Q · 8 PÉRIODES À 7/7 OI · extraction P6 en cours
-   273 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
+   HQC · 3e + 4e secondaire — Données — v1.34.0 (mai 2026) ⭐⭐ CATALOGUE 297 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P6 TERMINÉE (leçons 1-15)
+   297 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
-   Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 58 (7/7 OI ; +28 du Cahier P6, leçons 1-8 — extraction en cours),
+   Couverture 4e : P5 = 71 (7/7 OI ✓ — slugs fc-*, tirés du Cahier Période 5 ; dont 3 q OI1 « établir des faits »), P6 = 82 (7/7 OI ✓ — slugs na-* ; +52 tirées du Cahier P6, leçons 1-15, extraction TERMINÉE),
                    P7 = 39 (7/7 OI ⭐⭐ — 18 sommatives Section A + 21 questions des 6 guides RÉCIT),
                    P8 = 25 (7/7 OI ⭐⭐ — 17 sommatives Section A V-A + V-B + 8 questions des 4 guides RÉCIT). Total cahier P8 = 55 points.
    Répartition OI de P8 (25 q) : causes/conséquences 6 · différences/similitudes 5 · changements/continuités 4 ·
                    mettre en relation 3 · situer 3 · causalité 3 · établir des faits 1.
+   v1.34.0 — EXTRACTION DU CAHIER PÉRIODE 6 — LOT 4 (LEÇONS 9-15) + FIN DE L'EXTRACTION :
+     • +24 questions (na-*), tirées des ÉTAPES 2 des leçons 9 (Église), 10 (Éducation), 11 (Flux
+       migratoires), 12 (Première Guerre mondiale), 13 (Grande dépression), 14 (Remise en question du
+       capitalisme) et 15 (Seconde Guerre mondiale). P6 : 58 → 82. EXTRACTION DU CAHIER P6 TERMINÉE.
+       — OI4 : na-causes-23 à 40 (18 q). — OI5 : na-continuite-16 à 19 (4 q). — OI3 : na-differences-7
+         (désaccord Bourassa/Borden sur la conscription). — OI7 : na-causalite-6 (causalité « l'Église
+         influence le gouvernement durant la crise », docs 233+234, RUBRIC_CAUSALITE_3PT + bullets).
+     • 10 images extraites (intégrées, bien cadrées) : na-causes-24/doc2 (population 1901-1951),
+       na-continuite-18/doc1 (origine ethnique des Montréalais), na-causes-29/doc1 (immigrants 1913-1919),
+       na-causes-30/doc1 (caricature « statut égal »), na-causes-31/doc2 (manifestation 1918),
+       na-causes-32/doc1+doc2 (production manufacturière + Dow Jones), na-causalite-6/doc1 et
+       na-causes-34/doc1 (bancs de parc), na-causes-38/doc1 (ouvrière de guerre), na-causes-39/doc1
+       (plébiscite 1942). Réglettes existantes réutilisées.
+     • ÉCARTÉES (conventions) : tableaux/cycles à compléter (L9 Q5 « impact de l'Église », L13 Q6
+       « cycle de la crise »), L12 Q11 (association dépendante du dossier), L13 Q12 (sans document),
+       « Établis les faits » et ÉTAPE 3. ⚠ OI4 désormais nettement dominante en P6 (40 q) — assumé.
+     • REFORMULATION D'ÉNONCÉS OI4 (convention « Explique pourquoi… ») appliquée à TOUTE la P6 :
+       17 énoncés passés de « Indique une raison/cause qui explique… / le but / l'objectif » à
+       « Explique pourquoi… » — na-causes-23, 25, 27, 28, 29, 34, 35, 36, 39 (Lot 4) et na-causes-1, 9,
+       10, 11, 12, 17, 19, 22 (déjà fusionnées). (na-causes-1 était une question préexistante.)
    v1.33.0 — EXTRACTION DU CAHIER PÉRIODE 6 — LOT 3 (LEÇONS 5-6-7-8) :
      • +16 questions (na-*), tirées des ÉTAPES 2 des leçons 5 (Milieux urbains), 6 (Culture de masse),
        7 (Lutte des femmes) et 8 (Mouvement syndical). P6 : 42 → 58.
@@ -3179,6 +3199,143 @@ const DOCS = {
       sources: ["Source : Peter Gossage et J. I. Little, Une histoire du Québec. Entre tradition et modernité, Montréal, Hurtubise, 2015, p. 183."] }
   ],
 
+  // ----- Lot 4 (leçons 9-15) — DERNIER LOT du Cahier P6 -----
+  'na-continuite-16': [
+    { id: "na-co16-d1", title: "Document 1 — Les effectifs de l'Église québécoise", layout: "text-only",
+      text: "« Institution dominante d'un peuple dominé, l'Église québécoise affiche des effectifs impressionnants au tournant du XXe siècle. En 1900-1901, elle regroupe 2 276 prêtres, 2 391 religieux et 6 628 religieuses. Le Québec compte alors un prêtre pour 680 fidèles et un religieux ou une religieuse pour 166, des proportions parmi les plus élevées du monde catholique. [...] En 1931, le Québec compte 4 300 prêtres, soit 1 pour 576 fidèles, et 1 religieux ou 1 religieuse pour 97 fidèles, au sommet de la catholicité. Au début de la crise [économique des années 1930], pas moins de 27 100 Québécoises sont des religieuses contre 15 200 en 1911. »",
+      sources: ["Source : Lucia Ferretti, Brève histoire de l'Église catholique au Québec, Montréal, Boréal, 1999, p. 102 et 116."] }
+  ],
+  'na-causes-23': [
+    { id: "na-c23-d1", title: "Document 1 — L'Église et le mouvement coopératif", layout: "text-only",
+      text: "« Les valeurs qui étaient en place étaient très catholiques et, sur le plan historique, elles ressemblaient à celles qui sont alors prônées par le mouvement coopératif en général : ce sont les valeurs du mouvement ouvrier chrétien, des valeurs de solidarité, d'entraide, de prise en charge, etc. Donc, ce précurseur a réussi dans ses réalisations parce qu'il était beaucoup appuyé par l'Église. » [...] On a souvent dit que, si on cherchait une caisse populaire, on allait la trouver à l'ombre d'un clocher d'église. En fait, Alphonse Desjardins a largement favorisé l'émergence des caisses en s'appuyant sur l'autorité morale ecclésiastique. »",
+      sources: ["Source : Réginald Harvey, « À partir de 1900 — La grande aventure coopérative au Québec est un modèle planétaire », Le Devoir, 31 mars 2012, en ligne."] }
+  ],
+  'na-causes-24': [
+    { id: "na-c24-d1", title: "Document 1 — Les effectifs de l'Église québécoise", layout: "text-only",
+      text: "« [...] Chassés par les lois Combes*, 1 230 religieux et religieuses supplémentaires arrivent de France entre 1902 et 1904, si bien qu'à la veille de la Première Guerre mondiale, l'Église québécoise rassemble environ 3 000 prêtres et 95 congrégations religieuses. [...] Au début de la crise, pas moins de 27 100 Québécoises sont des religieuses contre 15 200 en 1911. » (*Lois Combes : en France, lois instituant la séparation de l'Église et de l'État.)",
+      sources: ["Source : Lucia Ferretti, Brève histoire de l'Église catholique au Québec, Montréal, Boréal, 1999, p. 102 et 116."] },
+    { id: "na-c24-d2", title: "Document 2 — Population du Québec entre 1901 et 1951", layout: "image-only",
+      imageUrl: "assets/img/na-causes-24/doc2.png", imageWidthCm: 11,
+      sources: ["Source des données : Statistique Canada."] }
+  ],
+  'na-causes-25': [
+    { id: "na-c25-d1", title: "Document 1 — La fréquentation scolaire à Québec (1871-1901)", layout: "text-only",
+      text: "« En somme, l'étude de la fréquentation scolaire au sein de la ville de Québec au tournant du XXe siècle a permis de relever un certain nombre de constats. D'abord, une généralisation progressive de la fréquentation scolaire caractérise Québec entre 1871 et 1901. Toutefois, cette période n'est pas marquée d'une expansion de la fréquentation scolaire aux âges avancés, probablement parce que l'industrialisation de la ville à la fin du XIXe siècle a généré des emplois exigeant peu de qualifications. »",
+      sources: ["Source : Mélanie Julien, « La fréquentation scolaire à Québec, 1871-1901 [...] », Cahiers québécois de démographie, vol. 37, no 1 (printemps 2008), p. 43-44, en ligne."] }
+  ],
+  'na-continuite-17': [
+    { id: "na-co17-d1", title: "Document 1 — Vers l'instruction obligatoire", layout: "text-only",
+      text: "« Alors que l'Église catholique combat avec acharnement tous les efforts visant à instaurer l'instruction obligatoire, les anglo-protestants [...] s'en font les ardents défenseurs. [...] En fait, ce ne sera qu'en 1942 [...] que le Comité catholique du Conseil de l'instruction publique acceptera le principe de la fréquentation obligatoire jusqu'à l'âge de 14 ans et ce ne sera que l'année suivante que le gouvernement Godbout adoptera enfin une loi pour l'imposer et pour décréter la gratuité des études primaires. »",
+      sources: ["Source : Pierre Graveline, Une histoire de l'éducation au Québec, Montréal, Fides / Bibliothèque québécoise, 2007, p. 57-58."] }
+  ],
+  'na-causes-26': [
+    { id: "na-c26-d1", title: "Document 1 — Le nativisme pendant la crise", layout: "text-only",
+      text: "« Par ailleurs, le débat public canadien qui se tenait à l'époque [pendant la crise] était bien souvent teinté d'un fort sentiment de nativisme, tel qu'exprimé par le révérend W. B. Williston : « Le public a tout à fait le droit de demander que vous quittiez l'endroit, vous les Russes et autres personnes provenant de l'Europe qui ne sont au pays que depuis une courte période [...], ne devraient pas être autorisés à travailler [...], alors que des centaines de Canadiens font la file pour avoir du pain. » »",
+      sources: ["Source : « Il n'y a pas de loi d'exclusion dans la Confédération du Canada : la déportation du Canada au cours de la Grande Dépression », Musée canadien de l'immigration, en ligne."] }
+  ],
+  'na-continuite-18': [
+    { id: "na-co18-d1", title: "Document 1 — Origine ethnique des Montréalais en 1901 et 1931", layout: "image-only",
+      imageUrl: "assets/img/na-continuite-18/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : Histoire de Montréal et sa région, tome 1, Presses de l'Université Laval."] }
+  ],
+  'na-causes-27': [
+    { id: "na-c27-d1", title: "Document 1 — La politique d'immigration de Clifford Sifton", layout: "text-only",
+      text: "« La propagande énergique sur l'immigration par Clifford Sifton connaît un immense succès. Sous sa direction, le ministère de l'Intérieur favorise le peuplement dans l'Ouest canadien, profitant d'une forte reprise économique qui rend l'agriculture plus attrayante dans l'Ouest. Le département cible des colons agriculteurs aux États-Unis, en Grande-Bretagne et [...] en Europe centrale et orientale. [...] Cependant, certaines personnes ne sont pas les bienvenues comme immigrantes [...] car, de l'avis de Clifford Sifton, elles sont peu aptes à l'exploitation agricole. »",
+      sources: ["Source : David J. Hall, « Sir Clifford Sifton », L'Encyclopédie canadienne, en ligne."] }
+  ],
+  'na-causes-28': [
+    { id: "na-c28-d1", title: "Document 1 — Les immigrants jugés « peu aptes » à l'agriculture", layout: "text-only",
+      text: "« [...] Le département cible des colons agriculteurs aux États-Unis, en Grande-Bretagne et de façon très controversée en Europe centrale et orientale. [...] Cependant, certaines personnes ne sont pas les bienvenues comme immigrantes, par exemple les Européens du Sud, les Noirs, les citadins britanniques, les Asiatiques de l'Est, car, de l'avis de Clifford Sifton, elles sont peu aptes à l'exploitation agricole. »",
+      sources: ["Source : David J. Hall, « Sir Clifford Sifton », L'Encyclopédie canadienne, en ligne."] }
+  ],
+  'na-causes-29': [
+    { id: "na-c29-d1", title: "Document 1 — Nombre d'immigrants reçus annuellement au Canada (1913-1919)", layout: "image-only",
+      imageUrl: "assets/img/na-causes-29/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : Emploi et Immigration Canada, 1982."] }
+  ],
+  'na-causes-30': [
+    { id: "na-c30-d1", title: "Document 1 — « Aussi grand que papa » (caricature, 1931)", layout: "image-only",
+      imageUrl: "assets/img/na-causes-30/doc1.png", imageWidthCm: 9,
+      sources: ["Source : The Montreal Daily Star, 1931 (traduction)."] },
+    { id: "na-c30-d2", title: "Document 2 — Vers une plus grande autonomie", layout: "text-only",
+      text: "« [...] les sacrifices consentis par le Canada et les autres dominions sur les champs de bataille européens ont éveillé des sentiments d'identité nationale et le désir d'une plus grande autonomie vis-à-vis la mère patrie [...]. La Conférence impériale de 1926 est une première initiative plus officielle qui donne une substance légale à la déclaration de Balfour qui avait affirmé la même année le « statut égal » de la Grande-Bretagne et des dominions sur le plan constitutionnel. »",
+      sources: ["Source : Norman Hillmer, « Statut de Westminster », L'Encyclopédie canadienne, en ligne."] }
+  ],
+  'na-differences-7': [
+    { id: "na-d7-d1", title: "Document 1 — Deux points de vue sur l'effort de guerre", layout: "text-only",
+      text: "Henri Bourassa (1917) : « Le Canada a déjà levé une armée de 420 000 hommes sur une population totale de 7 000 000. [...] Demander au Canada de faire plus serait un outrage. »\n\nRobert Borden (1916) : « Je rapporte un message de la part de nos soldats à la population canadienne : c'est qu'ils ont besoin de notre aide [...] il faut leur expédier des renforts [...]. Je me retrouverais indigne de la responsabilité qui repose sur mes épaules, si je ne remplissais la promesse solennelle que je leur ai donnée [...]. »",
+      sources: ["Source : Henri Bourassa (1917) et Robert Borden (1916), cités par le Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+  'na-causes-31': [
+    { id: "na-c31-d1", title: "Document 1 — Le besoin urgent de renforts", layout: "text-only",
+      text: "« Je suis en situation de dire à la Chambre et au pays que le besoin de renforts est urgent, pressant [et] impérieux. [...] les renforts actuellement disponibles ne dureront que quelques mois [...]. »",
+      sources: ["Source : Robert Borden, discours à la Chambre des communes, 11 juin 1917."] },
+    { id: "na-c31-d2", title: "Document 2 — Manifestation à Montréal, 24 mai 1918", layout: "image-only",
+      imageUrl: "assets/img/na-causes-31/doc2.png", imageWidthCm: 11,
+      sources: ["Source de l'image : Wikimédia Commons / Musée McCord."] }
+  ],
+  'na-causes-32': [
+    { id: "na-c32-d1", title: "Document 1 — Valeur brute de la production manufacturière (1921-1929)", layout: "image-only",
+      imageUrl: "assets/img/na-causes-32/doc1.png", imageWidthCm: 11,
+      sources: ["Source des données : F.-A. Angers et R. Parenteau, Statistiques manufacturières du Québec, 1665-1948, 1966."] },
+    { id: "na-c32-d2", title: "Document 2 — Indice Dow Jones (janvier 1921 à septembre 1929)", layout: "image-only",
+      imageUrl: "assets/img/na-causes-32/doc2.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Wikimédia Commons."] }
+  ],
+  'na-causalite-6': [
+    { id: "na-ca6-d1", title: "Document 1 — Bancs de parc, Montréal, vers 1935", layout: "image-only",
+      imageUrl: "assets/img/na-causalite-6/doc1.png", imageWidthCm: 10,
+      sources: ["Source de l'image : Musée McCord."] },
+    { id: "na-ca6-d2", title: "Document 2 — Les plans de colonisation", layout: "text-only",
+      text: "« Les plans Gordon (1932-1934) et Vautrin (1935-1937) permettent ainsi à plus de 35 000 Québécois de s'établir en Abitibi, au Témiscamingue, en Gaspésie et au Lac-Saint-Jean. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+  'na-causes-33': [
+    { id: "na-c33-d1", title: "Document 1 — Les travailleurs pendant la crise", layout: "text-only",
+      text: "« Des milliers de travailleurs sont jetés sur le pavé par la fermeture de leur entreprise. Plusieurs attendront des mois, des années même, avant de retrouver une autre occupation stable. Désœuvrés, ils errent dans les rues ou près des usines; le désespoir est fréquent. »",
+      sources: ["Source : Danielle Dion-McKinnon et Pierre Lalongé, Notre histoire, Montréal, ERPI, 1984, p. 83."] }
+  ],
+  'na-causes-34': [
+    { id: "na-c34-d1", title: "Document 1 — Bancs de parc, Montréal, vers 1935", layout: "image-only",
+      imageUrl: "assets/img/na-causes-34/doc1.png", imageWidthCm: 10,
+      sources: ["Source de l'image : Musée McCord."] }
+  ],
+  'na-causes-35': [
+    { id: "na-c35-d1", title: "Document 1 — La loi du cadenas (1937)", layout: "text-only",
+      text: "« Le gouvernement unioniste de Maurice Duplessis fait adopter à l'unanimité la « Loi protégeant la province contre la propagande communiste ». Cette dernière interdit la publication et la distribution de tout document « communiste » ou « bolchévique ». Cette loi donne aussi le droit aux forces de l'ordre de mettre sous cadenas — de là le nom de la loi — tout établissement consacré à la propagande communiste. La Loi « du cadenas », que le gouvernement utilisera à quelques reprises, notamment contre les syndicats, sera jugée anticonstitutionnelle par la Cour suprême en 1957. »",
+      sources: ["Source : « Adoption par l'Assemblée législative de la Loi du cadenas », Bilan du Siècle, Université de Sherbrooke, en ligne."] }
+  ],
+  'na-causes-36': [
+    { id: "na-c36-d1", title: "Document 1 — Adrien Arcand et le PNSC", layout: "text-only",
+      text: "« Car si Arcand, le Canadien français, fait ses premières armes dans la petite société qui l'a vu naître, son rêve en déborde largement les frontières. [...] Hitler est pour lui un homme « brave et courageux », un « homme d'État incorruptible et propre ». Le chef du PNSC se frotte plutôt aux fascistes anglais et développe une admiration sans bornes pour l'Empire britannique. Royaliste de surcroît, Arcand exulte à l'idée d'une sorte de Commonwealth fasciste sur lequel le soleil ne se coucherait jamais. »",
+      sources: ["Source : Jean-François Légaré-Tremblay, Le Devoir, 1er avril 2010, en ligne."] }
+  ],
+  'na-causes-37': [
+    { id: "na-c37-d1", title: "Document 1 — Le keynésianisme et l'État providence", layout: "text-only",
+      text: "« Afin d'apaiser les Canadiens qui craignent un retour à la dépression économique après la guerre et qui se tournent vers l'État pour une plus grande sécurité sociale, King instaure l'assurance-chômage en 1940, et son programme de reconstruction, fondé sur les principes de l'Économie keynésienne, comprend des allocations familiales et des propositions en vue d'un programme d'assurance-maladie. »",
+      sources: ["Source : H. Blair Neatby, « William Lyon Mackenzie King », L'Encyclopédie canadienne, en ligne."] }
+  ],
+  'na-causes-38': [
+    { id: "na-c38-d1", title: "Document 1 — Une ouvrière dans une usine de guerre", layout: "image-only",
+      imageUrl: "assets/img/na-causes-38/doc1.png", imageWidthCm: 9,
+      sources: ["Source de l'image : Bibliothèque et Archives Canada."] }
+  ],
+  'na-continuite-19': [
+    { id: "na-co19-d1", title: "Document 1 — L'entrée en guerre du Canada (1914 et 1939)", layout: "text-only",
+      text: "Première Guerre mondiale : « [...] quand [la Grande-Bretagne] est en guerre, le Canada l'est également. Mais c'était là l'unique obligation du Canada; le niveau de participation militaire aux côtés de la Grande-Bretagne est une décision qui appartenait au gouvernement canadien. »\n\nSeconde Guerre mondiale : « Cette déclaration de guerre n'engage pas nécessairement le Canada, comme en 1914 [...]. Le 7 septembre, le Parlement du Canada s'est réuni en session spéciale; le 9 septembre, il accorde son appui [...] et le 10 septembre, le roi George VI annonce que le Canada a déclaré la guerre. »",
+      sources: ["Source : « Le début du conflit / Le début de la guerre », Ministère des Anciens Combattants, en ligne."] }
+  ],
+  'na-causes-39': [
+    { id: "na-c39-d1", title: "Document 1 — Résultats du plébiscite sur la conscription (1942)", layout: "image-only",
+      imageUrl: "assets/img/na-causes-39/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] }
+  ],
+  'na-causes-40': [
+    { id: "na-c40-d1", title: "Document 1 — Le déclenchement de la Seconde Guerre mondiale", layout: "text-only",
+      text: "« Avant même le déclenchement de la Seconde Guerre mondiale, le 3 septembre 1939, l'Allemagne a déjà largement étendu son territoire à l'est, bien au-delà de ses frontières de 1914, en Autriche et en Tchécoslovaquie. Au cours de ces six années, le processus de démantèlement du traité de Versailles résulte de la combinaison de deux facteurs : des pressions allemandes de plus en plus agressives et, face à elles, une force d'opposition divisée et démoralisée. »",
+      sources: ["Source : Robert O. Paxton et Julie Hessler, « Le démantèlement du traité de Versailles : agression et apaisement, 1933-1939 », L'Europe au XXe siècle, 2011."] }
+  ],
+
   // ======================================================================
   // ============ P7 (1945-1980) — Sommatives Section A (v1.25.0) ==========
   // ======================================================================
@@ -6239,7 +6396,7 @@ window.DATA = {
     { id: "q-na-causes-1", operation: "Déterminer des causes et des conséquences", numero: 1, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "Indique une raison qui explique l'amélioration des conditions de vie en ville dans la première moitié du 20e siècle.",
+        prompt: "Explique pourquoi les conditions de vie en ville s'améliorent dans la première moitié du 20e siècle.",
         responseSpace: { type: "lines", count: 2 }
       },
       reglettes: [{ id: "r-na-c1", label: "Réglette (2 points)", ...R_CAUSES_2PT_1CAUSE_SOMA }],
@@ -6650,7 +6807,7 @@ window.DATA = {
     { id: "q-na-causes-9", operation: "Déterminer des causes et des conséquences", numero: 9, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "À partir du document 1, indique une raison qui explique la publication du Programme de restauration sociale par l'École sociale populaire, en 1933.",
+        prompt: "À partir du document 1, explique pourquoi l'École sociale populaire publie le Programme de restauration sociale en 1933.",
         responseSpace: {"type":"lines","count":2}
       },
       reglettes: [{ id: "r-na-c9", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
@@ -6683,7 +6840,7 @@ window.DATA = {
     { id: "q-na-causes-10", operation: "Déterminer des causes et des conséquences", numero: 10, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "À partir du document 1, indique une raison qui explique l'instauration de nouveaux impôts au Canada dans les années 1910.",
+        prompt: "À partir du document 1, explique pourquoi de nouveaux impôts sont instaurés au Canada dans les années 1910.",
         responseSpace: {"type":"lines","count":2}
       },
       reglettes: [{ id: "r-na-c10", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
@@ -6694,7 +6851,7 @@ window.DATA = {
     { id: "q-na-causes-11", operation: "Déterminer des causes et des conséquences", numero: 11, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "À partir du document 1, indique un facteur qui explique pourquoi les droits des Canadiens français hors-Québec sont menacés au début du 20e siècle.",
+        prompt: "À partir du document 1, explique pourquoi les droits des Canadiens français hors-Québec sont menacés au début du 20e siècle.",
         responseSpace: {"type":"lines","count":2}
       },
       reglettes: [{ id: "r-na-c11", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
@@ -6705,7 +6862,7 @@ window.DATA = {
     { id: "q-na-causes-12", operation: "Déterminer des causes et des conséquences", numero: 12, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "À partir du document 1, indique pour quelle raison les pensionnats autochtones ont été créés, en 1883.",
+        prompt: "À partir du document 1, explique pourquoi les pensionnats autochtones ont été créés en 1883.",
         responseSpace: {"type":"lines","count":2}
       },
       reglettes: [{ id: "r-na-c12", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
@@ -6804,7 +6961,7 @@ window.DATA = {
     { id: "q-na-causes-17", operation: "Déterminer des causes et des conséquences", numero: 17, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "À partir du document 1, indique une raison qui explique pourquoi le hockey est devenu un élément de la culture de masse.",
+        prompt: "À partir du document 1, explique pourquoi le hockey est devenu un élément de la culture de masse.",
         responseSpace: {"type":"lines","count":2}
       },
       reglettes: [{ id: "r-na-c17", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
@@ -6871,7 +7028,7 @@ window.DATA = {
     { id: "q-na-causes-19", operation: "Déterminer des causes et des conséquences", numero: 19, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "À partir du document 1, indique une raison qui explique la publication du Traité de droit usuel, en 1902.",
+        prompt: "À partir du document 1, explique pourquoi le Traité de droit usuel a été publié en 1902.",
         responseSpace: {"type":"lines","count":2}
       },
       reglettes: [{ id: "r-na-c19", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
@@ -6926,12 +7083,278 @@ window.DATA = {
     { id: "q-na-causes-22", operation: "Déterminer des causes et des conséquences", numero: 22, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
       questionBody: {
-        prompt: "À partir du document 1, indique une raison qui explique les réticences du clergé catholique face au syndicalisme international.",
+        prompt: "À partir du document 1, explique pourquoi le clergé catholique est réticent face au syndicalisme international.",
         responseSpace: {"type":"lines","count":2}
       },
       reglettes: [{ id: "r-na-c22", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
       documents: pickDocs('na-causes-22', 1),
       corrige: "Le clergé se méfie des syndicats internationaux parce qu'ils sont neutres sur le plan religieux — donc ouverts aux idées socialistes et anticléricales — et parce qu'ils représentent une influence étrangère sur les travailleurs canadiens-français." },
+
+    // ===== Leçon 9 — Présence de l'Église (1901-1931, + repère) — OI5 =====
+    { id: "q-na-continuite-16", operation: "Déterminer des changements et des continuités", numero: 16, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a continuité ou changement quant à la présence de l'Église au Québec entre 1901 et 1931. Justifie ta réponse par un fait et un repère de temps.",
+        responseSpace: {"type":"lines","count":5}
+      },
+      reglettes: [{ id: "r-na-co16", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('na-continuite-16', 1),
+      corrige: "Il y a continuité : entre 1901 et 1931, la présence de l'Église au Québec demeure très forte (en 1931, on compte encore 4 300 prêtres). On peut aussi répondre « changement », car le nombre de prêtres augmente même en proportion de la population (1 pour 680 en 1901, 1 pour 576 en 1931). Repère de temps : 1901-1931." },
+
+    // ===== Leçon 9 — L'Église appuie le mouvement coopératif — OI4 =====
+    { id: "q-na-causes-23", operation: "Déterminer des causes et des conséquences", numero: 23, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi l'Église appuie le mouvement coopératif émergent au début du 20e siècle.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c23", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-23', 1),
+      corrige: "L'Église appuie le mouvement coopératif parce que les valeurs de ce dernier (solidarité, entraide, prise en charge) ressemblent beaucoup aux valeurs traditionnelles chrétiennes qu'elle défend." },
+
+    // ===== Leçon 9 — Deux causes de l'augmentation des effectifs religieux — OI4 (texte + image) =====
+    { id: "q-na-causes-24", operation: "Déterminer des causes et des conséquences", numero: 24, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique deux raisons qui expliquent l'importante augmentation du nombre de membres du clergé (effectifs religieux) au Québec au début du 20e siècle.",
+        responseSpace: {"type":"labeled-list","items":["Cause 1","Cause 2"],"linesPerItem":2}
+      },
+      reglettes: [{ id: "r-na-c24", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('na-causes-24', 1, 2),
+      corrige: "Cause 1 : l'arrivée de nombreux religieux et religieuses chassés de France par les lois Combes (1 230 entre 1902 et 1904). Cause 2 : la forte croissance de la population catholique du Québec, qui fait augmenter le nombre de vocations religieuses (document 2)." },
+
+    // ===== Leçon 10 — Cause de la faible fréquentation scolaire — OI4 =====
+    { id: "q-na-causes-25", operation: "Déterminer des causes et des conséquences", numero: 25, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi la fréquentation scolaire est plus faible chez les jeunes adolescents au tournant du 20e siècle.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c25", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-25', 1),
+      corrige: "À la fin du 19e siècle, l'industrialisation crée de nombreux emplois en usine qui exigent peu de qualifications : les adolescents quittent l'école tôt pour aller travailler, ce qui explique la plus faible fréquentation scolaire aux âges avancés." },
+
+    // ===== Leçon 10 — Changement législatif (gouvernement Godbout, 1943) — OI5 =====
+    { id: "q-na-continuite-17", operation: "Déterminer des changements et des continuités", numero: 17, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement législatif apporté en éducation par le gouvernement Godbout en 1943.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co17", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-17', 1),
+      corrige: "En 1943, le gouvernement Godbout adopte une loi qui rend la fréquentation scolaire obligatoire jusqu'à l'âge de 14 ans et qui décrète la gratuité des études primaires : c'est un changement majeur, car l'instruction n'était pas obligatoire auparavant." },
+
+    // ===== Leçon 11 — Effet de la crise pour les immigrants (nativisme) — OI4 =====
+    { id: "q-na-causes-26", operation: "Déterminer des causes et des conséquences", numero: 26, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un effet de la crise économique des années 1930 pour les immigrants.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c26", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-26', 1),
+      corrige: "Pendant la crise, les immigrants deviennent la cible d'un fort sentiment de nativisme : on les accuse de prendre les emplois des Canadiens et on réclame leur départ (certains seront même déportés)." },
+
+    // ===== Leçon 11 — Origine ethnique des Montréalais (+ repère) — OI5 (image) =====
+    { id: "q-na-continuite-18", operation: "Déterminer des changements et des continuités", numero: 18, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique s'il y a continuité ou changement quant à l'origine ethnique des Montréalais. Justifie ta réponse par un fait et un repère de temps.",
+        responseSpace: {"type":"lines","count":5}
+      },
+      reglettes: [{ id: "r-na-co18", label: "Réglette (3 points)", ...RUBRIC_CHANGEMENTS_3PT_REPERE_TEMPS }],
+      documents: pickDocs('na-continuite-18', 1),
+      corrige: "Il y a continuité : en 1901 comme en 1931, la majorité des Montréalais sont d'origine française (environ 63 % aux deux moments). Repère de temps : entre 1901 et 1931." },
+
+    // ===== Leçon 11 — But de l'immigration (peupler l'Ouest) — OI4 =====
+    { id: "q-na-causes-27", operation: "Déterminer des causes et des conséquences", numero: 27, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi les autorités canadiennes favorisent l'immigration au début du 20e siècle.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c27", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-27', 1),
+      corrige: "Le but de l'immigration est de peupler et de développer l'Ouest canadien par l'agriculture : les autorités cherchent à attirer des colons agriculteurs pour mettre en valeur les terres des Prairies." },
+
+    // ===== Leçon 11 — Exclusion de certaines catégories d'immigrants — OI4 =====
+    { id: "q-na-causes-28", operation: "Déterminer des causes et des conséquences", numero: 28, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi certaines catégories d'immigrants ont été exclues du processus d'immigration au début du 20e siècle.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c28", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-28', 1),
+      corrige: "Certaines catégories d'immigrants sont exclues parce qu'on les juge peu aptes à l'agriculture : comme le but de l'immigration est de coloniser l'Ouest, on écarte les personnes que les autorités (Sifton) ne croient pas capables d'exploiter une ferme." },
+
+    // ===== Leçon 11 — Diminution du nombre d'immigrants dès 1914 (PGM) — OI4 (image) =====
+    { id: "q-na-causes-29", operation: "Déterminer des causes et des conséquences", numero: 29, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi le nombre d'immigrants reçus au Canada diminue à partir de 1914.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c29", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-29', 1),
+      corrige: "Le nombre d'immigrants chute fortement à partir de 1914 parce que c'est le début de la Première Guerre mondiale : le conflit interrompt en grande partie les déplacements et l'arrivée d'immigrants au Canada." },
+
+    // ===== Leçon 12 — Impact de la PGM sur le statut politique (autonomie) — OI4 (image + texte) =====
+    { id: "q-na-causes-30", operation: "Déterminer des causes et des conséquences", numero: 30, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique un impact de la participation du Canada à la Première Guerre mondiale sur son statut politique.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c30", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-30', 1, 2),
+      corrige: "La participation du Canada à la Première Guerre mondiale renforce son autonomie politique : ses sacrifices lui valent une reconnaissance internationale et le désir d'un « statut égal » à celui de la Grande-Bretagne, ce qui mènera à une plus grande autonomie constitutionnelle (Conférence impériale de 1926, puis Statut de Westminster)." },
+
+    // ===== Leçon 12 — Désaccord Bourassa / Borden (conscription) — OI3 =====
+    { id: "q-na-differences-7", operation: "Dégager des différences et des similitudes", numero: 7, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Le document 1 présente le point de vue d'Henri Bourassa et celui de Robert Borden. Sur quel point précis sont-ils en désaccord ?",
+        responseSpace: {"type":"lines","count":3}
+      },
+      reglettes: [{ id: "r-na-d7", label: "Réglette (2 points)", ...R_DIFFERENCES_2PT_DIVERGENCE }],
+      documents: pickDocs('na-differences-7', 1),
+      corrige: "Ils sont en désaccord sur l'envoi de renforts militaires, c'est-à-dire sur la conscription (l'enrôlement obligatoire) : Borden estime qu'il faut envoyer davantage de soldats, alors que Bourassa juge que le Canada en a déjà fait assez et qu'en demander plus serait un outrage." },
+
+    // ===== Leçon 12 — Cause + conséquence de la conscription (1917) — OI4 (texte + image) =====
+    { id: "q-na-causes-31", operation: "Déterminer des causes et des conséquences", numero: 31, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, indique une cause et une conséquence de l'imposition de la conscription en 1917.",
+        responseSpace: {"type":"labeled-list","items":["Cause","Conséquence"],"linesPerItem":2}
+      },
+      reglettes: [{ id: "r-na-c31", label: "Réglette (2 points)", ...R_CAUSES_2PT_CAUSE_CONS }],
+      documents: pickDocs('na-causes-31', 1, 2),
+      corrige: "Cause : les renforts envoyés par le Canada ne suffisent plus à soutenir l'effort de guerre (le besoin de soldats est urgent). Conséquence : la conscription provoque de vives oppositions, notamment des manifestations au Québec contre l'enrôlement obligatoire (document 2)." },
+
+    // ===== Leçon 13 — Deux causes de la crise (surproduction, spéculation) — OI4 (2 images) =====
+    { id: "q-na-causes-32", operation: "Déterminer des causes et des conséquences", numero: 32, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À l'aide des documents 1 et 2, détermine les deux causes principales de la crise économique de 1929.",
+        responseSpace: {"type":"labeled-list","items":["Cause 1","Cause 2"],"linesPerItem":2}
+      },
+      reglettes: [{ id: "r-na-c32", label: "Réglette (2 points)", ...R_CAUSES_2PT_2CAUSES }],
+      documents: pickDocs('na-causes-32', 1, 2),
+      corrige: "Cause 1 : la surproduction — la production manufacturière augmente fortement durant les années 1920 (document 1), au point de dépasser la consommation. Cause 2 : la spéculation boursière — la valeur des actions grimpe de façon démesurée jusqu'en 1929 (document 2), ce qui provoquera le krach boursier." },
+
+    // ===== Leçon 13 — CAUSALITÉ : l'Église influence le gouvernement durant la crise — OI7 (image + texte) =====
+    { id: "q-na-causalite-6", operation: "Établir des liens de causalité", numero: 6, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "En utilisant les documents 1 et 2, explique comment l'Église catholique influence le gouvernement provincial dans la résolution de la crise économique des années 1930. Dans ta réponse, tu dois préciser chacun des éléments ci-dessous et les lier entre eux.",
+        bullets: ["Les problèmes sociaux causés par la crise économique","Les valeurs et les idées véhiculées par l'Église","Les interventions du gouvernement provincial"],
+        instructions: CAUSALITE_INSTRUCTIONS,
+        responseSpace: {"type":"lines","count":8}
+      },
+      reglettes: [{ id: "r-na-ca6", label: "Réglette (3 points)", ...RUBRIC_CAUSALITE_3PT }],
+      documents: pickDocs('na-causalite-6', 1, 2),
+      corrige: "La crise économique des années 1930 cause de nombreux problèmes sociaux, comme la hausse du chômage et de l'itinérance (document 1). Devant cette détresse, l'Église met de l'avant ses valeurs traditionnelles, en particulier le retour à la terre et la colonisation. Influencé par le clergé, le gouvernement provincial met alors en œuvre des plans de colonisation — les plans Gordon et Vautrin — afin de permettre à des milliers de Québécois de s'établir dans de nouvelles régions comme l'Abitibi et la Gaspésie (document 2)." },
+
+    // ===== Leçon 13 — Impact de la crise sur l'emploi (chômage) — OI4 =====
+    { id: "q-na-causes-33", operation: "Déterminer des causes et des conséquences", numero: 33, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un impact de la crise économique sur le marché de l'emploi.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c33", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-33', 1),
+      corrige: "La crise entraine une forte hausse du chômage : de nombreuses entreprises ferment et des milliers de travailleurs perdent leur emploi, souvent pour de longues périodes." },
+
+    // ===== Leçon 13 — Objectif des travaux publics (emploi) — OI4 (image) =====
+    { id: "q-na-causes-34", operation: "Déterminer des causes et des conséquences", numero: 34, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi le gouvernement met en place un programme de travaux publics durant la crise.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c34", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-34', 1),
+      corrige: "Le gouvernement met en place des programmes de travaux publics dans le but de donner du travail aux nombreux chômeurs frappés par la crise (document 1)." },
+
+    // ===== Leçon 14 — Objectif de la loi du cadenas (1937) — OI4 =====
+    { id: "q-na-causes-35", operation: "Déterminer des causes et des conséquences", numero: 35, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi Maurice Duplessis fait adopter la loi du cadenas en 1937.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c35", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-35', 1),
+      corrige: "Duplessis fait adopter la loi du cadenas pour lutter contre la propagande communiste (et bolchévique). Il s'en servira aussi pour s'attaquer aux syndicats." },
+
+    // ===== Leçon 14 — But du Parti national social chrétien (Arcand) — OI4 =====
+    { id: "q-na-causes-36", operation: "Déterminer des causes et des conséquences", numero: 36, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi Adrien Arcand fonde le Parti national social chrétien.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c36", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-36', 1),
+      corrige: "Arcand fonde le Parti national social chrétien pour promouvoir ses idées fascistes et nazies : il admire Hitler et les fascistes britanniques et rêve de créer une sorte de « Commonwealth fasciste »." },
+
+    // ===== Leçon 14 — Effet du keynésianisme (mesures sociales) — OI4 =====
+    { id: "q-na-causes-37", operation: "Déterminer des causes et des conséquences", numero: 37, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un effet du keynésianisme sur la politique économique canadienne.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c37", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-37', 1),
+      corrige: "Sous l'influence du keynésianisme, l'État canadien intervient davantage dans l'économie et met en place des mesures sociales : l'assurance-chômage (1940), les allocations familiales et des projets d'assurance-maladie." },
+
+    // ===== Leçon 15 — Effet de la 2e Guerre mondiale pour les femmes — OI4 (image) =====
+    { id: "q-na-causes-38", operation: "Déterminer des causes et des conséquences", numero: 38, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un effet de la Seconde Guerre mondiale pour les femmes.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c38", label: "Réglette (2 points)", ...R_CAUSES_2PT_CONS_SEULE }],
+      documents: pickDocs('na-causes-38', 1),
+      corrige: "La Seconde Guerre mondiale fait entrer un grand nombre de femmes sur le marché du travail : elles remplacent les hommes partis au front en participant à l'effort de guerre (usines, etc.). Elles obtiennent aussi le droit de vote aux élections provinciales (1940)." },
+
+    // ===== Leçon 15 — Participation du Canada aux guerres (1914 vs 1939) — OI5 =====
+    { id: "q-na-continuite-19", operation: "Déterminer des changements et des continuités", numero: 19, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique un changement quant à la participation du Canada aux guerres mondiales entre 1914 et 1939.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-co19", label: "Réglette (2 points)", ...R_CHANGEMENTS_2PT_GEN }],
+      documents: pickDocs('na-continuite-19', 1),
+      corrige: "En 1914, le Canada entre automatiquement en guerre parce que la Grande-Bretagne l'est. En 1939, grâce au Statut de Westminster (1931), il n'est plus tenu de suivre la Grande-Bretagne : c'est désormais le Parlement canadien qui décide librement de déclarer la guerre (le 10 septembre 1939)." },
+
+    // ===== Leçon 15 — Plébiscite et conscription (King) — OI4 (image) =====
+    { id: "q-na-causes-39", operation: "Déterminer des causes et des conséquences", numero: 39, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, explique pourquoi le premier ministre King a pu imposer la conscription, malgré l'engagement électoral de son parti.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c39", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-39', 1),
+      corrige: "King peut imposer la conscription parce que le « OUI » l'emporte lors du plébiscite de 1942 : l'ensemble du Canada le libère de sa promesse électorale (même si le Québec a voté majoritairement « NON »)." },
+
+    // ===== Leçon 15 — Cause du déclenchement de la 2e Guerre mondiale — OI4 =====
+    { id: "q-na-causes-40", operation: "Déterminer des causes et des conséquences", numero: 40, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "À partir du document 1, indique la cause principale du déclenchement de la Seconde Guerre mondiale.",
+        responseSpace: {"type":"lines","count":2}
+      },
+      reglettes: [{ id: "r-na-c40", label: "Réglette (2 points)", ...R_CAUSES_2PT_GEN_1CAUSE }],
+      documents: pickDocs('na-causes-40', 1),
+      corrige: "La cause principale du déclenchement de la Seconde Guerre mondiale est l'agression expansionniste de l'Allemagne nazie (qui culmine avec l'invasion de la Pologne en septembre 1939), face à des puissances occidentales divisées et peu réactives." },
 
     // ======================================================================
     // ============ P7 (1945-1980) — Sommatives Section A (v1.25.0) ==========
