@@ -2793,10 +2793,33 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 
+  // ====== CHARGEMENT DES QUESTIONS ÉDITABLES (questions.json géré par la console admin) ======
+  async function loadCMSQuestions() {
+    try {
+      if (typeof DATA === 'undefined' || !DATA || !Array.isArray(DATA.questions)) return;
+      if (typeof QuizCMS === 'undefined' || !QuizCMS || !QuizCMS.toRuntime) return;
+      const res = await fetch('assets/data/questions.json?t=' + Date.now());
+      if (!res.ok) return;
+      const data = await res.json();
+      const list = Array.isArray(data) ? data : (data && data.questions) || [];
+      if (!list.length) return;
+      const idx = {};
+      DATA.questions.forEach((q, i) => { idx[q.id] = i; });
+      list.forEach(cms => {
+        let rt;
+        try { rt = QuizCMS.toRuntime(cms); } catch (e) { return; }
+        if (!rt || !rt.id) return;
+        if (idx[rt.id] != null) DATA.questions[idx[rt.id]] = rt;       // remplace l'existante
+        else { DATA.questions.push(rt); idx[rt.id] = DATA.questions.length - 1; } // ajoute la nouvelle
+      });
+    } catch (e) { /* repli silencieux : on garde DATA tel quel si le fichier manque/illisible */ }
+  }
+  function boot() { loadCMSQuestions().then(init).catch(init); }
+
   // ====== BOOT ======
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
-    init();
+    boot();
   }
 })();
