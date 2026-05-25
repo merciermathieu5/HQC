@@ -382,7 +382,7 @@
   function isQuestionFullySelected(qId) {
     const q = DATA.questions.find(x => x.id === qId);
     if (!q) return false;
-    const required = 1 + q.reglettes.length + q.documents.length;
+    const required = 1 + q.reglettes.filter(Boolean).length + q.documents.filter(Boolean).length;
     const have = state.cahier.filter(p => p.questionId === qId).length;
     return have === required;
   }
@@ -390,8 +390,8 @@
   function addAllPiecesForQuestion(question) {
     // Add questionBody, then each réglette, then each document — only if not already in cahier
     addPiece(question, 'questionBody', null);
-    question.reglettes.forEach(r => addPiece(question, 'reglette', r.id));
-    question.documents.forEach(d => addPiece(question, 'document', d.id));
+    question.reglettes.forEach(r => { if (r) addPiece(question, 'reglette', r.id); });
+    question.documents.forEach(d => { if (d) addPiece(question, 'document', d.id); });
     sortCahier();
   }
 
@@ -429,8 +429,8 @@
       if (!q) return;
       const orderMap = {};
       orderMap['questionBody::'] = 0;
-      q.reglettes.forEach((r, i) => orderMap[`reglette::${r.id}`] = 100 + i);
-      q.documents.forEach((d, i) => orderMap[`document::${d.id}`] = 200 + i);
+      q.reglettes.forEach((r, i) => { if (r) orderMap[`reglette::${r.id}`] = 100 + i; });
+      q.documents.forEach((d, i) => { if (d) orderMap[`document::${d.id}`] = 200 + i; });
       pieces.sort((a, b) => {
         const aKey = `${a.kind}::${a.pieceId || ''}`;
         const bKey = `${b.kind}::${b.pieceId || ''}`;
