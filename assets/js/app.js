@@ -42,6 +42,7 @@
     btnGenerateCorrigeVariante: $('btn-generate-corrige-variante'),
     btnPreviewCorrigeVariante:  $('btn-preview-corrige-variante'),
     btnClear:           $('btn-clear-cahier'),
+    btnShuffle:         $('btn-shuffle-cahier'),
     loading:            $('loading-overlay'),
     loadingMsg:         $('loading-message'),
     previewOverlay:     $('preview-overlay'),
@@ -99,6 +100,7 @@
       renderCatalog();
       renderCahier();
     });
+    el.btnShuffle.addEventListener('click', shuffleCahier);
     el.btnGenerate.addEventListener('click', () => generateDocx(true));
     el.btnGenerateCorrige.addEventListener('click', () => generateDocx(true, /*corrige*/ true));
     el.btnPreview.addEventListener('click', () => previewCahier(false));
@@ -438,6 +440,29 @@
     state.cahier = groupOrder.flatMap(qId => groups.get(qId));
   }
 
+  // Place les questions dans un ordre aléatoire (mélange les groupes-questions,
+  // sans toucher à l'ordre interne des pièces ; le glisser-déposer reste possible ensuite).
+  function shuffleCahier() {
+    const groups = new Map();
+    const order = [];
+    state.cahier.forEach(p => {
+      if (!groups.has(p.questionId)) { groups.set(p.questionId, []); order.push(p.questionId); }
+      groups.get(p.questionId).push(p);
+    });
+    if (order.length < 2) return;
+    // Fisher-Yates : on évite de laisser l'ordre identique si possible
+    const original = order.join('|');
+    let tries = 0;
+    do {
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+      }
+    } while (order.join('|') === original && order.length > 1 && ++tries < 8);
+    state.cahier = order.flatMap(qId => groups.get(qId));
+    renderCahier();
+  }
+
   function makePieceLabel(q, kind, pieceId) {
     const prefix = `[${q.operation} #${q.numero}] `;
     if (kind === 'questionBody') return `${prefix}Énoncé + espace de réponse`;
@@ -517,6 +542,7 @@
     el.btnGenerate.disabled = state.cahier.length === 0;
     el.btnGenerateCorrige.disabled = state.cahier.length === 0;
     el.btnClear.disabled    = state.cahier.length === 0;
+    el.btnShuffle.disabled  = groups.length < 2;
     el.btnPreview.disabled  = state.cahier.length === 0;
     el.btnPreviewCorrige.disabled = state.cahier.length === 0;
     el.btnGenerateVariante.disabled = state.cahier.length === 0;
