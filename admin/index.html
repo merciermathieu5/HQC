@@ -458,7 +458,14 @@
     if(res.status===404) return {sha:null, data:{questions:[]}};
     if(!res.ok) throw new Error(httpMsg(res.status));
     const j=await res.json();
-    let data; try{ data=JSON.parse(base64ToUtf8(j.content)); }catch(e){ throw new Error('Le fichier questions.json est illisible.'); }
+    let raw=j.content;
+    // Fichiers > 1 Mo : l'API « Contents » renvoie un contenu vide ; on lit alors le blob Git par son sha (jusqu'à 100 Mo).
+    if((!raw || !String(raw).trim()) && j.sha){
+      const rb=await fetch('https://api.github.com/repos/'+c.repo+'/git/blobs/'+j.sha+'?t='+Date.now(),{headers:headers()});
+      if(!rb.ok) throw new Error(httpMsg(rb.status));
+      raw=(await rb.json()).content;
+    }
+    let data; try{ data=JSON.parse(base64ToUtf8(raw)); }catch(e){ throw new Error('Le fichier questions.json est illisible.'); }
     if(Array.isArray(data)) data={questions:data};
     if(!Array.isArray(data.questions)) data.questions=[];
     return {sha:j.sha, data};
