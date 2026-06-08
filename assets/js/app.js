@@ -30,6 +30,7 @@
     filterNiveau:     $('filter-niveau'),
     filterRealite:    $('filter-realite'),
     filterOp:         $('filter-operation'),
+    filterCompetence: $('filter-competence'),
     resetFilters:     $('reset-filters'),
     searchInput:      $('search-input'),
     searchClear:      $('search-clear'),
@@ -79,7 +80,7 @@
   }
 
   function attachEventListeners() {
-    [el.filterNiveau, el.filterRealite, el.filterOp].forEach(s =>
+    [el.filterNiveau, el.filterRealite, el.filterOp, el.filterCompetence].forEach(s =>
       s.addEventListener('change', applyFilters)
     );
     el.searchInput.addEventListener('input', applyFilters);
@@ -92,6 +93,7 @@
       el.filterNiveau.value = '';
       el.filterRealite.value = '';
       el.filterOp.value = '';
+      el.filterCompetence.value = '';
       el.searchInput.value = '';
       applyFilters();
     });
@@ -183,6 +185,7 @@
     const niv = el.filterNiveau.value;  // format "annee-niveau" (ex. "3-1", "4-2") ou "" pour toutes
     const rea = el.filterRealite.value;
     const op  = el.filterOp.value;
+    const comp = el.filterCompetence.value;  // "" | "1" | "2"
     const term = normalizeText((el.searchInput.value || '').trim());
     state.searchTerm = term;
     el.searchClear.hidden = !el.searchInput.value;
@@ -194,6 +197,7 @@
       }
       if (rea && q.realite_sociale_id !== rea) return false;
       if (op  && q.operation !== op) return false;
+      if (comp && categoryOf(q) !== ('c' + comp)) return false;
       if (term && !questionSearchText(q).includes(term)) return false;
       return true;
     });
@@ -304,7 +308,7 @@
         const tagsHtml = `
           <div class="q-meta">
             <span class="tag tag-niveau">Période ${periodeGlobale}</span>
-            <span class="tag tag-operation">${escapeHtml(q.operation || 'Compétence 1')}</span>
+            <span class="tag tag-operation">${escapeHtml(questionTag(q))}</span>
             <span class="tag tag-numero">#${q.numero}</span>
             ${realite ? `<span class="tag tag-realite" data-realite-idx="${realiteIdx}">${escapeHtml(realite)}</span>` : ''}
             ${pointsTotal > 0 ? `<span class="tag tag-points">${pointsTotal} pts</span>` : ''}
@@ -464,7 +468,7 @@
   }
 
   function makePieceLabel(q, kind, pieceId) {
-    const prefix = `[${q.operation || 'Compétence 1'} #${q.numero}] `;
+    const prefix = `[${questionTag(q)} #${q.numero}] `;
     if (kind === 'questionBody') return `${prefix}Énoncé + espace de réponse`;
     if (kind === 'reglette') {
       const r = q.reglettes.find(x => x.id === pieceId);
@@ -519,7 +523,7 @@
         <span class="cahier-handle" aria-hidden="true">⋮⋮</span>
         <div class="cahier-group-meta">
           <span class="cahier-type t-question">#${q.numero}</span>
-          <span class="cahier-group-title" title="${escapeHtml(q.operation || 'Compétence 1')}">${escapeHtml(q.operation || 'Compétence 1')}</span>
+          <span class="cahier-group-title" title="${escapeHtml(questionTag(q))}">${escapeHtml(questionTag(q))}</span>
         </div>
         <button class="cahier-group-remove" type="button" aria-label="Retirer la question">×</button>
       `;
@@ -623,8 +627,8 @@
 
       // Bandeau de section de compétence (au changement de compétence ; cahiers mixtes seulement)
       if (_banners) {
-        const _c = competenceOf(q);
-        if (_c !== _prevComp) { bodyChildren.push(competenceBanner(docx, _c)); _prevComp = _c; }
+        const _c = categoryOf(q);
+        if (_c !== _prevComp) { bodyChildren.push(sectionBanner(docx, _c)); _prevComp = _c; }
       }
 
       // Drapeau optionnel sur la question : `cantSplitAllDocs: true` regroupe
@@ -878,10 +882,10 @@
       const q0 = DATA.questions.find(x => x.id === g.questionId);
       if (!q0) return;
       if (_banners) {
-        const _c = competenceOf(q0);
+        const _c = categoryOf(q0);
         if (_c !== _prevComp) {
           if (_prevComp !== null) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
-          bodyChildren.push(competenceBanner(docx, _c));
+          bodyChildren.push(sectionBanner(docx, _c));
           _prevComp = _c;
         }
       }
@@ -1074,10 +1078,10 @@
       const qRaw = DATA.questions.find(x => x.id === g.questionId);
       if (!qRaw) return;
       if (_banners) {
-        const _c = competenceOf(qRaw);
+        const _c = categoryOf(qRaw);
         if (_c !== _prevComp) {
           if (_prevComp !== null) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
-          bodyChildren.push(competenceBanner(docx, _c));
+          bodyChildren.push(sectionBanner(docx, _c));
           _prevComp = _c;
         }
       }
@@ -1298,23 +1302,42 @@
     return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [cLabel, cCentral, cBranch, cPts, cTot], rows });
   }
 
-  // Bandeau de section de compétence (inséré dans le cahier/guide quand C1 et C2 cohabitent).
-  function competenceOf(q) { return q && q.competence === 1 ? 1 : 2; }
-  function competenceBanner(d, comp) {
+  // Catégorie d'une question : 'oi' (opération intellectuelle), 'c1' (Compétence 1) ou 'c2' (Compétence 2).
+  // Les 375 questions atomiques existantes n'ont pas de champ `competence` → 'oi'.
+  function categoryOf(q) {
+    if (q && q.competence === 1) return 'c1';
+    if (q && q.competence === 2) return 'c2';
+    return 'oi';
+  }
+  function categoryRank(c) { return c === 'oi' ? 0 : c === 'c1' ? 1 : 2; }   // ordre des sections : OI → C1 → C2
+  function categoryBannerLabel(c) {
+    if (c === 'c1') return "Compétence 1 — Caractériser une période";
+    if (c === 'c2') return "Compétence 2 — Interpréter une réalité sociale";
+    return "Opérations intellectuelles";
+  }
+  // Étiquette courte affichée dans le catalogue / le cahier (tag de la question).
+  function questionTag(q) {
+    const c = categoryOf(q);
+    if (c === 'c1') return "Compétence 1";
+    if (c === 'c2') return "Compétence 2";
+    return q.operation;   // question d'OI : son opération intellectuelle
+  }
+  // Bandeau de section, inséré dans le cahier/guide quand plusieurs catégories cohabitent.
+  function sectionBanner(d, cat) {
     const { Paragraph, TextRun, BorderStyle, ShadingType } = d;
-    const txt = comp === 1 ? "Compétence 1 — Caractériser une période" : "Compétence 2 — Interpréter une réalité sociale";
     return new Paragraph({ spacing: { before: 0, after: 160 },
       shading: { fill: "8B3A2E", type: ShadingType.CLEAR },
       border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: "8B3A2E" } },
-      children: [new TextRun({ text: txt, bold: true, size: 26, color: "FFFFFF" })] });
+      children: [new TextRun({ text: categoryBannerLabel(cat), bold: true, size: 26, color: "FFFFFF" })] });
   }
-  // Trie les groupes EN PLACE (C1 d'abord, puis C2 — ordre stable interne) et renvoie true
-  // si des bandeaux de section doivent être émis (uniquement quand les deux compétences cohabitent).
+  // Trie les groupes EN PLACE (OI → C1 → C2 ; ordre stable interne) et renvoie true si des
+  // bandeaux de section doivent être émis : dès qu'une section C1 ou C2 est présente.
+  // Un cahier 100 % OI reste sans bandeau (comportement existant inchangé).
   function sectionizeGroups(groups) {
-    const comps = new Set(groups.map(g => competenceOf(DATA.questions.find(x => x.id === g.questionId))));
-    if (comps.size < 2) return false;
-    groups.sort((a, b) => competenceOf(DATA.questions.find(x => x.id === a.questionId))
-                        - competenceOf(DATA.questions.find(x => x.id === b.questionId)));
+    const cats = new Set(groups.map(g => categoryOf(DATA.questions.find(x => x.id === g.questionId))));
+    if (!(cats.has('c1') || cats.has('c2'))) return false;
+    groups.sort((a, b) => categoryRank(categoryOf(DATA.questions.find(x => x.id === a.questionId)))
+                        - categoryRank(categoryOf(DATA.questions.find(x => x.id === b.questionId))));
     return true;
   }
 

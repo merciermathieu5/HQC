@@ -8,9 +8,10 @@
        d'une épreuve C1 à l'autre, réutilisable. Rendue par buildC1GridTable() (app.js).
      • +1 entrée DOCS 'experience-autochtones-c1-1' (6 documents : 3 textes + 3 images doc1/doc4/doc6).
      • app.js : branches "c1-schema" (buildQuestionBody + buildCorrigeBlock) et "c1-grid" (buildReglette +
-       réglette du guide) ; gardes operation:null (étiquettes, filtre) ; bandeaux de section de compétence
-       dans les 3 assembleurs (cahier standard, variante, guide) — affichés seulement en cahier mixte C1+C2.
-       Aucune des questions C2 existantes n'est modifiée.
+       réglette du guide) ; modèle à 3 catégories categoryOf() → 'oi' | 'c1' | 'c2' (les 375 questions
+       existantes = 'oi', PAS de la C2 ; C2 distincte, à venir) ; filtre « Compétence » (C1/C2) ; étiquettes
+       via questionTag() ; bandeaux de section dans les 3 assembleurs (ordre OI → C1 → C2), affichés
+       seulement quand plusieurs catégories cohabitent. Aucune des questions d'OI existantes n'est modifiée.
    ============================================================ */
 /* ============================================================
    HQC · 3e + 4e secondaire — Données — v1.42.0 (mai 2026) ⭐⭐ CATALOGUE 375 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P8 TERMINÉE (Lots 1-4 : leçons 1-12)
