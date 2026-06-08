@@ -304,7 +304,7 @@
         const tagsHtml = `
           <div class="q-meta">
             <span class="tag tag-niveau">Période ${periodeGlobale}</span>
-            <span class="tag tag-operation">${escapeHtml(q.operation)}</span>
+            <span class="tag tag-operation">${escapeHtml(q.operation || 'Compétence 1')}</span>
             <span class="tag tag-numero">#${q.numero}</span>
             ${realite ? `<span class="tag tag-realite" data-realite-idx="${realiteIdx}">${escapeHtml(realite)}</span>` : ''}
             ${pointsTotal > 0 ? `<span class="tag tag-points">${pointsTotal} pts</span>` : ''}
@@ -464,7 +464,7 @@
   }
 
   function makePieceLabel(q, kind, pieceId) {
-    const prefix = `[${q.operation} #${q.numero}] `;
+    const prefix = `[${q.operation || 'Compétence 1'} #${q.numero}] `;
     if (kind === 'questionBody') return `${prefix}Énoncé + espace de réponse`;
     if (kind === 'reglette') {
       const r = q.reglettes.find(x => x.id === pieceId);
@@ -519,7 +519,7 @@
         <span class="cahier-handle" aria-hidden="true">⋮⋮</span>
         <div class="cahier-group-meta">
           <span class="cahier-type t-question">#${q.numero}</span>
-          <span class="cahier-group-title" title="${escapeHtml(q.operation)}">${escapeHtml(q.operation)}</span>
+          <span class="cahier-group-title" title="${escapeHtml(q.operation || 'Compétence 1')}">${escapeHtml(q.operation || 'Compétence 1')}</span>
         </div>
         <button class="cahier-group-remove" type="button" aria-label="Retirer la question">×</button>
       `;
@@ -606,6 +606,8 @@
     // Saut de page après la couverture
     bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
 
+    const _banners = sectionizeGroups(groups);
+    let _prevComp = null;
     groups.forEach((g, idx) => {
       const q = DATA.questions.find(x => x.id === g.questionId);
       if (!q) return;
@@ -617,6 +619,12 @@
       // chaque question sur une page neuve — assure une vraie pagination visible.
       if (idx > 0) {
         bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+      }
+
+      // Bandeau de section de compétence (au changement de compétence ; cahiers mixtes seulement)
+      if (_banners) {
+        const _c = competenceOf(q);
+        if (_c !== _prevComp) { bodyChildren.push(competenceBanner(docx, _c)); _prevComp = _c; }
       }
 
       // Drapeau optionnel sur la question : `cantSplitAllDocs: true` regroupe
@@ -841,6 +849,8 @@
     const NO_B = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
     const WRAPPER_NO_BORDERS = { top: NO_B, bottom: NO_B, left: NO_B, right: NO_B };
 
+    const _banners = sectionizeGroups(groups);
+    let _prevComp = null;
     // ---- PASSE 1 : numérotation globale des documents + table local→global par question ----
     let globalDoc = 0;
     const endDocs = []; // { doc (titre renuméroté), narrow }
@@ -867,6 +877,14 @@
     groups.forEach((g, idx) => {
       const q0 = DATA.questions.find(x => x.id === g.questionId);
       if (!q0) return;
+      if (_banners) {
+        const _c = competenceOf(q0);
+        if (_c !== _prevComp) {
+          if (_prevComp !== null) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+          bodyChildren.push(competenceBanner(docx, _c));
+          _prevComp = _c;
+        }
+      }
       const q = renumberQuestion(q0, g._map);
       const seqNumero = idx + 1;
 
@@ -1050,9 +1068,19 @@
       children: [new TextRun({ text: "" })]
     }));
 
+    const _banners = sectionizeGroups(groups);
+    let _prevComp = null;
     groups.forEach((g, idx) => {
       const qRaw = DATA.questions.find(x => x.id === g.questionId);
       if (!qRaw) return;
+      if (_banners) {
+        const _c = competenceOf(qRaw);
+        if (_c !== _prevComp) {
+          if (_prevComp !== null) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+          bodyChildren.push(competenceBanner(docx, _c));
+          _prevComp = _c;
+        }
+      }
       // En mode variante : renumérotation globale de l'énoncé, de l'espace de réponse ET du
       // corrigé (les corrigés du type ["Document 1","Document 3"] / {before:[…]} passent par
       // la même règle « Document N → Document N+décalage »).
@@ -1144,6 +1172,9 @@
               new TextRun({ text: `${r.maxPoints} points (rubrique causalité détaillée)`, italics: true, size: 16, color: "6E685C" })
             ]
           }));
+        } else if (r.type === 'c1-grid') {
+          // Compétence 1 : grille /8 complète dans le guide
+          bodyChildren.push(buildC1GridTable(docx, r));
         }
       }
     });
@@ -1166,6 +1197,127 @@
     return await Packer.toBlob(doc);
   }
 
+  // ====== COMPÉTENCE 1 — Rendu du schéma descriptif + de la grille /8 ======
+  // Fonctions partagées par le cahier (buildQuestionBody / buildReglette) et le guide
+  // (buildCorrigeBlock / réglette du corrigé). `d` = bibliothèque docx.
+
+  // Organisateur graphique C1 : objet de la description + 2 mises en relation
+  // (élément central + 2 satellites). filled=false → cahier (vide) ; filled=true → guide (corrigé rouge).
+  function buildC1SchemaTable(d, rs, corrige, filled) {
+    const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign } = d;
+    const W = 10500, RED = "C00000", GRAY = "6E685C", DARK = "2A2620", PILL = "9A938A", ACCENT = "8B3A2E";
+    const TB = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
+    const ALL = { top: TB, bottom: TB, left: TB, right: TB };
+    const THICK = { top: { style: BorderStyle.SINGLE, size: 16, color: ACCENT }, bottom: TB, left: TB, right: TB };
+    const MARG = { top: 60, bottom: 60, left: 110, right: 110 };
+    const wObjet = 2600, wCentral = 3500, wSat = 4400;
+    const cor = filled ? corrige : { objet: {}, relations: [{ central: {}, satellites: [{}, {}] }, { central: {}, satellites: [{}, {}] }] };
+
+    function pill(text) {
+      return new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 },
+        shading: { fill: PILL, type: ShadingType.CLEAR },
+        children: [new TextRun({ text, bold: true, size: 17, color: "FFFFFF" })] });
+    }
+    function ans(answer, docRef) {
+      if (!filled) return [new Paragraph({ spacing: { before: 60 }, children: [new TextRun({ text: "", size: 22 })] })];
+      const o = [new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 40, after: docRef ? 20 : 0 },
+        children: [new TextRun({ text: answer || "", bold: true, size: 20, color: RED })] })];
+      if (docRef) o.push(new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: docRef, italics: true, size: 15, color: GRAY })] }));
+      return o;
+    }
+    function box(opts) {
+      const kids = [];
+      if (opts.header) kids.push(pill(opts.header));
+      kids.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 50 }, children: [new TextRun({ text: opts.label, bold: true, size: 18, color: DARK })] }));
+      kids.push(...ans(opts.answer, opts.docRef));
+      return new TableCell({ width: { size: opts.w, type: WidthType.DXA }, rowSpan: opts.rowSpan || 1,
+        borders: opts.borders || ALL, verticalAlign: VerticalAlign.CENTER, margins: MARG, children: kids });
+    }
+
+    const objetCell = box({ header: "Objet de la description", label: rs.objet.label, answer: cor.objet.answer, w: wObjet, rowSpan: 4 });
+    const rows = [];
+    rs.relations.forEach((rel, ri) => {
+      const c = cor.relations[ri];
+      const tb = ri === 1 ? THICK : ALL;
+      const r1 = [];
+      if (ri === 0) r1.push(objetCell);
+      r1.push(box({ header: "Élément central", label: rel.central.label, answer: c.central.answer, docRef: c.central.docRef, w: wCentral, rowSpan: 2, borders: tb }));
+      r1.push(box({ label: rel.satellites[0].label, answer: c.satellites[0].answer, docRef: c.satellites[0].docRef, w: wSat, borders: tb }));
+      rows.push(new TableRow({ cantSplit: true, children: r1 }));
+      rows.push(new TableRow({ cantSplit: true, children: [box({ label: rel.satellites[1].label, answer: c.satellites[1].answer, docRef: c.satellites[1].docRef, w: wSat })] }));
+    });
+    return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [wObjet, wCentral, wSat], rows });
+  }
+
+  // Grille d'évaluation /8 (objet /2 + 2 mises en relation /3) — pleine taille.
+  function buildC1GridTable(d, r) {
+    const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign } = d;
+    const W = 10500;
+    const TB = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
+    const ALL = { top: TB, bottom: TB, left: TB, right: TB };
+    function cell(text, o) {
+      o = o || {};
+      return new TableCell({ width: { size: o.w, type: WidthType.DXA }, columnSpan: o.span, rowSpan: o.rowSpan,
+        borders: ALL, verticalAlign: VerticalAlign.CENTER,
+        shading: o.fill ? { fill: o.fill, type: ShadingType.CLEAR } : undefined,
+        margins: o.margins || { top: 50, bottom: 50, left: 90, right: 90 },
+        children: [new Paragraph({ alignment: o.center ? AlignmentType.CENTER : AlignmentType.LEFT,
+          children: [new TextRun({ text, bold: !!o.bold, size: o.size || 15 })] })] });
+    }
+    const rows = [];
+    rows.push(new TableRow({ children: [cell(r.objet.title, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 16 })] }));
+    const objTot = 700, objColW = Math.floor((W - objTot) / 3);
+    const objCells = r.objet.levels.map((lv, i) => new TableCell({
+      width: { size: i === 2 ? (W - objTot - 2 * objColW) : objColW, type: WidthType.DXA },
+      borders: ALL, verticalAlign: VerticalAlign.TOP, margins: { top: 60, bottom: 60, left: 90, right: 90 },
+      children: [
+        new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 }, children: [new TextRun({ text: lv.condition, size: 15 })] }),
+        new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: lv.points, bold: true, size: 15 })] })
+      ] }));
+    objCells.push(cell("/2", { w: objTot, center: true, bold: true, size: 16 }));
+    rows.push(new TableRow({ children: objCells }));
+    rows.push(new TableRow({ children: [cell(r.relationTitle, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 16 })] }));
+    const cLabel = 1500, cPts = 900, cTot = 700, cBranch = 2600, cCentral = W - cLabel - cBranch - cPts - cTot;
+    const matrix = r.relationMatrix;
+    const totalBranches = matrix.reduce((s, m) => s + m.branches.length, 0);
+    r.relationLabels.forEach((relLabel) => {
+      let first = true;
+      matrix.forEach((m) => {
+        m.branches.forEach((b, bi) => {
+          const cells = [];
+          if (first) { cells.push(cell(relLabel, { w: cLabel, rowSpan: totalBranches, bold: true, center: true, size: 15 })); first = false; }
+          if (bi === 0) cells.push(cell(m.central, { w: cCentral, rowSpan: m.branches.length, size: 15 }));
+          cells.push(cell(b.condition, { w: cBranch, size: 14 }));
+          cells.push(cell(b.points, { w: cPts, center: true, size: 15 }));
+          if (matrix[0] === m && matrix[0].branches[0] === b) cells.push(cell("/3", { w: cTot, center: true, bold: true, rowSpan: totalBranches, size: 16 }));
+          rows.push(new TableRow({ children: cells }));
+        });
+      });
+    });
+    rows.push(new TableRow({ children: [cell("Total", { w: W - cTot, span: 3, bold: true, size: 16 }), cell("/8", { w: cTot, center: true, bold: true, size: 16 })] }));
+    return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [cLabel, cCentral, cBranch, cPts, cTot], rows });
+  }
+
+  // Bandeau de section de compétence (inséré dans le cahier/guide quand C1 et C2 cohabitent).
+  function competenceOf(q) { return q && q.competence === 1 ? 1 : 2; }
+  function competenceBanner(d, comp) {
+    const { Paragraph, TextRun, BorderStyle, ShadingType } = d;
+    const txt = comp === 1 ? "Compétence 1 — Caractériser une période" : "Compétence 2 — Interpréter une réalité sociale";
+    return new Paragraph({ spacing: { before: 0, after: 160 },
+      shading: { fill: "8B3A2E", type: ShadingType.CLEAR },
+      border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: "8B3A2E" } },
+      children: [new TextRun({ text: txt, bold: true, size: 26, color: "FFFFFF" })] });
+  }
+  // Trie les groupes EN PLACE (C1 d'abord, puis C2 — ordre stable interne) et renvoie true
+  // si des bandeaux de section doivent être émis (uniquement quand les deux compétences cohabitent).
+  function sectionizeGroups(groups) {
+    const comps = new Set(groups.map(g => competenceOf(DATA.questions.find(x => x.id === g.questionId))));
+    if (comps.size < 2) return false;
+    groups.sort((a, b) => competenceOf(DATA.questions.find(x => x.id === a.questionId))
+                        - competenceOf(DATA.questions.find(x => x.id === b.questionId)));
+    return true;
+  }
+
   // ====== BLOC CORRIGÉ (rendu adaptatif selon le type de réponse) ======
   function buildCorrigeBlock(d, q) {
     const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign } = d;
@@ -1179,6 +1331,11 @@
     }
 
     const rs = q.questionBody.responseSpace;
+    // Compétence 1 : schéma rempli (réponses en rouge + renvois aux documents)
+    if (rs && rs.type === 'c1-schema') {
+      out.push(buildC1SchemaTable(d, rs, q.corrige, true));
+      return out;
+    }
     const SHADING = { fill: "FDF6EC", type: ShadingType.CLEAR, color: "auto" };
     const ANSWER_BORDER = { style: BorderStyle.SINGLE, size: 6, color: "8B3A2E" };
     const ANSWER_BORDERS = { top: ANSWER_BORDER, bottom: ANSWER_BORDER, left: ANSWER_BORDER, right: ANSWER_BORDER };
@@ -2438,6 +2595,9 @@
               elements.push(buildArrow());
             }
           }
+        } else if (body.responseSpace.type === 'c1-schema') {
+          // Compétence 1 : organisateur graphique vide à remplir par l'élève
+          elements.push(buildC1SchemaTable(docx, body.responseSpace, null, false));
         }
       }
 
@@ -2449,6 +2609,10 @@
       // Type "simple" : tableau matriciel à 2 rangées (en-tête points / conditions)
       if (r.type === 'simple') {
         return buildSimpleReglette(r);
+      }
+      // Type "c1-grid" : grille /8 de la Compétence 1
+      if (r.type === 'c1-grid') {
+        return [buildC1GridTable(docx, r)];
       }
       // Sinon, type "complex" par défaut (utilisé pour les rubriques de causalité)
       return buildComplexReglette(r);

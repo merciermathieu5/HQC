@@ -1,4 +1,18 @@
 /* ============================================================
+   v1.43.0 — INTÉGRATION DE LA COMPÉTENCE 1 « Caractériser une période » (1re question) :
+     • +1 question (q-experience-autochtones-c1-1, P1) — NOUVEAU type : competence:1, operation:null,
+       responseSpace "c1-schema" (organisateur graphique : objet + 2 mises en relation × [élément central
+       + 2 satellites]) ; corrige miroir avec renvoi aux documents ; documentsADiscriminer:[] (épreuve sans
+       distracteur). Catalogue 375 → 376.
+     • +1 réglette R_C1_DESCRIPTION_8PT (type "c1-grid", /8 : objet /2 + 2 mises en relation /3) — invariante
+       d'une épreuve C1 à l'autre, réutilisable. Rendue par buildC1GridTable() (app.js).
+     • +1 entrée DOCS 'experience-autochtones-c1-1' (6 documents : 3 textes + 3 images doc1/doc4/doc6).
+     • app.js : branches "c1-schema" (buildQuestionBody + buildCorrigeBlock) et "c1-grid" (buildReglette +
+       réglette du guide) ; gardes operation:null (étiquettes, filtre) ; bandeaux de section de compétence
+       dans les 3 assembleurs (cahier standard, variante, guide) — affichés seulement en cahier mixte C1+C2.
+       Aucune des questions C2 existantes n'est modifiée.
+   ============================================================ */
+/* ============================================================
    HQC · 3e + 4e secondaire — Données — v1.42.0 (mai 2026) ⭐⭐ CATALOGUE 375 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P8 TERMINÉE (Lots 1-4 : leçons 1-12)
    375 questions · 8 périodes (P1-P8) · 7 OI · 2 cycles — 8 PÉRIODES SUR 8 À 7/7 OI ✓
    Couverture 3e : P1 = 23 (7/7 OI), P2 = 26 (7/7 OI), P3 = 18 (7/7 OI), P4 = 13 (7/7 OI)
@@ -589,6 +603,44 @@ function rubric2(opLabel, c1, c0) {
 // Au moindre écart de libellé d'une nouvelle source, créer une nouvelle constante.
 
 // — Établir des faits —
+// — Caractériser une période (Compétence 1) —
+// Grille /8 invariante des « Épreuves interactives » C1 (objet /2 + 2 mises en relation /3).
+// Type dédié "c1-grid" : rendu par buildC1GridTable() dans app.js. Réutilisable par toutes les questions C1.
+const R_C1_DESCRIPTION_8PT = {
+  type: "c1-grid",
+  opLabel: "Caractériser une période de l'histoire du Québec et du Canada",
+  maxPoints: 8,
+  objet: {
+    title: "Indiquer l'objet de la description",
+    levels: [
+      { condition: "L'élève indique correctement l'objet de la description.", points: "2 points" },
+      { condition: "L'élève indique plus ou moins correctement l'objet de la description.", points: "1 point" },
+      { condition: "L'élève indique incorrectement ou n'indique pas l'objet de la description.", points: "0 point" }
+    ]
+  },
+  relationTitle: "Préciser les éléments mis en relation",
+  relationLabels: ["Première mise en relation", "Deuxième mise en relation"],
+  relationMatrix: [
+    { central: "L'élève précise correctement l'élément central",
+      branches: [
+        { condition: "et précise les deux autres éléments.", points: "3 points" },
+        { condition: "et précise l'un des deux autres éléments.", points: "2 points" },
+        { condition: "mais ne précise pas les deux autres éléments.", points: "1 point" }
+      ] },
+    { central: "L'élève précise plus ou moins correctement l'élément central",
+      branches: [
+        { condition: "et précise les deux autres éléments.", points: "2 points" },
+        { condition: "et précise l'un des deux autres éléments.", points: "1 point" },
+        { condition: "mais ne précise pas les deux autres éléments.", points: "0 point" }
+      ] },
+    { central: "L'élève précise incorrectement ou ne précise pas l'élément central",
+      branches: [
+        { condition: "mais précise les deux autres éléments.", points: "1 point" },
+        { condition: "mais précise l'un des deux autres éléments ou n'en précise pas.", points: "0 point" }
+      ] }
+  ]
+};
+
 const R_FAITS_1PT_1SUR1 = rubric2(
   "Établir des faits",
   "L'élève établit le fait (1 sur 1)",
@@ -1342,6 +1394,32 @@ const CAUSALITE_INSTRUCTIONS = {
 // Les numéros « Document N » dans le PDF source sont renumérotés 1..N
 // à l'intérieur de chaque section, comme dans le modèle HEC.
 const DOCS = {
+
+  // ===== P1 — Compétence 1 — Famille linguistique iroquoienne (Épreuve interactive) =====
+  'experience-autochtones-c1-1': [
+    { id: "c1-d1", title: "Document 1", layout: "text-image",
+      imageUrl: "assets/img/experience-autochtones-c1-1/doc1.png", imageWidthCm: 12,
+      text: "« Les échanges entre les nations autochtones ont surtout lieu durant l'été, au moment où les cours d'eau sont navigables. Certaines nations échangent leurs surplus de produits agricoles, c'est-à-dire du maïs, des courges, des haricots et du tabac. En contrepartie, elles obtiennent de leurs partenaires économiques des produits de la chasse comme de la viande, de fourrures et des peaux. »",
+      sources: ["Source de l'image et du texte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "c1-d2", title: "Document 2", layout: "text-only",
+      text: "Organisation sociale — Clan : plusieurs familles d'une même ancêtre. Village : regroupement de plusieurs clans, souvent entouré d'une palissade. Nation : plusieurs villages qui partagent une culture et une langue commune.",
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social. Inspiré de : Alloprof, « Les premiers occupants : les rapports sociaux des Autochtones », 10 avril 2018, YouTube."] },
+    { id: "c1-d3", title: "Document 3", layout: "text-only",
+      text: "« En plus d'être les gardiennes de la tradition, les femmes avaient un rôle politique important. Celles qu'on nomme les mères de clan (les femmes les plus âgées et les plus expérimentées) choisissaient les hommes qui formaient le gouvernement. Les femmes choisissaient le chef pour leur clan et quand ce dernier ne remplissait pas bien ses fonctions, elles pouvaient essayer de le destituer. »",
+      sources: ["Source : UQTR, Personnes importantes, AKI : Sociétés et Territoires autochtones. Licence : Utilisation dans un contexte éducatif seulement (BY-NC)."] },
+    { id: "c1-d4", title: "Document 4", layout: "text-image",
+      imageUrl: "assets/img/experience-autochtones-c1-1/doc4.png", imageWidthCm: 11,
+      text: "« Ces peuples restent sur place durant dix, quinze ou vingt ans, tant que la terre produit suffisamment de nourriture. Lorsqu'elle s'appauvrit, il faut déménager tout le village ailleurs sur leur territoire, là où le sol sera à nouveau fertile. »",
+      sources: ["Source de l'image : Vidéanthrop, Un village [...] vers 1500, © Vidéanthrop. Licence : illustration gratuite pour une utilisation dans un contexte éducatif seulement et avec mention de la source originale « Vidéanthrop ».",
+                "Source du texte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "c1-d5", title: "Document 5", layout: "text-only",
+      text: "« Ces [chefs] ne dirigeaient aucunement par la contrainte, mais plutôt par le consentement. Aucun ordre ne pouvait être donné. Le pouvoir d'un chef ne dépendait que de sa capacité à inspirer la confiance autour de lui. Par exemple, un chef de guerre pouvait aller de village en village afin de convaincre de jeunes guerriers de le suivre, distribuant présents et expliquant ses plans. »",
+      sources: ["Source : Roland Tremblay et Stéphanie Demers. « La société [...] vers 1500 », dans Marc-André Éthier et David Lefrançois, Didactique de l'univers au primaire, 2012, ERPI, p. 16-17."] },
+    { id: "c1-d6", title: "Document 6", layout: "text-image",
+      imageUrl: "assets/img/experience-autochtones-c1-1/doc6.png", imageWidthCm: 12,
+      text: "« Ces peuples choisissent d'installer leurs villages près d'une source d'eau potable, de terres fertiles et d'un boisé pour s'approvisionner en bois. »",
+      sources: ["Source de la carte et du texte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
 
   // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
   'experience-autochtones-relation-1': [
@@ -5021,6 +5099,53 @@ window.DATA = {
   ],
 
   questions: [
+
+    // ===== P1 · COMPÉTENCE 1 — Caractériser une période — Famille linguistique iroquoienne =====
+    // NOUVEAU TYPE C1 : competence:1, operation:null, responseSpace c1-schema, réglette c1-grid (/8).
+    { id: "q-experience-autochtones-c1-1", competence: 1, operation: null, numero: 1, annee: 3, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Décris une famille linguistique autochtone qui occupe une partie du nord-est de l'Amérique vers 1500.",
+        bullets: [
+          "Consulte les documents 1 à 6.",
+          "Associe correctement chacun des documents à une bulle du schéma.",
+          "Remplis le schéma à l'aide des documents."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Famille linguistique" },
+          relations: [
+            { central: { label: "Mode de vie" },
+              satellites: [
+                { label: "Utilisation des produits en surplus" },
+                { label: "Atouts géographiques pour l'occupation du territoire" }
+              ] },
+            { central: { label: "Regroupement des descendants de la même ancêtre" },
+              satellites: [
+                { label: "Responsable de la désignation des chefs" },
+                { label: "Mode de prise de décision" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [],
+      reglettes: [{ id: "r-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('experience-autochtones-c1-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        objet: { answer: "Iroquoienne (ou Les Iroquoiens)" },
+        relations: [
+          { central: { answer: "Sédentaire", docRef: "Document 4" },
+            satellites: [
+              { answer: "Échanges commerciaux avec d'autres nations", docRef: "Document 1" },
+              { answer: "Points d'eau, terres fertiles, boisé", docRef: "Document 6" }
+            ] },
+          { central: { answer: "Clan", docRef: "Document 2" },
+            satellites: [
+              { answer: "Aînée du clan", docRef: "Document 3" },
+              { answer: "Obtenir le consentement des membres du clan (ou Convaincre les membres du clan)", docRef: "Document 5" }
+            ] }
+        ]
+      } },
 
     // ===== Q1 — P1 · Mettre en relation des faits =====
     { id: "q-experience-autochtones-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 3, niveau: 1,
