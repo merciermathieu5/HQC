@@ -1,4 +1,70 @@
 /* ============================================================
+   v1.51.1 — CORRECTIFS DE L'APERÇU C1 (app.js seulement)
+     • L'aperçu ne rend plus les pieds/en-têtes du .docx (docx-preview affichait le champ PAGE
+       brut, non évalué, sur chaque page + des marges de pied erronées). Le .docx réel garde ses
+       pieds numérotés ; l'aperçu conserve ses étiquettes « — Page N — ».
+     • Variante + C1 : la simulation de coupures ne s'applique plus aux pages PAYSAGE (elle y
+       insérait de fausses coupures en plein schéma avec le ratio portrait).
+     • Ratios de simulation ajustés pour l'espace réellement réservé au pied de page
+       (cahier 14170/10800, guide 13990/10080).
+     • Mise à l'échelle des pages paysage : recalculée au redimensionnement de la fenêtre ;
+       repli transform:scale pour les navigateurs sans `zoom` (anciens Firefox).
+     • simulatePageBreaks ignore les éléments <header>/<footer> dans ses mesures (robustesse).
+   Console admin : INTACTE et autonome (styles et scripts propres ; ne charge que data.js).
+  ============================================================ */
+/* ============================================================
+   v1.51.0 — REFONTE AUDACIEUSE (index.html / style.css / app.js ; aucun changement de données)
+   INTERFACE — l'information est présentée autrement :
+     • FRISE CHRONOLOGIQUE pleine largeur sous l'en-tête (P1→P8 avec années, couleurs des réalités) :
+       c'est la navigation principale du catalogue ; clic = filtrer la période, re-clic = retirer ;
+       les périodes non actives s'estompent. Remplace les menus déroulants Période/Réalité.
+     • Filtres en PILULES (Toutes / Opérations / C1 / C2 — nouveau filtre « Opérations seulement »).
+     • Rangées de questions EXPANSIBLES : clic = fiche détaillée (réglette + points, liste des
+       documents en 2 colonnes) ; bouton explicite « + Ajouter » → « ✓ Au cahier » (vert).
+     • En-têtes de groupe : badge P#, années, « k au cahier ».
+     • « Mon cahier » : tableau de bord encré (gros chiffres : questions, points, ventilation
+       OI/C1/C2 = aperçu de la pondération de la couverture) ; épine NUMÉROTÉE 1..N reflétant
+       l'ordre réel du cahier (pastille, type, extrait d'énoncé, points) ; état vide pédagogique
+       en 3 étapes.
+     • GÉNÉRATEUR UNIFIÉ : 2 contrôles segmentés (Document : cahier/guide ; Documents : avec
+       chaque question / regroupés à la fin) + Aperçu/Télécharger — remplace les 8 boutons.
+   CAHIER DE L'ÉLÈVE (.docx) :
+     • COUVERTURE : frise chronologique IMPRIMÉE (8 périodes avec années ; celles couvertes par
+       l'évaluation colorées dans leur couleur de réalité) — l'élève situe l'évaluation dans la
+       chronologie du cours ; surtitre petites capitales, titre Georgia, double filet burgundy/or.
+     • EN-TÊTES DE QUESTION à badge : pastille numérotée burgundy + « QUESTION » petites capitales
+       + pondération « / X points » à droite (l'élève voit le poids de chaque question).
+     • Titres de documents : bandeau parchemin (remplace le bleu).
+   GUIDE DE L'ENSEIGNANT (.docx) :
+     • Table « APERÇU DE L'ÉVALUATION » en tête (No / Type de question / Points + Total) : la
+       structure de l'évaluation d'un coup d'œil avant les corrigés.
+   Validation : 27 vérifications DOM (jsdom) + génération de bout en bout des 3 documents
+   (XML : frise, badge, aperçu, titlePg, pieds numérotés ; rendus PDF vérifiés visuellement).
+  ============================================================ */
+/* ============================================================
+   v1.50.0 — REFONTE VISUELLE ET ROBUSTESSE (app.js / style.css / index.html ; aucun changement de données)
+   INTERFACE :
+     • Nouvel en-tête encré (typographie d'archives Fraunces) + FRISE DES PÉRIODES P1→P8 sous l'en-tête :
+       légende des couleurs du catalogue ET filtre rapide par réalité sociale (clic = filtrer, re-clic = retirer).
+     • Accessibilité : en-têtes de groupe utilisables au clavier (role=button, tabindex, Enter/Espace,
+       aria-expanded), focus visible partout (:focus-visible), prefers-reduced-motion respecté.
+     • Recherche : anti-rebond (140 ms) + cache du texte interrogeable par question (400+ questions fluides).
+     • Les filtres ne réinitialisent plus l'état de repli des groupes (la recherche déplie à l'affichage
+       sans écraser les choix de l'utilisateur ; « Réinitialiser » replie tout).
+     • Panneau cahier collant (sticky) ; pluriel correct du compteur ; favicon ; styles admin-link déplacés
+       dans la feuille de style.
+   DOCUMENTS WORD (cahier, guide, variante) :
+     • Pieds de page « Page N » sur tous les documents, numérotation continue ; masqué sur la page
+       couverture du cahier (titlePage). Implémenté dans c1SplitSections (un seul point d'insertion).
+     • Couverture du cahier raffinée : surtitre en petites capitales espacées, titre Georgia, double
+       filet burgundy + or.
+     • En-têtes de question en petites capitales espacées (cahier et guide) ; bloc-titre du guide avec
+       surtitre + titre Georgia.
+   Validation : test DOM complet (jsdom) du catalogue/frise/recherche/sélection + génération de bout en
+   bout des 3 documents (couverture, pieds de page, images, paysage C1) vérifiée par inspection XML et
+   rendu PDF.
+  ============================================================ */
+/* ============================================================
    v1.49.0 — COMPÉTENCE 1 (lot 6) : +3 questions « Caractériser une période » (Bois-Francs, grilles 2×3) :
      • q-mondialisation-c1-1 (P8 ; réalité choix-societe-quebec-contemporain, no 4 ; Québec et Canada
        1980-1995 ; objet : La mondialisation ; 9 docs, à discriminer 5 [entente Canada-UE de 2017, hors
