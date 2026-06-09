@@ -1075,7 +1075,16 @@
       subtitleText = '';
     }
 
-    // Titre du guide
+    // Trier les groupes (OI → C1 → C2) AVANT la page titre, afin de connaître l'orientation de la
+    // première section et d'y rattacher le titre. Sans cela, un guide commençant par une C1 (paysage)
+    // émettait le titre en portrait, suivi d'un saut de section → page titre quasi vide en portrait,
+    // puis le contenu C1 en paysage à la page suivante.
+    const _banners = sectionizeGroups(groups);
+    const _firstQ = groups.length ? DATA.questions.find(x => x.id === groups[0].questionId) : null;
+    let _orient = (_firstQ && categoryOf(_firstQ) === 'c1') ? 'landscape' : 'portrait';
+    if (_orient === 'landscape') bodyChildren.push({ __orient: 'landscape' });
+
+    // Titre du guide (émis dans l'orientation de la première section)
     bodyChildren.push(new Paragraph({
       alignment: AlignmentType.CENTER,
       spacing: { before: 0, after: 100 },
@@ -1094,9 +1103,7 @@
       children: [new TextRun({ text: "" })]
     }));
 
-    const _banners = sectionizeGroups(groups);
     let _prevComp = null;
-    let _orient = 'portrait';
     groups.forEach((g, idx) => {
       const qRaw = DATA.questions.find(x => x.id === g.questionId);
       if (!qRaw) return;
