@@ -3035,6 +3035,55 @@
             })]
           })]
         }));
+      } else if (d_doc.layout === 'data-table') {
+        // Encadré « tableau de données » : titre + tableau (en-tête bleu pâle) + sources.
+        const tbl = d_doc.table || { headers: [], rows: [] };
+        const nCols = (tbl.headers && tbl.headers.length) || (tbl.rows[0] ? tbl.rows[0].length : 1);
+        const innerTableW = innerW - 240; // léger retrait sous le cadre extérieur
+        const colW = Math.floor(innerTableW / nCols);
+        const colWidths = Array.from({ length: nCols }, (_, i) =>
+          i === nCols - 1 ? innerTableW - colW * (nCols - 1) : colW);
+
+        const headerRow = new TableRow({
+          tableHeader: true,
+          children: (tbl.headers || []).map((h, i) => new TableCell({
+            width: { size: colWidths[i], type: WidthType.DXA },
+            borders: ALL_BORDERS, verticalAlign: VerticalAlign.CENTER, margins: CELL_MARGINS,
+            shading: { fill: "D6E6F4", type: ShadingType.CLEAR, color: "auto" },
+            children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(h), bold: true, size: fontSize })] })]
+          }))
+        });
+        const dataRows = (tbl.rows || []).map(r => new TableRow({
+          cantSplit: true,
+          children: r.map((c, i) => new TableCell({
+            width: { size: colWidths[i], type: WidthType.DXA },
+            borders: ALL_BORDERS, verticalAlign: VerticalAlign.CENTER, margins: CELL_MARGINS,
+            children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(c), size: fontSize })] })]
+          }))
+        }));
+
+        const innerTable = new Table({
+          width: { size: innerTableW, type: WidthType.DXA },
+          columnWidths: colWidths,
+          rows: [headerRow, ...dataRows]
+        });
+
+        // Word interdit qu'une cellule se termine par un tableau : les sources (paragraphes)
+        // suivent toujours ; on ajoute un paragraphe vide de secours si aucune source.
+        const afterTable = sourcesPs.length ? sourcesPs : [new Paragraph({ children: [new TextRun({ text: "" })] })];
+
+        elements.push(new Table({
+          width: { size: innerW, type: WidthType.DXA },
+          columnWidths: [innerW],
+          rows: [new TableRow({
+            cantSplit: true,
+            children: [new TableCell({
+              width: { size: innerW, type: WidthType.DXA },
+              borders: ALL_BORDERS, margins: CELL_MARGINS,
+              children: [titleP, innerTable, ...afterTable]
+            })]
+          })]
+        }));
       } else { // text-only
         const cellChildren = [titleP];
         cellChildren.push(new Paragraph({

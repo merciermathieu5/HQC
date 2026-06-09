@@ -1,4 +1,20 @@
 /* ============================================================
+   v1.44.0 — COMPÉTENCE 1 : +3 questions « Caractériser une période » (P4, P5, P6) :
+     • q-bas-canada-c1-1 (P4, 1791-1840, la colonie canadienne sur le plan économique ; 10 docs,
+       à discriminer 2, 4 et 9 ; objet : Bas-Canada). Entrée DOCS 'bas-canada-c1-1' (5 images : doc 2/3/5/8/10,
+       extraites du PDF Épreuve_interactive).
+     • q-confederation-c1-1 (P5, 1840-1896, situation politique du Canada à partir de 1867 ; 9 docs,
+       à discriminer 4 et 7 ; objet : Acte de l'Amérique du Nord britannique). Entrée DOCS 'confederation-c1-1'
+       (3 images : doc 2/5/7). Renvois et distracteurs DÉDUITS (le corrigé source ne les imprimait pas) :
+       distracteurs doc 4 (Loi de 1982) et doc 7 (organigramme du Canada-Uni, 1840).
+     • q-urbanisation-c1-1 (P6, 1896-1945, développement social et culturel des villes ; 9 docs,
+       à discriminer 3 et 8 ; objet : Urbanisation). Entrée DOCS 'urbanisation-c1-1' (2 images : doc 4/8 ;
+       doc 9 = TABLEAU de données).
+     • app.js : NOUVEAU layout de document "data-table" (titre + tableau à en-tête bleu pâle + sources),
+       ajouté dans buildDocument().
+     • Puces des deux épreuves en format ancien (P5, P6) harmonisées sur la formulation RÉCIT standard.
+  ============================================================ */
+/* ============================================================
    v1.43.0 — INTÉGRATION DE LA COMPÉTENCE 1 « Caractériser une période » (1re question) :
      • +1 question (q-experience-autochtones-c1-1, P1) — NOUVEAU type : competence:1, operation:null,
        responseSpace "c1-schema" (organisateur graphique : objet + 2 mises en relation × [élément central
@@ -1492,6 +1508,110 @@ const DOCS = {
     { id: "cc-c1-d9", title: "Document 9", layout: "text-only",
       text: "« Trente ans après la conquête britannique, la situation de l’éducation est franchement pitoyable. Alors que la population française a plus que doublé entre 1760 et 1790, elle possède seulement deux écoles secondaires [...] et à peine une quarantaine de « petites écoles » [...]. À la même époque, la population anglaise du Canada, dont le nombre s’est accru de 10 000 personnes [...], dispose de 17 écoles, soit environ une école par 600 habitants comparativement à une par 3750 habitants chez les Français. »",
       sources: ["Source : Pierre Graveline, Une histoire de l’éducation au Québec, Montréal, Fidès, 2007, p. 23-24."] }
+  ],
+
+  // ===== P4 — Compétence 1 — La colonie canadienne sur le plan économique (1791-1840) =====
+  'bas-canada-c1-1': [
+    { id: "bc-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Hier a été commencée l’excavation du canal entre cette ville et Lachine. [...] L’honorable John Richardson s’adressa ensuite aux spectateurs en peu de mots : il les félicita sur le commencement d’un ouvrage projeté depuis si longtemps; puis se tournant vers les entrepreneurs, il les assura qu’il désirait sincèrement que l’entreprise leur fût aussi profitable qu’elle serait avantageuse et utile au Canada, lorsqu’elle serait exécutée. »",
+      sources: ["Source : « Montréal, 18 juillet », Le Canadien, 25 juillet 1821, p. 212-213, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082238. Orthographe modernisée par le Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "bc-c1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/bas-canada-c1-1/doc2.png", imageWidthCm: 10,
+      sources: ["Source : Charles W. Jefferys, Le premier train de bois sur la rivière des Outaouais, 1806 (1930), Bibliothèque et Archives Canada, MIKAN 2897203. Licence : domaine public."] },
+    { id: "bc-c1-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/bas-canada-c1-1/doc3.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "bc-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« Au début du 19e siècle, le brasseur John Molson élabore le projet audacieux de lancer un navire à vapeur assez puissant pour vaincre les courants et les vents du fleuve Saint-Laurent. Parti de Montréal le 1er novembre, l’Accommodation arrive à Québec deux jours plus tard, devenant le premier bateau à vapeur à parcourir le fleuve sur une longue distance. Long de 26 mètres et propulsé par des roues à aubes et un moteur de six chevaux-vapeur, le navire est construit entièrement au Québec. Lors de son voyage inaugural, le vapeur accomplit le trajet en 66 heures, un exploit pour l’époque. »",
+      sources: ["Source : Bibliothèque et Archives nationales du Québec, « Arrivée à Québec du navire à vapeur l’Accommodation », La ligne du temps du Québec, en ligne."] },
+    { id: "bc-c1-d5", title: "Document 5", layout: "image-only",
+      imageUrl: "assets/img/bas-canada-c1-1/doc5.png", imageWidthCm: 13,
+      sources: ["Source des données du graphique : Jacques Lacoursière, Jean Provencher et Denis Vaugeois, Canada-Québec (1534-2000), nouvelle édition, Sillery, Septentrion, 2001, p. 121 et Fernand Ouellet, Histoire économique et sociale du Québec, 1760-1850, Montréal et Paris, Fides, 1966, p. 37."] },
+    { id: "bc-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« Ce n’est que vers 1780 que des marchands britanniques, venus des colonies américaines, prennent le contrôle de cette activité. À cette époque, plusieurs marchands écossais fondent à Montréal la North West Company, qui contrôlera la traite jusque dans les années 1820. [Ces marchands] dirigent cette activité, sans pour autant pouvoir écarter totalement les Canadiens, dont l’expérience dans le domaine les rend indispensables. »",
+      sources: ["Source : Yves Bourdon et Jean Lamarre, Histoire du Québec. Une société nord-américaine, Montréal, Beauchemin, 1998, p. 68."] },
+    { id: "bc-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« L’une des grandes figures commerciales de Montréal, John Richardson, réunit quelques marchands montréalais et des Américains afin de rassembler les capitaux nécessaires pour la fondation de [cette institution]. [...] Les fonctions de [cette institution] seront de recevoir des dépôts, d’effectuer des prêts, d’échanger des devises étrangères et d’émettre du papier-monnaie. [...] Au début de la décennie 1820, [elle] collabore, avec les capitaux dont elle dispose, à l’élaboration d’une infrastructure industrielle, tout en tentant de développer le transport maritime et bientôt ferroviaire. »",
+      sources: ["Source : Jean-Pierre Paré, « La doyenne [...] », Cap-aux-Diamants, no 29, printemps 1992, p. 36-37."] },
+    { id: "bc-c1-d8", title: "Document 8", layout: "image-only",
+      imageUrl: "assets/img/bas-canada-c1-1/doc8.png", imageWidthCm: 12,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "bc-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« Pour la première fois de leur histoire, les habitants de la vallée du Saint-Laurent peuvent élire des représentants dans un Parlement. Les Canadiens, majoritaires, disposent d’un lieu pour faire entendre leurs idées et leurs convictions. Par les lois adoptées, ils pourront imprimer une direction aux affaires de leur cité. »",
+      sources: ["Source : Éric Bédard, Histoire du Québec pour les nuls, Paris, Éditions First, 2015, p. 118."] },
+    { id: "bc-c1-d10", title: "Document 10", layout: "image-only",
+      imageUrl: "assets/img/bas-canada-c1-1/doc10.png", imageWidthCm: 12,
+      sources: ["Source : James Duncan, [...], Musée McCord, M984.273. Licence : Creative Commons (BY-NC-ND)."] }
+  ],
+
+  // ===== P5 — Compétence 1 — La situation politique du Canada à partir de 1867 (1840-1896) =====
+  'confederation-c1-1': [
+    { id: "conf-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] les provinces du Canada [...] ont exprimé le désir de contracter une Union [...] pour ne former qu’une seule et même Puissance (Dominion) sous la couronne du Royaume-Uni de la Grande-Bretagne et d’Irlande [...]. »",
+      sources: ["Source : « Acte de l’Amérique du Nord britannique, 1867 : document », L’Encyclopédie canadienne, 16 décembre 2013, Historica Canada, en ligne (consulté le 30 juin 2020)."] },
+    { id: "conf-c1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/confederation-c1-1/doc2.png", imageWidthCm: 11,
+      sources: ["Source : Assemblée nationale du Québec, en ligne."] },
+    { id: "conf-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« L’article 91 de la Loi constitutionnelle de 1867 confère au Parlement le pouvoir “de faire des lois pour la paix, l’ordre et le bon gouvernement” [...]. Ce pouvoir est “résiduaire” [...]. »",
+      sources: ["Source : Gouvernement du Canada, en ligne."] },
+    { id: "conf-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« [...] [Elle] constitue un document capital de l’histoire du Canada. Elle marque l’obtention de sa pleine indépendance, en lui permettant de modifier sa Constitution sans l’approbation de la Grande-Bretagne [...]. »",
+      sources: ["Source : Stephen Azzi, « Loi constitutionnelle de 1982 », L’Encyclopédie canadienne, 24 avril 2020, Historica Canada, en ligne (consulté le 30 juin 2020)."] },
+    { id: "conf-c1-d5", title: "Document 5", layout: "image-only",
+      imageUrl: "assets/img/confederation-c1-1/doc5.png", imageWidthCm: 8,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social, en ligne."] },
+    { id: "conf-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« [...] le texte prévoit l’union [...] de trois des cinq colonies de l’Amérique du Nord britannique, au sein d’un État [...] doté d’un système parlementaire calqué sur celui de la Grande-Bretagne [...]. »",
+      sources: ["Source : W. H. McConnell, « Loi constitutionnelle de 1867 », L’Encyclopédie canadienne, 24 avril 2020, Historica Canada, en ligne (consulté le 30 juin 2020)."] },
+    { id: "conf-c1-d7", title: "Document 7", layout: "image-only",
+      imageUrl: "assets/img/confederation-c1-1/doc7.png", imageWidthCm: 12,
+      sources: ["Source : Allôprof, en ligne."] },
+    { id: "conf-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« [...] après plusieurs discussions entre les différentes colonies, une première entente voit le jour [...]. L’Acte [...] entre en vigueur le 1er juillet [...]. »",
+      sources: ["Source : Allôprof, en ligne."] },
+    { id: "conf-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« [...] Parmi les autres domaines [...], selon l’article 92, figurent l’établissement des hôpitaux, les institutions municipales, la célébration du mariage et l’administration de la justice [...]. »",
+      sources: ["Source : Dara Lithwick, Un pas de deux : la répartition des pouvoirs législatifs entre le fédéral et les provinces aux articles 91 et 92 de la Loi constitutionnelle de 1867, Parlement du Canada, en ligne."] }
+  ],
+
+  // ===== P6 — Compétence 1 — Le développement des villes (social et culturel), 1896-1945 =====
+  'urbanisation-c1-1': [
+    { id: "urb-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Après avoir connu des conditions de vie difficiles, même les familles ouvrières voient leur pouvoir d’achat augmenter [...] elles participent à une activité jusqu’ici inaccessible : le magasinage. Elles fréquentent de plus en plus les grands magasins comme ceux de la rue Sainte-Catherine : Eaton, Simpson, Morgan, Ogilvy, Dupuis Frères. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social, en ligne."] },
+    { id: "urb-c1-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] vise à offrir aux mères des conseils sur l’alimentation et l’hygiène, et à leurs enfants une ration de lait de bonne qualité, éliminant la propagation de bactéries souvent mortelles à cette époque. Une des plus célèbres [...] fut celle de Sainte-Justine [...]. »",
+      sources: ["Source : Université de Sherbrooke, Bilan du siècle, en ligne."] },
+    { id: "urb-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] d’importantes infrastructures de transport sont mises en place, ainsi que des équipements scolaires et hospitaliers. Par ailleurs, l’accès plus facile à la propriété et les besoins des nouveaux ménages entraînent une expansion considérable de la construction résidentielle [...] et de l’espace urbain [...]. »",
+      sources: ["Source : Paul-André Linteau, René Durocher et Jean-Claude Robert, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 535-536."] },
+    { id: "urb-c1-d4", title: "Document 4 : Ernest Ouimet, pionnier de l’image", layout: "image-only",
+      imageUrl: "assets/img/urbanisation-c1-1/doc4.png", imageWidthCm: 8,
+      sources: ["Source : John Dagget, Collection Cinémathèque québécoise, Ville de Montréal."] },
+    { id: "urb-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« L’industrialisation amène la population à se concentrer de plus en plus vers les villes. En effet, la présence des industries en milieu urbain attire la population des campagnes en quête de travail, ainsi que les immigrants tout juste débarqués au Québec [...]. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social, en ligne."] },
+    { id: "urb-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« [...] Malgré de fortes oppositions, Montréal adopte cette politique en 1926. [Cette politique] provoque une restructuration du commerce du lait et la modernisation des usines [...]. »",
+      sources: ["Source : Joanne Burgess, Le lait : une question de vie ou de mort, Collections Musée McCord."] },
+    { id: "urb-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« [...] les nouveaux produits culturels, venant principalement des États-Unis [...] offrent l’image prestigieuse de la modernité [...]. Les individus sont d’abord vus comme des consommateurs de culture, à qui sont offerts, pour occuper leurs loisirs, des produits variés [...] répondant aux goûts, aux désirs et aux moyens du plus grand nombre [...]. »",
+      sources: ["Source : Paul-André Linteau, René Durocher et Jean-Claude Robert, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 171."] },
+    { id: "urb-c1-d8", title: "Document 8", layout: "image-only",
+      imageUrl: "assets/img/urbanisation-c1-1/doc8.png", imageWidthCm: 10,
+      sources: ["Source : Evert F. Baumgardner, Family watching television, image du domaine public, en ligne."] },
+    { id: "urb-c1-d9", title: "Document 9 : le taux de mortalité des enfants à Montréal (pour mille habitants)", layout: "data-table",
+      table: {
+        headers: ["Année", "Catholiques francophones", "Autres catholiques", "Protestants"],
+        rows: [
+          ["1900", "282,5", "235,4", "102,8"],
+          ["1905", "255,4", "198,7", "174,4"],
+          ["1911", "225,6", "179,3", "140,6"],
+          ["1914", "182,3", "195", "115,8"]
+        ]
+      },
+      sources: ["Source des données : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Sillery, Septentrion, 1995, p. 223."] }
   ],
 
   // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
@@ -5309,6 +5429,144 @@ window.DATA = {
             satellites: [
               { answer: "Serment d’allégeance au roi", docRef: "Document 5" },
               { answer: "Chambre d’assemblée élue (ou assemblée législative élue)", docRef: "Document 2" }
+            ] }
+        ]
+      } },
+
+    // ===== P4 · COMPÉTENCE 1 — Caractériser une période — La colonie canadienne sur le plan économique (1791-1840) =====
+    { id: "q-bas-canada-c1-1", competence: 1, operation: null, numero: 1, annee: 3, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        prompt: "Décrivez la colonie canadienne sur le plan économique pendant la période 1791 à 1840.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom du territoire où réside la majorité francophone en Amérique du Nord entre 1791 et 1840" },
+          relations: [
+            { central: { label: "Activité économique qui décline au début du 19e siècle" },
+              satellites: [
+                { label: "Une compagnie qui disparait au début du 19e siècle" },
+                { label: "Lieu d’exportation des marchandises au début du 19e siècle" }
+              ] },
+            { central: { label: "Une infrastructure de transport qui facilite le commerce entre les colonies britanniques au début du 19e siècle" },
+              satellites: [
+                { label: "Un exemple de ce type d’infrastructure construit au début du 19e siècle" },
+                { label: "Une institution nouvelle ayant fourni une part des capitaux pour sa construction" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [2, 4, 9],
+      reglettes: [{ id: "r-bc-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('bas-canada-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      corrige: {
+        objet: { answer: "Bas-Canada" },
+        relations: [
+          { central: { answer: "La traite des fourrures (ou le commerce des fourrures)", docRef: "Document 5" },
+            satellites: [
+              { answer: "La compagnie du Nord-Ouest (ou la North West Company)", docRef: "Document 6" },
+              { answer: "Le Royaume-Uni (l’Angleterre est acceptable)", docRef: "Document 8" }
+            ] },
+          { central: { answer: "Les canaux", docRef: "Document 10" },
+            satellites: [
+              { answer: "Le canal de Lachine (ou le canal Rideau, ou le canal de Chambly)", docRef: "Document 1" },
+              { answer: "Les banques (plus précisément, la Banque de Montréal)", docRef: "Document 7" }
+            ] }
+        ]
+      } },
+
+    // ===== P5 · COMPÉTENCE 1 — Caractériser une période — La situation politique du Canada à partir de 1867 (1840-1896) =====
+    { id: "q-confederation-c1-1", competence: 1, operation: null, numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Décrivez la situation politique du Canada à partir de 1867.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom donné à la nouvelle constitution du Canada à partir de 1867" },
+          relations: [
+            { central: { label: "Le nom du nouveau territoire" },
+              satellites: [
+                { label: "Les provinces faisant partie de ce territoire en 1867" },
+                { label: "Nom du premier Premier ministre du nouveau territoire" }
+              ] },
+            { central: { label: "Le type d’union retenu" },
+              satellites: [
+                { label: "Les paliers de gouvernement" },
+                { label: "Une compétence attribuée à chacun des paliers de gouvernement" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [4, 7],
+      reglettes: [{ id: "r-conf-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('confederation-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "Acte de l’Amérique du Nord britannique" },
+        relations: [
+          { central: { answer: "Dominion du Canada", docRef: "Document 1" },
+            satellites: [
+              { answer: "Québec, Ontario, Nouveau-Brunswick et Nouvelle-Écosse", docRef: "Document 2" },
+              { answer: "John A. Macdonald", docRef: "Document 5" }
+            ] },
+          { central: { answer: "Une union fédérale", docRef: "Document 6" },
+            satellites: [
+              { answer: "Un gouvernement fédéral (central) et des gouvernements provinciaux", docRef: "Document 3" },
+              { answer: "Fédéral : pouvoirs résiduaires (paix, ordre et bon gouvernement); provinces : hôpitaux, institutions municipales, mariage et administration de la justice", docRef: "Documents 3 et 9" }
+            ] }
+        ]
+      } },
+
+    // ===== P6 · COMPÉTENCE 1 — Caractériser une période — Le développement des villes (social et culturel), 1896-1945 =====
+    { id: "q-urbanisation-c1-1", competence: 1, operation: null, numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Décrivez le développement des villes au Québec sur le plan social et culturel dans la première moitié du 20e siècle.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom donné au phénomène de développement des villes au début du 20e siècle" },
+          relations: [
+            { central: { label: "Un problème lié à la santé publique" },
+              satellites: [
+                { label: "Une mesure sanitaire pour lutter contre ce problème" },
+                { label: "Un programme offert aux mères de jeunes enfants" }
+              ] },
+            { central: { label: "Un phénomène lié à la diffusion de la culture dans les villes" },
+              satellites: [
+                { label: "Un divertissement apprécié des habitants des villes" },
+                { label: "Une pratique liée à la consommation" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [3, 8],
+      reglettes: [{ id: "r-urb-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('urbanisation-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "Urbanisation" },
+        relations: [
+          { central: { answer: "Mortalité infantile", docRef: "Document 9" },
+            satellites: [
+              { answer: "Pasteurisation du lait", docRef: "Document 6" },
+              { answer: "Gouttes de lait", docRef: "Document 2" }
+            ] },
+          { central: { answer: "Culture de masse", docRef: "Document 7" },
+            satellites: [
+              { answer: "Cinéma (et parcs d’attraction)", docRef: "Document 4" },
+              { answer: "La fréquentation des grands magasins", docRef: "Document 1" }
             ] }
         ]
       } },
