@@ -1,4 +1,23 @@
 /* ============================================================
+   v1.47.0 — COMPÉTENCE 1 (lot 4) : +2 questions « Caractériser une période » (Commission scolaire des
+   Bois-Francs, 2017-2018, réalité formation-regime-federal). Les schémas sources sont présentés en grille
+   2×3 (case du milieu = élément central, cases gauche/droite = satellites, flèches décoratives) : c'est la
+   structure canonique, simplement disposée autrement → intégrée telle quelle dans le type c1-schema, sans
+   modification du moteur.
+     • q-acte-union-c1-1 (Version B, société coloniale 1840-1867 ; 9 docs, à discriminer 4 [Politique
+       nationale, hors période] ; objet : L'Acte d'Union ; docs 6 et 7 = appoint en période, non distracteurs).
+       DOCS 'acte-union-c1-1' (images : doc 3 portrait Lafontaine [text-image], doc 4 publicité, doc 8
+       organigrammes 1840-48/1848 rendus en une image fidèle avec en-têtes).
+     • q-industrialisation-bf-c1-1 (Version A, situation socioéconomique 2e moitié 19e s. ; 11 docs,
+       à discriminer 3/5/9/10 ; objet : Première phase d'industrialisation). DOCS 'industrialisation-bf-c1-1'
+       (images : doc 2 voie ferrée, doc 3 camembert immigrants, doc 4 machine à vapeur [text-image],
+       doc 5/6 cartes, doc 8 manufacture, doc 10 habitations).
+     • Renvois aux documents et distracteurs DÉDUITS du dossier (les clés Bois-Francs ne les impriment pas) ;
+       validés par l'enseignant. Numérotation des documents à partir de 1, comme les autres C1.
+     • Question distincte (et non doublon) de q-industrialisation-19e-c1-1 : même objet, mais épreuve, dossier
+       et libellés différents.
+  ============================================================ */
+/* ============================================================
    v1.46.0 — COMPÉTENCE 1 (lot 3) : +7 questions « Caractériser une période », issues de la Section B des
    évaluations sommatives (versions A et B) :
      • q-echanges-autochtones-c1-1 (P1 vA, vers 1500, mode d'échange ; 6 docs, AUCUN distracteur ;
@@ -2117,6 +2136,79 @@ const DOCS = {
   ],
 
   // ===== Compétence 1 — Caractériser une période — Lot « Section B des sommatives » (7 questions) =====
+  // ===== Compétence 1 — Caractériser une période — Lot « Bois-Francs » (grilles 2×3 = schéma canonique) =====
+  // ----- Version B : société coloniale, 1840-1867 (objet : L'Acte d'Union) -----
+  'acte-union-c1-1': [
+    { id: "au-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Plusieurs facteurs sont à l’origine de la guerre, mais le principal est l’esclavage. L’économie des États du Nord repose avant tout sur de petites [entreprises] qui n’ont pas besoin de main-d’œuvre servile [...]. Les États du Sud, toutefois, comportent de grandes plantations de coton dont la cueillette est effectuée par des esclaves. »",
+      sources: ["Source : Encyclopédie canadienne, « La guerre aux États-Unis et le Canada »."] },
+    { id: "au-c1-d2", title: "Document 2", layout: "text-only",
+      text: "« [...] le gouvernement britannique, confiant de sa supériorité industrielle et commerciale, abandonna [sa politique] qui visait à mettre en place diverses mesures tarifaires (taxes, règlements, lois, etc.). »",
+      sources: ["Source : Ramsay Cook et autres, Le Canada : étude moderne, traduit de l’anglais par Claude Romney, Toronto, Clarke, Irwin & Company Limited, 1981, p. 63."] },
+    { id: "au-c1-d3", title: "Document 3", layout: "text-image",
+      imageUrl: "assets/img/acte-union-c1-1/doc3.png", imageWidthCm: 5,
+      text: "« Les Réformistes, dans les deux provinces, forment une majorité immense. [...] [N]otre cause est commune. Il est de l’intérêt des Réformistes des deux provinces de se rencontrer [...] dans un esprit de paix, d’union, d’amitié et de fraternité. » — Extrait du manifeste de Louis-Hippolyte Lafontaine, 1840",
+      sources: ["Source de l’image : Bibliothèque et Archives Canada, C 005961.",
+                "Source du texte : Louise Charpentier et autres, Nouvelle histoire du Québec et du Canada, 2e édition, Anjou, Les Éditions CEC, 1990, p. 183."] },
+    { id: "au-c1-d4", title: "Document 4 : Publicité de la Politique nationale", layout: "image-only",
+      imageUrl: "assets/img/acte-union-c1-1/doc4.png", imageWidthCm: 7,
+      sources: ["Source : Publicité électorale de la Politique nationale (« The Old Flag. The Old Policy. The Old Leader. »)."] },
+    { id: "au-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« [...] les Réformistes [...] continuent de militer [pour obtenir un gouvernement qui rendra compte de ses actions au peuple] [...]. Ils veulent que les membres du Conseil exécutif soient normalement choisis parmi les parlementaires du parti majoritaire en Chambre [d’assemblée]. » (Militer : lutter pour une cause)",
+      sources: ["Source : Assemblée nationale du Québec, « Gouvernement responsable », Encyclopédie du parlementarisme québécois, en ligne."] },
+    { id: "au-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« Les Réformistes [...] croient qu’ils pourraient mieux défendre leurs intérêts dans un régime où les élus détiendraient le pouvoir exécutif et limiteraient ceux du gouverneur [...]. »",
+      sources: ["Source : Alain Dalongeville (dir.), Présences : une histoire thématique du Québec, manuel de l’élève, 2e année du 2e cycle du secondaire, Anjou, Les Éditions CEC, 2008, vol. 2, p. 106."] },
+    { id: "au-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« L’Angleterre, qui vient d’adopter une politique commerciale défavorable à ses colonies, se doit de leur donner le pouvoir politique qui leur permettra de résoudre leurs problèmes. »",
+      sources: ["Source : Jean Hamelin et Jean Provencher, Brève histoire du Québec, nouv. éd., Montréal, Boréal, 1997, p. 62."] },
+    { id: "au-c1-d8", title: "Document 8", layout: "image-only",
+      imageUrl: "assets/img/acte-union-c1-1/doc8.png", imageWidthCm: 14,
+      sources: ["Source : Alain Dalongeville (dir.), Présences : une histoire thématique du Québec, Anjou, Les Éditions CEC, 2008."] },
+    { id: "au-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« [Cette entente] commerciale, valide pour une durée de dix ans, est finalement signée en 1854. L’une ou l’autre des parties peut y mettre fin sans préavis. C’est ce [que font les États-Unis] en 1866 [...]. »",
+      sources: ["Source : Jean-Pierre Charland, Histoire du Canada contemporain, Sillery, Septentrion, 2007, p. 32."] }
+  ],
+
+  // ----- Version A : situation socioéconomique, seconde moitié du 19e s. (objet : Première phase d'industrialisation) -----
+  'industrialisation-bf-c1-1': [
+    { id: "ibf-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« [...] un cordonnier touche un salaire moyen de 8 $ par semaine, une cordonnière 4 $; chez les tailleurs, les hommes touchent 8 $ et les femmes 3 $. [L’historien Fernand Harvey] évalue qu’il en coûte à cette époque 9 $ par semaine pour assurer la subsistance d’une famille. »",
+      sources: ["Source : Le collectif Clio, L’histoire des femmes au Québec depuis quatre siècles, Montréal, Le Jour, 1992, p. 220."] },
+    { id: "ibf-c1-d2", title: "Document 2 : La construction d’une voie ferrée", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-bf-c1-1/doc2.png", imageWidthCm: 10,
+      sources: ["Source : Musée McCord, P600, S4, SS3, P20/29."] },
+    { id: "ibf-c1-d3", title: "Document 3 : La provenance des immigrants dans la colonie", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-bf-c1-1/doc3.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "ibf-c1-d4", title: "Document 4", layout: "text-image",
+      imageUrl: "assets/img/industrialisation-bf-c1-1/doc4.png", imageWidthCm: 6.5,
+      text: "« Cette machine à vapeur [...] sera exploitée dans toutes sortes de domaines [...]. »",
+      sources: ["Source de l’image : Musée McCord, I-8590.0.1.",
+                "Source du texte : Christophe Horguelin et autres, Fresques, manuel de l’élève, 2e année du 2e cycle du secondaire, Montréal, Graficor, 2008, t. 1, p. 190."] },
+    { id: "ibf-c1-d5", title: "Document 5", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-bf-c1-1/doc5.png", imageWidthCm: 11,
+      sources: ["Source : Ministère de l’Éducation et de l’Enseignement supérieur (MÉES)."] },
+    { id: "ibf-c1-d6", title: "Document 6", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-bf-c1-1/doc6.png", imageWidthCm: 13,
+      sources: ["Source : Ministère de l’Éducation et de l’Enseignement supérieur (MÉES)."] },
+    { id: "ibf-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« Les Québécois [...] ont la “bougeotte”. [...] Ils y sont contraints par la situation économique. [...] Dans les vieilles régions agricoles, il y a trop d’enfants [...]. Arrivés à l’âge adulte, ceux-ci doivent chercher ailleurs un moyen d’assurer leur subsistance. » (Bougeotte : manie de se déplacer souvent)",
+      sources: ["Source : Louise Charpentier et autres, Nouvelle histoire du Québec et du Canada, 2e éd., Anjou, Les Éditions CEC, 1990, p. 226."] },
+    { id: "ibf-c1-d8", title: "Document 8 : Ouvriers dans une manufacture", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-bf-c1-1/doc8.png", imageWidthCm: 12,
+      sources: ["Source : John Henry Walker, Musée McCord, M930.50.8.79."] },
+    { id: "ibf-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« [...] des circonstances favorisent le commerce du bois. La production et l’exportation des produits forestiers prennent de l’ampleur pendant le blocus continental décrété par [...] Napoléon. L’Angleterre, souhaitant garantir ses provisions de bois destinées à la construction des navires de guerre, institue des tarifs préférentiels. »",
+      sources: ["Source : Encyclopédie canadienne, « Le commerce du bois »."] },
+    { id: "ibf-c1-d10", title: "Document 10 : Habitations d’un quartier près du canal de Lachine", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-bf-c1-1/doc10.png", imageWidthCm: 10,
+      sources: ["Source : Wm. Notman & Son, Musée McCord, II-146359."] },
+    { id: "ibf-c1-d11", title: "Document 11", layout: "text-only",
+      text: "« À cette époque, la majorité des nouveaux arrivants viennent du Royaume-Uni, de l’Europe du Nord et des États-Unis. [...] beaucoup vont s’installer [...] où les emplois sont plus faciles à trouver. »",
+      sources: ["Source : Jesse Boulette et autres, Québec.docs, cahier d’apprentissage, 2e année du 2e cycle du secondaire, Montréal, Chenelière Éducation, 2013, p. 56."] }
+  ],
+
     // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
   'experience-autochtones-relation-1': [
     { id: "ea-r1-d1", title: "Document 1", layout: "text-only",
@@ -6660,6 +6752,96 @@ window.DATA = {
             satellites: [
               { answer: "Françoise David", docRef: "Document 7" },
               { answer: "L’augmentation du salaire minimum", docRef: "Document 2" }
+            ] }
+        ]
+      } },
+
+    { id: "q-acte-union-c1-1", competence: 1, operation: null, numero: 4, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Décrivez la société coloniale, entre 1840 et 1867, sous les aspects politique ou économique.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Le nom de la constitution en vigueur entre 1840 et 1867" },
+          relations: [
+            { central: { label: "Une revendication des Réformistes" },
+              satellites: [
+                { label: "Une intervention de la métropole" },
+                { label: "Un moyen de pression exercé par les Réformistes" }
+              ] },
+            { central: { label: "Une politique économique adoptée par la métropole" },
+              satellites: [
+                { label: "Le nom de l’entente commerciale signée avec les États-Unis" },
+                { label: "Un conflit aux États-Unis qui menace l’accord économique" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [4],
+      reglettes: [{ id: "r-au-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('acte-union-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "L’Acte d’Union" },
+        relations: [
+          { central: { answer: "L’obtention de la responsabilité ministérielle", docRef: "Document 5" },
+            satellites: [
+              { answer: "La mise en place du gouvernement responsable", docRef: "Document 8" },
+              { answer: "L’alliance Baldwin-Lafontaine", docRef: "Document 3" }
+            ] },
+          { central: { answer: "Le libre-échange", docRef: "Document 2" },
+            satellites: [
+              { answer: "Le Traité de réciprocité", docRef: "Document 9" },
+              { answer: "La guerre de Sécession", docRef: "Document 1" }
+            ] }
+        ]
+      } },
+
+    { id: "q-industrialisation-bf-c1-1", competence: 1, operation: null, numero: 5, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Décrivez la situation socioéconomique au Québec dans la seconde moitié du 19e siècle.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom de la période de transformations économiques et sociales au Québec dans la seconde moitié du 19e siècle" },
+          relations: [
+            { central: { label: "La principale source d’énergie utilisée" },
+              satellites: [
+                { label: "Un secteur industriel en développement" },
+                { label: "Un moyen de transport en expansion" }
+              ] },
+            { central: { label: "Un lieu où travaille la main-d’œuvre" },
+              satellites: [
+                { label: "Un des lieux d’origine de la main-d’œuvre" },
+                { label: "Une des conditions de travail" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [3, 5, 9, 10],
+      reglettes: [{ id: "r-ibf-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('industrialisation-bf-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
+      corrige: {
+        objet: { answer: "Première phase d’industrialisation" },
+        relations: [
+          { central: { answer: "Le charbon OU La vapeur OU La machine à vapeur", docRef: "Document 4" },
+            satellites: [
+              { answer: "Les aliments et les boissons OU La chaussure OU Le textile OU Les équipements de transport, etc.", docRef: "Document 6" },
+              { answer: "Le train OU Le chemin de fer", docRef: "Document 2" }
+            ] },
+          { central: { answer: "Les usines OU En ville", docRef: "Document 8" },
+            satellites: [
+              { answer: "Les régions rurales OU le Royaume-Uni OU l’Europe (du Nord) OU Les États-Unis", docRef: "Documents 7 ou 11" },
+              { answer: "Les ouvriers ont des salaires très bas, etc.", docRef: "Document 1" }
             ] }
         ]
       } },
