@@ -800,7 +800,7 @@
     return function (text) {
       if (typeof text !== 'string' || !text) return text;
       return text.replace(
-        /(\bdocuments?\b\s+)(\d+(?:\s*(?:,\s*|\s+à\s+|\s+et\s+)\d+)*)/gi,
+        /(\bdocuments?\b\s+)(\d+(?:\s*(?:,\s*|\s+à\s+|\s+et\s+|\s+ou\s+)\d+)*)/gi,
         (m, head, list) => head + list.replace(/\d+/g, d => {
           const g = map[parseInt(d, 10)];
           return g != null ? String(g) : d;

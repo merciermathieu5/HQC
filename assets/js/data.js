@@ -1,4 +1,35 @@
 /* ============================================================
+   v1.46.0 — COMPÉTENCE 1 (lot 3) : +7 questions « Caractériser une période », issues de la Section B des
+   évaluations sommatives (versions A et B) :
+     • q-echanges-autochtones-c1-1 (P1 vA, vers 1500, mode d'échange ; 6 docs, AUCUN distracteur ;
+       objet : Troc). DOCS 'echanges-autochtones-c1-1' (3 images : doc 3 carte des routes, doc 4 gravure
+       Lafitau, doc 6 carte du golfe — RÉCIT/domaine public).
+     • q-industrialisation-19e-c1-1 (P5 vA, 1840-1896, 1re phase d'industrialisation ; 10 docs, à discriminer
+       2/6/8/10 [docs sur le commerce du bois] ; objet : Première phase d'industrialisation). DOCS
+       'industrialisation-19e-c1-1' (doc 1 = TABLEAU des banques ; images doc 5/7 [filigrane « Musée McCord »
+       retiré par recadrage], doc 10).
+     • q-grande-depression-c1-1 (P6 vA, années 1930, social et politique ; 9 docs, à discriminer 3/5/9 ;
+       objet : La grande dépression). DOCS 'grande-depression-c1-1' (doc 1 = text-image Lionel Groulx,
+       doc 2 = TABLEAU des rations de chômage ; images doc 3/4/5/8).
+     • q-revolution-tranquille-c1-1 (P7 vA, années 1960, social et économique ; 10 docs, à discriminer 1/4/7/9 ;
+       objet : Révolution tranquille). DOCS 'revolution-tranquille-c1-1' (doc 8 = TABLEAU des sociétés d'État ;
+       doc 5 = text-image cégep ; images doc 1/2/9).
+     • q-trente-glorieuses-c1-1 (P7 vB, 1945-1960, démographique et social ; 9 docs, à discriminer 2/6 ;
+       objet : Trente glorieuses). DOCS 'trente-glorieuses-c1-1' (doc 1 = TABLEAU du taux de natalité ;
+       doc 7 = text-image graphiques de revenu ; images doc 2/4). Clé validée par l'enseignant.
+     • q-vieillissement-c1-1 (P8 vA, depuis 1980, situation démographique ; 10 docs, à discriminer 2/3/9 ;
+       objet : Le vieillissement de la population). DOCS 'vieillissement-c1-1' (doc 5 = COMPOSITE des pyramides
+       des âges 1971 + 2020 ; image doc 6 CPE).
+     • q-feminisme-3e-vague-c1-1 (P8 vB, depuis 1980, luttes des femmes ; 9 docs, à discriminer 3/8 ;
+       objet : Mouvement féministe). DOCS 'feminisme-3e-vague-c1-1' (images doc 7 Françoise David, doc 9 RÉCIT).
+     • Numérotation des documents à partir de 1 (comme les C1 des sommatives déjà intégrées) ; titres / docRef /
+       documentsADiscriminer cohérents, renumérotation globale gérée par le décalage en mode variante.
+     • ÉCARTÉS de ce lot : P5 vB (Acte de l'AANB) = doublon de q-confederation-c1-1 ; P6 vB (Urbanisation) =
+       doublon de q-urbanisation-c1-1 ; fichier « 1608-1760 vA » mal étiqueté (corps = 1840-1896).
+     • app.js : renuméroteur de documents — ajout du séparateur « ou » (« Documents 1 ou 6 ») à la regex de
+       makeDocRenumberer (additif ; n'affecte pas les renvois existants).
+  ============================================================ */
+/* ============================================================
    v1.45.0 — COMPÉTENCE 1 (lot 2) : +6 questions « Caractériser une période » (P5, P6, P7×3, P8) :
      • q-ideologies-c1-1 (P5, 1840-1896, idéologies ; 6 docs, aucun distracteur ; objet : Anticléricalisme).
        Entrée DOCS 'ideologies-c1-1' (3 images : doc 3/4/5 — Institut canadien, Mgr Bourget, A.-A. Dorion).
@@ -1815,6 +1846,277 @@ const DOCS = {
       sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert, Histoire du Québec contemporain, tome 1 : De la Confédération à la crise (1867-1929), Montréal, Boréal, 1989, p. 409."] }
   ],
 
+  // ===== P1 — Compétence 1 — Le mode d’échange dans le nord-est de l’Amérique vers 1500 (Éval. sommative A) =====
+  'echanges-autochtones-c1-1': [
+    { id: "ech-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Dès le début, les haches de fer comptent parmi les objets les plus convoités [par les Autochtones]. Elles sont importées [...] en quantité telle qu’elles vont littéralement pulluler dans de nombreuses régions [des Grands Lacs]. [...] Bien que des générations d’enfants aient grandi avec l’idée que ces haches françaises étaient des armes, des découvertes archéologiques laissent croire que ce sont surtout les femmes qui les utilisaient, notamment pour couper les branches et les arbustes et faire du feu. »",
+      sources: ["Source : Walter A. Kenyon, « Articles de troc avec les Autochtones », L’Encyclopédie canadienne, dernière modification le 27 août 2020."] },
+    { id: "ech-c1-d2", title: "Document 2", layout: "text-only",
+      text: "« Basques et Mi’gmaqs ont bricolé [une langue] avant tout pour commercer, puisque les quelques mots de cette langue hybride désignent des objets ainsi que les groupes qui prennent part aux échanges, ou les relations qui unissent les partenaires de traite. »",
+      sources: ["Source : Laurier Turgeon, Une histoire de la Nouvelle-France : Français et Amérindiens au XVIe siècle, Paris, Belin, 2019."] },
+    { id: "ech-c1-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/echanges-autochtones-c1-1/doc3.png", imageWidthCm: 13,
+      sources: ["Source : Direction générale de l’information géospatiale — Ministère de l’Énergie et des Ressources naturelles, Carte du relief du Québec (2016), échelle 1/2 000 000. Licence : Creative Commons (BY). Annotations par le Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "ech-c1-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/echanges-autochtones-c1-1/doc4.png", imageWidthCm: 8,
+      sources: ["Source : Joseph-François Lafitau, Moeurs des sauvages ameriquains [...], Tome 2, p. 218. Licence : image du domaine public."] },
+    { id: "ech-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« Les premières pistes situées près des cascades et des rapides sont souvent tracées par des orignaux. Les Premières Nations empruntent ces sentiers en portant [sur leur dos] leurs canots d’écorce de bouleau extraordinairement légers. »",
+      sources: ["Source : Mackinnon, C. (2015), « Portage », L’Encyclopédie canadienne, en ligne."] },
+    { id: "ech-c1-d6", title: "Document 6", layout: "image-only",
+      imageUrl: "assets/img/echanges-autochtones-c1-1/doc6.png", imageWidthCm: 13,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] }
+  ],
+
+  // ===== P5 — Compétence 1 — La première phase d’industrialisation (1840-1896) (Éval. sommative A) =====
+  'industrialisation-19e-c1-1': [
+    { id: "ind19-c1-d1", title: "Document 1 : Banques installées à Montréal et dates de leur fondation", layout: "data-table",
+      table: {
+        headers: ["Nom", "Fondation"],
+        rows: [
+          ["Bank of Montreal", "1817"],
+          ["Banque du peuple", "1835"],
+          ["Bank of British North America", "1836"],
+          ["Merchants Bank of Canada", "1861"],
+          ["Banque Jacques-Cartier", "1861"],
+          ["Mechanic’s Bank", "1865"],
+          ["Metropolitan Bank", "1871"],
+          ["Exchange Bank of Canada", "1872"],
+          ["Banque Ville-Marie", "1872"],
+          ["Banque d’Hochelaga", "1874"],
+          ["Molsons Bank", "1874"]
+        ]
+      },
+      sources: ["Source des données : Linteau, Paul-André et al., Histoire du Québec contemporain, tome 1 : De la Confédération à la crise, Montréal, Boréal Express, 1979, p. 110."] },
+    { id: "ind19-c1-d2", title: "Document 2", layout: "text-only",
+      text: "« Pendant longtemps, les bûcherons s’éreintent du matin au soir, six jours par semaine, et vivent entassés dans des camps de brousse (ou dortoirs) [...]. Ces dortoirs sont souvent assortis de règles très strictes; ainsi, l’alcool est prohibé, et, pendant longtemps, le silence est réglementaire durant les repas. La nourriture, toutefois, n’est pas matière à mécontentement : elle est de très bonne qualité, et vient en portions énormes, pour combler l’appétit énorme de ces hommes brûlant environ 7000 calories par jour. »",
+      sources: ["Source : Mark Kuhlberg, « Bûcherons », L’Encyclopédie canadienne, dernière mise à jour le 16 avril 2015."] },
+    { id: "ind19-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« On assiste plus nettement pendant la deuxième moitié du 19e siècle, à l’émergence de nouvelles générations d’hommes d’affaires canadiens-français qui se manifestent dans divers secteurs d’activité et qui commencent à s’organiser comme en témoigne la création de la Chambre de Commerce de la Cité et du District de Montréal, à côté de son équivalent anglophone, The Montreal Board of Trade. Cette [classe sociale] semble véhiculer une idéologie ayant des composantes typiquement libérales et valorisant le progrès matériel et le développement économique. »",
+      sources: ["Source : Paul-André Linteau et Jean-Claude Robert, « Montréal au 19e siècle : bilan d’une recherche », Urban History Review, vol. 3, no 3 (février 1985), p. 216."] },
+    { id: "ind19-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« [Les] commissaires croient que la longueur de la journée ordinaire de travail pourrait être encore réduite avec bénéfice pour l’ouvrier et sans injustice ni préjudice pour les patrons. Ils recommandent que tout travail des femmes et des enfants, dans les magasins et dans les fabriques, dépassant dix heures par jour ou cinquante-quatre heures dans la même semaine, soit défendu par la loi. »",
+      sources: ["Source : James Armstrong et al., Rapport de la Commission royale sur les relations du travail avec le capital au Canada, Ottawa, Bureau du conseil privé, p. 9."] },
+    { id: "ind19-c1-d5", title: "Document 5 : L’usine de tabac Macdonald", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-19e-c1-1/doc5.png", imageWidthCm: 11,
+      sources: ["Source : John Henry Walker, L’usine de tabac Macdonald (19e siècle), Musée McCord, M929.17.19. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "ind19-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« Le bois est le principal produit commercial canadien pendant la plus grande partie du 19e siècle. Alimenté par la demande européenne, le commerce du bois attire les investissements et favorise l’immigration vers l’est du Canada, contribue à l’essor économique et transforme l’environnement régional beaucoup plus radicalement que ne l’ont fait la pêche ou la traite des fourrures. Le commerce encourage l’exploration, le développement de villes et villages, et l’ouverture de routes. »",
+      sources: ["Source : Graeme Wynn et Erin James-Abra, « Histoire du commerce du bois », L’Encyclopédie canadienne, dernière mise à jour le 24 juillet 2015."] },
+    { id: "ind19-c1-d7", title: "Document 7 : Division du travail entre les ouvriers", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-19e-c1-1/doc7.png", imageWidthCm: 11,
+      sources: ["Source : John Henry Walker, Intérieur d’un atelier (19e siècle), Musée McCord, M930.50.8.79. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "ind19-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« Le blocus continental [...] entrave sérieusement l’énorme commerce du bois de l’Europe septentrionale [...] dont dépend l’économie britannique en plein essor. La hausse des prix ne tarde pas à contrebalancer le coût élevé de l’expédition par l’Atlantique de volumineuses cargaisons de bois d’œuvre. [L]es expéditions de bois en provenance de l’Amérique du Nord britannique se multiplient par mille en cinq ans. »",
+      sources: ["Source : Craig Brown, Histoire générale du Canada, Montréal, Boréal, 1990, p. 242."] },
+    { id: "ind19-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« Nous soussignés, déclarons qu’il serait très important, dans l’intérêt de la salubrité publique, qu’il existât en cette cité, un établissement de bains d’eau salée, d’eau douce, chaude ou froide. Non seulement ces bains aideraient puissamment à la guérison d’un grand nombre de maladies, mais encore ils seraient un préservatif assuré dans bon nombre de cas, principalement à l’approche et dans le temps des épidémies. C’est pourquoi nous n’hésitons pas à recommander favorablement un établissement de ce genre en cette ville. »",
+      sources: ["Source : Larue, P. et al., « Maison de bains », Le Canadien, vol. 20, no 148 (20 avril 18[...]), p. 3, en ligne sur Bibliothèque et Archives nationales du Québec."] },
+    { id: "ind19-c1-d10", title: "Document 10 : Des cageux sur la rivière des Outaouais", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-19e-c1-1/doc10.png", imageWidthCm: 9,
+      sources: ["Source : Charles William Jefferys, Le premier train de bois sur la rivière des Outaouais (vers 1930), Bibliothèque et Archives Canada, MIKAN 2897203. Licence : domaine public."] }
+  ],
+
+  // ===== P6 — Compétence 1 — Le Canada social et politique dans les années 1930 (Éval. sommative A) =====
+  'grande-depression-c1-1': [
+    { id: "gd-c1-d1", title: "Document 1", layout: "text-image",
+      imageUrl: "assets/img/grande-depression-c1-1/doc1.png", imageWidthCm: 7,
+      text: "En plus de promouvoir l’identité canadienne-française, cette idéologie qui émerge après la Première Guerre mondiale s’oppose au libéralisme et à la culture de masse.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l’univers social.",
+                "Source de l’image : Auteur inconnu, Portrait de Lionel Groulx (vers 1933), Archives de la Ville de Montréal, Centre de recherche Lionel Groulx, P1/T1, 2.21. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "gd-c1-d2", title: "Document 2 : Les rations mensuelles allouées pour une famille de cinq personnes par la Commission du chômage, vers 1935", layout: "data-table",
+      table: {
+        headers: ["Type de dépense", "Rations mensuelles d’hiver", "Valeurs en dollars canadiens de 2020"],
+        rows: [
+          ["Nourriture", "21,88 $", "Environ 340 $"],
+          ["Combustible", "5,85 $", "Environ 90 $"],
+          ["Vêtements", "3,25 $", "Environ 50 $"],
+          ["Loyer", "8,50 $", "Environ 130 $"],
+          ["Total mensuel", "39,48 $", "Environ 610 $"]
+        ]
+      },
+      sources: ["Source des données : Commission du chômage de Montréal, Renseignements à l’usage des chômeurs nécessiteux et des propriétaires, vers 1935, p. 10-11, cité par Denyse Baillargeon, Ménagères au temps de la Crise, Montréal, Les éditions du remue-ménage, 1993, p. 304.",
+                "Conversion en dollars actuels : WolframAlpha et James Powell, Le dollar canadien : une perspective historique, Banque du Canada, 2005."] },
+    { id: "gd-c1-d3", title: "Document 3 : Henri Bourassa", layout: "image-only",
+      imageUrl: "assets/img/grande-depression-c1-1/doc3.png", imageWidthCm: 6.5,
+      sources: ["Source : Auteur inconnu, Henri Bourassa (1917), Bibliothèque et Archives Canada, MIKAN 3622969. Licence : domaine public."] },
+    { id: "gd-c1-d4", title: "Document 4 : John Maynard Keynes", layout: "image-only",
+      imageUrl: "assets/img/grande-depression-c1-1/doc4.png", imageWidthCm: 6,
+      sources: ["Source : Walter Stoneman, John Maynard Keynes (1940), National Portrait Gallery, NPG x68881. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "gd-c1-d5", title: "Document 5 : La Politique nationale", layout: "image-only",
+      imageUrl: "assets/img/grande-depression-c1-1/doc5.png", imageWidthCm: 12,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "gd-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« L’Honorable Ministre de l’Agriculture, M. Caron [...] le disait en des termes où passait toute l’angoisse de son âme de fervent de la terre. Ce qui donne à cette course [l’exode rural] vers l’abîme, l’allure d’un flot impétueux, c’est la montée constante des populations de la campagne vers la ville. En rangs serrés, se bousculant presque pour prendre les premières places libres; elles accourent fascinées par des rêves de bonheur. Un vent de plaisir et de jouissance leur brûle le cerveau, les affole, les rend incapable de raisonner et de voir. Devant lui, mêlées à la poussière des routes, il chasse les familles, les jeunes gens et les jeunes filles. »",
+      sources: ["Source : Paul Henri, « Ça ne peut plus durer », L’Action catholique, 20 mai 1920, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000169215."] },
+    { id: "gd-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« Selon Keynes, [...] il faut stimuler l’économie par la dépense publique. De préférence par l’investissement public. L’argent investi provoquera des achats de biens de production, ce qui encouragera l’investissement dans ce domaine. L’investissement provoque une distribution de revenus, qui provoque une augmentation des investissements, qui provoque une augmentation des revenus, etc. [...] L’investissement public [de l’État] provoque d’autres dépenses d’investissement et de consommation. »",
+      sources: ["Source : Vladimir Vodarevski, « [...] la France va-t-elle enfin faire le bon choix ? », Contrepoints, 25 décembre 2019."] },
+    { id: "gd-c1-d8", title: "Document 8 : Construction d’une route au camp de travail de Valcartier (1933)", layout: "image-only",
+      imageUrl: "assets/img/grande-depression-c1-1/doc8.png", imageWidthCm: 12,
+      sources: ["Source : Ministère de la défense nationale, Construction d’une route au camp de travail de Valcartier (1933), Bibliothèque et Archives Canada, MIKAN 3578091. Licence : domaine public."] },
+    { id: "gd-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« [L]’idéologie catholique traditionaliste qui prône la supériorité du pouvoir de l’Église sur celui de l’État. Les ultramontains veulent une alliance de l’Église et de l’État dans laquelle le clergé est supérieur aux politiciens et se donne le droit d’intervenir dans toutes les sphères de la société. Cette idéologie s’implante au Québec à compter du 19e siècle. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] }
+  ],
+
+  // ===== P7 — Compétence 1 — Le Québec social et économique dans les années 1960 (Éval. sommative A) =====
+  'revolution-tranquille-c1-1': [
+    { id: "rt-c1-d1", title: "Document 1 : Le taux d’urbanisation au Québec, 1851-1981", layout: "image-only",
+      imageUrl: "assets/img/revolution-tranquille-c1-1/doc1.png", imageWidthCm: 12,
+      sources: ["Sources des données : P.-A. Linteau, R. Durocher et J.-C. Robert, Histoire du Québec contemporain, tome 1 : De la Confédération à la crise (1867-1929), Montréal, Boréal, 1989, p. 167 et 470; et P.-A. Linteau, R. Durocher, J.-C. Robert et F. Ricard, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 275 et 535."] },
+    { id: "rt-c1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/revolution-tranquille-c1-1/doc2.png", imageWidthCm: 9,
+      sources: ["Source : Parti libéral du Québec, Maintenant ou jamais, maîtres chez nous (1962). Licence : image utilisée avec la permission du Parti libéral du Québec, tous droits réservés."] },
+    { id: "rt-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« Le gouvernement libéral [...] présente un projet de loi créant une commission [...]. Le ministre de la Jeunesse, M. Paul Gérin-Lajoie a dit que la commission aura non seulement pour devoir d’éclairer le gouvernement sur les problèmes complexes de l’enseignement, mais également de permettre à la population, par ses suggestions, de participer aussi à l’élaboration du programme de l’enseignement pour l’avenir. »",
+      sources: ["Source : Paul-Émile Plouffe, « Éducation : une politique pour l’avenir », Le Nouvelliste, 17 février 1961, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec."] },
+    { id: "rt-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« Le vendredi 22 février 1963, Paul Gérin-Lajoie, alors ministre de la Jeunesse, profitait du congrès de la Fédération des étudiants libéraux pour faire une grande annonce. Le droit de vote, jusqu’alors réservé aux seuls citoyens de 21 ans et plus dans la province de Québec, serait prochainement octroyé à partir de 18 ans. »",
+      sources: ["Source : Andréanne LeBrun et Louise Bienvenue, « Pour “un gouvernement jeune et dynamique” : l’abaissement du droit de vote à 18 ans au Québec en 1964 », Revue d’histoire de l’Amérique française, vol. 71, no 1-2, été-automne 2017, p. 114."] },
+    { id: "rt-c1-d5", title: "Document 5", layout: "text-image",
+      imageUrl: "assets/img/revolution-tranquille-c1-1/doc5.png", imageWidthCm: 9,
+      text: "« Nous recommandons que l’État [...] adopte les mesures nécessaires pour donner à ces jeunes adultes un enseignement approprié et de haute qualité. [...] Nous recommandons que [...] soit établi un niveau d’études complet en lui-même, d’une durée de deux années [...] qui [...] porte le nom d’enseignement pré-universitaire et professionnel pour marquer son caractère polyvalent. »",
+      sources: ["Source de l’image : Henri Rémillard, Reportage sur la Mauricie (1972), Bibliothèque et Archives nationales du Québec, E6,S7,SS1,D721510-721694. Licence : Creative Commons (BY-NC-ND).",
+                "Source du texte : Alphonse-Marie Parent et al., Rapport Parent : Rapport de la Commission royale d’enquête sur l’enseignement dans la province de Québec, Tome II, Québec, Publications du Québec, p. 217."] },
+    { id: "rt-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« Résultat d’un long processus commencé pendant la guerre, [ce type d’État] arrive à maturité durant les années 1960 et 1970, alors que se déploie la panoplie de mesures sociales qui en constitue l’aspect le plus visible. Ses trois modes d’intervention — réglementation, redistribution, assurance — touchent tous les secteurs de la vie sociale et tous les individus. »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, Montréal, Éditions du Boréal, 1989, p. 637."] },
+    { id: "rt-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« Je demande à Dieu que les Canadiens français restent attachés à la foi catholique, à leur langue et à leurs traditions sacrées. La survivance de votre langue sera en même temps la survivance de votre foi. Au nom de l’Église, je bénis la survivance de la culture française et la survivance de la foi catholique. Soyez fidèles, mes chers amis, Canadiens français, à la vieille foi robuste et fière de la province de Québec ! » — Monseigneur James Charles McGuigan, archevêque de Toronto",
+      sources: ["Source : Le comité permanent de la survivance française en Amérique, La Vocation de la race française en Amérique du Nord, Québec, 1945, p. 189, en ligne sur Bibliothèque et Archives nationales du Québec."] },
+    { id: "rt-c1-d8", title: "Document 8 : Principales sociétés d’État québécoises créées dans les années 1960", layout: "data-table",
+      table: {
+        headers: ["Nom de la société d’État", "Année de création"],
+        rows: [
+          ["Société générale de financement (SGF)", "1962"],
+          ["Sidérurgie du Québec (SIDBEC)", "1964"],
+          ["Société québécoise d’exploitation minière (SOQUEM)", "1965"],
+          ["Caisse de dépôt et placement du Québec", "1965"],
+          ["Société d’habitation du Québec (SHQ)", "1967"],
+          ["Société d’exploitation des loteries et courses (Loto-Québec)", "1969"],
+          ["Société de récupération, d’exploitation et de développement forestiers (REXFOR)", "1969"],
+          ["Société québécoise d’initiatives pétrolières (SOQUIP)", "1969"]
+        ]
+      },
+      sources: ["Source : Linteau, Paul-André, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, tome II : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 463."] },
+    { id: "rt-c1-d9", title: "Document 9 : Les langues maternelles au Québec, 1941-1981", layout: "image-only",
+      imageUrl: "assets/img/revolution-tranquille-c1-1/doc9.png", imageWidthCm: 12,
+      sources: ["Sources des données : Bureau fédéral de la statistique, recensements du Canada de 1941, 1951, 1961; Statistique Canada, recensements du Canada de 1971 et 1981 (en ligne sur Archive.org)."] },
+    { id: "rt-c1-d10", title: "Document 10", layout: "text-only",
+      text: "« Le rapport de près de 1500 pages propose la mise en place d’un système d’éducation intégré, depuis la maternelle jusqu’à l’université, ainsi que la création d’un ministère de l’Éducation, qui voit le jour en 1964. Du coup, l’État prend l’éducation en charge et l’Église perd ses prérogatives. »",
+      sources: ["Source : Claude Gauvreau, « Le Rapport Parent : un document fondateur », INTER magazine de l’UQAM, vol. 11, no 2, automne 2013."] }
+  ],
+
+  // ===== P7 — Compétence 1 — La société québécoise (démographique et social), 1945-1960 (Éval. sommative B) =====
+  'trente-glorieuses-c1-1': [
+    { id: "tg-c1-d1", title: "Document 1 : Taux de natalité au Québec", layout: "data-table",
+      table: {
+        headers: ["Années", "Taux de natalité"],
+        rows: [
+          ["1945", "29,3"],
+          ["1950", "30,7"],
+          ["1955", "30,2"],
+          ["1960", "27,5"],
+          ["1965", "21,7"],
+          ["1970", "19,1"]
+        ]
+      },
+      sources: ["Source des données : Institut de la statistique du Québec, Naissances et taux de natalité, Québec, 1900-2019, 29 avril 2020."] },
+    { id: "tg-c1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/trente-glorieuses-c1-1/doc2.png", imageWidthCm: 10,
+      sources: ["Source de l’image : Ville de Montréal, Gestion des documents et archives, Z-35, VM94/Y1,17,34. Licence : Creative Commons (BY-NC-SA). Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "tg-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] Au total, le taux [...] passe de 120 à 32 pour 1000 entre 1931 et 1961. L’amélioration de l’hygiène publique, notamment de la qualité de l’eau et du lait, de même que celle des soins médicaux, jouent un rôle déterminant [...]. »",
+      sources: ["Source du texte : Paul-André Linteau, René Durocher, Jean-Claude Robert, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 215-216."] },
+    { id: "tg-c1-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/trente-glorieuses-c1-1/doc4.png", imageWidthCm: 8,
+      sources: ["Source de l’image : T. Eaton Co., Eaton’s Christmas Book (1956), Toronto, p. 12, Bibliothèque et Archives Canada, reproduction autorisée par Sears inc., nlc-3955. Utilisation permise à des fins non commerciales uniquement. Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "tg-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« [...] Acheter pour son plaisir ou pour satisfaire un nouveau besoin — ce qui était vu comme une imprévoyance téméraire à l’époque où la très grande majorité des familles étaient occupées à satisfaire leurs besoins de base — s’est peu à peu imposé comme une nouvelle norme de comportement [...]. »",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "tg-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« [...] on crée la Commission canadienne du blé, chargée de commercialiser le blé et d’en fixer le prix [...]. Le gouvernement [...] assume sa responsabilité envers les chômeurs en introduisant un programme national d’assurance-emploi et un service d’emploi [...]. »",
+      sources: ["Source du texte : Struthers, J., « La crise des années 1930 au Canada » (2020), L’Encyclopédie canadienne."] },
+    { id: "tg-c1-d7", title: "Document 7", layout: "text-image",
+      imageUrl: "assets/img/trente-glorieuses-c1-1/doc7.png", imageWidthCm: 13,
+      text: "« [...] le niveau des prix augmente plus lentement que celui du revenu des Québécois. Ainsi [...] la capacité d’une personne à consommer des biens et des services selon son revenu, s’accroît [...]. »",
+      sources: ["Source de l’image : Roma Dauphin, « La croissance de l’économie du Québec au 20e siècle », Institut de la statistique du Québec; Abdul Rashid, « L’évolution des salaires durant sept décennies », L’emploi et le revenu en perspective, 1993; James Powell, Le dollar canadien. Une perspective historique, Ottawa, 2005, p. 102. Service national du RÉCIT, domaine de l’univers social.",
+                "Source du texte : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "tg-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« [...] Durant l’après-guerre, plus de couples se marient et ont des enfants [...]. L’explosion de la natalité ne vient pas tant de ce que les femmes ont plus d’enfants, que du fait que plus de femmes ont des enfants [...]. Quoi qu’il en soit, cet afflux d’enfants marque profondément la composition de la société québécoise [...]. »",
+      sources: ["Source du texte : Paul-André Linteau, René Durocher, Jean-Claude Robert, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 214."] },
+    { id: "tg-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« [...] Période historique [...] pendant laquelle [...] la plupart des économies occidentales connurent une croissance exceptionnelle et régulière et à l’issue de laquelle elles sont entrées dans l’ère de la société de consommation. »",
+      sources: ["Source du texte : Larousse, encyclopédie en ligne, « Trente Glorieuses »."] }
+  ],
+
+  // ===== P8 — Compétence 1 — La situation démographique du Québec depuis 1980 (Éval. sommative A) =====
+  'vieillissement-c1-1': [
+    { id: "vie-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Au cœur de sa politique d’intégration des nouveaux arrivants, le Québec offre aux nouveaux citoyens non francophones une gamme de cours de français [...]. [...] Les trois niveaux du programme de francisation, qui comportent près de 1 000 heures de cours, s’étalent sur 33 semaines, à raison de 30 heures hebdomadaires. »",
+      sources: ["Source : Direction des affaires publiques et des communications du ministère de l’Immigration et des Communautés culturelles, Pour enrichir le Québec [...], 2008, p. 5."] },
+    { id: "vie-c1-d2", title: "Document 2", layout: "text-only",
+      text: "Le gouvernement fédéral légalise la pilule contraceptive et il amorce la décriminalisation de l’avortement, mais ne légalise pas complètement cette pratique. En effet, les médecins peuvent mettre fin à une grossesse seulement si elle représente une menace pour la santé d’une femme.",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "vie-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« Déterminé à permettre aux femmes voulant interrompre une grossesse non désirée d’avoir accès à des avortements pratiqués dans des conditions sécuritaires, le Dr Morgentaler offre ce service dans sa clinique de Montréal [...]. »",
+      sources: ["Source : Gouvernement du Québec, Conseil du statut de la femme, Le droit à [...], 2013, p. 9."] },
+    { id: "vie-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« Le Régime québécois d’assurance parentale prévoit le versement de prestations à toutes les travailleuses et à tous les travailleurs admissibles qui se prévalent d’un congé de maternité, d’un congé de paternité, d’un congé parental ou d’un congé d’adoption. »",
+      sources: ["Source : Gouvernement du Québec, Le Régime québécois d’assurance parentale, 2017, p. 2."] },
+    { id: "vie-c1-d5", title: "Document 5 : La pyramide des âges, Québec, 1971 et 2020", layout: "image-only",
+      imageUrl: "assets/img/vieillissement-c1-1/doc5.png", imageWidthCm: 15,
+      sources: ["Sources des données : Statistique Canada, « Estimations de la population au 1er juillet, par âge et sexe », dernière mise à jour le 31 mars 2021."] },
+    { id: "vie-c1-d6", title: "Document 6 : Centre de la petite enfance", layout: "image-only",
+      imageUrl: "assets/img/vieillissement-c1-1/doc6.png", imageWidthCm: 11,
+      sources: ["Source : Jean Gagnon, Centre de la petite enfance, CPE Biscuit, 4200, rue Saint-Antoine Ouest, Montréal (2016), Wikimedia Commons. Licence : Creative Commons (BY-SA)."] },
+    { id: "vie-c1-d7", title: "Document 7", layout: "text-only",
+      text: "Face à ce constat, plusieurs politiciens pensent que la solution est plutôt d’accueillir plus d’immigrants dans la province. Ils considèrent que ça permettrait d’augmenter la population active et de diminuer les conséquences économiques liées au fait qu’il y a de plus en plus de retraités.",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "vie-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« En rendant public Le Québec soutient ses familles, le gouvernement vise à la fois à présenter les principaux résultats des différentes initiatives engagées en faveur des familles et à indiquer la direction des actions futures. »",
+      sources: ["Source : Gouvernement du Québec, Ministère de la Famille, des Aînés et de la Condition féminine, Le Québec soutient ses familles, janvier 2007, p. 11."] },
+    { id: "vie-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« L’espérance de vie — ou la vie moyenne — et le taux de mortalité infantile sont les deux indicateurs principaux non seulement de la mortalité, mais aussi de la santé des populations. D’après les conditions de mortalité [...] l’espérance de vie à la naissance n’est que de 45 ans chez les hommes et de 48 ans chez les femmes [...]. »",
+      sources: ["Source : Louis Duchesne, La situation démographique au Québec — Bilan 1999 / Rétrospective du 20e siècle, Institut de la statistique du Québec, 2000, p. 26."] },
+    { id: "vie-c1-d10", title: "Document 10", layout: "text-only",
+      text: "« Si vous êtes une personne immigrante et que vous n’avez pas encore eu la chance de travailler dans votre domaine en Amérique du Nord, le Programme d’aide à l’intégration des immigrants et des minorités visibles en emploi (PRIIME) pourrait vous en donner l’occasion. »",
+      sources: ["Source : Gouvernement du Québec, « Programme d’aide à l’intégration des immigrants et des minorités visibles en emploi (PRIIME) », dernière mise à jour le 4 février 2021."] }
+  ],
+
+  // ===== P8 — Compétence 1 — Les luttes menées par les femmes au Québec depuis 1980 (Éval. sommative B) =====
+  'feminisme-3e-vague-c1-1': [
+    { id: "f3-c1-d1", title: "Document 1", layout: "text-only",
+      text: "« Tout en luttant pour une plus grande équité dans la société canadienne, [elles] élargissent leur combat contre l’inégalité. Au sein de groupes spéciaux et de coalitions, elles s’attaquent de plus en plus [...] à l’inégalité entre les sexes [...]. »",
+      sources: ["Source du texte : Veronica Strong-Boag, « Les mouvements de femmes au Canada : de 1985 à aujourd’hui », L’Encyclopédie canadienne, 17 octobre 2016, Historica Canada."] },
+    { id: "f3-c1-d2", title: "Document 2", layout: "text-only",
+      text: "« Le 26 mai [...] débute la Marche [...] initiée par la Fédération des femmes du Québec. Pendant dix jours, plus de 800 marcheuses québécoises parties de Montréal, Longueuil et Rivière-du-Loup convergent vers la ville de Québec afin de “lutter contre la pauvreté” qui les afflige au lendemain d’une profonde récession économique. »",
+      sources: ["Source du texte : Josiane Lavallée, « Marche du pain et des roses », L’Encyclopédie canadienne, 22 mai 2015, Historica Canada."] },
+    { id: "f3-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] le gouvernement fédéral permettait aux salariées enceintes de recevoir des allocations de maternité durant 15 semaines, mais cette mesure était limitative. [...] le gouvernement québécois légifère afin de pallier les carences de la loi fédérale. [...] »",
+      sources: ["Source du texte : Raphaëlle Corbeil, 20 moments marquants de l’histoire du féminisme, Gazette des femmes."] },
+    { id: "f3-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« [...] Suivant une demande des féministes [...] le gouvernement du Parti québécois fait adopter une Loi [...]. Celle-ci oblige les entreprises privées ou publiques de 10 employés et plus à corriger les écarts salariaux entre les hommes et les femmes occupant des emplois similaires. [...] »",
+      sources: ["Source du texte : Raphaëlle Corbeil, 20 moments marquants de l’histoire du féminisme, Gazette des femmes."] },
+    { id: "f3-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« [...] Fondée en 1966 [elle] regroupe des femmes qui militent au sein d’associations ou à titre individuel. Ce groupe de pression [...] intervient au plan politique pour revendiquer l’égalité entre les sexes et défendre les droits des femmes [...]. »",
+      sources: ["Source du texte : Flavie Trudel, « Fédération des femmes du Québec », L’Encyclopédie canadienne, 16 novembre 2017, Historica Canada."] },
+    { id: "f3-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« Considéré comme un des grands mouvements du XXe siècle, il a bouleversé la division traditionnelle des rôles, la suprématie masculine dans la famille et la structure de la main-d’œuvre dans un grand nombre de pays. »",
+      sources: ["Source du texte : Perspective monde, Université de Sherbrooke."] },
+    { id: "f3-c1-d7", title: "Document 7", layout: "image-only",
+      imageUrl: "assets/img/feminisme-3e-vague-c1-1/doc7.png", imageWidthCm: 6,
+      sources: ["Source de l’image : Assemblée nationale du Québec (biographie de Françoise David)."] },
+    { id: "f3-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« [...] les débats sur l’avortement et le contrôle des femmes sur leur corps soulèvent des controverses. Plus discrets, mais tout aussi fondamentaux, des gestes comme la planification des naissances et la contraception sont pratiqués par un nombre grandissant de femmes. »",
+      sources: ["Source du texte : Par ici la démocratie, Assemblée nationale du Québec."] },
+    { id: "f3-c1-d9", title: "Document 9", layout: "image-only",
+      imageUrl: "assets/img/feminisme-3e-vague-c1-1/doc9.png", imageWidthCm: 9,
+      sources: ["Source de l’image : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== Compétence 1 — Caractériser une période — Lot « Section B des sommatives » (7 questions) =====
     // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
   'experience-autochtones-relation-1': [
     { id: "ea-r1-d1", title: "Document 1", layout: "text-only",
@@ -6044,6 +6346,320 @@ window.DATA = {
             satellites: [
               { answer: "Les jeunes de 15 à 24 ans OU Les jeunes adultes", docRef: "Document 20" },
               { answer: "Diminution du financement et des services disponibles", docRef: "Document 18" }
+            ] }
+        ]
+      } },
+
+    { id: "q-echanges-autochtones-c1-1", competence: 1, operation: null, numero: 2, annee: 3, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        prompt: "Décrivez le mode d’échange utilisé dans le nord-est de l’Amérique vers 1500.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Remplissez le schéma ci-dessous à partir des documents."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Mode d’échange" },
+          relations: [
+            { central: { label: "Acteurs réalisant des échanges avec les Autochtones" },
+              satellites: [
+                { label: "Lieu d’échange" },
+                { label: "Produit prisé par les Autochtones" }
+              ] },
+            { central: { label: "Élément géographique favorisant les échanges" },
+              satellites: [
+                { label: "Moyen de transport privilégié" },
+                { label: "Mode de déplacement terrestre entre 2 cours d’eau" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [],
+      reglettes: [{ id: "r-ech-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('echanges-autochtones-c1-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        objet: { answer: "Troc" },
+        relations: [
+          { central: { answer: "Pêcheurs européens OU Les Basques OU Pêcheurs basques", docRef: "Document 2" },
+            satellites: [
+              { answer: "Terre-Neuve OU Côtes de l’Atlantique", docRef: "Document 6" },
+              { answer: "Chaudron de cuivre OU Outil de métal OU Perles de verre OU Miroir", docRef: "Document 1" }
+            ] },
+          { central: { answer: "Fleuve et rivières OU Fleuve Saint-Laurent OU Cours d’eau", docRef: "Document 3" },
+            satellites: [
+              { answer: "Canot", docRef: "Document 4" },
+              { answer: "Portage OU Les Autochtones portent leurs canots pour contourner les rapides", docRef: "Document 5" }
+            ] }
+        ]
+      } },
+
+    { id: "q-industrialisation-19e-c1-1", competence: 1, operation: null, numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Décrivez la période de transformations économiques et sociales qui se déroule au Québec dans la seconde moitié du 19e siècle.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Le nom de la période de transformations socioéconomiques dans la seconde moitié du 19e siècle" },
+          relations: [
+            { central: { label: "Classe sociale qui possède le capital" },
+              satellites: [
+                { label: "Institutions pour administrer le capital" },
+                { label: "Lieux construits grâce à cette ressource" }
+              ] },
+            { central: { label: "Nouvelle classe de travailleurs qui apparaît dans les villes" },
+              satellites: [
+                { label: "Une des conditions de travail" },
+                { label: "Une des conditions de vie dans les quartiers de travailleurs" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [2, 6, 8, 10],
+      reglettes: [{ id: "r-ind19-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('industrialisation-19e-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      corrige: {
+        objet: { answer: "Première phase d’industrialisation" },
+        relations: [
+          { central: { answer: "La bourgeoisie industrielle OU la bourgeoisie d’affaires", docRef: "Document 3" },
+            satellites: [
+              { answer: "Les banques", docRef: "Document 1" },
+              { answer: "Les manufactures OU les usines", docRef: "Document 5" }
+            ] },
+          { central: { answer: "Les ouvriers", docRef: "Document 7" },
+            satellites: [
+              { answer: "Longues heures de travail OU travail des enfants", docRef: "Document 4" },
+              { answer: "Hygiène déficiente OU pollution OU promiscuité", docRef: "Document 9" }
+            ] }
+        ]
+      } },
+
+    { id: "q-grande-depression-c1-1", competence: 1, operation: null, numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Décrivez le Canada sur le plan social et politique dans les années 1930.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom donné à la période de difficultés économiques des années 1930" },
+          relations: [
+            { central: { label: "Mouvement de pensée nationaliste dénonçant le capitalisme" },
+              satellites: [
+                { label: "Une idée défendue par ce mouvement de pensée" },
+                { label: "Penseur associé à ce mouvement de pensée" }
+              ] },
+            { central: { label: "Théorie économique prônant une plus grande intervention de l’État dans l’économie" },
+              satellites: [
+                { label: "Un exemple d’intervention de l’État canadien dans l’économie" },
+                { label: "Penseur qui propose cette théorie économique" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [3, 5, 9],
+      reglettes: [{ id: "r-gd-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('grande-depression-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "La grande dépression OU la Dépression OU la Crise OU la crise économique des années 1930" },
+        relations: [
+          { central: { answer: "Clérico-nationalisme", docRef: "Document 1" },
+            satellites: [
+              { answer: "Retour à la terre OU frein à l’exode rural OU contre l’urbanisation OU valorisation de la famille OU valorisation des valeurs chrétiennes", docRef: "Documents 1 ou 6" },
+              { answer: "Lionel Groulx OU M. Caron, ministre de l’Agriculture", docRef: "Documents 1 ou 6" }
+            ] },
+          { central: { answer: "Keynésianisme", docRef: "Document 7" },
+            satellites: [
+              { answer: "Secours directs OU travaux publics OU camps de travail", docRef: "Documents 2 ou 8" },
+              { answer: "John M. Keynes", docRef: "Document 4" }
+            ] }
+        ]
+      } },
+
+    { id: "q-revolution-tranquille-c1-1", competence: 1, operation: null, numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Décrivez le Québec sur le plan social et économique dans les années 1960.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom de la période de transformations sociales et économiques au Québec débutant avec les années 1960" },
+          relations: [
+            { central: { label: "Type d’État dans lequel l’État intervient" },
+              satellites: [
+                { label: "Une mesure visant à soutenir le développement de l’économie du Québec" },
+                { label: "Un secteur économique nationalisé par le gouvernement du Québec" }
+              ] },
+            { central: { label: "Un moyen d’analyser le système d’éducation québécois" },
+              satellites: [
+                { label: "Une décision de l’État concernant le rôle de l’Église en éducation" },
+                { label: "Une recommandation de la commission d’enquête sur l’enseignement post-secondaire" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [1, 4, 7, 9],
+      reglettes: [{ id: "r-rt-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('revolution-tranquille-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      corrige: {
+        objet: { answer: "Révolution tranquille" },
+        relations: [
+          { central: { answer: "État-providence", docRef: "Document 6" },
+            satellites: [
+              { answer: "Création de sociétés d’État", docRef: "Document 8" },
+              { answer: "Hydroélectricité", docRef: "Document 2" }
+            ] },
+          { central: { answer: "Commission Parent", docRef: "Document 3" },
+            satellites: [
+              { answer: "Laïcisation du système d’éducation", docRef: "Document 10" },
+              { answer: "Création des cégeps", docRef: "Document 5" }
+            ] }
+        ]
+      } },
+
+    { id: "q-trente-glorieuses-c1-1", competence: 1, operation: null, numero: 5, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Décrivez la société québécoise sur les plans démographique et social entre 1945 et 1960.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom donné à la période de croissance économique amorcée après la Seconde Guerre mondiale" },
+          relations: [
+            { central: { label: "Phénomène démographique qui marque la population québécoise entre 1945 et 1960" },
+              satellites: [
+                { label: "Un facteur qui favorise ce phénomène" },
+                { label: "Un autre facteur qui favorise ce phénomène" }
+              ] },
+            { central: { label: "Phénomène de société qui incite les gens à acheter plus de biens et de services" },
+              satellites: [
+                { label: "Une amélioration de la situation économique des travailleurs" },
+                { label: "Un moyen utilisé pour favoriser ce phénomène" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [2, 6],
+      reglettes: [{ id: "r-tg-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('trente-glorieuses-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "Trente glorieuses" },
+        relations: [
+          { central: { answer: "Bébé boum OU baby-boom", docRef: "Document 8" },
+            satellites: [
+              { answer: "Hausse du taux de natalité", docRef: "Document 1" },
+              { answer: "Baisse de la mortalité infantile", docRef: "Document 3" }
+            ] },
+          { central: { answer: "Société de consommation", docRef: "Document 5" },
+            satellites: [
+              { answer: "Augmentation du pouvoir d’achat OU augmentation du niveau de vie", docRef: "Document 7" },
+              { answer: "Publicité", docRef: "Document 4" }
+            ] }
+        ]
+      } },
+
+    { id: "q-vieillissement-c1-1", competence: 1, operation: null, numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Décrivez la situation démographique du Québec à partir des années 1980.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Phénomène démographique marquant au Québec entre 1980 et nos jours" },
+          relations: [
+            { central: { label: "Une intervention gouvernementale pour contrer ce phénomène" },
+              satellites: [
+                { label: "Une mesure pour aider financièrement les parents" },
+                { label: "Une mesure pour aider les parents à s’occuper des enfants" }
+              ] },
+            { central: { label: "Une autre intervention gouvernementale pour contrer ce phénomène" },
+              satellites: [
+                { label: "Une mesure sociale associée à cette intervention" },
+                { label: "Une mesure économique associée à cette intervention" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [2, 3, 9],
+      reglettes: [{ id: "r-vie-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('vieillissement-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      corrige: {
+        objet: { answer: "Le vieillissement de la population" },
+        relations: [
+          { central: { answer: "Adoption de politiques familiales", docRef: "Document 8" },
+            satellites: [
+              { answer: "Régime québécois d’assurance parentale (RQAP)", docRef: "Document 4" },
+              { answer: "La création des Centres de la petite enfance (CPE)", docRef: "Document 6" }
+            ] },
+          { central: { answer: "Le recours à l’immigration OU Accueillir plus d’immigrants", docRef: "Document 7" },
+            satellites: [
+              { answer: "Cours de français (francisation)", docRef: "Document 1" },
+              { answer: "Programme d’aide à l’intégration en emploi des immigrants", docRef: "Document 10" }
+            ] }
+        ]
+      } },
+
+    { id: "q-feminisme-3e-vague-c1-1", competence: 1, operation: null, numero: 3, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Décrivez les luttes menées par les femmes au Québec depuis 1980.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Mouvement amorcé au début du 20e siècle et qualifié de 3e vague au début des années 1980" },
+          relations: [
+            { central: { label: "Un objectif poursuivi par ce mouvement" },
+              satellites: [
+                { label: "Une revendication liée à cet objectif qui concerne le travail" },
+                { label: "Un gain obtenu en 1996" }
+              ] },
+            { central: { label: "Une association qui soutient les luttes de ce mouvement" },
+              satellites: [
+                { label: "Nom de la présidente de cette association en 1995" },
+                { label: "Une revendication de cette organisation" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [3, 8],
+      reglettes: [{ id: "r-f3-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('feminisme-3e-vague-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "Mouvement féministe" },
+        relations: [
+          { central: { answer: "Égalité hommes-femmes", docRef: "Document 1" },
+            satellites: [
+              { answer: "Équité salariale", docRef: "Document 9" },
+              { answer: "Loi sur l’équité salariale", docRef: "Document 4" }
+            ] },
+          { central: { answer: "Fédération des femmes du Québec", docRef: "Document 5" },
+            satellites: [
+              { answer: "Françoise David", docRef: "Document 7" },
+              { answer: "L’augmentation du salaire minimum", docRef: "Document 2" }
             ] }
         ]
       } },
