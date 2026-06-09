@@ -1,4 +1,22 @@
 /* ============================================================
+   v1.48.0 — COMPÉTENCE 1 (lot 5) : +2 questions « Caractériser une période » (Bois-Francs, grilles 2×3 →
+   schéma canonique ; réalité nationalismes-autonomie-canada) :
+     • q-imperialisme-c1-1 (Version B, société canadienne 1896-1914 ; 8 docs, à discriminer 2 [Nord-Ouest,
+       pré-1896] et 7 [conscription, post-1914] ; objet : statut du Canada dans l'Empire britannique).
+       DOCS 'imperialisme-c1-1' (images : doc 1 carte Afrique du Sud, doc 3 certificat de taxe d'entrée,
+       doc 4 affiche d'immigration, doc 5 portrait Phillips-Wolley [text-image], doc 6 carte 1905,
+       doc 8 portrait Bourassa [text-image]).
+     • q-premiere-guerre-c1-1 (Version A, société canadienne 1914-1918 ; 7 docs ; à discriminer 4 [crise des
+       années 1930] et 7 [guerre des Boers, pré-1914] ; objet : Première Guerre mondiale). DOCS
+       'premiere-guerre-c1-1' (images : doc 1 opératrices [text-image], doc 2 affiche d'emprunt [text-image],
+       doc 3 carte des alliances 1914, doc 6 manifestation anti-conscription). Le document 2 (emprunt/publicité)
+       appuie deux cases (propagande + obligations). Le dossier source sautait le n° 7 (docs 1-6 et 8) ; le
+       document de la guerre des Boers a été renuméroté 8 → 7 pour une séquence contiguë (1-7).
+     • Renvois et distracteurs DÉDUITS des dossiers (clés Bois-Francs sans renvois) ; validés par l'enseignant.
+       Numérotation des titres conservée telle quelle (y compris le saut du n° 7 en Version A) ; pickDocs
+       indexe les positions du tableau, le décalage global de l'app gère la renumérotation en mode variante.
+  ============================================================ */
+/* ============================================================
    v1.47.0 — COMPÉTENCE 1 (lot 4) : +2 questions « Caractériser une période » (Commission scolaire des
    Bois-Francs, 2017-2018, réalité formation-regime-federal). Les schémas sources sont présentés en grille
    2×3 (case du milieu = élément central, cases gauche/droite = satellites, flèches décoratives) : c'est la
@@ -2207,6 +2225,64 @@ const DOCS = {
     { id: "ibf-c1-d11", title: "Document 11", layout: "text-only",
       text: "« À cette époque, la majorité des nouveaux arrivants viennent du Royaume-Uni, de l’Europe du Nord et des États-Unis. [...] beaucoup vont s’installer [...] où les emplois sont plus faciles à trouver. »",
       sources: ["Source : Jesse Boulette et autres, Québec.docs, cahier d’apprentissage, 2e année du 2e cycle du secondaire, Montréal, Chenelière Éducation, 2013, p. 56."] }
+  ],
+
+  // ===== Compétence 1 — Caractériser une période — Lot « Bois-Francs » nationalismes (grilles 2×3) =====
+  // ----- Version B : société canadienne 1896-1914 (objet : statut du Canada dans l'Empire) -----
+  'imperialisme-c1-1': [
+    { id: "imp-c1-d1", title: "Document 1 : Colonies britanniques en Afrique du Sud", layout: "image-only",
+      imageUrl: "assets/img/imperialisme-c1-1/doc1.png", imageWidthCm: 9,
+      sources: ["Source : Carte des colonies britanniques en Afrique du Sud."] },
+    { id: "imp-c1-d2", title: "Document 2 : Entrée du Territoire du Nord-Ouest dans la Confédération", layout: "text-only",
+      text: "« L’acquisition du Nord-Ouest fut l’un des objectifs importants des Pères de la Confédération. Comme l’affirmaient les Résolutions de Québec de 1864 : “Le Territoire du Nord-Ouest, la Colombie Britannique et Vancouver seront admis dans l’Union selon les termes et conditions que le Parlement des Provinces Fédérées jugera équitables et que Sa Majesté approuvera [...].” »",
+      sources: ["Source : Lewis H. Thomas, Les Territoires du Nord-Ouest 1870-1905, La Société historique du Canada, no 26, Ottawa, 1972, p. 3."] },
+    { id: "imp-c1-d3", title: "Document 3 : Certificat de paiement de la taxe d’entrée d’un immigrant", layout: "image-only",
+      imageUrl: "assets/img/imperialisme-c1-1/doc3.png", imageWidthCm: 10,
+      sources: ["Source : Certificat de paiement de la taxe d’entrée d’un immigrant (Dominion of Canada — taxe d’entrée chinoise)."] },
+    { id: "imp-c1-d4", title: "Document 4 : L’expansion de l’Ouest canadien", layout: "image-only",
+      imageUrl: "assets/img/imperialisme-c1-1/doc4.png", imageWidthCm: 7,
+      sources: ["Source : Affiche « Free Farms for the Million », Dominion Line."] },
+    { id: "imp-c1-d5", title: "Document 5 : Le point de vue de Clive Phillips-Wolley", layout: "text-image",
+      imageUrl: "assets/img/imperialisme-c1-1/doc5.png", imageWidthCm: 4.5,
+      text: "« Si nous sommes Britanniques, les guerres de l’Empire sont nos guerres. Si nous ne sommes pas prêts à nous battre à l’appel de l’Empire, alors nous ne sommes pas Britanniques. En tant que Britanniques, nous devons bien sûr attaquer ceux qui sont en guerre contre notre Empire, et les simples mots de notre Parlement ne sauveront pas [notre Empire]. »",
+      sources: ["Source : Discours de Clive Phillips-Wolley, vice-président de la ligue navale du Canada (14 mai 1907)."] },
+    { id: "imp-c1-d6", title: "Document 6 : Le territoire canadien en 1905", layout: "image-only",
+      imageUrl: "assets/img/imperialisme-c1-1/doc6.png", imageWidthCm: 9,
+      sources: ["Source : Carte du territoire canadien en 1905."] },
+    { id: "imp-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« Parce qu’il fait partie de l’Empire britannique, le Canada entre automatiquement en guerre en même temps que la Grande-Bretagne. Mais le conflit s’étire et s’enlise. [...] le Canada manque de volontaires pour soutenir ses alliés en Europe. Le premier ministre Borden prend la décision de déclarer la conscription. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "imp-c1-d8", title: "Document 8 : Le point de vue d’Henri Bourassa", layout: "text-image",
+      imageUrl: "assets/img/imperialisme-c1-1/doc8.png", imageWidthCm: 4.5,
+      text: "« Il s’agit de décider si le peuple canadien sera appelé à prendre part à toutes les guerres de l’Empire sans que les portes du cabinet et du parlement impériaux lui soient ouvertes, sans même que ses représentants et son gouvernement soient consultés sur l’opportunité de ces luttes sanglantes. Je ne consentirai jamais à appuyer cette politique rétrograde. »",
+      sources: ["Source : Henri Bourassa, Le Nationaliste, 3 avril 1904, p. 2."] }
+  ],
+
+  // ----- Version A : société canadienne 1914-1918 (objet : Première Guerre mondiale) -----
+  'premiere-guerre-c1-1': [
+    { id: "pgm-c1-d1", title: "Document 1 : Des opératrices de machines", layout: "text-image",
+      imageUrl: "assets/img/premiere-guerre-c1-1/doc1.png", imageWidthCm: 7,
+      text: "« [...] la Commission fut organisée selon de saines pratiques de gestion et embaucha des gestionnaires professionnels pour superviser ses opérations. Elle atténua le problème de la pénurie de main-d’œuvre en embauchant 30 000 femmes pour travailler dans ses usines et ses bureaux. »",
+      sources: ["Source : Musée canadien de la guerre, Première Guerre mondiale, « Commission impériale des munitions »."] },
+    { id: "pgm-c1-d2", title: "Document 2 : Emprunter aux Canadiens", layout: "text-image",
+      imageUrl: "assets/img/premiere-guerre-c1-1/doc2.png", imageWidthCm: 5,
+      text: "« Des campagnes publicitaires, dont des dizaines de milliers d’affiches, liaient directement les obligations au soutien des soldats outre-mer, et à leur bien-être, et avaient recours à divers messages pour encourager les contributions, de poèmes bien connus à des images empreintes d’émotion [...] constituaient aussi un puissant incitatif. »",
+      sources: ["Source : Musée canadien de la guerre, Première Guerre mondiale, « Finances et production de guerre »."] },
+    { id: "pgm-c1-d3", title: "Document 3 : Les intérêts nationaux européens en 1914", layout: "image-only",
+      imageUrl: "assets/img/premiere-guerre-c1-1/doc3.png", imageWidthCm: 13,
+      sources: ["Source : Carte des alliances militaires en Europe en 1914 (Triple-Alliance, Triple-Entente)."] },
+    { id: "pgm-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« La décennie [...] est marquée par la grande crise économique qui s’abat sur le monde. Les économies capitalistes connaissent régulièrement, depuis le milieu du 19e siècle, des crises de surproduction, qui succèdent à des périodes de prospérité. Ces secousses violentes entraînent des chutes de prix, une baisse de la production et un chômage élevé [...]. »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, Tome II : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 12."] },
+    { id: "pgm-c1-d5", title: "Document 5 : Un nouveau statut sans précédent", layout: "text-only",
+      text: "« Le premier ministre [du Canada] orchestra un effort national massif à l’appui de la mère patrie, mais exigea aussi que la Grande-Bretagne reconnaisse les sacrifices du Canada en temps de guerre en lui accordant une plus grande autonomie après le conflit. Le Canada signa de façon indépendante le Traité de Versailles (1919), qui mettait officiellement fin à la guerre, et joua un rôle prudent et discret au sein de la toute nouvelle [organisation mondiale]. »",
+      sources: ["Source : Musée canadien de la guerre, Première Guerre mondiale, « L’incidence de la guerre sur le Canada »."] },
+    { id: "pgm-c1-d6", title: "Document 6 : Une manifestation anti-conscription", layout: "image-only",
+      imageUrl: "assets/img/premiere-guerre-c1-1/doc6.png", imageWidthCm: 11,
+      sources: ["Source : Une manifestation anti-conscription (Première Guerre mondiale)."] },
+    { id: "pgm-c1-d7", title: "Document 7 : Les impérialistes et la guerre des Boers", layout: "text-only",
+      text: "« En pressant Laurier d’envoyer des troupes en Afrique du Sud, les tenants de la participation canadienne à la guerre ne manquaient pas d’arguments. Le ministre fédéral de la Justice, David Mills, fit remarquer dans son livre English in Africa que les colonies britanniques émancipées se devaient de faire des sacrifices pour la sauvegarde de l’Empire. »",
+      sources: ["Source : Robert Page, La guerre des Boers et l’impérialisme canadien, Ottawa, La Société historique du Canada, 1987, p. 13-14."] }
   ],
 
     // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
@@ -6842,6 +6918,96 @@ window.DATA = {
             satellites: [
               { answer: "Les régions rurales OU le Royaume-Uni OU l’Europe (du Nord) OU Les États-Unis", docRef: "Documents 7 ou 11" },
               { answer: "Les ouvriers ont des salaires très bas, etc.", docRef: "Document 1" }
+            ] }
+        ]
+      } },
+
+    { id: "q-imperialisme-c1-1", competence: 1, operation: null, numero: 4, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Décrivez la société canadienne, entre 1896 et 1914, sous les aspects politique et social.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Le statut du Canada dans l’Empire britannique en 1896" },
+          relations: [
+            { central: { label: "Le nom d’un conflit outre-mer en 1896" },
+              satellites: [
+                { label: "Un mouvement de pensée favorable au conflit" },
+                { label: "Un mouvement de pensée opposé au conflit" }
+              ] },
+            { central: { label: "Une mesure pour favoriser l’immigration au Canada" },
+              satellites: [
+                { label: "Un groupe d’immigrants restreint d’entrée au Canada" },
+                { label: "Une nouvelle province canadienne en 1905" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [2, 7],
+      reglettes: [{ id: "r-imp-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('imperialisme-c1-1', 1, 2, 3, 4, 5, 6, 7, 8),
+      corrige: {
+        objet: { answer: "Une colonie OU une nation indépendante sous domination britannique" },
+        relations: [
+          { central: { answer: "La guerre des Boers", docRef: "Document 1" },
+            satellites: [
+              { answer: "L’impérialisme", docRef: "Document 5" },
+              { answer: "Le nationalisme canadien", docRef: "Document 8" }
+            ] },
+          { central: { answer: "Une politique de recrutement en Europe", docRef: "Document 4" },
+            satellites: [
+              { answer: "Les Chinois OU les Asiatiques", docRef: "Document 3" },
+              { answer: "L’Alberta OU la Saskatchewan", docRef: "Document 6" }
+            ] }
+        ]
+      } },
+
+    { id: "q-premiere-guerre-c1-1", competence: 1, operation: null, numero: 5, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Décrivez la société canadienne, entre 1914 et 1918, sous les aspects politique ou économique.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Le nom du conflit mondial entre 1914 et 1918" },
+          relations: [
+            { central: { label: "Le nom de l’alliance dont le Canada fait partie" },
+              satellites: [
+                { label: "Une organisation internationale mise sur pied" },
+                { label: "Une crise politique qui secoue le Canada en 1917" }
+              ] },
+            { central: { label: "Une mesure de l’État canadien pour financer l’effort de guerre" },
+              satellites: [
+                { label: "Un moyen pour inciter les citoyens à contribuer à l’effort de guerre" },
+                { label: "Le rôle des femmes durant la guerre" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [4, 7],
+      reglettes: [{ id: "r-pgm-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('premiere-guerre-c1-1', 1, 2, 3, 4, 5, 6, 7),
+      corrige: {
+        objet: { answer: "La Première Guerre mondiale" },
+        relations: [
+          { central: { answer: "La Triple-Entente", docRef: "Document 3" },
+            satellites: [
+              { answer: "La Société des Nations", docRef: "Document 5" },
+              { answer: "La conscription", docRef: "Document 6" }
+            ] },
+          { central: { answer: "La vente d’obligations", docRef: "Document 2" },
+            satellites: [
+              { answer: "La propagande", docRef: "Document 2" },
+              { answer: "Le travail en usine OU le travail au front", docRef: "Document 1" }
             ] }
         ]
       } },
