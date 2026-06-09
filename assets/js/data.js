@@ -1,4 +1,26 @@
 /* ============================================================
+   v1.45.0 — COMPÉTENCE 1 (lot 2) : +6 questions « Caractériser une période » (P5, P6, P7×3, P8) :
+     • q-ideologies-c1-1 (P5, 1840-1896, idéologies ; 6 docs, aucun distracteur ; objet : Anticléricalisme).
+       Entrée DOCS 'ideologies-c1-1' (3 images : doc 3/4/5 — Institut canadien, Mgr Bourget, A.-A. Dorion).
+     • q-industrialisation-c1-1 (P6, 1896-1929, situation économique ; 8 docs, à discriminer 3 et 5 ;
+       objet : Deuxième phase d'industrialisation). DOCS 'industrialisation-c1-1' (5 images : doc 1/2/3/4/8).
+     • q-feminisme-c1-1 (P7, 1945-1980, mouvement féministe ; 6 docs, aucun distracteur ; objet : Le féminisme).
+       DOCS 'feminisme-c1-1' (1 image : doc 6 — Madeleine Parent).
+     • q-syndicalisme-c1-1 (P7, débat sur les conditions de travail du secteur public en 1972 ; 10 docs [n° 10-19],
+       à discriminer 11, 12, 15, 19 ; objet : négociation d'une entente/convention). DOCS 'syndicalisme-c1-1'
+       (3 images : doc 10 [macaron Front commun, text-image], doc 12, doc 15).
+     • q-baie-james-c1-1 (P7, affirmation de nations autochtones, années 1970 ; 10 docs [n° 20-29],
+       à discriminer 21, 24, 27, 29 ; objet : Convention de la Baie-James et du Nord québécois). DOCS
+       'baie-james-c1-1' (2 images : doc 26 [COMPOSITE famille inuite + famille crie, titre neutre], doc 27).
+     • q-devitalisation-c1-1 (P8, 1980 à nos jours, régions ; 10 docs [n° 12-21], à discriminer 14, 16, 19, 21 ;
+       objet : Dévitalisation). DOCS 'devitalisation-c1-1' (2 images : doc 14 [filigrane « Musée McCord » retiré
+       par recadrage], doc 16).
+     • Numérotation RÉCIT non commencée à 1 (synd. 10-19, baie-james 20-29, dévit. 12-21) conservée dans les
+       titres / docRef / documentsADiscriminer ; pickDocs indexe les positions 1..N du tableau DOCS.
+     • Choix d'inférence : consignes (prompts) et puces HARMONISÉES au VOUS, pour cohérence avec les 6 questions
+       C1 déjà en place (les cahiers de ce lot étaient au tu).
+  ============================================================ */
+/* ============================================================
    v1.44.0 — COMPÉTENCE 1 : +3 questions « Caractériser une période » (P4, P5, P6) :
      • q-bas-canada-c1-1 (P4, 1791-1840, la colonie canadienne sur le plan économique ; 10 docs,
        à discriminer 2, 4 et 9 ; objet : Bas-Canada). Entrée DOCS 'bas-canada-c1-1' (5 images : doc 2/3/5/8/10,
@@ -1614,7 +1636,186 @@ const DOCS = {
       sources: ["Source des données : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Sillery, Septentrion, 1995, p. 223."] }
   ],
 
-  // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
+  // ===== P5 — Compétence 1 — Une idéologie au 19e siècle (1840-1896) =====
+  'ideologies-c1-1': [
+    { id: "ideo-c1-d1", title: "Document 1", layout: "text-only",
+      text: "Plusieurs anticléricaux s’opposent à la censure que veut mettre en place l’Église sur certains livres, qui ne présenteraient pas des mœurs* fidèles à la religion catholique. (*habitudes)",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "ideo-c1-d2", title: "Document 2", layout: "text-only",
+      text: "Les membres de l’Institut s’insurgent contre l’ingérence cléricale qui interdit la lecture de certains de leurs ouvrages. En effet, l’Institut canadien de Montréal décide de conserver les livres mis à l’Index. Entre 1865 et 1875, les dix livres les plus empruntés à la bibliothèque sont tous des romans interdits par l’Église. (*Index : liste de livres interdits par l’Église en raison de leur contenu contraire à la morale et à la doctrine catholique.)",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "ideo-c1-d3", title: "Document 3", layout: "text-image",
+      imageUrl: "assets/img/ideologies-c1-1/doc3.png", imageWidthCm: 6,
+      text: "L’Institut canadien de Montréal est fondé en 1844 dans un but d’instruction et de progrès. C’est un lieu de rassemblement intellectuel qui comporte une salle de conférence, une bibliothèque et un musée à partir de 1864.",
+      sources: ["Source de l’image : Auteur inconnu, Institut canadien (entre 1870 et 1920), Bibliothèque et Archives nationales du Québec, 2731703. Licence : domaine public.", "Source du texte : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "ideo-c1-d4", title: "Document 4 : Mgr Ignace Bourget, évêque de l’Église catholique", layout: "text-image",
+      imageUrl: "assets/img/ideologies-c1-1/doc4.png", imageWidthCm: 6,
+      text: "« Non-seulement l’Église est indépendante de la société civile, mais elle lui est même supérieure par son origine, par son étendue et par sa fin… La société civile [...] doit aider l’Église dans sa mission divine et au besoin la protéger et la défendre… »",
+      sources: ["Source du texte : Mgr Ignace Bourget, « Lettre pastorale [...] », Mandements de l’évêque de Montréal, vol. 7, 3 octobre 1875, p. 11, en ligne sur archives.org.", "Source de l’image : John Henry Walker et James Lovell Wiseman, Évêque Bourget (1875), Bibliothèque et Archives nationales du Québec, 0002728119. Licence : domaine public."] },
+    { id: "ideo-c1-d5", title: "Document 5 : Antoine-Aimé Dorion, chef du Parti rouge", layout: "image-only",
+      imageUrl: "assets/img/ideologies-c1-1/doc5.png", imageWidthCm: 7,
+      sources: ["Source : William James Topley, Hon. Antoine Aimé Dorion (1873), Bibliothèque et Archives Canada, 3461511. Licence : domaine public."] },
+    { id: "ideo-c1-d6", title: "Document 6", layout: "text-only",
+      text: "Cette idéologie se fonde notamment sur les valeurs du libéralisme : la défense de l’égalité des individus, le progrès matériel, la liberté de pensée, le bonheur individuel et la séparation de l’Église et de l’État.",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] }
+  ],
+
+  // ===== P6 — Compétence 1 — La situation économique au Québec (1896-1929) =====
+  'industrialisation-c1-1': [
+    { id: "indus-c1-d1", title: "Document 1", layout: "text-image",
+      imageUrl: "assets/img/industrialisation-c1-1/doc1.png", imageWidthCm: 8,
+      text: "« Le capital américain [...] joue un rôle très important [...], notamment dans les pâtes et papiers et dans l’électricité. »",
+      sources: ["Source du graphique : Service national du RÉCIT, domaine de l’univers social, d’après les données de Paul-André Linteau, René Durocher, Jean-Claude Robert, Histoire du Québec contemporain, tome 1 [...], Montréal, Boréal, 1989, p. 443.", "Source du texte : Paul-André Linteau, « L’histoire économique du Québec [...] », dans Yves Roby et Nive Voisine, Érudition, humanisme et savoir, Sainte-Foy, Presses de l’Université Laval, 1996, p. 136."] },
+    { id: "indus-c1-d2", title: "Document 2", layout: "text-image",
+      imageUrl: "assets/img/industrialisation-c1-1/doc2.png", imageWidthCm: 7,
+      text: "« On peut dire que la loi de 1910, qui interdit [au Québec] d’exporter du bois à pâte [vers les États-Unis], entraine une modification décisive des conditions du marché du papier [...]. Le secteur des pâtes et papiers y connaîtra durant la décennie qui s’ouvre une véritable envolée, un âge d’or. [...] »",
+      sources: ["Source de l’image : William Notman & Son, Partie sèche de la salle des machines, usine de pâte Laurentide (vers 1908), Musée McCord, VIEW-4517. Licence : domaine public.", "Source du texte : R. Hardy et N. Séguin, Histoire de la Mauricie, Sainte-Foy, Les Presses de l’Université Laval, 2004, p. 540-542."] },
+    { id: "indus-c1-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-c1-1/doc3.png", imageWidthCm: 11,
+      sources: ["Source : Charles William Jefferys, Le premier train de bois sur la rivière des Outaouais (vers 1930), Bibliothèque et Archives Canada, 2897203. Licence : domaine public."] },
+    { id: "indus-c1-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-c1-1/doc4.png", imageWidthCm: 12,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "indus-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« L’artisan travaille habituellement dans un petit atelier (souvent adjacent à la maison) et il est propriétaire de tous ses outils. Le travail se fait généralement sur commande et la division des tâches n’existe presque pas. Les sources d’énergie majeures demeurent la force musculaire et l’eau, et l’outil manuel est le principal moyen de transformer la matière première. [...] »",
+      sources: ["Source : Jean-Pierre Hardy, « Apprentissage au Canada du XVIIe au XIXe siècle », L’Encyclopédie canadienne, en ligne, page publiée le 6 février 2006, dernière mise à jour le 4 mars 2015."] },
+    { id: "indus-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« La capacité de production hydro-électrique connait une forte croissance pendant les trois premières décennies du 20e siècle, passant de 83 000 chevaux-vapeurs en 1900 à 2 322 000 en 1930. Le rythme est particulièrement rapide avant la Première Guerre mondiale, période de construction des premiers grands barrages [...]. »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert, Histoire du Québec contemporain, tome 1 [...], Montréal, Boréal, 1989, p. 412."] },
+    { id: "indus-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« Au moment de la Première Guerre mondiale, le Canada était le premier pays producteur de papier journal, et 86,4 % de sa production était destinée aux marchés américains. En dépit d’une baisse pendant la crise économique, les pâtes et papiers demeurèrent le secteur d’exportation le plus important au Canada [...]. »",
+      sources: ["Source : J.A. Dickinson et B. Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 1995, p. 246."] },
+    { id: "indus-c1-d8", title: "Document 8", layout: "image-only",
+      imageUrl: "assets/img/industrialisation-c1-1/doc8.png", imageWidthCm: 12,
+      sources: ["Source : Auteur inconnu, Barrage hydroélectrique, usine de papier Howard Smith, Beauharnois (vers 1924), Musée McCord, VIEW-21016.0. Licence : domaine public."] }
+  ],
+
+  // ===== P7 — Compétence 1 — Le mouvement féministe (1945-1980) =====
+  'feminisme-c1-1': [
+    { id: "fem-c1-d1", title: "Document 1 : Extrait d’un article de journal publié en 1961", layout: "text-only",
+      text: "« Pour la première fois dans l’histoire de la politique du Québec, une femme siègera au parlement de la province. [Elle] a été élue hier député libéral à l’élection partielle dans le comté de Jacques-Cartier. »",
+      sources: ["Source : Auteur inconnu, « Majorités écrasantes pour M. Pierre Laporte et Mme Kirkland-Casgrain », Le Devoir, 15 décembre 1961, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335."] },
+    { id: "fem-c1-d2", title: "Document 2 : Extrait vidéo d’une entrevue diffusée en 1978", layout: "text-only",
+      text: "Armande Saint-Jean : « Cette bataille-là pour le nationalisme et l’indépendance des syndicats canadiens, Madeleine Parent, vous la faites depuis très longtemps. Pensez-vous que l’on a fait des progrès si vous regardez les dernières 25 ou 30 années? » — Madeleine Parent : « Oui, quand nous avons fondé la Confédération des syndicats canadiens en 1967, le tiers seulement des travailleurs au Canada tout entier était dans des syndicats de chez nous, soit canadiens, ou la CSN ou la CEQ au Québec. Aujourd’hui, plus de la moitié des travailleurs syndiqués au Canada sont dans des syndicats de chez nous, et je pense que c’est un grand progrès. »",
+      sources: ["Source : Première Page, 4 juillet 1978, Société Radio-Canada, 12:07-12:51. Licence : extrait utilisé avec la permission de la Société Radio-Canada, tous droits réservés."] },
+    { id: "fem-c1-d3", title: "Document 3 : Extrait d’un article de journal publié en 1979", layout: "text-only",
+      text: "« Cette petite femme, aux gestes posés et aux paroles douces, est une syndicaliste qui s’est battue contre les puissants de ce monde : des barons du textile aux chefs syndicaux. [...] Depuis 38 ans maintenant, elle réclame de meilleurs salaires et conditions de travail pour les femmes œuvrant dans l’industrie du textile. »",
+      sources: ["Source : Auteur inconnu, « Une syndicaliste en lutte depuis 38 ans », Le Soleil, 7 février 1979, p. G2, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] },
+    { id: "fem-c1-d4", title: "Document 4 : Extrait d’un article de revue écrit par un juriste en 1965", layout: "text-only",
+      text: "« La nouvelle législation sur la capacité juridique de la femme mariée est entrée en vigueur le 1er juillet 1964. [...] En premier lieu, la femme mariée acquiert en principe la libre disposition de ses biens. [...] En second lieu, la femme mariée peut [aller] en justice tant en demande qu’en défense [...]. Enfin la femme mariée peut désormais et sans autorisation maritale exercer une profession distincte de celle de son mari [...] »",
+      sources: ["Source : Jean-Louis Baudouin, « Examen critique de la réforme sur la capacité juridique de la femme mariée québécoise », Can. Bar Rev., 1965, p. 393, 406 et 407."] },
+    { id: "fem-c1-d5", title: "Document 5 : Extrait d’un article de journal publié en 1972", layout: "text-only",
+      text: "« Le gouvernement Bourassa entend instituer un organisme d’étude et de consultation sur le statut de la femme [...]. Cet organisme, “Le Conseil du statut de la femme” [...] sera chargé de donner son avis au premier ministre sur toutes les questions concernant l’égalité et le respect des droits de la femme. Il pourra aussi entreprendre des études et des recherches concernant le respect des droits et du statut de la femme, recevoir et entendre les suggestions des individus et des groupes et faire les recommandations qu’il jugera appropriées. »",
+      sources: ["Source : Auteur inconnu, « Le gouvernement québécois veut créer un Conseil du statut de la femme », Le Soleil, 13 décembre 1972, p. 52, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] },
+    { id: "fem-c1-d6", title: "Document 6", layout: "image-only",
+      imageUrl: "assets/img/feminisme-c1-1/doc6.png", imageWidthCm: 12,
+      sources: ["Source : Auteur inconnu, Défilé du premier mai - Madeleine Parent marchant dans la rue (1949), Bibliothèque et Archives Canada, MIKAN 3257043. Licence : domaine public."] }
+  ],
+
+  // ===== P7 — Compétence 1 — Le débat sur les conditions de travail du secteur public (1972) =====
+  'syndicalisme-c1-1': [
+    { id: "synd-c1-d10", title: "Document 10", layout: "text-image",
+      imageUrl: "assets/img/syndicalisme-c1-1/doc10.png", imageWidthCm: 6,
+      text: "CEQ : Centrale de l’enseignement du Québec. CSN : Confédération des syndicats nationaux. FTQ : Fédération des travailleurs du Québec. — « La CEQ, la CSN et la FTQ feront de nouveau front commun pour négocier avec le gouvernement, tout au moins sur le plan des salaires et de la sécurité d’emploi, les conventions collectives de 250 000 employés de l’État. »",
+      sources: ["Source de l’image : Auteur inconnu, Front commun, CEQ, CSN, FTQ, Bibliothèque et Archives nationales du Québec, notice 0000480826. Licence : image utilisée avec la permission de la FTQ et de la CSQ, tous droits réservés.", "Source du texte : Auteur inconnu, « La CEQ fait de nouveau front avec la CSN et la FTQ », Le Soleil, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] },
+    { id: "synd-c1-d11", title: "Document 11 : Extrait d’un article de journal", layout: "text-only",
+      text: "« Les ouvriers d’Asbestos sont entrés en grève pour deux raisons : d’abord pour obtenir une augmentation de salaire de 15 cents l’heure, ensuite pour que la compagnie accepte de signer une clause, dans le contrat de travail, par laquelle elle s’engagerait à employer les moyens les plus efficaces et les plus modernes pour assurer la suppression de la poussière d’amiante à l’intérieur et à l’extérieur des usines ».",
+      sources: ["Source : Auteur inconnu, « Grève générale de l’amiante », Le Devoir, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335."] },
+    { id: "synd-c1-d12", title: "Document 12", layout: "image-only",
+      imageUrl: "assets/img/syndicalisme-c1-1/doc12.png", imageWidthCm: 12,
+      sources: ["Source : Auteur inconnu, « La grève des journaliers de bord à Montréal », L’Opinion publique, vol. 11, no 23, p. 270, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0002743221. Licence : domaine public."] },
+    { id: "synd-c1-d13", title: "Document 13 : Extrait d’un article de journal", layout: "text-only",
+      text: "« La Commission parlementaire de la Fonction publique et le gouvernement tentent vainement de trouver une solution à l’impasse créée par le refus du Front commun syndical d’accorder la moindre crédibilité à la commission. [...] Les deux principaux antagonistes du conflit, MM. Marcel Pepin, coordonnateur du Front commun, et Jean-Paul L’Allier, porte-parole du gouvernement dans ce débat en sa qualité de ministre responsable, s’affronteront vendredi soir, au cours d’un débat télévisé d’une heure à Radio-Canada. »",
+      sources: ["Source : Pierre Vennat, « Débat télévisé vendredi entre Lallier et Pepin », La Presse, p. A2, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] },
+    { id: "synd-c1-d14", title: "Document 14 : Extrait d’un article de journal", layout: "text-only",
+      text: "« Les deux principales demandes du Front commun sur les salaires sont les suivantes : tout le monde, dans le secteur public et para-public, devrait gagner un minimum de 100 $ par semaine. Pour les autres, les syndicats réclament des augmentations moyennes de 8 % [par année]. »",
+      sources: ["Source : Pierre Vennat, « Le “dialogue” à sens unique du Holiday Inn », La Presse, p. A6, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] },
+    { id: "synd-c1-d15", title: "Document 15", layout: "image-only",
+      imageUrl: "assets/img/syndicalisme-c1-1/doc15.png", imageWidthCm: 11,
+      sources: ["Source : Antoine Desilets, Grèves et manifestations, Bibliothèque et Archives nationales du Québec, P697,S1,SS1,SSS18,D55. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "synd-c1-d16", title: "Document 16 : Extrait d’un article de journal", layout: "text-only",
+      text: "« [...] le gouvernement offre une hausse moyenne de 4,8 pourcent par année aux 210 000 membres du Front commun intersyndical (CEQ, FTQ et CSN). »",
+      sources: ["Source : Gilles Lesage, « Après la grève générale de 24 heures, c’est encore l’affrontement », Le Devoir, p. 6, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335."] },
+    { id: "synd-c1-d17", title: "Document 17 : Extrait d’un article scientifique", layout: "text-only",
+      text: "« Le 19 avril, une rencontre extraordinaire entre les dirigeants du Front commun et quatre ministres (Fonction publique, finances, Éducation et Affaires sociales) échoua. Le lendemain, une législation spéciale fut introduite à l’Assemblée nationale (Bill 19) et adoptée le jour suivant par un vote de 69 à 15. Les principaux points de cette loi sont les suivants : cessation de la grève générale le dimanche 23 avril à minuit; convocation de la Commission parlementaire de la fonction publique; stipulation à l’effet que si aucune entente entre les parties n’est survenue le 1er juin, le gouvernement fixera unilatéralement par décret les conditions de travail à partir du 30 juin et ce, pour une période de 3 ans; amendes à tous ceux qui ne respecteront pas la loi de 50,00 $ à 250,00 $ par jour, par travailleur et de 5 000,00 $ à 50 000,00 $ par jour, par dirigeant syndical et pour le syndicat lui-même. »",
+      sources: ["Source : Jean Boivin, « La négociation collective dans le secteur public québécois : une évaluation des trois premières rondes », Relations industrielles, vol. 27, no 4, p. 695, en ligne sur érudit.ca."] },
+    { id: "synd-c1-d18", title: "Document 18 : Extrait vidéo d’un reportage de Radio-Canada", layout: "text-only",
+      text: "« Devant l’impasse, le Front commun déclenche une grève de 24 heures le 28 mars. Elle touchera surtout les hôpitaux et les écoles. Une injonction a forcé une partie du personnel de l’Hydro et des services non-médicaux à demeurer au travail. Le 11 avril, par suite de la rupture des négociations à la table centrale, le Front commun déclenche une nouvelle grève. Les hôpitaux sont particulièrement touchés. Très vite, 75 % des 50 000 lits des institutions seront vides. Les deux premiers jours de grève, quelque 8 500 employés de l’Hydro-Québec se sont joints au débrayage, défiant l’injonction du 28 mars. Ils dressent des piquets de grève devant l’immeuble d’Hydro à Montréal et participent activement aux manifestations. »",
+      sources: ["Source : Revue de l’année 1972 au Canada, Société Radio-Canada, 01:09-01:57. Licence : extrait utilisé avec la permission de la Société Radio-Canada, tous droits réservés."] },
+    { id: "synd-c1-d19", title: "Document 19 : Extrait d’une brochure d’information", layout: "text-only",
+      text: "« Donc, le but des Syndicats Catholiques Nationaux est le relèvement de la classe ouvrière au point de vue professionnel, patriotique et religieux; et les promoteurs de ce mouvement ont cru que les ouvriers comme tous les autres individus des diverses classes de la société ont droit à des conditions de travail, qui leur permettent de conserver leur santé, de leur donner des loisirs afin de se reposer, se distraire et vivre de la véritable vie de famille, et un salaire assez élevé pour leur permettre de faire face à leurs dépenses et même d’économiser pour les mauvais jours. »",
+      sources: ["Source : Georges Hogue, Appel aux ouvriers par un ouvrier : les avantages des syndicats catholiques, une confédération internationale, constitution et règlements, Montréal, L’Oeuvre des tracts, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000074206."] }
+  ],
+
+  // ===== P7 — Compétence 1 — L’affirmation de nations autochtones (années 1970) =====
+  'baie-james-c1-1': [
+    { id: "bj-c1-d20", title: "Document 20 : Position exprimée par Robert Bourassa, premier ministre du Québec, en 1971", layout: "text-only",
+      text: "Robert Bourassa : « C’est certainement un projet qui va constituer, si on peut dire, la clé de la relance économique et parce que ça va contribuer à cette relance économique, ça va favoriser le progrès social, la stabilité politique. Alors là il y a certainement ce soir, dans l’annonce du projet de la Baie-James, un tournant dans l’histoire économique du Québec et je suis convaincu que toutes les retombées économiques vont permettre aux Québécois enfin d’avoir une prospérité qui soit comparable à celle de leurs voisins, que ce soit du sud ou de l’est. »",
+      sources: ["Source : Boréal hebdo, 11 novembre 1995, Société Radio-Canada, 01:25-01:55. Licence : extrait utilisé avec la permission de la Société Radio-Canada, tous droits réservés."] },
+    { id: "bj-c1-d21", title: "Document 21 : Extrait de la pétition des Algonquins et des Népissingues", layout: "text-only",
+      text: "« Nous étions riches autrefois, rien ne nous manquait : les forêts étaient peuplées d’animaux de toute espèce dont nous vendions les dépouilles bien cher à l’avide marchand; cela nous donnait le moyen de suffire à nos besoins et à ceux de nos enfants. Mais il n’en est plus ainsi maintenant. Les blancs s’établissent de tous côtés sur nos terres; et où l’on ne cultive pas, les gens des chantiers sont là pour détruire et faire fuir les animaux qui restent dans le petit espace de terre que l’on ne nous a pas encore ravi. Nos familles sont sans moyen de subsistance et nous ne savons pas où chercher de quoi vivre. Nous sommes réduits à la plus grande détresse. Nous voulons imiter les blancs. C’est pourquoi nous demandons un terrain pour cultiver. »",
+      sources: ["Source : Pétition des Algonquins et des Népissingues, citée dans Alain Beaulieu, Les Autochtones du Québec. Des premières alliances aux revendications contemporaines, Québec et Montréal, Musée de la civilisation/Édition Fides, 2000, p. 67."] },
+    { id: "bj-c1-d22", title: "Document 22 : Extrait d’un article de journal qui cite Robert Bourassa, premier ministre du Québec", layout: "text-only",
+      text: "« Mon gouvernement préfère développer la Baie-James, a affirmé le Premier Ministre, plutôt que de se laisser aller à la grandiloquence ou de se livrer à des exercices de rhétorique. »",
+      sources: ["Source : Auteur inconnu, « Québec… grande région énergétique », La Seigneurie, p. 9, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000035782."] },
+    { id: "bj-c1-d23", title: "Document 23 : Extrait d’un article de journal", layout: "text-only",
+      text: "« Les parties impliquées dans l’entente accordent aux autochtones des garanties permanentes de droits exclusifs de chasse, de pêche et de trappage sur certaines terres. [...] Ils sont de plus assurés d’une voix au chapitre pour toutes les décisions ayant trait à leur environnement ainsi que d’une participation, comme investisseurs et travailleurs, aux futurs projets d’aménagement dans le territoire. [...] les Autochtones du territoire recevront au cours des 20 prochaines années un montant de 225 millions de dollars à titre d’indemnités et de compensation pour la perte de certains droits et privilèges. »",
+      sources: ["Source : Réjean Lacombe, « Les autochtones remportent une victoire », Le Nouvelliste, p. 7, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878386."] },
+    { id: "bj-c1-d24", title: "Document 24 : Extrait d’un texte de synthèse", layout: "text-only",
+      text: "« Pour beaucoup, la colonisation apparaît comme la panacée [solution] au chômage et à la misère des villes : sur la terre, au moins, la subsistance est assurée. Pressés d’agir, les deux niveaux de gouvernement mettent sur pied, durant les années 1930, des programmes spécifiques [...]. Cette colonisation permet d’occuper certaines régions du Québec, en particulier l’Abitibi, mais aussi l’arrière-pays de la Gaspésie, du Bas-du-Fleuve et du Lac-Saint-Jean. [...] »",
+      sources: ["Source du texte : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, tome II : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 41."] },
+    { id: "bj-c1-d25", title: "Document 25 : Extrait d’un article de journal", layout: "text-only",
+      text: "« [...] cette entente revêt un caractère de précédent. [...] Dans l’immédiat, elle permettra la poursuite des travaux d’aménagement du complexe hydro-électrique dans le bassin de la rivière La Grande, première étape du projet de la Baie James, sans crainte de délais juridiques supplémentaires. En outre les autochtones ont convenu de mettre fin aux procédures judiciaires visant à arrêter le projet et de renoncer à leurs titres collectifs sur les territoires. »",
+      sources: ["Source : Réjean Lacombe, « Les autochtones remportent une victoire », Le Nouvelliste, p. 7, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878386."] },
+    { id: "bj-c1-d26", title: "Document 26", layout: "image-only",
+      imageUrl: "assets/img/baie-james-c1-1/doc26.png", imageWidthCm: 9,
+      sources: ["Source : Armour Landry, Une famille inuite près de la rivière Grande-Baleine, Bibliothèque et Archives nationales du Québec, P97,S1,D6029-6029. Licence : image utilisée avec la permission de BAnQ.", "Source : George Legrady, Membres d’une famille crie attablés autour d’un repas, Eastmain, Québec, James Bay Ethnographic Resource, B03_22. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "bj-c1-d27", title: "Document 27 : Photo de la centrale de Beauharnois en Montérégie construite par la Montreal Light Heat and Power Company", layout: "image-only",
+      imageUrl: "assets/img/baie-james-c1-1/doc27.png", imageWidthCm: 12,
+      sources: ["Source : Auteur inconnu, Centrale d’Hydro-Québec à Beauharnois, Bibliothèque et Archives nationales du Québec, notice 0002638629."] },
+    { id: "bj-c1-d28", title: "Document 28 : Extrait d’un article de journal", layout: "text-only",
+      text: "« On sait que les Indiens [Cris et Inuits] ont déposé une requête en injonction* devant la Cour supérieure demandant l’arrêt temporaire des travaux de la Baie James tant qu’on n’aura pas conclu une entente avec eux portant sur les dédommagements. Les Indiens [Cris et Inuits] soutiennent en effet qu’ils ont des droits légaux sur le territoire où sera aménagé la centrale hydro-électrique de la Baie James, et tentent de faire établir ces droits. Selon leurs avocats, les travaux de la Baie James auront pour effet de limiter sérieusement la valeur de leurs droits de chasse et pêche et perturberont l’environnement au point que leur subsistance en sera affectée. » (*Injonction : Ordre de la Cour qui oblige une personne ou une organisation à faire ou à ne pas faire quelque chose.)",
+      sources: ["Source : Marcel Pepin, « Baie James : Ottawa verserait 500 000 $ pour assumer la protection des Indiens », La Presse, p. G8, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] },
+    { id: "bj-c1-d29", title: "Document 29 : Observation du juge Charles Langelier", layout: "text-only",
+      text: "« [Le premier ministre du Québec] Sir Lomer Gouin [...] est en instance auprès des autorités d’Ottawa pour faire concéder à la province le territoire d’Ungava. S’il réussit, la province de Québec possédera le territoire le plus étendu de toutes les provinces de la Confédération. »",
+      sources: ["Source : Charles Langelier, Souvenirs politiques : récits, études et portraits, Mercier : son renvoi, d’office, son procès, sa mort, Québec, Dussault et Proulx, p. 24-25, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000184435."] }
+  ],
+
+  // ===== P8 — Compétence 1 — La dévitalisation de certaines régions (1980 à nos jours) =====
+  'devitalisation-c1-1': [
+    { id: "dev-c1-d12", title: "Document 12 : Extrait d’un mémoire soumis à la Commission de l’agriculture, des pêcheries, de l’énergie et des ressources naturelles", layout: "text-only",
+      text: "« Un grand nombre de municipalités dans les “régions-ressources”, y compris des villes minières, ont été créées pour exploiter une ressource naturelle comme un gisement minier, une forêt ou un banc de pêche. Avec les multiples transformations de l’économie, les motifs qui ont justifié la création de certaines municipalités et l’occupation de certains territoires à un moment donné de l’histoire se sont estompés avec le temps. »",
+      sources: ["Source : Conseil du patronat du Québec, Commentaires du Conseil du patronat du Québec, Montréal, 2013, p. 34, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004634603."] },
+    { id: "dev-c1-d13", title: "Document 13 : Extrait d’un rapport de recherche", layout: "text-only",
+      text: "« La question des [villes] mono-industrielles a refait surface ces dernières années au Québec comme élément important de la problématique de développement dans les régions périphériques et dans les zones manufacturières des régions centrales. Nombre de localités ont subi des revers suite à la fermeture d’un employeur principal ou la contraction de l’activité économique dominante. Et de telles situations de bouleversements économiques risquent de se reproduire. »",
+      sources: ["Source : Christophe Ribichesi et Richard Shearmur, Les communautés mono-industrielles au Québec : portrait et analyse de vulnérabilité, Institut national de la recherche scientifique, Montréal, 2008, p. X, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0003907305."] },
+    { id: "dev-c1-d14", title: "Document 14", layout: "image-only",
+      imageUrl: "assets/img/devitalisation-c1-1/doc14.png", imageWidthCm: 9,
+      sources: ["Source : Auteur inconnu, Département de tournage du bois, aile Workman, Université McGill, Montréal, QC, Musée McCord, MP-0000.25.287. Licence : Creative Commons (BY-NC-ND)."] },
+    { id: "dev-c1-d15", title: "Document 15", layout: "text-only",
+      text: "« Enfin, quatre régions voient leur population diminuer. La baisse est toutefois très faible au Saguenay–Lac-Saint-Jean, qui affiche un taux d’accroissement annuel moyen de – 0,4 pour mille. [...] La décroissance continue dans les autres régions, soit le Bas-Saint-Laurent (– 1,4 pour mille) et, de manière plus importante, la Gaspésie–Îles-de-la-Madeleine et la Côte-Nord. Les taux d’accroissement annuels moyens de ces dernières sont de – 5,4 et – 7,4 pour mille entre 2011 et 2017. »",
+      sources: ["Source : Institut de la statistique du Québec, Panorama des régions du Québec, Édition 2018, Gouvernement du Québec, Québec, 2018, p. 20, en ligne sur Banque de données des statistiques officielles sur le Québec."] },
+    { id: "dev-c1-d16", title: "Document 16", layout: "image-only",
+      imageUrl: "assets/img/devitalisation-c1-1/doc16.png", imageWidthCm: 12,
+      sources: ["Source : Auteur inconnu, Centrale hydroélectrique de la Dominion Textile à Magog, Québec, Bibliothèque et Archives Canada, MIKAN 3381706. Licence : domaine public."] },
+    { id: "dev-c1-d17", title: "Document 17 : Extrait d’un plan d’action régional", layout: "text-only",
+      text: "« Des fermetures, notamment dans le secteur de l’exploitation et de l’aménagement de la forêt et de la transformation du bois (scierie et papetière), provoquent des pertes d’emplois de qualité ayant des effets d’entraînement importants dans l’économie locale. Le manque d’emplois est le principal problème du marché du travail dans les [régions] rurales et certaines communautés sont aux prises avec des défis de diversification. »",
+      sources: ["Source : Emploi-Québec Outaouais, Plan d’action régional 2008-2009, Région de l’Outaouais, Emploi-Québec Outaouais, Hull, 2008, p. 22-23."] },
+    { id: "dev-c1-d18", title: "Document 18 : Extrait d’un rapport gouvernemental", layout: "text-only",
+      text: "« La baisse démographique, principalement causée par la migration des jeunes, soulève de grandes difficultés en région éloignée étant donné que le financement du système d’éducation québécois est surtout fondé sur le nombre d’élèves et d’étudiants. Cette baisse touche ces régions plus durement que d’autres et met en péril leur capacité à maintenir des services éducatifs de qualité ».",
+      sources: ["Source : Conseil supérieur de l’éducation, Rapport sur l’état et les besoins de l’éducation, L’éducation en région éloignée : une responsabilité collective, Gouvernement du Québec, Québec, 2009, p. 8, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004683329."] },
+    { id: "dev-c1-d19", title: "Document 19 : Extrait d’un texte de synthèse", layout: "text-only",
+      text: "La concentration des entreprises constitue un des traits marquants de l’économie québécoise au début du 20e siècle. Elle affecte les secteurs des services publics, des transports, des banques, du textile, du fer et de l’acier et certaines industries alimentaires. Cette concentration permet aux plus importantes compagnies de limiter la concurrence grâce à l’obtention d’un quasi-monopole dans leur domaine de production. Toutefois, plusieurs petites entreprises canadiennes-françaises, incapables de soutenir une telle concurrence, disparaissent.",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "dev-c1-d20", title: "Document 20 : Extrait d’une publication gouvernementale", layout: "text-only",
+      text: "« Les régions de la zone éloignée se démarquent généralement par des pertes assez marquées chez les 15-24 ans. En 2015-2016, c’est la Côte-Nord qui connaît le déficit le plus marqué chez les jeunes adultes, avec un taux net de –3,5 % qui équivaut à une perte de 360 personnes. (...) Le Saguenay–Lac-Saint-Jean, l’Abitibi-Témiscamingue et le Nord-du-Québec affichent aussi des résultats négatifs dans tous les groupes d’âge en 2015-2016. »",
+      sources: ["Source : Frédéric F. Payeur et Martine St-Amour, « La migration interrégionale au Québec en 2015-2016 : les gains disparaissent à Laval, les pertes s’accentuent de nouveau sur la Côte-Nord », Coup d’œil sociodémographique, février 2017, no 50, p. 8, en ligne sur Banque de données des statistiques officielles sur le Québec."] },
+    { id: "dev-c1-d21", title: "Document 21 : Extrait d’un texte de synthèse", layout: "text-only",
+      text: "« Or, voici qu’à la toute fin du [...] siècle se développent plusieurs secteurs nouveaux, basés sur l’exploitation des richesses naturelles, qui, en quelques années, modifient profondément la structure industrielle québécoise. Ces nouveaux secteurs sont l’hydroélectricité, les pâtes et papiers, l’électrométallurgie, l’électrochimie et les mines. [...] »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert, Histoire du Québec contemporain, tome 1 : De la Confédération à la crise (1867-1929), Montréal, Boréal, 1989, p. 409."] }
+  ],
+
+    // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
   'experience-autochtones-relation-1': [
     { id: "ea-r1-d1", title: "Document 1", layout: "text-only",
       text: "« La plupart des peuples [...] étaient [patrilinéaires], ce qui implique que le père déterminait l'appartenance au groupe de base. Le plus souvent, la femme venait habiter dans la maison de son époux. Certains membres de [cette] famille [...], comme les [Abénakis, Mi'gmaqs et les Malécites], reconnaissaient [néanmoins] des liens de filiation du côté maternel ou des deux lignées à la fois, celle du père et de la mère. »",
@@ -5571,7 +5772,283 @@ window.DATA = {
         ]
       } },
 
-    // ===== Q1 — P1 · Mettre en relation des faits =====
+    // ===== P5 · COMPÉTENCE 1 — Caractériser une période — Une idéologie au 19e siècle (1840-1896) =====
+    { id: "q-ideologies-c1-1", competence: 1, operation: null, numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Décrivez une idéologie présente dans la société canadienne-française au 19e siècle.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Idéologie" },
+          relations: [
+            { central: { label: "Principe central de cette idéologie" },
+              satellites: [
+                { label: "Parti qui défend ce principe" },
+                { label: "Lieu de rassemblement des partisans" }
+              ] },
+            { central: { label: "Revendication des partisans de cette idéologie" },
+              satellites: [
+                { label: "Institution contre qui cette revendication est menée" },
+                { label: "Moyen utilisé pour faire cette revendication" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [],
+      reglettes: [{ id: "r-ideo-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('ideologies-c1-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        objet: { answer: "Anticléricalisme" },
+        relations: [
+          { central: { answer: "Libéralisme (valeurs du libéralisme, séparation de l’Église et de l’État)", docRef: "Document 6" },
+            satellites: [
+              { answer: "Parti rouge", docRef: "Document 5" },
+              { answer: "Institut canadien de Montréal", docRef: "Document 3" }
+            ] },
+          { central: { answer: "Opposition à la censure", docRef: "Document 1" },
+            satellites: [
+              { answer: "Église catholique", docRef: "Document 4" },
+              { answer: "Conservation des livres mis à l’Index, emprunt des livres interdits par l’Église", docRef: "Document 2" }
+            ] }
+        ]
+      } },
+
+    // ===== P6 · COMPÉTENCE 1 — Caractériser une période — La situation économique au Québec (1896-1929) =====
+    { id: "q-industrialisation-c1-1", competence: 1, operation: null, numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        prompt: "Décrivez la situation économique au Québec entre 1896 et 1929.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom du phénomène économique au début du 20e siècle" },
+          relations: [
+            { central: { label: "Principale source d’énergie" },
+              satellites: [
+                { label: "Région où on exploite cette source d’énergie" },
+                { label: "Infrastructure qui produit cette source d’énergie" }
+              ] },
+            { central: { label: "Nouveau secteur de production" },
+              satellites: [
+                { label: "Produit d’exportation" },
+                { label: "Principale provenance des capitaux en 1929" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [3, 5],
+      reglettes: [{ id: "r-indus-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('industrialisation-c1-1', 1, 2, 3, 4, 5, 6, 7, 8),
+      corrige: {
+        objet: { answer: "Deuxième phase d’industrialisation" },
+        relations: [
+          { central: { answer: "Hydroélectricité", docRef: "Document 6" },
+            satellites: [
+              { answer: "Outaouais OU Mauricie OU Saguenay OU Montréal", docRef: "Document 4" },
+              { answer: "Centrale hydroélectrique OU barrage", docRef: "Document 8" }
+            ] },
+          { central: { answer: "Pâtes et papiers", docRef: "Document 2" },
+            satellites: [
+              { answer: "Papier journal", docRef: "Document 7" },
+              { answer: "États-Unis OU Canada anglais", docRef: "Document 1" }
+            ] }
+        ]
+      } },
+
+    // ===== P7 · COMPÉTENCE 1 — Caractériser une période — Le mouvement féministe (1945-1980) =====
+    { id: "q-feminisme-c1-1", competence: 1, operation: null, numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Décrivez le mouvement de pensée dans lequel différentes actrices revendiquent plus de droits sociaux et économiques pour les femmes.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom du mouvement de pensée" },
+          relations: [
+            { central: { label: "Première femme élue à l’Assemblée nationale" },
+              satellites: [
+                { label: "Un droit obtenu avec une loi qu’elle a fait adopter en 1964" },
+                { label: "Un organisme de défense des droits des femmes dont elle a proposé la fondation" }
+              ] },
+            { central: { label: "Une militante syndicaliste" },
+              satellites: [
+                { label: "Une revendication économique de cette militante" },
+                { label: "Une association fondée pour défendre ou acquérir des droits" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [],
+      reglettes: [{ id: "r-fem-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('feminisme-c1-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        objet: { answer: "Le féminisme" },
+        relations: [
+          { central: { answer: "Marie-Claire Kirkland-Casgrain", docRef: "Document 1" },
+            satellites: [
+              { answer: "Avoir la libre disposition de ses biens OU Aller en justice OU Exercer une profession distincte de son mari", docRef: "Document 4" },
+              { answer: "Conseil du statut de la femme", docRef: "Document 5" }
+            ] },
+          { central: { answer: "Madeleine Parent", docRef: "Document 6" },
+            satellites: [
+              { answer: "Obtenir de meilleurs salaires pour les ouvrières de l’industrie textile", docRef: "Document 3" },
+              { answer: "Confédération des syndicats canadiens", docRef: "Document 2" }
+            ] }
+        ]
+      } },
+
+    // ===== P7 · COMPÉTENCE 1 — Caractériser une période — Le débat sur les conditions de travail du secteur public (1972) =====
+    { id: "q-syndicalisme-c1-1", competence: 1, operation: null, numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Décrivez le débat sur les conditions de travail du secteur public qui a lieu en 1972.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Objet du débat entre les acteurs" },
+          relations: [
+            { central: { label: "Une coalition réclamant plus de droits pour les travailleurs du secteur public" },
+              satellites: [
+                { label: "Une revendication faite à l’employeur" },
+                { label: "Un moyen de pression utilisé" }
+              ] },
+            { central: { label: "Employeur des travailleurs du secteur public" },
+              satellites: [
+                { label: "Une offre faite aux employés" },
+                { label: "Le moyen utilisé pour mettre fin à la négociation" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [11, 12, 15, 19],
+      reglettes: [{ id: "r-synd-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('syndicalisme-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      corrige: {
+        objet: { answer: "La négociation d’une nouvelle entente de travail OU La négociation d’une nouvelle convention collective" },
+        relations: [
+          { central: { answer: "Front commun de la CEQ, de la CSN et du FTQ OU Front commun des centrales syndicales", docRef: "Document 10" },
+            satellites: [
+              { answer: "Augmentation salariale annuelle de 8 % OU Salaire minimum de 100 $/semaine", docRef: "Document 14" },
+              { answer: "Grève", docRef: "Document 18" }
+            ] },
+          { central: { answer: "Gouvernement du Québec", docRef: "Document 13" },
+            satellites: [
+              { answer: "Augmentation salariale annuelle de 4,8 %", docRef: "Document 16" },
+              { answer: "Adoption d’une loi spéciale", docRef: "Document 17" }
+            ] }
+        ]
+      } },
+
+    // ===== P7 · COMPÉTENCE 1 — Caractériser une période — L’affirmation de nations autochtones (années 1970) =====
+    { id: "q-baie-james-c1-1", competence: 1, operation: null, numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Décrivez l’aboutissement de négociations pour l’affirmation de certaines nations autochtones dans les années 1970 au Québec.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom de la convention" },
+          relations: [
+            { central: { label: "Acteurs qui cherchent à protéger leurs droits" },
+              satellites: [
+                { label: "Une revendication de ces acteurs" },
+                { label: "Gain réalisé pour ces acteurs avec la convention" }
+              ] },
+            { central: { label: "Acteur qui cherche à développer le territoire" },
+              satellites: [
+                { label: "Objectif économique de cet acteur" },
+                { label: "Gain réalisé pour cet acteur avec la convention" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [21, 24, 27, 29],
+      reglettes: [{ id: "r-bj-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('baie-james-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      corrige: {
+        objet: { answer: "Convention de la Baie-James et du Nord québécois" },
+        relations: [
+          { central: { answer: "Inuits et Cris", docRef: "Document 26" },
+            satellites: [
+              { answer: "Arrêter les travaux pour établir les droits de chasse et de pêche / droits ancestraux OU Arrêter les travaux pour établir des dédommagements", docRef: "Document 28" },
+              { answer: "Garantie des droits de chasse et de pêche OU Assurance d’être consultés OU Indemnités et compensations de 225 millions de dollars sur 20 ans", docRef: "Document 23" }
+            ] },
+          { central: { answer: "Gouvernement du Québec (de Robert Bourassa)", docRef: "Document 22" },
+            satellites: [
+              { answer: "Favoriser la relance économique de la province OU Favoriser la prospérité du Québec", docRef: "Document 20" },
+              { answer: "Poursuite des travaux de barrages hydroélectriques sans crainte de poursuites judiciaires", docRef: "Document 25" }
+            ] }
+        ]
+      } },
+
+    // ===== P8 · COMPÉTENCE 1 — Caractériser une période — La dévitalisation de certaines régions (1980 à nos jours) =====
+    { id: "q-devitalisation-c1-1", competence: 1, operation: null, numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Décrivez le phénomène socioéconomique survenu dans certaines régions du Québec à partir de 1980.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Phénomène socioéconomique survenu dans certaines régions du Québec à partir des années 1980" },
+          relations: [
+            { central: { label: "Type de ville touchée par ce phénomène" },
+              satellites: [
+                { label: "Type d’industrie prédominante dans ces villes" },
+                { label: "Situation de l’emploi dans ces villes" }
+              ] },
+            { central: { label: "Tendance démographique dans ces régions" },
+              satellites: [
+                { label: "Principal groupe social qui migre de ces régions vers la ville" },
+                { label: "Problème lié au système d’éducation dans ces régions" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [14, 16, 19, 21],
+      reglettes: [{ id: "r-dev-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('devitalisation-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      corrige: {
+        objet: { answer: "Dévitalisation" },
+        relations: [
+          { central: { answer: "Ville mono-industrielle OU Ville de région", docRef: "Document 13" },
+            satellites: [
+              { answer: "Industrie minière, forestière ou de pêche OU Industrie du secteur primaire OU Exploitation des ressources naturelles", docRef: "Document 12" },
+              { answer: "Perte d’emplois de qualité OU Manque d’emplois disponibles OU Manque de diversification des emplois OU Augmentation du chômage", docRef: "Document 17" }
+            ] },
+          { central: { answer: "Diminution de la population OU Décroissance démographique OU Taux d’accroissement annuels moyens négatifs", docRef: "Document 15" },
+            satellites: [
+              { answer: "Les jeunes de 15 à 24 ans OU Les jeunes adultes", docRef: "Document 20" },
+              { answer: "Diminution du financement et des services disponibles", docRef: "Document 18" }
+            ] }
+        ]
+      } },
+
+        // ===== Q1 — P1 · Mettre en relation des faits =====
     { id: "q-experience-autochtones-relation-1", operation: "Mettre en relation des faits", numero: 1, annee: 3, niveau: 1,
       realite_sociale_id: "experience-autochtones-projet-colonie",
       questionBody: {
