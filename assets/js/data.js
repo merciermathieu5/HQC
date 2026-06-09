@@ -19,6 +19,11 @@
      • PAGE COUVERTURE : pondération ventilée par partie (Opérations intellectuelles / Compétence 1 /
        Compétence 2) puis Total ; chaque partie n'apparaît que si elle est présente dans le cahier
        (computeCahierPointsByCategory). S'applique au cahier standard et à la variante (couverture commune).
+     • +2 questions C1 « Caractériser une période » : q-colonie-francaise-c1-1 (P2, Nouvelle-France ;
+       8 docs, à discriminer 2 et 6) et q-colonie-canadienne-c1-1 (P3, 1774-1791 ; 9 docs, à discriminer 3, 6 et 8).
+       +2 entrées DOCS (images extraites des PDF RÉCIT ; bandeau « Gouvernement royal de 1663 » recadré sur
+       les organigrammes pour ne pas révéler la réponse). NOUVEAU : documentsADiscriminer rendu dans le guide
+       (corrigé C1) sous le schéma rempli (« Documents à discriminer : … »).
    ============================================================ */
 /* ============================================================
    HQC · 3e + 4e secondaire — Données — v1.42.0 (mai 2026) ⭐⭐ CATALOGUE 375 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P8 TERMINÉE (Lots 1-4 : leçons 1-12)
@@ -1427,6 +1432,66 @@ const DOCS = {
       imageUrl: "assets/img/experience-autochtones-c1-1/doc6.png", imageWidthCm: 12,
       text: "« Ces peuples choisissent d'installer leurs villages près d'une source d'eau potable, de terres fertiles et d'un boisé pour s'approvisionner en bois. »",
       sources: ["Source de la carte et du texte : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA)."] }
+  ],
+
+  // ===== P2 — Caractériser une période (C1) — Colonie française en Amérique du Nord =====
+  'colonie-francaise-c1-1': [
+    { id: "cf-c1-d1", title: "Document 1", layout: "text-image",
+      imageUrl: "assets/img/colonie-francaise-c1-1/doc1.png", imageWidthCm: 12,
+      text: "« Dans le cadre de la doctrine économique de la France, Jean Talon jette les bases d’une stratégie commerciale complémentaire entre la métropole, la colonie et les Antilles. »",
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "cf-c1-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/colonie-francaise-c1-1/doc2.png", imageWidthCm: 13,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "cf-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« Les intendants se soucient de faire naître ou de maintenir de petites industries : moulins à scie, fabriques de toile, goudronneries [...]. [...] [L’intendant] Hocquart établit à Québec des chantiers de construction navale qui, grâce à des subventions royales, seront très actifs de 1739 à 1750. »",
+      sources: ["Source : Marcel Trudel, Initiation à la [...] : histoire et institutions, Montréal et Toronto, Holt, Rinehart et Winston, 1968, p. 89-90."] },
+    { id: "cf-c1-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/colonie-francaise-c1-1/doc4.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social."] },
+    { id: "cf-c1-d5", title: "Document 5", layout: "image-only",
+      imageUrl: "assets/img/colonie-francaise-c1-1/doc5.png", imageWidthCm: 12,
+      sources: ["Source des données : Marcel Trudel, Initiation à la [...] : histoire et institutions, Montréal et Toronto, Holt, Rinehart et Winston, 1968, p. 211."] },
+    { id: "cf-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« De 1636 à 1639, les Hurons furent frappés par une série d’épidémies, et la population tomba de 25 000 à 10 000 âmes. À vrai dire, les maladies, en minant le prestige des [guérisseurs], aidèrent les missionnaires jésuites à augmenter le nombre des conversions ».",
+      sources: ["Source : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 2009, p. 37."] },
+    { id: "cf-c1-d7", title: "Document 7", layout: "text-only",
+      text: "« [...] : doctrine économique qui vise l’enrichissement des États par l’accumulation des principales richesses que sont l’or et l’argent. Une colonie ne doit exister que pour fournir des matières premières à la métropole; il est interdit d’y créer des manufactures qui feraient concurrence à la métropole. »",
+      sources: ["Source : Jacques Mathieu, [...] Les Français en Amérique du Nord, XVIe-XVIIIe siècle, Paris/Québec, Belin/Les Presses de l’Université Laval, 1991, p. 110."] },
+    { id: "cf-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« [...] Talon fait venir les Filles du Roy, des jeunes femmes sans famille pour qu’elles trouvent un mari parmi les hommes présents dans la colonie, dont les soldats du régiment de Carignan-Salières. [...] Jean Talon met [aussi] en place des politiques pour favoriser les naissances. Il accorde des allocations aux familles de dix enfants et plus. Il donne une dot (de l’argent) aux hommes qui se marient avant l’âge de vingt ans et aux filles qui se marient avant l’âge de seize ans. »",
+      sources: ["Source : « Lettre de Jean Talon au ministre de la Marine Jean-Baptiste Colbert, 10 octobre 1670 », dans Marcel Trudel, La Nouvelle-France par les textes. Les cadres de vie, Montréal, Hurtubise HMH, 2003, p. 104."] }
+  ],
+
+  // ===== P3 — Caractériser une période (C1) — Colonie canadienne (1774-1791) =====
+  'colonie-canadienne-c1-1': [
+    { id: "cc-c1-d1", title: "Document 1 : Territoire de la colonie canadienne selon la constitution de 1774.", layout: "image-only",
+      imageUrl: "assets/img/colonie-canadienne-c1-1/doc1.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "cc-c1-d2", title: "Document 2", layout: "text-only",
+      text: "« Des pétitions datées du 24 novembre 1784, en anglais et en français, demandent notamment la création d’une chambre d’assemblée “indistinctement composée d’anciens et de nouveaux sujets de Sa Majesté, librement élus par les habitants” ».",
+      sources: ["Source : Assemblée nationale du Québec, « Acte de Québec (1774) », Encyclopédie du parlementarisme québécois, 10 juillet 2017, en ligne sur Assemblée nationale du Québec."] },
+    { id: "cc-c1-d3", title: "Document 3", layout: "text-only",
+      text: "« [...] le roi acceptera l’établissement de la loi du Test qui éloignera de la fonction publique tout chrétien fidèle au pape. [...] Tous les fonctionnaires supérieurs sont tenus de prêter le serment du Test par lequel ils nient l’autorité du pape, la transsubstantiation* dans le sacrement de l’Eucharistie, le culte de la Vierge et des saints. Ainsi, se trouvent théoriquement exclus des charges officielles tous les Canadiens qui professent la religion catholique. De fait, on sait que Murray et Carleton passeront outre, de telle sorte qu’aucun Canadien ne prêtera ce serment. » (*Transsubstantiation : transformation du pain et du vin en la substance du corps et du sang de Jésus-Christ pendant la communion.)",
+      sources: ["Source : Cité dans J. Lacoursière, J. Provencher et D. Vaugeois, Canada-Québec (1534-2000), nouvelle édition, Sillery, Septentrion, 2001, p. 80 et 164."] },
+    { id: "cc-c1-d4", title: "Document 4 : Territoire de la colonie canadienne après 1783", layout: "image-only",
+      imageUrl: "assets/img/colonie-canadienne-c1-1/doc4.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "cc-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« Je, A. B., promets et jure sincèrement que je serai fidèle et porterai vraie allégeance à sa Majesté le roi George, que je défendrai de tout mon pouvoir, contre toutes conspirations perfides et tous attentats quelconques, dirigés contre sa personne, sa couronne et sa dignité; et que je ferai tous mes efforts pour découvrir et faire connaître à sa Majesté, ses héritiers et successeurs, toutes trahisons et conspirations perfides, et tous attentats que je saurai dirigés contre lui [...]. »",
+      sources: ["Source : Cité dans J. Lacoursière, Histoire populaire du Québec, tome 1 : Des origines à 1791, Sillery, Septentrion, 1995, p. 387."] },
+    { id: "cc-c1-d6", title: "Document 6 : Le grand dérangement", layout: "image-only",
+      imageUrl: "assets/img/colonie-canadienne-c1-1/doc6.png", imageWidthCm: 11,
+      sources: ["Source : Henri Beau, La déportation des Acadiens (vers 1900), Wikimedia Commons. Licence : domaine public."] },
+    { id: "cc-c1-d7", title: "Document 7 : Un campement de Loyalistes à l’ouest des terres seigneuriales, le long du Saint-Laurent et du lac Ontario", layout: "image-only",
+      imageUrl: "assets/img/colonie-canadienne-c1-1/doc7.png", imageWidthCm: 13,
+      sources: ["Source : James Peachy, Un campement… à Johnstown (17…). Bibliothèque et Archives Canada, 2895301. Licence : domaine public."] },
+    { id: "cc-c1-d8", title: "Document 8 : Organigramme politique de la colonie", layout: "image-only",
+      imageUrl: "assets/img/colonie-canadienne-c1-1/doc8.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l’univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "cc-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« Trente ans après la conquête britannique, la situation de l’éducation est franchement pitoyable. Alors que la population française a plus que doublé entre 1760 et 1790, elle possède seulement deux écoles secondaires [...] et à peine une quarantaine de « petites écoles » [...]. À la même époque, la population anglaise du Canada, dont le nombre s’est accru de 10 000 personnes [...], dispose de 17 écoles, soit environ une école par 600 habitants comparativement à une par 3750 habitants chez les Français. »",
+      sources: ["Source : Pierre Graveline, Une histoire de l’éducation au Québec, Montréal, Fidès, 2007, p. 23-24."] }
   ],
 
   // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
@@ -5151,6 +5216,99 @@ window.DATA = {
             satellites: [
               { answer: "Aînée du clan", docRef: "Document 3" },
               { answer: "Obtenir le consentement des membres du clan (ou Convaincre les membres du clan)", docRef: "Document 5" }
+            ] }
+        ]
+      } },
+
+    // ===== C1 — P2 · Caractériser une période — Colonie française en Amérique du Nord =====
+    { id: "q-colonie-francaise-c1-1", competence: 1, operation: null, numero: 1, annee: 3, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Décris la doctrine économique et la nouvelle structure politique de la colonie française en Amérique du Nord.",
+        bullets: [
+          "Consulte les documents 1 à 8.",
+          "Sélectionne uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Associe correctement chacun des documents à une bulle du schéma.",
+          "Remplis le schéma à l’aide des documents."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom de la colonie française de l’Amérique du Nord" },
+          relations: [
+            { central: { label: "La doctrine économique de la métropole" },
+              satellites: [
+                { label: "Le nom du réseau d’échanges" },
+                { label: "Trois principaux produits exportés par la colonie" }
+              ] },
+            { central: { label: "La structure politique de la colonie" },
+              satellites: [
+                { label: "Deux mesures économiques des intendants" },
+                { label: "Deux mesures démographiques des intendants" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [2, 6],
+      reglettes: [{ id: "r-cf-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('colonie-francaise-c1-1', 1, 2, 3, 4, 5, 6, 7, 8),
+      corrige: {
+        objet: { answer: "Nouvelle-France" },
+        relations: [
+          { central: { answer: "Mercantilisme", docRef: "Document 7" },
+            satellites: [
+              { answer: "Commerce triangulaire", docRef: "Document 1" },
+              { answer: "Fourrures, produits agricoles, produits de la pêche", docRef: "Document 5" }
+            ] },
+          { central: { answer: "Gouvernement royal", docRef: "Document 4" },
+            satellites: [
+              { answer: "Développement de petites industries, construction de chantiers navals", docRef: "Document 3" },
+              { answer: "Filles du Roy (ou Allocations aux familles nombreuses, ou Dot aux hommes mariés avant 20 ans et aux femmes mariées avant 16 ans)", docRef: "Document 8" }
+            ] }
+        ]
+      } },
+
+    // ===== C1 — P3 · Caractériser une période — Colonie canadienne (1774-1791) =====
+    { id: "q-colonie-canadienne-c1-1", competence: 1, operation: null, numero: 1, annee: 3, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Décrivez la colonie canadienne sur le plan social et politique pendant la période 1774-1791.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom que prend la colonie entre 1774 et 1791" },
+          relations: [
+            { central: { label: "Groupe de personnes qui arrive dans la colonie pendant cette période" },
+              satellites: [
+                { label: "Langue parlée par les membres de ce groupe de personnes" },
+                { label: "Lieu d’origine de ce groupe de personnes" }
+              ] },
+            { central: { label: "Nom de la constitution adoptée pendant cette période" },
+              satellites: [
+                { label: "Serment que doivent prêter ceux qui veulent participer à la vie politique" },
+                { label: "Revendication politique des Canadiens à cette époque" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [3, 6, 8],
+      reglettes: [{ id: "r-cc-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('colonie-canadienne-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "Province de Québec (ou Province of Quebec)" },
+        relations: [
+          { central: { answer: "Loyalistes", docRef: "Document 7" },
+            satellites: [
+              { answer: "Anglaise", docRef: "Document 9" },
+              { answer: "États-Unis (ou États-Unis d’Amérique)", docRef: "Document 4" }
+            ] },
+          { central: { answer: "Acte de Québec", docRef: "Document 1" },
+            satellites: [
+              { answer: "Serment d’allégeance au roi", docRef: "Document 5" },
+              { answer: "Chambre d’assemblée élue (ou assemblée législative élue)", docRef: "Document 2" }
             ] }
         ]
       } },

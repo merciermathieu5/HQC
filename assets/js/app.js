@@ -1412,6 +1412,18 @@
     // Compétence 1 : schéma rempli (réponses en rouge + renvois aux documents)
     if (rs && rs.type === 'c1-schema') {
       out.push(buildC1SchemaTable(d, rs, q.corrige, true));
+      const disc = q.documentsADiscriminer || [];
+      if (disc.length) {
+        const fmt = disc.length <= 1 ? String(disc[0])
+          : disc.slice(0, -1).join(', ') + ' et ' + disc[disc.length - 1];
+        out.push(new Paragraph({
+          spacing: { before: 160, after: 0 },
+          children: [
+            new TextRun({ text: "Documents à discriminer : ", bold: true, size: 20, color: "C00000" }),
+            new TextRun({ text: fmt, size: 20, color: "C00000" })
+          ]
+        }));
+      }
       return out;
     }
     const SHADING = { fill: "FDF6EC", type: ShadingType.CLEAR, color: "auto" };
