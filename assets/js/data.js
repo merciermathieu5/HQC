@@ -1,4 +1,24 @@
 /* ============================================================
+   v1.49.0 — COMPÉTENCE 1 (lot 6) : +3 questions « Caractériser une période » (Bois-Francs, grilles 2×3) :
+     • q-mondialisation-c1-1 (P8 ; réalité choix-societe-quebec-contemporain, no 4 ; Québec et Canada
+       1980-1995 ; objet : La mondialisation ; 9 docs, à discriminer 5 [entente Canada-UE de 2017, hors
+       période] et 9 [accord de Charlottetown de 1992, mauvaise année pour la case « 1987 »]). DOCS
+       'mondialisation-c1-1' (images : doc 1 rapatriement de la constitution, doc 3 drapeaux ALÉNA,
+       doc 5 signature Canada-UE [text-image], doc 7 référendum de 1980 / René Lévesque [text-image]).
+     • q-guerre-froide-c1-1 (P7 Version A ; réalité modernisation-quebec, no 6 ; Québec années 1950 ;
+       objet : La guerre froide ; 9 docs, à discriminer 4 [carte des industries, sans la mine] et 7
+       [guerre des Boers, hors période]). DOCS 'guerre-froide-c1-1' (images : doc 1 voie maritime,
+       doc 3 guerre de Corée [text-image], doc 4 carte des industries, doc 6 graphique des exportations
+       rendu par région, doc 7 soldats en Afrique du Sud, doc 9 carte de l'Arctique).
+     • q-revolution-tranquille-bf-c1-1 (P7 Version B ; réalité modernisation-quebec, no 7 ; Québec années
+       1960 ; objet : Révolution tranquille ; 9 docs, à discriminer 2 [école de rang, ancien système] et 7
+       [Petro-Canada, société fédérale de 1975]). DOCS 'revolution-tranquille-bf-c1-1' (images : doc 1 logos
+       de sociétés d'État, doc 2 école de rang, doc 3 commission Parent, doc 5 cégep [text-image], doc 6
+       Jean Lesage [text-image], doc 7 Petro-Canada [text-image]). Question distincte de
+       q-revolution-tranquille-c1-1 (RÉCIT) : même objet, mais épreuve et dossier différents.
+     • Renvois et distracteurs DÉDUITS des dossiers (clés Bois-Francs sans renvois) ; validés par l'enseignant.
+  ============================================================ */
+/* ============================================================
    v1.48.0 — COMPÉTENCE 1 (lot 5) : +2 questions « Caractériser une période » (Bois-Francs, grilles 2×3 →
    schéma canonique ; réalité nationalismes-autonomie-canada) :
      • q-imperialisme-c1-1 (Version B, société canadienne 1896-1914 ; 8 docs, à discriminer 2 [Nord-Ouest,
@@ -2283,6 +2303,111 @@ const DOCS = {
     { id: "pgm-c1-d7", title: "Document 7 : Les impérialistes et la guerre des Boers", layout: "text-only",
       text: "« En pressant Laurier d’envoyer des troupes en Afrique du Sud, les tenants de la participation canadienne à la guerre ne manquaient pas d’arguments. Le ministre fédéral de la Justice, David Mills, fit remarquer dans son livre English in Africa que les colonies britanniques émancipées se devaient de faire des sacrifices pour la sauvegarde de l’Empire. »",
       sources: ["Source : Robert Page, La guerre des Boers et l’impérialisme canadien, Ottawa, La Société historique du Canada, 1987, p. 13-14."] }
+  ],
+
+  // ===== Compétence 1 — Caractériser une période — Lot « Bois-Francs » P7/P8 (grilles 2×3) =====
+  // ----- P8 : Québec et Canada 1980-1995 (objet : La mondialisation) -----
+  'mondialisation-c1-1': [
+    { id: "mond-c1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/mondialisation-c1-1/doc1.png", imageWidthCm: 10,
+      sources: ["Source : Robert Cooper / Bibliothèque et Archives Canada / PA-141503."] },
+    { id: "mond-c1-d2", title: "Document 2", layout: "text-only",
+      text: "« D’une économie traditionnelle s’appuyant sur une faible compétitivité internationale, [...] nous sommes passés au cours des quinze dernières années (1980 à 1995) à une nouvelle économie mondiale où les règles du jeu ont radicalement changé. »",
+      sources: ["Source : Gouvernement du Québec, « Développement économique, innovation et exportation », 26 février 2007."] },
+    { id: "mond-c1-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/mondialisation-c1-1/doc3.png", imageWidthCm: 8,
+      sources: ["Source : Creative Commons (BY)."] },
+    { id: "mond-c1-d4", title: "Document 4 : Accord du lac Meech", layout: "text-only",
+      text: "« [...] le premier ministre du Québec, Robert Bourassa, s’entend avec le premier ministre fédéral Brian Mulroney pour reprendre les négociations dans le but de réintégrer le Québec dans la Constitution. [...] L’Assemblée nationale du Québec et la Chambre des communes du Parlement fédéral approuvent l’entente. Cependant, au terme du délai, les provinces du Manitoba et de Terre-Neuve refusent de la ratifier. [...] » (Ratifier : signer)",
+      sources: ["Source : Sylvain Fortin et autres, Fresques, manuel de l’élève B, 1re année du 2e cycle du secondaire, Montréal, Graficor, 2007, p. 228."] },
+    { id: "mond-c1-d5", title: "Document 5 : Entente de libre-échange avec l’Union européenne", layout: "text-image",
+      imageUrl: "assets/img/mondialisation-c1-1/doc5.png", imageWidthCm: 6,
+      text: "« Cet accord ouvre la voie à 510 millions de consommateurs en Europe et, inversement, les entreprises européennes gagnent 33 millions de nouveaux consommateurs canadiens. Depuis jeudi matin, 98 % des tarifs appliqués sur les importations et les exportations sont ainsi abolis. »",
+      sources: ["Source du texte : Journal de Montréal, « Accord de libre-échange », 21 septembre 2017.",
+                "Source de l’image : Archives Radio-Canada."] },
+    { id: "mond-c1-d6", title: "Document 6", layout: "text-only",
+      text: "« Sous l’action d’un gouvernement jouant à fond de train la carte de l’État-providence, la Caisse de dépôt et placement du Québec [...] deviendra l’un des grands catalyseurs du développement de la propriété québécoise des entreprises. SNC, Cascades, CGI, Jean Coutu, Domtar, Metro, Télésystème, Quebecor [...] Les années 1980 ont été une décennie de prise en mains par les Québécois de leur économie. »",
+      sources: ["Source : Gérard Bérubé, Le Devoir, « Économie du Québec », 10 avril 2010."] },
+    { id: "mond-c1-d7", title: "Document 7", layout: "text-image",
+      imageUrl: "assets/img/mondialisation-c1-1/doc7.png", imageWidthCm: 6,
+      text: "« [...] le gouvernement [du Parti québécois] [...] propose que le Québec devienne un État souverain et qu’il demeure associé au Canada sur le plan économique [...] Le soir du 20 mai [...], le NON l’emporte avec 59,6 % des voix. Lors de son allocution, [le premier ministre du Québec] s’engage à respecter la décision des électeurs québécois et à négocier une entente constitutionnelle avec Ottawa. »",
+      sources: ["Source du texte : Ève Bernier Cormier et autres, Chroniques du Québec et du Canada : 1840 à nos jours, 4e secondaire, Montréal, ERPI, 2017, p. 474 et 476.",
+                "Source de l’image : Archives Radio-Canada."] },
+    { id: "mond-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« En vertu des traités [...] signés par le gouvernement fédéral, le marché canadien est désormais ouvert à des produits étrangers qui entrent plus directement en concurrence avec les produits locaux et nationaux. En revanche, [les] entreprises canadiennes peuvent vendre leurs produits à l’étranger et accroître le nombre de consommateurs et consommatrices. »",
+      sources: ["Source : Sébastien Brodeur-Girard et autres, Le Québec, une histoire à construire, 2e cycle du secondaire, 2e année, Laval, Grand Duc, 2008, vol. 2, p. 409."] },
+    { id: "mond-c1-d9", title: "Document 9 : Accord de Charlottetown", layout: "text-only",
+      text: "« [...] les Canadiens sont appelés pour la seule fois de leur histoire à se prononcer par référendum sur un projet de réforme constitutionnelle. [Cette entente] a pour but de ramener le Québec dans le giron constitutionnel, de réformer le Sénat et de reconnaître le droit à l’autodétermination des Premières Nations. »",
+      sources: ["Source : François Pierre Dufault, Radio-Canada, « Il y a 25 ans », 26 octobre 2017."] }
+  ],
+
+  // ----- P7 Version A : Québec années 1950 (objet : La guerre froide) -----
+  'guerre-froide-c1-1': [
+    { id: "gf-c1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/guerre-froide-c1-1/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Henri Rémillard, Porte d’entrée en Amérique du Nord (1969), Bibliothèque et Archives nationales du Québec (E6, D690984)."] },
+    { id: "gf-c1-d2", title: "Document 2 : Le rideau de fer", layout: "text-only",
+      text: "« J’en arrive maintenant au second danger qui menace les maisons [...] à savoir la tyrannie. Nous ne pouvons fermer les yeux devant le fait que les libertés [...] n’existent pas dans un nombre considérable de pays [...]. Personne ne sait ce que la Russie soviétique et son organisation communiste internationale ont l’intention de faire dans l’avenir immédiat. [...] un rideau de fer est descendu à travers le continent. »",
+      sources: ["Source : Winston Churchill, premier ministre du Royaume-Uni, discours prononcé à l’Université de Fulton, aux États-Unis, le 5 mars 1946."] },
+    { id: "gf-c1-d3", title: "Document 3 : La participation militaire du Canada", layout: "text-image",
+      imageUrl: "assets/img/guerre-froide-c1-1/doc3.png", imageWidthCm: 6,
+      text: "« En novembre 1950, le 2e Bataillon, régiment du Princess Patricia’s Canadian Light Infantry de la brigade d’armée canadienne, est envoyé à l’étranger et atterrit en Corée en décembre. Le reste de la brigade canadienne arrive en mai 1951. Pour l’armée, la guerre de la péninsule devient surtout une “guerre de patrouilles” livrée sur un terrain montagneux accidenté [...]. »",
+      sources: ["Source de l’image : Bibliothèque et Archives Canada (PA-171228).",
+                "Source du texte : Encyclopédie canadienne, « La guerre de Corée »."] },
+    { id: "gf-c1-d4", title: "Document 4", layout: "image-only",
+      imageUrl: "assets/img/guerre-froide-c1-1/doc4.png", imageWidthCm: 13,
+      sources: ["Source : Ministère de l’Éducation et de l’Enseignement supérieur (MEES)."] },
+    { id: "gf-c1-d5", title: "Document 5", layout: "text-only",
+      text: "« Le Canada devient pour les États-Unis un important fournisseur de matières premières, parmi lesquelles les produits miniers prennent une part accrue. Face à une demande intérieure en forte croissance, les États-Unis, exportateurs de métaux avant la guerre, en deviennent importateurs. Le phénomène est accentué par les besoins militaires. »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, 1989."] },
+    { id: "gf-c1-d6", title: "Document 6 : Les exportations canadiennes entre 1945 et 1960", layout: "image-only",
+      imageUrl: "assets/img/guerre-froide-c1-1/doc6.png", imageWidthCm: 12,
+      sources: ["Source : Statistique Canada, Annuaire du Canada, 1967."] },
+    { id: "gf-c1-d7", title: "Document 7 : Des soldats canadiens en Afrique du Sud", layout: "image-only",
+      imageUrl: "assets/img/guerre-froide-c1-1/doc7.png", imageWidthCm: 10,
+      sources: ["Source : Bibliothèque et Archives Canada (BG-842916)."] },
+    { id: "gf-c1-d8", title: "Document 8", layout: "text-only",
+      text: "« En adhérant à [cette organisation], fondée en 1949, le Canada, dont c’est la première alliance militaire en temps de paix, s’engage dans un dispositif militaire défensif regroupant les États-Unis, la Grande-Bretagne et les nations de l’Europe de l’Ouest. »",
+      sources: ["Source : Encyclopédie canadienne, « L’Organisation du traité de l’Atlantique Nord »."] },
+    { id: "gf-c1-d9", title: "Document 9", layout: "image-only",
+      imageUrl: "assets/img/guerre-froide-c1-1/doc9.png", imageWidthCm: 8,
+      sources: ["Source : Bibliothèque et Archives Canada (AR-247972)."] }
+  ],
+
+  // ----- P7 Version B : Québec années 1960 (objet : Révolution tranquille) -----
+  'revolution-tranquille-bf-c1-1': [
+    { id: "rtbf-c1-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/revolution-tranquille-bf-c1-1/doc1.png", imageWidthCm: 10,
+      sources: ["Source : Ministère de l’Éducation, du Loisir et du Sport (MELS)."] },
+    { id: "rtbf-c1-d2", title: "Document 2 : École de rang au Québec, comté de Charlevoix", layout: "image-only",
+      imageUrl: "assets/img/revolution-tranquille-bf-c1-1/doc2.png", imageWidthCm: 10,
+      sources: ["Source : BAnQ Québec, fonds ministère de la Culture et des Communications (E6, S7, SS1, P8229)."] },
+    { id: "rtbf-c1-d3", title: "Document 3 : Les membres de la commission d’enquête sur l’éducation", layout: "image-only",
+      imageUrl: "assets/img/revolution-tranquille-bf-c1-1/doc3.png", imageWidthCm: 10,
+      sources: ["Source : Bibliothèque et Archives Canada (CP-174324)."] },
+    { id: "rtbf-c1-d4", title: "Document 4", layout: "text-only",
+      text: "« Dès son arrivée au pouvoir en juin 1960, le gouvernement libéral de Jean Lesage confie à Hydro-Québec le mandat exclusif d’aménager et d’exploiter les rivières non encore concédées à des intérêts privés. C’est à compter du 1er mai 1963, toutefois, qu’Hydro-Québec atteint une dimension panquébécoise alors que le gouvernement l’autorise à acquérir, de gré à gré, les distributeurs privés d’électricité. »",
+      sources: ["Source : Archives Hydro-Québec."] },
+    { id: "rtbf-c1-d5", title: "Document 5", layout: "text-image",
+      imageUrl: "assets/img/revolution-tranquille-bf-c1-1/doc5.png", imageWidthCm: 7,
+      text: "« Aux yeux des membres de la commission, il importe d’instaurer un niveau d’enseignement d’une durée minimale de deux ans qui facilite le passage entre le secondaire et l’université ou le marché du travail. Les premiers voient le jour en 1967. [...] »",
+      sources: ["Source de l’image : Le collège Montmorency en 1976, Le monde en images, no 37009.",
+                "Source du texte : Musée québécois de Culture populaire, « La création des cégeps et de l’Université du Québec »."] },
+    { id: "rtbf-c1-d6", title: "Document 6", layout: "text-image",
+      imageUrl: "assets/img/revolution-tranquille-bf-c1-1/doc6.png", imageWidthCm: 6,
+      text: "« Entouré d’hommes aux idées nouvelles comme René Lévesque, Paul Gérin-Lajoie, Jean Lesage promet de changer le Québec et de revoir le rôle de l’État lors des élections de 1960. »",
+      sources: ["Source du texte : Jocelyn Morneau, « Jean Lesage », C’est le début d’un temps nouveau, 2012, Musée québécois de la culture populaire.",
+                "Source de l’image : Bibliothèque et Archives nationales du Québec (D524, P1000)."] },
+    { id: "rtbf-c1-d7", title: "Document 7", layout: "text-image",
+      imageUrl: "assets/img/revolution-tranquille-bf-c1-1/doc7.png", imageWidthCm: 5,
+      text: "« La Loi sur la Société Petro-Canada est adoptée en 1975 après un âpre débat à la Chambre des communes et crée une nouvelle société de la couronne dotée de pouvoirs étendus qui servent à mener des activités d’exploration et de mise en valeur, ainsi que d’un mandat détaillé qui consiste à importer des ressources pétrolières et à s’engager dans la recherche et le développement énergétiques. »",
+      sources: ["Source : Encyclopédie canadienne, « Petro-Canada »."] },
+    { id: "rtbf-c1-d8", title: "Document 8 : L’État-providence", layout: "text-only",
+      text: "« Résultat d’un long processus commencé pendant la guerre, l’État-providence arrive à maturité durant les années 1960 et 1970, alors que se déploie la panoplie de mesures sociales qui en constitue l’aspect le plus visible. Ses trois modes d’intervention – réglementation, redistribution, assurance – touchent tous les secteurs de la vie sociale et tous les individus. »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, tome 2 : Le Québec depuis 1930, 1989."] },
+    { id: "rtbf-c1-d9", title: "Document 9", layout: "text-only",
+      text: "« [Le rapport] propose en outre de remplacer les commissions scolaires catholiques et protestantes par des commissions scolaires uniques. Celles-ci prendraient en charge toutes les écoles, françaises, anglaises, catholiques, protestantes, non confessionnelles. »",
+      sources: ["Source : Le Devoir, Jean-Pierre Proulx."] }
   ],
 
     // ===== P1 — Mettre en relation des faits — Familles linguistiques =====
@@ -7008,6 +7133,141 @@ window.DATA = {
             satellites: [
               { answer: "La propagande", docRef: "Document 2" },
               { answer: "Le travail en usine OU le travail au front", docRef: "Document 1" }
+            ] }
+        ]
+      } },
+
+    { id: "q-mondialisation-c1-1", competence: 1, operation: null, numero: 4, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Décrivez la situation politique et économique du Québec et du Canada entre les années 1980 et 1995.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Phénomène de changements économiques et politiques de 1980 à 1995" },
+          relations: [
+            { central: { label: "Une idéologie politique défendue par le Parti québécois" },
+              satellites: [
+                { label: "Un projet de réforme constitutionnel en 1987" },
+                { label: "Une action du gouvernement fédéral en 1982" }
+              ] },
+            { central: { label: "Une idéologie économique défendue par les pays industrialisés" },
+              satellites: [
+                { label: "Une stratégie économique adoptée par le gouvernement québécois" },
+                { label: "Un accord de libre-échange entré en vigueur en 1994" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [5, 9],
+      reglettes: [{ id: "r-mond-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('mondialisation-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "La mondialisation" },
+        relations: [
+          { central: { answer: "Le souverainisme", docRef: "Document 7" },
+            satellites: [
+              { answer: "L’accord du lac Meech", docRef: "Document 4" },
+              { answer: "Le rapatriement de la constitution canadienne", docRef: "Document 1" }
+            ] },
+          { central: { answer: "Le néolibéralisme", docRef: "Document 8" },
+            satellites: [
+              { answer: "Le Québec Inc.", docRef: "Document 6" },
+              { answer: "L’Accord de libre-échange nord-américain", docRef: "Document 3" }
+            ] }
+        ]
+      } },
+
+    { id: "q-guerre-froide-c1-1", competence: 1, operation: null, numero: 6, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Décrivez la situation politique et économique du Québec au cours des années 1950.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom de la période de tensions entre le bloc de l’Ouest et le bloc de l’Est" },
+          relations: [
+            { central: { label: "Une organisation militaire dont le Canada fait partie" },
+              satellites: [
+                { label: "Un conflit outre-mer auquel participe le Canada" },
+                { label: "Une revendication territoriale du Canada" }
+              ] },
+            { central: { label: "Un secteur industriel en expansion au Québec" },
+              satellites: [
+                { label: "Le principal partenaire économique du Canada" },
+                { label: "Une voie maritime aménagée" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [4, 7],
+      reglettes: [{ id: "r-gf-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('guerre-froide-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "La guerre froide" },
+        relations: [
+          { central: { answer: "L’Organisation du traité de l’Atlantique Nord OU l’OTAN", docRef: "Document 8" },
+            satellites: [
+              { answer: "La guerre de Corée", docRef: "Document 3" },
+              { answer: "L’Arctique", docRef: "Document 9" }
+            ] },
+          { central: { answer: "L’industrie minière", docRef: "Document 5" },
+            satellites: [
+              { answer: "Les États-Unis", docRef: "Document 6" },
+              { answer: "La voie maritime du Saint-Laurent", docRef: "Document 1" }
+            ] }
+        ]
+      } },
+
+    { id: "q-revolution-tranquille-bf-c1-1", competence: 1, operation: null, numero: 7, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Décrivez la situation économique et sociale du Québec au cours des années 1960.",
+        bullets: [
+          "Consultez le dossier documentaire.",
+          "Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.",
+          "Remplissez le schéma ci-dessous à partir des documents sélectionnés."
+        ],
+        responseSpace: {
+          type: "c1-schema",
+          objet: { label: "Nom de la période de transformations économiques et sociales au Québec au cours des années 1960" },
+          relations: [
+            { central: { label: "L’idéologie économique qui prend son essor dans ce contexte" },
+              satellites: [
+                { label: "Une mesure visant à soutenir le développement de l’économie québécoise" },
+                { label: "Un secteur industriel nationalisé" }
+              ] },
+            { central: { label: "Le nom d’une commission d’enquête sur l’éducation au Québec" },
+              satellites: [
+                { label: "Une action de l’État visant à assurer la neutralité religieuse du système d’éducation" },
+                { label: "Une nouvelle institution d’enseignement post-secondaire" }
+              ] }
+          ]
+        }
+      },
+      documentsADiscriminer: [2, 7],
+      reglettes: [{ id: "r-rtbf-c1-1", label: "Réglette (8 points)", ...R_C1_DESCRIPTION_8PT }],
+      documents: pickDocs('revolution-tranquille-bf-c1-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        objet: { answer: "Révolution tranquille" },
+        relations: [
+          { central: { answer: "Interventionnisme", docRef: "Document 8" },
+            satellites: [
+              { answer: "La création de sociétés d’État", docRef: "Document 1" },
+              { answer: "L’hydroélectricité", docRef: "Document 4" }
+            ] },
+          { central: { answer: "La commission royale d’enquête sur l’enseignement dans la province de Québec OU la commission Parent", docRef: "Document 3" },
+            satellites: [
+              { answer: "La déconfessionnalisation des commissions scolaires OU la laïcisation du système d’éducation", docRef: "Document 9" },
+              { answer: "Les cégeps OU le réseau universitaire du Québec", docRef: "Document 5" }
             ] }
         ]
       } },
