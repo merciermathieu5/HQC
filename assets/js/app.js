@@ -1928,6 +1928,15 @@
         useBase64URL: true
       });
 
+      // Compétence 1 (paysage) : docx-preview applique l'orientation de chaque section via un style
+      // inline (width = w:w, minHeight = w:h). Le CSS de l'aperçu force le format portrait (!important) ;
+      // on marque donc les pages dont la largeur inline dépasse la hauteur pour leur appliquer les
+      // bonnes dimensions paysage (voir .preview-container section.docx.landscape dans style.css).
+      el.previewContainer.querySelectorAll('section.docx').forEach(sec => {
+        const w = parseFloat(sec.style.width), h = parseFloat(sec.style.minHeight || sec.style.height);
+        if (w && h && w > h) sec.classList.add('landscape');
+      });
+
       // VARIANTE : l'aperçu n'affiche pas les coupures de page (docx-preview ne repagine pas
       // le texte qui s'enchaîne). On les simule, sans toucher au .docx, une fois les images
       // chargées. Le ratio « hauteur utile / largeur utile » dépend des marges, qui diffèrent

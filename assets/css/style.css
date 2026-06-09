@@ -821,6 +821,12 @@ mark.search-hit {
   position: relative;
   counter-increment: page;
 }
+/* Compétence 1 : pages en orientation paysage (marquées par previewCahier après le rendu) */
+.preview-container section.docx.landscape {
+  width: 27.94cm !important;
+  min-height: 21.59cm !important;
+  padding: 1.27cm !important;
+}
 .preview-container section.docx::after {
   content: "— Page " counter(page) " —";
   position: absolute;
