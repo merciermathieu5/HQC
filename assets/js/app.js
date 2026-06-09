@@ -374,6 +374,20 @@
     return total;
   }
 
+  // Points du cahier ventilés par catégorie (OI / C1 / C2) + total. Sert à la pondération
+  // de la page couverture : une partie n'apparaît que si elle vaut > 0 point dans le cahier.
+  function computeCahierPointsByCategory() {
+    const acc = { oi: 0, c1: 0, c2: 0, total: 0 };
+    state.cahier.forEach(p => {
+      if (p.kind !== 'reglette') return;
+      const q = DATA.questions.find(x => x.id === p.questionId);
+      if (!q) return;
+      const r = q.reglettes.find(x => x.id === p.pieceId);
+      if (r && r.maxPoints) { acc[categoryOf(q)] += r.maxPoints; acc.total += r.maxPoints; }
+    });
+    return acc;
+  }
+
   // ====== GESTION CAHIER ======
   function pieceKey(qId, kind, pieceId) {
     return `${qId}::${kind}::${pieceId || ''}`;
@@ -1800,48 +1814,48 @@
       rows: [fieldRow('Nom'), fieldRow('Groupe'), fieldRow('Date')]
     }));
 
-    // Espace puis bloc Total — tableau 3 colonnes : "Total :" / ligne / "/ N points"
-    out.push(new Paragraph({
-      children: [new TextRun({ text: "" })],
-      spacing: { before: 1400 }
-    }));
+    // Pondération de l'évaluation — une ligne par PARTIE présente dans le cahier (OI / C1 / C2),
+    // puis le Total. Une partie n'apparaît que si elle vaut plus de 0 point dans ce cahier.
+    out.push(new Paragraph({ children: [new TextRun({ text: "" })], spacing: { before: 1200 } }));
+
+    const ponder = computeCahierPointsByCategory();
+    const SEP = { style: BorderStyle.SINGLE, size: 8, color: "6E685C" };
+    const wLabel = 3800, wLine = 1700, wPts = 1700;
+    const ponderRow = (label, pts, opts) => {
+      opts = opts || {};
+      const size = opts.size || 24;
+      const color = opts.color || "2A2620";
+      const topB = opts.topBorder ? SEP : NO_BORDER;
+      return new TableRow({
+        height: { value: opts.tall ? 720 : 540, rule: "atLeast" },
+        children: [
+          new TableCell({ width: { size: wLabel, type: WidthType.DXA }, verticalAlign: VerticalAlign.BOTTOM,
+            borders: { top: topB, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER },
+            margins: { top: 100, bottom: 100, left: 0, right: 220 },
+            children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: `${label} :`, bold: true, size, color })] })] }),
+          new TableCell({ width: { size: wLine, type: WidthType.DXA }, verticalAlign: VerticalAlign.BOTTOM,
+            borders: { top: topB, bottom: TEXT_BORDER, left: NO_BORDER, right: NO_BORDER },
+            margins: { top: 100, bottom: 100, left: 0, right: 0 },
+            children: [new Paragraph({ children: [new TextRun({ text: "" })] })] }),
+          new TableCell({ width: { size: wPts, type: WidthType.DXA }, verticalAlign: VerticalAlign.BOTTOM,
+            borders: { top: topB, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER },
+            margins: { top: 100, bottom: 100, left: 200, right: 0 },
+            children: [new Paragraph({ alignment: AlignmentType.LEFT, children: [new TextRun({ text: `/ ${pts} points`, bold: true, size, color })] })] })
+        ]
+      });
+    };
+    const ponderRows = [];
+    if (ponder.oi > 0) ponderRows.push(ponderRow("Opérations intellectuelles", ponder.oi));
+    if (ponder.c1 > 0) ponderRows.push(ponderRow("Compétence 1", ponder.c1));
+    if (ponder.c2 > 0) ponderRows.push(ponderRow("Compétence 2", ponder.c2));
+    const hasParts = ponderRows.length > 0;   // total séparé par un filet s'il y a des parties détaillées
+    ponderRows.push(ponderRow("Total", ponder.total, { size: 32, color: "8B3A2E", tall: true, topBorder: hasParts }));
 
     out.push(new Table({
-      width: { size: 5800, type: WidthType.DXA },
-      columnWidths: [1700, 2200, 1900],
+      width: { size: wLabel + wLine + wPts, type: WidthType.DXA },
+      columnWidths: [wLabel, wLine, wPts],
       alignment: AlignmentType.CENTER,
-      rows: [new TableRow({
-        height: { value: 700, rule: "atLeast" },
-        children: [
-          new TableCell({
-            width: { size: 1700, type: WidthType.DXA },
-            borders: NO_BORDERS,
-            verticalAlign: VerticalAlign.BOTTOM,
-            margins: { top: 120, bottom: 120, left: 0, right: 200 },
-            children: [new Paragraph({
-              alignment: AlignmentType.RIGHT,
-              children: [new TextRun({ text: "Total :", bold: true, size: 32 })]
-            })]
-          }),
-          new TableCell({
-            width: { size: 2200, type: WidthType.DXA },
-            borders: { top: NO_BORDER, bottom: TEXT_BORDER, left: NO_BORDER, right: NO_BORDER },
-            verticalAlign: VerticalAlign.BOTTOM,
-            margins: { top: 120, bottom: 120, left: 0, right: 0 },
-            children: [new Paragraph({ children: [new TextRun({ text: "" })] })]
-          }),
-          new TableCell({
-            width: { size: 1900, type: WidthType.DXA },
-            borders: NO_BORDERS,
-            verticalAlign: VerticalAlign.BOTTOM,
-            margins: { top: 120, bottom: 120, left: 200, right: 0 },
-            children: [new Paragraph({
-              alignment: AlignmentType.LEFT,
-              children: [new TextRun({ text: `/ ${totalPoints} points`, bold: true, size: 32, color: "8B3A2E" })]
-            })]
-          })
-        ]
-      })]
+      rows: ponderRows
     }));
 
     return out;

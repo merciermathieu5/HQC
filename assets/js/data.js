@@ -16,6 +16,9 @@
        (c1SplitSections/c1OrientProps) ; le reste du cahier et le dossier documentaire restent en portrait.
        Schéma agrandi avec gouttières + colonnes-flèches (objet→central→satellites), objet/centraux alignés
        en haut ; grille agrandie sur sa propre page. Appliqué au cahier standard, à la variante et au guide.
+     • PAGE COUVERTURE : pondération ventilée par partie (Opérations intellectuelles / Compétence 1 /
+       Compétence 2) puis Total ; chaque partie n'apparaît que si elle est présente dans le cahier
+       (computeCahierPointsByCategory). S'applique au cahier standard et à la variante (couverture commune).
    ============================================================ */
 /* ============================================================
    HQC · 3e + 4e secondaire — Données — v1.42.0 (mai 2026) ⭐⭐ CATALOGUE 375 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P8 TERMINÉE (Lots 1-4 : leçons 1-12)
