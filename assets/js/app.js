@@ -1976,10 +1976,24 @@
       // chargées. Le ratio « hauteur utile / largeur utile » dépend des marges, qui diffèrent
       // entre le cahier (720 partout → 14400/10800) et le guide (900/1080 → 14040/10080).
       // Repli sûr : toute erreur est avalée et l'aperçu reste affiché.
+      // Coupures de page simulées : docx-preview ne repagine pas le contenu qui s'enchaîne.
+      //  • VARIANTE (« documents à la fin ») : flux continu → simulation héritée (ratio unique).
+      //  • C1 : le dossier documentaire s'enchaîne en portrait sans saut de page explicite ; sans
+      //    simulation, docx-preview l'affiche en une seule très longue page. On simule alors les
+      //    coupures UNIQUEMENT sur les sections portrait. Chaque question/écran est déjà une
+      //    <section.docx> distincte (docx-preview scinde aux sauts explicites), donc la simulation
+      //    reste locale à chaque section et ne perturbe ni le paysage ni les questions d'OI.
+      const _hasC1 = state.cahier.some(p => {
+        const _q = DATA.questions.find(x => x.id === p.questionId);
+        return _q && categoryOf(_q) === 'c1';
+      });
       if (variant) {
         await awaitImages(el.previewContainer);
         const ratio = corrige ? (14040 / 10080) : (14400 / 10800);
         simulatePageBreaks(el.previewContainer, ratio);
+      } else if (_hasC1) {
+        await awaitImages(el.previewContainer);
+        simulatePageBreaks(el.previewContainer, { portrait: corrige ? (14040 / 10080) : (14400 / 10800) });
       }
 
       hideLoading();
@@ -2010,12 +2024,21 @@
   // coupure AVANT lui (comble + ligne pointillée + n° de page), reproduisant la pagination de Word.
   // docx-preview rend : <section class="docx"> <article> blocs… </article> ; les blocs sont les
   // enfants de l'<article>. Hauteur utile (px) = largeur de contenu rendue (px) × ratio fourni.
-  function simulatePageBreaks(container, ratio) {
+  function simulatePageBreaks(container, ratios) {
     try {
-      const R = (ratio > 0) ? ratio : (14400 / 10800);
+      // `ratios` : soit un nombre (héritage — variante : un ratio unique pour toutes les sections),
+      // soit un objet { portrait } (mode C1 — on ne simule QUE les sections portrait). Raison : le
+      // dossier documentaire de la C1 s'enchaîne en portrait sans saut de page explicite (docx-preview
+      // ne repagine pas → une seule très longue page), alors que le schéma et la grille en paysage
+      // tiennent chacun sur une page et possèdent déjà leurs sauts explicites (docx-preview les a
+      // scindés en sections distinctes). On laisse donc le paysage intact.
+      const portraitOnly = ratios && typeof ratios === 'object';
       const sections = container.querySelectorAll('section.docx');
       if (!sections.length) return;
       sections.forEach(section => {
+        if (portraitOnly && section.classList.contains('landscape')) return;
+        let R = portraitOnly ? ratios.portrait : ratios;
+        if (!(R > 0)) R = (14400 / 10800);
         const article = section.querySelector(':scope > article') || section;
         const contentWidthPx = (article.clientWidth || section.clientWidth || 0);
         const pageContentHeightPx = contentWidthPx * R;
