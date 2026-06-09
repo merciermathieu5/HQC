@@ -686,6 +686,13 @@
       // qu'un document soit coupé entre deux pages.
       const docPieces = g.pieces.filter(p => p.kind === 'document');
 
+      // Compétence 1 : le dossier documentaire démarre sur une nouvelle page — sépare proprement
+      // la page-réponse (schéma + grille) des documents. Séparation visible aussi dans l'aperçu
+      // (docx-preview ne pagine que sur les sauts de page explicites).
+      if (categoryOf(q) === 'c1' && docPieces.length > 0) {
+        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+      }
+
       // Stratégie d'emballage : grouper les docs consécutifs « étroits » par paires
       // pour les afficher côte à côte (2 colonnes). Doc « étroit » = image ≤ 7 cm OU texte seul
       // OU drapeau « pair: true » sur le doc (pour forcer le pairing même avec image plus grande).
@@ -1213,7 +1220,7 @@
     const TB = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
     const ALL = { top: TB, bottom: TB, left: TB, right: TB };
     const THICK = { top: { style: BorderStyle.SINGLE, size: 16, color: ACCENT }, bottom: TB, left: TB, right: TB };
-    const MARG = { top: 60, bottom: 60, left: 110, right: 110 };
+    const MARG = { top: 95, bottom: 95, left: 110, right: 110 };
     const wObjet = 2600, wCentral = 3500, wSat = 4400;
     const cor = filled ? corrige : { objet: {}, relations: [{ central: {}, satellites: [{}, {}] }, { central: {}, satellites: [{}, {}] }] };
 
@@ -1223,7 +1230,10 @@
         children: [new TextRun({ text, bold: true, size: 17, color: "FFFFFF" })] });
     }
     function ans(answer, docRef) {
-      if (!filled) return [new Paragraph({ spacing: { before: 60 }, children: [new TextRun({ text: "", size: 22 })] })];
+      if (!filled) return [
+        new Paragraph({ spacing: { before: 90, after: 0 }, children: [new TextRun({ text: "", size: 26 })] }),
+        new Paragraph({ spacing: { before: 110, after: 40 }, children: [new TextRun({ text: "", size: 26 })] })
+      ];
       const o = [new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 40, after: docRef ? 20 : 0 },
         children: [new TextRun({ text: answer || "", bold: true, size: 20, color: RED })] })];
       if (docRef) o.push(new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: docRef, italics: true, size: 15, color: GRAY })] }));
@@ -1264,23 +1274,23 @@
       return new TableCell({ width: { size: o.w, type: WidthType.DXA }, columnSpan: o.span, rowSpan: o.rowSpan,
         borders: ALL, verticalAlign: VerticalAlign.CENTER,
         shading: o.fill ? { fill: o.fill, type: ShadingType.CLEAR } : undefined,
-        margins: o.margins || { top: 50, bottom: 50, left: 90, right: 90 },
+        margins: o.margins || { top: 26, bottom: 26, left: 70, right: 70 },
         children: [new Paragraph({ alignment: o.center ? AlignmentType.CENTER : AlignmentType.LEFT,
-          children: [new TextRun({ text, bold: !!o.bold, size: o.size || 15 })] })] });
+          children: [new TextRun({ text, bold: !!o.bold, size: o.size || 13 })] })] });
     }
     const rows = [];
-    rows.push(new TableRow({ children: [cell(r.objet.title, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 16 })] }));
+    rows.push(new TableRow({ children: [cell(r.objet.title, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 14 })] }));
     const objTot = 700, objColW = Math.floor((W - objTot) / 3);
     const objCells = r.objet.levels.map((lv, i) => new TableCell({
       width: { size: i === 2 ? (W - objTot - 2 * objColW) : objColW, type: WidthType.DXA },
-      borders: ALL, verticalAlign: VerticalAlign.TOP, margins: { top: 60, bottom: 60, left: 90, right: 90 },
+      borders: ALL, verticalAlign: VerticalAlign.TOP, margins: { top: 30, bottom: 30, left: 70, right: 70 },
       children: [
-        new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 }, children: [new TextRun({ text: lv.condition, size: 15 })] }),
-        new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: lv.points, bold: true, size: 15 })] })
+        new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 50 }, children: [new TextRun({ text: lv.condition, size: 13 })] }),
+        new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: lv.points, bold: true, size: 13 })] })
       ] }));
-    objCells.push(cell("/2", { w: objTot, center: true, bold: true, size: 16 }));
+    objCells.push(cell("/2", { w: objTot, center: true, bold: true, size: 14 }));
     rows.push(new TableRow({ children: objCells }));
-    rows.push(new TableRow({ children: [cell(r.relationTitle, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 16 })] }));
+    rows.push(new TableRow({ children: [cell(r.relationTitle, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 14 })] }));
     const cLabel = 1500, cPts = 900, cTot = 700, cBranch = 2600, cCentral = W - cLabel - cBranch - cPts - cTot;
     const matrix = r.relationMatrix;
     const totalBranches = matrix.reduce((s, m) => s + m.branches.length, 0);
@@ -1289,16 +1299,16 @@
       matrix.forEach((m) => {
         m.branches.forEach((b, bi) => {
           const cells = [];
-          if (first) { cells.push(cell(relLabel, { w: cLabel, rowSpan: totalBranches, bold: true, center: true, size: 15 })); first = false; }
-          if (bi === 0) cells.push(cell(m.central, { w: cCentral, rowSpan: m.branches.length, size: 15 }));
-          cells.push(cell(b.condition, { w: cBranch, size: 14 }));
-          cells.push(cell(b.points, { w: cPts, center: true, size: 15 }));
-          if (matrix[0] === m && matrix[0].branches[0] === b) cells.push(cell("/3", { w: cTot, center: true, bold: true, rowSpan: totalBranches, size: 16 }));
+          if (first) { cells.push(cell(relLabel, { w: cLabel, rowSpan: totalBranches, bold: true, center: true, size: 13 })); first = false; }
+          if (bi === 0) cells.push(cell(m.central, { w: cCentral, rowSpan: m.branches.length, size: 13 }));
+          cells.push(cell(b.condition, { w: cBranch, size: 12 }));
+          cells.push(cell(b.points, { w: cPts, center: true, size: 13 }));
+          if (matrix[0] === m && matrix[0].branches[0] === b) cells.push(cell("/3", { w: cTot, center: true, bold: true, rowSpan: totalBranches, size: 14 }));
           rows.push(new TableRow({ children: cells }));
         });
       });
     });
-    rows.push(new TableRow({ children: [cell("Total", { w: W - cTot, span: 3, bold: true, size: 16 }), cell("/8", { w: cTot, center: true, bold: true, size: 16 })] }));
+    rows.push(new TableRow({ children: [cell("Total", { w: W - cTot, span: 3, bold: true, size: 14 }), cell("/8", { w: cTot, center: true, bold: true, size: 14 })] }));
     return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [cLabel, cCentral, cBranch, cPts, cTot], rows });
   }
 
