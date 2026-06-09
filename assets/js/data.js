@@ -12,6 +12,10 @@
        existantes = 'oi', PAS de la C2 ; C2 distincte, à venir) ; filtre « Compétence » (C1/C2) ; étiquettes
        via questionTag() ; bandeaux de section dans les 3 assembleurs (ordre OI → C1 → C2), affichés
        seulement quand plusieurs catégories cohabitent. Aucune des questions d'OI existantes n'est modifiée.
+     • PAYSAGE C1 : les pages C1 (schéma + grille) passent en orientation paysage via des sauts de SECTION
+       (c1SplitSections/c1OrientProps) ; le reste du cahier et le dossier documentaire restent en portrait.
+       Schéma agrandi avec gouttières + colonnes-flèches (objet→central→satellites), objet/centraux alignés
+       en haut ; grille agrandie sur sa propre page. Appliqué au cahier standard, à la variante et au guide.
    ============================================================ */
 /* ============================================================
    HQC · 3e + 4e secondaire — Données — v1.42.0 (mai 2026) ⭐⭐ CATALOGUE 375 Q · 8 PÉRIODES À 7/7 OI · extraction Cahier P8 TERMINÉE (Lots 1-4 : leçons 1-12)

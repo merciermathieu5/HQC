@@ -606,29 +606,40 @@
     const WRAPPER_NO_BORDERS = { top: NO_B, bottom: NO_B, left: NO_B, right: NO_B };
 
     const bodyChildren = [];
-    bodyChildren.push(...coverElements);
-    // Saut de page après la couverture
-    bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+    bodyChildren.push(...coverElements);   // couverture (portrait)
 
     const _banners = sectionizeGroups(groups);
     let _prevComp = null;
+    let _orient = 'portrait';   // la couverture est en portrait
     groups.forEach((g, idx) => {
       const q = DATA.questions.find(x => x.id === g.questionId);
       if (!q) return;
 
       // Numéro séquentiel : 1, 2, 3… dans l'ordre du cahier (et non l'ordre de l'opération)
       const seqNumero = idx + 1;
+      const isC1 = categoryOf(q) === 'c1';
 
-      // Saut de page avant chaque question (sauf la première) pour démarrer
-      // chaque question sur une page neuve — assure une vraie pagination visible.
-      if (idx > 0) {
-        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
-      }
+      // Séparation : changement d'orientation → saut de SECTION (paysage pour la C1),
+      // sinon simple saut de page. (Sépare aussi de la couverture pour la 1re question.)
+      const startOrient = isC1 ? 'landscape' : 'portrait';
+      if (startOrient !== _orient) { bodyChildren.push({ __orient: startOrient }); _orient = startOrient; }
+      else { bodyChildren.push(new Paragraph({ children: [new PageBreak()] })); }
 
       // Bandeau de section de compétence (au changement de compétence ; cahiers mixtes seulement)
       if (_banners) {
         const _c = categoryOf(q);
         if (_c !== _prevComp) { bodyChildren.push(sectionBanner(docx, _c)); _prevComp = _c; }
+      }
+
+      // Compétence 1 : schéma (page paysage) → saut de page → grille (page paysage),
+      // puis le dossier documentaire repasse en portrait (rendu par le flux générique ci-dessous).
+      if (isC1) {
+        bodyChildren.push(...builders.buildQuestionBody(q, seqNumero));
+        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+        bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
+        (q.reglettes || []).forEach(r => bodyChildren.push(...builders.buildReglette(r)));
+        const _docP = g.pieces.filter(p => p.kind === 'document');
+        if (_docP.length > 0) { bodyChildren.push({ __orient: 'portrait' }); _orient = 'portrait'; }
       }
 
       // Drapeau optionnel sur la question : `cantSplitAllDocs: true` regroupe
@@ -640,10 +651,10 @@
       // et paire 2 alors que tout aurait pu tenir).
       const cantSplitAll = q.cantSplitAllDocs === true;
 
-      // Pièces "noyau" : énoncé + réglette → enveloppe non-coupable
+      // Pièces "noyau" : énoncé + réglette → enveloppe non-coupable (sauf C1, déjà rendu ci-dessus)
       const corePieces = g.pieces.filter(p => p.kind === 'questionBody' || p.kind === 'reglette');
       const coreChildren = [];
-      if (corePieces.length > 0) {
+      if (!isC1 && corePieces.length > 0) {
         corePieces.forEach(p => {
           if (p.kind === 'questionBody') {
             coreChildren.push(...builders.buildQuestionBody(q, seqNumero));
@@ -663,7 +674,7 @@
 
       // En mode standard, le noyau a son propre wrapper cantSplit indépendant.
       // En mode cantSplitAllDocs, on diffère l'emballage pour englober aussi les docs.
-      if (corePieces.length > 0 && !cantSplitAll) {
+      if (!isC1 && corePieces.length > 0 && !cantSplitAll) {
         // Enveloppe : 1 cellule sans bordure, cantSplit:true → impossible de couper entre pages
         bodyChildren.push(new Table({
           width: { size: 10500, type: WidthType.DXA },
@@ -685,13 +696,6 @@
       // avec l'énoncé tant qu'il y a de la place. Les wrappers cantSplit empêchent
       // qu'un document soit coupé entre deux pages.
       const docPieces = g.pieces.filter(p => p.kind === 'document');
-
-      // Compétence 1 : le dossier documentaire démarre sur une nouvelle page — sépare proprement
-      // la page-réponse (schéma + grille) des documents. Séparation visible aussi dans l'aperçu
-      // (docx-preview ne pagine que sur les sauts de page explicites).
-      if (categoryOf(q) === 'c1' && docPieces.length > 0) {
-        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
-      }
 
       // Stratégie d'emballage : grouper les docs consécutifs « étroits » par paires
       // pour les afficher côte à côte (2 colonnes). Doc « étroit » = image ≤ 7 cm OU texte seul
@@ -762,17 +766,7 @@
       creator: "HQC 3e secondaire",
       title: "Cahier de l'élève",
       styles: { default: { document: { run: { font: "Calibri", size: 22 } } } },
-      sections: [{
-        properties: {
-          page: {
-            size: { width: 12240, height: 15840 },
-            // Marges resserrées (720 twips = 1,27 cm) pour maximiser l'espace de contenu
-            margin: { top: 720, right: 720, bottom: 720, left: 720 }
-          }
-        },
-        headers: undefined,
-        children: bodyChildren.length > 0 ? bodyChildren : [new Paragraph({ children: [new TextRun("(vide)")] })]
-      }]
+      sections: c1SplitSections(bodyChildren)
     });
 
     return await Packer.toBlob(doc);
@@ -862,6 +856,7 @@
 
     const _banners = sectionizeGroups(groups);
     let _prevComp = null;
+    let _orient = 'portrait';
     // ---- PASSE 1 : numérotation globale des documents + table local→global par question ----
     let globalDoc = 0;
     const endDocs = []; // { doc (titre renuméroté), narrow }
@@ -888,16 +883,31 @@
     groups.forEach((g, idx) => {
       const q0 = DATA.questions.find(x => x.id === g.questionId);
       if (!q0) return;
+      const isC1 = categoryOf(q0) === 'c1';
+      let _switched = false;
+      const startOrient = isC1 ? 'landscape' : 'portrait';
+      if (startOrient !== _orient) { bodyChildren.push({ __orient: startOrient }); _orient = startOrient; _switched = true; }
       if (_banners) {
         const _c = categoryOf(q0);
         if (_c !== _prevComp) {
-          if (_prevComp !== null) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+          if (_prevComp !== null && !_switched) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
           bodyChildren.push(sectionBanner(docx, _c));
           _prevComp = _c;
         }
       }
       const q = renumberQuestion(q0, g._map);
       const seqNumero = idx + 1;
+
+      // Compétence 1 : schéma (page paysage) → saut de page → grille (page paysage). Les documents
+      // rejoignent le dossier global (portrait) en fin de cahier, comme pour les autres questions.
+      if (isC1) {
+        bodyChildren.push(...builders.buildQuestionBody(q, seqNumero));
+        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+        bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
+        (q.reglettes || []).forEach(r => bodyChildren.push(...builders.buildReglette(r)));
+        bodyChildren.push({ __orient: 'portrait' }); _orient = 'portrait';
+        return;
+      }
 
       const corePieces = g.pieces.filter(p => p.kind === 'questionBody' || p.kind === 'reglette');
       const coreChildren = [];
@@ -964,16 +974,7 @@
       creator: "HQC 3e secondaire",
       title: "Cahier de l'élève (variante — documents à la fin)",
       styles: { default: { document: { run: { font: "Calibri", size: 22 } } } },
-      sections: [{
-        properties: {
-          page: {
-            size: { width: 12240, height: 15840 },
-            margin: { top: 720, right: 720, bottom: 720, left: 720 }
-          }
-        },
-        headers: undefined,
-        children: bodyChildren.length > 0 ? bodyChildren : [new Paragraph({ children: [new TextRun("(vide)")] })]
-      }]
+      sections: c1SplitSections(bodyChildren)
     });
 
     return await Packer.toBlob(doc);
@@ -1081,13 +1082,19 @@
 
     const _banners = sectionizeGroups(groups);
     let _prevComp = null;
+    let _orient = 'portrait';
     groups.forEach((g, idx) => {
       const qRaw = DATA.questions.find(x => x.id === g.questionId);
       if (!qRaw) return;
+      const isC1 = categoryOf(qRaw) === 'c1';
+      // Orientation : la page corrigé C1 passe en paysage (saut de section) ; le reste reste portrait.
+      let _switched = false;
+      const startOrient = isC1 ? 'landscape' : 'portrait';
+      if (startOrient !== _orient) { bodyChildren.push({ __orient: startOrient }); _orient = startOrient; _switched = true; }
       if (_banners) {
         const _c = categoryOf(qRaw);
         if (_c !== _prevComp) {
-          if (_prevComp !== null) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+          if (_prevComp !== null && !_switched) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
           bodyChildren.push(sectionBanner(docx, _c));
           _prevComp = _c;
         }
@@ -1127,6 +1134,15 @@
             indent: { left: 360 }
           }));
         });
+      }
+
+      // Compétence 1 : schéma corrigé (page paysage) → saut de page → grille (page paysage)
+      if (isC1) {
+        bodyChildren.push(...buildCorrigeBlock(docx, q));
+        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+        bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
+        (q.reglettes || []).forEach(r => bodyChildren.push(buildC1GridTable(docx, r)));
+        return;
       }
 
       // Bloc CORRIGÉ — fond beige, bordure burgundy, texte rouge
@@ -1194,15 +1210,7 @@
       creator: "HQC 3e secondaire — Guide de l'enseignant",
       title: "Guide de l'enseignant",
       styles: { default: { document: { run: { font: "Calibri", size: 22 } } } },
-      sections: [{
-        properties: {
-          page: {
-            size: { width: 12240, height: 15840 },
-            margin: { top: 900, right: 1080, bottom: 900, left: 1080 }
-          }
-        },
-        children: bodyChildren.length > 0 ? bodyChildren : [new Paragraph({ children: [new TextRun("(vide)")] })]
-      }]
+      sections: c1SplitSections(bodyChildren, { top: 900, right: 1080, bottom: 900, left: 1080 })
     });
 
     return await Packer.toBlob(doc);
@@ -1215,83 +1223,82 @@
   // Organisateur graphique C1 : objet de la description + 2 mises en relation
   // (élément central + 2 satellites). filled=false → cahier (vide) ; filled=true → guide (corrigé rouge).
   function buildC1SchemaTable(d, rs, corrige, filled) {
-    const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign } = d;
-    const W = 10500, RED = "C00000", GRAY = "6E685C", DARK = "2A2620", PILL = "9A938A", ACCENT = "8B3A2E";
+    const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign, HeightRule } = d;
+    const W = 14400, RED = "C00000", GRAY = "6E685C", DARK = "2A2620", PILL = "9A938A", ACCENT = "8B3A2E";
     const TB = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
     const ALL = { top: TB, bottom: TB, left: TB, right: TB };
-    const THICK = { top: { style: BorderStyle.SINGLE, size: 16, color: ACCENT }, bottom: TB, left: TB, right: TB };
-    const MARG = { top: 95, bottom: 95, left: 110, right: 110 };
-    const wObjet = 2600, wCentral = 3500, wSat = 4400;
+    const NOB = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
+    const NONE = { top: NOB, bottom: NOB, left: NOB, right: NOB };
     const cor = filled ? corrige : { objet: {}, relations: [{ central: {}, satellites: [{}, {}] }, { central: {}, satellites: [{}, {}] }] };
-
-    function pill(text) {
-      return new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 },
-        shading: { fill: PILL, type: ShadingType.CLEAR },
-        children: [new TextRun({ text, bold: true, size: 17, color: "FFFFFF" })] });
+    function pill(t) {
+      return new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 90 }, shading: { fill: PILL, type: ShadingType.CLEAR },
+        children: [new TextRun({ text: t, bold: true, size: 19, color: "FFFFFF" })] });
     }
-    function ans(answer, docRef) {
-      if (!filled) return [
-        new Paragraph({ spacing: { before: 90, after: 0 }, children: [new TextRun({ text: "", size: 26 })] }),
-        new Paragraph({ spacing: { before: 110, after: 40 }, children: [new TextRun({ text: "", size: 26 })] })
-      ];
-      const o = [new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 40, after: docRef ? 20 : 0 },
-        children: [new TextRun({ text: answer || "", bold: true, size: 20, color: RED })] })];
-      if (docRef) o.push(new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: docRef, italics: true, size: 15, color: GRAY })] }));
-      return o;
+    function arrowCell(w, rowSpan) {
+      return new TableCell({ width: { size: w, type: WidthType.DXA }, rowSpan, borders: NONE, verticalAlign: VerticalAlign.CENTER,
+        margins: { top: 0, bottom: 0, left: 0, right: 0 }, children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "→", bold: true, size: 40, color: ACCENT })] })] });
     }
-    function box(opts) {
+    function emptyCell(w, rowSpan) {
+      return new TableCell({ width: { size: w, type: WidthType.DXA }, rowSpan: rowSpan || 1, borders: NONE,
+        margins: { top: 0, bottom: 0, left: 0, right: 0 }, children: [new Paragraph({ children: [new TextRun({ text: "", size: 2 })] })] });
+    }
+    function box({ header, label, answer, docRef, w, rowSpan, valign }) {
       const kids = [];
-      if (opts.header) kids.push(pill(opts.header));
-      kids.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 50 }, children: [new TextRun({ text: opts.label, bold: true, size: 18, color: DARK })] }));
-      kids.push(...ans(opts.answer, opts.docRef));
-      return new TableCell({ width: { size: opts.w, type: WidthType.DXA }, rowSpan: opts.rowSpan || 1,
-        borders: opts.borders || ALL, verticalAlign: VerticalAlign.CENTER, margins: MARG, children: kids });
+      if (header) kids.push(pill(header));
+      kids.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [new TextRun({ text: label, bold: true, size: 19, color: DARK })] }));
+      if (filled) {
+        kids.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 40, after: docRef ? 20 : 0 }, children: [new TextRun({ text: answer || "", bold: true, size: 21, color: RED })] }));
+        if (docRef) kids.push(new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: docRef, italics: true, size: 16, color: GRAY })] }));
+      } else {
+        kids.push(new Paragraph({ spacing: { before: 120 }, children: [new TextRun({ text: "", size: 28 })] }));
+        kids.push(new Paragraph({ spacing: { before: 140, after: 40 }, children: [new TextRun({ text: "", size: 28 })] }));
+      }
+      return new TableCell({ width: { size: w, type: WidthType.DXA }, rowSpan: rowSpan || 1, borders: ALL,
+        verticalAlign: valign || VerticalAlign.CENTER, margins: { top: 90, bottom: 90, left: 120, right: 120 }, children: kids });
     }
-
-    const objetCell = box({ header: "Objet de la description", label: rs.objet.label, answer: cor.objet.answer, w: wObjet, rowSpan: 4 });
-    const rows = [];
-    rs.relations.forEach((rel, ri) => {
-      const c = cor.relations[ri];
-      const tb = ri === 1 ? THICK : ALL;
-      const r1 = [];
-      if (ri === 0) r1.push(objetCell);
-      r1.push(box({ header: "Élément central", label: rel.central.label, answer: c.central.answer, docRef: c.central.docRef, w: wCentral, rowSpan: 2, borders: tb }));
-      r1.push(box({ label: rel.satellites[0].label, answer: c.satellites[0].answer, docRef: c.satellites[0].docRef, w: wSat, borders: tb }));
-      rows.push(new TableRow({ cantSplit: true, children: r1 }));
-      rows.push(new TableRow({ cantSplit: true, children: [box({ label: rel.satellites[1].label, answer: c.satellites[1].answer, docRef: c.satellites[1].docRef, w: wSat })] }));
-    });
-    return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [wObjet, wCentral, wSat], rows });
+    const wObjet = 3000, wArr1 = 600, wCentral = 4200, wArr2 = 600, wSat = 6000;
+    const objetCell = box({ header: "Objet de la description", label: rs.objet.label, answer: cor.objet.answer, w: wObjet, rowSpan: 7, valign: VerticalAlign.TOP });
+    const central = (i) => box({ header: "Élément central", label: rs.relations[i].central.label, answer: cor.relations[i].central.answer, docRef: cor.relations[i].central.docRef, w: wCentral, rowSpan: 3, valign: VerticalAlign.TOP });
+    const sat = (i, j) => box({ label: rs.relations[i].satellites[j].label, answer: cor.relations[i].satellites[j].answer, docRef: cor.relations[i].satellites[j].docRef, w: wSat });
+    const thin = { value: 130, rule: HeightRule.ATLEAST };
+    const sep  = { value: 340, rule: HeightRule.ATLEAST };
+    const rows = [
+      new TableRow({ children: [objetCell, arrowCell(wArr1, 3), central(0), arrowCell(wArr2, 1), sat(0, 0)] }),
+      new TableRow({ height: thin, children: [emptyCell(wArr2), emptyCell(wSat)] }),
+      new TableRow({ children: [arrowCell(wArr2, 1), sat(0, 1)] }),
+      new TableRow({ height: sep,  children: [emptyCell(wArr1), emptyCell(wCentral), emptyCell(wArr2), emptyCell(wSat)] }),
+      new TableRow({ children: [arrowCell(wArr1, 3), central(1), arrowCell(wArr2, 1), sat(1, 0)] }),
+      new TableRow({ height: thin, children: [emptyCell(wArr2), emptyCell(wSat)] }),
+      new TableRow({ children: [arrowCell(wArr2, 1), sat(1, 1)] })
+    ];
+    return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [wObjet, wArr1, wCentral, wArr2, wSat], rows });
   }
 
-  // Grille d'évaluation /8 (objet /2 + 2 mises en relation /3) — pleine taille.
+  // Grille d'évaluation /8 — version paysage agrandie.
   function buildC1GridTable(d, r) {
     const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign } = d;
-    const W = 10500;
+    const W = 14400;
     const TB = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
     const ALL = { top: TB, bottom: TB, left: TB, right: TB };
     function cell(text, o) {
       o = o || {};
       return new TableCell({ width: { size: o.w, type: WidthType.DXA }, columnSpan: o.span, rowSpan: o.rowSpan,
-        borders: ALL, verticalAlign: VerticalAlign.CENTER,
-        shading: o.fill ? { fill: o.fill, type: ShadingType.CLEAR } : undefined,
-        margins: o.margins || { top: 26, bottom: 26, left: 70, right: 70 },
-        children: [new Paragraph({ alignment: o.center ? AlignmentType.CENTER : AlignmentType.LEFT,
-          children: [new TextRun({ text, bold: !!o.bold, size: o.size || 13 })] })] });
+        borders: ALL, verticalAlign: VerticalAlign.CENTER, shading: o.fill ? { fill: o.fill, type: ShadingType.CLEAR } : undefined,
+        margins: o.margins || { top: 50, bottom: 50, left: 110, right: 110 },
+        children: [new Paragraph({ alignment: o.center ? AlignmentType.CENTER : AlignmentType.LEFT, children: [new TextRun({ text, bold: !!o.bold, size: o.size || 18 })] })] });
     }
     const rows = [];
-    rows.push(new TableRow({ children: [cell(r.objet.title, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 14 })] }));
-    const objTot = 700, objColW = Math.floor((W - objTot) / 3);
+    rows.push(new TableRow({ children: [cell(r.objet.title, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 19 })] }));
+    const objTot = 900, objColW = Math.floor((W - objTot) / 3);
     const objCells = r.objet.levels.map((lv, i) => new TableCell({
-      width: { size: i === 2 ? (W - objTot - 2 * objColW) : objColW, type: WidthType.DXA },
-      borders: ALL, verticalAlign: VerticalAlign.TOP, margins: { top: 30, bottom: 30, left: 70, right: 70 },
-      children: [
-        new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 50 }, children: [new TextRun({ text: lv.condition, size: 13 })] }),
-        new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: lv.points, bold: true, size: 13 })] })
-      ] }));
-    objCells.push(cell("/2", { w: objTot, center: true, bold: true, size: 14 }));
+      width: { size: i === 2 ? (W - objTot - 2 * objColW) : objColW, type: WidthType.DXA }, borders: ALL, verticalAlign: VerticalAlign.TOP,
+      margins: { top: 60, bottom: 60, left: 110, right: 110 },
+      children: [ new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 80 }, children: [new TextRun({ text: lv.condition, size: 18 })] }),
+                  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: lv.points, bold: true, size: 18 })] }) ] }));
+    objCells.push(cell("/2", { w: objTot, center: true, bold: true, size: 19 }));
     rows.push(new TableRow({ children: objCells }));
-    rows.push(new TableRow({ children: [cell(r.relationTitle, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 14 })] }));
-    const cLabel = 1500, cPts = 900, cTot = 700, cBranch = 2600, cCentral = W - cLabel - cBranch - cPts - cTot;
+    rows.push(new TableRow({ children: [cell(r.relationTitle, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 19 })] }));
+    const cLabel = 2100, cPts = 1300, cTot = 900, cBranch = 3600, cCentral = W - cLabel - cBranch - cPts - cTot;
     const matrix = r.relationMatrix;
     const totalBranches = matrix.reduce((s, m) => s + m.branches.length, 0);
     r.relationLabels.forEach((relLabel) => {
@@ -1299,17 +1306,41 @@
       matrix.forEach((m) => {
         m.branches.forEach((b, bi) => {
           const cells = [];
-          if (first) { cells.push(cell(relLabel, { w: cLabel, rowSpan: totalBranches, bold: true, center: true, size: 13 })); first = false; }
-          if (bi === 0) cells.push(cell(m.central, { w: cCentral, rowSpan: m.branches.length, size: 13 }));
-          cells.push(cell(b.condition, { w: cBranch, size: 12 }));
-          cells.push(cell(b.points, { w: cPts, center: true, size: 13 }));
-          if (matrix[0] === m && matrix[0].branches[0] === b) cells.push(cell("/3", { w: cTot, center: true, bold: true, rowSpan: totalBranches, size: 14 }));
+          if (first) { cells.push(cell(relLabel, { w: cLabel, rowSpan: totalBranches, bold: true, center: true, size: 18 })); first = false; }
+          if (bi === 0) cells.push(cell(m.central, { w: cCentral, rowSpan: m.branches.length, size: 18 }));
+          cells.push(cell(b.condition, { w: cBranch, size: 17 }));
+          cells.push(cell(b.points, { w: cPts, center: true, size: 18 }));
+          if (matrix[0] === m && matrix[0].branches[0] === b) cells.push(cell("/3", { w: cTot, center: true, bold: true, rowSpan: totalBranches, size: 19 }));
           rows.push(new TableRow({ children: cells }));
         });
       });
     });
-    rows.push(new TableRow({ children: [cell("Total", { w: W - cTot, span: 3, bold: true, size: 14 }), cell("/8", { w: cTot, center: true, bold: true, size: 14 })] }));
+    rows.push(new TableRow({ children: [cell("Total", { w: W - cTot, span: 3, bold: true, size: 19 }), cell("/8", { w: cTot, center: true, bold: true, size: 19 })] }));
     return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [cLabel, cCentral, cBranch, cPts, cTot], rows });
+  }
+
+  // ----- Orientation paysage des pages C1 (gérée par sections) -----
+  function c1OrientProps(orient, portraitMargin) {
+    const landMargin = { top: 720, right: 720, bottom: 720, left: 720 };   // paysage : marges serrées → contenu 14400
+    const pMargin = portraitMargin || { top: 720, right: 720, bottom: 720, left: 720 };
+    if (orient === 'landscape') {
+      return { page: { size: { orientation: docx.PageOrientation.LANDSCAPE, width: 12240, height: 15840 }, margin: landMargin } };
+    }
+    return { page: { size: { width: 12240, height: 15840 }, margin: pMargin } };
+  }
+  // Découpe un tableau d'enfants (avec d'éventuels marqueurs {__orient}) en sections d'orientation.
+  // Les cahiers/guides 100 % OI ne posent aucun marqueur → une seule section portrait (inchangé).
+  function c1SplitSections(children, portraitMargin) {
+    const out = [];
+    let orient = 'portrait', kids = [];
+    const flush = () => { if (kids.length) out.push({ properties: c1OrientProps(orient, portraitMargin), headers: undefined, children: kids }); };
+    for (const c of children) {
+      if (c && c.__orient) { flush(); orient = c.__orient; kids = []; }
+      else kids.push(c);
+    }
+    flush();
+    if (out.length === 0) out.push({ properties: c1OrientProps('portrait', portraitMargin), headers: undefined, children: [new docx.Paragraph({ children: [new docx.TextRun("(vide)")] })] });
+    return out;
   }
 
   // Catégorie d'une question : 'oi' (opération intellectuelle), 'c1' (Compétence 1) ou 'c2' (Compétence 2).
