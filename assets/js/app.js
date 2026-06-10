@@ -795,6 +795,7 @@
       // Numéro séquentiel : 1, 2, 3… dans l'ordre du cahier (et non l'ordre de l'opération)
       const seqNumero = idx + 1;
       const isC1 = categoryOf(q) === 'c1';
+      const isC2 = categoryOf(q) === 'c2';
 
       // Séparation : changement d'orientation → saut de SECTION (paysage pour la C1),
       // sinon simple saut de page. (Sépare aussi de la couverture pour la 1re question.)
@@ -819,6 +820,17 @@
         if (_docP.length > 0) { bodyChildren.push({ __orient: 'portrait' }); _orient = 'portrait'; }
       }
 
+      // Compétence 2 (portrait) : énoncé + schéma + zone de texte → saut de page → grille,
+      // puis le dossier documentaire sur page neuve (rendu par le flux générique ci-dessous).
+      if (isC2) {
+        bodyChildren.push(...builders.buildQuestionBody(q, seqNumero));
+        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+        bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
+        (q.reglettes || []).forEach(r => bodyChildren.push(...builders.buildReglette(r)));
+        const _docP2 = g.pieces.filter(p => p.kind === 'document');
+        if (_docP2.length > 0) bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+      }
+
       // Drapeau optionnel sur la question : `cantSplitAllDocs: true` regroupe
       // l'énoncé + la réglette + TOUS les documents dans un seul wrapper cantSplit.
       // Word ne pourra pas alors couper le bloc entre deux pages ; si la question
@@ -831,7 +843,7 @@
       // Pièces "noyau" : énoncé + réglette → enveloppe non-coupable (sauf C1, déjà rendu ci-dessus)
       const corePieces = g.pieces.filter(p => p.kind === 'questionBody' || p.kind === 'reglette');
       const coreChildren = [];
-      if (!isC1 && corePieces.length > 0) {
+      if (!isC1 && !isC2 && corePieces.length > 0) {
         corePieces.forEach(p => {
           if (p.kind === 'questionBody') {
             coreChildren.push(...builders.buildQuestionBody(q, seqNumero));
@@ -851,7 +863,7 @@
 
       // En mode standard, le noyau a son propre wrapper cantSplit indépendant.
       // En mode cantSplitAllDocs, on diffère l'emballage pour englober aussi les docs.
-      if (!isC1 && corePieces.length > 0 && !cantSplitAll) {
+      if (!isC1 && !isC2 && corePieces.length > 0 && !cantSplitAll) {
         // Enveloppe : 1 cellule sans bordure, cantSplit:true → impossible de couper entre pages
         bodyChildren.push(new Table({
           width: { size: 10500, type: WidthType.DXA },
@@ -993,7 +1005,10 @@
       questionBody: {
         ...b,
         prompt: ren(b.prompt),
+        contexte: b.contexte ? ren(b.contexte) : b.contexte,
         bullets: b.bullets ? b.bullets.map(ren) : b.bullets,
+        sousConsignes: b.sousConsignes ? deepRenumber(b.sousConsignes, ren) : b.sousConsignes,
+        note: b.note ? ren(b.note) : b.note,
         instructions: b.instructions ? deepRenumber(b.instructions, ren) : b.instructions,
         responseSpace: b.responseSpace ? deepRenumber(b.responseSpace, ren) : b.responseSpace
       }
@@ -1083,6 +1098,16 @@
         bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
         (q.reglettes || []).forEach(r => bodyChildren.push(...builders.buildReglette(r)));
         bodyChildren.push({ __orient: 'portrait' }); _orient = 'portrait';
+        return;
+      }
+
+      // Compétence 2 (portrait) : énoncé + schéma + zone de texte → saut de page → grille.
+      // Les documents rejoignent le dossier global (fin de cahier) comme pour les autres questions.
+      if (categoryOf(q0) === 'c2') {
+        bodyChildren.push(...builders.buildQuestionBody(q, seqNumero));
+        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+        bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
+        (q.reglettes || []).forEach(r => bodyChildren.push(...builders.buildReglette(r)));
         return;
       }
 
@@ -1183,6 +1208,11 @@
       cur.pieces.push(p);
     });
 
+    // Trier les groupes (OI → C1 → C2) AVANT TOUTE numérotation : buildDocxBlobFlat trie
+    // puis numérote dans cet ordre ; le guide doit faire de même, sinon les renvois d'un
+    // cahier mixte (OI + C1/C2) divergeraient entre le cahier et son guide.
+    const _banners = sectionizeGroups(groups);
+
     // MODE VARIANTE : numérotation globale des documents, IDENTIQUE à buildDocxBlobFlat
     // (mêmes pièces-documents comptées, dans le même ordre) → les renvois du guide concordent
     // exactement avec le cahier variante. Le guide n'affiche pas les documents pour autant.
@@ -1242,7 +1272,6 @@
     // première section et d'y rattacher le titre. Sans cela, un guide commençant par une C1 (paysage)
     // émettait le titre en portrait, suivi d'un saut de section → page titre quasi vide en portrait,
     // puis le contenu C1 en paysage à la page suivante.
-    const _banners = sectionizeGroups(groups);
     const _firstQ = groups.length ? DATA.questions.find(x => x.id === groups[0].questionId) : null;
     let _orient = (_firstQ && categoryOf(_firstQ) === 'c1') ? 'landscape' : 'portrait';
     if (_orient === 'landscape') bodyChildren.push({ __orient: 'landscape' });
@@ -1390,12 +1419,28 @@
         border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: "D9D4C8", space: 3 } }
       }));
 
-      // Énoncé (prompt + bullets s'il y en a, sans les instructions de format)
+      // Énoncé (mise en situation éventuelle + prompt + bullets, sans les instructions de format)
+      if (q.questionBody.contexte) {
+        bodyChildren.push(new Paragraph({
+          spacing: { after: 60 },
+          keepNext: true,
+          children: [new TextRun({ text: q.questionBody.contexte, size: 20, color: "6E685C" })]
+        }));
+      }
       bodyChildren.push(new Paragraph({
         spacing: { after: 60 },
         keepNext: true,
-        children: [new TextRun({ text: q.questionBody.prompt, size: 22 })]
+        children: [new TextRun({ text: q.questionBody.prompt, size: 22, bold: q.competence === 2 })]
       }));
+      if (q.questionBody.sousConsignes && Array.isArray(q.questionBody.sousConsignes.items)) {
+        q.questionBody.sousConsignes.items.forEach(b => {
+          bodyChildren.push(new Paragraph({
+            spacing: { after: 20 },
+            children: [new TextRun({ text: "• " + b, size: 22 })],
+            indent: { left: 360 }
+          }));
+        });
+      }
 
       if (q.questionBody.bullets) {
         q.questionBody.bullets.forEach(b => {
@@ -1413,6 +1458,15 @@
         bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
         bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
         (q.reglettes || []).forEach(r => bodyChildren.push(buildC1GridTable(docx, r)));
+        return;
+      }
+
+      // Compétence 2 : schéma corrigé (portrait) → saut de page → grille (portrait)
+      if (categoryOf(qRaw) === 'c2') {
+        bodyChildren.push(...buildCorrigeBlock(docx, q));
+        bodyChildren.push(new Paragraph({ children: [new PageBreak()] }));
+        bodyChildren.push(new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Grille d'évaluation", bold: true, size: 22, color: "2A2620" })] }));
+        (q.reglettes || []).forEach(r => bodyChildren.push(buildC2GridTable(docx, r)));
         return;
       }
 
@@ -1473,6 +1527,9 @@
         } else if (r.type === 'c1-grid') {
           // Compétence 1 : grille /8 complète dans le guide
           bodyChildren.push(buildC1GridTable(docx, r));
+        } else if (r.type === 'c2-grid') {
+          // Compétence 2 : grille /8 complète dans le guide
+          bodyChildren.push(buildC2GridTable(docx, r));
         }
       }
     });
@@ -1590,6 +1647,173 @@
     return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [cLabel, cCentral, cBranch, cPts, cTot], rows });
   }
 
+  // ====== COMPÉTENCE 2 — Rendu du schéma à 2 volets + de la grille /8 (portrait) ======
+  // Mêmes principes que la C1 : fonctions partagées par le cahier (vide) et le guide (corrigé rouge).
+
+  // Organisateur graphique C2 : 2 volets côte à côte, chacun avec un élément à indiquer
+  // et la raison qui l'explique. filled=false → cahier (cases vides) ; filled=true → guide
+  // (pistes de solution en rouge, alternatives séparées par « OU », renvois aux documents).
+  function buildC2SchemaTable(d, rs, corrige, filled) {
+    const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign, HeightRule } = d;
+    const W = 10500, wCol = 5000, wGap = 500;
+    const RED = "C00000", GRAY = "6E685C", DARK = "2A2620";
+    const TB = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
+    const ALL = { top: TB, bottom: TB, left: TB, right: TB };
+    const NOB = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
+    const NONE = { top: NOB, bottom: NOB, left: NOB, right: NOB };
+    const volets = rs.volets || [];
+    const cor = (filled && corrige && Array.isArray(corrige.volets)) ? corrige.volets : volets.map(() => ({}));
+
+    function labelCell(text) {
+      return new TableCell({
+        width: { size: wCol, type: WidthType.DXA }, borders: ALL,
+        shading: { fill: "F0EAD9", type: ShadingType.CLEAR }, verticalAlign: VerticalAlign.CENTER,
+        margins: { top: 80, bottom: 80, left: 120, right: 120 },
+        children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: text || "", bold: true, size: 19, color: DARK })] })]
+      });
+    }
+    function answerCell(answers, docRef) {
+      const kids = [];
+      if (filled) {
+        const list = Array.isArray(answers) ? answers : (answers ? [answers] : []);
+        list.forEach((a, i) => {
+          if (i > 0) kids.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 40, after: 40 }, children: [new TextRun({ text: "OU", italics: true, size: 16, color: GRAY })] }));
+          kids.push(new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: a, bold: true, size: 20, color: RED })] }));
+        });
+        if (docRef) kids.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 60 }, children: [new TextRun({ text: docRef, italics: true, size: 16, color: GRAY })] }));
+        if (kids.length === 0) kids.push(new Paragraph({ children: [new TextRun({ text: "" })] }));
+      } else {
+        for (let i = 0; i < 4; i++) kids.push(new Paragraph({ spacing: { before: 120, after: 40 }, children: [new TextRun({ text: "", size: 24 })] }));
+      }
+      return new TableCell({
+        width: { size: wCol, type: WidthType.DXA }, borders: ALL,
+        verticalAlign: VerticalAlign.TOP, margins: { top: 90, bottom: 90, left: 120, right: 120 }, children: kids
+      });
+    }
+    function gapCell(w) {
+      return new TableCell({
+        width: { size: w || wGap, type: WidthType.DXA }, borders: NONE,
+        margins: { top: 0, bottom: 0, left: 0, right: 0 },
+        children: [new Paragraph({ children: [new TextRun({ text: "", size: 2 })] })]
+      });
+    }
+    const v0 = volets[0] || {}, v1 = volets[1] || {};
+    const k0 = cor[0] || {}, k1 = cor[1] || {};
+    const rows = [
+      new TableRow({ children: [labelCell(v0.indique), gapCell(), labelCell(v1.indique)] }),
+      new TableRow({ children: [answerCell(k0.element, k0.elementDocs), gapCell(), answerCell(k1.element, k1.elementDocs)] }),
+      new TableRow({ height: { value: 220, rule: HeightRule.ATLEAST }, children: [gapCell(wCol), gapCell(), gapCell(wCol)] }),
+      new TableRow({ children: [labelCell(v0.raison), gapCell(), labelCell(v1.raison)] }),
+      new TableRow({ children: [answerCell(k0.raison, k0.raisonDocs), gapCell(), answerCell(k1.raison, k1.raisonDocs)] })
+    ];
+    return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [wCol, wGap, wCol], rows });
+  }
+
+  // Zone « Texte de 150 mots » de la C2 : étiquette en gras + lignes d'écriture continues.
+  function buildC2TexteLines(d, texte) {
+    const { Paragraph, TextRun, Table, TableRow, TableCell, BorderStyle, WidthType } = d;
+    const out = [];
+    const t = texte || {};
+    out.push(new Paragraph({
+      spacing: { before: 240, after: 100 },
+      children: [new TextRun({ text: t.label || "Texte :", bold: true, size: 22 })]
+    }));
+    const n = t.lines || 12;
+    const lineBorder = { style: BorderStyle.SINGLE, size: 4, color: "AAAAAA" };
+    const noBorder = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
+    const rows = [];
+    for (let i = 0; i < n; i++) {
+      rows.push(new TableRow({
+        height: { value: 420, rule: "atLeast" },
+        children: [new TableCell({
+          width: { size: 10500, type: WidthType.DXA },
+          borders: { top: noBorder, bottom: lineBorder, left: noBorder, right: noBorder },
+          margins: { top: 0, bottom: 0, left: 0, right: 0 },
+          children: [new Paragraph({ children: [new TextRun({ text: "" })] })]
+        })]
+      }));
+    }
+    out.push(new Table({ width: { size: 10500, type: WidthType.DXA }, columnWidths: [10500], rows }));
+    return out;
+  }
+
+  // Grille d'évaluation C2 /8 — portrait (critère : rigueur de l'interprétation).
+  // Reproduit la structure à embranchement du cadre officiel (voir R_C2_INTERPRETATION_8PT, data.js) :
+  // 2 blocs (rowLabels) × [indiquer l'élément ↔ appuyer par des faits], sous-total /4 par bloc, total /8.
+  function buildC2GridTable(d, r) {
+    const { Paragraph, TextRun, Table, TableRow, TableCell, AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign } = d;
+    const W = 10500;
+    const TB = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
+    const ALL = { top: TB, bottom: TB, left: TB, right: TB };
+    function cell(text, o) {
+      o = o || {};
+      return new TableCell({
+        width: { size: o.w, type: WidthType.DXA }, columnSpan: o.span, rowSpan: o.rowSpan,
+        borders: ALL, verticalAlign: VerticalAlign.CENTER,
+        shading: o.fill ? { fill: o.fill, type: ShadingType.CLEAR } : undefined,
+        margins: o.margins || { top: 50, bottom: 50, left: 90, right: 90 },
+        children: [new Paragraph({
+          alignment: o.center ? AlignmentType.CENTER : AlignmentType.LEFT,
+          children: [new TextRun({ text, bold: !!o.bold, size: o.size || 17 })]
+        })]
+      });
+    }
+    // 8 colonnes : étiquette de bloc | (libellé, condition, points) × 2 côtés | sous-total
+    const wBlock = 1450, wLab = 1850, wCond = 1525, wPts = 800, wTot = 700;
+    const ind = r.indiquer, app = r.appuyer;
+    const colTitles = r.colTitles || ["Indiquer les éléments de réponse", "Appuyer les éléments de réponse par des faits"];
+    const rows = [];
+    if (r.critere) {
+      rows.push(new TableRow({ children: [cell(r.critere, { w: W, span: 8, bold: true, center: true, fill: "DDD9D2", size: 19 })] }));
+    }
+    rows.push(new TableRow({ children: [
+      cell("", { w: wBlock, fill: "F0EAD9" }),
+      cell(colTitles[0], { w: wLab + wCond + wPts, span: 3, bold: true, center: true, fill: "F0EAD9", size: 18 }),
+      cell(colTitles[1], { w: wLab + wCond + wPts, span: 3, bold: true, center: true, fill: "F0EAD9", size: 18 }),
+      cell("", { w: wTot, fill: "F0EAD9" })
+    ] }));
+    (r.rowLabels || ["Premier élément", "Deuxième élément"]).forEach(label => {
+      // r1-r3 : l'élève indique l'élément (correctement / plus ou moins) ↔ appuie de manière (3 niveaux)
+      rows.push(new TableRow({ children: [
+        cell(label, { w: wBlock, rowSpan: 5, bold: true, center: true, size: 18 }),
+        cell(ind.label, { w: wLab, rowSpan: 3 }),
+        cell(ind.levels[0].condition, { w: wCond, center: true }),
+        cell(ind.levels[0].points, { w: wPts, center: true, bold: true }),
+        cell(app.label, { w: wLab, rowSpan: 3 }),
+        cell(app.levels[0].condition, { w: wCond, center: true }),
+        cell(app.levels[0].points, { w: wPts, center: true, bold: true }),
+        cell("/4", { w: wTot, rowSpan: 5, center: true, bold: true, size: 19 })
+      ] }));
+      rows.push(new TableRow({ children: [
+        cell(ind.levels[1].condition, { w: wCond, rowSpan: 2, center: true }),
+        cell(ind.levels[1].points, { w: wPts, rowSpan: 2, center: true, bold: true }),
+        cell(app.levels[1].condition, { w: wCond, center: true }),
+        cell(app.levels[1].points, { w: wPts, center: true, bold: true })
+      ] }));
+      rows.push(new TableRow({ children: [
+        cell(app.levels[2].condition, { w: wCond, center: true }),
+        cell(app.levels[2].points, { w: wPts, center: true, bold: true })
+      ] }));
+      // r4-r5 : l'élève indique incorrectement (0) ↔ présente des faits (exacts 1 / inexacts 0)
+      rows.push(new TableRow({ children: [
+        cell(ind.zero.label, { w: wLab + wCond, span: 2, rowSpan: 2 }),
+        cell(ind.zero.points, { w: wPts, rowSpan: 2, center: true, bold: true }),
+        cell(app.faits.label, { w: wLab, rowSpan: 2 }),
+        cell(app.faits.levels[0].condition, { w: wCond, center: true }),
+        cell(app.faits.levels[0].points, { w: wPts, center: true, bold: true })
+      ] }));
+      rows.push(new TableRow({ children: [
+        cell(app.faits.levels[1].condition, { w: wCond, center: true }),
+        cell(app.faits.levels[1].points, { w: wPts, center: true, bold: true })
+      ] }));
+    });
+    rows.push(new TableRow({ children: [
+      cell("Total", { w: W - wTot, span: 7, bold: true, size: 19 }),
+      cell("/" + String(r.maxPoints || 8), { w: wTot, center: true, bold: true, size: 19 })
+    ] }));
+    return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [wBlock, wLab, wCond, wPts, wLab, wCond, wPts, wTot], rows });
+  }
+
   // ----- Orientation paysage des pages C1 (gérée par sections) -----
   function c1OrientProps(orient, portraitMargin) {
     const landMargin = { top: 720, right: 720, bottom: 720, left: 720 };   // paysage : marges serrées → contenu 14400
@@ -1703,6 +1927,12 @@
           ]
         }));
       }
+      return out;
+    }
+    // Compétence 2 : schéma rempli (pistes de solution en rouge — alternatives « OU » —
+    // + renvois aux documents en gris)
+    if (rs && rs.type === 'c2-schema') {
+      out.push(buildC2SchemaTable(d, rs, q.corrige, true));
       return out;
     }
     const SHADING = { fill: "FDF6EC", type: ShadingType.CLEAR, color: "auto" };
@@ -2618,14 +2848,38 @@
       }));
       elements.push(new Paragraph({ children: [new TextRun({ text: "" })], spacing: { after: 200 } }));
 
-      // Prompt
+      // Mise en situation (optionnelle — utilisée par la Compétence 2)
       const body = q.questionBody;
+      if (body.contexte) {
+        elements.push(new Paragraph({
+          children: [new TextRun({ text: body.contexte })],
+          spacing: { after: 160 }
+        }));
+      }
+
+      // Prompt (la tâche d'une Compétence 2 est rendue en gras, comme dans les épreuves officielles)
       elements.push(new Paragraph({
         children: [
-          new TextRun({ text: body.prompt })
+          new TextRun({ text: body.prompt, bold: q.competence === 2 })
         ],
         spacing: { after: 100 }
       }));
+
+      // Sous-consignes structurées (C2 : « Dans ton texte, tu devras : » + volets attendus)
+      if (body.sousConsignes && Array.isArray(body.sousConsignes.items)) {
+        if (body.sousConsignes.intro) {
+          elements.push(new Paragraph({ children: [new TextRun({ text: body.sousConsignes.intro })], spacing: { after: 60 } }));
+        }
+        body.sousConsignes.items.forEach(it => {
+          elements.push(new Paragraph({
+            children: [new TextRun({ text: it })],
+            bullet: { level: 0 },
+            indent: { left: 720 },
+            spacing: { after: 40 }
+          }));
+        });
+        elements.push(new Paragraph({ children: [new TextRun({ text: "" })], spacing: { after: 40 } }));
+      }
 
       // Bullets (optionnels)
       if (body.bullets && body.bullets.length > 0) {
@@ -2638,6 +2892,14 @@
           }));
         });
         elements.push(new Paragraph({ children: [new TextRun({ text: "" })] }));
+      }
+
+      // Note (optionnelle, italique — ex. C2 : « seul le texte sera corrigé »)
+      if (body.note) {
+        elements.push(new Paragraph({
+          children: [new TextRun({ text: body.note, italics: true, size: 18, color: "6E685C" })],
+          spacing: { after: 160 }
+        }));
       }
 
       // Instructions (optionnelles - utilisées surtout pour la causalité)
@@ -3105,6 +3367,12 @@
         } else if (body.responseSpace.type === 'c1-schema') {
           // Compétence 1 : organisateur graphique vide à remplir par l'élève
           elements.push(buildC1SchemaTable(docx, body.responseSpace, null, false));
+        } else if (body.responseSpace.type === 'c2-schema') {
+          // Compétence 2 : schéma à 2 volets (élément + raison), puis zone de rédaction
+          // sur sa propre page (pagination du modèle officiel)
+          elements.push(buildC2SchemaTable(docx, body.responseSpace, null, false));
+          elements.push(new Paragraph({ children: [new PageBreak()] }));
+          elements.push(...buildC2TexteLines(docx, body.responseSpace.texte));
         }
       }
 
@@ -3120,6 +3388,10 @@
       // Type "c1-grid" : grille /8 de la Compétence 1
       if (r.type === 'c1-grid') {
         return [buildC1GridTable(docx, r)];
+      }
+      // Type "c2-grid" : grille /8 de la Compétence 2 (portrait)
+      if (r.type === 'c2-grid') {
+        return [buildC2GridTable(docx, r)];
       }
       // Sinon, type "complex" par défaut (utilisé pour les rubriques de causalité)
       return buildComplexReglette(r);

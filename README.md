@@ -30,9 +30,9 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 - Dégager des différences et des similitudes
 - Déterminer des changements et des continuités
 
-## État actuel — v1.29.0 (mai 2026)
+## État actuel — v1.52.0 (juin 2026)
 
-**202 questions** dans le catalogue, **440 points** au total, réparties sur les **8 périodes**.
+**203 questions** dans le catalogue, **448 points** au total, réparties sur les **8 périodes**.
 **7 périodes sur 8 sont à 7/7 OI.** Seule **P5** reste à 6/7 (voir « Points d'attention »).
 
 | Période | Année | Questions | OI couvertes | Points |
@@ -42,12 +42,30 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 | **P3** — 1760-1791 | 3e | 18 | 7 / 7 ✓ | 36 |
 | **P4** — 1791-1840 | 3e | 13 | 7 / 7 ✓ | 25 |
 | **P5** — 1840-1896 | 4e | 28 | **6 / 7** ⚠ | 57 |
-| **P6** — 1896-1945 | 4e | 30 | 7 / 7 ✓ | 68 |
+| **P6** — 1896-1945 | 4e | 31 | 7 / 7 ✓ | 76 |
 | **P7** — 1945-1980 | 4e | 39 | 7 / 7 ✓ | 91 |
 | **P8** — 1980 à nos jours | 4e | 25 | 7 / 7 ✓ | 55 |
-| **TOTAL** | | **202** | **7 périodes / 8 à 7 / 7** | **440** |
+| **TOTAL** | | **203** | **7 périodes / 8 à 7 / 7** | **448** |
 
-Sous-total 3e secondaire : **80 questions, 169 points** · sous-total 4e secondaire : **122 questions, 271 points**.
+Sous-total 3e secondaire : **80 questions, 169 points** · sous-total 4e secondaire : **123 questions, 279 points**.
+
+### Quoi de neuf (v1.52.0)
+
+**Première question de Compétence 2 — « Interpréter une réalité sociale »** : `q-nationalismes-c2-1`
+(P6, les interventions de l'État et de l'Église durant la Grande dépression), encodée depuis
+l'« Épreuve interactive C2 - 1896 à 1945 » du RÉCIT et ses Pistes de solution. Cette question fixe la
+**structure de référence** de toutes les C2 à venir :
+
+- **Énoncé** : mise en situation (`contexte`), tâche en gras (`prompt`), « Dans ton texte, tu devras : »
+  (`sousConsignes`), consignes (`bullets`) et `note` (« seul le texte sera corrigé »).
+- **Espace de réponse `c2-schema`** : schéma à 2 volets (élément à indiquer + raison qui l'explique),
+  puis zone « Texte de 150 mots » pleine page (lignes d'écriture).
+- **Réglette `c2-grid`** (`R_C2_INTERPRETATION_8PT`, /8) : grille officielle à embranchement
+  (critère : rigueur de l'interprétation ; 2 éléments × /4), `rowLabels` personnalisables par question.
+- **Guide** : schéma corrigé (pistes de solution en rouge, alternatives « OU », renvois aux documents),
+  puis grille sur sa propre page. Tout reste en **portrait** (contrairement à la C1, paysage).
+- **Correctif (guide variante)** : le tri OI → C1 → C2 précède désormais la numérotation globale des
+  documents — les renvois d'un cahier mixte concordent exactement entre le cahier variante et son guide.
 
 ### Quoi de neuf (v1.29.0)
 

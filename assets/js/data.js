@@ -1,4 +1,36 @@
 /* ============================================================
+   v1.52.0 — PREMIÈRE QUESTION DE COMPÉTENCE 2 (« Interpréter une réalité sociale »)
+   STRUCTURE DE RÉFÉRENCE pour toutes les C2 à venir — q-nationalismes-c2-1 (P6, Grande dépression),
+   tirée de l'« Épreuve interactive C2 - 1896 à 1945 » du RÉCIT + ses Pistes de solution.
+   DONNÉES (data.js) :
+     • Question : competence: 2, operation: null ; questionBody enrichi de 3 champs optionnels —
+       contexte (mise en situation), sousConsignes ({ intro, items }) et note (italique) ;
+       responseSpace "c2-schema" : volets[2] ({ indique, raison }) + texte ({ label, lines }) ;
+       corrige.volets[2] : { element[] (alternatives « OU »), elementDocs, raison[], raisonDocs }
+       — renvois en forme canonique « Document N » / « Documents N et M » (renumérotation automatique).
+     • +1 réglette R_C2_INTERPRETATION_8PT (type "c2-grid", /8 : 2 éléments × /4, structure à
+       embranchement du cadre officiel — critère : rigueur de l'interprétation). `rowLabels`
+       personnalisable par question (ici « Première/Deuxième intervention »).
+     • +5 documents DOCS['nationalismes-c2-1'] (graphique du chômage 1929-1939 recréé par le RÉCIT
+       + 2 photos du domaine public extraites du PDF + 2 extraits textuels).
+   APP.JS :
+     • buildQuestionBody : rendu de contexte / sousConsignes / note ; prompt en gras pour les C2 ;
+       branche "c2-schema" (schéma 2 volets vide → saut de page → zone « Texte de 150 mots »).
+     • buildC2SchemaTable (cahier vide / guide corrigé rouge avec « OU » et renvois),
+       buildC2TexteLines, buildC2GridTable (grille /8 portrait) — pendants des fonctions C1.
+     • Flux C2 dans les 3 générateurs (cahier, variante docs-à-la-fin, guide) : énoncé + schéma →
+       zone de texte pleine page → grille sur sa propre page → dossier documentaire (portrait,
+       aucun saut de section paysage contrairement à la C1).
+     • CORRECTIF (guide variante) : sectionizeGroups est désormais appelé AVANT la passe de
+       numérotation globale des documents — les renvois d'un cahier mixte (OI + C1/C2) concordent
+       maintenant exactement entre le cahier variante et son guide.
+     • renumberQuestion étendu aux nouveaux champs (contexte, sousConsignes, note).
+   CMS-ADAPTER : les clés inconnues du questionBody (contexte, sousConsignes, note…) sont
+   conservées telles quelles dans les deux sens (même principe que KNOWN_TOP).
+   Validation : génération de bout en bout des 3 documents (jsdom + docx) ; rendus PDF vérifiés
+   visuellement (schéma, grille, corrigé, cahier mixte OI + C1 + C2, renumérotation variante).
+  ============================================================ */
+/* ============================================================
    v1.51.2 — APERÇU : ZOOM FIXE DES PAGES PAYSAGE (proposition de l'enseignant)
      • Les pages paysage de l'aperçu sont réduites d'un RATIO FIXE 21,59/27,94 (≈ 0,773) :
        elles s'affichent à la même largeur qu'une page portrait, toutes les pages alignées.
@@ -856,6 +888,48 @@ const R_C1_DESCRIPTION_8PT = {
         { condition: "mais précise l'un des deux autres éléments ou n'en précise pas.", points: "0 point" }
       ] }
   ]
+};
+
+// — Interpréter une réalité sociale (Compétence 2) —
+// Grille /8 invariante des « Épreuves interactives » C2 du RÉCIT (critère : rigueur de
+// l'interprétation ; 2 éléments de réponse × /4). Structure à embranchement du cadre officiel :
+//   • l'élève indique l'élément (correctement 2 / plus ou moins 1) → on évalue la manière
+//     d'appuyer (appropriée 2 / plus ou moins 1 / inappropriée 0) ;
+//   • l'élève indique incorrectement ou n'indique pas (0) → on évalue seulement les faits
+//     présentés (exacts et pertinents 1 / inexacts 0).
+// Type dédié "c2-grid" : rendu par buildC2GridTable() dans app.js (portrait).
+// `rowLabels` est PERSONNALISABLE par question via le spread (ex. ["Première intervention",
+// "Deuxième intervention"], ["Première conséquence", …]) — défaut générique ci-dessous.
+const R_C2_INTERPRETATION_8PT = {
+  type: "c2-grid",
+  opLabel: "Interpréter une réalité sociale",
+  critere: "Critère : rigueur de l'interprétation",
+  maxPoints: 8,
+  rowLabels: ["Premier élément", "Deuxième élément"],
+  colTitles: ["Indiquer les éléments de réponse", "Appuyer les éléments de réponse par des faits"],
+  indiquer: {
+    label: "L'élève indique l'élément de réponse",
+    levels: [
+      { condition: "correctement", points: "2 points" },
+      { condition: "plus ou moins correctement", points: "1 point" }
+    ],
+    zero: { label: "L'élève indique incorrectement ou n'indique pas l'élément de réponse.", points: "0 point" }
+  },
+  appuyer: {
+    label: "L'élève appuie l'élément de réponse de manière",
+    levels: [
+      { condition: "appropriée.", points: "2 points" },
+      { condition: "plus ou moins appropriée.", points: "1 point" },
+      { condition: "inappropriée.", points: "0 point" }
+    ],
+    faits: {
+      label: "L'élève présente des faits",
+      levels: [
+        { condition: "exacts et pertinents.", points: "1 point" },
+        { condition: "inexacts.", points: "0 point" }
+      ]
+    }
+  }
 };
 
 const R_FAITS_1PT_1SUR1 = rubric2(
@@ -1827,6 +1901,33 @@ const DOCS = {
   ],
 
   // ===== P6 — Compétence 1 — La situation économique au Québec (1896-1929) =====
+  // ===== P6 — Compétence 2 — Les interventions de l'État et de l'Église durant la Grande dépression =====
+  // Source : Épreuve interactive C2 - 1896 à 1945 - Grande dépression (RÉCIT univers social, CC BY-NC-SA).
+  // Numérotation 1-5 conservée telle quelle (renvois du corrigé : État → doc 3, pourquoi → docs 1-2 ;
+  // Église → doc 4, pourquoi → doc 5). Images extraites du PDF (graphique recréé par le RÉCIT + 2 photos
+  // du domaine public).
+  'nationalismes-c2-1': [
+    { id: "na-c2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/nationalismes-c2-1/doc1.png", imageWidthCm: 11,
+      sources: ["Source : Claude Larivière, Crise économique et contrôle social (1929-1937) : le cas de Montréal, Montréal, Éd. coopératives A. St-Martin, 1977, p. 11."] },
+    { id: "na-c2-d2", title: "Document 2 : Extrait d'un ouvrage d'historiens", layout: "text-only",
+      text: "« La décennie 1930 est marquée par la grande crise économique qui s'abat sur le monde. Les économies capitalistes connaissent régulièrement, depuis le milieu du 19e siècle, des crises de surproduction, qui succèdent à des périodes de prospérité. Ces secousses violentes entrainent des chutes de prix, une baisse de la production et un chômage élevé [...]. La crise des années 1930 dépasse les précédentes par son ampleur et sa gravité. »",
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, Tome II : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 12."] },
+    { id: "na-c2-d3", title: "Document 3", layout: "text-image",
+      imageUrl: "assets/img/nationalismes-c2-1/doc3.png", imageWidthCm: 10,
+      text: "« Au début de la Crise, l'État réagit plutôt à la pauvreté et au chômage par une démarche appelée \u201csecours indirect\u201d. Les municipalités concevaient de vastes projets de travaux publics et embauchaient des équipes de chômeurs pour construire ou moderniser des rues, des ponts, des parcs, etc., en accordant la priorité aux pères de famille. »",
+      sources: ["Source du texte : Peter Gossage et J.I. Little, Une histoire du Québec - Entre tradition et modernité, Montréal, Hurtubise, 2015, p. 258.",
+                "Source de l'image : Construction d'une route au camp de travail de Valcartier (1933), Bibliothèque et archives nationales du Canada, PA-035414. Licence : domaine public."] },
+    { id: "na-c2-d4", title: "Document 4", layout: "text-image",
+      imageUrl: "assets/img/nationalismes-c2-1/doc4.png", imageWidthCm: 9,
+      text: "« [Les Églises catholique et protestantes] ont aussi entrepris de mener une action communautaire dans les quartiers défavorisés, en offrant des services tels que des classes de catéchisme, des salles de couture, des soupes populaires et, dans certains cas, des refuges. »",
+      sources: ["Source du texte : Musée McCord, « Un réseau d'aide aux démunis », Charité bien ordonnée... : La philanthropie, 1896-1919, en ligne sur Musée McCord, page consultée le 30 septembre 2022.",
+                "Source de l'image : Auteur inconnu, Personnes mangeant dans une soupe populaire (1931), Bibliothèque et Archives Canada, MIKAN 3623601. Licence : domaine public."] },
+    { id: "na-c2-d5", title: "Document 5 : Extrait d'un article scientifique", layout: "text-only",
+      text: "« Et, si certaines mesures sociales [gouvernementales] ont été prises depuis le début du XXe siècle, force est de constater qu'elles paraissent minimes et que seuls les organismes [religieux] de charité privée interviennent directement auprès des populations les plus défavorisées. [...] Les politiques sociales étant quasi inexistantes, les organismes privés de charité constituent l'unique recours face à une misère qui n'a jamais atteint auparavant de telles proportions. Pendant l'hiver 1929-1930, ils sont les seuls à avoir l'expérience et les ressources humaines pour assurer la gestion de l'aide aux personnes dans le besoin. »",
+      sources: ["Source : Nadia Atallah, Les quartiers ouvriers de Montréal pendant la Grande Dépression, IRICE « Bulletin de l'Institut Pierre Renouvin », vol. 1, no 27, 2008, en ligne sur Cairn.info."] }
+  ],
+
   'industrialisation-c1-1': [
     { id: "indus-c1-d1", title: "Document 1", layout: "text-image",
       imageUrl: "assets/img/industrialisation-c1-1/doc1.png", imageWidthCm: 8,
@@ -7347,6 +7448,66 @@ window.DATA = {
               { answer: "La déconfessionnalisation des commissions scolaires OU la laïcisation du système d’éducation", docRef: "Document 9" },
               { answer: "Les cégeps OU le réseau universitaire du Québec", docRef: "Document 5" }
             ] }
+        ]
+      } },
+
+    // ===== C2 — P6 · Interpréter une réalité sociale — Les interventions de l'État et de l'Église
+    // durant la Grande dépression (1929-1939) =====
+    // PREMIÈRE QUESTION DE COMPÉTENCE 2 du catalogue — modèle de référence pour toutes les suivantes :
+    //   • competence: 2, operation: null ;
+    //   • questionBody.contexte (mise en situation) + prompt (tâche, rendue en gras) +
+    //     sousConsignes (« Dans ton texte, tu devras : » + volets) + bullets + note ;
+    //   • responseSpace "c2-schema" : 2 volets (indique / raison) + zone « Texte de 150 mots » ;
+    //   • réglette "c2-grid" (R_C2_INTERPRETATION_8PT, rowLabels personnalisés par question) ;
+    //   • corrige.volets : par volet, element[] (alternatives « OU »), elementDocs, raison[], raisonDocs
+    //     — renvois en forme canonique « Document N » / « Documents N et M » (renumérotation automatique).
+    // Source : Épreuve interactive C2 - 1896 à 1945 - Grande dépression + Pistes de solution (RÉCIT).
+    { id: "q-nationalismes-c2-1", competence: 2, operation: null, numero: 1, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        contexte: "La décennie des années 1920 se termine par un krach boursier américain qui entraine une crise économique internationale d'une grande ampleur. Le Canada est fortement touché et plusieurs Canadiens et Canadiennes subissent des conséquences économiques majeures comme des faillites, le chômage ou la pauvreté.",
+        prompt: "Explique les interventions de l'État et de l'Église durant la Grande dépression.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une intervention de l'État dans le domaine économique et expliquer pourquoi cela se produit;",
+            "indiquer une intervention de l'Église dans le domaine social et expliquer pourquoi cela se produit."
+          ]
+        },
+        bullets: [
+          "Consulte le dossier documentaire (documents 1 à 5).",
+          "Remplis le schéma.",
+          "Rédige un texte d'environ 150 mots."
+        ],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique une intervention de l'État dans le domaine économique.",
+              raison: "Une raison qui explique pourquoi cela se produit." },
+            { indique: "Indique une intervention de l'Église dans le domaine social.",
+              raison: "Une raison qui explique pourquoi cela se produit." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-na-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Première intervention", "Deuxième intervention"] }],
+      documents: pickDocs('nationalismes-c2-1', 1, 2, 3, 4, 5),
+      corrige: {
+        volets: [
+          { element: ["L'État met en place des travaux publics pour embaucher des chômeurs ou des pères de famille.",
+                      "L'État organise des secours indirects."],
+            elementDocs: "Document 3",
+            raison: ["Le taux de chômage augmente rapidement après 1929 (il atteint 27 % en 1932).",
+                     "Les crises de surproduction, la chute des prix, les faillites et le chômage bouleversent grandement l'économie canadienne."],
+            raisonDocs: "Documents 1 et 2" },
+          { element: ["L'Église organise une action communautaire dans les quartiers défavorisés.",
+                      "L'Église organise des soupes populaires, des salles de couture, des classes de catéchisme ou des refuges."],
+            elementDocs: "Document 4",
+            raison: ["Les organismes religieux s'occupent de la charité envers les plus démunis.",
+                     "Les organismes religieux ont les ressources nécessaires pour aider les plus démunis."],
+            raisonDocs: "Document 5" }
         ]
       } },
 

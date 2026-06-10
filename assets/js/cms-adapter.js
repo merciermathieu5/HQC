@@ -23,6 +23,9 @@
 
   var KNOWN_TOP = { id:1, operation:1, numero:1, niveau:1, realite_sociale_id:1,
                     questionBody:1, reglettes:1, documents:1, corrige:1 };
+  // Clés canoniques du questionBody : toute autre clé (ex. C2 : contexte, sousConsignes, note)
+  // est conservée telle quelle dans les deux sens (même principe que KNOWN_TOP).
+  var QB_KNOWN = { prompt:1, bullets:1, instructions:1, responseSpace:1 };
   var REG_KNOWN = { type:1, id:1, label:1, opLabel:1, maxPoints:1, levels:1, rows:1 };
   var DOC_KNOWN = ['id','title','layout','text','imageUrl','imageWidthCm','sources','pair'];
 
@@ -151,6 +154,7 @@
       documents: (q.documents || []).map(docToCMS),
       corrige: corrigeToCMS(q.corrige)
     };
+    Object.keys(qb).forEach(function (k) { if (!QB_KNOWN[k]) cms.questionBody[k] = clone(qb[k]); });
     Object.keys(q).forEach(function (k) { if (!KNOWN_TOP[k]) cms[k] = clone(q[k]); });
     return cms;
   }
@@ -163,6 +167,7 @@
     var instr = instructionsToRuntime(cqb.instructions);
     if (instr) qb.instructions = instr;
     qb.responseSpace = responseSpaceToRuntime(cqb.responseSpace);
+    Object.keys(cqb).forEach(function (k) { if (!QB_KNOWN[k]) qb[k] = clone(cqb[k]); });
 
     var rt = {
       id: c.id, operation: c.operation, numero: c.numero, niveau: c.niveau, realite_sociale_id: c.realite_sociale_id,
