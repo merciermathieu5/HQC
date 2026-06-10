@@ -910,6 +910,10 @@ mark.search-hit {
   width: 27.94cm !important;
   min-height: 21.59cm !important;
   padding: 1.27cm !important;
+  /* Ratio fixe 21,59/27,94 : la page paysage s'affiche à la même largeur qu'une page
+     portrait. CSS pur → fonctionne sans JavaScript (repli transform appliqué par app.js
+     pour les rares navigateurs sans prise en charge de `zoom`). */
+  zoom: 0.7727;
 }
 .preview-container section.docx::after {
   content: "— Page " counter(page) " —";

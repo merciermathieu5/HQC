@@ -1,4 +1,16 @@
 /* ============================================================
+   v1.51.2 — APERÇU : ZOOM FIXE DES PAGES PAYSAGE (proposition de l'enseignant)
+     • Les pages paysage de l'aperçu sont réduites d'un RATIO FIXE 21,59/27,94 (≈ 0,773) :
+       elles s'affichent à la même largeur qu'une page portrait, toutes les pages alignées.
+     • Implémenté en CSS PUR (style.css) → fonctionne indépendamment du JavaScript et
+       d'aucune mesure de fenêtre (plus de zoom dynamique ni d'écouteur de redimensionnement).
+     • Filet 1 (app.js) : détection de secours des pages paysage par débordement de contenu,
+       si docx-preview n'a pas posé les styles de dimensions sur la section.
+     • Filet 2 (app.js) : repli transform: scale(0,773) pour les navigateurs sans `zoom`.
+     • Vérifié en Chromium réel : largeur visuelle paysage = portrait = 816 px ; schéma C1
+       entièrement contenu à 930 px de largeur de fenêtre (conditions du signalement).
+  ============================================================ */
+/* ============================================================
    v1.51.1 — CORRECTIFS DE L'APERÇU C1 (app.js seulement)
      • L'aperçu ne rend plus les pieds/en-têtes du .docx (docx-preview affichait le champ PAGE
        brut, non évalué, sur chaque page + des marges de pied erronées). Le .docx réel garde ses

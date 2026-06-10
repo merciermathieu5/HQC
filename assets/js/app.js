@@ -2286,8 +2286,7 @@
       // Une page paysage (≈28 cm) est plus large que la fenêtre d'aperçu : mise à l'échelle
       // pour tenir dans la largeur disponible (repli transform si `zoom` n'est pas supporté),
       // recalculée au redimensionnement de la fenêtre.
-      fitLandscapePages();
-      window.addEventListener('resize', onPreviewResize);
+      ensureLandscapeScaling();
 
       // VARIANTE : l'aperçu n'affiche pas les coupures de page (docx-preview ne repagine pas
       // le texte qui s'enchaîne). On les simule, sans toucher au .docx, une fois les images
@@ -2401,37 +2400,29 @@
     }
   }
 
-  // Met à l'échelle les pages paysage pour la largeur disponible de l'aperçu.
-  // `zoom` quand supporté (Chrome/Edge/Safari, Firefox 126+), sinon transform: scale
-  // avec compensation de la hauteur (anciens Firefox des parcs scolaires).
-  function fitLandscapePages() {
-    const availW = el.previewContainer.clientWidth || 0;
-    el.previewContainer.querySelectorAll('section.docx.landscape').forEach(sec => {
-      sec.style.zoom = '';
-      sec.style.transform = '';
-      sec.style.transformOrigin = '';
-      sec.style.marginBottom = '';
-      const natural = sec.offsetWidth;
-      if (!(availW > 0) || natural <= availW) return;
-      const k = Math.max(0.45, (availW - 14) / natural);
-      const zoomOk = (typeof CSS !== 'undefined' && CSS.supports && CSS.supports('zoom', '0.8'));
-      if (zoomOk) {
-        sec.style.zoom = String(k);
-      } else {
-        sec.style.transform = `scale(${k})`;
-        sec.style.transformOrigin = 'top center';
-        sec.style.marginBottom = `-${Math.round(sec.offsetHeight * (1 - k))}px`;
-      }
+  // Mise à l'échelle des pages paysage : RATIO FIXE 21,59/27,94 — la page paysage
+  // s'affiche à la même largeur qu'une page portrait. Le zoom lui-même est en CSS pur
+  // (voir style.css), donc indépendant de ce code ; ici, deux filets de sécurité :
+  //  1. détection de secours des pages paysage par débordement de contenu, pour le cas
+  //     où docx-preview n'aurait pas posé les styles de dimensions sur la section ;
+  //  2. repli transform: scale pour les rares navigateurs sans prise en charge de `zoom`.
+  const LANDSCAPE_SCALE = 21.59 / 27.94;
+  function ensureLandscapeScaling() {
+    // Filet 1 : sections non marquées dont le contenu déborde nettement → paysage
+    el.previewContainer.querySelectorAll('section.docx:not(.landscape)').forEach(sec => {
+      if (sec.scrollWidth > sec.clientWidth + 60) sec.classList.add('landscape');
     });
-  }
-  let _previewResizeTimer = null;
-  function onPreviewResize() {
-    clearTimeout(_previewResizeTimer);
-    _previewResizeTimer = setTimeout(fitLandscapePages, 150);
+    // Filet 2 : repli pour navigateurs sans `zoom`
+    const zoomOk = (typeof CSS !== 'undefined' && CSS.supports && CSS.supports('zoom', '0.8'));
+    if (zoomOk) return;
+    el.previewContainer.querySelectorAll('section.docx.landscape').forEach(sec => {
+      sec.style.transform = `scale(${LANDSCAPE_SCALE})`;
+      sec.style.transformOrigin = 'top center';
+      sec.style.marginBottom = `-${Math.round(sec.offsetHeight * (1 - LANDSCAPE_SCALE))}px`;
+    });
   }
 
   function closePreview() {
-    window.removeEventListener('resize', onPreviewResize);
     el.previewOverlay.hidden = true;
     document.body.style.overflow = '';
     el.previewContainer.innerHTML = '';
