@@ -1,4 +1,32 @@
 /* ============================================================
+   v1.56.0 — 2 ÉPREUVES C2 DE LA CSBF (P6 · Les nationalismes et l'autonomie du Canada)
+   Examens C2 Versions A et B (Commission scolaire des Bois-Francs, 2017-2018), adaptés au
+   gabarit (les extensions de la v1.55.0 — titre central, texte définitif dans le schéma,
+   lignesReponse, remarques — couvrent leur format sans nouveau code) :
+     • +2 questions (P6, nationalismes-autonomie-canada, ordre chronologique) :
+       q-crise-economique-c2-1 (Version A, les interventions des gouvernements durant la crise
+       des années 1930, numero 2) et q-seconde-guerre-c2-1 (Version B, les conséquences
+       économiques de la guerre 1939-1945, numero 3).
+     • +2 sections DOCS (16 documents : 5 textes, 8 images, 3 tableaux de données) ; 8 images
+       extraites dans assets/img/. Le document 3 de la Version B (exportations alimentaires,
+       présenté en pictogrammes dans l'original) est recodé en data-table ; les documents 2 et 9
+       (impôts fédéraux, dépenses de défense) aussi.
+     • FIDÉLITÉ AUX CLÉS : alternatives « OU » verbatim ; remarques des clés conservées
+       (corrige.remarques). Pour la Version B, la clé apparie chaque explication du premier
+       volet à un élément précis — appariement explicité dans une remarque éditoriale.
+       NB : l'en-tête de la clé Version A contient une erreur de copier-coller de la CSBF
+       (mention de Macdonald) — ignorée, le contenu fait foi.
+     • SOURCES COUPÉES DANS L'ORIGINAL : les mentions de sources des documents 6 (affiche
+       « Soyez rusé comme un… ») et 7 (graphique du taux de chômage) de la Version B sont
+       coupées au bas de la page 1 du document original (vérifié dans la couche texte du PDF ;
+       les images embarquées, elles, sont complètes). Aucune attribution n'a été reconstituée :
+       la mention « source non précisée (coupée à l'impression) » est utilisée — à remplacer si
+       l'enseignant retrouve l'attribution exacte.
+   Validation : 14/14 questions C2 (points, docs, titres 1..N, sources, images sur disque,
+   aller-retour CMS canonique) ; cahier P6 complet (3 C2), variante documents-à-la-fin et
+   guides générés de bout en bout ; rendus PDF vérifiés (titre central, data-tables, remarques).
+  ============================================================ */
+/* ============================================================
    v1.55.0 — 2 ÉPREUVES C2 DE LA CSBF (P5 · La formation du régime fédéral canadien)
    Examens C2 Versions A et B (Commission scolaire des Bois-Francs, 2017-2018), adaptés au
    gabarit C2 de la plateforme :
@@ -2274,6 +2302,78 @@ const DOCS = {
       text: "« […] cette Chambre est d'opinion […] [qu'un] remaniement* […] du tarif favorisera et encouragera les intérêts agricoles, miniers, manufacturiers et autres du Canada […] » — John A. Macdonald, 1878. — *Remaniement : ajustement.",
       sources: ["Source de l'image : Bibliothèque et Archives Canada, C-005327.",
                 "Source du texte : Jacques Paul Couturier, Un passé composé : le Canada de 1850 à nos jours, avec la collaboration de Wendy Johnston et de Réjean Ouellette, 2e édition, Moncton, Éditions d'Acadie, 2000, p. 82."] }
+  ],
+
+  // ===== P6 — Compétence 2 — La crise économique des années 1930, Version A CSBF =====
+  // Source : Examen C2 - Version A, Les nationalismes et l'autonomie du Canada (Commission
+  // scolaire des Bois-Francs, 2017-2018). 7 documents : 4 images (1, 3, 4, 7), 3 textes (2, 5, 6).
+  'crise-economique-c2-1': [
+    { id: "ce-c2-d1", title: "Document 1 : Travaux à Lachine durant les années 1930", layout: "image-only",
+      imageUrl: "assets/img/crise-economique-c2-1/doc1.png", imageWidthCm: 10,
+      sources: ["Source : Conrad Poirier, BAnQ Vieux-Montréal, P48,S1,P2837."] },
+    { id: "ce-c2-d2", title: "Document 2", layout: "text-only",
+      text: "« Y avait peut-être huit, neuf mille personnes qui travaillaient icitte. […] Ça a descendu jusqu'à deux mille […] [T]u pouvais pas dire un mot plus haut que l'autre sans ça […] l'patron avait la main haute tout l'temps : “Si ça fait pas ton affaire, chez vous!” » — Témoignage oral de Georges-Aimé, ouvrier durant la crise des années 1930.",
+      sources: ["Source : Jean-François Cardin et autres, Le Québec : héritages et projets, 2e édition, Laval, Éditions HRW, 1994, p. 348."] },
+    { id: "ce-c2-d3", title: "Document 3 : Refuge Meurling", layout: "image-only",
+      imageUrl: "assets/img/crise-economique-c2-1/doc3.png", imageWidthCm: 9,
+      sources: ["Source : Archives de la Ville de Montréal, CA M001 VM094."] },
+    { id: "ce-c2-d4", title: "Document 4 : Faillites au Canada", layout: "image-only",
+      imageUrl: "assets/img/crise-economique-c2-1/doc4.png", imageWidthCm: 10,
+      sources: ["Source : MEES, d'après Jean-François Cardin et autres, Le Québec : héritages et projets, 2e édition, Laval, Éditions HRW, 1994, p. 347."] },
+    { id: "ce-c2-d5", title: "Document 5", layout: "text-only",
+      text: "« […] des centaines de milliers de personnes ont été précipitées dans la misère par une crise née aux États-Unis […] Il devient évident que l'on doit venir en aide aux nombreuses personnes aptes au travail qui ne demanderaient pas mieux que d'occuper un emploi si elles en trouvaient un. »",
+      sources: ["Source : Jean-Pierre Charland, À l'aube du XXIe siècle, avec la collaboration de Jacques Saint-Pierre, manuel de l'élève, histoire du Québec et du Canada, 4e secondaire, Montréal, Lidec, 1997, p. 381."] },
+    { id: "ce-c2-d6", title: "Document 6", layout: "text-only",
+      text: "« À compter de l'automne 1930, les trois niveaux de gouvernement (fédéral, provincial et municipal) adoptent successivement [des] stratégies […] [I]ls craignent que la misère grandissante ne fournisse un terrain propice à la révolution socialiste. »",
+      sources: ["Source : Jean-Pierre Charland, À l'aube du XXIe siècle, avec la collaboration de Jacques Saint-Pierre, manuel de l'élève, histoire du Québec et du Canada, 4e secondaire, Montréal, Lidec, 1997, p. 381."] },
+    { id: "ce-c2-d7", title: "Document 7 : Bon de secours directs émis par la Ville de Chicoutimi", layout: "image-only",
+      imageUrl: "assets/img/crise-economique-c2-1/doc7.png", imageWidthCm: 10,
+      sources: ["Source : Archives de la Ville de Chicoutimi, CA M029 GM039."] }
+  ],
+
+  // ===== P6 — Compétence 2 — L'économie de guerre (1939-1945), Version B CSBF =====
+  // Source : Examen C2 - Version B, Les nationalismes et l'autonomie du Canada (Commission
+  // scolaire des Bois-Francs, 2017-2018). 9 documents : 3 textes (1, 5), 3 tableaux de données
+  // (2, 3, 9 — le doc 3, présenté en pictogrammes dans l'original, est recodé en data-table),
+  // 4 images (4, 6, 7, 8). NOTE : les mentions de sources des documents 6 et 7 sont COUPÉES au
+  // bas de la page 1 du document original de la CSBF (vérifié dans la couche texte du PDF) ;
+  // elles sont indiquées comme non précisées plutôt que reconstituées.
+  'seconde-guerre-c2-1': [
+    { id: "sg-c2-d1", title: "Document 1", layout: "text-only",
+      text: "« Au Canada, si on se limite au secteur manufacturier, l'effectif double [entre 1939 et 1944]. Au Québec, les augmentations sont du même ordre : 30 % de plus dans le cas de l'ensemble des secteurs non agricoles, le double dans le cas du seul secteur manufacturier. »",
+      sources: ["Source : Jean-Pierre Charland, À l'aube du XXIe siècle : histoire du Québec et du Canada, avec la collaboration de Jacques Saint-Pierre, manuel de l'élève, Montréal, Lidec, 1997, p. 406."] },
+    { id: "sg-c2-d2", title: "Document 2 : Les impôts perçus par le gouvernement fédéral", layout: "data-table",
+      table: { headers: ["Type d'impôts", "1939", "1944"],
+               rows: [["Impôts sur les revenus des particuliers", "46 millions de dollars", "930 millions de dollars"],
+                      ["Impôts sur les profits des entreprises", "77 millions de dollars", "850 millions de dollars"]] },
+      sources: ["Source : MÉES, d'après Marcel Roy et Dominic Roy, Je me souviens : histoire du Québec et du Canada, Ottawa, ERPI, 1995, p. 404."] },
+    { id: "sg-c2-d3", title: "Document 3 : Les exportations canadiennes de produits alimentaires (en millions de dollars)", layout: "data-table",
+      table: { headers: ["Année", "Céréales", "Poissons", "Viandes", "Produits laitiers", "Œufs"],
+               rows: [["1939", "155,4", "28,9", "37,4", "18,2", "0,3"],
+                      ["1940", "172,3", "31,7", "63,3", "20,4", "2,8"],
+                      ["1941", "231,0", "41,2", "84,2", "21,3", "4,2"],
+                      ["1942", "188,8", "49,8", "110,4", "34,3", "9,8"],
+                      ["1943", "391,4", "37,1", "130,8", "36,1", "15,1"]] },
+      sources: ["Source : MÉES, d'après Donald M. Santor, Canadians at war, 1939-1945, Scarborough, Prentice-Hall, 1979, p. 6. (Canadiana scrapbook series)."] },
+    { id: "sg-c2-d4", title: "Document 4 : Vérification de fusils-mitrailleurs par des ouvrières", layout: "image-only",
+      imageUrl: "assets/img/seconde-guerre-c2-1/doc4.png", imageWidthCm: 8,
+      sources: ["Source : Ronny Jacques, Office national du film du Canada. Photothèque/Bibliothèque et Archives Canada/1971-271 NPC."] },
+    { id: "sg-c2-d5", title: "Document 5", layout: "text-only",
+      text: "« […] le Canada augmente considérablement sa production. […] les usines […] fonctionnent bientôt à plein régime. Au début de 1942, il n'y a pratiquement plus d'hommes disponibles […] »",
+      sources: ["Source : Louise Charpentier et autres, Nouvelle histoire du Québec et du Canada, 2e édition, Anjou, CEC, 1990, p. 336."] },
+    { id: "sg-c2-d6", title: "Document 6 : « Soyez rusé comme un… » — Achetons des obligations de la Victoire", layout: "image-only",
+      imageUrl: "assets/img/seconde-guerre-c2-1/doc6.png", imageWidthCm: 5,
+      sources: ["Source : affiche canadienne de la Seconde Guerre mondiale; mention de source non précisée (coupée à l'impression dans le document original de la CSBF)."] },
+    { id: "sg-c2-d7", title: "Document 7 : Le taux de chômage", layout: "image-only",
+      imageUrl: "assets/img/seconde-guerre-c2-1/doc7.png", imageWidthCm: 10,
+      sources: ["Source : mention de source non précisée (coupée à l'impression dans le document original de la CSBF)."] },
+    { id: "sg-c2-d8", title: "Document 8 : La production industrielle au Québec, de 1939 à 1945", layout: "image-only",
+      imageUrl: "assets/img/seconde-guerre-c2-1/doc8.png", imageWidthCm: 12,
+      sources: ["Source : MÉES, d'après Christophe Horguelin et autres, Fresques, manuel de l'élève, histoire et éducation à la citoyenneté, 2e année du 2e cycle du secondaire, Montréal, Graficor, 2008, t. 1, p. 211."] },
+    { id: "sg-c2-d9", title: "Document 9 : Dépenses budgétaires pour la défense (en millions de dollars)", layout: "data-table",
+      table: { headers: ["Année", "1939", "1940", "1941", "1942", "1943", "1944", "1945"],
+               rows: [["Dépenses budgétaires pour la défense", "126", "730", "1 268", "2 563", "4 242", "4 000", "2 942"]] },
+      sources: ["Source : MÉES, d'après Paul-André Linteau et autres, Histoire du Québec contemporain : le Québec depuis 1930, Montréal, Boréal, 1989, t. 2, p. 142. (Boréal compact)."] }
   ],
 
   'industrialisation-c1-1': [
@@ -7856,6 +7956,112 @@ window.DATA = {
             raison: ["Les organismes religieux s'occupent de la charité envers les plus démunis.",
                      "Les organismes religieux ont les ressources nécessaires pour aider les plus démunis."],
             raisonDocs: "Document 5" }
+        ]
+      } },
+
+    // ===== C2 — P6 · La crise économique des années 1930, Version A CSBF =====
+    // Source : Examen C2 - Version A, Les nationalismes et l'autonomie du Canada (CSBF,
+    // 2017-2018), adapté au gabarit (tutoiement, titre central, texte définitif dans le schéma,
+    // remarques de la clé). NB : l'en-tête de la clé de correction originale contient une erreur
+    // de copier-coller de la CSBF (mention de Macdonald) — ignorée, le contenu fait foi.
+    { id: "q-crise-economique-c2-1", competence: 2, operation: null, numero: 2, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        contexte: "Durant les années 1930, la crise économique mondiale cause des problèmes économiques et sociaux au Canada. Les différents niveaux de gouvernements interviennent pour résoudre les problèmes liés à la crise.",
+        prompt: "Explique l'une des interventions des gouvernements pour résoudre les problèmes liés à la crise économique des années 1930.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un effet de la crise économique sur l'emploi au Canada et expliquer pourquoi cela se produit;",
+            "indiquer une mesure sociale adoptée par les gouvernements et expliquer pourquoi ils interviennent."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 7).", "Rédige ton texte définitif dans le schéma."],
+        responseSpace: {
+          type: "c2-schema",
+          titre: "La crise économique",
+          lignesReponse: 7,
+          volets: [
+            { indique: "Indique un effet de la crise économique sur l'emploi au Canada.",
+              raison: "Explique pourquoi cela se produit." },
+            { indique: "Indique une mesure sociale adoptée par les gouvernements.",
+              raison: "Explique pourquoi ils interviennent." }
+          ]
+        }
+      },
+      reglettes: [{ id: "r-ce-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier élément de réponse", "Deuxième élément de réponse"] }],
+      documents: pickDocs('crise-economique-c2-1', 1, 2, 3, 4, 5, 6, 7),
+      corrige: {
+        volets: [
+          { element: ["Le nombre d'emplois (ou d'employés) diminue.",
+                      "Le chômage augmente."],
+            raison: ["car les entreprises ferment (ou font faillite).",
+                     "car les entreprises ne peuvent plus payer le salaire des employés.",
+                     "car la production (ou l'activité économique) diminue.",
+                     "car les exportations canadiennes diminuent."] },
+          { element: ["Les gouvernements mettent en place des programmes de travaux publics (ou des camps de travail).",
+                      "Les gouvernements mettent en place les secours directs (ou soutiennent les soupes populaires ou des dortoirs publics) ou distribuent des bons (ou des coupons)."],
+            raison: ["car ils veulent fournir du travail à la population (ou aux sans-emploi), ou car une grande partie de la population est sans emploi (ou sans revenu).",
+                     "car ils veulent subvenir aux besoins de la population, ou car la population n'arrive pas à assurer sa subsistance.",
+                     "car ils veulent éviter que la population se révolte.",
+                     "car ils veulent soulager la population (ou les sans-emploi ou les plus démunis), ou car la population vit dans la pauvreté."] }
+        ],
+        remarques: [
+          "Un élément de réponse tel que « Les gouvernements mettent en place des mesures d'aide au chômage » est plus ou moins correct, car il est vague.",
+          "Des éléments de réponse tels que « Les gouvernements mettent en place l'assurance chômage » ou « Les gouvernements mettent en place des mesures d'aide » sont incorrects."
+        ]
+      } },
+
+    // ===== C2 — P6 · L'économie de guerre (1939-1945), Version B CSBF =====
+    // Source : Examen C2 - Version B, Les nationalismes et l'autonomie du Canada (CSBF,
+    // 2017-2018), adapté au gabarit. Dans la clé originale, chaque explication du premier volet
+    // est APPARIÉE à un élément précis (paires élément ↔ raison) : les listes sont encodées
+    // telles quelles et l'appariement est explicité dans une remarque éditoriale.
+    { id: "q-seconde-guerre-c2-1", competence: 2, operation: null, numero: 3, annee: 4, niveau: 2,
+      realite_sociale_id: "nationalismes-autonomie-canada",
+      questionBody: {
+        contexte: "Le 10 septembre 1939, le Canada déclare la guerre à l'Allemagne. Il fait son entrée dans la Seconde Guerre mondiale aux côtés de la Grande-Bretagne et de la France. La participation du Canada à cette guerre a des conséquences économiques tant au Québec que sur le reste du pays.",
+        prompt: "Explique les conséquences économiques de la participation canadienne à la Seconde Guerre mondiale.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une conséquence de la participation du Canada à la Seconde Guerre mondiale sur l'emploi et expliquer pourquoi cela se produit;",
+            "indiquer une intervention du gouvernement fédéral sur les finances publiques et expliquer pourquoi il intervient."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 9).", "Rédige ton texte définitif dans le schéma."],
+        responseSpace: {
+          type: "c2-schema",
+          titre: "La participation du Canada à la Seconde Guerre mondiale",
+          lignesReponse: 7,
+          volets: [
+            { indique: "Indique une conséquence de la participation du Canada à la Seconde Guerre mondiale sur l'emploi.",
+              raison: "Explique pourquoi cela se produit." },
+            { indique: "Indique une intervention du gouvernement fédéral sur les finances publiques.",
+              raison: "Explique pourquoi le gouvernement fédéral intervient." }
+          ]
+        }
+      },
+      reglettes: [{ id: "r-sg-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier élément de réponse", "Deuxième élément de réponse"] }],
+      documents: pickDocs('seconde-guerre-c2-1', 1, 2, 3, 4, 5, 6, 7, 8, 9),
+      corrige: {
+        volets: [
+          { element: ["Il y a une baisse du taux de chômage.",
+                      "Il y a création de nombreux emplois.",
+                      "Il y a une présence des femmes sur le marché du travail (ou le nombre de femmes sur le marché du travail augmente)."],
+            raison: ["car il y a création de nombreux emplois.",
+                     "car il y a une grande demande de produits industriels (ou de produits alimentaires).",
+                     "car il manque de main-d'œuvre.",
+                     "car il faut pourvoir les emplois que les hommes partis à la guerre ne peuvent occuper."] },
+          { element: ["Le gouvernement fédéral vend des obligations de la Victoire, augmente les impôts (ou ses revenus de taxation) ou négocie avec les provinces de plus larges pouvoirs de taxation."],
+            raison: ["car il doit financer l'effort de guerre.",
+                     "car il doit subvenir aux besoins (ou à un besoin en particulier) des Alliés.",
+                     "car il doit rembourser les dépenses liées à l'effort de guerre."] }
+        ],
+        remarques: [
+          "Dans la clé de correction, chaque explication du premier élément s'apparie à un élément précis : la baisse du taux de chômage s'explique par la création de nombreux emplois; la création d'emplois, par la grande demande de produits industriels (ou alimentaires); la présence des femmes sur le marché du travail, par le manque de main-d'œuvre ou par les emplois que les hommes partis à la guerre ne peuvent occuper."
         ]
       } },
 

@@ -30,9 +30,9 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 - Dégager des différences et des similitudes
 - Déterminer des changements et des continuités
 
-## État actuel — v1.55.0 (juin 2026)
+## État actuel — v1.56.0 (juin 2026)
 
-**214 questions** dans le catalogue, **536 points** au total, réparties sur les **8 périodes**.
+**216 questions** dans le catalogue, **552 points** au total, réparties sur les **8 périodes**.
 **7 périodes sur 8 sont à 7/7 OI.** Seule **P5** reste à 6/7 (voir « Points d'attention »).
 
 | Période | Année | Questions | OI couvertes | Points |
@@ -42,12 +42,24 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 | **P3** — 1760-1791 | 3e | 19 | 7 / 7 ✓ | 44 |
 | **P4** — 1791-1840 | 3e | 14 | 7 / 7 ✓ | 33 |
 | **P5** — 1840-1896 | 4e | 31 | **6 / 7** ⚠ | 81 |
-| **P6** — 1896-1945 | 4e | 31 | 7 / 7 ✓ | 76 |
+| **P6** — 1896-1945 | 4e | 33 | 7 / 7 ✓ | 92 |
 | **P7** — 1945-1980 | 4e | 42 | 7 / 7 ✓ | 115 |
 | **P8** — 1980 à nos jours | 4e | 26 | 7 / 7 ✓ | 63 |
-| **TOTAL** | | **214** | **7 périodes / 8 à 7 / 7** | **536** |
+| **TOTAL** | | **216** | **7 périodes / 8 à 7 / 7** | **552** |
 
-Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **130 questions, 335 points**.
+Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **132 questions, 351 points**.
+
+### Quoi de neuf (v1.56.0)
+
+**Deux examens C2 de la CSBF pour P6 (Les nationalismes et l'autonomie du Canada)** : les
+interventions des gouvernements durant la crise des années 1930 (Version A) et les conséquences
+économiques de la Seconde Guerre mondiale (Version B), avec leurs dossiers complets
+(16 documents, dont 8 images — travaux publics à Lachine, refuge Meurling, bon de secours
+directs, ouvrières d'usine de guerre, affiche des obligations de la Victoire — et 3 tableaux de
+données). P6 offre maintenant trois C2 en ordre chronologique : Grande dépression (RÉCIT),
+crise des années 1930 et économie de guerre (CSBF). ⚠ Les mentions de sources des documents
+6 et 7 de la Version B sont coupées à l'impression dans le document original de la CSBF; elles
+sont indiquées comme « non précisées » en attendant l'attribution exacte.
 
 ### Quoi de neuf (v1.55.0)
 
