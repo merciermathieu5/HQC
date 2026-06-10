@@ -1,4 +1,24 @@
 /* ============================================================
+   v1.56.1 — CORRECTIF : LES 4 QUESTIONS CSBF HARMONISÉES À LA STRUCTURE C2 DE LA PLATEFORME
+   (demande enseignant) Sur la plateforme, TOUTE C2 suit la même démarche : l'élève complète le
+   schéma EN PRÉVISION d'un texte continu d'environ 150 mots, qui est la production corrigée.
+   La démarche CSBF « Rédige ton texte définitif dans le schéma » n'est pas conservée.
+   Questions touchées : q-gouvernement-responsable-c2-1, q-politique-nationale-c2-1 (P5),
+   q-crise-economique-c2-1, q-seconde-guerre-c2-1 (P6) :
+     • responseSpace.texte rétabli ({ label: "Texte de 150 mots :", lines: 20 }) — la page de
+       rédaction pleine page suit le schéma, comme pour toutes les C2 du catalogue;
+     • consignes standards : « Remplis le schéma. » + « Rédige un texte d'environ 150 mots. »
+       (au lieu de « Rédige ton texte définitif dans le schéma. »);
+     • note « Note : seul le texte sera corrigé. » ajoutée;
+     • cases du schéma ramenées à la hauteur standard (lignesReponse retiré).
+   Le titre central du schéma (responseSpace.titre) et les remarques de correction
+   (corrige.remarques) sont conservés. Les capacités du gabarit introduites en v1.55.0
+   (texte optionnel, lignesReponse) restent disponibles mais ne sont plus utilisées par
+   aucune question du catalogue.
+   Validation : 14/14 C2 vérifiées (zone de texte présente, consignes standards, note) ;
+   cahier P6 et guide régénérés et inspectés.
+  ============================================================ */
+/* ============================================================
    v1.56.0 — 2 ÉPREUVES C2 DE LA CSBF (P6 · Les nationalismes et l'autonomie du Canada)
    Examens C2 Versions A et B (Commission scolaire des Bois-Francs, 2017-2018), adaptés au
    gabarit (les extensions de la v1.55.0 — titre central, texte définitif dans le schéma,
@@ -7961,8 +7981,8 @@ window.DATA = {
 
     // ===== C2 — P6 · La crise économique des années 1930, Version A CSBF =====
     // Source : Examen C2 - Version A, Les nationalismes et l'autonomie du Canada (CSBF,
-    // 2017-2018), adapté au gabarit (tutoiement, titre central, texte définitif dans le schéma,
-    // remarques de la clé). NB : l'en-tête de la clé de correction originale contient une erreur
+    // 2017-2018), harmonisé à la structure de la plateforme (tutoiement, titre central, schéma
+    // puis zone « Texte de 150 mots », remarques de la clé). NB : l'en-tête de la clé de correction originale contient une erreur
     // de copier-coller de la CSBF (mention de Macdonald) — ignorée, le contenu fait foi.
     { id: "q-crise-economique-c2-1", competence: 2, operation: null, numero: 2, annee: 4, niveau: 2,
       realite_sociale_id: "nationalismes-autonomie-canada",
@@ -7976,17 +7996,18 @@ window.DATA = {
             "indiquer une mesure sociale adoptée par les gouvernements et expliquer pourquoi ils interviennent."
           ]
         },
-        bullets: ["Consulte le dossier documentaire (documents 1 à 7).", "Rédige ton texte définitif dans le schéma."],
+        bullets: ["Consulte le dossier documentaire (documents 1 à 7).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
         responseSpace: {
           type: "c2-schema",
           titre: "La crise économique",
-          lignesReponse: 7,
           volets: [
             { indique: "Indique un effet de la crise économique sur l'emploi au Canada.",
               raison: "Explique pourquoi cela se produit." },
             { indique: "Indique une mesure sociale adoptée par les gouvernements.",
               raison: "Explique pourquoi ils interviennent." }
-          ]
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
         }
       },
       reglettes: [{ id: "r-ce-c2-1", label: "Grille d'évaluation (8 points)",
@@ -8030,17 +8051,18 @@ window.DATA = {
             "indiquer une intervention du gouvernement fédéral sur les finances publiques et expliquer pourquoi il intervient."
           ]
         },
-        bullets: ["Consulte le dossier documentaire (documents 1 à 9).", "Rédige ton texte définitif dans le schéma."],
+        bullets: ["Consulte le dossier documentaire (documents 1 à 9).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
         responseSpace: {
           type: "c2-schema",
           titre: "La participation du Canada à la Seconde Guerre mondiale",
-          lignesReponse: 7,
           volets: [
             { indique: "Indique une conséquence de la participation du Canada à la Seconde Guerre mondiale sur l'emploi.",
               raison: "Explique pourquoi cela se produit." },
             { indique: "Indique une intervention du gouvernement fédéral sur les finances publiques.",
               raison: "Explique pourquoi le gouvernement fédéral intervient." }
-          ]
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
         }
       },
       reglettes: [{ id: "r-sg-c2-1", label: "Grille d'évaluation (8 points)",
@@ -8303,10 +8325,11 @@ window.DATA = {
 
     // ===== C2 — P5 · Le gouvernement responsable (Baldwin et Lafontaine), Version B CSBF =====
     // Source : Examen C2 - Version B, La formation du régime fédéral canadien (CSBF, 2017-2018),
-    // adapté au gabarit RÉCIT : tutoiement, titre central du schéma (responseSpace.titre), texte
-    // définitif rédigé DANS le schéma (pas de responseSpace.texte, cases hautes via lignesReponse),
-    // remarque de la clé de correction conservée (corrige.remarques). La clé CSBF ne renvoie pas
-    // aux documents : pas de elementDocs/raisonDocs.
+    // HARMONISÉ à la structure de la plateforme : tutoiement, titre central du schéma
+    // (responseSpace.titre), puis zone « Texte de 150 mots » comme toute C2 du catalogue
+    // (le « texte définitif dans le schéma » de la démarche CSBF n'est pas conservé).
+    // Remarque de la clé de correction conservée (corrige.remarques). La clé CSBF ne renvoie
+    // pas aux documents : pas de elementDocs/raisonDocs.
     { id: "q-gouvernement-responsable-c2-1", competence: 2, operation: null, numero: 2, annee: 4, niveau: 1,
       realite_sociale_id: "formation-regime-federal",
       questionBody: {
@@ -8319,17 +8342,18 @@ window.DATA = {
             "indiquer un changement amené par les autorités britanniques dans l'organisation politique de la colonie en 1848 et expliquer pourquoi cela se produit."
           ]
         },
-        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Rédige ton texte définitif dans le schéma."],
+        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
         responseSpace: {
           type: "c2-schema",
           titre: "Transformation de la politique canadienne",
-          lignesReponse: 7,
           volets: [
             { indique: "Indique un arrangement politique entre Baldwin et Lafontaine.",
               raison: "Explique pourquoi cela se produit." },
             { indique: "Indique un changement amené par les autorités britanniques dans l'organisation politique de la colonie.",
               raison: "Explique pourquoi cela se produit." }
-          ]
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
         }
       },
       reglettes: [{ id: "r-gr-c2-1", label: "Grille d'évaluation (8 points)",
@@ -8369,17 +8393,18 @@ window.DATA = {
             "indiquer une mesure concernant le réseau de transport et expliquer dans quel but il met en place cette mesure."
           ]
         },
-        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Rédige ton texte définitif dans le schéma."],
+        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
         responseSpace: {
           type: "c2-schema",
           titre: "Intervention du gouvernement de John A. Macdonald",
-          lignesReponse: 7,
           volets: [
             { indique: "Indique une mesure du gouvernement concernant les importations.",
               raison: "Explique dans quel but il met en place cette mesure." },
             { indique: "Indique une mesure du gouvernement concernant le réseau de transport.",
               raison: "Explique dans quel but il met en place cette mesure." }
-          ]
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
         }
       },
       reglettes: [{ id: "r-pn-c2-1", label: "Grille d'évaluation (8 points)",

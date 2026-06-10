@@ -30,7 +30,7 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 - Dégager des différences et des similitudes
 - Déterminer des changements et des continuités
 
-## État actuel — v1.56.0 (juin 2026)
+## État actuel — v1.56.1 (juin 2026)
 
 **216 questions** dans le catalogue, **552 points** au total, réparties sur les **8 périodes**.
 **7 périodes sur 8 sont à 7/7 OI.** Seule **P5** reste à 6/7 (voir « Points d'attention »).
@@ -49,6 +49,15 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 
 Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **132 questions, 351 points**.
 
+### Quoi de neuf (v1.56.1)
+
+**Correctif — structure C2 uniforme** : les quatre questions issues des examens de la CSBF
+(P5 : gouvernement responsable, Politique nationale; P6 : crise des années 1930, économie de
+guerre) suivent maintenant la même démarche que toutes les C2 du catalogue — l'élève remplit le
+schéma en prévision d'un **texte continu d'environ 150 mots** (zone de rédaction pleine page,
+note « seul le texte sera corrigé »). La démarche CSBF « texte définitif dans le schéma » n'est
+pas conservée. Le titre central du schéma et les remarques de correction demeurent.
+
 ### Quoi de neuf (v1.56.0)
 
 **Deux examens C2 de la CSBF pour P6 (Les nationalismes et l'autonomie du Canada)** : les
@@ -66,10 +75,10 @@ sont indiquées comme « non précisées » en attendant l'attribution exacte.
 **Deux examens C2 de la CSBF (P5 · La formation du régime fédéral canadien)** : le gouvernement
 responsable (Baldwin-Lafontaine, Version B) et la Politique nationale de Macdonald (Version A),
 avec leurs dossiers complets (12 documents, dont les portraits BAC, deux tableaux de données,
-la carte du réseau d'échange et l'organigramme de 1848). Le gabarit C2 couvre maintenant le
-format CSBF : **titre central du schéma** (`responseSpace.titre`), **zone de texte optionnelle**
-(le texte définitif se rédige dans le schéma; `lignesReponse` règle la hauteur des cases) et
-**remarques de correction** (`corrige.remarques`) affichées dans le guide.
+la carte du réseau d'échange et l'organigramme de 1848). Le gabarit C2 s'enrichit du
+**titre central du schéma** (`responseSpace.titre`) et des **remarques de correction**
+(`corrige.remarques`) affichées dans le guide. (Depuis la v1.56.1, ces questions suivent la
+démarche standard de la plateforme : schéma puis texte de 150 mots.)
 
 ### Quoi de neuf (v1.54.0)
 
