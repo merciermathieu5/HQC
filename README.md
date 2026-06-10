@@ -30,9 +30,9 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 - Dégager des différences et des similitudes
 - Déterminer des changements et des continuités
 
-## État actuel — v1.56.1 (juin 2026)
+## État actuel — v1.57.0 (juin 2026)
 
-**216 questions** dans le catalogue, **552 points** au total, réparties sur les **8 périodes**.
+**219 questions** dans le catalogue, **576 points** au total, réparties sur les **8 périodes**.
 **7 périodes sur 8 sont à 7/7 OI.** Seule **P5** reste à 6/7 (voir « Points d'attention »).
 
 | Période | Année | Questions | OI couvertes | Points |
@@ -43,11 +43,22 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 | **P4** — 1791-1840 | 3e | 14 | 7 / 7 ✓ | 33 |
 | **P5** — 1840-1896 | 4e | 31 | **6 / 7** ⚠ | 81 |
 | **P6** — 1896-1945 | 4e | 33 | 7 / 7 ✓ | 92 |
-| **P7** — 1945-1980 | 4e | 42 | 7 / 7 ✓ | 115 |
-| **P8** — 1980 à nos jours | 4e | 26 | 7 / 7 ✓ | 63 |
-| **TOTAL** | | **216** | **7 périodes / 8 à 7 / 7** | **552** |
+| **P7** — 1945-1980 | 4e | 44 | 7 / 7 ✓ | 131 |
+| **P8** — 1980 à nos jours | 4e | 27 | 7 / 7 ✓ | 71 |
+| **TOTAL** | | **219** | **7 périodes / 8 à 7 / 7** | **576** |
 
-Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **132 questions, 351 points**.
+Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **135 questions, 375 points**.
+
+### Quoi de neuf (v1.57.0)
+
+**Trois examens C2 de la CSBF, intégrés directement dans la structure harmonisée** (schéma de
+préparation + texte de 150 mots) : les interventions de l'État dans l'économie 1960-1980 (P7,
+Version A — avec le tableau des sociétés d'État, l'affiche « Maîtres chez nous » et la centrale
+Manic-2), le laïcisme et le nationalisme québécois (P7, Version B — graphique de la langue
+d'enseignement à la CECM, affichage de la rue Sainte-Catherine en 1961, frise des lois
+linguistiques) et la récession des années 1980 (P8 — lois 70 et 105 du gouvernement Lévesque,
+graphique du chômage 1976-1995 recapturé depuis le tracé vectoriel du PDF). P7 compte maintenant
+cinq C2 et P8 deux. 21 documents, 6 images, 1 tableau de données.
 
 ### Quoi de neuf (v1.56.1)
 

@@ -1,4 +1,32 @@
 /* ============================================================
+   v1.57.0 — 3 ÉPREUVES C2 DE LA CSBF (P7 ×2 et P8), STRUCTURE HARMONISÉE D'EMBLÉE
+   Examens C2 de la Commission scolaire des Bois-Francs (2017-2018), intégrés directement
+   selon la structure de la plateforme (schéma de préparation + texte continu de 150 mots,
+   note « seul le texte sera corrigé », consignes standards — spécification de la v1.56.1) :
+     • +3 questions :
+       — q-interventions-etat-c2-1 (P7, Version A « La modernisation du Québec et la Révolution
+         tranquille », numero 4) : interventions de l'État sur les plans financier et énergétique.
+         Titre central « Les interventions de l'État ». Remarques de la clé (Hydro-Québec)
+         conservées + remarque éditoriale d'appariement (centrales ↔ besoins d'énergie).
+       — q-laicisme-nationalisme-c2-1 (P7, Version B, numero 5) : changements favorisés par le
+         laïcisme (éducation) et le nationalisme québécois (langue). SANS titre central : le
+         schéma original porte deux concepts distincts, l'information est dans les libellés des
+         volets. Appariements de la clé explicités en deux remarques éditoriales.
+       — q-recession-c2-1 (P8, « Les choix de société dans le Québec contemporain », version
+         unique, numero 2) : effets de la récession des années 1980 sur les emplois et mesures
+         du gouvernement Lévesque (lois 70 et 105). Titre central « La récession des années 1980 ».
+     • +3 sections DOCS (21 documents : 14 textes, 6 images, 1 tableau de données — les
+       « Principales sociétés d'État québécoises » en data-table) ; 6 images dans assets/img/,
+       dont le graphique du taux de chômage 1976-1995 (P8, doc 2), TRACÉ VECTORIEL dans le PDF
+       original, capturé par rendu de page à 220 dpi puis rogné (badge et cadre retirés).
+     • Le prompt interrogatif de la Version B (« Comment… ? ») est reformulé à l'impératif
+       (« Explique comment… ») conformément au gabarit ; tutoiement partout.
+   Validation : 17/17 C2 conformes à la structure harmonisée (schéma + texte 150 mots + note +
+   consignes standards, vérification systématique) ; les 3 nouvelles vérifiées en détail (docs,
+   titres 1..N, sources, images, data-table, aller-retour CMS canonique, unicité des numéros
+   par réalité) ; cahiers P7 (5 C2) et P8 (2 C2) + guides générés ; rendus PDF inspectés.
+  ============================================================ */
+/* ============================================================
    v1.56.1 — CORRECTIF : LES 4 QUESTIONS CSBF HARMONISÉES À LA STRUCTURE C2 DE LA PLATEFORME
    (demande enseignant) Sur la plateforme, TOUTE C2 suit la même démarche : l'élève complète le
    schéma EN PRÉVISION d'un texte continu d'environ 150 mots, qui est la production corrigée.
@@ -2394,6 +2422,97 @@ const DOCS = {
       table: { headers: ["Année", "1939", "1940", "1941", "1942", "1943", "1944", "1945"],
                rows: [["Dépenses budgétaires pour la défense", "126", "730", "1 268", "2 563", "4 242", "4 000", "2 942"]] },
       sources: ["Source : MÉES, d'après Paul-André Linteau et autres, Histoire du Québec contemporain : le Québec depuis 1930, Montréal, Boréal, 1989, t. 2, p. 142. (Boréal compact)."] }
+  ],
+
+  // ===== P7 — Compétence 2 — Les interventions de l'État dans l'économie (1960-1980), Version A CSBF =====
+  // Source : Examen C2 - Version A, La modernisation du Québec et la Révolution tranquille
+  // (Commission scolaire des Bois-Francs, 2017-2018). 7 documents : 1 tableau de données (1),
+  // 4 textes (2, 4, 6, 7), 2 images (3, 5).
+  'interventions-etat-c2-1': [
+    { id: "ie-c2-d1", title: "Document 1 : Principales sociétés d'État québécoises (jusqu'en 1978)", layout: "data-table",
+      table: { headers: ["Société d'État", "Année de création"],
+               rows: [["Société générale de financement (SGF)", "1962"],
+                      ["Sidérurgie du Québec (SIDBEC)", "1964"],
+                      ["Société québécoise d'exploration minière (SOQUEM)", "1965"],
+                      ["Caisse de dépôt et de placement du Québec", "1965"],
+                      ["Société d'habitation du Québec", "1967"],
+                      ["Société de récupération, d'exploitation et de développement forestier (REXFOR)", "1969"],
+                      ["Société québécoise d'initiatives pétrolières (SOQUIP)", "1969"]] },
+      sources: ["Source : Paul-André Linteau, René Durocher, Jean-Claude Robert et François Ricard, Histoire du Québec contemporain, tome II : Le Québec depuis 1930, Montréal, Boréal, 1989, p. 463."] },
+    { id: "ie-c2-d2", title: "Document 2", layout: "text-only",
+      text: "« […] dans les années 1960, entre 5 et 20 % de l'économie du Québec appartient aux Québécois francophones; le reste […] est entre les mains de sociétés canadiennes-anglaises et américaines. […] le Parti libéral du Québec entend rectifier* cette situation. » — *Rectifier : corriger, modifier.",
+      sources: ["Source : Musée québécois de culture populaire, « La reconquête économique », Le début d'un temps nouveau, en ligne, 2012, page consultée le 22 octobre 2014."] },
+    { id: "ie-c2-d3", title: "Document 3 : Affiche électorale", layout: "image-only",
+      imageUrl: "assets/img/interventions-etat-c2-1/doc3.png", imageWidthCm: 6,
+      sources: ["Source : Parti libéral du Québec."] },
+    { id: "ie-c2-d4", title: "Document 4", layout: "text-only",
+      text: "« Vers la fin des années 1980, près de deux tiers des emplois provenaient des entreprises dirigées par des francophones. Toujours fortement représentés dans les petites entreprises, les francophones ont atteint un rang éminent* dans de grandes compagnies, [par exemple] la banque (Banque Nationale), l'ingénierie (SNC), le transport (Bombardier) et l'industrie de la transformation alimentaire (Culinar). […] les politiques gouvernementales et les capitaux locaux ont réduit la proportion des capitaux étrangers dans l'économie d'un maximum de 38 % en 1968 à 26 % en 1982. » — *Éminent : élevé.",
+      sources: ["Source : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, 3e édition, Québec, Les éditions du Septentrion, 2003, p. 349."] },
+    { id: "ie-c2-d5", title: "Document 5 : Construction de la centrale Manic-2, au début des années 1960", layout: "image-only",
+      imageUrl: "assets/img/interventions-etat-c2-1/doc5.png", imageWidthCm: 9,
+      sources: ["Source : Archives d'Hydro-Québec."] },
+    { id: "ie-c2-d6", title: "Document 6", layout: "text-only",
+      text: "« Avec des investissements majoritaires dans des compagnies [québécoises] de l'importance de Noranda, de Gaz métropolitain, de Domtar et des usines de papier Cascades, [cette institution] avait un actif* de plus de 20 milliards de dollars en 1985, ce qui faisait d'elle le plus grand investisseur du marché financier canadien. » — *Actif : ensemble des biens possédés.",
+      sources: ["Source : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, 3e édition, Québec, Les éditions du Septentrion, 2003, p. 352."] },
+    { id: "ie-c2-d7", title: "Document 7", layout: "text-only",
+      text: "« [René Lévesque] constate […] un sous-développement électrique dans plusieurs régions rurales, régions non payantes que les compagnies privées d'électricité ont refusé d'électrifier. “[…] diverses régions [dit-il] n'ont pas une production suffisante pour leurs propres besoins […] Dans certaines régions, la facture peut aller jusqu'au double de celle du client montréalais pour une consommation identique.” »",
+      sources: ["Source : Jean Provencher, René Lévesque : portrait d'un Québécois, Montréal, Les éditions La Presse, 1973, p. 176-177."] }
+  ],
+
+  // ===== P7 — Compétence 2 — Le laïcisme et le nationalisme québécois, Version B CSBF =====
+  // Source : Examen C2 - Version B, La modernisation du Québec et la Révolution tranquille
+  // (Commission scolaire des Bois-Francs, 2017-2018). 7 documents : 3 images (1, 4, 5 — deux
+  // graphiques MELS et une photo ONF/BAC), 4 textes (2, 3, 6, 7).
+  'laicisme-nationalisme-c2-1': [
+    { id: "ln-c2-d1", title: "Document 1 : Langue d'enseignement des enfants d'immigrants inscrits à la Commission des écoles catholiques de Montréal", layout: "image-only",
+      imageUrl: "assets/img/laicisme-nationalisme-c2-1/doc1.png", imageWidthCm: 10,
+      sources: ["Source : MELS, d'après François Charbonneau, Jacques Marchand et Jean-Pierre Sansregret, Mon histoire, Montréal, Guérin, 1985, p. 484."] },
+    { id: "ln-c2-d2", title: "Document 2", layout: "text-only",
+      text: "« Les organisations nationalistes et les syndicats réclament l'intervention du gouvernement pour assurer à la langue française la place qui lui revient. C'est ce qu'exige le Mouvement Québec français dans un manifeste publié en 1972 […] »",
+      sources: ["Source : Jacques Paul Couturier, Un passé composé : le Canada de 1850 à nos jours, avec la collaboration de Wendy Johnston et Réjean Ouellette, 2e édition, Moncton, Éditions d'Acadie, 2000, p. 351."] },
+    { id: "ln-c2-d3", title: "Document 3", layout: "text-only",
+      text: "« Au cours des décennies 1960 et 1970, les intellectuels francophones […] accédèrent au pouvoir politique, aussi bien à Ottawa qu'à Québec. Issus des collèges classiques, ces médecins, enseignants, journalistes, ingénieurs et administrateurs du secteur public rejetèrent les valeurs catholiques traditionnelles au profit […] de la laïcisation. Ils […] augmentèrent l'influence de l'État […] »",
+      sources: ["Source : John A. Dickinson et Brian Young, Brève histoire socio-économique du Québec, 4e édition, Québec, Les éditions du Septentrion, 2009, p. 337."] },
+    { id: "ln-c2-d4", title: "Document 4 : Affichage sur la rue Sainte-Catherine à Montréal, en 1961", layout: "image-only",
+      imageUrl: "assets/img/laicisme-nationalisme-c2-1/doc4.png", imageWidthCm: 10,
+      sources: ["Source : Gar Lunney, Office national du film du Canada. Photothèque/Bibliothèque et Archives Canada/PA-133218."] },
+    { id: "ln-c2-d5", title: "Document 5 : Les lois linguistiques et les gouvernements qui les ont adoptées", layout: "image-only",
+      imageUrl: "assets/img/laicisme-nationalisme-c2-1/doc5.png", imageWidthCm: 10,
+      sources: ["Source : MELS."] },
+    { id: "ln-c2-d6", title: "Document 6", layout: "text-only",
+      text: "« Le système scolaire et les programmes d'enseignement ne sont pas adaptés aux exigences d'une société moderne qui a besoin d'une main-d'œuvre de techniciens et de spécialistes beaucoup mieux formés. Il y a pénurie d'écoles et de laboratoires, les universités manquent d'équipement, les enseignants touchent des salaires insuffisants. »",
+      sources: ["Source : Louise Charpentier et autres, Nouvelle histoire du Québec et du Canada, 2e édition, Anjou, CEC, 1990, p. 372-373."] },
+    { id: "ln-c2-d7", title: "Document 7", layout: "text-only",
+      text: "« […] La revue Cité libre, fondée en 1950, est [le] principal véhicule d'expression [de jeunes intellectuels]. Bien que les rédacteurs de Cité libre soient catholiques, ils […] prônent la séparation de l'Église et de l'État. Ils croient en effet que la religion doit être une affaire privée et que, par conséquent, l'Église ne devrait avoir autorité qu'en matière spirituelle. Selon eux, l'éducation et les services sociaux devraient être confiés à l'État. »",
+      sources: ["Source : Christophe Horguelin et autres, Fresques, manuel de l'élève, histoire et éducation à la citoyenneté, 2e année du 2e cycle du secondaire, Montréal, Graficor, 2009, t. 2, p. 64-65."] }
+  ],
+
+  // ===== P8 — Compétence 2 — La récession des années 1980, examen CSBF (version unique) =====
+  // Source : Examen C2, Les choix de société dans le Québec contemporain (Commission scolaire
+  // des Bois-Francs, 2017-2018). 7 documents : 6 textes, 1 graphique (2 — tracé vectoriel dans
+  // le PDF original, capturé par rendu de page à 220 dpi puis rogné).
+  'recession-c2-1': [
+    { id: "rc-c2-d1", title: "Document 1", layout: "text-only",
+      text: "« Les gouvernements ne sont pas à l'abri de la récession. En 1982, le gouvernement de René Lévesque accumule un déficit de près d'un milliard de dollars. »",
+      sources: ["Source : Ève Bernier Cormier et autres, Chroniques du Québec et du Canada : 1840 à nos jours, manuel de l'élève, histoire du Québec et du Canada, 4e secondaire, Montréal, ERPI, 2017, p. 500."] },
+    { id: "rc-c2-d2", title: "Document 2 : Taux de chômage au Québec et au Canada (1976-1995)", layout: "image-only",
+      imageUrl: "assets/img/recession-c2-1/doc2.png", imageWidthCm: 12,
+      sources: ["Source : Archives, Statistique Canada, en ligne."] },
+    { id: "rc-c2-d3", title: "Document 3", layout: "text-only",
+      text: "« Le Québec est dans une récession majeure. René Lévesque, premier ministre, confirme qu'il y a un trou de 700 millions dans les prévisions budgétaires. L'État ne peut plus payer les hausses salariales consenties au secteur public en 1979, veille du référendum de 1980. Lévesque demande de gros sacrifices aux employés de l'État. »",
+      sources: ["Source : Nestor Turcotte, « Les lois spéciales », La Presse Canadienne, en ligne."] },
+    { id: "rc-c2-d4", title: "Document 4", layout: "text-only",
+      text: "« Au début des années 1980, l'activité économique du Québec et celle du Canada montrent des signes de ralentissement. […] Au Québec, le secteur primaire et le secteur secondaire sont particulièrement touchés par la crise. »",
+      sources: ["Source : Ève Bernier Cormier et autres, Chroniques du Québec et du Canada : 1840 à nos jours, manuel de l'élève, histoire du Québec et du Canada, 4e secondaire, Montréal, ERPI, 2017, p. 496 et 497."] },
+    { id: "rc-c2-d5", title: "Document 5", layout: "text-only",
+      text: "« Au début des années 1980, le taux de chômage dépasse 14 %. Au Québec seulement, cela représente plus de 400 000 chômeurs. La perte ou le manque d'emplois touche surtout les femmes et les jeunes de 16 à 30 ans. »",
+      sources: ["Source : Paul Ste-Marie, Chroniques du Québec et du Canada, « 1840 à nos jours », p. 499."] },
+    { id: "rc-c2-d6", title: "Document 6", layout: "text-only",
+      text: "« Au début des années 80, une brutale récession économique fait bondir le taux de chômage à 15 %. Se greffe à ce ralentissement une détérioration de la situation financière du gouvernement qui ne veut ni hausser les impôts, ni augmenter le déficit ou diminuer les services. Les élus décident donc de réduire la masse salariale des employés de l'État. Globalement, le gouvernement impose des diminutions salariales de plus de 20 %, une augmentation de la tâche dans le secteur de l'enseignement et de la santé ainsi que la suppression du droit de grève. »",
+      sources: ["Source : Université de Sherbrooke, Bilan du siècle, « Adoption d'une série de lois fixant les conditions de travail des employés de l'État », en ligne."] },
+    { id: "rc-c2-d7", title: "Document 7", layout: "text-only",
+      text: "« La loi 70 autorise le gouvernement du Parti Québécois à couper les salaires de tous ses employés de 20 %, pendant trois mois, soit du 1er janvier au 31 mars 1983. Les syndicats refusent les coupures annoncées. Le gouvernement fait adopter la loi 105, imposant 109 conventions aux 300 000 employés de la fonction publique. »",
+      sources: ["Source : Nestor Turcotte, « Les lois spéciales », La Presse Canadienne, en ligne."] }
   ],
 
   'industrialisation-c1-1': [
@@ -8084,6 +8203,161 @@ window.DATA = {
         ],
         remarques: [
           "Dans la clé de correction, chaque explication du premier élément s'apparie à un élément précis : la baisse du taux de chômage s'explique par la création de nombreux emplois; la création d'emplois, par la grande demande de produits industriels (ou alimentaires); la présence des femmes sur le marché du travail, par le manque de main-d'œuvre ou par les emplois que les hommes partis à la guerre ne peuvent occuper."
+        ]
+      } },
+
+    // ===== C2 — P7 · Les interventions de l'État dans l'économie (1960-1980), Version A CSBF =====
+    // Source : Examen C2 - Version A, La modernisation du Québec et la Révolution tranquille
+    // (CSBF, 2017-2018), intégré selon la structure de la plateforme (schéma de préparation +
+    // texte de 150 mots). Remarques de la clé conservées + une remarque éditoriale : dans la clé,
+    // l'explication « répondre aux besoins d'énergie… » s'apparie à l'élément « construit des
+    // centrales ou des barrages hydroélectriques ».
+    { id: "q-interventions-etat-c2-1", competence: 2, operation: null, numero: 4, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        contexte: "Entre 1960 et 1980, les interventions du gouvernement du Québec contribuent à la croissance de l'économie et du développement de la société québécoise.",
+        prompt: "Explique les interventions de l'État dans l'économie québécoise entre 1960 et 1980.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une intervention de l'État sur le plan financier et expliquer dans quel but l'État intervient;",
+            "indiquer une intervention de l'État sur le plan énergétique et expliquer dans quel but l'État intervient."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 7).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          titre: "Les interventions de l'État",
+          volets: [
+            { indique: "Indique une intervention de l'État sur le plan financier.",
+              raison: "Explique dans quel but l'État intervient." },
+            { indique: "Indique une intervention de l'État sur le plan énergétique.",
+              raison: "Explique dans quel but l'État intervient." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-ie-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier élément de réponse", "Deuxième élément de réponse"] }],
+      documents: pickDocs('interventions-etat-c2-1', 1, 2, 3, 4, 5, 6, 7),
+      corrige: {
+        volets: [
+          { element: ["L'État crée la Caisse de dépôt et placement du Québec ou la Société générale de financement ou des sociétés d'État."],
+            raison: ["car il veut stimuler le développement d'entreprises québécoises.",
+                     "car il veut accroître la représentation des francophones dans le monde des affaires.",
+                     "car il veut réduire la part des capitaux canadiens-anglais et américains dans l'économie du Québec."] },
+          { element: ["L'État nationalise les compagnies d'électricité ou l'électricité.",
+                      "L'État construit des centrales ou des barrages hydroélectriques."],
+            raison: ["car il veut contrôler l'exploitation de cette ressource.",
+                     "car il veut mieux desservir les régions rurales.",
+                     "car il veut des tarifs uniformes pour l'ensemble des régions du Québec.",
+                     "car il veut répondre aux besoins d'énergie des industries ou des régions (urbaines ou rurales) du Québec."] }
+        ],
+        remarques: [
+          "Un élément de réponse tel que « L'État nationalise Hydro-Québec » est plus ou moins correct, car il comporte une inexactitude.",
+          "Un élément de réponse tel que « L'État crée Hydro-Québec » est incorrect.",
+          "Dans la clé de correction, l'explication « répondre aux besoins d'énergie des industries ou des régions » s'apparie à l'élément « L'État construit des centrales ou des barrages hydroélectriques »."
+        ]
+      } },
+
+    // ===== C2 — P7 · Le laïcisme et le nationalisme québécois, Version B CSBF =====
+    // Source : Examen C2 - Version B, La modernisation du Québec et la Révolution tranquille
+    // (CSBF, 2017-2018), intégré selon la structure de la plateforme. Le schéma original n'a pas
+    // de titre central (deux concepts → deux changements) : l'information est portée par les
+    // libellés des volets. Les appariements de la clé sont explicités en remarques éditoriales.
+    { id: "q-laicisme-nationalisme-c2-1", competence: 2, operation: null, numero: 5, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        contexte: "Durant la seconde moitié du 20e siècle, la société québécoise se transforme avec la montée du laïcisme et du nationalisme québécois.",
+        prompt: "Explique comment le laïcisme et le nationalisme québécois transforment la société québécoise durant la seconde moitié du 20e siècle.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un changement sur le plan de l'éducation au Québec qui est favorisé par le laïcisme et ce qui explique ce changement;",
+            "indiquer un changement sur le plan linguistique au Québec qui est favorisé par le nationalisme québécois et ce qui explique ce changement."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 7).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique un changement sur le plan de l'éducation au Québec qui est favorisé par le laïcisme.",
+              raison: "Explique ce changement." },
+            { indique: "Indique un changement sur le plan linguistique au Québec qui est favorisé par le nationalisme québécois.",
+              raison: "Explique ce changement." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-ln-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier élément de réponse", "Deuxième élément de réponse"] }],
+      documents: pickDocs('laicisme-nationalisme-c2-1', 1, 2, 3, 4, 5, 6, 7),
+      corrige: {
+        volets: [
+          { element: ["La prise en charge de l'éducation par l'État québécois, la création du ministère de l'Éducation ou l'augmentation du personnel laïque dans l'enseignement.",
+                      "La perte d'influence de l'Église dans le domaine de l'éducation."],
+            raison: ["s'explique par la nécessité de former une main-d'œuvre de techniciens et de spécialistes.",
+                     "s'explique par la nécessité d'adapter le système scolaire aux exigences d'une société moderne.",
+                     "s'explique par le recul des valeurs traditionnelles ou religieuses dans la société québécoise.",
+                     "s'explique par l'arrivée au pouvoir d'un groupe d'intellectuels qui prônent la laïcisation."] },
+          { element: ["L'adoption des lois linguistiques ou la promotion de la langue française.",
+                      "La prédominance du français dans l'affichage, dans l'éducation des nouveaux arrivants ou dans des milieux de travail."],
+            raison: ["s'explique par l'influence de groupes qui cherchent à protéger la langue française.",
+                     "s'explique par la prédominance de l'anglais dans l'affichage, dans l'éducation des nouveaux arrivants ou dans des milieux de travail.",
+                     "s'explique par l'adoption de lois linguistiques."] }
+        ],
+        remarques: [
+          "Dans la clé de correction, l'élément « La perte d'influence de l'Église dans le domaine de l'éducation » s'explique par le recul des valeurs traditionnelles ou religieuses dans la société québécoise.",
+          "Dans la clé de correction, l'élément « La prédominance du français… » s'explique par l'adoption de lois linguistiques ou par l'influence de groupes qui cherchent à protéger la langue française; l'élément « L'adoption des lois linguistiques… » s'explique par l'influence de ces groupes ou par la prédominance de l'anglais."
+        ]
+      } },
+
+    // ===== C2 — P8 · La récession des années 1980, examen CSBF (version unique) =====
+    // Source : Examen C2, Les choix de société dans le Québec contemporain (CSBF, 2017-2018),
+    // intégré selon la structure de la plateforme. La clé ne comporte pas de remarques.
+    { id: "q-recession-c2-1", competence: 2, operation: null, numero: 2, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        contexte: "Le contexte économique des années 1980 amène le gouvernement péquiste de René Lévesque à intervenir au sein de l'économie québécoise.",
+        prompt: "Explique les interventions du gouvernement de René Lévesque liées à la récession économique des années 1980.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un effet de la récession économique sur les emplois et expliquer pourquoi cela se produit;",
+            "indiquer une mesure adoptée par le gouvernement de René Lévesque et expliquer dans quel but il met en place cette mesure."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 7).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          titre: "La récession des années 1980",
+          volets: [
+            { indique: "Indique un effet de la récession économique sur les emplois.",
+              raison: "Explique pourquoi cela se produit." },
+            { indique: "Indique une mesure adoptée par le gouvernement de René Lévesque.",
+              raison: "Explique dans quel but il met en place cette mesure." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-rc-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier élément de réponse", "Deuxième élément de réponse"] }],
+      documents: pickDocs('recession-c2-1', 1, 2, 3, 4, 5, 6, 7),
+      corrige: {
+        volets: [
+          { element: ["Le nombre d'emplois diminue.",
+                      "Le chômage augmente."],
+            raison: ["car les entreprises ferment.",
+                     "car les exportations québécoises diminuent.",
+                     "car la production (ou l'activité économique) diminue."] },
+          { element: ["Le gouvernement adopte la loi 105 ou la loi 70.",
+                      "Le gouvernement impose une diminution du salaire ou des avantages sociaux ou des conditions de travail aux employés de l'État."],
+            raison: ["car il accumule un important déficit.",
+                     "car il ne peut plus payer les hausses salariales consenties.",
+                     "car la situation financière du Québec est précaire."] }
         ]
       } },
 
