@@ -1,4 +1,57 @@
 /* ============================================================
+   v1.54.0 — DOSSIERS DOCUMENTAIRES DU LOT C2 (les 9 épreuves sont maintenant COMPLÈTES)
+   Intégration des dossiers depuis les épreuves (cahiers de l'élève) fournies par l'enseignant :
+     • +9 sections DOCS (49 documents : 30 textes, 18 images, 1 tableau de données) :
+       'experience-autochtones-c2-1' (4 textes) · 'colonie-francaise-c2-1' (6 : 2 images +
+       1 data-table « population huronne » + 3 textes) · 'invasion-americaine-c2-1' (8 : 4 images +
+       4 textes) · 'immigration-britannique-c2-1' (7 : 4 images dont 2 graphiques d'après les
+       données de G. Laporte + 3 textes) · 'mouvements-migratoires-c2-1' (4 : 3 texte-image +
+       1 graphique RÉCIT) · 'etat-quebecois-c2-1/-2/-3' (4+4+6, dont l'infographie « Abolition du
+       Conseil législatif » et la publicité du PLQ « Maîtres chez nous », avec permission) ·
+       'vieillissement-c2-1' (6 textes).
+     • 19 images extraites des épreuves dans assets/img/<section>/ (PNG optimisés ; gravures et
+       photos volumineuses converties en JPEG qualité 88). Titres renumérotés « Document 1..N »
+       par question (convention du catalogue).
+     • TOUS LES RENVOIS des corrigés VALIDÉS contre les dossiers réels — y compris les
+       renumérotations des épreuves 1945-1980 (9-12 → 1-4, 23-26 → 1-4, 27-32 → 1-6), qui se
+       sont avérées exactes. Puces « Consulte le dossier documentaire (documents 1 à N) ».
+     • P1 : vraie mise en situation de l'épreuve restaurée dans `contexte` (la précision des
+       historiens sur les Anishinabeg et Wolastoqiyik y est conservée). La carte de la mise en
+       situation (familles linguistiques vers 1600) n'est pas un document numéroté : non intégrée.
+   Validation : 10/10 questions C2 avec dossiers complets (nombre de documents, numérotation,
+   sources, images sur disque, renvois dans [1..N]) ; cahier et guide des 10 C2 générés de bout
+   en bout (50 + 17 pages) ; rendus PDF vérifiés (data-table, texte-image appariés, images).
+  ============================================================ */
+/* ============================================================
+   v1.53.0 — LOT C2 : 9 ÉPREUVES INTERACTIVES + LIBELLÉS DE CRITÈRES OFFICIELS
+   DONNÉES (data.js) :
+     • +9 questions C2 (toutes /8, réglette R_C2_INTERPRETATION_8PT, rowLabels personnalisés) :
+       P1 alliance franco-amérindienne de 1603 · P2 colonie française et Autochtones ·
+       P3 invasion américaine · P4 immigration britannique · P5 mouvements migratoires ·
+       P7 État québécois × 3 (politique, social, économique) · P8 vieillissement de la population.
+       Énoncés harmonisés au TUTOIEMENT. Encodées depuis les « Pistes de solution » SEULES :
+       documents: [] partout — DOSSIERS DOCUMENTAIRES À INTÉGRER en fournissant les épreuves
+       (cahiers de l'élève). Renvois des corrigés déjà en numérotation LOCALE 1..N (les renvois
+       RÉCIT globaux des épreuves 1945-1980 — docs 9-12, 23-26, 27-32 — sont renumérotés et
+       documentés en commentaire par question ; à valider à l'arrivée des dossiers).
+     • GABARIT C2 ÉTENDU : corrige.texte optionnel (texte modèle des pistes, chaîne ou tableau
+       de paragraphes) — rendu dans le guide sous le schéma corrigé (« Exemple de texte »).
+     • LIBELLÉS DE CRITÈRES (demande enseignant) : grille C1 → « Critère : représentation
+       cohérente d'une période de l'histoire du Québec et du Canada » (nouvelle rangée d'entête,
+       champ critere de R_C1_DESCRIPTION_8PT) ; grille C2 → « Critère : rigueur de
+       l'interprétation » (inchangé).
+     • Écartés du lot (format guide pédagogique RÉCIT, non conforme au gabarit d'épreuve C2) :
+       « Nationalistes et impérialistes » (recoupe q-na-differences-1) et « Colonie comptoir
+       1608-1663 » (activité C1/OI « fais des liens ») — réutilisables comme questions d'OI.
+   APP.JS :
+     • buildC1GridTable : rangée de critère (r.critere) en tête de la grille /8.
+     • buildCorrigeBlock (C2) : rendu du texte modèle (boîte beige, texte rouge).
+   CMS-ADAPTER : aller-retour sans perte des corrigés STRUCTURÉS (kinds c2_volets et c1_schema
+   ajoutés — l'ancien code écrasait tout objet non avant/après en avant_apres vide).
+   Validation : intégrité des 10 C2 (points, schémas, réglettes, aller-retour CMS canonique),
+   génération cahier+guide mixte C1+C2 (critères, texte modèle, C2 sans documents), rendus PDF.
+  ============================================================ */
+/* ============================================================
    v1.52.0 — PREMIÈRE QUESTION DE COMPÉTENCE 2 (« Interpréter une réalité sociale »)
    STRUCTURE DE RÉFÉRENCE pour toutes les C2 à venir — q-nationalismes-c2-1 (P6, Grande dépression),
    tirée de l'« Épreuve interactive C2 - 1896 à 1945 » du RÉCIT + ses Pistes de solution.
@@ -858,6 +911,7 @@ function rubric2(opLabel, c1, c0) {
 const R_C1_DESCRIPTION_8PT = {
   type: "c1-grid",
   opLabel: "Caractériser une période de l'histoire du Québec et du Canada",
+  critere: "Critère : représentation cohérente d'une période de l'histoire du Québec et du Canada",
   maxPoints: 8,
   objet: {
     title: "Indiquer l'objet de la description",
@@ -1926,6 +1980,214 @@ const DOCS = {
     { id: "na-c2-d5", title: "Document 5 : Extrait d'un article scientifique", layout: "text-only",
       text: "« Et, si certaines mesures sociales [gouvernementales] ont été prises depuis le début du XXe siècle, force est de constater qu'elles paraissent minimes et que seuls les organismes [religieux] de charité privée interviennent directement auprès des populations les plus défavorisées. [...] Les politiques sociales étant quasi inexistantes, les organismes privés de charité constituent l'unique recours face à une misère qui n'a jamais atteint auparavant de telles proportions. Pendant l'hiver 1929-1930, ils sont les seuls à avoir l'expérience et les ressources humaines pour assurer la gestion de l'aide aux personnes dans le besoin. »",
       sources: ["Source : Nadia Atallah, Les quartiers ouvriers de Montréal pendant la Grande Dépression, IRICE « Bulletin de l'Institut Pierre Renouvin », vol. 1, no 27, 2008, en ligne sur Cairn.info."] }
+  ],
+
+  // ===== P1 — Compétence 2 — L'alliance franco-amérindienne de 1603 =====
+  // Source : Épreuve interactive C2 - Des origines à 1608 (RÉCIT, CC BY-NC-SA). 4 documents textuels.
+  // (La carte de la mise en situation — répartition des familles linguistiques vers 1600 — n'est pas
+  // un document numéroté du dossier et n'a pas été intégrée.)
+  'experience-autochtones-c2-1': [
+    { id: "ea-c2-d1", title: "Document 1 : Récit de Champlain sur la rencontre qui conclut l'alliance franco-amérindienne de 1603", layout: "text-only",
+      text: "« “L'un des [Autochtones] que nous avions amenés commença à faire [son discours], [il souligna] la bonne réception que leur avait fait le roi, et le bon traitement qu'ils avaient reçu en France, et qu'ils [étaient convaincus] que [sa] Majesté leur voulait du bien et désirait peupler leur terre et faire [la] paix avec leurs ennemis (qui sont les Iroquois) ou leur envoyer des forces pour les vaincre; [...]” »",
+      sources: ["Source : Adapté de Samuel de Champlain, Des Sauvages, ou, Voyage de Samuel Champlain, de Brouage, fait en La France nouvelle, cité dans Alain Beaulieu, « La naissance de l'alliance franco-amérindienne », dans Raymonde Litalien et Denis Vaugeois (dirs.), Champlain, la naissance de l'Amérique française, Montréal, Septentrion, 2004."] },
+    { id: "ea-c2-d2", title: "Document 2", layout: "text-only",
+      text: "« Pour les [Innus], cette Alliance leur permet de devenir des alliés privilégiés des Français dans le commerce des fourrures. [...] Ils protègent jalousement leur position d'intermédiaires, empêchant certains de leurs voisins de venir commercer directement avec les Européens. »",
+      sources: ["Source : Camil Girard et Carl Brisson, Reconnaissance et exclusion des peuples autochtones au Québec, Presses de l'Université Laval, 2018, p. 14 et p. 22."] },
+    { id: "ea-c2-d3", title: "Document 3", layout: "text-only",
+      text: "« La vallée du Saint-Laurent [...] était l'unique ouverture sur un vaste réseau de lacs et de rivières qui s'enfonçaient profondément à l'intérieur du continent nord-américain [...]. [Les Autochtones] qui contrôlaient l'accès au bas Saint-Laurent étaient donc en mesure de retirer d'énormes bénéfices de ce commerce [des fourrures] ».",
+      sources: ["Source : Bruce G. Trigger, Les Amérindiens et l'âge héroïque de la Nouvelle-France, Ottawa, La société historique du Canada, brochure historique, no 30, 1992, p. 12."] },
+    { id: "ea-c2-d4", title: "Document 4", layout: "text-only",
+      text: "« Les trois nations représentées à Tadoussac en 1603 - [Innus], Algonquins, [Malécites] - sont en guerre contre les Iroquois, dont le territoire [est] situé au sud du lac Ontario. [...] Champlain laissera entendre que le conflit avec les Iroquois remontait à la décennie 1570, donc [...] à la même époque où les marchands français commencent à fréquenter la région de manière plus régulière pour la traite. »",
+      sources: ["Source : Alain Beaulieu, « La naissance de l'alliance franco-amérindienne », dans Raymonde Litalien et Denis Vaugeois (dirs.), Champlain, la naissance de l'Amérique française, Montréal, Septentrion, 2004."] }
+  ],
+
+  // ===== P2 — Compétence 2 — Les conséquences de la colonie française sur les Autochtones =====
+  // Source : Épreuve interactive C2 - 1608 à 1760 (RÉCIT, CC BY-NC-SA). 6 documents :
+  // 2 images (1, 6), 1 tableau de données (3), 3 textes (2, 4, 5).
+  'colonie-francaise-c2-1': [
+    { id: "cf-c2-d1", title: "Document 1", layout: "image-only",
+      imageUrl: "assets/img/colonie-francaise-c2-1/doc1.jpg", imageWidthCm: 11,
+      sources: ["Source : Samuel de Champlain, « Défaite des [Iroquois] au Lac de Champlain, 1609 », Les voyages du sieur de Champlain [...], Jean Berjon, Paris, 1613, p. 232, Wikimedia Commons, couleur ajoutée. Licence : domaine public."] },
+    { id: "cf-c2-d2", title: "Document 2", layout: "text-only",
+      text: "« Les [nations autochtones de la région des] Grands Lacs connaissent à partir des années 1630, mais surtout à la fin des années 1640 et dans la décennie suivante, avec les épidémies et l'intensification des guerres, un véritable bouleversement démographique et géopolitique. »",
+      sources: ["Source : Gilles Havard, Empire et métissages : Indiens et Français dans le Pays d'en Haut, 1660-1715, Québec, Septentrion, 2017."] },
+    { id: "cf-c2-d3", title: "Document 3 : la population huronne des Grands Lacs au 17e siècle", layout: "data-table",
+      table: { headers: ["Année", "Lieu", "Estimation"],
+               rows: [["1600", "Huronie", "30 000"], ["1640", "Huronie", "9 000"], ["1665", "Chagouamigon", "500"],
+                      ["1672", "Michillimackinac", "380"], ["1678", "Michillimackinac", "500"], ["1698", "Michillimackinac", "300"]] },
+      sources: ["Source des données : Gilles Havard, Empire et métissages : Indiens et Français dans le Pays d'en Haut, 1660-1715, Québec, Septentrion, 2017."] },
+    { id: "cf-c2-d4", title: "Document 4", layout: "text-only",
+      text: "« Tout au long du [17e] siècle, [...] les différents gouverneurs de la Nouvelle-France entretinrent des pourparlers avec les Iroquois et cherchèrent à les convaincre de faire la paix avec leurs alliés. [...] La Grande Paix de Montréal de 1701 représente à cet égard le point culminant de la politique de médiation. Lors de cet événement diplomatique majeur, près d'une quarantaine de nations [autochtones] (dont les Iroquois) conclurent la paix et s'engagèrent à remettre dorénavant tous leurs différends à la médiation du gouverneur français. »",
+      sources: ["Source : Maxime Gohier, « Les politiques coloniales françaises et anglaises à l'égard des Autochtones », dans Alain Beaulieu, Stéphan Gervais et Martin Papillon (dirs.), Les Autochtones et le Québec : des premiers contacts au Plan Nord, Montréal, Les Presses de l'Université de Montréal, 2013."] },
+    { id: "cf-c2-d5", title: "Document 5", layout: "text-only",
+      text: "« Champlain venait de donner une forme très concrète à l'alliance scellée en 1603. Il renouvellera à deux reprises sa participation à des expéditions contre les Iroquois, en 1610 et en 1615. [...] les Français ne passeront véritablement à l'offensive contre les Cinq-Nations que dans les années 1660, avec l'envoi des quelque 1 200 hommes du régiment de Carignan-Salière [...]. »",
+      sources: ["Source : Alain Beaulieu, « La naissance de l'alliance franco-amérindienne », Raymonde Litalien et Denis Vaugeois (dirs.), Champlain, la naissance de l'Amérique française, Sillery, Septentrion, 2004."] },
+    { id: "cf-c2-d6", title: "Document 6", layout: "image-only",
+      imageUrl: "assets/img/colonie-francaise-c2-1/doc6.jpg", imageWidthCm: 6, pair: true,
+      sources: ["Source : Auteur inconnu, Enterrement sur plateforme, gravure sur acier (vers 1910), Musée McCord, MP-0000.25.554. Licence : Creative Commons (BY-NC-ND)."] }
+  ],
+
+  // ===== P3 — Compétence 2 — Les causes politiques de l'invasion américaine =====
+  // Source : Épreuve interactive C2 - 1760 à 1791 (RÉCIT, CC BY-NC-SA). 8 documents :
+  // 4 images (1, 3, 5, 7), 4 textes (2, 4, 6, 8).
+  'invasion-americaine-c2-1': [
+    { id: "inv-c2-d1", title: "Document 1 : L'Amérique du Nord en 1774", layout: "image-only",
+      imageUrl: "assets/img/invasion-americaine-c2-1/doc1.jpg", imageWidthCm: 8,
+      sources: ["Source : Assemblée nationale du Québec, « 1774 : Acte de Québec », Par ici la démocratie. Licence : utilisation permise dans un contexte éducatif et non commercial."] },
+    { id: "inv-c2-d2", title: "Document 2", layout: "text-only",
+      text: "« L'armée de Montgomery entre à Montréal par la Porte aux Récollets, le 13 novembre 1775, sans se heurter à la résistance des Montréalais. [...] Montréal sera ville américaine, le temps d'un hiver. Fleury Mesplet convainc le Congrès américain de l'autoriser à y installer des presses pour y entreprendre en français la propagation des idées révolutionnaires américaines. »",
+      sources: ["Source : Lise Pothier, Histoire des États-Unis, Montréal, Modulo, 1987, p. 72."] },
+    { id: "inv-c2-d3", title: "Document 3 : Soldats britanniques à Montréal après la Conquête", layout: "image-only",
+      imageUrl: "assets/img/invasion-americaine-c2-1/doc3.jpg", imageWidthCm: 10,
+      sources: ["Source : Adam Sheriff Scott, L'arrivée des soldats britanniques à Montréal, 1760 (1928), Bibliothèque et Archives Canada, C-11043, MIKAN 202202. Licence : image du domaine public."] },
+    { id: "inv-c2-d4", title: "Document 4", layout: "text-only",
+      text: "En 1774, les membres du Congrès des Treize colonies envoient une lettre aux habitants de la Province de Québec, dont voici un extrait : « Vous n'êtes qu'un très-petit nombre en comparaison de ceux qui vous invitent à bras ouverts à vous joindre à eux; [...] Votre pays est naturellement joint [aux Treize colonies], joignez-vous aussi dans vos intérêts politiques; leur propre bien-être ne permettra jamais qu'ils vous abandonnent ou qu'ils vous trahissent [...] ».",
+      sources: ["Source : John Dickinson, Lettre adressée aux habitants de la province de Québec, ci-devant le Canada de la part du Congrès général de l'Amérique septentrionale, tenu à Philadelphie (26 octobre 1774), en ligne."] },
+    { id: "inv-c2-d5", title: "Document 5 : Premières batailles militaires de la Révolution américaine en 1775", layout: "image-only",
+      imageUrl: "assets/img/invasion-americaine-c2-1/doc5.jpg", imageWidthCm: 10,
+      sources: ["Source : William Barnes Wollen, La bataille de Lexington (1910), Wikimedia Commons. Licence : domaine public."] },
+    { id: "inv-c2-d6", title: "Document 6", layout: "text-only",
+      text: "« Une troupe de sujets révoltés [...] vient de faire irruption dans cette Province [...] dans leur révolte [...] Fermez donc, chers Canadiens, les oreilles, et n'écoutez pas les séditieux qui cherchent à vous rendre malheureux et à étouffer dans vos cœurs les sentiments de soumission à vos légitimes supérieurs, que l'éducation et la religion y avaient gravés. Portez-vous avec joie à tout ce qui vous sera commandé de la part d'un Gouverneur bienfaisant, qui n'a d'autres vues que vos intérêts et votre bonheur. »",
+      sources: ["Source : Mgr Jean-Olivier Briand, « Mandement au sujet de l'invasion des Américains au Canada », 22 mai 1775, cité dans A. Thério (éd.), Un siècle de collusion entre le clergé et le gouvernement britannique, Montréal, XYZ éditeur, 1998, p. 82."] },
+    { id: "inv-c2-d7", title: "Document 7", layout: "image-only",
+      imageUrl: "assets/img/invasion-americaine-c2-1/doc7.png", imageWidthCm: 10,
+      sources: ["Source : John Trumbull, La présentation du texte final de la déclaration d'indépendance au Congrès en 1776 (1819), US Capitol, Wikimedia Commons. Licence : image du domaine public."] },
+    { id: "inv-c2-d8", title: "Document 8", layout: "text-only",
+      text: "« Dès le début du mois de septembre 1775, [...] George Washington s'adresse [...] « au peuple du Canada » dans une lettre dont environ 300 exemplaires seront distribués plus tard dans la province de Québec. Le futur président des États-Unis veut, à tout prix, conserver l'amitié des Canadiens qu'il appelle « amis et frères ». Sa lettre est une nouvelle invitation à épouser la cause américaine. »",
+      sources: ["Source : Jacques Lacoursière, Histoire populaire du Québec, tome 1 : Des origines à 1791, Sillery, Septentrion, 1995, p. 406."] }
+  ],
+
+  // ===== P4 — Compétence 2 — Les conséquences de l'immigration britannique =====
+  // Source : Épreuve interactive C2 - 1791 à 1840 (RÉCIT, CC BY-NC-SA). 7 documents :
+  // 4 images (2, 3, 5, 6 — dont 2 graphiques d'après les données de G. Laporte), 3 textes (1, 4, 7).
+  'immigration-britannique-c2-1': [
+    { id: "ib-c2-d1", title: "Document 1 : Voici un témoignage à propos de l'atmosphère à Montréal en 1832", layout: "text-only",
+      text: "« Montréal est dans un état difficile à dépeindre; il ne s'y fait plus d'affaires… Quand les amis se rencontrent, ils se font des adieux comme s'ils ne devaient plus se revoir. Jour et nuit, on voit des voitures qui portent des corps au cimetière; la tristesse et la terreur règnent sur tous les visages [...] et les pleurs et les sanglots de ceux qui ont perdu des parents ou des amis sont capables d'attrister les cœurs les plus sensibles… »",
+      sources: ["Source : Régis Corbin et Rénald Lessard, « [...] 1832 : un artisan témoigne », Cap-aux-diamants, vol. 2, no 1 (printemps 1986), p. 38, en ligne."] },
+    { id: "ib-c2-d2", title: "Document 2", layout: "image-only",
+      imageUrl: "assets/img/immigration-britannique-c2-1/doc2.png", imageWidthCm: 12,
+      sources: ["Source des données : Gilles Laporte, Infographies.quebec. Le Québec et son histoire d'un simple coup d'œil, Sillery, Septentrion, 2018, infographie 19."] },
+    { id: "ib-c2-d3", title: "Document 3 : Grosse-Île vue des quartiers des officiers", layout: "image-only",
+      imageUrl: "assets/img/immigration-britannique-c2-1/doc3.png", imageWidthCm: 9,
+      sources: ["Source : Henry Hugh Manvers Percy, Grosse-Île vue des quartiers des officiers (vers 1838-1840), Bibliothèque et Archives Canada, MIKAN 2896495. Licence : image du domaine public."] },
+    { id: "ib-c2-d4", title: "Document 4", layout: "text-only",
+      text: "« De 1815 à 1831, environ 260 000 résidants des îles britanniques débarquèrent à Québec; plus de 60 pour cent d'entre eux proviennent d'Irlande. La période s'étendant de 1832 à 1860 s'éloigne très peu de la précédente. [...] Pendant les années 1832-1860, près de 30 000 personnes en moyenne, en grande majorité de souche britannique, mettent le pied à Québec annuellement. Elles sont irlandaises à 52 pour cent et elles ont quitté massivement la verte Erin depuis les années 1820 pour fuir le surpeuplement, les disettes, le remembrement des terres [...] »",
+      sources: ["Source : André Sévigny, « La Grosse Île [...] (1832-1937) », Les Cahiers des dix, no 47 (1992), p. 154-157, en ligne."] },
+    { id: "ib-c2-d5", title: "Document 5 : La traversée des immigrants", layout: "image-only",
+      imageUrl: "assets/img/immigration-britannique-c2-1/doc5.png", imageWidthCm: 11,
+      sources: ["Source : « Un bateau d'immigrants - L'intérieur des cabines », The Illustrated London News (1851), Bibliothèque et Archives Canada, C-006556, MIKAN 2956054. Licence : image du domaine public."] },
+    { id: "ib-c2-d6", title: "Document 6", layout: "image-only",
+      imageUrl: "assets/img/immigration-britannique-c2-1/doc6.png", imageWidthCm: 10,
+      sources: ["Source des données : Gilles Laporte, Infographies.quebec. Le Québec et son histoire d'un simple coup d'œil, Sillery, Septentrion, 2018, infographie 19."] },
+    { id: "ib-c2-d7", title: "Document 7", layout: "text-only",
+      text: "« En 1854, le Central Board of Health estime que 2218 résidents de la ville sont décédés [...] entre les mois de juin et septembre 1832. Le taux de mortalité atteint alors 82/1000, ce qui, toutes proportions gardées, fait de Québec l'une des villes les plus touchées par ce terrible fléau, aussi bien parmi les villes d'Europe que d'Amérique. »",
+      sources: ["Source : Christian Duperron, [...] Québec en 1832, mémoire de maîtrise, Université Laval, Québec, 2006, p. 2, en ligne."] }
+  ],
+
+  // ===== P5 — Compétence 2 — Les conséquences démographiques des mouvements migratoires =====
+  // Source : Épreuve interactive C2 - 1840 à 1896 (RÉCIT, CC BY-NC-SA). 4 documents :
+  // 3 texte-image (1, 2, 4 — infographies et carte du RÉCIT, gravure du domaine public),
+  // 1 graphique (3, recréé par le RÉCIT).
+  'mouvements-migratoires-c2-1': [
+    { id: "mm-c2-d1", title: "Document 1", layout: "text-image",
+      imageUrl: "assets/img/mouvements-migratoires-c2-1/doc1.png", imageWidthCm: 7,
+      text: "La poussée démographique qui survient entre 1780 et 1840 entraine un certain encombrement des terres agricoles au Bas-Canada. Il n'y a plus assez de terres disponibles pour tous dans la vallée du Saint-Laurent. De plus, la production de blé décline dans les années 1830 en raison de la crise agricole.",
+      sources: ["Source du texte : Service national du RÉCIT, domaine de l'univers social.",
+                "Source de l'image : Service national du RÉCIT, domaine de l'univers social. Licence : Creative Commons (BY-NC-SA), d'après les données d'Yves Roby, Histoire d'un rêve brisé? Les Canadiens français aux États-Unis, Sillery, Septentrion, 2007, p. 14."] },
+    { id: "mm-c2-d2", title: "Document 2", layout: "text-image",
+      imageUrl: "assets/img/mouvements-migratoires-c2-1/doc2.png", imageWidthCm: 7,
+      text: "Londres gère les politiques d'immigration de ses colonies. Elle favorise l'émigration de sujets britanniques en provenance des iles britanniques (Angleterre, Écosse et Irlande) vers le Haut-Canada et le Bas-Canada. Entre 1829 et 1851, 677 191 immigrants britanniques s'installent dans les colonies. La plupart d'entre eux sont des agriculteurs, mais on compte aussi des membres des professions libérales.",
+      sources: ["Source de l'image (« Des immigrants irlandais fuyant la Grande famine ») : Auteur inconnu, « Arrivée d'émigrants irlandais à Cork - La scène du quai », Canadian Illustrated News, 10 mai 1851, p. 386, en ligne sur Bibliothèque et Archives Canada, 4627493. Licence : domaine public.",
+                "Source du texte : Service national du RÉCIT, domaine de l'univers social, d'après les données de J.A. Dickinson et B. Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 1995, p. 183."] },
+    { id: "mm-c2-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/mouvements-migratoires-c2-1/doc3.png", imageWidthCm: 11,
+      sources: ["Source : Service national du RÉCIT, domaine de l'univers social."] },
+    { id: "mm-c2-d4", title: "Document 4", layout: "text-image",
+      imageUrl: "assets/img/mouvements-migratoires-c2-1/doc4.png", imageWidthCm: 7,
+      text: "Entre 1861 et 1871, la population du Québec n'augmente pratiquement pas : elle passe de 1 111 566 à 1 191 516 habitants. Cette très faible croissance de la population de la province de Québec est causée par la « grande hémorragie », une émigration massive des Canadiens français vers la Nouvelle-Angleterre. La croissance de la population du Québec sera alors plus faible que celle d'autres provinces comme l'Ontario.",
+      sources: ["Source du texte et de la carte : Service national du RÉCIT, domaine de l'univers social, d'après les données de J.A. Dickinson et B. Young, Brève histoire socio-économique du Québec, Québec, Septentrion, 1995, p. 182."] }
+  ],
+
+  // ===== P7 — Compétence 2 — L'État québécois et le domaine politique =====
+  // Source : Épreuve interactive C2 - 1945-1980 (RÉCIT, CC BY-NC-SA). Renvois RÉCIT globaux
+  // 23-26 RENUMÉROTÉS 1-4 (23→1, 24→2, 25→3, 26→4) — VALIDÉ contre le dossier réel.
+  'etat-quebecois-c2-1': [
+    { id: "eq1-c2-d1", title: "Document 1 : Extrait d'un texte de synthèse rédigé par un historien", layout: "text-only",
+      text: "« Jean-Jacques Bertrand présente le projet de loi no 90 à l'Assemblée législative le 20 novembre 1968. Au cours des débats qui suivent, le premier ministre note que, dans l'esprit de plusieurs, “les assemblées non élues leur rappellent, à tort ou à raison, les mauvais souvenirs d'une époque de privilège”. [...]. Lesage croit “que les élus du peuple doivent être les maîtres incontestés des décisions politiques qui se prennent en notre province et qui affectent tous les citoyens du Québec“. »",
+      sources: ["Source : C. Blais, « ”Le Québec n'est pas une province comme les autres” : Le Conseil législatif (1775-1968) », Cap-aux-diamants, no 94, 2008, p. 19."] },
+    { id: "eq1-c2-d2", title: "Document 2 : Citation de Maurice Champagne, directeur de la Ligue des droits de l'homme, en 1975", layout: "text-only",
+      text: "« La charte vise donc “à régler les rapports entre les citoyens en fonction de la dignité humaine et à déterminer les droits et les facultés dont l'ensemble est nécessaire à l'épanouissement de la personnalité de chaque être humain.” Parmi les raisons qui rendent nécessaire l'adoption d'une charte, il y a [...], l'intervention accrue de l'État dans la vie quotidienne des citoyens, la multiplication des lois et des situations où les droits et libertés de chacun risquent d'entrer en conflit, [...]. »",
+      sources: ["Source : Assemblée nationale du Québec, Journal des Débats : commissions parlementaires, 30e législature, 3e session, 21 janvier 1975, B-175, en ligne sur Bibliothèque de l'Assemblée nationale du Québec."] },
+    { id: "eq1-c2-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/etat-quebecois-c2-1/doc3.png", imageWidthCm: 9,
+      sources: ["Source : Service national du RÉCIT, domaine de l'Univers social. Licence : Creative Commons (BY-NC-SA)."] },
+    { id: "eq1-c2-d4", title: "Document 4", layout: "text-only",
+      text: "« Le Québec possède depuis vendredi sa propre Charte des droits de l'Homme, officiellement appelée \"Charte des droits et libertés de la personne\" [...]. En vertu de cette nouvelle loi, l'Assemblée nationale a nommé les membres de la \"Commission des droits de la personne\". Cette commission est chargée de promouvoir l'application des principes contenus dans la Charte des droits, notamment en recevant les plaintes et en enquêtant sur les violations des droits et libertés consacrés par la charte. »",
+      sources: ["Source : Auteur inconnu, « Les droits et libertés de la personne », La Presse, 30 juin 1975, p. A5, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000082812."] }
+  ],
+
+  // ===== P7 — Compétence 2 — L'État québécois et le domaine social =====
+  // Renvois RÉCIT globaux 9-12 RENUMÉROTÉS 1-4 (9→1, 10→2, 11→3, 12→4) — VALIDÉ. 4 textes.
+  'etat-quebecois-c2-2': [
+    { id: "eq2-c2-d1", title: "Document 1 : Extrait d'un article d'opinion publié en 1964", layout: "text-only",
+      text: "« [L]a santé est un droit que toute société démocratique reconnaît à chaque citoyen. [...] L'exercice de la médecine moderne requiert un “équipement” de plus en plus onéreux. [...] Qu'il s'agisse d'accroître la capacité de l'équipement hospitalier et de le moderniser ou d'assurer la formation d'un personnel de qualité, la responsabilité de l'État est engagée sous le double aspect du contrôle [de la qualité] et du financement. »",
+      sources: ["Source : Barnard Solasse, « La santé : un droit pour tout citoyen », L'action populaire, 15 juillet 1964, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000164310."] },
+    { id: "eq2-c2-d2", title: "Document 2 : Extrait d'un article d'opinion paru en 1963", layout: "text-only",
+      text: "« L'importance sociale et l'ampleur d'un système d'éducation moderne conduisent inévitablement l'État à assumer des responsabilités grandissantes dans ce domaine. L'éducation est devenue un service public que la population attend, voire, exige de l'État. [...] À cause de l'ampleur du bien commun recherché par l'éducation, il est impossible de la laisser uniquement aux groupes intermédiaires ou à l'initiative privée [généralement religieuse]. »",
+      sources: ["Source : Jean Paul Légaré, « Le ministère de l'éducation », Le bulletin de Buckingham, 22 août 1963, p. 3, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000163820."] },
+    { id: "eq2-c2-d3", title: "Document 3 : Extrait d'un article de journal paru en 1964", layout: "text-only",
+      text: "« Le ministre de la Santé, le docteur Alphonse Couturier, a annoncé, hier, que le gouvernement du Québec s'est porté acquéreur de l'hôpital Saint-Charles [Borromée] de St-Hyacinthe qui sera incessamment agrandi et modernisé pour pouvoir dispenser, à la population de la région, des services hospitaliers qui soient conformes aux besoins actuels [...]. Le ministre de la Santé a profité de la circonstance pour louer et citer, en exemple, le dévouement, l'esprit de collaboration et de progrès des révérendes soeurs de la Charité de St-Hyacinthe qui fondèrent cette institution en 1902 [...]. »",
+      sources: ["Source : Auteur inconnu, « À travers la province », Le Devoir, 29 avril 1964, p. 11, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0005226335."] },
+    { id: "eq2-c2-d4", title: "Document 4 : Extrait d'un article de journal paru en 1969", layout: "text-only",
+      text: "« En effet, nous assisterons au cours des prochains mois au regroupement de toutes les institutions de niveau universitaire de Trois-Rivières et de la région immédiate qui deviendront parties constituantes de l'Université du Québec à Trois-Rivières. [...] [L]'Assemblée nationale adoptait à la fin de la session en décembre, le bill 88 créant l'Université du Québec. En vertu de ce bill, tous les nouveaux établissements universitaires devront à l'avenir s'organiser dans le cadre de l'Université du Québec. »",
+      sources: ["Source : Sylvio Saint-Amant, « Enfin… l'Université, nous l'aurons », Le Nouvelliste, 10 janvier 1969, p. 6, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878386."] }
+  ],
+
+  // ===== P7 — Compétence 2 — L'État québécois et le domaine économique =====
+  // Renvois RÉCIT globaux 27-32 RENUMÉROTÉS 1-6 (27→1, 28→2, 29→3, 30→4, 31→5, 32→6) — VALIDÉ.
+  // 5 textes + 1 image (6, publicité du PLQ utilisée avec permission).
+  'etat-quebecois-c2-3': [
+    { id: "eq3-c2-d1", title: "Document 1 : Extrait d'un article de journal publié en 1963", layout: "text-only",
+      text: "« La nationalisation de l'électricité dans la province de Québec est devenue une réalité. [...] Les détenteurs d'une très forte majorité des actions des sept compagnies ont accepté l'offre d'achat de l'Hydro-Québec faite en décembre dernier. Leur contrôle passe à la régie provinciale. [...] Le but de l'État n'est pas d'enregistrer des profits mais de fournir aux contribuables l'énergie au meilleur prix possible, afin de favoriser l'apport de nouvelles industries. »",
+      sources: ["Source : Auteur inconnu, « La nationalisation de l'électricité », Le Devoir, 1er mai 1963, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878815."] },
+    { id: "eq3-c2-d2", title: "Document 2 : Extrait d'un article de journal publié en 1965", layout: "text-only",
+      text: "« La Caisse de dépôt et de placement du Québec [...] pourra acquérir des obligations* gouvernementales, municipales et scolaires, des hypothèques* sur immeubles, des biens immobiliers ainsi que des obligations d'entreprises privées, à même les fonds accumulés par la Régie des rentes du Québec [...]. » — *Obligation : type d'investissement financier. En achetant des obligations, les investisseurs prêtent leurs économies à un taux d'intérêt et pour un temps déterminé d'avance. Les bénéficiaires de ces prêts peuvent être des entreprises privées ou des organismes publics. — *Hypothèque : garantie sur un immeuble qui est donnée à une personne ou une organisation (ex. une banque) en échange d'un prêt d'argent. Dans le cas où un emprunteur est incapable de rembourser ce qu'il doit, l'hypothèque permet au prêteur de vendre l'immeuble dont l'emprunteur est propriétaire et d'en conserver les profits.",
+      sources: ["Source : Auteur inconnu, « Croissance de notre économie grâce à la nouvelle Caisse de dépôt et de placement », Le Soleil, 27 mai 1965, p. 1, en ligne sur Bibliothèque et Archives nationales du Québec, notice 000487881."] },
+    { id: "eq3-c2-d3", title: "Document 3 : Extrait d'un discours prononcé par le premier ministre Jean Lesage à l'Assemblée législative du Québec en 1965", layout: "text-only",
+      text: "« La Caisse de dépôt et de placement est appelée à devenir l'instrument financier le plus important et le plus puissant que l'on ait eu jusqu'ici au Québec. […] Alimentée initialement par les dépôts de la Régie des rentes, la Caisse doit atteindre un actif de $2 milliards $600 millions en 1976 et de plus de $4 milliards d'ici 20 ans. […] Elle doit […] orienter les ressources investissables dont le Québec a besoin pour que puissent se réaliser à la fois la politique gouvernementale et celle du secteur privé. »",
+      sources: ["Source : Jean Lesage, « Caisse de dépôt », Journal des débats de l'Assemblée nationale, Quatrième session, 27e législature, vol. 2, no 69, 9 juin 1965, p. 3311-3312, en ligne sur Bibliothèque de l'Assemblée nationale du Québec."] },
+    { id: "eq3-c2-d4", title: "Document 4 : Extrait vidéo d'un exposé sur la nationalisation de l'électricité présenté par René Lévesque en 1962", layout: "text-only",
+      text: "« Et la nationalisation c'est simplement de ramener dans le Québec la propriété entre les mains de 5 300 000 actionnaires, c'est-à-dire nous tous, la propriété de notre électricité. Alors pourquoi est-ce que c'est nécessaire? Pourquoi est-ce que c'est nécessaire pour le présent et l'avenir économique du Québec? [...] L'électricité, comme vous le savez, c'est la source de la lumière, de la chaleur, et c'est aussi le seul moteur chez nous, essentiel, du développement économique. C'est pour ça qu'on dit que c'est la clé. [...] C'est la mise au service de toute la population du Québec des profits de son électricité qui est produite et consommée chez lui. »",
+      sources: ["Source : Parti libéral du Québec, Maîtres chez nous - La nationalisation de l'électricité expliquée par René Lévesque (1962), Bibliothèque et Archives nationales du Québec, P443,S77,DFN90-503, 04:56-05:11, 05:36-05:45 et 27:12-27:19. Licence : extrait utilisé avec la permission du Parti libéral du Québec, tous droits réservés."] },
+    { id: "eq3-c2-d5", title: "Document 5 : Extrait d'un article de journal publié en 1969", layout: "text-only",
+      text: "« La Caisse de dépôt et de placement du Québec, qui est l'organisme chargé d'administrer principalement les fonds de la Régie des rentes du Québec, se révèle une importante source de capitaux, tout en s'affirmant comme un excellent instrument de développement économique. [...] En plus d'assurer la garde des cotisations des Québécois pour leur retraite, la Caisse fait donc bénéficier le Québec des investissements que permet ce capital [...]. Le soutien qu'elle assure aux divers secteurs de l'économie, l'industrie de transformation notamment, constitue un encouragement pour tous ceux qui ont à coeur le développement économique du Québec. »",
+      sources: ["Source : Auteur inconnu, « Des centaines de millions pour l'expansion économique », La Vallée de la Petite-Nation, 31 juillet 1969, p. 7, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0000328125."] },
+    { id: "eq3-c2-d6", title: "Document 6", layout: "image-only",
+      imageUrl: "assets/img/etat-quebecois-c2-3/doc6.jpg", imageWidthCm: 7,
+      sources: ["Source : Parti Libéral du Québec, « La nationalisation d'électricité, source d'emplois », Le Nouvelliste, 1er novembre 1962, p. 27, en ligne sur Bibliothèque et Archives nationales du Québec, notice 0004878386. Licence : image utilisée avec la permission du Parti libéral du Québec, tous droits réservés."] }
+  ],
+
+  // ===== P8 — Compétence 2 — Le vieillissement de la population =====
+  // Source : Épreuve interactive C2 - 1980 à nos jours (RÉCIT, CC BY-NC-SA). 6 documents textuels.
+  'vieillissement-c2-1': [
+    { id: "vp-c2-d1", title: "Document 1 : Extrait d'un avis présenté au ministre de la Santé et des Services sociaux", layout: "text-only",
+      text: "« Autrement dit, plus les besoins en hébergement se font pressants, plus l'offre rétrécit. À titre de comparaison, c'est comme si le [gouvernement du] Québec avait choisi de fermer des écoles et des collèges en plein baby-boom. [...] Depuis 2009, [...] le nombre total de places [au secteur privé] a augmenté de 29 %, passant de 88 201 à 114 117 unités, [...]. Cette augmentation coïncide avec la suppression de plus de 2 000 places [au secteur public] depuis 2013. »",
+      sources: ["Source : Réseau FADOQ, La qualité de vie des aînés en CHSLD. Il y a urgence d'agir!, 2017, p. 11 et 13, en ligne sur FADOQ."] },
+    { id: "vp-c2-d2", title: "Document 2 : Extrait d'une fiche informative sur l'impôt", layout: "text-only",
+      text: "« Le crédit d'impôt pour la prolongation de carrière [...] est un crédit d'impôt* [...] du Québec visant à éliminer l'impôt à payer sur une partie du revenu de travail des travailleurs expérimentés afin de les inciter à demeurer ou à retourner sur le marché du travail. » — *Crédit d'impôt : montant qu'un contribuable peut déduire des impôts qu'il doit payer sur son revenu. Les Québécois paient des impôts pour financer le gouvernement du Québec et les services offerts par l'État.",
+      sources: ["Source : Chaire en fiscalité et en finances publiques, « Crédit d'impôt pour la prolongation de carrière », Université de Sherbrooke, page consultée le 25 mars 2021."] },
+    { id: "vp-c2-d3", title: "Document 3 : Extrait d'un ouvrage sur les services aux personnes âgées", layout: "text-only",
+      text: "« Il y a émergence d'une double problématique au niveau de l'hébergement et des soins de longue durée : celle de la qualité des soins et de l'accès aux services. »",
+      sources: ["Source : Michèle Charpentier, Priver ou privatiser la vieillesse? Entre le domicile à tout prix et le placement à aucun prix, Québec, Presses de l'Université du Québec, 2002, p. 19."] },
+    { id: "vp-c2-d4", title: "Document 4 : Extrait d'un article de revue", layout: "text-only",
+      text: "« Ajuster l'immigration. C'est une solution évidente pour atténuer les effets du vieillissement et ses conséquences, [...]. Au-delà de l'enrichissement culturel, des réseaux internationaux et de la force de travail qu'ils représentent, les immigrants apportent aussi un dynamisme économique important, en particulier dans le domaine entrepreneurial, [...]. »",
+      sources: ["Source : Jérôme Lussier, « Non, la pénurie de travailleurs n'est pas un complot », L'actualité, 3 décembre 2019, en ligne sur L'actualité."] },
+    { id: "vp-c2-d5", title: "Document 5 : Extrait d'un rapport de recherche de l'Institut du Québec", layout: "text-only",
+      text: "« Le Québec, comme bien des sociétés occidentales, est confronté à un problème démographique causé par plusieurs facteurs. [...] L'allongement de la durée de vie fait aussi en sorte que la société québécoise devient rapidement une société âgée. De ce problème démographique résulte un ralentissement de la croissance du PIB [...]. Finalement, la pénurie de travailleurs risque de réduire les investissements et d'ébranler la force économique du Québec. »",
+      sources: ["Source : Jean-Guy Côté, Simon Savard et Sonny Scarfone, « Le vieillissement de la population et l'économie du Québec », Note de recherche, novembre 2017, p. 5, en ligne sur Institut du Québec."] },
+    { id: "vp-c2-d6", title: "Document 6 : Extrait d'un article de journal", layout: "text-only",
+      text: "« Huit municipalités [du Saguenay–Lac-Saint-Jean] cherchent des citoyens qui ont à cœur la qualité de vie des personnes âgées [...]. [...] Le projet est simple : recruter des gens de tous âges qui seront outillés pour repérer les ainés vulnérables, et qui pourront ensuite les aider au mieux de leurs capacités. Cela peut vouloir dire les écouter, leur rendre service ou les référer vers les bonnes ressources. [...] Le projet est subventionné pour trois ans par le [gouvernement du Québec]. »",
+      sources: ["Source : Dominique Gobeil, « Sensibiliser les citoyens au bien-être des aînés », Le Quotidien, 14 octobre 2017, en ligne sur Le Quotidien."] }
   ],
 
   'industrialisation-c1-1': [
@@ -7508,6 +7770,417 @@ window.DATA = {
             raison: ["Les organismes religieux s'occupent de la charité envers les plus démunis.",
                      "Les organismes religieux ont les ressources nécessaires pour aider les plus démunis."],
             raisonDocs: "Document 5" }
+        ]
+      } },
+
+    // ============================================================================
+    // LOT C2 (v1.53.0, complété en v1.54.0) — 9 épreuves interactives C2 du RÉCIT.
+    // v1.53.0 : énoncés, schémas, corrigés et grilles encodés depuis les « Pistes de
+    // solution » (énoncés harmonisés au TUTOIEMENT). v1.54.0 : DOSSIERS DOCUMENTAIRES
+    // intégrés depuis les épreuves (cahiers de l'élève) — tous les renvois locaux des
+    // corrigés ont été VALIDÉS contre les dossiers réels, y compris les renumérotations
+    // des épreuves 1945-1980 (docs 9-12 → 1-4, 23-26 → 1-4, 27-32 → 1-6).
+    // ============================================================================
+
+    // ===== C2 — P1 · L'alliance franco-amérindienne de 1603 =====
+    // Source : Épreuve interactive C2 - Des origines à 1608. 4 documents (DOCS 'experience-autochtones-c2-1').
+    { id: "q-experience-autochtones-c2-1", competence: 2, operation: null, numero: 1, annee: 3, niveau: 1,
+      realite_sociale_id: "experience-autochtones-projet-colonie",
+      questionBody: {
+        contexte: "Au début du 17e siècle, certains peuples autochtones forment une alliance avec la couronne française, ce qui permet aux Européens de profiter des réseaux d'échange déjà en place et de s'installer sur une partie du territoire actuel du Québec. En plus des Innus (Montagnais), plusieurs historiens soutiennent que des Anishinabeg (Algonquins) et des Wolastoqiyik (Malécites) font partie de l'alliance franco-amérindienne de 1603.",
+        prompt: "Explique pourquoi les Innus et possiblement deux autres nations autochtones concluent une alliance avec les Français en 1603.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une cause politique de l'alliance et montrer comment l'alliance représente un avantage pour les nations autochtones;",
+            "indiquer une cause économique de l'alliance et montrer comment l'alliance représente un avantage pour les nations autochtones."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 4).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique une cause politique de l'alliance.",
+              raison: "Montre comment l'alliance est un avantage politique pour les Autochtones." },
+            { indique: "Indique une cause économique de l'alliance.",
+              raison: "Montre comment l'alliance est un avantage économique pour les Autochtones." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-ea-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Cause politique", "Cause économique"] }],
+      documents: pickDocs('experience-autochtones-c2-1', 1, 2, 3, 4),
+      corrige: {
+        volets: [
+          { element: ["Les nations algonquiennes (ou les Innus, les Algonquins, les Malécites) sont en guerre contre les Iroquois depuis 1570."],
+            raison: ["Dans l'alliance, les Français offrent un soutien militaire aux nations algonquiennes contre les Iroquois ou de l'aide pour négocier une paix avec eux."],
+            raisonDocs: "Documents 1 et 4" },
+          { element: ["Les nations algonquiennes (ou les Innus) cherchent à contrôler la vallée du Saint-Laurent et le commerce des fourrures."],
+            raison: ["Avec l'alliance, les Innus deviennent des alliés privilégiés des Français dans le commerce des fourrures.",
+                     "Avec l'alliance, les Innus s'assurent de conserver leur position d'intermédiaires entre les Français et les autres nations autochtones dans la traite des fourrures."],
+            raisonDocs: "Documents 2 et 3" }
+        ]
+      } },
+
+    // ===== C2 — P2 · Les conséquences de la colonie française sur les Autochtones =====
+    // Source : Épreuve interactive C2 - 1608 à 1760. 6 documents (DOCS 'colonie-francaise-c2-1').
+    { id: "q-colonie-francaise-c2-1", competence: 2, operation: null, numero: 1, annee: 3, niveau: 2,
+      realite_sociale_id: "evolution-societe-coloniale",
+      questionBody: {
+        prompt: "Explique les conséquences du développement de la colonie française sur les Autochtones au début du 17e siècle.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une conséquence liée aux alliances politiques et illustrer cette conséquence par un fait;",
+            "indiquer une conséquence liée aux contacts sociaux entre les Français et les Autochtones et illustrer cette conséquence par un fait."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique une conséquence liée aux alliances politiques.",
+              raison: "Illustre cette conséquence par un fait." },
+            { indique: "Indique une conséquence liée aux contacts sociaux.",
+              raison: "Illustre cette conséquence par un fait." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-cf-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Première conséquence", "Deuxième conséquence"] }],
+      documents: pickDocs('colonie-francaise-c2-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        volets: [
+          { element: ["Les Français participent aux conflits entre les nations autochtones.",
+                      "Les Français participent aux conflits qui opposent les Hurons-Wendats aux Iroquois."],
+            raison: ["Champlain participe à trois expéditions contre les Iroquois.",
+                     "Les Français envoient le régiment Carignan-Salières pour lutter contre les Cinq-Nations.",
+                     "Les Français négocient la paix avec les Iroquois.",
+                     "La France joue un rôle de médiateur lors de la Grande Paix de Montréal en 1701 pour mettre fin aux guerres iroquoises."],
+            raisonDocs: "Documents 1, 4 et 5" },
+          { element: ["Le choc microbien.", "Les épidémies."],
+            raison: ["La population huronne diminue grandement (de 30 000 à 300 personnes entre 1600 et 1698).",
+                     "De nombreux Autochtones meurent de maladies européennes."],
+            raisonDocs: "Documents 2, 3 et 6" }
+        ]
+      } },
+
+    // ===== C2 — P3 · Les causes politiques de l'invasion américaine =====
+    // Source : Épreuve interactive C2 - 1760 à 1791. 8 documents (DOCS 'invasion-americaine-c2-1').
+    { id: "q-invasion-americaine-c2-1", competence: 2, operation: null, numero: 1, annee: 3, niveau: 3,
+      realite_sociale_id: "conquete-changement-empire",
+      questionBody: {
+        prompt: "Explique les causes politiques de l'invasion américaine.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une cause liée à la relation entre les habitants des Treize colonies et Londres, et expliquer pourquoi cette cause mène à l'invasion américaine;",
+            "indiquer une cause liée à la relation entre les habitants des Treize colonies et ceux de la Province de Québec, et expliquer pourquoi cette cause mène à l'invasion américaine."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 8).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique une cause liée à la relation entre les habitants des Treize colonies et Londres.",
+              raison: "Explique pourquoi cette cause mène à l'invasion américaine." },
+            { indique: "Indique une cause liée à la relation entre les habitants des Treize colonies et ceux de la Province de Québec.",
+              raison: "Explique pourquoi cette cause mène à l'invasion américaine." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-inv-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Première cause", "Deuxième cause"] }],
+      documents: pickDocs('invasion-americaine-c2-1', 1, 2, 3, 4, 5, 6, 7, 8),
+      corrige: {
+        volets: [
+          { element: ["Les habitants des Treize colonies se révoltent (ou sont sur le point de se révolter) contre Londres, leur métropole.",
+                      "Les habitants des Treize colonies sont mécontents de la manière dont elles sont traitées par Londres.",
+                      "Les habitants des Treize colonies souhaitent acquérir leur indépendance de Londres.",
+                      "Toute réponse équivalente qui illustre les tensions et la situation explosive qui prévaut entre les Treize colonies et Londres."],
+            raison: ["En révolte contre l'Angleterre, les Treize colonies envahissent la Province de Québec parce qu'il s'agit d'une colonie britannique.",
+                     "En révolte contre l'Angleterre, les Treize colonies envahissent la Province de Québec parce qu'elles veulent éviter que Londres utilise cette colonie pour y concentrer ses forces armées pour contre-attaquer."],
+            raisonDocs: "Documents 1, 3, 5 et 7" },
+          { element: ["Les habitants de la Province de Québec ont refusé de soutenir les Treize colonies.",
+                      "Les habitants des Treize colonies souhaitent l'amitié de ceux de la Province de Québec.",
+                      "Les habitants des Treize colonies invitent ceux de la Province de Québec à les soutenir dans leur cause ou à rallier leur cause.",
+                      "Les habitants des Treize colonies voudraient convaincre ceux de la Province de Québec qu'ils devraient adopter les mêmes idées libérales qu'eux."],
+            raison: ["Les habitants des Treize colonies espèrent que les habitants de la Province de Québec vont se rallier à leurs forces armées lors de l'invasion de leur province.",
+                     "Les habitants des Treize colonies désirent que les habitants de la Province de Québec les soutiennent contre l'Angleterre au moment de l'invasion de la province.",
+                     "Toute réponse équivalente qui met de l'avant le fait que l'invasion américaine n'est pas dirigée contre les habitants de la Province de Québec, mais bien contre l'Angleterre, et que les Treize colonies voudraient amener les Canadiens à prendre position plus clairement en leur faveur."],
+            raisonDocs: "Documents 2, 4, 6 et 8" }
+        ]
+      } },
+
+    // ===== C2 — P4 · Les conséquences de l'immigration britannique sur le Bas-Canada =====
+    // Source : Épreuve interactive C2 - 1791 à 1840 - Immigration britannique. 7 documents attendus.
+    // Les appuis statistiques inline du corrigé source (« doc. N ») ont été consolidés dans les
+    // réponses et les renvois normalisés en forme canonique « Documents N et M ».
+    { id: "q-immigration-britannique-c2-1", competence: 2, operation: null, numero: 1, annee: 3, niveau: 4,
+      realite_sociale_id: "revendications-luttes-nationales",
+      questionBody: {
+        contexte: "Au début du 19e siècle, l'afflux d'immigrants transforme la société du Bas-Canada. Entre 1815 et 1851, plus de 800 000 immigrants débarquent dans le port de Québec. La plupart d'entre eux choisissent de poursuivre leur route vers le Haut-Canada et les États-Unis, mais quelque 50 000 s'établissent au Bas-Canada.",
+        prompt: "Explique les conséquences de l'immigration sur la population du Bas-Canada dans les premières décennies du 19e siècle.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une conséquence de l'immigration britannique sur la démographie au Bas-Canada, et expliquer pourquoi cela se produit;",
+            "indiquer une conséquence de l'immigration britannique sur la composition de la population, et expliquer pourquoi cela se produit."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 7).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique une conséquence de l'immigration britannique sur la démographie au Bas-Canada.",
+              raison: "Explique pourquoi cela se produit." },
+            { indique: "Indique une conséquence de l'immigration britannique sur la composition de la population.",
+              raison: "Explique pourquoi cela se produit." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-ib-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Première conséquence", "Deuxième conséquence"] }],
+      documents: pickDocs('immigration-britannique-c2-1', 1, 2, 3, 4, 5, 6, 7),
+      corrige: {
+        volets: [
+          { element: ["La mortalité s'accroît, notamment à Québec et à Montréal (à Québec, le taux de mortalité atteint 82 pour 1000 habitants en 1832, avec 2218 décès)."],
+            elementDocs: "Documents 1 et 7",
+            raison: ["Les immigrants qui débarquent d'Europe amènent avec eux des maladies infectieuses ou des épidémies, dont une épidémie de choléra en 1832.",
+                     "Les conditions dans lesquelles les immigrants font la traversée de l'Atlantique sont propices à la transmission des épidémies sur les bateaux."],
+            raisonDocs: "Documents 3, 5 et 7" },
+          { element: ["La proportion des anglophones dans la population du Bas-Canada s'accroît de manière considérable (de 5 % en 1790 à 25 % en 1840; elle atteint 40 % de la population de Québec et 55 % de celle de Montréal en 1850)."],
+            elementDocs: "Documents 2 et 6",
+            raison: ["La majorité des immigrants qui arrivent dans le port de Québec sont d'origine britannique, surtout irlandaise; ces immigrants parlent anglais, ce qui provoque une croissance de la proportion anglophone de la population.",
+                     "La majorité des immigrants qui s'établissent dans la colonie s'installent dans les villes comme Québec et Montréal, faisant croître la proportion des anglophones dans la population urbaine."],
+            raisonDocs: "Documents 4 et 6" }
+        ]
+      } },
+
+    // ===== C2 — P5 · Les conséquences démographiques des mouvements migratoires =====
+    // Source : Épreuve interactive C2 - 1840 à 1896 - Mouvements migratoires (déjà au tutoiement).
+    // 4 documents attendus ; renvois par sous-partie (élément / raison) comme la Grande dépression.
+    { id: "q-mouvements-migratoires-c2-1", competence: 2, operation: null, numero: 1, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        prompt: "Explique les conséquences démographiques des mouvements migratoires sur la société canadienne dans la seconde moitié du 19e siècle.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une conséquence des migrations transatlantiques sur la composition de la population et expliquer pourquoi cela se produit;",
+            "indiquer une conséquence des migrations des Canadiens français sur la croissance de la population et expliquer pourquoi cela se produit."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 4).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique une conséquence des migrations transatlantiques sur la composition de la population.",
+              raison: "Explique pourquoi cela se produit." },
+            { indique: "Indique une conséquence des migrations des Canadiens français sur la croissance de la population.",
+              raison: "Explique pourquoi cela se produit." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-mm-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Première conséquence", "Deuxième conséquence"] }],
+      documents: pickDocs('mouvements-migratoires-c2-1', 1, 2, 3, 4),
+      corrige: {
+        volets: [
+          { element: ["La composition de la population du Bas-Canada et du Haut-Canada devient de plus en plus anglophone.",
+                      "La proportion d'anglophones passe de 55 % à près de 65 % entre 1841 et 1860."],
+            elementDocs: "Document 3",
+            raison: ["Cette situation est causée par les politiques migratoires de Londres, qui privilégient les immigrants des iles britanniques. La Grande famine d'Irlande favorise aussi l'arrivée massive d'Irlandais dans les colonies britanniques."],
+            raisonDocs: "Document 2" },
+          { element: ["La croissance démographique de la Province de Québec est très faible entre 1861 et 1871."],
+            elementDocs: "Document 4",
+            raison: ["Cette situation est causée par le départ massif des Canadiens français vers la Nouvelle-Angleterre, puisque les campagnes sont surpeuplées et perturbées par une crise agricole."],
+            raisonDocs: "Document 1" }
+        ]
+      } },
+
+    // ===== C2 — P7 · L'État québécois et le domaine politique (1945-1980) =====
+    // Source : Épreuve interactive C2 - 1945-1980 - État québécois et domaine politique.
+    // Renvois RÉCIT globaux 23-26 renumérotés en local 1-4 (23→1, 24→2, 25→3, 26→4)
+    // — VALIDÉ contre le dossier réel. Texte modèle inclus (corrige.texte).
+    { id: "q-etat-quebecois-c2-1", competence: 2, operation: null, numero: 1, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique des changements dans le domaine de la démocratie et des droits de la personne dans la société québécoise des années 1960 et 1970.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un changement dans les institutions démocratiques et expliquer pourquoi ce changement se produit;",
+            "indiquer un changement dans les droits de la personne et expliquer pourquoi ce changement se produit."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 4).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique un changement dans les institutions démocratiques.",
+              raison: "Une raison qui explique le changement." },
+            { indique: "Indique un changement dans les droits de la personne.",
+              raison: "Une raison qui explique le changement." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-eq-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier changement", "Deuxième changement"] }],
+      documents: pickDocs('etat-quebecois-c2-1', 1, 2, 3, 4),
+      corrige: {
+        volets: [
+          { element: ["L'État abolit le Conseil législatif."], elementDocs: "Document 3",
+            raison: ["Le pouvoir législatif doit être dans les mains des députés élus."], raisonDocs: "Document 1" },
+          { element: ["L'État adopte la Charte des droits et libertés de la personne du Québec."], elementDocs: "Document 4",
+            raison: ["L'intervention de l'État dans plusieurs domaines nécessite un cadre pour réguler les droits et libertés."], raisonDocs: "Document 2" }
+        ],
+        texte: "Dans les années 1960 et 1970, l'État québécois abolit le Conseil législatif. Il met en place ce changement pour que le pouvoir législatif soit dans les mains des députés élus. Aussi, l'État adopte la Charte des droits et libertés de la personne du Québec. Il crée cette charte afin de donner un cadre pour réguler les droits et libertés dans plusieurs domaines."
+      } },
+
+    // ===== C2 — P7 · L'État québécois et le domaine social (1945-1980) =====
+    // Renvois RÉCIT globaux 9-12 renumérotés en local 1-4 (9→1, 10→2, 11→3, 12→4) — VALIDÉ.
+    { id: "q-etat-quebecois-c2-2", competence: 2, operation: null, numero: 2, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique comment les interventions de l'État québécois dans le domaine social transforment la société québécoise des années 1960 et 1970.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un changement dans le domaine de l'éducation et appuyer ce changement par un fait;",
+            "indiquer un changement dans le domaine de la santé et appuyer ce changement par un fait."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 4).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique un changement dans le domaine de l'éducation.",
+              raison: "Un fait qui appuie le changement." },
+            { indique: "Indique un changement dans le domaine de la santé.",
+              raison: "Un fait qui appuie le changement." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-eq-c2-2", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier changement", "Deuxième changement"] }],
+      documents: pickDocs('etat-quebecois-c2-2', 1, 2, 3, 4),
+      corrige: {
+        volets: [
+          { element: ["L'État remplace le privé et prend en charge le domaine de l'éducation."], elementDocs: "Document 2",
+            raison: ["L'État crée l'Université du Québec pour organiser les institutions de niveau universitaire."], raisonDocs: "Document 4" },
+          { element: ["L'État prend la responsabilité du contrôle et du financement du domaine de la santé."], elementDocs: "Document 1",
+            raison: ["L'État achète un hôpital religieux (Saint-Charles-Borromée) pour le prendre en charge."], raisonDocs: "Document 3" }
+        ],
+        texte: "Dans les années 1960 et 1970, l'État québécois intervient dans le domaine social qui était auparavant géré par l'Église. Ainsi, l'État remplace le privé dans le domaine de l'éducation. Par exemple, il crée l'Université du Québec pour organiser les institutions de niveau universitaire. Aussi, l'État prend la responsabilité du contrôle et du financement du domaine de la santé. Par exemple, l'État achète un hôpital religieux (Saint-Charles-Borromée) pour le prendre en charge."
+      } },
+
+    // ===== C2 — P7 · L'État québécois et le domaine économique (1945-1980) =====
+    // Renvois RÉCIT globaux 27-32 renumérotés en local 1-6 (27→1, 28→2, 29→3, 30→4, 31→5, 32→6) — VALIDÉ.
+    { id: "q-etat-quebecois-c2-3", competence: 2, operation: null, numero: 3, annee: 4, niveau: 3,
+      realite_sociale_id: "modernisation-quebec",
+      questionBody: {
+        prompt: "Explique des changements dans le domaine économique dans les années 1960 et 1970.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un changement dans le domaine financier et expliquer pourquoi ce changement se produit;",
+            "indiquer un changement dans le domaine de l'énergie et expliquer pourquoi ce changement se produit."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique un changement dans le domaine financier.",
+              raison: "Une raison qui explique le changement." },
+            { indique: "Indique un changement dans le domaine de l'énergie.",
+              raison: "Une raison qui explique le changement." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-eq-c2-3", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier changement", "Deuxième changement"] }],
+      documents: pickDocs('etat-quebecois-c2-3', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        volets: [
+          { element: ["L'État crée la Caisse de dépôt et placement du Québec."], elementDocs: "Document 2",
+            raison: ["La Caisse de dépôt et placement du Québec répond au besoin d'être un instrument de développement économique pour les projets du gouvernement et pour les entreprises privées."],
+            raisonDocs: "Documents 3 et 5" },
+          { element: ["L'État nationalise la production et la distribution de l'hydroélectricité."], elementDocs: "Document 1",
+            raison: ["L'électricité est le seul moteur de développement économique de la province, celui qui redonne des profits à la population. La nationalisation de l'hydroélectricité est aussi une source d'emplois pour les Québécois."],
+            raisonDocs: "Documents 4 et 6" }
+        ],
+        texte: "Dans les années 1960 et 1970, l'État québécois crée la Caisse de dépôt et placement du Québec. Elle est mise sur pied, car elle devient un instrument de développement économique, elle sert de soutien aux entreprises québécoises et elle encourage le développement économique. De plus, l'État nationalise la production et la distribution de l'hydroélectricité. La nationalisation de l'hydroélectricité permet de faire profiter la population du seul moteur de développement économique de la province, celui qui redonne des profits à la population ou fournit de l'emploi aux travailleurs québécois."
+      } },
+
+    // ===== C2 — P8 · Le vieillissement de la population (1980 à nos jours) =====
+    // Source : Épreuve interactive C2 - 1980 à nos jours - Vieillissement de la population
+    // (déjà au tutoiement). 6 documents attendus. Les « Choix 1 / Choix 2 » du corrigé source
+    // sont aplatis en alternatives « OU ». Texte modèle en 2 paragraphes (corrige.texte = tableau).
+    { id: "q-vieillissement-c2-1", competence: 2, operation: null, numero: 1, annee: 4, niveau: 4,
+      realite_sociale_id: "choix-societe-quebec-contemporain",
+      questionBody: {
+        prompt: "Explique les enjeux reliés au vieillissement de la population et les choix de société qu'ils entrainent de 1980 à nos jours.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un enjeu économique lié au vieillissement de la population et expliquer comment cet enjeu oriente les choix de société au Québec;",
+            "indiquer un enjeu social lié au vieillissement de la population et expliquer comment cet enjeu oriente les choix de société au Québec."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Remplis le schéma.", "Rédige un texte d'environ 150 mots."],
+        note: "Note : seul le texte sera corrigé.",
+        responseSpace: {
+          type: "c2-schema",
+          volets: [
+            { indique: "Indique un enjeu économique du vieillissement de la population.",
+              raison: "Comment cet enjeu oriente les choix de société." },
+            { indique: "Indique un enjeu social du vieillissement de la population.",
+              raison: "Comment cet enjeu oriente les choix de société." }
+          ],
+          texte: { label: "Texte de 150 mots :", lines: 20 }
+        }
+      },
+      reglettes: [{ id: "r-vp-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Enjeu économique", "Enjeu social"] }],
+      documents: pickDocs('vieillissement-c2-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        volets: [
+          { element: ["La pénurie de travailleurs.",
+                      "Le ralentissement de la croissance économique.",
+                      "La pénurie de travailleurs diminue les investissements et la croissance économique."],
+            elementDocs: "Document 5",
+            raison: ["L'enjeu favorise des mesures pour repousser le départ à la retraite ou pour conserver les travailleurs âgés dans la population active.",
+                     "L'enjeu favorise la diminution des impôts pour les travailleurs âgés qui continuent à travailler ou qui retournent sur le marché du travail.",
+                     "L'enjeu entraine une opinion favorable à l'immigration."],
+            raisonDocs: "Documents 2 et 4" },
+          { element: ["Il y a des problèmes dans l'accessibilité et dans la qualité de l'hébergement et des soins aux ainés."],
+            elementDocs: "Document 3",
+            raison: ["L'enjeu entraine la privatisation de l'hébergement et des soins pour les ainés.",
+                     "L'enjeu entraine une diminution de l'offre de places dans l'hébergement et les soins des ainés dans le secteur public et une augmentation du nombre de places dans le secteur privé.",
+                     "L'enjeu favorise une initiative municipale et citoyenne pour sensibiliser la population aux conditions de vie des ainés et leur apporter de l'aide."],
+            raisonDocs: "Documents 1 et 6" }
+        ],
+        texte: [
+          "L'enjeu économique lié au vieillissement de la population est la pénurie de travailleurs (ou le ralentissement de la croissance économique, ou le fait que la pénurie de travailleurs diminue les investissements et la croissance économique). Cet enjeu oriente des choix de société comme la mise en place de mesures pour repousser le départ à la retraite, pour conserver les travailleurs âgés dans la population active ou pour diminuer les impôts des travailleurs âgés qui continuent à travailler ou qui retournent sur le marché du travail. L'enjeu entraine aussi une opinion favorable à l'immigration.",
+          "Il y a des problèmes dans l'accessibilité et dans la qualité de l'hébergement et des soins aux ainés, et cela constitue un enjeu social lié au vieillissement de la population. L'enjeu oriente des choix de société comme la privatisation de l'hébergement et des soins pour les ainés, ou une diminution de l'offre de places dans le secteur public et une augmentation du nombre de places dans le secteur privé. L'enjeu favorise aussi une initiative municipale et citoyenne pour sensibiliser la population aux conditions de vie des ainés et leur apporter de l'aide."
         ]
       } },
 

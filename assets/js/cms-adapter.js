@@ -51,6 +51,9 @@
       return [{ kind: 'lettres', valeurs: c.slice() }];
     }
     if (c && typeof c === 'object') {
+      // Corrigés structurés C2 (volets) et C1 (objet/relations) : conservés par clonage
+      if (isArray(c.volets)) return [{ kind: 'c2_volets', valeur: clone(c) }];
+      if (c.objet || c.relations) return [{ kind: 'c1_schema', valeur: clone(c) }];
       return [{ kind: 'avant_apres', avant: (c.before || []).slice(), apres: (c.after || []).slice() }];
     }
     return [{ kind: 'texte', valeur: '' }];
@@ -67,6 +70,8 @@
                         return (l.cochees || []).map(function (x) { return !!x.coche; });
                       });
       case 'avant_apres': return { before: (c.avant || []).slice(), after: (c.apres || []).slice() };
+      case 'c2_volets':   return clone(c.valeur);
+      case 'c1_schema':   return clone(c.valeur);
       default: return '';
     }
   }

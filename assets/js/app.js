@@ -1616,7 +1616,10 @@
         children: [new Paragraph({ alignment: o.center ? AlignmentType.CENTER : AlignmentType.LEFT, children: [new TextRun({ text, bold: !!o.bold, size: o.size || 18 })] })] });
     }
     const rows = [];
-    rows.push(new TableRow({ children: [cell(r.objet.title, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 19 })] }));
+    if (r.critere) {
+      rows.push(new TableRow({ children: [cell(r.critere, { w: W, span: 4, bold: true, center: true, fill: "DDD9D2", size: 20 })] }));
+    }
+    rows.push(new TableRow({ children: [cell(r.objet.title, { w: W, span: 4, bold: true, center: true, fill: "F0EAD9", size: 19 })] }));
     const objTot = 900, objColW = Math.floor((W - objTot) / 3);
     const objCells = r.objet.levels.map((lv, i) => new TableCell({
       width: { size: i === 2 ? (W - objTot - 2 * objColW) : objColW, type: WidthType.DXA }, borders: ALL, verticalAlign: VerticalAlign.TOP,
@@ -1930,9 +1933,33 @@
       return out;
     }
     // Compétence 2 : schéma rempli (pistes de solution en rouge — alternatives « OU » —
-    // + renvois aux documents en gris)
+    // + renvois aux documents en gris), puis texte modèle s'il est fourni (corrige.texte,
+    // chaîne ou tableau de paragraphes)
     if (rs && rs.type === 'c2-schema') {
       out.push(buildC2SchemaTable(d, rs, q.corrige, true));
+      const tx = q.corrige && q.corrige.texte;
+      if (tx) {
+        const C2_BOX_B = { style: BorderStyle.SINGLE, size: 6, color: "8B3A2E" };
+        const C2_BOX_BORDERS = { top: C2_BOX_B, bottom: C2_BOX_B, left: C2_BOX_B, right: C2_BOX_B };
+        out.push(new Paragraph({
+          spacing: { before: 240, after: 80 },
+          children: [new TextRun({ text: "Exemple de texte", bold: true, size: 20, color: "8B3A2E" })]
+        }));
+        const paras = (Array.isArray(tx) ? tx : [tx]).map((t, i, arr) => new Paragraph({
+          spacing: { after: i < arr.length - 1 ? 160 : 0 },
+          children: [new TextRun({ text: t, size: 20, color: "C00000" })]
+        }));
+        out.push(new Table({
+          width: { size: 10500, type: WidthType.DXA }, columnWidths: [10500],
+          rows: [new TableRow({ cantSplit: true, children: [new TableCell({
+            width: { size: 10500, type: WidthType.DXA },
+            borders: C2_BOX_BORDERS,
+            shading: { fill: "FDF6EC", type: ShadingType.CLEAR, color: "auto" },
+            margins: { top: 120, bottom: 120, left: 160, right: 160 },
+            children: paras
+          })] })]
+        }));
+      }
       return out;
     }
     const SHADING = { fill: "FDF6EC", type: ShadingType.CLEAR, color: "auto" };

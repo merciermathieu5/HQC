@@ -30,24 +30,54 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 - Dégager des différences et des similitudes
 - Déterminer des changements et des continuités
 
-## État actuel — v1.52.0 (juin 2026)
+## État actuel — v1.54.0 (juin 2026)
 
-**203 questions** dans le catalogue, **448 points** au total, réparties sur les **8 périodes**.
+**212 questions** dans le catalogue, **520 points** au total, réparties sur les **8 périodes**.
 **7 périodes sur 8 sont à 7/7 OI.** Seule **P5** reste à 6/7 (voir « Points d'attention »).
 
 | Période | Année | Questions | OI couvertes | Points |
 |---|---|---|---|---|
-| **P1** — Des origines à 1608 | 3e | 23 | 7 / 7 ✓ | 50 |
-| **P2** — 1608-1760 | 3e | 26 | 7 / 7 ✓ | 58 |
-| **P3** — 1760-1791 | 3e | 18 | 7 / 7 ✓ | 36 |
-| **P4** — 1791-1840 | 3e | 13 | 7 / 7 ✓ | 25 |
-| **P5** — 1840-1896 | 4e | 28 | **6 / 7** ⚠ | 57 |
+| **P1** — Des origines à 1608 | 3e | 24 | 7 / 7 ✓ | 58 |
+| **P2** — 1608-1760 | 3e | 27 | 7 / 7 ✓ | 66 |
+| **P3** — 1760-1791 | 3e | 19 | 7 / 7 ✓ | 44 |
+| **P4** — 1791-1840 | 3e | 14 | 7 / 7 ✓ | 33 |
+| **P5** — 1840-1896 | 4e | 29 | **6 / 7** ⚠ | 65 |
 | **P6** — 1896-1945 | 4e | 31 | 7 / 7 ✓ | 76 |
-| **P7** — 1945-1980 | 4e | 39 | 7 / 7 ✓ | 91 |
-| **P8** — 1980 à nos jours | 4e | 25 | 7 / 7 ✓ | 55 |
-| **TOTAL** | | **203** | **7 périodes / 8 à 7 / 7** | **448** |
+| **P7** — 1945-1980 | 4e | 42 | 7 / 7 ✓ | 115 |
+| **P8** — 1980 à nos jours | 4e | 26 | 7 / 7 ✓ | 63 |
+| **TOTAL** | | **212** | **7 périodes / 8 à 7 / 7** | **520** |
 
-Sous-total 3e secondaire : **80 questions, 169 points** · sous-total 4e secondaire : **123 questions, 279 points**.
+Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **128 questions, 319 points**.
+
+### Quoi de neuf (v1.54.0)
+
+**Les 9 épreuves C2 du lot v1.53.0 sont complètes** : dossiers documentaires intégrés depuis les
+cahiers de l'élève (49 documents, 19 images extraites et optimisées), renvois des corrigés tous
+validés, mise en situation de P1 restaurée. Le catalogue offre maintenant une C2 complète et
+utilisable en classe dans chacune des 8 périodes.
+
+### Quoi de neuf (v1.53.0)
+
+**Lot C2 — 9 épreuves interactives du RÉCIT** réparties sur P1 à P8 (sauf P6, déjà couverte) :
+alliance franco-amérindienne de 1603 (P1), conséquences de la colonie française sur les Autochtones
+(P2), invasion américaine (P3), immigration britannique (P4), mouvements migratoires (P5), État
+québécois × 3 — politique, social, économique (P7) et vieillissement de la population (P8). Énoncés
+harmonisés au tutoiement.
+
+- **Dossiers documentaires complets (v1.54.0)** : les 9 dossiers ont été intégrés depuis les
+  épreuves (cahiers de l'élève) — 49 documents (30 textes, 18 images, 1 tableau de données) et
+  19 images dans `assets/img/`. Tous les renvois des corrigés ont été validés contre les dossiers
+  réels, y compris les renumérotations des épreuves 1945-1980 (9-12 → 1-4, 23-26 → 1-4,
+  27-32 → 1-6).
+- **Gabarit C2 étendu** : `corrige.texte` (texte modèle, chaîne ou paragraphes) rendu dans le guide
+  sous le schéma corrigé (« Exemple de texte »).
+- **Libellés de critères officiels** : grille C1 → « Critère : représentation cohérente d'une période
+  de l'histoire du Québec et du Canada » (nouvelle rangée) ; grille C2 → « Critère : rigueur de
+  l'interprétation ».
+- **Correctif cms-adapter** : les corrigés structurés C1/C2 survivent désormais à l'aller-retour
+  CMS (l'ancien code les écrasait en `avant_apres` vide).
+- Écartés (format guide pédagogique, non conforme au gabarit d'épreuve C2) : « Nationalistes et
+  impérialistes » et « Colonie comptoir 1608-1663 ».
 
 ### Quoi de neuf (v1.52.0)
 
