@@ -30,9 +30,9 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 - Dégager des différences et des similitudes
 - Déterminer des changements et des continuités
 
-## État actuel — v1.54.0 (juin 2026)
+## État actuel — v1.55.0 (juin 2026)
 
-**212 questions** dans le catalogue, **520 points** au total, réparties sur les **8 périodes**.
+**214 questions** dans le catalogue, **536 points** au total, réparties sur les **8 périodes**.
 **7 périodes sur 8 sont à 7/7 OI.** Seule **P5** reste à 6/7 (voir « Points d'attention »).
 
 | Période | Année | Questions | OI couvertes | Points |
@@ -41,13 +41,23 @@ Catalogue de questions atomiques pour le programme **Histoire du Québec et du C
 | **P2** — 1608-1760 | 3e | 27 | 7 / 7 ✓ | 66 |
 | **P3** — 1760-1791 | 3e | 19 | 7 / 7 ✓ | 44 |
 | **P4** — 1791-1840 | 3e | 14 | 7 / 7 ✓ | 33 |
-| **P5** — 1840-1896 | 4e | 29 | **6 / 7** ⚠ | 65 |
+| **P5** — 1840-1896 | 4e | 31 | **6 / 7** ⚠ | 81 |
 | **P6** — 1896-1945 | 4e | 31 | 7 / 7 ✓ | 76 |
 | **P7** — 1945-1980 | 4e | 42 | 7 / 7 ✓ | 115 |
 | **P8** — 1980 à nos jours | 4e | 26 | 7 / 7 ✓ | 63 |
-| **TOTAL** | | **212** | **7 périodes / 8 à 7 / 7** | **520** |
+| **TOTAL** | | **214** | **7 périodes / 8 à 7 / 7** | **536** |
 
-Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **128 questions, 319 points**.
+Sous-total 3e secondaire : **84 questions, 201 points** · sous-total 4e secondaire : **130 questions, 335 points**.
+
+### Quoi de neuf (v1.55.0)
+
+**Deux examens C2 de la CSBF (P5 · La formation du régime fédéral canadien)** : le gouvernement
+responsable (Baldwin-Lafontaine, Version B) et la Politique nationale de Macdonald (Version A),
+avec leurs dossiers complets (12 documents, dont les portraits BAC, deux tableaux de données,
+la carte du réseau d'échange et l'organigramme de 1848). Le gabarit C2 couvre maintenant le
+format CSBF : **titre central du schéma** (`responseSpace.titre`), **zone de texte optionnelle**
+(le texte définitif se rédige dans le schéma; `lignesReponse` règle la hauteur des cases) et
+**remarques de correction** (`corrige.remarques`) affichées dans le guide.
 
 ### Quoi de neuf (v1.54.0)
 

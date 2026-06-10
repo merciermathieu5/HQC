@@ -1,4 +1,30 @@
 /* ============================================================
+   v1.55.0 — 2 ÉPREUVES C2 DE LA CSBF (P5 · La formation du régime fédéral canadien)
+   Examens C2 Versions A et B (Commission scolaire des Bois-Francs, 2017-2018), adaptés au
+   gabarit C2 de la plateforme :
+     • +2 questions (P5, formation-regime-federal) : q-gouvernement-responsable-c2-1 (Version B,
+       Baldwin-Lafontaine et le gouvernement responsable, numero 2 — ordre chronologique) et
+       q-politique-nationale-c2-1 (Version A, la Politique nationale de Macdonald, numero 3).
+       Tutoiement ; clés de correction encodées en alternatives « OU » (la clé CSBF ne renvoie
+       pas aux documents : pas de elementDocs/raisonDocs).
+     • +2 sections DOCS (12 documents : 6 textes, 2 texte-image avec portraits BAC de Lafontaine
+       et Macdonald, 2 tableaux de données, 1 carte MEE, 1 organigramme MÉESR) ; 4 images
+       extraites dans assets/img/. Les couvertures d'examen (incendie du parlement, caricature
+       National Policy) ne sont pas des documents numérotés : non intégrées.
+   GABARIT C2 ÉTENDU (app.js) pour couvrir le format CSBF :
+     • responseSpace.titre (optionnel) : encadré central au-dessus des deux volets
+       (« Transformation de la politique canadienne », « Intervention du gouvernement de
+       John A. Macdonald ») — rendu dans le cahier ET le guide.
+     • responseSpace.texte désormais OPTIONNEL : sans lui, pas de page « Texte de 150 mots »
+       (le texte définitif se rédige dans le schéma, démarche CSBF) ; responseSpace.lignesReponse
+       règle la hauteur des cases vides (défaut 4, ici 7).
+     • corrige.remarques (optionnel) : précisions de la clé de correction (« vaut 0 point,
+       car… ») rendues dans le guide sous le schéma corrigé, en italique gris.
+   Validation : 12/12 questions C2 (points, docs, images, aller-retour CMS canonique) ;
+   cahier P5 (mouvements migratoires + 2 CSBF + non-régression RÉCIT avec zone de texte) et
+   guide générés de bout en bout ; rendus PDF vérifiés (titre central, cases hautes, remarques).
+  ============================================================ */
+/* ============================================================
    v1.54.0 — DOSSIERS DOCUMENTAIRES DU LOT C2 (les 9 épreuves sont maintenant COMPLÈTES)
    Intégration des dossiers depuis les épreuves (cahiers de l'élève) fournies par l'enseignant :
      • +9 sections DOCS (49 documents : 30 textes, 18 images, 1 tableau de données) :
@@ -2188,6 +2214,66 @@ const DOCS = {
     { id: "vp-c2-d6", title: "Document 6 : Extrait d'un article de journal", layout: "text-only",
       text: "« Huit municipalités [du Saguenay–Lac-Saint-Jean] cherchent des citoyens qui ont à cœur la qualité de vie des personnes âgées [...]. [...] Le projet est simple : recruter des gens de tous âges qui seront outillés pour repérer les ainés vulnérables, et qui pourront ensuite les aider au mieux de leurs capacités. Cela peut vouloir dire les écouter, leur rendre service ou les référer vers les bonnes ressources. [...] Le projet est subventionné pour trois ans par le [gouvernement du Québec]. »",
       sources: ["Source : Dominique Gobeil, « Sensibiliser les citoyens au bien-être des aînés », Le Quotidien, 14 octobre 2017, en ligne sur Le Quotidien."] }
+  ],
+
+  // ===== P5 — Compétence 2 — Le gouvernement responsable (Baldwin et Lafontaine), Version B CSBF =====
+  // Source : Examen C2 - Version B, La formation du régime fédéral canadien (Commission scolaire
+  // des Bois-Francs, 2017-2018). 6 documents : 1 texte-image (1), 4 textes (2-5), 1 organigramme (6).
+  'gouvernement-responsable-c2-1': [
+    { id: "gr-c2-d1", title: "Document 1", layout: "text-image",
+      imageUrl: "assets/img/gouvernement-responsable-c2-1/doc1.png", imageWidthCm: 4,
+      text: "« Les Réformistes, dans les deux provinces, forment une majorité immense. […] [N]otre cause est commune. Il est de l'intérêt des Réformistes des deux provinces de se rencontrer […] dans un esprit de paix, d'union, d'amitié et de fraternité. » — Extrait du manifeste de Louis-Hippolyte Lafontaine, 1840.",
+      sources: ["Source de l'image : Bibliothèque et Archives Canada, C-005961.",
+                "Source du texte : Louise Charpentier et autres, Nouvelle histoire du Québec et du Canada, 2e édition, Anjou, Les Éditions CEC, 1990, p. 183."] },
+    { id: "gr-c2-d2", title: "Document 2", layout: "text-only",
+      text: "« Les Réformistes […] croient qu'ils pourraient mieux défendre leurs intérêts dans un régime où les élus détiendraient le pouvoir exécutif et limiteraient ceux du gouverneur […] »",
+      sources: ["Source : Alain Dalongeville (dir.), Présences : une histoire thématique du Québec, manuel de l'élève, histoire et éducation à la citoyenneté, 2e année du 2e cycle du secondaire, Anjou, Les Éditions CEC, 2008, vol. 2, p. 106."] },
+    { id: "gr-c2-d3", title: "Document 3", layout: "text-only",
+      text: "« […] les Réformistes […] continuent de militer* [pour obtenir un gouvernement qui rendra compte de ses actions au peuple] […] Ils veulent que les membres du Conseil exécutif soient normalement choisis parmi les parlementaires du parti majoritaire en Chambre [d'assemblée]. » — *Militer : lutter pour une cause.",
+      sources: ["Source : Assemblée nationale du Québec, « Gouvernement responsable », Encyclopédie du parlementarisme québécois, en ligne, page consultée le 29 octobre 2015."] },
+    { id: "gr-c2-d4", title: "Document 4", layout: "text-only",
+      text: "« L'Angleterre, qui vient d'adopter une politique commerciale défavorable à ses colonies, se doit de leur donner le pouvoir politique qui leur permettra de résoudre leurs problèmes. »",
+      sources: ["Source : Jean Hamelin et Jean Provencher, Brève histoire du Québec, nouvelle édition, Montréal, Boréal, 1997, p. 62."] },
+    { id: "gr-c2-d5", title: "Document 5", layout: "text-only",
+      text: "« […] le gouvernement britannique, confiant de sa supériorité industrielle et commerciale, abandonna […] [sa politique protectionniste] […] Une fois disparue la base économique de l'Empire, le contrôle politique rigoureux des colonies n'avait plus sa raison d'être. »",
+      sources: ["Source : Ramsay Cook et autres, Le Canada : étude moderne, avec la collaboration de John Ricker et John Saywell, traduit de l'anglais par Claude Romney, Toronto, Clarke, Irwin & Company Limited, 1981, p. 63."] },
+    { id: "gr-c2-d6", title: "Document 6 : Structure politique en 1848", layout: "image-only",
+      imageUrl: "assets/img/gouvernement-responsable-c2-1/doc6.png", imageWidthCm: 10,
+      sources: ["Source : MÉESR."] }
+  ],
+
+  // ===== P5 — Compétence 2 — La Politique nationale de Macdonald, Version A CSBF =====
+  // Source : Examen C2 - Version A, La formation du régime fédéral canadien (Commission scolaire
+  // des Bois-Francs, 2017-2018). 6 documents : 2 textes (1, 5), 2 tableaux de données (2, 4),
+  // 1 carte (3), 1 texte-image (6).
+  'politique-nationale-c2-1': [
+    { id: "pn-c2-d1", title: "Document 1", layout: "text-only",
+      text: "« Malgré l'énormité des dépenses que signifiait la construction [de ce réseau de transport] pour le jeune pays, Macdonald était convaincu qu'elle était indispensable à la survie du Canada. […] Ainsi qu'il l'expliquait en 1878 : “Jusqu'à l'achèvement de cette tâche énorme, notre Dominion n'est guère plus qu'un \"nom géographique\". […] Une fois [ce réseau] terminé, nous deviendrons un immense pays, uni par un florissant commerce interprovincial et par des intérêts communs.” »",
+      sources: ["Source : Ramsay Cook et autres, Le Canada : étude moderne, Toronto, Clarke, Irwin & Company Limited, 1981, p. 114 et 115."] },
+    { id: "pn-c2-d2", title: "Document 2 : Valeur de la production de quelques industries au Québec (en milliers de dollars)", layout: "data-table",
+      table: { headers: ["Domaine", "1871", "1881", "1891"],
+               rows: [["Alimentation", "18 650", "22 440", "34 700"],
+                      ["Vêtement", "5 850", "10 040", "13 600"],
+                      ["Bois", "11 690", "12 790", "18 500"],
+                      ["Pâtes et papiers", "540", "1 342", "2 300"],
+                      ["Fer et acier", "3 130", "4 220", "7 600"],
+                      ["Équipement de transport", "2 910", "3 600", "9 900"]] },
+      sources: ["Source : MEES, d'après Jean Hamelin et Yves Roby, Histoire économique du Québec, 1851-1896, Montréal, Fides, 1971, p. 267."] },
+    { id: "pn-c2-d3", title: "Document 3", layout: "image-only",
+      imageUrl: "assets/img/politique-nationale-c2-1/doc3.png", imageWidthCm: 12,
+      sources: ["Source : MEE."] },
+    { id: "pn-c2-d4", title: "Document 4 : Longueur totale des voies ferrées principales au Canada", layout: "data-table",
+      table: { headers: ["Année", "Nombre de kilomètres"],
+               rows: [["1865", "3 605"], ["1870", "4 212"], ["1875", "6 970"], ["1880", "11 037"], ["1885", "16 532"]] },
+      sources: ["Source : MEES, d'après Maurice Saint-Yves, Atlas de géographie historique du Canada, Boucherville, Éditions françaises, 1982, p. 85."] },
+    { id: "pn-c2-d5", title: "Document 5", layout: "text-only",
+      text: "« Plusieurs manufacturiers canadiens […] exercent des pressions sur le gouvernement afin que celui-ci [limite l'entrée de] produits étrangers. »",
+      sources: ["Source : Christophe Horguelin et autres, Fresques, manuel de l'élève, histoire et éducation à la citoyenneté, 2e année du 2e cycle du secondaire, Montréal, Graficor, 2008, t. 1, p. 197."] },
+    { id: "pn-c2-d6", title: "Document 6", layout: "text-image",
+      imageUrl: "assets/img/politique-nationale-c2-1/doc6.png", imageWidthCm: 4,
+      text: "« […] cette Chambre est d'opinion […] [qu'un] remaniement* […] du tarif favorisera et encouragera les intérêts agricoles, miniers, manufacturiers et autres du Canada […] » — John A. Macdonald, 1878. — *Remaniement : ajustement.",
+      sources: ["Source de l'image : Bibliothèque et Archives Canada, C-005327.",
+                "Source du texte : Jacques Paul Couturier, Un passé composé : le Canada de 1850 à nos jours, avec la collaboration de Wendy Johnston et de Réjean Ouellette, 2e édition, Moncton, Éditions d'Acadie, 2000, p. 82."] }
   ],
 
   'industrialisation-c1-1': [
@@ -8006,6 +8092,111 @@ window.DATA = {
             elementDocs: "Document 4",
             raison: ["Cette situation est causée par le départ massif des Canadiens français vers la Nouvelle-Angleterre, puisque les campagnes sont surpeuplées et perturbées par une crise agricole."],
             raisonDocs: "Document 1" }
+        ]
+      } },
+
+    // ===== C2 — P5 · Le gouvernement responsable (Baldwin et Lafontaine), Version B CSBF =====
+    // Source : Examen C2 - Version B, La formation du régime fédéral canadien (CSBF, 2017-2018),
+    // adapté au gabarit RÉCIT : tutoiement, titre central du schéma (responseSpace.titre), texte
+    // définitif rédigé DANS le schéma (pas de responseSpace.texte, cases hautes via lignesReponse),
+    // remarque de la clé de correction conservée (corrige.remarques). La clé CSBF ne renvoie pas
+    // aux documents : pas de elementDocs/raisonDocs.
+    { id: "q-gouvernement-responsable-c2-1", competence: 2, operation: null, numero: 2, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        contexte: "Les autorités britanniques adoptent l'Acte d'Union en 1840. Cette nouvelle constitution ne satisfait pas les Réformistes qui poursuivent leur lutte jusqu'en 1848.",
+        prompt: "Explique comment les autorités britanniques et les Réformistes transforment la politique canadienne dans les années 1840.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer un arrangement politique entre Baldwin et Lafontaine et expliquer pourquoi cela se produit;",
+            "indiquer un changement amené par les autorités britanniques dans l'organisation politique de la colonie en 1848 et expliquer pourquoi cela se produit."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Rédige ton texte définitif dans le schéma."],
+        responseSpace: {
+          type: "c2-schema",
+          titre: "Transformation de la politique canadienne",
+          lignesReponse: 7,
+          volets: [
+            { indique: "Indique un arrangement politique entre Baldwin et Lafontaine.",
+              raison: "Explique pourquoi cela se produit." },
+            { indique: "Indique un changement amené par les autorités britanniques dans l'organisation politique de la colonie.",
+              raison: "Explique pourquoi cela se produit." }
+          ]
+        }
+      },
+      reglettes: [{ id: "r-gr-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Premier élément de réponse", "Deuxième élément de réponse"] }],
+      documents: pickDocs('gouvernement-responsable-c2-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        volets: [
+          { element: ["Baldwin et Lafontaine forment une alliance (ou une coalition)."],
+            raison: ["car ils veulent obtenir le gouvernement responsable (ou la responsabilité ministérielle).",
+                     "car ils veulent limiter le pouvoir du gouverneur (ou du conseil exécutif).",
+                     "car ils espèrent constituer la majorité à la chambre d'assemblée.",
+                     "car ils veulent mieux défendre leurs intérêts (ou faire valoir leurs demandes ou faire valoir une demande en particulier)."] },
+          { element: ["Les autorités britanniques accordent le gouvernement responsable (ou la responsabilité ministérielle).",
+                      "Les autorités britanniques acceptent que le parti majoritaire à l'Assemblée forme le Conseil exécutif."],
+            raison: ["car elles souhaitent que le Canada-Uni détermine lui-même sa politique intérieure.",
+                     "car, en abandonnant leur politique protectionniste (ou en appliquant la politique de libre-échange), elles ont moins besoin de contrôler la colonie.",
+                     "car elles tiennent compte des demandes (ou des pressions) des Réformistes.",
+                     "car les Réformistes ont continué de militer jusqu'à ce qu'on réponde à leurs demandes."] }
+        ],
+        remarques: [
+          "Un fait tel que « Ils veulent montrer qu'ils travaillent ensemble » vaut 0 point, car il explique de manière inappropriée l'élément de réponse."
+        ]
+      } },
+
+    // ===== C2 — P5 · La Politique nationale de Macdonald, Version A CSBF =====
+    // Source : Examen C2 - Version A, La formation du régime fédéral canadien (CSBF, 2017-2018),
+    // adapté au gabarit RÉCIT (mêmes conventions que la Version B ci-dessus).
+    { id: "q-politique-nationale-c2-1", competence: 2, operation: null, numero: 3, annee: 4, niveau: 1,
+      realite_sociale_id: "formation-regime-federal",
+      questionBody: {
+        contexte: "Le contexte économique des années 1870 amène le gouvernement de John A. Macdonald à mettre en place la Politique nationale.",
+        prompt: "Explique les interventions du gouvernement de John A. Macdonald dans l'économie canadienne.",
+        sousConsignes: {
+          intro: "Dans ton texte, tu devras :",
+          items: [
+            "indiquer une mesure du gouvernement concernant les importations et expliquer dans quel but il met en place cette mesure;",
+            "indiquer une mesure concernant le réseau de transport et expliquer dans quel but il met en place cette mesure."
+          ]
+        },
+        bullets: ["Consulte le dossier documentaire (documents 1 à 6).", "Rédige ton texte définitif dans le schéma."],
+        responseSpace: {
+          type: "c2-schema",
+          titre: "Intervention du gouvernement de John A. Macdonald",
+          lignesReponse: 7,
+          volets: [
+            { indique: "Indique une mesure du gouvernement concernant les importations.",
+              raison: "Explique dans quel but il met en place cette mesure." },
+            { indique: "Indique une mesure du gouvernement concernant le réseau de transport.",
+              raison: "Explique dans quel but il met en place cette mesure." }
+          ]
+        }
+      },
+      reglettes: [{ id: "r-pn-c2-1", label: "Grille d'évaluation (8 points)",
+        ...R_C2_INTERPRETATION_8PT, rowLabels: ["Première mesure", "Deuxième mesure"] }],
+      documents: pickDocs('politique-nationale-c2-1', 1, 2, 3, 4, 5, 6),
+      corrige: {
+        volets: [
+          { element: ["Le gouvernement impose des droits de douane (ou augmente les tarifs douaniers) sur les produits étrangers (ou met en place une politique protectionniste)."],
+            raison: ["car il veut que les Canadiens achètent plus de produits locaux.",
+                     "car il veut créer un marché intérieur au Canada.",
+                     "car il veut empêcher les produits américains d'être vendus au Canada.",
+                     "car il veut stimuler l'industrialisation (ou l'essor de nouvelles industries)."] },
+          { element: ["Le gouvernement termine la construction du chemin de fer (ou du chemin de fer Canadien Pacifique ou du Transcontinental) (ou construit un chemin de fer de l'est à l'ouest du Canada).",
+                      "Le gouvernement finance la construction du chemin de fer."],
+            raison: ["car il veut intégrer l'Ouest canadien dans le marché intérieur.",
+                     "car il veut faciliter les échanges à l'intérieur du Canada (ou entre l'Est et l'Ouest) (ou que les produits soient rapidement acheminés d'une région à l'autre).",
+                     "car il veut stimuler l'industrialisation (ou l'essor de nouvelles industries).",
+                     "car il veut intensifier l'immigration (ou favoriser l'établissement d'immigrants)."] }
+        ],
+        remarques: [
+          "Des faits tels que « car il veut stimuler l'économie » ou « car il veut sortir le pays de la crise économique » valent 1 point, car ils expliquent de manière plus ou moins appropriée la première mesure.",
+          "Un élément de réponse tel que « La construction du Grand Tronc » est incorrect.",
+          "Un fait tel que « car il veut que le Canada devienne un immense pays » vaut 0 point, car il explique de manière inappropriée la deuxième mesure."
         ]
       } },
 

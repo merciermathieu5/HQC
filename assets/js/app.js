@@ -1686,7 +1686,8 @@
         if (docRef) kids.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 60 }, children: [new TextRun({ text: docRef, italics: true, size: 16, color: GRAY })] }));
         if (kids.length === 0) kids.push(new Paragraph({ children: [new TextRun({ text: "" })] }));
       } else {
-        for (let i = 0; i < 4; i++) kids.push(new Paragraph({ spacing: { before: 120, after: 40 }, children: [new TextRun({ text: "", size: 24 })] }));
+        const nLignes = rs.lignesReponse || 4;
+        for (let i = 0; i < nLignes; i++) kids.push(new Paragraph({ spacing: { before: 120, after: 40 }, children: [new TextRun({ text: "", size: 24 })] }));
       }
       return new TableCell({
         width: { size: wCol, type: WidthType.DXA }, borders: ALL,
@@ -1702,13 +1703,25 @@
     }
     const v0 = volets[0] || {}, v1 = volets[1] || {};
     const k0 = cor[0] || {}, k1 = cor[1] || {};
-    const rows = [
+    const rows = [];
+    // Titre central optionnel (rs.titre) : encadré au-dessus des deux volets, comme dans
+    // les schémas officiels (« Transformation de la politique canadienne », etc.)
+    if (rs.titre) {
+      rows.push(new TableRow({ children: [new TableCell({
+        width: { size: W, type: WidthType.DXA }, columnSpan: 3, borders: ALL,
+        shading: { fill: "DDD9D2", type: ShadingType.CLEAR }, verticalAlign: VerticalAlign.CENTER,
+        margins: { top: 90, bottom: 90, left: 120, right: 120 },
+        children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: rs.titre, bold: true, size: 21, color: DARK })] })]
+      })] }));
+      rows.push(new TableRow({ height: { value: 220, rule: HeightRule.ATLEAST }, children: [gapCell(wCol), gapCell(), gapCell(wCol)] }));
+    }
+    rows.push(
       new TableRow({ children: [labelCell(v0.indique), gapCell(), labelCell(v1.indique)] }),
       new TableRow({ children: [answerCell(k0.element, k0.elementDocs), gapCell(), answerCell(k1.element, k1.elementDocs)] }),
       new TableRow({ height: { value: 220, rule: HeightRule.ATLEAST }, children: [gapCell(wCol), gapCell(), gapCell(wCol)] }),
       new TableRow({ children: [labelCell(v0.raison), gapCell(), labelCell(v1.raison)] }),
       new TableRow({ children: [answerCell(k0.raison, k0.raisonDocs), gapCell(), answerCell(k1.raison, k1.raisonDocs)] })
-    ];
+    );
     return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [wCol, wGap, wCol], rows });
   }
 
@@ -1937,6 +1950,19 @@
     // chaîne ou tableau de paragraphes)
     if (rs && rs.type === 'c2-schema') {
       out.push(buildC2SchemaTable(d, rs, q.corrige, true));
+      // Remarques de correction optionnelles (corrige.remarques) : précisions de la clé sur
+      // les réponses valant 1 ou 0 point (format des clés CSBF)
+      const rem = q.corrige && q.corrige.remarques;
+      if (Array.isArray(rem) && rem.length) {
+        out.push(new Paragraph({
+          spacing: { before: 200, after: 60 },
+          children: [new TextRun({ text: rem.length > 1 ? "Remarques" : "Remarque", bold: true, size: 20, color: "6E685C" })]
+        }));
+        rem.forEach(r => out.push(new Paragraph({
+          spacing: { after: 60 }, indent: { left: 240 },
+          children: [new TextRun({ text: "— " + r, italics: true, size: 19, color: "6E685C" })]
+        })));
+      }
       const tx = q.corrige && q.corrige.texte;
       if (tx) {
         const C2_BOX_B = { style: BorderStyle.SINGLE, size: 6, color: "8B3A2E" };
@@ -3396,10 +3422,14 @@
           elements.push(buildC1SchemaTable(docx, body.responseSpace, null, false));
         } else if (body.responseSpace.type === 'c2-schema') {
           // Compétence 2 : schéma à 2 volets (élément + raison), puis zone de rédaction
-          // sur sa propre page (pagination du modèle officiel)
+          // sur sa propre page (pagination du modèle officiel RÉCIT). La zone de texte est
+          // OPTIONNELLE : certaines épreuves (ex. CSBF) font rédiger le texte définitif
+          // directement dans le schéma — dans ce cas, omettre responseSpace.texte.
           elements.push(buildC2SchemaTable(docx, body.responseSpace, null, false));
-          elements.push(new Paragraph({ children: [new PageBreak()] }));
-          elements.push(...buildC2TexteLines(docx, body.responseSpace.texte));
+          if (body.responseSpace.texte) {
+            elements.push(new Paragraph({ children: [new PageBreak()] }));
+            elements.push(...buildC2TexteLines(docx, body.responseSpace.texte));
+          }
         }
       }
 
