@@ -169,9 +169,20 @@
   .dp-foot{display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:12px 18px;
     border-top:1px solid var(--line); background:var(--panel)}
   @media(max-width:680px){.dp-thumb{flex-basis:44px;width:44px;height:44px}}
+
+  /* — Visibilité des blocs selon la compétence (classe du <body> : comp-oi / comp-c1 / comp-c2) — */
+  body.comp-c1 .oi-only, body.comp-c2 .oi-only{display:none !important}
+  body.comp-oi .c1-only, body.comp-oi .c2-only, body.comp-oi .cx-only{display:none !important}
+  body.comp-c1 .c2-only, body.comp-c2 .c1-only{display:none !important}
+  .autoBox{background:#f3efe6; border:1px dashed var(--line-strong); border-radius:var(--radius);
+    padding:11px 14px; font-size:13.5px; color:#5b5446}
+  .autoBullets{margin:6px 0 8px 18px; padding:0}
+  .autoBullets li{font-size:13px; color:#5b5446; margin:2px 0}
+  .voletCard{margin-top:10px}
+  .docRefIn{flex:0 0 150px !important}
 </style>
 </head>
-<body>
+<body class="comp-oi">
 
 <header class="top">
   <div class="wrap">
@@ -250,9 +261,17 @@
             </div></label>
           <input type="hidden" id="qnumero"><!-- num&eacute;ro g&eacute;r&eacute; automatiquement en coulisses -->
         </div>
+        <div class="row">
+          <label class="fld"><span class="lab">Type de question</span>
+            <select id="qcomp">
+              <option value="oi">Op&eacute;ration intellectuelle (questions courtes)</option>
+              <option value="c1">Comp&eacute;tence 1 &mdash; Caract&eacute;riser une p&eacute;riode (sch&eacute;ma /8)</option>
+              <option value="c2">Comp&eacute;tence 2 &mdash; Interpr&eacute;ter une r&eacute;alit&eacute; sociale (texte de 150 mots /8)</option>
+            </select></label>
+        </div>
         <div class="row c3">
           <label class="fld"><span class="lab">R&eacute;alit&eacute; sociale</span><select id="qrealite"></select></label>
-          <label class="fld"><span class="lab">Op&eacute;ration intellectuelle</span><select id="qop"></select></label>
+          <label class="fld oi-only"><span class="lab">Op&eacute;ration intellectuelle</span><select id="qop"></select></label>
           <label class="fld"><span class="lab">P&eacute;riode <span class="sub">(d&eacute;duite de la r&eacute;alit&eacute;)</span></span>
             <input type="text" id="qperiode" readonly tabindex="-1" style="background:#f3efe6;color:#5b5446"></label>
         </div>
@@ -262,8 +281,25 @@
     <section class="card">
       <div class="head"><span class="n">4</span><h2>&Eacute;nonc&eacute;</h2></div>
       <div class="body">
+        <label class="fld c2-only"><span class="lab">Mise en situation <span class="sub">(facultatif &mdash; court paragraphe affich&eacute; avant la consigne)</span></span><textarea id="qcontexte"></textarea></label>
         <label class="fld"><span class="lab">Consigne</span><textarea id="qprompt"></textarea></label>
-        <details class="preview">
+        <div class="c2-only">
+          <label class="fld" style="margin-bottom:7px"><span class="lab">&laquo;&nbsp;Dans ton texte, tu devras :&nbsp;&raquo; <span class="sub">(les deux attentes du texte &mdash; l&rsquo;intro est ajout&eacute;e automatiquement)</span></span></label>
+          <div id="sousConsignes"></div>
+          <button class="btn-add" id="addSousConsigne" type="button">&#65291; Ajouter une attente</button>
+        </div>
+        <div class="cx-only" style="margin-top:14px">
+          <label class="fld" style="margin-bottom:4px"><span class="lab">Consignes (puces) <span class="sub">&mdash; g&eacute;n&eacute;r&eacute;es automatiquement d&rsquo;apr&egrave;s les documents</span></span></label>
+          <div class="autoBox">
+            <ul class="autoBullets" id="autoBulletsPreview"></ul>
+            <label class="checkline" style="margin:0"><input type="checkbox" id="bulletsCustom"> Personnaliser les consignes</label>
+          </div>
+          <div id="bulletsCustomWrap" class="hide" style="margin-top:8px">
+            <div id="cxBullets"></div>
+            <button class="btn-add" id="addCxBullet" type="button">&#65291; Ajouter une consigne</button>
+          </div>
+        </div>
+        <details class="preview oi-only">
           <summary>Options avanc&eacute;es : puces &amp; mots en gras <span class="muted">(surtout pour la causalit&eacute;)</span></summary>
           <div style="padding-top:12px">
             <label class="fld" style="margin-bottom:7px"><span class="lab">Puces <span class="sub">(&eacute;l&eacute;ments &agrave; relier)</span></span></label>
@@ -281,7 +317,7 @@
     <section class="card">
       <div class="head"><span class="n">5</span><h2>Espace de r&eacute;ponse</h2></div>
       <div class="body">
-        <label class="fld" style="max-width:380px"><span class="lab">Type de r&eacute;ponse</span>
+        <label class="fld oi-only" style="max-width:380px"><span class="lab">Type de r&eacute;ponse</span>
           <select id="rsType">
             <option value="lines">Lignes de r&eacute;ponse</option>
             <option value="labeled-list">Liste &agrave; libell&eacute;s (lettres)</option>
@@ -291,7 +327,43 @@
             <option value="category-buckets">Classer en cat&eacute;gories</option>
             <option value="timeline-segments">P&eacute;riodes sur une ligne du temps</option>
           </select></label>
-        <div id="rsFields"></div>
+        <div id="rsFields" class="oi-only"></div>
+
+        <div id="c1Schema" class="c1-only">
+          <p class="note" style="margin-top:0">Sch&eacute;ma invariant des &eacute;preuves C1 : un objet de description et deux mises en relation (1&nbsp;&eacute;l&eacute;ment central + 2&nbsp;satellites chacune). Saisis uniquement les libell&eacute;s des bulles &mdash; tout le reste est g&eacute;n&eacute;r&eacute; automatiquement.</p>
+          <label class="fld"><span class="lab">Bulle &laquo;&nbsp;objet de la description&nbsp;&raquo;</span><input type="text" id="c1Objet" placeholder="ex. Famille linguistique"></label>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Premi&egrave;re mise en relation</span></div>
+            <label class="fld"><span class="lab">&Eacute;l&eacute;ment central</span><input type="text" id="c1r1c" placeholder="ex. Mode de vie"></label>
+            <div class="row c2">
+              <label class="fld"><span class="lab">Satellite 1</span><input type="text" id="c1r1s1"></label>
+              <label class="fld"><span class="lab">Satellite 2</span><input type="text" id="c1r1s2"></label>
+            </div>
+          </div>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Deuxi&egrave;me mise en relation</span></div>
+            <label class="fld"><span class="lab">&Eacute;l&eacute;ment central</span><input type="text" id="c1r2c"></label>
+            <div class="row c2">
+              <label class="fld"><span class="lab">Satellite 1</span><input type="text" id="c1r2s1"></label>
+              <label class="fld"><span class="lab">Satellite 2</span><input type="text" id="c1r2s2"></label>
+            </div>
+          </div>
+        </div>
+
+        <div id="c2Schema" class="c2-only">
+          <p class="note" style="margin-top:0">Sch&eacute;ma invariant des &eacute;preuves C2 : deux volets (&eacute;l&eacute;ment de r&eacute;ponse + explication). La page &laquo;&nbsp;Texte de 150 mots&nbsp;&raquo; et la note &laquo;&nbsp;seul le texte sera corrig&eacute;&nbsp;&raquo; sont ajout&eacute;es automatiquement.</p>
+          <label class="fld"><span class="lab">Titre central du sch&eacute;ma <span class="sub">(facultatif &mdash; encadr&eacute; au-dessus des deux volets)</span></span><input type="text" id="c2Titre" placeholder="ex. La r&eacute;cession des ann&eacute;es 1980"></label>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Volet 1</span></div>
+            <label class="fld"><span class="lab">Consigne &laquo;&nbsp;Indique&hellip;&nbsp;&raquo;</span><input type="text" id="c2v1i" placeholder="ex. Indique un effet de la r&eacute;cession sur les emplois."></label>
+            <label class="fld"><span class="lab">Consigne &laquo;&nbsp;Explique&hellip;&nbsp;&raquo;</span><input type="text" id="c2v1r" placeholder="ex. Explique pourquoi cela se produit."></label>
+          </div>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Volet 2</span></div>
+            <label class="fld"><span class="lab">Consigne &laquo;&nbsp;Indique&hellip;&nbsp;&raquo;</span><input type="text" id="c2v2i"></label>
+            <label class="fld"><span class="lab">Consigne &laquo;&nbsp;Explique&hellip;&nbsp;&raquo;</span><input type="text" id="c2v2r"></label>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -299,8 +371,15 @@
       <div class="head"><span class="n">6</span><h2>R&eacute;glettes d'&eacute;valuation</h2>
         <span class="hint">choisis une r&eacute;glette pr&eacute;m&eacute;moris&eacute;e pour aller vite</span></div>
       <div class="body">
-        <div id="reglettes"></div>
-        <button class="btn-add" id="addReglette" type="button">&#65291; Ajouter une r&eacute;glette</button>
+        <div class="cx-only">
+          <div class="autoBox" id="autoGridInfo"></div>
+          <div class="c2-only row c2" style="margin-top:12px">
+            <label class="fld" style="margin:0"><span class="lab">Libell&eacute; de la 1<sup>re</sup> ligne de la grille</span><input type="text" id="c2Row1" value="Premier &eacute;l&eacute;ment de r&eacute;ponse"></label>
+            <label class="fld" style="margin:0"><span class="lab">Libell&eacute; de la 2<sup>e</sup> ligne</span><input type="text" id="c2Row2" value="Deuxi&egrave;me &eacute;l&eacute;ment de r&eacute;ponse"></label>
+          </div>
+        </div>
+        <div id="reglettes" class="oi-only"></div>
+        <button class="btn-add oi-only" id="addReglette" type="button">&#65291; Ajouter une r&eacute;glette</button>
       </div>
     </section>
 
@@ -333,7 +412,7 @@
     <section class="card">
       <div class="head"><span class="n">8</span><h2>Corrig&eacute;</h2></div>
       <div class="body">
-        <label class="fld" style="max-width:380px"><span class="lab">Forme du corrig&eacute;</span>
+        <label class="fld oi-only" style="max-width:380px"><span class="lab">Forme du corrig&eacute;</span>
           <select id="corType">
             <option value="texte">Texte (r&eacute;ponse r&eacute;dig&eacute;e)</option>
             <option value="lettres">Lettres / positions</option>
@@ -341,7 +420,63 @@
             <option value="cases">Cases coch&eacute;es (tableau)</option>
             <option value="buckets">Classement par cat&eacute;gories</option>
           </select></label>
-        <div id="corFields"></div>
+        <div id="corFields" class="oi-only"></div>
+
+        <div id="c1Cor" class="c1-only">
+          <p class="note" style="margin-top:0">Pour chaque bulle du sch&eacute;ma : la r&eacute;ponse attendue et, s&rsquo;il y a lieu, le document de r&eacute;f&eacute;rence (ex.&nbsp;&laquo;&nbsp;Document 4&nbsp;&raquo; &mdash; suggestions tir&eacute;es de la section&nbsp;7).</p>
+          <label class="fld"><span class="lab">Objet de la description &mdash; <span class="c1hint" data-for="c1Objet"></span></span><input type="text" id="c1aObjet" placeholder="ex. Iroquoienne (ou Les Iroquoiens)"></label>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Premi&egrave;re mise en relation</span></div>
+            <label class="fld"><span class="lab">&Eacute;l&eacute;ment central &mdash; <span class="c1hint" data-for="c1r1c"></span></span></label>
+            <div class="listrow"><input type="text" id="c1ar1c" placeholder="r&eacute;ponse attendue"><input type="text" id="c1ar1cd" class="docRefIn" list="docRefList" placeholder="Document n&deg;"></div>
+            <label class="fld"><span class="lab">Satellite 1 &mdash; <span class="c1hint" data-for="c1r1s1"></span></span></label>
+            <div class="listrow"><input type="text" id="c1ar1s1" placeholder="r&eacute;ponse attendue"><input type="text" id="c1ar1s1d" class="docRefIn" list="docRefList" placeholder="Document n&deg;"></div>
+            <label class="fld"><span class="lab">Satellite 2 &mdash; <span class="c1hint" data-for="c1r1s2"></span></span></label>
+            <div class="listrow"><input type="text" id="c1ar1s2" placeholder="r&eacute;ponse attendue"><input type="text" id="c1ar1s2d" class="docRefIn" list="docRefList" placeholder="Document n&deg;"></div>
+          </div>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Deuxi&egrave;me mise en relation</span></div>
+            <label class="fld"><span class="lab">&Eacute;l&eacute;ment central &mdash; <span class="c1hint" data-for="c1r2c"></span></span></label>
+            <div class="listrow"><input type="text" id="c1ar2c" placeholder="r&eacute;ponse attendue"><input type="text" id="c1ar2cd" class="docRefIn" list="docRefList" placeholder="Document n&deg;"></div>
+            <label class="fld"><span class="lab">Satellite 1 &mdash; <span class="c1hint" data-for="c1r2s1"></span></span></label>
+            <div class="listrow"><input type="text" id="c1ar2s1" placeholder="r&eacute;ponse attendue"><input type="text" id="c1ar2s1d" class="docRefIn" list="docRefList" placeholder="Document n&deg;"></div>
+            <label class="fld"><span class="lab">Satellite 2 &mdash; <span class="c1hint" data-for="c1r2s2"></span></span></label>
+            <div class="listrow"><input type="text" id="c1ar2s2" placeholder="r&eacute;ponse attendue"><input type="text" id="c1ar2s2d" class="docRefIn" list="docRefList" placeholder="Document n&deg;"></div>
+          </div>
+        </div>
+
+        <div id="c2Cor" class="c2-only">
+          <p class="note" style="margin-top:0">Pour chaque volet : les r&eacute;ponses accept&eacute;es (alternatives &laquo;&nbsp;OU&nbsp;&raquo;, une par ligne) et, s&rsquo;il y a lieu, les documents de r&eacute;f&eacute;rence.</p>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Volet 1</span></div>
+            <label class="fld"><span class="lab">&Eacute;l&eacute;ments de r&eacute;ponse accept&eacute;s</span></label>
+            <div id="c2e1"></div><button class="btn-add addC2" data-target="c2e1" data-ph="r&eacute;ponse accept&eacute;e" type="button">&#65291; Alternative</button>
+            <label class="fld" style="margin-top:8px"><span class="lab">Document(s) de r&eacute;f&eacute;rence <span class="sub">(facultatif)</span></span><input type="text" id="c2e1d" list="docRefList" placeholder="ex. Document 5"></label>
+            <label class="fld" style="margin-top:8px"><span class="lab">Explications accept&eacute;es</span></label>
+            <div id="c2r1"></div><button class="btn-add addC2" data-target="c2r1" data-ph="explication accept&eacute;e" type="button">&#65291; Alternative</button>
+            <label class="fld" style="margin-top:8px"><span class="lab">Document(s) de r&eacute;f&eacute;rence <span class="sub">(facultatif)</span></span><input type="text" id="c2r1d" list="docRefList" placeholder="ex. Documents 2 et 4"></label>
+          </div>
+          <div class="sub voletCard">
+            <div class="subhead"><span class="tag">Volet 2</span></div>
+            <label class="fld"><span class="lab">&Eacute;l&eacute;ments de r&eacute;ponse accept&eacute;s</span></label>
+            <div id="c2e2"></div><button class="btn-add addC2" data-target="c2e2" data-ph="r&eacute;ponse accept&eacute;e" type="button">&#65291; Alternative</button>
+            <label class="fld" style="margin-top:8px"><span class="lab">Document(s) de r&eacute;f&eacute;rence <span class="sub">(facultatif)</span></span><input type="text" id="c2e2d" list="docRefList" placeholder="ex. Document 3"></label>
+            <label class="fld" style="margin-top:8px"><span class="lab">Explications accept&eacute;es</span></label>
+            <div id="c2r2"></div><button class="btn-add addC2" data-target="c2r2" data-ph="explication accept&eacute;e" type="button">&#65291; Alternative</button>
+            <label class="fld" style="margin-top:8px"><span class="lab">Document(s) de r&eacute;f&eacute;rence <span class="sub">(facultatif)</span></span><input type="text" id="c2r2d" list="docRefList" placeholder="ex. Documents 1 et 6"></label>
+          </div>
+          <details class="preview" style="margin-top:12px">
+            <summary>Remarques de correction &amp; texte mod&egrave;le <span class="muted">(facultatif)</span></summary>
+            <div style="padding-top:12px">
+              <label class="fld" style="margin-bottom:7px"><span class="lab">Remarques de la cl&eacute; <span class="sub">(rendues en italique gris dans le guide)</span></span></label>
+              <div id="c2Remarques"></div>
+              <button class="btn-add" id="addC2Rem" type="button">&#65291; Remarque</button>
+              <label class="fld" style="margin-top:14px"><span class="lab">Texte mod&egrave;le &mdash; volet 1</span><textarea id="c2txt1"></textarea></label>
+              <label class="fld"><span class="lab">Texte mod&egrave;le &mdash; volet 2</span><textarea id="c2txt2"></textarea></label>
+            </div>
+          </details>
+        </div>
+        <datalist id="docRefList"></datalist>
       </div>
     </section>
 
@@ -418,6 +553,104 @@
   }
   let numeroTouched = false;
 
+  // ===================== Compétences 1 & 2 : invariants =====================
+  // Grille C1 invariante (/8) — copie conforme de R_C1_DESCRIPTION_8PT (data.js).
+  const C1_GRID = {
+    type: "c1-grid",
+    opLabel: "Caractériser une période de l'histoire du Québec et du Canada",
+    critere: "Critère : représentation cohérente d'une période de l'histoire du Québec et du Canada",
+    maxPoints: 8,
+    objet: {
+      title: "Indiquer l'objet de la description",
+      levels: [
+        { condition: "L'élève indique correctement l'objet de la description.", points: "2 points" },
+        { condition: "L'élève indique plus ou moins correctement l'objet de la description.", points: "1 point" },
+        { condition: "L'élève indique incorrectement ou n'indique pas l'objet de la description.", points: "0 point" }
+      ]
+    },
+    relationTitle: "Préciser les éléments mis en relation",
+    relationLabels: ["Première mise en relation", "Deuxième mise en relation"],
+    relationMatrix: [
+      { central: "L'élève précise correctement l'élément central",
+        branches: [
+          { condition: "et précise les deux autres éléments.", points: "3 points" },
+          { condition: "et précise l'un des deux autres éléments.", points: "2 points" },
+          { condition: "mais ne précise pas les deux autres éléments.", points: "1 point" }
+        ] },
+      { central: "L'élève précise plus ou moins correctement l'élément central",
+        branches: [
+          { condition: "et précise les deux autres éléments.", points: "2 points" },
+          { condition: "et précise l'un des deux autres éléments.", points: "1 point" },
+          { condition: "mais ne précise pas les deux autres éléments.", points: "0 point" }
+        ] },
+      { central: "L'élève précise incorrectement ou ne précise pas l'élément central",
+        branches: [
+          { condition: "mais précise les deux autres éléments.", points: "1 point" },
+          { condition: "mais précise l'un des deux autres éléments ou n'en précise pas.", points: "0 point" }
+        ] }
+    ]
+  };
+  // Grille C2 invariante (/8) — copie conforme de R_C2_INTERPRETATION_8PT (data.js) ; rowLabels personnalisables.
+  const C2_GRID = {
+    type: "c2-grid",
+    opLabel: "Interpréter une réalité sociale",
+    critere: "Critère : rigueur de l'interprétation",
+    maxPoints: 8,
+    rowLabels: ["Premier élément de réponse", "Deuxième élément de réponse"],
+    colTitles: ["Indiquer les éléments de réponse", "Appuyer les éléments de réponse par des faits"],
+    indiquer: {
+      label: "L'élève indique l'élément de réponse",
+      levels: [
+        { condition: "correctement", points: "2 points" },
+        { condition: "plus ou moins correctement", points: "1 point" }
+      ],
+      zero: { label: "L'élève indique incorrectement ou n'indique pas l'élément de réponse.", points: "0 point" }
+    },
+    appuyer: {
+      label: "L'élève appuie l'élément de réponse de manière",
+      levels: [
+        { condition: "appropriée.", points: "2 points" },
+        { condition: "plus ou moins appropriée.", points: "1 point" },
+        { condition: "inappropriée.", points: "0 point" }
+      ],
+      faits: {
+        label: "L'élève présente des faits",
+        levels: [
+          { condition: "exacts et pertinents.", points: "1 point" },
+          { condition: "inexacts.", points: "0 point" }
+        ]
+      }
+    }
+  };
+  const C2_NOTE = "Note : seul le texte sera corrigé.";
+  const C2_SC_INTRO = "Dans ton texte, tu devras :";
+  let comp = 'oi';   // 'oi' | 'c1' | 'c2'
+  let cxRegId = null; // id de la réglette d'origine (préservé en édition C1/C2)
+  function setComp(c, opts){
+    comp = (c==='c1'||c==='c2') ? c : 'oi';
+    $('#qcomp').value = comp;
+    document.body.className = 'comp-'+comp;
+    const gi = $('#autoGridInfo');
+    if(gi) gi.innerHTML = comp==='c1'
+      ? '<strong>R\u00e9glette g\u00e9n\u00e9r\u00e9e automatiquement</strong> : grille invariante \u00ab\u00a0Caract\u00e9riser une p\u00e9riode\u00a0\u00bb sur 8 points (objet /2 + deux mises en relation /3). Rien \u00e0 saisir ici.'
+      : comp==='c2'
+      ? '<strong>Grille g\u00e9n\u00e9r\u00e9e automatiquement</strong> : \u00ab\u00a0Interpr\u00e9ter une r\u00e9alit\u00e9 sociale\u00a0\u00bb sur 8 points (2 \u00e9l\u00e9ments \u00d7 4 points). Seuls les libell\u00e9s des deux lignes peuvent \u00eatre ajust\u00e9s ci-dessous (ex. \u00ab\u00a0Premi\u00e8re cause\u00a0\u00bb, \u00ab\u00a0Premier changement\u00a0\u00bb\u2026).'
+      : '';
+    if(!(opts && opts.keepId) && store.mode==='new'){ numeroTouched=false; applyAutoNumero(); applyAutoId(); }
+    ensureCxSeeds();
+    updateAutoBullets(); refreshDocRefList(); refreshPreview();
+  }
+  // amorce une rangée vide dans les listes C2 encore vides (sans toucher au reste du formulaire)
+  function ensureCxSeeds(){
+    if(comp!=='c2') return;
+    if(!$('#sousConsignes').querySelector('.listrow')) stringListEditor($('#sousConsignes'), ['',''], 'ex. indiquer \u2026 et expliquer \u2026;');
+    [1,2].forEach(i=>{
+      if(!$('#c2e'+i).querySelector('.listrow')) stringListEditor($('#c2e'+i), [], 'r\u00e9ponse accept\u00e9e');
+      if(!$('#c2r'+i).querySelector('.listrow')) stringListEditor($('#c2r'+i), [], 'explication accept\u00e9e');
+    });
+    if(!$('#c2Remarques').querySelector('.listrow')) stringListEditor($('#c2Remarques'), [], 'remarque de correction');
+  }
+
   // ----- Génération automatique de l'identifiant -----
   const OP_SLUG = {
     '\u00c9tablir des faits':'faits',
@@ -445,8 +678,18 @@
     return op.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,18)||'question';
   }
   function allIds(){ const s=new Set(store.file.questions.map(q=>q.id)); (DATA.questions||[]).forEach(q=>s.add(q.id)); return s; }
-  function genId(op){ const rs=slugForReal($('#qrealite').value), slug=slugForOp(op), ids=allIds(); const base='q-'+rs+'-'+slug; let n=1; while(ids.has(base+'-'+n)) n++; return base+'-'+n; }
-  function suggestNumero(realite){ let mx=0; store.file.questions.forEach(q=>{ if(q.realite_sociale_id===realite && (+q.numero||0)>mx) mx=+q.numero; }); return mx+1; }
+  function genId(op){ const rs=slugForReal($('#qrealite').value), slug=(comp!=='oi')?comp:slugForOp(op), ids=allIds(); const base='q-'+rs+'-'+slug; let n=1; while(ids.has(base+'-'+n)) n++; return base+'-'+n; }
+  function suggestNumero(realite){
+    const want = comp==='c1' ? 1 : comp==='c2' ? 2 : 0;   // 0 = OI
+    let mx=0;
+    const scan = q=>{ if(q.realite_sociale_id!==realite) return;
+      const qc = q.competence===1 ? 1 : q.competence===2 ? 2 : 0;
+      if(qc!==want) return;
+      if((+q.numero||0)>mx) mx=+q.numero; };
+    store.file.questions.forEach(scan);
+    if(want) (DATA.questions||[]).forEach(scan);   // C1/C2 : numéro unique par réalité ET compétence, catalogue de base inclus
+    return mx+1;
+  }
   function applyAutoId(){ if(store.mode!=='new') return; if($('#qidCustom').checked) return; $('#qid').value=genId($('#qop').value); updateImgFolder(); refreshPreview(); }
   function imgFolderFromId(){ return ($('#qid').value||'').trim().replace(/^q-/,''); }   // dossier images = identifiant sans le préfixe q-
   function updateImgFolder(){ const el=$('#imgFolder'); if(el) el.value=imgFolderFromId(); }
@@ -464,6 +707,7 @@
     applyAutoNumero(); applyAutoId(); updatePeriode();
   }
   // câblage (les éléments existent : le script est en fin de body)
+  $('#qcomp').addEventListener('change', ()=>setComp($('#qcomp').value));
   $('#qop').addEventListener('change', ()=>{ applyAutoId(); refreshRegPresets(); refreshPreview(); });
   $('#qrealite').addEventListener('change', ()=>{ applyAutoNumero(); applyAutoId(); updatePeriode(); refreshPreview(); });
   $('#qnumero').addEventListener('input', ()=>{ numeroTouched=true; refreshPreview(); });
@@ -492,11 +736,16 @@
   fillSelect($('#qop'), DATA.operations_intellectuelles);
   fillRealiteSelect($('#qrealite'));
   fillSelect($('#fOp'), DATA.operations_intellectuelles, {blank:'Toutes'});
+  (function(){ const sel=$('#fOp');
+    [['__c1','C1 \u2014 Caract\u00e9riser une p\u00e9riode'],['__c2','C2 \u2014 Interpr\u00e9ter une r\u00e9alit\u00e9 sociale']].forEach(p=>{
+      const o=document.createElement('option'); o.value=p[0]; o.textContent=p[1]; sel.appendChild(o); });
+  })();
   fillRealiteSelect($('#fRealite'), 'Toutes');
 
   (function buildPresets(){
     const seen=new Map();
     (DATA.questions||[]).forEach(q=>(q.reglettes||[]).forEach(r=>{
+      if(!r || (r.type!=='simple' && r.type!=='complex')) return;   // les grilles c1-grid / c2-grid sont gérées à part (invariantes)
       const c=Object.assign({},r); delete c.id; delete c.label;
       const key=JSON.stringify(c);
       if(!seen.has(key)) seen.set(key,{rest:c,count:0});
@@ -511,7 +760,7 @@
     }).sort((a,b)=> String(a.group).localeCompare(String(b.group)) || b.count-a.count);
     presets.forEach((p,k)=>{ p.i=k; });   // réindexer APRÈS le tri : p.i == position réelle dans le tableau
     presetBySig={}; presets.forEach(p=>{ const s=regSig(p.reglette); if(!(s in presetBySig)) presetBySig[s]=p.i; });
-    opRegGroups={}; (DATA.questions||[]).forEach(q=>{ const op=q.operation||''; (q.reglettes||[]).forEach(r=>{ (opRegGroups[op]=opRegGroups[op]||{})[r.opLabel||'']=1; }); });
+    opRegGroups={}; (DATA.questions||[]).forEach(q=>{ const op=q.operation||''; (q.reglettes||[]).forEach(r=>{ if(!r||(r.type!=='simple'&&r.type!=='complex')) return; (opRegGroups[op]=opRegGroups[op]||{})[r.opLabel||'']=1; }); });
   })();
   function presetSelectHTML(op){
     const allow = (op && opRegGroups[op]) ? opRegGroups[op] : null;   // filtre selon les réglettes réellement utilisées avec cette opération
@@ -631,13 +880,19 @@
     const fn=$('#fNiveau').value, fo=$('#fOp').value, fr=$('#fRealite').value, fs=$('#fSearch').value.toLowerCase().trim();
     const list=$('#qlist'); list.innerHTML='';
     store.file.questions.forEach((q,idx)=>{
+      const cat = q.competence===1 ? 'c1' : q.competence===2 ? 'c2' : 'oi';
+      const opLabel = cat==='c1' ? 'C1 \u00b7 Caract\u00e9riser une p\u00e9riode' : cat==='c2' ? 'C2 \u00b7 Interpr\u00e9ter' : (q.operation||'');
       if(fn && String(q.annee)!==fn) return;
-      if(fo && q.operation!==fo) return;
+      if(fo){
+        if(fo==='__c1'){ if(cat!=='c1') return; }
+        else if(fo==='__c2'){ if(cat!=='c2') return; }
+        else if(cat!=='oi' || q.operation!==fo) return;
+      }
       if(fr && q.realite_sociale_id!==fr) return;
       const prompt=(q.questionBody&&q.questionBody.prompt)||'';
-      if(fs && (q.id+' '+prompt+' '+q.operation).toLowerCase().indexOf(fs)<0) return;
+      if(fs && (q.id+' '+prompt+' '+opLabel).toLowerCase().indexOf(fs)<0) return;
       const it=document.createElement('div'); it.className='qitem'+(idx===store.currentIndex?' sel':'');
-      it.innerHTML='<span class="qid">'+esc(q.id)+'</span><span class="qtx">'+esc(prompt)+'</span><span class="qmeta">'+esc(q.operation)+' · #'+q.numero+(q.annee?' · '+q.annee+'e sec':'')+'</span>';
+      it.innerHTML='<span class="qid">'+esc(q.id)+'</span><span class="qtx">'+esc(prompt)+'</span><span class="qmeta">'+esc(opLabel)+' · #'+q.numero+(q.annee?' · '+q.annee+'e sec':'')+'</span>';
       it.onclick=()=>{ store.currentIndex=idx; loadQuestion(store.file.questions[idx]); renderQList(); $('#btnDuplicate').disabled=false; $('#btnDelete').disabled=false; };
       list.appendChild(it);
     });
@@ -646,8 +901,8 @@
   $('#btnDuplicate').onclick=()=>{
     if(store.currentIndex<0) return;
     const copy=JSON.parse(JSON.stringify(store.file.questions[store.currentIndex]));
-    setMode('new'); loadQuestion(copy);
-    $('#qidCustom').checked=false; $('#qid').readOnly=true; applyAutoId();
+    setMode('new'); loadQuestion(copy); cxRegId=null;
+    $('#qidCustom').checked=false; $('#qid').readOnly=true; numeroTouched=false; applyAutoNumero(); applyAutoId();
     toast('Copie charg\u00e9e — nouvel identifiant attribu\u00e9. Publie pour l\u2019ajouter.','ok');
   };
   $('#btnDelete').onclick=async()=>{
@@ -998,6 +1253,7 @@
   function addDocCard(state){
     state=state||{};
     const card=document.createElement('div'); card.className='sub doc';
+    card.__orig = JSON.parse(JSON.stringify(state));
     const parsed=parseDocTitle(state.title); card.dataset.titleSep=parsed.sep||' : ';
     card.innerHTML='<div class="subhead"><span class="tag">Document</span>'+
       '<select class="docLayout" style="width:auto"><option value="text-only">Texte seul</option><option value="image-only">Image seule</option><option value="text-image">Texte + image</option></select>'+
@@ -1011,23 +1267,33 @@
         '<label class="fld" style="margin:0"><span class="lab">Chemin de l\'image</span><input type="text" class="docImg" value="'+esc(state.imageUrl||'')+'" placeholder="assets/img/…/img000.png"></label>'+
         '<label class="fld" style="margin:0"><span class="lab">Largeur (cm)</span><input type="number" step="0.5" class="docW" value="'+(state.imageWidthCm!=null?state.imageWidthCm:'')+'"></label></div>'+
       '<label class="checkline docPairWrap" style="margin:2px 0 0"><input type="checkbox" class="docPair"'+(state.pair?' checked':'')+'> Image jumel\u00e9e <span class="sub">(affich\u00e9e c\u00f4te \u00e0 c\u00f4te avec la suivante)</span></label>'+
+      '<label class="checkline c1-only" style="margin:2px 0 0"><input type="checkbox" class="docTrap"> Document pi\u00e8ge <span class="sub">(\u00e0 discriminer : ne se rapporte pas \u00e0 la p\u00e9riode ou au territoire \u2014 ajuste les consignes automatiquement)</span></label>'+
       '<label class="fld" style="margin-top:4px"><span class="lab">Sources</span></label><div class="docSources"></div><button class="btn-add addSrc" type="button">&#65291; Source</button>';
     card.querySelector('.docNum').value = parsed.num || nextDocNumber();
     card.querySelector('.docDetail').value = parsed.detail || '';
+    if(state.layout && !['text-only','image-only','text-image'].includes(state.layout)){
+      const opt=document.createElement('option'); opt.value=state.layout;
+      opt.textContent=(state.layout==='data-table'?'Tableau de donn\u00e9es':state.layout)+' (structure conserv\u00e9e)';
+      card.querySelector('.docLayout').appendChild(opt);
+    }
     card.querySelector('.docLayout').value=state.layout||'text-only';
-    card.querySelector('.x').onclick=()=>{card.remove();refreshPreview();};
+    card.querySelector('.x').onclick=()=>{card.remove();refreshDocRefList();updateAutoBullets();refreshPreview();};
     card.querySelector('.docLayout').onchange=()=>{toggleDocFields(card);refreshPreview();};
     card.querySelectorAll('input,textarea').forEach(i=>i.oninput=refreshPreview);
+    const trap=card.querySelector('.docTrap'); if(trap) trap.onchange=()=>{ updateAutoBullets(); refreshPreview(); };
+    card.querySelector('.docNum').addEventListener('input',()=>{ refreshDocRefList(); updateAutoBullets(); });
     const src=card.querySelector('.docSources');
     (state.sources&&state.sources.length?state.sources:['']).forEach(s=>addStringRow(src,s,'Source : …'));
     card.querySelector('.addSrc').onclick=()=>addStringRow(src,'','Source : …');
     $('#documents').appendChild(card); toggleDocFields(card);
+    refreshDocRefList(); updateAutoBullets();
   }
   function toggleDocFields(card){
     const l=card.querySelector('.docLayout').value;
-    card.querySelector('.docTextWrap').classList.toggle('hide', l==='image-only');
-    card.querySelector('.docImgWrap').classList.toggle('hide', l==='text-only');
-    const pw=card.querySelector('.docPairWrap'); if(pw) pw.classList.toggle('hide', l==='text-only');
+    const known=['text-only','image-only','text-image'].includes(l);
+    card.querySelector('.docTextWrap').classList.toggle('hide', l==='image-only' || !known);
+    card.querySelector('.docImgWrap').classList.toggle('hide', l==='text-only' || !known);
+    const pw=card.querySelector('.docPairWrap'); if(pw) pw.classList.toggle('hide', l==='text-only' || !known);
   }
   function readDocuments(){
     return $$('#documents .doc').map((card,i)=>{
@@ -1041,6 +1307,14 @@
       if(l!=='text-only'){const u=card.querySelector('.docImg').value; if(u) d.imageUrl=u; const w=parseFloat(card.querySelector('.docW').value); if(!isNaN(w)) d.imageWidthCm=w;}
       const src=readStringList(card.querySelector('.docSources')); if(src.length) d.sources=src;
       const pc=card.querySelector('.docPair'); if(pc && pc.checked && l!=='text-only') d.pair=true;
+      // clés non gérées par l'éditeur (ex. table d'un document data-table) : conservées telles quelles
+      const HANDLED={id:1,title:1,layout:1,text:1,imageUrl:1,imageWidthCm:1,sources:1,pair:1};
+      if(card.__orig) Object.keys(card.__orig).forEach(k=>{ if(!HANDLED[k]) d[k]=JSON.parse(JSON.stringify(card.__orig[k])); });
+      if(card.__orig && !['text-only','image-only','text-image'].includes(l)){
+        if(card.__orig.text!=null) d.text=card.__orig.text;
+        if(card.__orig.imageUrl!=null) d.imageUrl=card.__orig.imageUrl;
+        if(card.__orig.imageWidthCm!=null) d.imageWidthCm=card.__orig.imageWidthCm;
+      }
       return d;
     });
   }
@@ -1056,26 +1330,224 @@
     catch(e){ $('#uploadMsg').textContent=e.message; }
   };
 
+  // ===================== Moteur C1 / C2 : consignes auto, suggestions, lecture des éditeurs =====================
+  function currentDocNums(){ return $$('#documents .doc .docNum').map(i=>parseInt(i.value,10)).filter(n=>!isNaN(n)); }
+  function trappedDocNums(){
+    const out=[];
+    $$('#documents .doc').forEach(card=>{
+      const cb=card.querySelector('.docTrap'); if(!cb||!cb.checked) return;
+      const n=parseInt(card.querySelector('.docNum').value,10); if(!isNaN(n)) out.push(n);
+    });
+    out.sort((a,b)=>a-b); return out;
+  }
+  // Consignes générées selon les formules canoniques du catalogue (C1 : vouvoiement ; C2 : tutoiement RÉCIT)
+  function autoBullets(){
+    if(comp==='c1'){
+      const traps = trappedDocNums().length>0;
+      const b=['Consultez le dossier documentaire.'];
+      if(traps) b.push('Sélectionnez uniquement les documents qui se rapportent à la période et au territoire concernés.');
+      b.push('Remplissez le schéma ci-dessous à partir des documents'+(traps?' sélectionnés.':'.'));
+      return b;
+    }
+    if(comp==='c2'){
+      const nums=currentDocNums(); const n=nums.length?Math.max.apply(null,nums):0;
+      const ref = n>1 ? ' (documents 1 à '+n+')' : n===1 ? ' (document 1)' : '';
+      return ['Consulte le dossier documentaire'+ref+'.','Remplis le schéma.',"Rédige un texte d'environ 150 mots."];
+    }
+    return [];
+  }
+  function updateAutoBullets(){
+    const ul=$('#autoBulletsPreview'); if(!ul) return;
+    let html=autoBullets().map(b=>'<li>'+esc(b)+'</li>').join('');
+    if(comp==='c2') html+='<li style="list-style:none;margin-left:-18px;font-style:italic;opacity:.75">'+esc(C2_NOTE)+' <span class="sub">(ajout\u00e9e automatiquement)</span></li>';
+    ul.innerHTML=html;
+  }
+  function readCxBullets(){ return $('#bulletsCustom').checked ? readStringList($('#cxBullets')) : autoBullets(); }
+  $('#bulletsCustom').addEventListener('change', function(){
+    $('#bulletsCustomWrap').classList.toggle('hide', !this.checked);
+    if(this.checked && !$$('#cxBullets .listrow').length) stringListEditor($('#cxBullets'), autoBullets(), 'consigne');
+    refreshPreview();
+  });
+  $('#addCxBullet').onclick=()=>addStringRow($('#cxBullets'),'','consigne');
+  $('#addSousConsigne').onclick=()=>addStringRow($('#sousConsignes'),'','ex. indiquer \u2026 et expliquer \u2026;');
+  $$('.addC2').forEach(b=> b.onclick=()=>addStringRow($('#'+b.dataset.target),'',b.dataset.ph||'') );
+  $('#addC2Rem').onclick=()=>addStringRow($('#c2Remarques'),'','remarque de correction');
+  function refreshDocRefList(){
+    const dl=$('#docRefList'); if(!dl) return;
+    const nums=Array.from(new Set(currentDocNums())).sort((a,b)=>a-b);
+    dl.innerHTML=nums.map(n=>'<option value="Document '+n+'"></option>').join('');
+  }
+  function updateC1Hints(){
+    $$('.c1hint').forEach(h=>{
+      const src=document.getElementById(h.dataset.for);
+      h.textContent = (src && src.value.trim()) ? '\u00ab\u00a0'+src.value.trim()+'\u00a0\u00bb' : '(libell\u00e9 \u00e0 saisir \u00e0 la section 5)';
+    });
+  }
+  // câblage des champs statiques C1/C2 (aperçu JSON + indices)
+  ['#c1Objet','#c1r1c','#c1r1s1','#c1r1s2','#c1r2c','#c1r2s1','#c1r2s2'].forEach(sel=>{
+    $(sel).addEventListener('input', ()=>{ updateC1Hints(); refreshPreview(); });
+  });
+  ['#qcontexte','#c2Titre','#c2v1i','#c2v1r','#c2v2i','#c2v2r','#c2Row1','#c2Row2',
+   '#c1aObjet','#c1ar1c','#c1ar1cd','#c1ar1s1','#c1ar1s1d','#c1ar1s2','#c1ar1s2d',
+   '#c1ar2c','#c1ar2cd','#c1ar2s1','#c1ar2s1d','#c1ar2s2','#c1ar2s2d',
+   '#c2e1d','#c2r1d','#c2e2d','#c2r2d','#c2txt1','#c2txt2'].forEach(sel=>{
+    const el=$(sel); if(el) el.addEventListener('input', refreshPreview);
+  });
+
+  function gv(o, path, dflt){ let cur=o; for(let i=0;i<path.length;i++){ if(cur==null) return (dflt!==undefined?dflt:''); cur=cur[path[i]]; } return cur==null?(dflt!==undefined?dflt:''):cur; }
+  function loadCx(q, qc){
+    const qb=q.questionBody||{};
+    cxRegId = (q.reglettes && q.reglettes[0] && q.reglettes[0].id) || null;
+    if(qc==='c1'){
+      const traps=q.documentsADiscriminer||[];
+      $$('#documents .doc').forEach(card=>{
+        const cb=card.querySelector('.docTrap'); if(!cb) return;
+        const n=parseInt(card.querySelector('.docNum').value,10);
+        cb.checked = !isNaN(n) && traps.indexOf(n)>=0;
+      });
+    }
+    // consignes : « personnalisées » seulement si elles diffèrent des consignes générées
+    const have=qb.bullets||[];
+    const custom = have.length>0 && JSON.stringify(have)!==JSON.stringify(autoBullets());
+    $('#bulletsCustom').checked=custom;
+    $('#bulletsCustomWrap').classList.toggle('hide', !custom);
+    $('#cxBullets').innerHTML='';
+    if(custom) stringListEditor($('#cxBullets'), have, 'consigne');
+    const rs=(qb.responseSpace&&qb.responseSpace[0])||{};
+    const cor=gv(q,['corrige',0,'valeur'],{})||{};
+    if(qc==='c1'){
+      $('#c1Objet').value=gv(rs,['objet','label']);
+      [['#c1r1c',0,'central'],['#c1r2c',1,'central']].forEach(p=>{ $(p[0]).value=gv(rs,['relations',p[1],p[2],'label']); });
+      [['#c1r1s1',0,0],['#c1r1s2',0,1],['#c1r2s1',1,0],['#c1r2s2',1,1]].forEach(p=>{ $(p[0]).value=gv(rs,['relations',p[1],'satellites',p[2],'label']); });
+      $('#c1aObjet').value=gv(cor,['objet','answer']);
+      [['r1c',0,'central'],['r2c',1,'central']].forEach(p=>{
+        $('#c1a'+p[0]).value=gv(cor,['relations',p[1],p[2],'answer']);
+        $('#c1a'+p[0]+'d').value=gv(cor,['relations',p[1],p[2],'docRef']);
+      });
+      [['r1s1',0,0],['r1s2',0,1],['r2s1',1,0],['r2s2',1,1]].forEach(p=>{
+        $('#c1a'+p[0]).value=gv(cor,['relations',p[1],'satellites',p[2],'answer']);
+        $('#c1a'+p[0]+'d').value=gv(cor,['relations',p[1],'satellites',p[2],'docRef']);
+      });
+      updateC1Hints();
+    } else {
+      $('#qcontexte').value=qb.contexte||'';
+      const items=gv(qb,['sousConsignes','items'],[]);
+      $('#sousConsignes').innerHTML='';
+      stringListEditor($('#sousConsignes'), items.length?items:['',''], 'ex. indiquer \u2026 et expliquer \u2026;');
+      $('#c2Titre').value=rs.titre||'';
+      $('#c2v1i').value=gv(rs,['volets',0,'indique']); $('#c2v1r').value=gv(rs,['volets',0,'raison']);
+      $('#c2v2i').value=gv(rs,['volets',1,'indique']); $('#c2v2r').value=gv(rs,['volets',1,'raison']);
+      const r=(q.reglettes&&q.reglettes[0])||{};
+      $('#c2Row1').value=gv(r,['rowLabels',0],'Premier \u00e9l\u00e9ment de r\u00e9ponse')||'Premier \u00e9l\u00e9ment de r\u00e9ponse';
+      $('#c2Row2').value=gv(r,['rowLabels',1],'Deuxi\u00e8me \u00e9l\u00e9ment de r\u00e9ponse')||'Deuxi\u00e8me \u00e9l\u00e9ment de r\u00e9ponse';
+      const vols=cor.volets||[];
+      [1,2].forEach(i=>{
+        const ix=i-1;
+        $('#c2e'+i).innerHTML=''; stringListEditor($('#c2e'+i), gv(vols,[ix,'element'],[]), 'r\u00e9ponse accept\u00e9e');
+        $('#c2e'+i+'d').value=gv(vols,[ix,'elementDocs']);
+        $('#c2r'+i).innerHTML=''; stringListEditor($('#c2r'+i), gv(vols,[ix,'raison'],[]), 'explication accept\u00e9e');
+        $('#c2r'+i+'d').value=gv(vols,[ix,'raisonDocs']);
+      });
+      $('#c2Remarques').innerHTML=''; stringListEditor($('#c2Remarques'), cor.remarques||[], 'remarque de correction');
+      const tx=cor.texte||[]; $('#c2txt1').value=tx[0]||''; $('#c2txt2').value=tx[1]||'';
+    }
+  }
+
+  // ----- lecture du formulaire C1 / C2 (format CMS, aller-retour garanti par QuizCMS) -----
+  function baseCxOut(qb){
+    const rel=DATA.realites_sociales.find(r=>r.id===$('#qrealite').value)||{};
+    const out={ id:$('#qid').value.trim(), competence:(comp==='c1'?1:2), operation:null,
+      numero:parseInt($('#qnumero').value,10)||1, niveau:rel.niveau!=null?rel.niveau:1,
+      realite_sociale_id:$('#qrealite').value, questionBody:qb,
+      reglettes:[], documents:readDocuments(), corrige:[] };
+    if(rel.annee!=null) out.annee=rel.annee;
+    if($('#qCantSplit').checked) out.cantSplitAllDocs=true;
+    return out;
+  }
+  function c1Bub(id){
+    const a=$('#c1a'+id).value, d=$('#c1a'+id+'d').value.trim();
+    const o={ answer:a }; if(d) o.docRef=d; return o;
+  }
+  function readFormC1(){
+    const qb={ prompt:$('#qprompt').value, bullets:readCxBullets(),
+      responseSpace:[{ type:'c1-schema',
+        objet:{ label:$('#c1Objet').value },
+        relations:[
+          { central:{label:$('#c1r1c').value}, satellites:[{label:$('#c1r1s1').value},{label:$('#c1r1s2').value}] },
+          { central:{label:$('#c1r2c').value}, satellites:[{label:$('#c1r2s1').value},{label:$('#c1r2s2').value}] }
+        ] }] };
+    const out=baseCxOut(qb);
+    out.documentsADiscriminer=trappedDocNums();
+    out.reglettes=[Object.assign({ id:cxRegId||('r-'+(imgFolderFromId()||'q')), label:'R\u00e9glette (8 points)', levels:[] }, JSON.parse(JSON.stringify(C1_GRID)))];
+    out.corrige=[{ kind:'c1_schema', valeur:{
+      objet:{ answer:$('#c1aObjet').value },
+      relations:[
+        { central:c1Bub('r1c'), satellites:[c1Bub('r1s1'), c1Bub('r1s2')] },
+        { central:c1Bub('r2c'), satellites:[c1Bub('r2s1'), c1Bub('r2s2')] }
+      ] } }];
+    return out;
+  }
+  function c2Volet(i){
+    const v={ element:readStringList($('#c2e'+i)) };
+    const ed=$('#c2e'+i+'d').value.trim(); if(ed) v.elementDocs=ed;
+    v.raison=readStringList($('#c2r'+i));
+    const rd=$('#c2r'+i+'d').value.trim(); if(rd) v.raisonDocs=rd;
+    return v;
+  }
+  function readFormC2(){
+    const qb={ prompt:$('#qprompt').value };
+    const ctx=$('#qcontexte').value.trim(); if(ctx) qb.contexte=ctx;
+    qb.sousConsignes={ intro:C2_SC_INTRO, items:readStringList($('#sousConsignes')) };
+    qb.bullets=readCxBullets();
+    qb.note=C2_NOTE;
+    const rs={ type:'c2-schema' };
+    const ti=$('#c2Titre').value.trim(); if(ti) rs.titre=ti;
+    rs.volets=[ { indique:$('#c2v1i').value, raison:$('#c2v1r').value },
+                { indique:$('#c2v2i').value, raison:$('#c2v2r').value } ];
+    rs.texte={ label:'Texte de 150 mots :', lines:20 };
+    qb.responseSpace=[rs];
+    const out=baseCxOut(qb);
+    const grid=JSON.parse(JSON.stringify(C2_GRID));
+    grid.rowLabels=[ $('#c2Row1').value.trim()||'Premier \u00e9l\u00e9ment de r\u00e9ponse',
+                     $('#c2Row2').value.trim()||'Deuxi\u00e8me \u00e9l\u00e9ment de r\u00e9ponse' ];
+    out.reglettes=[Object.assign({ id:cxRegId||('r-'+(imgFolderFromId()||'q')), label:"Grille d'\u00e9valuation (8 points)", levels:[] }, grid)];
+    const val={ volets:[ c2Volet(1), c2Volet(2) ] };
+    const rem=readStringList($('#c2Remarques')); if(rem.length) val.remarques=rem;
+    const tx=[ $('#c2txt1').value.trim(), $('#c2txt2').value.trim() ].filter(Boolean);
+    if(tx.length) val.texte=tx;
+    out.corrige=[{ kind:'c2_volets', valeur:val }];
+    return out;
+  }
+
   // ===================== Charger / lire le formulaire =====================
   function loadQuestion(q){
     q=q||{};
+    const qc = q.competence===1 ? 'c1' : q.competence===2 ? 'c2' : 'oi';
     $('#qid').value=q.id||''; $('#qnumero').value=q.numero||1;
     $('#qrealite').value=q.realite_sociale_id||''; $('#qop').value=q.operation||'';
     $('#qCantSplit').checked = !!q.cantSplitAllDocs; updatePeriode(); updateImgFolder();
+    setComp(qc, {keepId:true});
     const qb=q.questionBody||{};
     $('#qprompt').value=qb.prompt||'';
-    $('#bullets').innerHTML=''; (qb.bullets||[]).forEach(b=>addStringRow($('#bullets'),b,'ex. Une action de Martin Luther'));
-    $('#instructions').innerHTML=''; (qb.instructions||[]).forEach(p=>addInstrRow(p.text,!!p.bold));
-    const rs=(qb.responseSpace&&qb.responseSpace[0])||{type:'lines',count:4};
-    loadedRs=JSON.parse(JSON.stringify(rs));
-    $('#rsType').value=rs.type||'lines'; renderRsFields(rs);
-    $('#reglettes').innerHTML=''; (q.reglettes&&q.reglettes.length?q.reglettes:[null]).forEach(r=>addRegletteCard(r));
     $('#documents').innerHTML=''; (q.documents||[]).filter(Boolean).forEach(d=>addDocCard(d));
-    const cor=(q.corrige&&q.corrige[0])||{kind:'texte',valeur:''};
-    $('#corType').value=cor.kind||'texte'; renderCorFields(cor);
-    refreshPreview();
+    if(qc==='oi'){
+      $('#bullets').innerHTML=''; (qb.bullets||[]).forEach(b=>addStringRow($('#bullets'),b,'ex. Une action de Martin Luther'));
+      $('#instructions').innerHTML=''; (qb.instructions||[]).forEach(p=>addInstrRow(p.text,!!p.bold));
+      const rs=(qb.responseSpace&&qb.responseSpace[0])||{type:'lines',count:4};
+      loadedRs=JSON.parse(JSON.stringify(rs));
+      $('#rsType').value=rs.type||'lines'; renderRsFields(rs);
+      $('#reglettes').innerHTML=''; (q.reglettes&&q.reglettes.length?q.reglettes:[null]).forEach(r=>addRegletteCard(r));
+      const cor=(q.corrige&&q.corrige[0])||{kind:'texte',valeur:''};
+      $('#corType').value=cor.kind||'texte'; renderCorFields(cor);
+    } else {
+      $('#reglettes').innerHTML='';   // la grille C1/C2 est régénérée à la lecture du formulaire
+      loadCx(q, qc);
+    }
+    refreshDocRefList(); updateAutoBullets(); refreshPreview();
   }
   function readForm(){
+    if(comp==='c1') return readFormC1();
+    if(comp==='c2') return readFormC2();
     const qb={ prompt:$('#qprompt').value };
     const bullets=readStringList($('#bullets')); if(bullets.length) qb.bullets=bullets;
     const instr=readInstructions(); if(instr.length) qb.instructions=instr;
@@ -1089,14 +1561,22 @@
     return out;
   }
   function refreshPreview(){ try{ $('#jsonPreview').textContent=JSON.stringify(readForm(),null,2); }catch(e){} }
-  function resetForm(){ loadQuestion({questionBody:{prompt:'',responseSpace:[{type:'lines',count:4}]},reglettes:[null],documents:[],corrige:[{kind:'texte',valeur:''}]}); }
+  function resetForm(){
+    cxRegId=null;
+    if(comp==='c1') loadQuestion({ competence:1, questionBody:{prompt:'',responseSpace:[{type:'c1-schema'}]}, documents:[], corrige:[{kind:'c1_schema',valeur:{}}] });
+    else if(comp==='c2') loadQuestion({ competence:2, questionBody:{prompt:'',responseSpace:[{type:'c2-schema'}]}, documents:[], corrige:[{kind:'c2_volets',valeur:{}}] });
+    else loadQuestion({questionBody:{prompt:'',responseSpace:[{type:'lines',count:4}]},reglettes:[null],documents:[],corrige:[{kind:'texte',valeur:''}]});
+  }
 
   // ===================== Publier =====================
   $('#btnReset').onclick=()=>{ if(store.mode==='new'){ store.currentIndex=-1; initNewForm(); } else { resetForm(); } toast('Formulaire r\u00e9initialis\u00e9.'); };
   $('#btnPublish').onclick=async()=>{
     const q=readForm();
     if(!q.id){ toast('Donne un identifiant \u00e0 la question.','err'); $('#qid').focus(); return; }
-    if(!q.operation||!q.realite_sociale_id){ toast('Choisis l\u2019op\u00e9ration et la r\u00e9alit\u00e9 sociale.','err'); return; }
+    if(!q.realite_sociale_id){ toast('Choisis la r\u00e9alit\u00e9 sociale.','err'); return; }
+    if(comp==='oi' && !q.operation){ toast('Choisis l\u2019op\u00e9ration intellectuelle.','err'); return; }
+    if(comp==='c1' && !$('#c1Objet').value.trim()){ toast('Saisis le libell\u00e9 de la bulle \u00ab objet \u00bb (section 5).','err'); $('#c1Objet').focus(); return; }
+    if(comp==='c2' && (!$('#c2v1i').value.trim() || !$('#c2v2i').value.trim())){ toast('Saisis les consignes \u00ab Indique\u2026 \u00bb des deux volets (section 5).','err'); return; }
     const existing=store.file.questions.findIndex(x=>x.id===q.id);
     if(store.mode==='new' && existing>=0){ toast('Cet identifiant existe d\u00e9j\u00e0. Choisis-en un autre.','err'); $('#qid').focus(); return; }
     const targetIdx = existing>=0 ? existing : -1;
