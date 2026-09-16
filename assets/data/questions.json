@@ -2056,7 +2056,7 @@
       "documents": [
         {
           "id": "ec-cc1-d1",
-          "title": "Document 1",
+          "title": "Document 1 (vers 1653)",
           "layout": "text-only",
           "text": "« Jamais il n'y eut plus de castors dans nos lacs et dans nos rivières; mais jamais il ne s'en est moins vu dans les magasins du pays. Le magasin de Montréal n'a pas acheté des Sauvages [Autochtones] un seul castor depuis un an [...] Ce sont les Iroquois, dont il faut se plaindre : car ce sont eux [...] qui empêchent tout le commerce des castors [...] »",
           "sources": [
@@ -2065,7 +2065,7 @@
         },
         {
           "id": "ec-cc1-d2",
-          "title": "Document 2",
+          "title": "Document 2 (vers 1785)",
           "layout": "image-only",
           "imageUrl": "assets/img/evolution-coloniale-changements-1/doc2.png",
           "imageWidthCm": 6,
@@ -7333,7 +7333,7 @@
       "documents": [
         {
           "id": "fc-co2-d1",
-          "title": "Document 1 : Acte constitutionnel",
+          "title": "Document 1 : Acte constitutionnel (1791)",
           "layout": "image-only",
           "imageUrl": "assets/img/fc-continuite-2/doc1.png",
           "imageWidthCm": 10,
@@ -7343,7 +7343,7 @@
         },
         {
           "id": "fc-co2-d2",
-          "title": "Document 2 : Acte d'Union",
+          "title": "Document 2 : Acte d'Union (1840)",
           "layout": "image-only",
           "imageUrl": "assets/img/fc-continuite-2/doc2.png",
           "imageWidthCm": 9,
@@ -13978,7 +13978,7 @@
       "documents": [
         {
           "id": "na-co5-d1",
-          "title": "Document 1",
+          "title": "Document 1 (vers 1896)",
           "layout": "image-only",
           "imageUrl": "assets/img/na-continuite-5/doc1.png",
           "imageWidthCm": 10,
@@ -13988,7 +13988,7 @@
         },
         {
           "id": "na-co5-d2",
-          "title": "Document 2",
+          "title": "Document 2 (vers 1930-1950)",
           "layout": "image-only",
           "imageUrl": "assets/img/na-continuite-5/doc2.png",
           "imageWidthCm": 10,
@@ -26899,7 +26899,7 @@
         },
         {
           "id": "cs-co10-d2",
-          "title": "Document 2 : La qualité de l'eau potable",
+          "title": "Document 2 : La qualité de l'eau potable (années 2010)",
           "layout": "text-only",
           "text": "« Même si le niveau d'approvisionnement en eau est élevé, de nombreuses communautés doivent composer avec de l'eau contaminée. C'est pourquoi l'eau potable demeure un enjeu important. »",
           "sources": [
