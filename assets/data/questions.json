@@ -7650,7 +7650,7 @@
       "niveau": 1,
       "realite_sociale_id": "formation-regime-federal",
       "questionBody": {
-        "prompt": "À partir des documents 1, 2 et 3, établis les liens de causalité qui expliquent la mise en place des ententes entre le gouvernement fédéral et les nations autochtones. Dans ta réponse, tu devras préciser chacun des éléments ci-dessous et les lier entre eux.",
+        "prompt": "Après la Confédération de 1867, le territoire du Canada s'agrandit vers l'Ouest. Explique de quelle façon le contexte de l'époque et les points de vue des parties ont mené à la signature d'ententes entre le gouvernement fédéral et les nations autochtones. Pour répondre, précise chacun des éléments ci-dessous et relie-les entre eux. Utilise les documents 1, 2 et 3.",
         "bullets": [
           "Le point de vue du gouvernement fédéral et le point de vue des Autochtones",
           "La signature des traités numérotés",
